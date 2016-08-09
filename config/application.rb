@@ -16,6 +16,7 @@ Bundler.require(*Rails.groups)
 module Releve
   class Application < Rails::Application
 	# Enable the asset pipeline
+	config.assets.initialize_on_precompile = false
 	config.assets.enabled = true
 	config.assets.precompile += %w[*.png *.jpg *.jpeg *.gif] 
 	config.assets.precompile += %w(
