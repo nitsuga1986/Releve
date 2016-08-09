@@ -1,0 +1,80 @@
+es:
+  # General
+  title: "El Taller Releve"
+  by_name: "por Los Mostros"
+  email: "Dirección de correo"
+  password: "Contraseña"
+  ie_warning: 'Estas utilizando una versión antigua de Internet Explorer. Algunas características pueden no funcionar correctamente. Por favor actualiza a un <a href="http://www.whatbrowser.org/intl/es/">navegador moderno</a>.'
+
+  date:
+    month_names: [~, Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre]
+    abbr_month_names: [~, Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic]
+    day_names: [~, Lunes, Martes, Miercoles, Jueves, Viernes, Sabado, Domingo]
+    abbr_day_names: [Dom, Lun, Mar, Mie, Jue, Vie, Sab, Dom]
+    formats:
+      default: "%d/%m/%Y"
+  
+  time:
+    formats:
+      short: "%B %Y"
+      default: "%a %d/%m/%y %H:%M"
+      
+  # Header
+  home: "Inicio"
+  help: "Ayuda"
+  account: "Cuentas"
+  profile: "Perfil"
+  settings: "Configuración"
+  signin: "Ingresar"
+  signout: "Salir"
+  menu: "Menú"
+  
+  # Footer
+  aboutus: "Nosotros"
+
+  # App: Tarifador
+  group_reports: "Reportes"
+  by_calls: "Por llamadas"
+  by_cost_center: "Por centro de costos"
+  by_extention: "Por extensión"
+  
+  # Devise
+  signup: "Registrarse"
+  users: "Usuarios"
+  newuser: "Usuario nuevo"
+  name: "Nombre"
+  createaccount: "Crear mi cuenta"
+  passwordconfirm: "Repetir contraseña"
+  rememberme: "Recordarme"
+  forgot_pwd: "¿Oldvidaste tu contraseña?"
+  not_instructions: "¿No has recibido las instrucciones de confirmación?"
+  not_unlock: "¿No has recibdo las instrucciones de desbloqueo?"
+  sign_in_with: "Ingresar con"
+  send_me_rst_pwd: "Restablecer mi contraseña"
+  change_pwd: "Cambiar contraseña"
+  change_my_pwd: "Cambiar mi contraseña"
+  new_pwd: "Nueva contraseña"
+  confirm_new_pwd: "Confirmar contraseña"
+  pwd_blnk_not_change: "Contraseña (En blanco para no modificar)"
+  edit_account: "Editar mi cuenta"
+  current_password: "Contraseña actual"
+  cancel_my_account: "Cancelar mi cuenta"
+  unhappy: "¿Descontento?"
+  sure: "¿Estás seguro?"
+  back : "Volver a la página anterior"
+  resend_confr_instruct: "Reenviar instrucciones de confirmación"
+  resend_instruct: "Reenviar confirmación"
+  resend_unlock_instruct: "Reenviar instrucciones de desbloqueo"
+  resend_unlock: "Reenviar desbloqueo"
+  waiting_conf: "Esperando confirmación de"
+  welcome: "Bienvenido"
+  you_can_confirm: "Puede confirmar su cuenta de correo con el siguiente link:"
+  confirm_my_account: "Confirmar mi cuenta"
+  hello: "Hola"
+  someone_requested_pwd: "Alguien a pedido cambiar la contraseña. Puedes hacerlo utilizando el siguiente enlace."
+  if_you_didnt: "Si usted no requirió esto, por favor ignore este correo."
+  your_pwd_wont_chg: "Su contraseña no cambiara hasta que usted acceda al link provisto y cree una nueva."
+  account_lockd_msg: "Su cuenta ha sido bloqueada debido a un número execivo de intentos incorrectos para ingresar."
+  click_to_unlock: "Clickee en el siguiente enlace para desbloquear su cuenta:"
+  unlock_my_account: "Desbloquear mi cuenta"
+  need_help: "¿Necesitas ayuda?"
