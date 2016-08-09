@@ -3,7 +3,7 @@
 	</div>
 	
 	<%= render 'layouts/header' %>
-
+	
 	<header id="intro">
 		<div class="container">
 			<div class="table">
@@ -282,7 +282,7 @@
 			</div>
 		</div>
 	</section>
-	<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="Comenzar" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content modal-popup">
 				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
@@ -292,6 +292,28 @@
 			</div>
 		</div>
 	</div>
+	<% if @show_confirm_form %>
+		<script type="text/javascript">$(window).load(function(){$('#modal2').modal('show');});</script>
+		<div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="ConfirmEmail" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content modal-popup">
+					 <h3 class="white">Confirma tu Email</h3>
+					<%= form_for(current_user, as: 'user', url: finish_signup_path(current_user)) do |f| %>
+					  <% if @show_errors %>
+						<p class="text-danger"><strong>La dirección ingresada no es correcta</strong></p>
+					  <% end %>
+					  <div>
+						<%= f.text_field :email, autofocus: true, value: '', autofocus: true, class: 'form-control form-white' , placeholder: 'direccion@correo.com' %>
+					  </div>
+					  <div>
+						<%= f.submit 'Confirmar', class: 'btn btn-submit' %>
+					  </div>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	<% end %>
+
 
 	<%= render 'layouts/footer' %>
 	
