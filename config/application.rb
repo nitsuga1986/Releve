@@ -15,6 +15,14 @@ Bundler.require(*Rails.groups)
 
 module Releve
   class Application < Rails::Application
+	# Enable the asset pipeline
+	config.assets.enabled = true
+	config.assets.initialize_on_precompile = false
+	config.assets.precompile += %w[*.png *.jpg *.jpeg *.gif] 
+	config.assets.precompile += %w(
+	  ie.js
+	  ie.css
+	)
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -26,5 +34,7 @@ module Releve
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    config.i18n.enforce_available_locales = true
+    config.i18n.default_locale = :es
   end
 end
