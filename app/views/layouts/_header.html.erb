@@ -17,7 +17,11 @@
 				<li><a href="#services">Actividades</a></li>
 				<li><a href="#team">Nuestro Equipo</a></li>
 				<li><a href="#pricing">Precios</a></li>
-				<li><a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue">Comenzar!</a></li>
+				<% if user_signed_in?%>
+					<li class="user_header" title="Salir"><a data-method="DELETE" href="<%= destroy_user_session_path %>"><%= current_user.email %>  <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
+				<% else %>
+					<li><a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue">Comenzar!</a></li>
+				<% end %>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->

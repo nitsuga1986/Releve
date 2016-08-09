@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery_ujs 
 //= require owl.carousel.min
 //= require bootstrap.min
 //= require wow.min
