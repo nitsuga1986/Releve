@@ -1,14 +1,32 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Releve</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<!DOCTYPE HTML>
+<html lang="es" data-ng-app="ReleveApp">
+	
+  <head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Releve Pilates</title>
+	<meta name="description" content="Releve Pilates" />
+	<meta name="keywords" content="Releve, Pilates, Danza, Cuerpo, Ejercicio, Salud" />
+	<meta name="author" content="Nitsuga" />
+	<!-- Favicons (created with http://realfavicongenerator.net/)-->
+    <!-- bootstrap fix -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- styles & fonts -->
+    <%= stylesheet_link_tag "application", media: "all","data-turbolinks-track" => true %>
+  </head>
+  
+  <body>
+	<!--[if lt IE 9]>
+		<div class="alert alert-warning alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			<p><%= raw t('ie_warning')%></p>
+		</div>
+	<![endif]-->
+	<%= yield %>
+  </body>
+
+  <!-- scripts -->
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+  <%= render 'layouts/shim' %>
 </html>

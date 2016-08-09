@@ -1,23 +1,81 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
+es:
+  # General
+  title: "El Taller Releve"
+  by_name: "by Los Mostros"
+  email: "Email address"
+  password: "Password"
+  ie_warning: 'You are using an old version of Internet Explorer. Some features may not work correctly. Please upgrade to a <a href="http://www.whatbrowser.org/">modern browser</a>'
+  
+  date:
+    month_names: [~, January, February, March, April, May, June, July, August, September, October, November, December]
+    abbr_month_names: [~, Jan, Feb, Mar, Apr, May, Jun, Jul, Agu, Sep, Oct, Nov, Dec]
+    day_names: [~, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+    abbr_day_names: [~, Mon, Tue, Wed, Thu, Fri, Sat, Sun]
+    formats:
+      default: "%d/%m/%Y"
+  
+  time:
+    formats:
+      short: "%B %Y"
+      default: "%a %d/%m/%y %H:%M"
+      
+  # Header
+  home: "Home"
+  help: "help"
+  account: "Account"
+  profile: "Profile"
+  settings: "Settings"
+  signin: "Sign In"
+  signout: "Sign Out"
+  menu: "Menu"
+  
+  # Footer
+  aboutus: "About Us"
 
-en:
-  hello: "Hello world"
+  # App: Tarifador
+  group_reports: "Reports"
+  by_calls: "By calls"
+  by_cost_center: "By cost center"
+  by_extention: "By extention"
+
+  # Devise
+  signup: "Sign Up"
+  users: "Users"
+  newuser: "New user"
+  name: "Name"
+  createaccount: "Create my account"
+  passwordconfirm: "Confirm password"
+  rememberme: "Remember me"
+  forgot_pwd: "Forgot your password?"
+  not_instructions: "Didn't receive confirmation instructions?"
+  not_unlock: "Didn't receive unlock instructions?"
+  sign_in_with: "Sign in with"
+  send_me_rst_pwd: "Reset password"
+  change_pwd: "Change your password"
+  change_my_pwd: "Change my password"
+  new_pwd: "New password"
+  confirm_new_pwd: "Confirm new password"
+  pwd_blnk_not_change: "Password (leave blank if not changing)"
+  edit_account: "Edit my account"
+  current_password: "Current password"
+  cancel_my_account: "Cancel my account"
+  unhappy: "Unhappy?"
+  sure: "Are you sure?"
+  back : "Back to previous page"
+  resend_confr_instruct: "Resend confirmation instructions"
+  resend_instruct: "Resend confirmation"
+  resend_unlock_instruct: "Resend unlock instructions"
+  resend_unlock: "Resend unlock"
+  waiting_conf: "Esperando confirmación de:"
+  welcome: "Welcome"
+  you_can_confirm: "You can confirm your account email through the link below:"
+  confirm_my_account: "Confirm my account"
+  hello: "Hello"
+  someone_requested_pwd: "Someone has requested a link to change your password. You can do this through the link below."
+  if_you_didnt: "If you didn't request this, please ignore this email."
+  your_pwd_wont_chg: "Your password won't change until you access the link above and create a new one."
+  account_lockd_msg: "Your account has been locked due to an excessive number of unsuccessful sign in attempts."
+  click_to_unlock: "Click the link below to unlock your account:"
+  unlock_my_account: "Unlock my account"
+  need_help: "Need help?"
+  

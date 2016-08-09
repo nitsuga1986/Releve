@@ -10,6 +10,17 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require_self
+ *= require normalize
+ *= require bootstrap
+ *= require owl
+ *= require animate
+ *= require font-awesome.min
+ *= require et-icons
+ *= require custom
  */
+
+/* Boostrap:TableResponsive:Fix for Firefox*/
+@-moz-document url-prefix() {
+  fieldset { display: table-cell; }
+}
