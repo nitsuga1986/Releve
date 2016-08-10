@@ -1,16 +1,6 @@
 <h2 data-ng-bind-html="FormTitle | html_trusted">Clase</h2>
 <hr class="clase"/>
 <div class="col-sm-12"><h3>Detalle</h3></div>
-<!-- Alerts -->
-<div class="col-sm-12">
-	<div class="alert alert-danger" role="alert" data-ng-show="(ClaseForm.$invalid && ClaseForm.submitted)||(ClaseForm.fecha.$dirty && ClaseForm.fecha.$invalid)||(ClaseForm.horario.$dirty && ClaseForm.horario.$invalid)||(ClaseForm.instructor.$dirty && (ClaseForm.instructor.$invalid || !clase.instructor_id))">
-		<ul>
-			<li data-ng-show="(ClaseForm.fecha.$dirty||ClaseForm.submitted) && ClaseForm.fecha.$invalid">Se requiere la fecha de la clase</li>
-			<li data-ng-show="(ClaseForm.horario.$dirty||ClaseForm.submitted) && ClaseForm.horario.$invalid">Se requiere el horario de la clase</li>
-			<li data-ng-show="(ClaseForm.instructor.$dirty||ClaseForm.submitted) && (ClaseForm.instructor.$invalid || !clase.instructor_id)">Se requiere el instructor de la clase</li>
-		</ul>
-	</div>
-</div>
 <!-- SubmitError -->
 <div class="col-sm-12">
 	<div class="alert alert-danger" role="alert" data-ng-show="submiterror">
@@ -21,49 +11,73 @@
 <div class="col-sm-12">
 	<form class="form-horizontal" data-ng-submit="submit()" name="ClaseForm" novalidate role="form">
 		<!-- fecha -->
-		<div class="form-group col-sm-6" data-ng-class="{'has-error': (ClaseForm.fecha.$dirty||ClaseForm.submitted) && ClaseForm.fecha.$invalid}">
-			<label for="fecha" class="col-sm-2 control-label">Fecha</label>
-			<div class="col-sm-10">
+		<div class="form-group col-sm-6">
+			<label for="fecha" class="col-sm-4 control-label">Fecha</label>
+			<div class="col-sm-7">
 				<div class="input-group">
-					<input required type="text" class="form-control" name="fecha" data-ng-model="clase.fecha" data-ng-blur="GoToClaseEdit()" id="fecha" placeholder="aaaa-mm-dd">
+					<input type="date" class="form-control" name="fecha" data-ng-model="clase.fecha" data-ng-blur="GoToClaseEdit()" id="fecha" placeholder="aaaa-mm-dd">
 					<label title="Ver calendario" for="fecha" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span></label>
 					<label title="Fecha de hoy" class="input-group-addon btn btn-primary" data-ng-click="clase.fecha = SetToday()"><i class="fa fa-calendar-o"></i></label>
 				</div>
 			</div>
 		</div>
 		<!-- horario -->
-		<div class="form-group col-sm-6"  data-ng-class="{'has-error': (ClaseForm.horario.$dirty||ClaseForm.submitted) && ClaseForm.horario.$invalid}">
-			<label for="horario" class="col-sm-2 control-label">Horario</label>
-			<div class="col-sm-10">
-				<select required class="form-control" data-ng-blur="GoToClaseEdit()" name="horario" data-ng-model="clase.horario" id="horario" data-ng-options="horario as horario for horario in horariosArray"></select> 
+		<div class="form-group col-sm-6">
+			<label for="horario" class="col-sm-3 control-label">Horario</label>
+			<div class="col-sm-9">
+				<select class="form-control" data-ng-blur="GoToClaseEdit()" name="horario" data-ng-model="clase.horario" id="horario" data-ng-options="horario as horario for horario in horariosArray"></select> 
+			</div>
+		</div>
+		<!-- max_users -->
+		<div class="form-group col-sm-6">
+			<label for="max_users" class="col-sm-4 control-label">Alumnos Max.</label>
+			<div class="col-sm-7">
+				<input type="number" min="1" max="10" class="form-control" name="max_users" data-ng-model="clase.max_users" id="max_users" placeholder="ej. 5">
+			</div>
+		</div>
+		<!-- instructor -->
+		<div class="form-group col-sm-6">
+			<label for="instructor" class="col-sm-3 control-label">Instructor</label>
+			<div class="col-sm-9">
+				<input type="text" class="form-control" name="instructor" data-ng-model="clase.instructor" id="instructor" placeholder="ej. Byron Farnfader" to-title-case>
+			</div>
+		</div>
+		<!-- cancelada -->
+		<div class="form-group col-sm-6">
+			<label for="cancelada" class="col-sm-4 control-label">Clase cancelada?</label>
+			<div class="col-sm-7">
+				<input type="checkbox" name="cancelada" data-ng-model="clase.cancelada" id="cancelada"> 
+			</div>
+		</div>
+		<!-- comment -->
+		<div class="form-group col-sm-6">
+			<label for="comment" class="col-sm-3 control-label">Comentarios:</label>
+			<div class="col-sm-9">
+				<input type="text" class="form-control" name="comment" data-ng-model="clase.comment" id="comment" placeholder="ej. Esta clase no se recupera porque...">
 			</div>
 		</div>
 		<!-- Users -->
-		<div class="col-sm-12"><h3>Users</h3></div>
-
-		<div class="form-group col-sm-12">
-			<label for="search_user" class="col-sm-2 control-label">Buscar user</label>
+		<div class="col-sm-12"><h3>Alumnos</h3></div>
+		<div class="form-group col-sm-12"> <!-- Search -->
+			<label for="search_user" class="col-sm-2 control-label">Buscar almuno</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" name="search_user" data-ng-model="search_user" id="search_user" placeholder="ej. Lucas Paya Bruno" to-title-case>
+				<input type="text" class="form-control" name="search_user" data-ng-model="search_user" id="search_user" placeholder="ej. vicky@barnfader.com">
 			</div>
 		</div>
-
-		<div class="col-sm-12">
+		<div class="col-sm-12"> <!-- Table -->
 		<div class="table-responsive">
 			<table class="table table-striped table-condensed table-hover">
 				<thead>
 					<tr>
-						<!-- <th>Id</th> -->
 						<th></th>
-						<th>Nombre</th>
-						<th>Apellido</th>
-						<th>Graduación actual</th>
+						<th>Id</th>
+						<th>Email</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr data-ng-repeat="user in clase.users">
 						<td><a class="btn btn-default btn-xs" data-ng-click="DeleteUser(user.id)"><i class="fa fa-times"></i></a></td>
-						<!-- <td>{{user.id}}</td> -->
+						<td>{{user.id}}</td>
 						<td>{{user.email}}</td>
 					</tr>
 				</tbody>

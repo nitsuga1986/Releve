@@ -1,11 +1,10 @@
-angular.module("TurnosApp").controller("ClaseShowCtrl",['$scope', '$routeParams', '$cacheFactory', '$location', 'ResourceClase', function($scope, $routeParams, $cacheFactory, $location, ResourceClase) {
-	$scope.GoToUser = function(id) {if(id){$location.path("/user/"+id);};};
+angular.module("TurnosApp").controller("ClaseShowCtrl",['$scope', '$routeParams', '$location', 'ResourceClase', function($scope, $routeParams, $location, ResourceClase) {
 	$scope.clase = ResourceClase.show({ id: $routeParams.id });
 	$scope.clase.$promise.then(function(data){console.log(data);},function( error ){$location.path("/clase/index");});
 	// Success
 	function success(response) {
 		console.log("success", response);
-		$cacheFactory.get('$http').remove("/api/clase");
+		$cacheFactory.get('$http').remove("/clase");
 		$location.path("/clase/index");
 	}
 	// Failure

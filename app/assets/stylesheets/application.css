@@ -13,6 +13,7 @@
  *= require_self
  *= require normalize
  *= require bootstrap
+ *= require jquery-ui
  *= require owl
  *= require animate
  *= require font-awesome.min

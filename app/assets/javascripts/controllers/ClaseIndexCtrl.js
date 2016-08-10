@@ -1,5 +1,4 @@
-angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$cacheFactory', '$location', 'ResourceClase', '$filter','ngTableParams', '$timeout', function($scope, $cacheFactory, $location, ResourceClase, $filter, ngTableParams, $timeout) {
-	//	$scope.users = ResourceUser.index();
+angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$location', 'ResourceClase', '$filter','ngTableParams', '$timeout', function($scope, $location, ResourceClase, $filter, ngTableParams, $timeout) {
 	$scope.GoToShow = function(id) {$location.path("/clase/"+id);};
 	$scope.GoToNew = function() {$location.path("/clase/new");};
 	// ngTable
@@ -32,7 +31,6 @@ angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$cacheFactor
 	});
 	// Reload button
 	$scope.reloadTable = function(id) {
-		$cacheFactory.get('$http').remove("/api/clase");
 		$scope.tableParams.reload();
 	};
 }]);

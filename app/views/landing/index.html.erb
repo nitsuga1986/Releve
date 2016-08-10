@@ -114,7 +114,7 @@
 						<div class="bottom">
 							<h4 class="white heading small-heading no-margin regular">Registate ahora!</h4>
 							<h4 class="white heading small-pt">1ra clase gratuita</h4>
-							<a href="#" class="btn btn-white-fill expand">Registrarse</a>
+							<a href="#" class="btn-landing btn-white-fill expand">Registrarse</a>
 						</div>
 					</div>
 				</div>
@@ -198,7 +198,7 @@
 							<h4>Vic Farnfader</h4>
 							<h5 class="muted regular">Alta Instrutora</h5>
 						</div>
-						<button data-toggle="modal" data-target="#modal1" class="btn btn-blue-fill">Registrarse ahora</button>
+						<button data-toggle="modal" data-target="#modal1" class="btn-landing btn-blue-fill">Registrarse ahora</button>
 					</div>
 				</div>
 				<div class="col-md-4">
@@ -214,7 +214,7 @@
 							<h4>Bayron Farnfader</h4>
 							<h5 class="muted regular">Wooof</h5>
 						</div>
-						<a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue-fill ripple">Registrarse ahora</a>
+						<a href="#" data-toggle="modal" data-target="#modal1" class="btn-landing btn-blue-fill ripple">Registrarse ahora</a>
 					</div>
 				</div>
 				<div class="col-md-4">
@@ -230,7 +230,7 @@
 							<h4>Eva Williams</h4>
 							<h5 class="muted regular">Personal Trainer</h5>
 						</div>
-						<a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue-fill ripple">Registrarse ahora</a>
+						<a href="#" data-toggle="modal" data-target="#modal1" class="btn-landing btn-blue-fill ripple">Registrarse ahora</a>
 					</div>
 				</div>
 			</div>
@@ -248,7 +248,7 @@
 						<div class="box-main active" data-img="<%= asset_path 'pricing1.jpg' %>">
 							<h4 class="white">Yoga Pilates</h4>
 							<h4 class="white regular light">$850.00 <span class="small-font">/ year</span></h4>
-							<a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-white-fill">Registrarse ahora</a>
+							<a href="#" data-toggle="modal" data-target="#modal1" class="btn-landing btn-white-fill">Registrarse ahora</a>
 							<i class="info-icon icon_question"></i>
 						</div>
 						<div class="box-second active">
@@ -265,7 +265,7 @@
 						<div class="box-main" data-img="<%= asset_path 'pricing2.jpg' %>">
 							<h4 class="white">Releve Pilates</h4>
 							<h4 class="white regular light">$100.00 <span class="small-font">/ year</span></h4>
-							<a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-white-fill">Sign Up Now</a>
+							<a href="#" data-toggle="modal" data-target="#modal1" class="btn-landing btn-white-fill">Sign Up Now</a>
 							<i class="info-icon icon_question"></i>
 						</div>
 						<div class="box-second">
@@ -287,8 +287,8 @@
 			<div class="modal-content modal-popup">
 				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
 				<h3 class="white">Comenzar!</h3>
-				<a href="<%= user_facebook_omniauth_authorize_path %>" class="btn btn-block btn-social btn-lg btn-facebook"><span class="fa fa-facebook"></span> Ingresar con Facebook</a>
-				<a href="<%= user_twitter_omniauth_authorize_path %>" class="btn btn-block btn-social btn-lg btn-twitter"><span class="fa fa-twitter"></span> Ingresar con Twitter</a>
+				<a href="<%= user_facebook_omniauth_authorize_path %>" class="btn-landing btn-block btn-social btn-lg btn-facebook"><span class="fa fa-facebook"></span> Ingresar con Facebook</a>
+				<a href="<%= user_twitter_omniauth_authorize_path %>" class="btn-landing btn-block btn-social btn-lg btn-twitter"><span class="fa fa-twitter"></span> Ingresar con Twitter</a>
 			</div>
 		</div>
 	</div>
@@ -303,10 +303,10 @@
 						<p class="text-danger"><strong>La dirección ingresada no es correcta</strong></p>
 					  <% end %>
 					  <div>
-						<%= f.text_field :email, autofocus: true, value: '', autofocus: true, class: 'form-control form-white' , placeholder: 'direccion@correo.com' %>
+						<%= f.text_field :email, autofocus: true, value: '', autofocus: true, class: 'landing-form-control form-white' , placeholder: 'direccion@correo.com' %>
 					  </div>
 					  <div>
-						<%= f.submit 'Confirmar', class: 'btn btn-submit' %>
+						<%= f.submit 'Confirmar', class: 'btn-landing btn-submit' %>
 					  </div>
 					<% end %>
 				</div>

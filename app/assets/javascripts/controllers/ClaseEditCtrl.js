@@ -1,6 +1,5 @@
-angular.module("TurnosApp").controller("ClaseEditCtrl",['$scope', '$q', '$http', '$routeParams', '$cacheFactory', '$location', 'ResourceClase', function($scope, $q, $http, $routeParams, $cacheFactory, $location, ResourceClase) {
+angular.module("TurnosApp").controller("ClaseEditCtrl",['$scope', '$q', '$http', '$routeParams', '$location', 'ResourceClase', function($scope, $q, $http, $routeParams, $location, ResourceClase) {
 	$scope.FormErrors = [];
-	$scope.history_GoToClaseEdit = [];
 	$scope.horariosArray = horariosArray;
 	$scope.submiterror = false;
 	// SetToday
@@ -13,32 +12,15 @@ angular.module("TurnosApp").controller("ClaseEditCtrl",['$scope', '$q', '$http',
 	};
 	// Edit or New
 	if ($routeParams.id) { 	// Edit
-		$scope.FormTitle = "<i class='fa fa-calendar'></i> Editar datos de clase";
-		$scope.FormButton = '<i class="fa fa-edit fa-lg"></i> Guardar';
+		$scope.FormTitle = "<i class='fa fa-calendar'></i> Editar datos de la clase";
+		$scope.FormButton = '<i class="fa fa-edit fa-lg"></i> Guardar cambios';
 		$scope.clase = ResourceClase.show({ id: $routeParams.id });
 		$scope.clase.$promise.then(function( value ){},function( error ){$location.path("/clase/new");});	// if id not exists => ToNew
 	} else { 				// New
 		$scope.FormTitle = "<i class='fa fa-calendar'></i> Agregar nueva clase";
-		$scope.FormButton = '<i class="fa fa-user-plus fa-lg"></i> Agregar';
+		$scope.FormButton = '<i class="fa fa-user-plus fa-lg"></i> Agregar clase';
 		$scope.clase = new ResourceClase();
 		$scope.clase.users = [];
-		$scope.horarioNow = function() { // Horario de clase más cercano al momento
-            function closest (nowTime, arr) {
-                curr = arr[0].split(":");currTime = new Date();currTime.setHours(curr[0]);currTime.setMinutes(curr[1]);
-                var diff = Math.abs (nowTime - currTime);
-                for (var val = 0; val < arr.length; val++) {
-					curr = arr[val].split(":");currTime = new Date();currTime.setHours(curr[0]);currTime.setMinutes(curr[1]);currTime.setSeconds('00');
-                    newdiff = Math.abs (nowTime - currTime);
-                    if (newdiff < diff) {
-                        diff = newdiff;
-                        close = arr[val];
-                    }
-                }
-                return close;
-            }
-			return closest(new Date(),$scope.horariosArray)
-		}
-		$scope.clase.horario = $scope.horarioNow();
 		$scope.clase.fecha = $scope.SetToday()
 	}
 	// SUBMIT
@@ -50,7 +32,6 @@ angular.module("TurnosApp").controller("ClaseEditCtrl",['$scope', '$q', '$http',
 			// Success
 			function success(response) {
 				console.log("success", response);
-				$cacheFactory.get('$http').remove("/api/clase");
 				$location.path("/clase/"+response.id);
 			}
 			// Failure
@@ -86,23 +67,10 @@ angular.module("TurnosApp").controller("ClaseEditCtrl",['$scope', '$q', '$http',
 	};
 	// Autocomplete
 	$(function() {
-		$( "#instructor" ).autocomplete({
-			source: '/api/user/autocomplete',
-			minLength: 2,
-			select: function( event, ui ) {
-				$scope.clase.instructor = ui.item;
-				$scope.clase.instructor_id = ui.item.id;
-				$scope.clase.user_id = ui.item.id;
-				$scope.$apply();
-			}
-		});
-	});
-	$(function() {
 		$( "#search_user" ).autocomplete({
-			source: '/api/user/autocomplete',
+			source: '/clase/autocomplete',
 			minLength: 2,
 			select: function( event, ui ) {
-				ui.item.graduacion_clase = graduacionesArray[($.inArray(ui.item.graduacion, graduacionesArray) + 1) % graduacionesArray.length];
 				$scope.clase.users = $scope.clase.users.concat(ui.item);
 				$scope.$apply();
 				$(this).val("");
@@ -111,6 +79,7 @@ angular.module("TurnosApp").controller("ClaseEditCtrl",['$scope', '$q', '$http',
 		});
 	});
 	// Datepicker
+	 var datelist = []; // initialize empty array
 	 $(function() {
 		$( "#fecha" ).datepicker({
 			defaultDate: "+0D",
@@ -118,7 +87,7 @@ angular.module("TurnosApp").controller("ClaseEditCtrl",['$scope', '$q', '$http',
 			onSelect: function(dateText) {
 				$scope.clase.fecha=dateText;
 				$scope.GoToClaseEdit();
-           }
+		   }
 		});
 	});
 		
