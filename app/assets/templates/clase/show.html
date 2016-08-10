@@ -1,0 +1,66 @@
+<div class="col-sm-12">
+	<h2><i class="fa fa-calendar"></i> Clase del {{clase.fecha}}</h2>
+	<hr class="clase"/>
+	<a class="btn btn-primary pull-right" href="/clase/{{clase.id}}/edit"><i class="fa fa-edit fa-lg"></i> Editar</a>
+	<button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target=".confirmation-modal"><i class="fa fa-trash-o fa-lg"></i> Eliminar</button>
+</div>
+<div class="col-sm-12"><h3>Detalle</h3></div>
+
+<div class="col-sm-12">
+    <div class="col-sm-6"><strong>Fecha: </strong>{{clase.fecha}}</div>
+	<div class="col-sm-6"><strong>Horario: </strong>{{clase.horario}}</div>
+    <div class="col-sm-6"><strong>Instructor: </strong><a href="/user/{{clase.instructor_id}}"><i class="fa fa-user"></i> {{clase.instructor}}</a></div>
+    <div class="col-sm-6"><strong>Dojo: </strong><a href="/dojo/{{clase.dojo_id}}"><i class="fa fa-university"></i> {{clase.dojo}}</a></div>
+    <div class="col-sm-6" data-ng-show="clase.danes" ><i class="fa fa-asterisk"></i> Clase de danes</div>
+</div>
+
+<div class="col-sm-12">
+    <div class="col-sm-6 text-muted"><strong>Creado: </strong>{{clase.created_at | date:'dd/MM/yyyy HH:mm:ss'}}</div>
+    <div class="col-sm-6 text-muted"><strong>Última modificación: </strong>{{clase.updated_at | date:'dd/MM/yyyy HH:mm:ss'}}</div>
+</div>
+
+
+<div class="col-sm-12">
+	<h3 class="collapsableTitle" ng-click="hideUsers = !hideUsers" ng-init="hideUsers=false">
+		<span class="glyphicon" ng-class="{ 'glyphicon-chevron-right': hideUsers, 'glyphicon-chevron-down': !hideUsers }"></span> Users
+	</h3>
+</div>
+<div class="col-sm-12" ng-hide="hideUsers">
+	<div class="table-responsive">
+		<table class="table table-striped table-condensed table-hover">
+			<thead>
+				<tr>
+					<th>Nombre</th>
+					<th>Apellido</th>
+					<th>Instructor</th>
+					<th>Graduación actual</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr  data-ng-repeat="user in clase.users" data-ng-click="GoToUser(user.id)"> <!-- 5kyu -->
+					<td>{{user.nombre}}</td>
+					<td>{{user.apellido}}</td>
+					<td>{{user.instructor_string}}</td>
+					<td><span data-ng-bind-html="user.graduacion | iconify_graduacion"></span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<!-- MODAL -->
+<div aria-hidden="true" aria-labelledby="confirmationModal" role="dialog" tabindex="-1" class="modal fade confirmation-modal" style="display: none;">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button aria-label="Close" data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span></button>
+				<h4 id="confirmationModal" class="modal-title">¿Seguro que desea eliminar la clase del {{clase.fecha}}?<a href="#confirmationModal" class="anchorjs-link"><span class="anchorjs-icon"></span></a></h4>
+			</div>
+			<div class="modal-body text-center">
+				<button data-dismiss="modal" class="btn btn-default" type="button">Mejor no...</button>
+				<button data-dismiss="modal" class="btn btn-primary" type="button" data-ng-click="destroyPraticante()">Seguro</button>
+			</div>
+			<!-- <div class="modal-footer"></div> -->
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div>

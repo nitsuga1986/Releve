@@ -14,12 +14,14 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right main-nav">
 				<li><a href="#intro">Inicio</a></li>
-				<li><a href="#services">Actividades</a></li>
-				<li><a href="#team">Nuestro Equipo</a></li>
-				<li><a href="#pricing">Precios</a></li>
+				<% if user_signed_in? && current_user.admin? %><li><a href="/admin/index"><i class="fa fa-cog" aria-hidden="true"></i> Admin</a></li><% end %>
 				<% if user_signed_in?%>
+					<li><a href="/clases/index"><i class="fa fa-check-square-o" aria-hidden="true"></i> Mis Clases</a></li>
 					<li class="user_header" title="Salir"><a data-method="DELETE" href="<%= destroy_user_session_path %>"><%= current_user.email %>  <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
 				<% else %>
+					<li><a href="#services">Actividades</a></li>
+					<li><a href="#team">Nuestro Equipo</a></li>
+					<li><a href="#pricing">Precios</a></li>
 					<li><a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue">Comenzar!</a></li>
 				<% end %>
 			</ul>

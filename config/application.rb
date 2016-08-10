@@ -18,6 +18,21 @@ module Releve
 	# Enable the asset pipeline
 	config.assets.enabled = true
 	config.assets.precompile += %w[*.png *.jpg *.jpeg *.gif] 
+	config.assets.precompile += %w( 
+		jquery-ui/datepicker.js 
+		jquery-ui/autocomplete.js 
+		angular/angular.min.js 
+		angular/angular-resource.min.js
+		angular/angular-route.min.js
+		angular/ng-table.min.js
+		routes.js
+		config.js
+		services/resources.js
+		controllers/ClaseEditCtrl.js
+		controllers/ClaseIndexCtrl.js
+		controllers/ClaseShowCtrl.js
+		filters/html_trusted.js
+	)
 	config.assets.precompile += %w(
 	  ie.js
 	  ie.css
@@ -34,6 +49,6 @@ module Releve
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.i18n.enforce_available_locales = true
-    config.i18n.default_locale = :es
+    config.i18n.default_locale = :en
   end
 end
