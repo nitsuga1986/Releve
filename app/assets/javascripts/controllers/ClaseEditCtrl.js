@@ -2,6 +2,8 @@ angular.module("TurnosApp").controller("ClaseEditCtrl",['$scope', '$q', '$http',
 	$scope.FormErrors = [];
 	$scope.horariosArray = horariosArray;
 	$scope.submiterror = false;
+	$scope.history_GoToClaseEdit = []; // Prevents loop search
+
 	// SetToday
 	$scope.SetToday = function(scope_date) {
 		today = new Date();
@@ -15,7 +17,7 @@ angular.module("TurnosApp").controller("ClaseEditCtrl",['$scope', '$q', '$http',
 		$scope.FormTitle = "<i class='fa fa-calendar'></i> Editar datos de la clase";
 		$scope.FormButton = '<i class="fa fa-edit fa-lg"></i> Guardar cambios';
 		$scope.clase = ResourceClase.show({ id: $routeParams.id });
-		$scope.clase.$promise.then(function( value ){},function( error ){$location.path("/clase/new");});	// if id not exists => ToNew
+		$scope.clase.$promise.then(function( value ){},function( error ){$location.path("/dashboard/new");});	// if id not exists => ToNew
 	} else { 				// New
 		$scope.FormTitle = "<i class='fa fa-calendar'></i> Agregar nueva clase";
 		$scope.FormButton = '<i class="fa fa-user-plus fa-lg"></i> Agregar clase';
@@ -32,7 +34,7 @@ angular.module("TurnosApp").controller("ClaseEditCtrl",['$scope', '$q', '$http',
 			// Success
 			function success(response) {
 				console.log("success", response);
-				$location.path("/clase/"+response.id);
+				$location.path("/dashboard/index");
 			}
 			// Failure
 			function failure(response) {
@@ -68,7 +70,7 @@ angular.module("TurnosApp").controller("ClaseEditCtrl",['$scope', '$q', '$http',
 	// Autocomplete
 	$(function() {
 		$( "#search_user" ).autocomplete({
-			source: '/clase/autocomplete',
+			source: '/api/clases/autocomplete',
 			minLength: 2,
 			select: function( event, ui ) {
 				$scope.clase.users = $scope.clase.users.concat(ui.item);
@@ -78,15 +80,27 @@ angular.module("TurnosApp").controller("ClaseEditCtrl",['$scope', '$q', '$http',
 			}
 		});
 	});
+	// GoTo
+  	$scope.GoToClaseEdit = function() {
+		if($scope.history_GoToClaseEdit.indexOf($scope.clase.fecha+$scope.clase.horario) == -1){
+			if($scope.clase.fecha!=undefined&&$scope.clase.fecha!=null&&$scope.clase.fecha!=''&&$scope.clase.horario!=undefined&&$scope.clase.horario!=null&&$scope.clase.horario!=''){
+				$scope.history_GoToClaseEdit.push($scope.clase.fecha+$scope.clase.horario);
+				$http.get('/api/clases/search', {params: { fecha:$scope.clase.fecha, horario:$scope.clase.horario}}).
+				success(function(data, status, headers, config) {
+					if(data.id!=undefined){
+						$location.path("/dashboard/"+data.id+"/edit");
+					}else{};
+				});
+			};
+		};
+	};
 	// Datepicker
 	 var datelist = []; // initialize empty array
 	 $(function() {
 		$( "#fecha" ).datepicker({
 			defaultDate: "+0D",
-			maxDate: "+0D",        
 			onSelect: function(dateText) {
 				$scope.clase.fecha=dateText;
-				$scope.GoToClaseEdit();
 		   }
 		});
 	});

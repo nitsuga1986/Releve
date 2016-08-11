@@ -12,7 +12,6 @@
 <%= javascript_include_tag "angular/angular-route.min" %>
 <%= javascript_include_tag "angular/ng-table.min" %>
 <script>	
-angular.module("TurnosApp",['ngRoute','ngResource','ngTable']);
 $.datepicker.regional['es'] = {
 	 closeText: 'Cerrar',
 	 prevText: '<Ant',
@@ -39,6 +38,7 @@ $.datepicker.regional['es'] = {
 	changeYear: true,
 	//showButtonPanel: true
 });
+angular.module("TurnosApp",['ngRoute','ngResource','ngTable']);
 </script>	
 
 <%= javascript_include_tag "filters/html_trusted" %>

@@ -1,4 +1,4 @@
-<nav class="navbar <% if @notlandingpage %>notlandingpage<% end %> ">
+<nav class="navbar <% if !@landingpage %>notlandingpage<% end %> ">
 	<div class="container">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
@@ -14,9 +14,9 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right main-nav">
 				<li><a href="/">Inicio</a></li>
-				<% if user_signed_in? && current_user.admin? %><li><a href="/admin/index"><i class="fa fa-cog" aria-hidden="true"></i> Admin</a></li><% end %>
+				<% if user_signed_in? && current_user.admin? %><li><a href="/dashboard/index"><i class="fa fa-cog" aria-hidden="true"></i> Admin</a></li><% end %>
 				<% if user_signed_in?%>
-					<li><a href="/clases/index"><i class="fa fa-check-square-o" aria-hidden="true"></i> Mis Clases</a></li>
+					<li><a href="/dashboard/join"><i class="fa fa-check-square-o" aria-hidden="true"></i> Mis Clases</a></li>
 					<li class="user_header" title="Salir"><a data-method="DELETE" href="<%= destroy_user_session_path %>"><%= current_user.email %>  <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
 				<% else %>
 					<li><a href="#services">Actividades</a></li>

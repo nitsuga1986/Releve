@@ -3,10 +3,10 @@ angular.module("TurnosApp")
 	.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 		$routeProvider
 		// Clases 
-		.when("/admin/index", { title: 'Listado de clases',templateUrl: "<%= asset_path('clase/index.html') %> ", controller: "ClaseIndexCtrl", activetab: 'clase'})
-		.when("/admin/new", { title: 'Nueva clase',templateUrl: "<%= asset_path('clase/edit.html') %> ", controller: "ClaseEditCtrl", activetab: 'clase'})
-		.when("/admin/:id", { title: 'Detalles de la clase',templateUrl: "<%= asset_path('clase/show.html') %> ", controller: "ClaseShowCtrl", activetab: 'clase'})
-		.when("/admin/:id/edit", { title: 'Editar clase',templateUrl: "<%= asset_path('clase/edit.html') %> ", controller: "ClaseEditCtrl", activetab: 'clase'})
+		.when("/dashboard/index", { title: 'Listado de clases',templateUrl: "<%= asset_path('clase/index.html') %> ", controller: "ClaseIndexCtrl", activetab: 'clase'})
+		.when("/dashboard/new", { title: 'Nueva clase',templateUrl: "<%= asset_path('clase/edit.html') %> ", controller: "ClaseEditCtrl", activetab: 'clase'})
+		.when("/dashboard/:id", { title: 'Detalles de la clase',templateUrl: "<%= asset_path('clase/show.html') %> ", controller: "ClaseShowCtrl", activetab: 'clase'})
+		.when("/dashboard/:id/edit", { title: 'Editar clase',templateUrl: "<%= asset_path('clase/edit.html') %> ", controller: "ClaseEditCtrl", activetab: 'clase'})
 		// Otros
 		.otherwise({ redirectTo: "/" });
 		// Fixes # in the routes. Not in IE...

@@ -15,9 +15,8 @@
 			<label for="fecha" class="col-sm-4 control-label">Fecha</label>
 			<div class="col-sm-7">
 				<div class="input-group">
-					<input type="date" class="form-control" name="fecha" data-ng-model="clase.fecha" data-ng-blur="GoToClaseEdit()" id="fecha" placeholder="aaaa-mm-dd">
+					<input type="text" class="form-control" name="fecha" data-ng-model="clase.fecha" data-ng-blur="GoToClaseEdit()" id="fecha" placeholder="aaaa-mm-dd">
 					<label title="Ver calendario" for="fecha" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span></label>
-					<label title="Fecha de hoy" class="input-group-addon btn btn-primary" data-ng-click="clase.fecha = SetToday()"><i class="fa fa-calendar-o"></i></label>
 				</div>
 			</div>
 		</div>

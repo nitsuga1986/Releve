@@ -1,15 +1,19 @@
-class ClasesController < ApplicationController
+class Api::ClasesController < ApplicationController
   before_action :authenticate_user!
   respond_to :json
 
   def index
-    @clases = Clase.all
-    respond_with(@clases)
+	@clase = Clase.all
+	respond_with @clase
   end
 
   def show
-    @clase = Clase.find(params[:id])
-	respond_with @clase
+	if current_user.try(:admin?)
+		@clase = Clase.find(params[:id])
+		respond_with @clase
+	else
+		redirect_to root_path
+	end
   end
   
   def autocomplete
@@ -18,9 +22,18 @@ class ClasesController < ApplicationController
 	list = @users.map {|u| Hash[ id: u.id, email: u.email]}
 	render json: list
   end
+  
+  def search
+	@clase = Clase.find_by_fecha_and_horario(params[:fecha],params[:horario])
+	if !@clase.nil? then
+		render json:  @clase
+	else
+		head :no_content
+	end
+  end
 
   def create
-	if !@clase = Clase.find_by_fecha_and_by_horario(params[:fecha],params[:horario]) then
+	if !@clase = Clase.find_by_fecha_and_horario(params[:fecha],params[:horario]) then
 		@clase = Clase.new(params.permit(:fecha, :horario, :max_users, :instructor, :cancelada, :comment))
 		if @clase.save then
 			if !params[:users].nil? then

@@ -1,6 +1,6 @@
 angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$location', 'ResourceClase', '$filter','ngTableParams', '$timeout', function($scope, $location, ResourceClase, $filter, ngTableParams, $timeout) {
-	$scope.GoToShow = function(id) {$location.path("/clase/"+id);};
-	$scope.GoToNew = function() {$location.path("/clase/new");};
+	$scope.GoToShow = function(id) {$location.path("/dashboard/"+id);};
+	$scope.GoToNew = function() {$location.path("/dashboard/new");};
 	// ngTable
 	var Api = ResourceClase;
 	$scope.columns_clase = columns_clase
@@ -16,8 +16,8 @@ angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$location', 
 			$scope.loading=true;
 			Api.index({}, function(data) {
 				// update table params
+				$scope.clases = data;
 				params.total(data.length);
-				angular.forEach(data, function(value, key) {data[key]["cantidad"] =value.users.length;});
 				var filteredData = params.filter() ?
 				$filter('filter')(data, params.filter()) : data;
 				var orderedData = params.sorting() ?
@@ -32,6 +32,39 @@ angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$location', 
 	// Reload button
 	$scope.reloadTable = function(id) {
 		$scope.tableParams.reload();
+	};
+	$scope.toDestroy = "";
+	// Success
+	function success(response) {
+		console.log("success", response);
+		$location.path("/dashboard/index");
+		$scope.tableParams.reload();
+	}
+	// Failure
+	function failure(response) {
+		console.log("failure", response)
+		_.each(response.data, function(errors, key) {
+			_.each(errors, function(e) {
+				$scope.form[key].$dirty = true;
+				$scope.form[key].$setValidity(e, false);
+			});
+		});
+	}
+	// Destroy
+	$scope.toDestroy = function(clase_id) {
+			console.log("clase_id",clase_id)
+		$scope.IdToDestroy = clase_id;
+	};
+	$scope.destroyClase = function() {
+		$('.confirmation-modal').on('hidden.bs.modal', function (e) {
+			$.each($scope.clases, function(index) {
+				console.log("Clase",$scope.clases[index])
+				if($scope.clases[index]!=undefined && $scope.clases[index].id == $scope.IdToDestroy) { //Remove from array
+					console.log("Claseindex",$scope.clases[index])
+					ResourceClase.destroy($scope.clases[index], success, failure);
+				}    
+			});
+		})
 	};
 }]);
 

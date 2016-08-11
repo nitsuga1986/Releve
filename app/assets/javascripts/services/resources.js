@@ -1,6 +1,6 @@
 // Clase
 angular.module("TurnosApp").factory("ResourceClase",['$resource', function($resource) {
-  return $resource("/clase/:id", { id: "@id" },
+  return $resource("/api/clases/:id", { id: "@id" },
     {
       'create':  { method: 'POST' },
       'index':   { method: 'GET', isArray: true },
