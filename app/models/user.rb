@@ -1,9 +1,16 @@
 class User < ActiveRecord::Base
+  has_many :asistencias
+  has_many :clases, through: :asistencias
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:twitter, :facebook]
+ 
+  def remove_from_clase(clase)
+	asistencias.where(:clase_id => clase.id).first.destroy if asistencias.where(:clase_id => clase.id).count > 0
+  end
+ 
  
   def self.find_for_oauth(auth, signed_in_resource = nil)
     identity = Identity.find_for_oauth(auth)

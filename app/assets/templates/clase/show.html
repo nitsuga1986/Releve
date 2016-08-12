@@ -1,5 +1,5 @@
 <div class="col-sm-12">
-	<h2><i class="fa fa-calendar" ng-class="{ 'text-danger': clase.cancelada}"></i> Clase del {{clase.fecha}} a las {{clase.horario}} </h2>
+	<h3><i class="fa fa-calendar" ng-class="{ 'text-danger': clase.cancelada}"></i> Clase del {{clase.fecha}} a las {{clase.horario}} </h3>
 	<hr class="clase"/>
 	<a class="btn btn-warning pull-right" href="/dashboard/{{clase.id}}/edit"><i class="fa fa-edit fa-lg"></i> Editar</a>
 	<button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target=".confirmation-modal"><i class="fa fa-trash-o fa-lg"></i> Eliminar</button>
@@ -9,6 +9,7 @@
 <div class="col-sm-12">
     <div class="col-sm-6"><strong>Fecha: </strong>{{clase.fecha}}</div>
 	<div class="col-sm-6"><strong>Horario: </strong>{{clase.horario}}</div>
+	<div class="col-sm-6"><strong>Actividad: </strong>{{clase.actividad}}</div>
 	<div class="col-sm-6"><strong>Cantidad máxima de alumnos: </strong>{{clase.max_users}}</div>
 	<div class="col-sm-6"><strong>Instructor/a: </strong>{{clase.instructor}}</div>
 	<div class="col-sm-6"><strong>Comentarios: </strong>{{clase.comment}}</div>

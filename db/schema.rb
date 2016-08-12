@@ -24,9 +24,9 @@ ActiveRecord::Schema.define(version: 20160809165619) do
   end
 
   create_table "clases", force: true do |t|
-    t.integer  "user_id"
     t.date     "fecha"
     t.string   "horario"
+    t.string   "actividad"
     t.integer  "max_users"
     t.string   "instructor"
     t.boolean  "cancelada"

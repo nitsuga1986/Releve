@@ -1,4 +1,6 @@
-<h2 data-ng-bind-html="FormTitle | html_trusted">Clase</h2>
+<h3 data-ng-bind-html="FormTitle | html_trusted">Clase</h3>
+<button data-ng-click="GoToIndex()" class="btn btn-default pull-right" title="Lista de clases"><i class="fa fa-list fa-lg"></i></button>
+
 <hr class="clase"/>
 <div class="col-sm-12"><h3>Detalle</h3></div>
 <!-- SubmitError -->
@@ -22,9 +24,16 @@
 		</div>
 		<!-- horario -->
 		<div class="form-group col-sm-6">
-			<label for="horario" class="col-sm-3 control-label">Horario</label>
-			<div class="col-sm-9">
+			<label for="horario" class="col-sm-4 control-label">Horario</label>
+			<div class="col-sm-7">
 				<select class="form-control" data-ng-blur="GoToClaseEdit()" name="horario" data-ng-model="clase.horario" id="horario" data-ng-options="horario as horario for horario in horariosArray"></select> 
+			</div>
+		</div>
+		<!-- actividad -->
+		<div class="form-group col-sm-6">
+			<label for="actividad" class="col-sm-4 control-label">Actividad:</label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" name="actividad" data-ng-model="clase.actividad" id="actividad" placeholder="Pilates | Estiramiento">
 			</div>
 		</div>
 		<!-- max_users -->
@@ -36,9 +45,16 @@
 		</div>
 		<!-- instructor -->
 		<div class="form-group col-sm-6">
-			<label for="instructor" class="col-sm-3 control-label">Instructor</label>
-			<div class="col-sm-9">
+			<label for="instructor" class="col-sm-4 control-label">Instructor</label>
+			<div class="col-sm-7">
 				<input type="text" class="form-control" name="instructor" data-ng-model="clase.instructor" id="instructor" placeholder="ej. Byron Farnfader" to-title-case>
+			</div>
+		</div>
+		<!-- comment -->
+		<div class="form-group col-sm-6">
+			<label for="comment" class="col-sm-4 control-label">Comentarios:</label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" name="comment" data-ng-model="clase.comment" id="comment" placeholder="ej. Esta clase no se recupera porque...">
 			</div>
 		</div>
 		<!-- cancelada -->
@@ -46,13 +62,6 @@
 			<label for="cancelada" class="col-sm-4 control-label">Clase cancelada?</label>
 			<div class="col-sm-7">
 				<input type="checkbox" name="cancelada" data-ng-model="clase.cancelada" id="cancelada"> 
-			</div>
-		</div>
-		<!-- comment -->
-		<div class="form-group col-sm-6">
-			<label for="comment" class="col-sm-3 control-label">Comentarios:</label>
-			<div class="col-sm-9">
-				<input type="text" class="form-control" name="comment" data-ng-model="clase.comment" id="comment" placeholder="ej. Esta clase no se recupera porque...">
 			</div>
 		</div>
 		<!-- Users -->

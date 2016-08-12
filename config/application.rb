@@ -31,6 +31,7 @@ module Releve
 		controllers/ClaseEditCtrl.js
 		controllers/ClaseIndexCtrl.js
 		controllers/ClaseShowCtrl.js
+		controllers/ClaseJoinCtrl.js
 		filters/html_trusted.js
 	)
 	config.assets.precompile += %w(

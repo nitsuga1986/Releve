@@ -19,7 +19,7 @@ class Api::ClasesController < ApplicationController
   def autocomplete
 	like= "%".concat(params[:term].concat("%"))
 	@users = User.where("email like ?", like)
-	list = @users.map {|u| Hash[ id: u.id, email: u.email]}
+	list = @users.map {|u| Hash[ label:u.email, id: u.id, email: u.email]}
 	render json: list
   end
   

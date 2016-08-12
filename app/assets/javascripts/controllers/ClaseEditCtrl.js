@@ -3,6 +3,7 @@ angular.module("TurnosApp").controller("ClaseEditCtrl",['$scope', '$q', '$http',
 	$scope.horariosArray = horariosArray;
 	$scope.submiterror = false;
 	$scope.history_GoToClaseEdit = []; // Prevents loop search
+	$scope.GoToIndex = function(id) {$location.path("/dashboard/index");};
 
 	// SetToday
 	$scope.SetToday = function(scope_date) {
@@ -74,6 +75,7 @@ angular.module("TurnosApp").controller("ClaseEditCtrl",['$scope', '$q', '$http',
 			minLength: 2,
 			select: function( event, ui ) {
 				$scope.clase.users = $scope.clase.users.concat(ui.item);
+				console.log(ui.item);
 				$scope.$apply();
 				$(this).val("");
 				return false;

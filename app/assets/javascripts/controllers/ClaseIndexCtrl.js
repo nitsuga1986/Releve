@@ -1,5 +1,5 @@
 angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$location', 'ResourceClase', '$filter','ngTableParams', '$timeout', function($scope, $location, ResourceClase, $filter, ngTableParams, $timeout) {
-	$scope.GoToShow = function(id) {$location.path("/dashboard/"+id);};
+	$scope.GoToEdit = function(id) {$location.path("/dashboard/"+id+"/edit/");};
 	$scope.GoToNew = function() {$location.path("/dashboard/new");};
 	// ngTable
 	var Api = ResourceClase;
@@ -18,6 +18,7 @@ angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$location', 
 				// update table params
 				$scope.clases = data;
 				params.total(data.length);
+				angular.forEach(data, function(value, key) {data[key]["cant_users"] =value.users.length+" / "+value.max_users;});
 				var filteredData = params.filter() ?
 				$filter('filter')(data, params.filter()) : data;
 				var orderedData = params.sorting() ?
