@@ -6,7 +6,9 @@ angular.module("TurnosApp").factory("ResourceClase",['$resource', function($reso
       'index':   { method: 'GET', isArray: true },
       'show':    { method: 'GET', isArray: false },
       'update':  { method: 'PUT' },
-      'destroy': { method: 'DELETE' }
+      'destroy': { method: 'DELETE' },
+      'join':    { method: 'GET', isArray: false, url: '/api/clases/:id/join' },
+      'unjoin':    { method: 'GET', isArray: false, url: '/api/clases/:id/unjoin' },
     }
   );
 }]);

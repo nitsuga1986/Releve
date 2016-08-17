@@ -210,43 +210,43 @@ nav.navbar-fixed-top .navbar-nav > li > a:not(.btn) {
 	color: white;
 }
 
-.btn.btn-blue {
+.btn-landing.btn-blue {
 	background: #00a8ff;
 }
 
-.btn.btn-blue:hover {
+.btn-landing.btn-blue:hover {
 	background: #31b9ff;
 }
 
-.btn.btn-blue-fill {
+.btn-landing.btn-blue-fill {
 	color: #00a8ff;
 	border-color: #00a8ff;
 	background: transparent;
 }
 
-.btn.btn-blue-fill:hover {
+.btn-landing.btn-blue-fill:hover {
 	color: white;
 	background: #00a8ff;
 }
 
-.btn.btn-white-fill {
+.btn-landing.btn-white-fill {
 	color: #fff;
 	border-color: #fff;
 	background: transparent;
 }
 
-.btn.btn-white-fill:hover {
+.btn-landing.btn-white-fill:hover {
 	color: #00a8ff;
 	background: #fff;
 }
 
-.btn.btn-gray-fill {
+.btn-landing.btn-gray-fill {
 	color: #fff;
 	border-color: #fff;
 	background: transparent;
 }
 
-.btn.btn-gray-fill:hover {
+.btn-landing.btn-gray-fill:hover {
 	border-color: #bbb;
 	background: #bbb;
 }
@@ -731,6 +731,7 @@ footer .social-footer li:hover a {
 	position: relative;
 	left: 0;
 	height: auto;
+	width: 100%;
 	padding: 20px 30px;
 	border: 1px;
 	border-radius: 0;
@@ -805,51 +806,11 @@ footer .social-footer li:hover a {
 	margin: 60px auto;
 }
 
-.popup-form .form-control {
+.popup-form .landing-form-control {
 	margin: 20px 0;
 }
 
-.popup-form .form-control.dropdown {
-	text-align: left;
-}
-
-.popup-form .form-control.dropdown:after {
-	content: '\f0d7';
-	font-family: 'FontAwesome';
-	display: inline-block;
-	float: right;
-	color: white;
-}
-
-.popup-form .dropdown .dropdown-menu {
-	top: 65px;
-	width: 100%;
-	padding: 0;
-	border: 2px solid white;
-	border-top: 0;
-	border-radius: 0;
-	background: white;
-	box-shadow: none;
-}
-
-.popup-form .dropdown .dropdown-menu li {
-	font-size: 16px;
-	width: 100%;
-	background: transparent;
-}
-
-.popup-form .dropdown .dropdown-menu li a {
-	width: 100%;
-	padding: 15px 30px;
-	color: #00a8ff;
-}
-
-.popup-form .dropdown .dropdown-menu li:hover a {
-	color: #fff;
-	background: #00a8ff;
-}
-
-.btn.btn-submit {
+.btn-landing.btn-submit {
 	width: 100%;
 	margin-top: 30px;
 	color: #00a8ff;
@@ -857,11 +818,11 @@ footer .social-footer li:hover a {
 	background: #fff;
 }
 
-.btn.btn-submit:focus {
+.btn-landing.btn-submit:focus {
 	font-weight: bold;
 }
 
-.btn.btn-submit:hover {
+.btn-landing.btn-submit:hover {
 	color: #00a8ff;
 	background: #fff;
 }
@@ -1032,7 +993,7 @@ footer .social-footer li:hover a {
 	.modal {
 		padding: 0 10px !important;
 	}
-	.popup-form .form-control:not(.dropdown):focus {
+	.popup-form .landing-form-control:not(.dropdown):focus {
 		position: relative;
 		padding-right: 30px;
 		padding-left: 30px;

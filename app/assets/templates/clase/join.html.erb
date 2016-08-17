@@ -1,0 +1,50 @@
+<h3>Turnos</h3>
+
+<div class="page-header">
+	<div class="pull-right form-inline">
+		<div class="btn-group">
+			<button class="btn btn-primary" data-calendar-nav="prev"><< </button>
+			<button class="btn btn-primary" data-calendar-nav="today">Hoy</button>
+			<button class="btn btn-primary" data-calendar-nav="next"> >></button>
+		</div>
+		<div class="btn-group">
+			<button class="btn btn-default" data-calendar-view="year">Año</button>
+			<button class="btn btn-default" data-calendar-view="month">Mes</button>
+			<button class="btn btn-default" data-calendar-view="week">Semana</button>
+			<button class="btn btn-default" data-calendar-view="day">Día</button>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-9">
+		<div id="calendar"></div>
+	</div>
+	<div class="col-sm-3">
+		<div class="row-fluid">
+		<h4>Próximas clases</h4>
+		<div id="eventlist" class="btn-group-vertical btn-block"></div>
+	</div>
+</div>
+
+<div class="modal fade" id="events-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3>Clases</h3>
+            </div>
+            <div class="modal-body lead">
+				<span data-ng-show="clase.old_class">La clase de <strong>{{clase.actividad}}</strong> para el día <strong>{{clase.fecha}} a las {{clase.horario}}</strong> con {{clase.instructor}} ya fue realizada y <span class="text-danger">no está disponible</span></span>
+				<span data-ng-show="!clase.old_class && clase.joined">¿No vas a poder asistir a la clase de <strong>{{clase.actividad}}</strong> para el día <strong>{{clase.fecha}} a las {{clase.horario}}</strong> con {{clase.instructor}}?</span>
+				<span data-ng-show="!clase.old_class && !clase.joined" >¿Te contamos para la clase de <strong>{{clase.actividad}}</strong> para el día <strong>{{clase.fecha}} a las {{clase.horario}}</strong> con {{clase.instructor}}?</span>
+            </div>
+            <div class="modal-footer">
+				<a href="#" data-ng-show="clase.old_class" data-dismiss="modal" class="btn btn-default" disabled="disabled">No disponible</a>
+				<a href="#" data-ng-show="!clase.old_class && clase.joined" data-dismiss="modal" class="btn btn-danger"  data-ng-click="UnJoinUser()">No voy a poder ir</a>
+                <a href="#" data-ng-show="!clase.old_class && !clase.joined" data-dismiss="modal" class="btn btn-success"  data-ng-click="JoinUser()">Anotarme!</a>
+                <a href="#" data-dismiss="modal" class="btn btn-default ">Close</a>
+            </div>
+        </div>
+    </div>
+</div>

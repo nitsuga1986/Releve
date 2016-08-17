@@ -150,7 +150,7 @@
 				<div class="col-md-4">
 					<div class="service">
 						<div class="icon-holder">
-							<img src="<%= asset_path 'icons/heart-blue.png' %>" alt="" class="icon">
+							<img src="<%= asset_path 'icons/dance-blue.png' %>" alt="" class="icon">
 						</div>
 						<h4 class="heading">Dance Pilates</h4>
 						<p class="description">A elementum ligula lacus ac quam ultrices a scelerisque praesent vel suspendisse scelerisque a aenean hac montes.</p>
@@ -159,7 +159,7 @@
 				<div class="col-md-4">
 					<div class="service">
 						<div class="icon-holder">
-							<img src="<%= asset_path 'icons/guru-blue.png' %>" alt="" class="icon">
+							<img src="<%= asset_path 'icons/pilates-blue.png' %>" alt="" class="icon">
 						</div>
 						<h4 class="heading">Releve Pilates</h4>
 						<p class="description">A elementum ligula lacus ac quam ultrices a scelerisque praesent vel suspendisse scelerisque a aenean hac montes.</p>
@@ -168,7 +168,7 @@
 				<div class="col-md-4">
 					<div class="service">
 						<div class="icon-holder">
-							<img src="<%= asset_path 'icons/weight-blue.png' %>" alt="" class="icon">
+							<img src="<%= asset_path 'icons/stretching-blue.png' %>" alt="" class="icon">
 						</div>
 						<h4 class="heading">Estiramiento</h4>
 						<p class="description">A elementum ligula lacus ac quam ultrices a scelerisque praesent vel suspendisse scelerisque a aenean hac montes.</p>
@@ -292,22 +292,19 @@
 			</div>
 		</div>
 	</div>
-	<% if @show_confirm_form %>
+	<% if @show_confirm_form || (user_signed_in? && !current_user.confirmed?) %>
 		<script type="text/javascript">$(window).load(function(){$('#modal2').modal('show');});</script>
 		<div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="ConfirmEmail" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content modal-popup">
-					 <h3 class="white">Confirma tu Email</h3>
-					<%= form_for(current_user, as: 'user', url: finish_signup_path(current_user)) do |f| %>
+					 <h3 class="white">Confirma tus datos</h3>
+					<%= form_for(current_user, as: 'user', :html => {:class => 'popup-form'}, url: finish_signup_path(current_user)) do |f| %>
 					  <% if @show_errors %>
-						<p class="text-danger"><strong>La dirección ingresada no es correcta</strong></p>
+						<p class="text-danger"><strong>Algunos datos no son correctos <br/> Por favor verifique la información ingresada</strong></p>
 					  <% end %>
-					  <div>
-						<%= f.text_field :email, autofocus: true, value: '', autofocus: true, class: 'landing-form-control form-white' , placeholder: 'direccion@correo.com' %>
-					  </div>
-					  <div>
+						<%= f.text_field :email, value: '', autofocus: true, class: 'landing-form-control form-white' , placeholder: 'direccion@correo.com' %>
+						<%= f.text_field :telefono, value: '', class: 'landing-form-control form-white' , placeholder: '15-M1-CELU-L7R' %>
 						<%= f.submit 'Confirmar', class: 'btn-landing btn-submit' %>
-					  </div>
 					<% end %>
 				</div>
 			</div>

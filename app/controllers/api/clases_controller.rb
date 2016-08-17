@@ -32,9 +32,20 @@ class Api::ClasesController < ApplicationController
 	end
   end
 
+  def join 
+	@clase = Clase.find(params[:id])
+	@clase.add_asistencia(current_user.id)
+	respond_with @clase
+  end
+  def unjoin 
+	@clase = Clase.find(params[:id])
+	current_user.remove_from_clase(@clase)
+	respond_with @clase
+  end
+  
   def create
 	if !@clase = Clase.find_by_fecha_and_horario(params[:fecha],params[:horario]) then
-		@clase = Clase.new(params.permit(:fecha, :horario, :max_users, :instructor, :cancelada, :comment))
+		@clase = Clase.new(params.permit(:fecha, :horario, :actividad, :max_users, :instructor, :cancelada, :comment))
 		if @clase.save then
 			if !params[:users].nil? then
 				params[:users].each do |user|
@@ -57,7 +68,7 @@ class Api::ClasesController < ApplicationController
 	else
 		@clase.users.each{|x| x.remove_from_clase(@clase) if !params[:users].map{|y| y[:id]}.include? x.id }
 	end
-	if @clase.update_attributes(params.permit(:fecha, :horario, :max_users, :instructor, :cancelada, :comment)) then
+	if @clase.update_attributes(params.permit(:fecha, :horario, :actividad, :max_users, :instructor, :cancelada, :comment)) then
 		if !params[:users].nil? then
 			params[:users].each do |user|
 				@clase.add_asistencia(user[:id]) if user[:id]	

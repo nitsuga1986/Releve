@@ -32,6 +32,8 @@ module Releve
 		controllers/ClaseIndexCtrl.js
 		controllers/ClaseShowCtrl.js
 		controllers/ClaseJoinCtrl.js
+		bootstrap-calendar/underscore-min.js
+		bootstrap-calendar/calendar.js
 		filters/html_trusted.js
 	)
 	config.assets.precompile += %w(

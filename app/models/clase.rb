@@ -7,6 +7,18 @@ class Clase < ActiveRecord::Base
 	def as_json(options = { })
 		h = super(options)
 		h[:users] = self.users
+		h[:start] = DateTime.strptime(self.fecha.strftime('%Y-%m-%d')+" "+self.horario, '%Y-%m-%d %H:%M').strftime('%Q')
+		h[:end] = (DateTime.strptime(self.fecha.strftime('%Y-%m-%d')+" "+self.horario, '%Y-%m-%d %H:%M')+ 1.hours).strftime('%Q')
+		h[:title] = self.actividad+" ("+self.instructor+")"
+		if self.actividad=="Pilates"
+			h[:class] = "info"
+		elsif self.actividad=="Estiramiento"
+			h[:class] = "warning"
+		elsif self.actividad=="Dance Pilates"
+			h[:class] = "info"
+		else
+			h[:class] = "default"
+		end
 		h
 	end
 	

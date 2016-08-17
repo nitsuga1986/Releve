@@ -1,7 +1,8 @@
 
 <%= render 'layouts/header' %>
-	
 <div class="first col-sm-12" ng-app="TurnosApp">
+	<input type="hidden" name="user_id" data-ng-init="user_id=<%= current_user.id %>"/>
+	<input type="hidden" name="user_id" data-ng-init="user_email=<%= current_user.id %>"/>
 	<div ng-view ></div>
 </div>
 
@@ -47,6 +48,7 @@ angular.module("TurnosApp",['ngRoute','ngResource','ngTable']);
 <%= javascript_include_tag "controllers/ClaseEditCtrl" %>
 <%= javascript_include_tag "controllers/ClaseShowCtrl" %>
 <%= javascript_include_tag "controllers/ClaseJoinCtrl" %>
+<%= javascript_include_tag "bootstrap-calendar/underscore-min" %>
+<%= javascript_include_tag "bootstrap-calendar/calendar" %>
 <%= javascript_include_tag "config" %>
 <%= javascript_include_tag "routes" %>
-

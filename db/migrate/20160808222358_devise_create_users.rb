@@ -1,6 +1,27 @@
 class DeviseCreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|
+    
+      ## Admin
+      t.boolean :admin, default: false
+      t.boolean :confirmed, default: false
+      t.boolean :primera_clase, default: true
+      
+      ## Personal data
+      t.integer :dni
+      t.string :nombre
+      t.string :apellido
+      t.string :profesion
+      t.date :fechanac
+      t.date :fechaini
+      t.string :telefono
+      t.string :domicilio
+      t.string :localidad
+      t.string :nombre_contacto
+      t.string :apellido_contacto
+      t.string :telefono_contacto
+      t.boolean :sexo
+    
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
