@@ -1163,8 +1163,9 @@ if(!String.prototype.formatNum) {
 				$('body').one('click', function() {
 					slider.slideUp('fast');
 					self.activecell = 0;
+					self.options.onAfterSlideLoad.call(this, this.options.view);
+
 				});
-				this.options.onAfterSlideLoad.call(this, this.options.view);
 			});
 		});
 
