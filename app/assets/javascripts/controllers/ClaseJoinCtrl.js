@@ -1,5 +1,22 @@
 angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams', '$location', 'ResourceClase', function($scope, $routeParams, $location, ResourceClase) {
 	$scope.clase = {};
+
+	// Event click. $scope.clases[index] => $scope.clase
+	$(document.body).on('click', 'a[data-event-id]', function(){
+		id = $(this).attr('data-event-id');
+		setClase(id);
+	});
+	
+	// setClase
+	function setClase(id) {
+		$.each($scope.clases, function(index) {
+			if($scope.clases[index].id == id) {
+				$scope.clase = $scope.clases[index];
+				$scope.$apply() 
+				return false;
+			}    
+		});
+	}
 	
 	// Join
 	$scope.JoinUser = function() {
@@ -102,22 +119,6 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 		week_numbers_iso_8601: true,
 	};
 
-	// Event click. $scope.clases[index] => $scope.clase
-	$(document.body).on('click', 'a[data-event-id]', function(){
-		id = $(this).attr('data-event-id');
-		setClase(id);
-	});
-	
-	// setClase
-	function setClase(id) {
-		$.each($scope.clases, function(index) {
-			if($scope.clases[index].id == id) {
-				$scope.clase = $scope.clases[index];
-				$scope.$apply() 
-				return false;
-			}    
-		});
-	}
 	var calendar = $('#calendar').calendar(options);
 
 }]);
