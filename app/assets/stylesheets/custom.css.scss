@@ -1152,7 +1152,7 @@ footer .social-footer li:hover a {
 
 /************NITSUGA******************************************************************/
 .first{padding:150px}
-.notlandingpage.original .navbar-nav > li > a {
+.notlandingpage.original .navbar-nav > li > a:not(.btn-danger) {
 	color: #928E8E;
 }
 .form-horizontal label.control-label {
