@@ -106,6 +106,7 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 			});
 		},
 		onAfterSlideLoad: function(view) {
+			console.log("onAfterSlideLoad called");
 			// Event click. $scope.clases[index] => $scope.clase
 			$(document.body).on('click', 'a[data-event-id]', function(){
 				console.log('angularjsevent');

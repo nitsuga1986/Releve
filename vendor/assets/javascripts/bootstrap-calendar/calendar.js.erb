@@ -142,7 +142,7 @@ if(!String.prototype.formatNum) {
 		onAfterViewLoad: function(view) {
 			// Inside this function 'this' is the calendar instance
 		},
-		onAfterSlideLoad: function(view) {
+		onAfterSlideLoad: function() {
 			// Inside this function 'this' is the calendar instance
 		},
 		onAfterModalShown: function(events) {
@@ -1163,7 +1163,8 @@ if(!String.prototype.formatNum) {
 				$('body').one('click', function() {
 					slider.slideUp('fast');
 					self.activecell = 0;
-					self.options.onAfterSlideLoad.call(this, this.options.view);
+					console.log("calling onAfterSlideLoad");
+					self.options.onAfterSlideLoad.call(this);
 
 				});
 			});
