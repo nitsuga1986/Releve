@@ -97,13 +97,7 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 			$(document.body).on('click', '.setClaseOnClick', function(){
 				console.log("called");
 				id = $(this).attr('data-event-id');
-				$.each($scope.clases, function(index) {
-					if($scope.clases[index].id == id) {
-						$scope.clase = $scope.clases[index];
-						$scope.$apply() 
-						return false;
-					}    
-				});
+				setClase(id);
 			});
 		},
 		classes: {
@@ -114,6 +108,16 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 		week_numbers_iso_8601: true,
 	};
 
+	// Callback Success
+	function setClase(id) {
+		$.each($scope.clases, function(index) {
+			if($scope.clases[index].id == id) {
+				$scope.clase = $scope.clases[index];
+				$scope.$apply() 
+				return false;
+			}    
+		});
+	}
 	var calendar = $('#calendar').calendar(options);
 
 }]);

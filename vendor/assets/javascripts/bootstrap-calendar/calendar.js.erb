@@ -1035,6 +1035,7 @@ if(!String.prototype.formatNum) {
 
 			var url = $(this).attr('href');
 			var id = $(this).data("event-id");
+			setClase(id);
 			var event = _.find(self.options.events, function(event) {
 				return event.id == id
 			});
