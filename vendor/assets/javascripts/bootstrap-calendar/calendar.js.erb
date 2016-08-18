@@ -1050,8 +1050,6 @@ if(!String.prototype.formatNum) {
 					.off('shown.bs.modal')
 					.off('hidden.bs.modal')
 					.on('show.bs.modal', function() {
-						
-						console.log('.on(show.bs.modal');
 						var modal_body = $(this).find('.modal-body');
 						switch(self.options.modal_type) {
 							case "iframe" :
@@ -1090,6 +1088,7 @@ if(!String.prototype.formatNum) {
 					})
 					.data('handled.bootstrap-calendar', true).data('handled.event-id', event.id);
 			}
+			console.log('modal.modal(show)');
 			modal.modal('show');
 		});
 	};
