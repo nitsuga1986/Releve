@@ -20,7 +20,11 @@
 					<% if current_user.confirmed? %>
 						<li class="user_header" title="Salir"><a data-method="DELETE" href="<%= destroy_user_session_path %>"><%= current_user.email %>  <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
 					<% else %>
-						<li><a href="#" data-toggle="modal" data-target="#modal2" class="btn btn-danger"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Confirmar mis datos</a></li>
+						<% if current_page?(clases_index) %>
+							<li><a href="/" class="btn btn-danger"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Confirmar mis datos</a></li>
+						<% else %>
+							<li><a href="#" data-toggle="modal" data-target="#modal2" class="btn btn-danger"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Confirmar mis datos</a></li>
+						<% end %>
 						<li class="user_header" title="Salir"><a data-method="DELETE" href="<%= destroy_user_session_path %>">Salir <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
 					<% end %>
 				<% else %>
