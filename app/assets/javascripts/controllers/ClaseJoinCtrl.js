@@ -76,7 +76,7 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 			$scope.clases = events;
 		},
 		onAfterViewLoad: function(view) {
-			$('h3').html("Turnos <span class='muted'>· "+this.getTitle()+"</span>");
+			$('h3.title').html("Turnos <span class='muted'>· "+this.getTitle()+"</span>");
 			$('.btn-group button').removeClass('active');
 			$('button[data-calendar-view="' + view + '"]').addClass('active');
 			// Prev-Next
