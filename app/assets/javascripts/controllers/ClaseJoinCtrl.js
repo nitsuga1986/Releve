@@ -94,7 +94,7 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 				});
 			});
 			// Event click. $scope.clases[index] => $scope.clase
-			$(document.body).on('click', '.setClaseOnClick', function(){
+			$(document.body).on('click', 'a[data-event-id]', function(){
 				console.log("called");
 				id = $(this).attr('data-event-id');
 				setClase(id);
