@@ -11,12 +11,10 @@ class UsersController < ApplicationController
       else
 		@landingpage=true
         @show_errors = true
-		@show_confirm_form = true
         render 'landing/index'
       end
     else
 		@landingpage=true
-		@show_confirm_form = true
 		render 'landing/index'
     end
   end
