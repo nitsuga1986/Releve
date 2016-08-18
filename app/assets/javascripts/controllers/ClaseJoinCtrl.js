@@ -2,8 +2,13 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 	$scope.clase = {};
 
 	// Event click. $scope.clases[index] => $scope.clase
-	$('a[data-event-id]').on('click', function(event) {
+	$(document.body).on('click', 'a[data-event-id]', function(){
 		id = $(this).attr('data-event-id');
+		setClase(id);
+	});
+	
+	// setClase
+	function setClase(id) {
 		$.each($scope.clases, function(index) {
 			if($scope.clases[index].id == id) {
 				$scope.clase = $scope.clases[index];
@@ -11,7 +16,7 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 				return false;
 			}    
 		});
-	});
+	}
 	
 	// Join
 	$scope.JoinUser = function() {

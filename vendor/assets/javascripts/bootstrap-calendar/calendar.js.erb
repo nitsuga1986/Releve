@@ -1028,8 +1028,8 @@ if(!String.prototype.formatNum) {
 					frameborder: "0"
 				});
 		}
-
-		$('a[data-event-id]', this.context).on('click', function(event) {
+		
+		$(document.body).on('click', 'a[data-event-id]', function(event){
 			event.preventDefault();
 			event.stopPropagation();
 
