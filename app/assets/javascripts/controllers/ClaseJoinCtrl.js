@@ -4,11 +4,6 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 	// Event click. $scope.clases[index] => $scope.clase
 	$(document.body).on('click', 'a[data-event-id]', function(){
 		id = $(this).attr('data-event-id');
-		setClase(id);
-	});
-	
-	// setClase
-	function setClase(id) {
 		$.each($scope.clases, function(index) {
 			if($scope.clases[index].id == id) {
 				$scope.clase = $scope.clases[index];
@@ -16,7 +11,8 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 				return false;
 			}    
 		});
-	}
+		$('#events-modal').modal('show');
+	});
 	
 	// Join
 	$scope.JoinUser = function() {
@@ -53,8 +49,6 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 		events_cache: true,
 		events_source: "/api/clases.json",
 		view: 'month',
-		modal: "#events-modal",
-		modal_type: "none",
 		format12: false,
 		tmpl_cache: false,
 		onAfterEventsLoad: function(events) {
