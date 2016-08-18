@@ -65,7 +65,7 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 						.attr('data-event-id', event.id).attr('data-toggle', 'modal').attr('data-target', '#events-modal')
 						.html('<i title="Click para anotarse" class="fa fa-circle pull-left text-'+event.class+'" aria-hidden="true"></i> '+event.title).appendTo(list);}
 						else {
-						$(document.createElement('a')).addClass("eventlist btn btn-default").attr('type', 'button')
+						$(document.createElement('a')).addClass("eventlist btn btn-default").attr('type', 'button').attr('data-ng-click', 'SetClase('+event.ïd+')')
 						.attr('data-event-id', event.id).attr('data-toggle', 'modal').attr('data-target', '#events-modal')
 						.html('<i title="Anotado!" class="fa fa-check-square pull-left text-'+event.class+'" aria-hidden="true"></i>'+event.title).appendTo(list);}
 						
@@ -93,18 +93,6 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 					calendar.view($this.data('calendar-view'));
 				});
 			});
-			// Event click. $scope.clases[index] => $scope.clase
-			$('body').on('click', 'a.event, a.event-item, a.cal-event-week, .eventlist', function() {
-				console.log("called");
-				id = $(this).attr('data-event-id');
-				$.each($scope.clases, function(index) {
-					if($scope.clases[index].id == id) {
-						$scope.clase = $scope.clases[index];
-						$scope.$apply() 
-						return false;
-					}    
-				});
-			});
 		},
 		classes: {
 			months: {
@@ -114,6 +102,17 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 		week_numbers_iso_8601: true,
 	};
 
+	// SetClase
+	function SetClase(id) {
+		$.each($scope.clases, function(index) {
+			if($scope.clases[index].id == id) {
+				$scope.clase = $scope.clases[index];
+				$scope.$apply() 
+				return false;
+			}    
+		});
+	}
+	
 	var calendar = $('#calendar').calendar(options);
 
 }]);

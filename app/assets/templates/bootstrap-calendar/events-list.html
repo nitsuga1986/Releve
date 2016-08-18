@@ -4,7 +4,7 @@
 		<% _.each(events, function(event) { %>
 			<li>
 				<span class="pull-left event event-<%= event['class'] %>"></span>&nbsp;
-				<a href="<%= event.url ? event.url : 'javascript:void(0)' %>" data-event-id="<%= event.id %>"
+				<a data-ng-click="SetClase(<%= event.id %>)" href="<%= event.url ? event.url : 'javascript:void(0)' %>" data-event-id="<%= event.id %>"
 					data-event-class="event-<%= event['class'] %>" class="event-item">
 					<%= event.title %></a>
 			</li>
