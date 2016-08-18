@@ -9,11 +9,13 @@ class UsersController < ApplicationController
         bypass_sign_in(@user)
         redirect_to '/dashboard/join/', notice: 'Hemos guardado tu email correctamente.'
       else
+		@landingpage=true
         @show_errors = true
 		@show_confirm_form = true
         render 'landing/index'
       end
     else
+		@landingpage=true
 		@show_confirm_form = true
 		render 'landing/index'
     end
