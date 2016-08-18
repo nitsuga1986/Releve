@@ -93,12 +93,6 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 					calendar.view($this.data('calendar-view'));
 				});
 			});
-			// Event click. $scope.clases[index] => $scope.clase
-			$(document.body).on('click', 'a[data-event-id]', function(){
-				console.log("called");
-				id = $(this).attr('data-event-id');
-				setClase(id);
-			});
 		},
 		classes: {
 			months: {
@@ -108,7 +102,13 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 		week_numbers_iso_8601: true,
 	};
 
-	// Callback Success
+	// Event click. $scope.clases[index] => $scope.clase
+	$(document.body).on('click', 'a[data-event-id]', function(){
+		id = $(this).attr('data-event-id');
+		setClase(id);
+	});
+	
+	// setClase
 	function setClase(id) {
 		$.each($scope.clases, function(index) {
 			if($scope.clases[index].id == id) {
