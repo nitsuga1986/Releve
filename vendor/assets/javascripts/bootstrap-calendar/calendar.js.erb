@@ -1163,10 +1163,9 @@ if(!String.prototype.formatNum) {
 				$('body').one('click', function() {
 					slider.slideUp('fast');
 					self.activecell = 0;
-					console.log("calling onAfterSlideLoad");
-					self.options.onAfterSlideLoad.call(this);
-
 				});
+				console.log("calling onAfterSlideLoad");
+				self.options.onAfterSlideLoad.call(this);
 			});
 		});
 
