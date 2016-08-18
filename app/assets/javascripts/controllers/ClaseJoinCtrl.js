@@ -1,19 +1,6 @@
 angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams', '$location', 'ResourceClase', function($scope, $routeParams, $location, ResourceClase) {
 	$scope.clase = {};
 
-	// Event click. $scope.clases[index] => $scope.clase
-	$(document.body).on('click', 'a[data-event-id]', function(){
-		console.log('angularjsevent');
-		id = $(this).attr('data-event-id');
-		$.each($scope.clases, function(index) {
-			if($scope.clases[index].id == id) {
-				$scope.clase = $scope.clases[index];
-				$scope.$apply() 
-				return false;
-			}    
-		});
-	});
-	
 	// Join
 	$scope.JoinUser = function() {
 		ResourceClase.join($scope.clase, success, failure).$promise.then(function(data) {
@@ -73,11 +60,11 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 					if (count<10){
 						if (event.joined!=true){
 						$(document.createElement('a')).addClass("eventlist btn btn-default").attr('type', 'button')
-						.attr('data-event-id', event.id).attr('data-toggle', 'modal').attr('data-target', '#events-modal')
+						.attr('data-event-id', event.id)
 						.html('<i title="Click para anotarse" class="fa fa-circle pull-left text-'+event.class+'" aria-hidden="true"></i> '+event.title).appendTo(list);}
 						else {
 						$(document.createElement('a')).addClass("eventlist btn btn-default").attr('type', 'button')
-						.attr('data-event-id', event.id).attr('data-toggle', 'modal').attr('data-target', '#events-modal')
+						.attr('data-event-id', event.id)
 						.html('<i title="Anotado!" class="fa fa-check-square pull-left text-'+event.class+'" aria-hidden="true"></i>'+event.title).appendTo(list);}
 						
 					}
@@ -103,6 +90,19 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 				$this.unbind().click(function() {
 					calendar.view($this.data('calendar-view'));
 				});
+			});
+			// Event click. $scope.clases[index] => $scope.clase
+			$(document.body).on('click', 'a[data-event-id]', function(){
+				console.log('angularjsevent');
+				id = $(this).attr('data-event-id');
+				$.each($scope.clases, function(index) {
+					if($scope.clases[index].id == id) {
+						$scope.clase = $scope.clases[index];
+						$scope.$apply() 
+						return false;
+					}    
+				});
+				$('#events-modal').modal('toggle')
 			});
 		},
 		classes: {
