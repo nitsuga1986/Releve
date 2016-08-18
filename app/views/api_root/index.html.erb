@@ -5,6 +5,7 @@
 	<input type="hidden" name="user_id" data-ng-init="user_email=<%= current_user.id %>"/>
 	<div ng-view ></div>
 </div>
+<%= render 'layouts/footer' %>
 
 <%= javascript_include_tag "jquery-ui/datepicker" %>
 <%= javascript_include_tag "jquery-ui/autocomplete" %>
