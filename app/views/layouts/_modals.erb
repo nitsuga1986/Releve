@@ -1,0 +1,19 @@
+<% if @show_confirm_form || (user_signed_in? && !current_user.confirmed?) %>
+	<!-- Confirmation Modal -->
+	<script type="text/javascript">$(window).load(function(){$('#modal2').modal('show');});</script>
+	<div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="ConfirmEmail" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content modal-popup">
+				 <h3 class="white">Confirma tus datos</h3>
+				<%= form_for(current_user, as: 'user', :html => {:class => 'popup-form'}, url: finish_signup_path(current_user)) do |f| %>
+				  <% if @show_errors %>
+					<p class="text-danger"><strong>Algunos datos no son correctos <br/> Por favor verifique la información ingresada</strong></p>
+				  <% end %>
+					<%= f.text_field :email, value: '', autofocus: true, class: 'landing-form-control form-white' , placeholder: 'direccion@correo.com' %>
+					<%= f.text_field :telefono, value: '', class: 'landing-form-control form-white' , placeholder: '15-M1-CELU-L7R' %>
+					<%= f.submit 'Confirmar', class: 'btn-landing btn-submit' %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+<% end %>
