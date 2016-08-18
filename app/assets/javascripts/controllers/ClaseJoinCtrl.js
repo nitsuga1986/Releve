@@ -3,6 +3,7 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 
 	// Event click. $scope.clases[index] => $scope.clase
 	$(document.body).on('click', 'a[data-event-id]', function(){
+		console.log('angularjsevent');
 		id = $(this).attr('data-event-id');
 		$.each($scope.clases, function(index) {
 			if($scope.clases[index].id == id) {
@@ -11,7 +12,6 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 				return false;
 			}    
 		});
-		$('#events-modal').modal('show');
 	});
 	
 	// Join
@@ -72,11 +72,11 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 					count+=1;
 					if (count<10){
 						if (event.joined!=true){
-						$(document.createElement('a')).addClass("setClaseOnClick eventlist btn btn-default").attr('type', 'button')
+						$(document.createElement('a')).addClass("eventlist btn btn-default").attr('type', 'button')
 						.attr('data-event-id', event.id).attr('data-toggle', 'modal').attr('data-target', '#events-modal')
 						.html('<i title="Click para anotarse" class="fa fa-circle pull-left text-'+event.class+'" aria-hidden="true"></i> '+event.title).appendTo(list);}
 						else {
-						$(document.createElement('a')).addClass("setClaseOnClick eventlist btn btn-default").attr('type', 'button')
+						$(document.createElement('a')).addClass("eventlist btn btn-default").attr('type', 'button')
 						.attr('data-event-id', event.id).attr('data-toggle', 'modal').attr('data-target', '#events-modal')
 						.html('<i title="Anotado!" class="fa fa-check-square pull-left text-'+event.class+'" aria-hidden="true"></i>'+event.title).appendTo(list);}
 						
