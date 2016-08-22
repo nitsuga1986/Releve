@@ -1,3 +1,4 @@
+<div class="row" id="alert-container" style="display:none;"></div>
 <div class="row">
 	<div class="col-sm-6">
 		<div class="col-sm-12">
@@ -46,20 +47,42 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3>Clases</h3>
+                <h3>Programar mis clases</h3>
             </div>
             <div class="modal-body lead">
 				<span data-ng-show="clase.old_clase">La clase de <strong>{{clase.actividad}}</strong> del día <strong>{{clase.fecha}} a las {{clase.horario}}</strong> con {{clase.instructor}} ya fue realizada y <span class="text-danger">no está disponible</span></span>
 				<span data-ng-show="!clase.old_clase && clase.joined">¿No vas a poder asistir a la clase de <strong>{{clase.actividad}}</strong> el día <strong>{{clase.fecha}} a las {{clase.horario}}</strong> con {{clase.instructor}}?</span>
-				<span data-ng-show="!clase.old_clase && !clase.joined && clase.completa">La clase de <strong>{{clase.actividad}}</strong> del día <strong>{{clase.fecha}} a las {{clase.horario}}</strong> con {{clase.instructor}} está completa y <span class="text-danger">no está disponible</span></span>
-				<span data-ng-show="!clase.old_clase && !clase.joined && !clase.completa" >¿Te contamos para la clase de <strong>{{clase.actividad}}</strong> el día <strong>{{clase.fecha}} a las {{clase.horario}}</strong> con {{clase.instructor}}?</span>
+				<span data-ng-show="!clase.old_clase && !clase.joined && join_complete && user_primera_clase">Ya has programado tu clase de prueba! Puedes cancelarla y elegir este horario si lo prefieres.</span>
+				<span data-ng-show="!clase.old_clase && !clase.joined && join_complete && !user_primera_clase">Ya has programado todas las clases disponibles en tu plan. Puedes cancelar alguna y elegir este horario si lo prefieres.</span>
+				<span data-ng-show="!clase.old_clase && !clase.joined && !join_complete && clase.completa">Lo sentimos pero la clase de <strong>{{clase.actividad}}</strong> del día <strong>{{clase.fecha}} a las {{clase.horario}}</strong> con {{clase.instructor}} está completa y <span class="text-danger">no está disponible</span></span>
+				<span data-ng-show="!clase.old_clase && !clase.joined && !join_complete && !clase.completa" >¿Te contamos para la clase de <strong>{{clase.actividad}}</strong> el día <strong>{{clase.fecha}} a las {{clase.horario}}</strong> con {{clase.instructor}}?</span>
             </div>
             <div class="modal-footer">
-				<a href="#" data-ng-show="clase.old_clase" data-dismiss="modal" class="btn btn-default" disabled="disabled">No disponible</a>
+				<a href="#" data-ng-show="clase.old_clase || (!clase.old_clase && !clase.joined && ((join_complete) || (!join_complete && clase.completa)))" data-dismiss="modal" class="btn btn-default" disabled="disabled">No disponible</a>
 				<a href="#" data-ng-show="!clase.old_clase && clase.joined" data-dismiss="modal" class="btn btn-danger"  data-ng-click="UnJoinUser()">No voy a poder ir</a>
-                <a href="#" data-ng-show="!clase.old_clase && !clase.joined" data-dismiss="modal" class="btn btn-success"  data-ng-click="JoinUser()">Anotarme!</a>
+                <a href="#" data-ng-show="!clase.old_clase && !clase.joined && !join_complete && !clase.completa" data-dismiss="modal" class="btn btn-success"  data-ng-click="JoinUser()">Anotarme!</a>
                 <a href="#" data-dismiss="modal" class="btn btn-default ">Close</a>
             </div>
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="first-clase-modal" tabindex='-1'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3>Mi primera clase!</h3>
+            </div>
+            <div class="modal-body lead">
+				<strong><i class="fa fa-heart" aria-hidden="true"></i> Te damos la bienvenida a Releve Pilates!</strong><br/><br/>
+				<i class="fa fa-calendar-check-o" aria-hidden="true"></i> Aquí encontrarás todas las clases disponibles, selecciona el horario que prefieras y empieza a programar tu entrenamiento! <br/><br/>
+				<span class="muted"><i class="fa fa-calendar" aria-hidden="true"></i> Una vez que asistas a la primera clase, tu instructor o instructora habilitará este espacio para que programes todas las clases correspondientes a tu plan</span>
+            </div>
+            <div class="modal-footer">
+                <a href="#" data-dismiss="modal" class="btn btn-success">A entrenar!</a>
+            </div>
+        </div>
+    </div>
+</div>
+
