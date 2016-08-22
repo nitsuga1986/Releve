@@ -61,13 +61,14 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 				});
 			});
 			// Clase selected => to Modal
-			$(document.body).on('click', 'a[data-event-id].setClase', function(){
+			$(document.body).off('click', 'a[data-event-id].setClase').on('click', 'a[data-event-id].setClase', function(){
 				id = $(this).attr('data-event-id');
 				setClaseModal(id);
 				$('#events-modal').modal('toggle')
 			});
 		},
 		onAfterSlideLoad: function(view) {
+			$('ul.list-unstyled > li[data-event-id].setClase').off('click');
 			$('ul.list-unstyled > li[data-event-id].setClase').on('click', function(event){
 				id = $(this).attr('data-event-id');
 				setClaseModal(id);
@@ -108,7 +109,12 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 		var old_clase_count=0;
 		var my_clase_count=0;
 		$.each(events, function(key_event, event) {
-			// Old_clase?
+			// completa?
+			if( events[key_event].users.length >=  events[key_event].max_users) {	
+				events[key_event].completa = true; events[key_event].class = 'default';
+			} else {
+				events[key_event].completa = false;}
+			// old_clase?
 			today = new Date();
 			fecha_clase = new Date(event.fecha);
 			if( fecha_clase > today) {	events[key_event].old_clase = false;

@@ -49,9 +49,10 @@
                 <h3>Clases</h3>
             </div>
             <div class="modal-body lead">
-				<span data-ng-show="clase.old_clase">La clase de <strong>{{clase.actividad}}</strong> para el día <strong>{{clase.fecha}} a las {{clase.horario}}</strong> con {{clase.instructor}} ya fue realizada y <span class="text-danger">no está disponible</span></span>
+				<span data-ng-show="clase.old_clase">La clase de <strong>{{clase.actividad}}</strong> del día <strong>{{clase.fecha}} a las {{clase.horario}}</strong> con {{clase.instructor}} ya fue realizada y <span class="text-danger">no está disponible</span></span>
 				<span data-ng-show="!clase.old_clase && clase.joined">¿No vas a poder asistir a la clase de <strong>{{clase.actividad}}</strong> el día <strong>{{clase.fecha}} a las {{clase.horario}}</strong> con {{clase.instructor}}?</span>
-				<span data-ng-show="!clase.old_clase && !clase.joined" >¿Te contamos para la clase de <strong>{{clase.actividad}}</strong> el día <strong>{{clase.fecha}} a las {{clase.horario}}</strong> con {{clase.instructor}}?</span>
+				<span data-ng-show="!clase.old_clase && !clase.joined && clase.completa">La clase de <strong>{{clase.actividad}}</strong> del día <strong>{{clase.fecha}} a las {{clase.horario}}</strong> con {{clase.instructor}} está completa y <span class="text-danger">no está disponible</span></span>
+				<span data-ng-show="!clase.old_clase && !clase.joined && !clase.completa" >¿Te contamos para la clase de <strong>{{clase.actividad}}</strong> el día <strong>{{clase.fecha}} a las {{clase.horario}}</strong> con {{clase.instructor}}?</span>
             </div>
             <div class="modal-footer">
 				<a href="#" data-ng-show="clase.old_clase" data-dismiss="modal" class="btn btn-default" disabled="disabled">No disponible</a>
