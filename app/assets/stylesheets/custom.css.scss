@@ -184,7 +184,7 @@ nav.navbar-fixed-top {
 	box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.05);
 }
 
-nav.navbar-fixed-top .navbar-nav > li > a:not(.btn) {
+nav.navbar-fixed-top .navbar-nav > li > a:not(.btn):not(.btn-landing) {
 	color: #bbb;
 }
 
@@ -264,6 +264,9 @@ nav.navbar-fixed-top .navbar-nav > li > a:not(.btn) {
 
 .navbar {
 	top: 50px;
+}
+.navbar.notlandingpage {
+	top: 25px;
 }
 
 .container {
@@ -1151,9 +1154,13 @@ footer .social-footer li:hover a {
 
 /************NITSUGA******************************************************************/
 .first{padding:150px}
+.first.notlandingpage{padding:100px}
 .notlandingpage.original .navbar-nav > li > a:not(.btn-danger) {
 	color: #928E8E;
 }
 .form-horizontal label.control-label {
+    text-align: left;
+}
+a.eventlist.btn,a.eventmylist.btn{
     text-align: left;
 }

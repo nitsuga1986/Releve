@@ -1,6 +1,5 @@
-
 <%= render 'layouts/header' %>
-<div class="first col-sm-12" ng-app="TurnosApp">
+<div class="first notlandingpage col-sm-12" ng-app="TurnosApp">
 	<input type="hidden" name="user_id" data-ng-init="user_id=<%= current_user.id %>"/>
 	<input type="hidden" name="user_id" data-ng-init="user_email=<%= current_user.id %>"/>
 	<div ng-view ></div>
