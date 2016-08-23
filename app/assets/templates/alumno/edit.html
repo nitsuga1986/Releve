@@ -113,7 +113,7 @@
 		<div class="form-group col-sm-6">
 			<label for="sexo" class="col-sm-4 control-label">Sexo</label>
 			<div class="col-sm-7">
-				<select class="form-control" data-ng-blur="GoToClaseEdit()" name="sexo" data-ng-model="clase.sexo" id="sexo" data-ng-options="sexo as sexo for sexo in sexosArray"></select> 
+				<select class="form-control" name="sexo" data-ng-model="alumno.sexo" id="sexo" data-ng-options="sexo as sexo for sexo in sexosArray"></select> 
 			</div>
 		</div>
 		<!-- confirmed -->
@@ -134,7 +134,7 @@
 		<div class="form-group col-sm-6">
 			<label for="nro_clases" class="col-sm-4 control-label">Cant. de clases</label>
 			<div class="col-sm-7">
-				<input type="number" min="0" class="form-control" name="nro_clases" data-ng-model="clase.nro_clases" id="nro_clases" placeholder="ej. 50">
+				<input type="number" min="0" class="form-control" name="nro_clases" data-ng-model="alumno.nro_clases" id="nro_clases" placeholder="ej. 50">
 			</div>
 		</div>
 		<!-- admin -->
