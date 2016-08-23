@@ -32,6 +32,9 @@ module Releve
 		controllers/ClaseIndexCtrl.js
 		controllers/ClaseShowCtrl.js
 		controllers/ClaseJoinCtrl.js
+		controllers/AlumnoEditCtrl.js
+		controllers/AlumnoIndexCtrl.js
+		controllers/AlumnoShowCtrl.js
 		bootstrap-calendar/underscore-min.js
 		bootstrap-calendar/calendar.js
 		filters/html_trusted.js
