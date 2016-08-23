@@ -178,6 +178,7 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 	// First Clase Modal
 	if ($scope.user_primera_clase){$('#first-clase-modal').modal('toggle')}
 	
-	$(window).load(function() { stopPreloader(); });
 
 }]);
+
+jQuery(function($) {$(window).load(function() { stopPreloader(); });});
