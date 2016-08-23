@@ -43,7 +43,6 @@ $.datepicker.regional['es'] = {
 });
 angular.module("TurnosApp",['ngRoute','ngResource','ngTable']);
 </script>	
-
 <%= javascript_include_tag "filters/html_trusted" %>
 <%= javascript_include_tag "services/resources" %>
 <%= javascript_include_tag "controllers/ClaseIndexCtrl" %>
@@ -54,3 +53,7 @@ angular.module("TurnosApp",['ngRoute','ngResource','ngTable']);
 <%= javascript_include_tag "bootstrap-calendar/calendar" %>
 <%= javascript_include_tag "config" %>
 <%= javascript_include_tag "routes" %>
+<style>
+#preload-01 { background: image-url("bootstrap-calendar/dark_wood.png") no-repeat -9999px -9999px; }
+#preload-02 { background: image-url("bootstrap-calendar/tick.png?2") no-repeat -9999px -9999px; }
+</style>

@@ -137,8 +137,8 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 					my_clase_count+=1;
 					// Mis Clases List
 					$(document.createElement('a')).addClass("eventmylist btn btn-default setClase").attr('type', 'button')
-					.attr('data-event-id', event.id)
-					.html('<i title="Anotado!" class="fa fa-check-square text-'+event.class+'" aria-hidden="true"></i> '+dateFormat(event.fecha)+' '+event.horario+'hs: '+event.actividad).appendTo(mylist);
+					.attr('data-event-id', event.id).attr('title', 'Click para cancelar la inscripción')
+					.html('<i class="fa fa-check-square text-'+event.class+'" aria-hidden="true"></i> '+dateFormat(event.fecha)+' '+event.horario+'hs: '+event.actividad).appendTo(mylist);
 				} else {
 					events[key_event].joined = false;
 				}
@@ -153,12 +153,12 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 					// Próximas clases List
 					if (event.joined!=true){
 					$(document.createElement('a')).addClass("eventlist btn btn-default setClase").attr('type', 'button')
-					.attr('data-event-id', event.id)
-					.html('<i title="Click para anotarse" class="fa fa-circle text-'+event.class+'" aria-hidden="true"></i> '+dateFormat(event.fecha)+' '+event.horario+'hs: '+event.actividad).appendTo(list);}
+					.attr('data-event-id', event.id).attr('title', 'Click para anotarse')
+					.html('<i class="fa fa-circle text-'+event.class+'" aria-hidden="true"></i> '+dateFormat(event.fecha)+' '+event.horario+'hs: '+event.actividad).appendTo(list);}
 					else {
 					$(document.createElement('a')).addClass("eventlist btn btn-default setClase").attr('type', 'button')
-					.attr('data-event-id', event.id)
-					.html('<i title="Anotado!" class="fa fa-check-square text-'+event.class+'" aria-hidden="true"></i> '+dateFormat(event.fecha)+' '+event.horario+'hs: '+event.actividad).appendTo(list);}
+					.attr('data-event-id', event.id).attr('title', 'Click para cancelar la inscripción')
+					.html('<i class="fa fa-check-square text-'+event.class+'" aria-hidden="true"></i> '+dateFormat(event.fecha)+' '+event.horario+'hs: '+event.actividad).appendTo(list);}
 					
 				}
 			} else {

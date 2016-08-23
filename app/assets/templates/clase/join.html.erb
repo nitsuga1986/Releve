@@ -3,17 +3,17 @@
 	<div class="col-sm-6">
 		<div class="col-sm-12 toolsBar">
 			<div class="form-inline">
-				<a href="#" data-toggle="modal" data-target="#info-clase-modal"class="text-info" title="Consejos para la clase"><i class="fa fa-info-circle fa-lg" aria-hidden="true"></i>  </a>
+				<a href="#" data-toggle="modal" data-target="#info-clase-modal"class="text-info" title="Consejos para tu clase"><i class="fa fa-info-circle fa-lg" aria-hidden="true"></i>  </a>
 				<div class="btn-group btn-group-view">
-					<button class="btn btn-default" data-calendar-view="year">Año</button>
-					<button class="btn btn-default" data-calendar-view="month">Mes</button>
-					<button class="btn btn-default" data-calendar-view="week">Semana</button>
-					<button class="btn btn-default" data-calendar-view="day">Día</button>
+					<button title="Ver Año" class="btn btn-default" data-calendar-view="year">Año</button>
+					<button title="Ver Mes" class="btn btn-default" data-calendar-view="month">Mes</button>
+					<button title="Ver Semana" class="btn btn-default" data-calendar-view="week">Semana</button>
+					<button title="Ver Día" class="btn btn-default" data-calendar-view="day">Día</button>
 				</div>
 				<div class="btn-group">
-					<button class="btn btn-primary" data-calendar-nav="prev"><< </button>
-					<button class="btn btn-primary" data-calendar-nav="today">Hoy</button>
-					<button class="btn btn-primary" data-calendar-nav="next"> >></button>
+					<button title="Anterior" class="btn btn-primary" data-calendar-nav="prev"><< </button>
+					<button title="Ir a Hoy" class="btn btn-primary" data-calendar-nav="today">Hoy</button>
+					<button title="Siguiente" class="btn btn-primary" data-calendar-nav="next"> >></button>
 				</div>
 				<!--
 				<div class="btn-group pull-right">
@@ -28,13 +28,13 @@
 		</div>
 		<div class="col-sm-6">
 			<div class="row-fluid">
-				<h4><i class="fa fa-calendar" aria-hidden="true"></i> Próximas clases</h4>
+				<h4 title="Próximas clases disponibles, anotate hoy!"><i class="fa fa-calendar" aria-hidden="true"></i> Próximas clases</h4>
 				<div id="eventlist" class="btn-group-vertical btn-block"></div>
 			</div>
 		</div>
 		<div class="col-sm-6">
 			<div class="row-fluid">
-				<h4><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Mis Clases</h4>
+				<h4 title="Clases en las que estás inscripto" ><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Mis Clases</h4>
 				<div id="myeventlist" class="btn-group-vertical btn-block"></div>
 			</div>
 		</div>
@@ -94,21 +94,21 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3>Consejos para la clase</h3>
+                <h3><i class="fa fa-info-circle" aria-hidden="true"></i> Consejos para la clase</h3>
             </div>
-            <div class="modal-body lead">
-				<h4>Vestimenta: </h4>
-				<ul>
-					<li>La ropa de pilates debe ser cómoda y permitir libertad de movimiento, pero a diferencia de otras disciplinas, si es holgada no será la más adecuada.</li>
-					<li>El instructor debe comprobar continuamente cómo se está realizando el ejercicio y la ropa de pilates debe ser adecuada  para permitir esa verificación. Cuando practicas ejercicios de pilates el instructor visualiza el contorno del cuerpo y corrige el movimiento.</li>
-					<li>Pilates se practica en calcetines o descalzo. En el caso de los calcetines se recomienda -por comodidad e higiene- un par limpio de recambio solo para los ejercicios.</li>
-					<li>No olvides cintas para el pelo, será mucho más cómodo y podrás concentrarte mejor.</li>
+            <div class="modal-body">
+				<strong class="lead"><u>Vestimenta</u>:</strong>
+				<ul class="fa-ul">
+					<li class="fa-li fa fa-check">La ropa de pilates debe ser cómoda y permitir libertad de movimiento, pero a diferencia de otras disciplinas, si es holgada no será la más adecuada.</li>
+					<li class="fa-li fa fa-check">El instructor debe comprobar continuamente cómo se está realizando el ejercicio y la ropa de pilates debe ser adecuada  para permitir esa verificación. Cuando practicas ejercicios de pilates el instructor visualiza el contorno del cuerpo y corrige el movimiento.</li>
+					<li class="fa-li fa fa-paw">Pilates se practica en calcetines o descalzo. En el caso de los calcetines se recomienda -por comodidad e higiene- un par limpio de recambio solo para los ejercicios.</li>
+					<li class="fa-li fa fa-circle-o">No olvides cintas para el pelo, será mucho más cómodo y podrás concentrarte mejor.</li>
 				</ul>
-				<h4>Para tener en cuenta: </h4>
-				<ul>
-					<li>Avisa a tu instructor de cualquier lesión para que podamos cuidarte y orientar el entrenamiento de forma adecuada.</li>
-					<li>El control de nuestro propio cuerpo es fundamental para salir adelante en una clase de Pilates. Deberemos conseguir disociar movimientos de grupos musculares con la mayor concentración que podamos, en eso consiste</li>
-					<li>Nuestra respiración también toma partida en las clases de Pilates. Conseguiremos un control total de la respiración, ya que ésta forma parte de los seis principios básicos de esta disciplina</li>
+				<strong><u>Para tener en cuenta</u>:</strong>
+				<ul class="fa-ul">
+					<li class="fa-li fa fa-exclamation-triangle">Avisa a tu instructor de cualquier lesión para que podamos cuidarte y orientar el entrenamiento de forma adecuada.</li>
+					<li class="fa-li fa fa-envira">El control de nuestro propio cuerpo es fundamental para salir adelante en una clase de Pilates. Deberemos conseguir disociar movimientos de grupos musculares con la mayor concentración que podamos, en eso consiste</li>
+					<li class="fa-li fa fa-envira">Nuestra respiración también toma partida en las clases de Pilates. Conseguiremos un control total de la respiración, ya que ésta forma parte de los seis principios básicos de esta disciplina</li>
 				</ul>
             </div>
             <div class="modal-footer">
