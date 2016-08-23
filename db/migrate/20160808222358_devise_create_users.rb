@@ -4,8 +4,6 @@ class DeviseCreateUsers < ActiveRecord::Migration
     
       ## Admin
       t.boolean :admin, default: false
-      t.boolean :confirmed, default: false
-      t.boolean :primera_clase, default: true
       
       ## Personal data
       t.integer :dni
@@ -21,6 +19,11 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :apellido_contacto
       t.string :telefono_contacto
       t.boolean :sexo
+      
+      ## Logica
+      t.boolean :confirmed, default: false
+      t.boolean :primera_clase, default: true
+      t.integer :nro_clases, default: 1
     
       ## Database authenticatable
       t.string :email,              null: false, default: ""

@@ -166,15 +166,16 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 				events[key_event].class = 'default';
 			}
 		});
+		// Empty Lists text: 
 		if (next_clases_count==0){$(document.createElement('p')).html('No hay clases disponibles en este momento').appendTo(list);}
 		if (my_clase_count==0){$(document.createElement('p')).html('No tienes clases programadas =(').appendTo(mylist);}
-		if (my_clase_count>0 && $scope.user_primera_clase){$scope.join_complete=true;}else{$scope.join_complete=false;}
+		// join_complete(boolean)
+		if (($scope.user_primera_clase && my_clase_count>0)||(!$scope.user_primera_clase && my_clase_count>=$scope.user_nro_clases)){$scope.join_complete=true;}else{$scope.join_complete=false;}
+		// events => $scope.clases (!!!)
 		$scope.clases = events;
 	}
-	
-	// Calendar
+	// Calendar start
 	var calendar = $('#calendar').calendar(options);
-	
 	// First Clase Modal
 	if ($scope.user_primera_clase){$('#first-clase-modal').modal('toggle')}
 	stopLoading();
