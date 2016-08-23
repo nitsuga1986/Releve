@@ -3,18 +3,18 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 
 	// Join
 	$scope.JoinUser = function() {
-		startPreloader();
+		startLoading();
 		ResourceClase.join($scope.clase, success, failure).$promise.then(function(data) {
-			stopPreloader();
+			stopLoading();
 			$('#calendar').calendar(options);
 			$('#alert-container').hide().html('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-check-square-o" aria-hidden="true"></i> Inscrpción exitosa! </strong> Ya hemos guardado tu lugar en la clase, te esperamos!</div>').slideDown();
 		});
 	};
 	// Unjoin
 	$scope.UnJoinUser = function() {
-		startPreloader();
+		startLoading();
 		ResourceClase.unjoin($scope.clase, success, failure).$promise.then(function(data) {
-			stopPreloader();
+			stopLoading();
 			$('#calendar').calendar(options);
 			$('#alert-container').hide().html('<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-times" aria-hidden="true"></i> Clase cancelada! </strong> Ya hemos cancelado tu inscripción a la clase. Gracias por avisar!</div>').slideDown();
 		});
@@ -36,19 +36,15 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 			});
 		});
 	}
-	// startPreloader
-	function startPreloader() {
+	// startLoading
+	function startLoading() {
+		$('#ReleveImgNav').hide();
+		$('#LoadingImg').show();
 	}
-	// stopPreloader
-	function stopPreloader() {
-		// Preloader
-		$('.intro-tables, .parallax, header').css('opacity', '0');
-		$('.preloader').addClass('animated fadeOut').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-			$('.preloader').hide();
-			$('.parallax, header').addClass('animated fadeIn').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-				$('.intro-tables').addClass('animated fadeInUp').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend');
-			});
-		});
+	// stopLoading
+	function stopLoading() {
+		$('#LoadingImg').hide();
+		$('#ReleveImgNav').show();
 	}
 	
 	
@@ -180,5 +176,3 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 	
 
 }]);
-
-jQuery(function($) {$(window).load(function() { stopPreloader(); });});
