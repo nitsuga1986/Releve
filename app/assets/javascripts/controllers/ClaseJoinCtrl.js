@@ -1,4 +1,5 @@
 angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams', '$location', 'ResourceClase', function($scope, $routeParams, $location, ResourceClase) {
+	startLoading();
 	$scope.clase = {};
 
 	// Join
@@ -38,6 +39,7 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 	}
 	// startLoading
 	function startLoading() {
+		$('#AppContainer').fadeOut();
 		$('#ReleveImgNav').hide();
 		$('#LoadingImg').show();
 	}
@@ -45,6 +47,7 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 	function stopLoading() {
 		$('#LoadingImg').hide();
 		$('#ReleveImgNav').show();
+		$('#AppContainer').fadeIn();
 	}
 	
 	
@@ -173,6 +176,6 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 	
 	// First Clase Modal
 	if ($scope.user_primera_clase){$('#first-clase-modal').modal('toggle')}
-	
+	stopLoading();
 
 }]);
