@@ -13,7 +13,7 @@ angular.module("TurnosApp").factory("ResourceClase",['$resource', function($reso
   );
 }]);
 // User
-angular.module("TurnosApp").factory("ResourceAlumnos",['$resource', function($resource) {
+angular.module("TurnosApp").factory("ResourceAlumno",['$resource', function($resource) {
   return $resource("/api/alumnos/:id", { id: "@id" },
     {
       'create':  { method: 'POST' },
