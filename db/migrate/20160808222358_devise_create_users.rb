@@ -18,7 +18,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :nombre_contacto
       t.string :apellido_contacto
       t.string :telefono_contacto
-      t.boolean :sexo
+      t.string :sexo
       
       ## Logica
       t.boolean :confirmed, default: false

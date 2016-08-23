@@ -1,5 +1,5 @@
 <div class="col-sm-12">
-	<h3><i class="fa fa-calendar" ng-class="{ 'text-danger': alumno.cancelada}"></i> Alumno del {{alumno.fecha}} a las {{alumno.horario}} </h3>
+	<h3><i class="fa fa-user" ng-class="{ 'text-danger': alumno.cancelada}"></i> {{alumno.nombre}} {{alumno.apellido}} </h3>
 	<hr class="alumno"/>
 	<a class="btn btn-warning pull-right" href="/alumno/{{alumno.id}}/edit"><i class="fa fa-edit fa-lg"></i> Editar</a>
 	<button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target=".confirmation-modal"><i class="fa fa-trash-o fa-lg"></i> Eliminar</button>
@@ -17,6 +17,7 @@
     <div class="col-sm-6"><strong>telefono: </strong>{{alumno.telefono}}</div>
     <div class="col-sm-6"><strong>domicilio: </strong>{{alumno.domicilio}}</div>
     <div class="col-sm-6"><strong>localidad: </strong>{{alumno.localidad}}</div>
+    <div class="col-sm-6"><strong>Sexo: </strong>{{alumno.sexo}}</div>
     <div class="col-sm-6"><strong>nombre_contacto: </strong>{{alumno.nombre_contacto}}</div>
     <div class="col-sm-6"><strong>apellido_contacto: </strong>{{alumno.apellido_contacto}}</div>
     <div class="col-sm-6"><strong>telefono_contacto: </strong>{{alumno.telefono_contacto}}</div>
@@ -24,7 +25,6 @@
     <div class="col-sm-6"><strong>Email confirmado: </strong><i data-ng-show="alumno.confirmed" class="fa fa-check"></i><i data-ng-hide="alumno.confirmed" class="fa fa-times"></i></div>
     <div class="col-sm-6"><strong>primera_claseo: </strong><i data-ng-show="alumno.primera_clase" class="fa fa-check"></i><i data-ng-hide="alumno.primera_clase" class="fa fa-times"></i></div>
     <div class="col-sm-6"><strong>admin: </strong><i data-ng-show="alumno.admin" class="fa fa-check"></i><i data-ng-hide="alumno.admin" class="fa fa-times"></i></div>
-    <div class="col-sm-6"><strong>Sexo: </strong><i data-ng-show="alumno.sexo" class="fa fa-venus"></i><i data-ng-hide="alumno.sexo" class="fa fa-mars"></i></div>
 </div>
 
 <div class="col-sm-12">

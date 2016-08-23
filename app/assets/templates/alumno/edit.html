@@ -21,9 +21,9 @@
 		</div>
 		<!-- dni -->
 		<div class="form-group col-sm-6">
-			<label for="dni" class="col-sm-4 control-label">DNI:</label>
+			<label for="dni" class="col-sm-4 control-label">Cant. de clases</label>
 			<div class="col-sm-7">
-				<input type="text" class="form-control" name="dni" data-ng-model="alumno.dni" id="dni" placeholder="Nro. documento">
+				<input type="number" min="0" class="form-control nodecoration" name="dni" data-ng-model="clase.dni" id="dni" placeholder="Nro. documento">
 			</div>
 		</div>
 		<!-- nombre -->
@@ -111,13 +111,9 @@
 		</div>
 		<!-- sexo -->
 		<div class="form-group col-sm-6">
-			<label for="horario" class="col-sm-4 control-label">Sexo</label>
+			<label for="sexo" class="col-sm-4 control-label">Sexo</label>
 			<div class="col-sm-7">
-				<select name="sexo" data-ng-model="alumno.sexo" id="sexo">
-					<option>N/A</option>
-					<option value=true>Mujer</option>
-					<option value=false>Hombre</option>
-				</select> 
+				<select class="form-control" data-ng-blur="GoToClaseEdit()" name="sexo" data-ng-model="clase.sexo" id="sexo" data-ng-options="sexo as sexo for sexo in sexosArray"></select> 
 			</div>
 		</div>
 		<!-- confirmed -->

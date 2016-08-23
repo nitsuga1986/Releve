@@ -19,6 +19,7 @@ var columns_clase = [
 var alumnoDefaultPage = 1;	var alumnoDefaultCount = 50;
 var alumnoDefaultFilter = {}; 
 var alumnoDefaultSorting = {email: 'desc'};
+var sexosArray = ["Hombre","Mujer"];
 var columns_alumno = [
 	{title:"email",field:"email",filter:"email",visible:true,filter:{'email':'text'}},
 	{title:"dni",field:"dni",filter:"dni",visible:false,filter:{'dni':'text'}},

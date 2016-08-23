@@ -15,12 +15,12 @@ angular.module("TurnosApp").controller("AlumnoEditCtrl",['$scope', '$q', '$http'
 	};
 	// Edit or New
 	if ($routeParams.id) { 	// Edit
-		$scope.FormTitle = "<i class='fa fa-calendar'></i> Editar datos de la alumno";
+		$scope.FormTitle = "<i class='fa fa-user'></i> Editar datos de la alumno";
 		$scope.FormButton = '<i class="fa fa-edit fa-lg"></i> Guardar cambios';
 		$scope.alumno = ResourceAlumno.show({ id: $routeParams.id });
 		$scope.alumno.$promise.then(function( value ){},function( error ){$location.path("/alumno/new");});	// if id not exists => ToNew
 	} else { 				// New
-		$scope.FormTitle = "<i class='fa fa-calendar'></i> Agregar nueva alumno";
+		$scope.FormTitle = "<i class='fa fa-user'></i> Agregar nuevo alumno";
 		$scope.FormButton = '<i class="fa fa-alumno-plus fa-lg"></i> Agregar alumno';
 		$scope.alumno = new ResourceAlumno();
 		$scope.alumno.alumnos = [];
