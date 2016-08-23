@@ -1,7 +1,7 @@
 <div class="row" id="alert-container" style="display:none;"></div>
 <div class="row">
 	<div class="col-sm-6">
-		<div class="col-sm-12">
+		<div class="col-sm-12 toolsBar">
 			<div class="form-inline">
 				<div class="btn-group">
 					<button class="btn btn-primary" data-calendar-nav="prev"><< </button>
@@ -22,6 +22,8 @@
 					<button class="btn btn-default">Todo</button>
 				</div>
 				-->
+				<a href="#" data-toggle="modal" data-target="#info-clase-modal"class="text-info" title="Consejos para la clase"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+				<span id="toolsBarTitle"></span>
 			</div>
 		</div>
 		<div class="col-sm-6">
@@ -81,6 +83,33 @@
             </div>
             <div class="modal-footer">
                 <a href="#" data-dismiss="modal" class="btn btn-success">A entrenar!</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="info-clase-modal" tabindex='-1'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3>Consejos para la clase</h3>
+            </div>
+            <div class="modal-body lead">
+				<h4>Vestimenta recomendada: </h4>
+				<ul class="">
+					<li>Trae ropa comoda.</li>
+					<li></li>
+				</ul>
+				<h4>Consejos para tu salud: </h4>
+				<ul class="">
+					<li>Algo</li>
+					<li></li>
+				</ul>
+            </div>
+            <div class="modal-footer">
+                <a href="#" data-dismiss="modal" class="btn btn-success">Entendido</a>
             </div>
         </div>
     </div>

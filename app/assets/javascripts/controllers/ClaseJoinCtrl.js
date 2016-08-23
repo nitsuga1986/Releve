@@ -62,7 +62,8 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 			eventsLoader(events);
 		},
 		onAfterViewLoad: function(view) {
-			// Class active: btn-group-view 
+			// Class active: btn-group-view
+			$('#toolsBarTitle').text(this.getTitle());
 			$('.btn-group-view button').removeClass('active');
 			$('button[data-calendar-view="' + view + '"]').addClass('active');
 			// Prev-Next buttons
