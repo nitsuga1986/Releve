@@ -12,3 +12,15 @@ angular.module("TurnosApp").factory("ResourceClase",['$resource', function($reso
     }
   );
 }]);
+// User
+angular.module("TurnosApp").factory("ResourceAlumnos",['$resource', function($resource) {
+  return $resource("/api/alumnos/:id", { id: "@id" },
+    {
+      'create':  { method: 'POST' },
+      'index':   { method: 'GET', isArray: true },
+      'show':    { method: 'GET', isArray: false },
+      'update':  { method: 'PUT' },
+      'destroy': { method: 'DELETE' },
+    }
+  );
+}]);

@@ -15,3 +15,27 @@ var columns_clase = [
 	{title:"Fecha de creación",field:"created_at",filter:"created_at",visible:false,filter:{'created_at':'text'}},
 	{title:"Ùltima modificación",field:"updated_at",filter:"updated_at",visible:false,filter:{'updated_at':'text'}},
 ];
+// Alumno
+var alumnoDefaultPage = 1;	var alumnoDefaultCount = 50;
+var alumnoDefaultFilter = {}; 
+var alumnoDefaultSorting = {email: 'desc'};
+var columns_alumno = [
+	{title:"email",field:"email",filter:"email",visible:true,filter:{'email':'text'}},
+	{title:"dni",field:"dni",filter:"dni",visible:false,filter:{'dni':'text'}},
+	{title:"nombre",field:"nombre",filter:"nombre",visible:true,filter:{'nombre':'text'}},
+	{title:"apellido",field:"apellido",filter:"apellido",visible:true,filter:{'apellido':'text'}},
+	{title:"profesion",field:"profesion",filter:"profesion",visible:false,filter:{'profesion':'text'}},
+	{title:"fechanac",field:"fechanac",filter:"fechanac",visible:false,filter:{'fechanac':'text'}},
+	{title:"fechaini",field:"fechaini",filter:"fechaini",visible:false,filter:{'fechaini':'text'}},
+	{title:"telefono",field:"telefono",filter:"telefono",visible:true,filter:{'telefono':'text'}},
+	{title:"domicilio",field:"domicilio",filter:"domicilio",visible:false,filter:{'domicilio':'text'}},
+	{title:"localidad",field:"localidad",filter:"localidad",visible:false,filter:{'localidad':'text'}},
+	{title:"nombre_contacto",field:"nombre_contacto",filter:"nombre_contacto",visible:false,filter:{'nombre_contacto':'text'}},
+	{title:"apellido_contacto",field:"apellido_contacto",filter:"apellido_contacto",visible:false,filter:{'apellido_contacto':'text'}},
+	{title:"telefono_contacto",field:"telefono_contacto",filter:"telefono_contacto",visible:false,filter:{'telefono_contacto':'text'}},
+	{title:"sexo",field:"sexo",filter:"sexo",visible:true,filter:{'sexo':'text'}},
+	{title:"confirmed",field:"confirmed",filter:"confirmed",visible:true,filter:{'confirmed':'text'}},
+	{title:"primera_clase",field:"primera_clase",filter:"primera_clase",visible:true,filter:{'primera_clase':'text'}},
+	{title:"nro_clases",field:"nro_clases",filter:"nro_clases",visible:true,filter:{'nro_clases':'text'}},
+	{title:"admin",field:"admin",filter:"admin",visible:true,filter:{'admin':'text'}},
+];

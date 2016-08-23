@@ -1,0 +1,156 @@
+<h3 data-ng-bind-html="FormTitle | html_trusted">Alumno</h3>
+<button data-ng-click="GoToIndex()" class="btn btn-default pull-right" title="Lista de alumnos"><i class="fa fa-list fa-lg"></i></button>
+
+<hr class="alumno"/>
+<div class="col-sm-12"><h3>Detalle</h3></div>
+<!-- SubmitError -->
+<div class="col-sm-12">
+	<div class="alert alert-danger" role="alert" data-ng-show="submiterror">
+		<h4>Algo raro pasó con la página... avisar Vicky porfa ;)</h4>
+	</div>
+</div>
+<!-- Formulario -->
+<div class="col-sm-12">
+	<form class="form-horizontal" data-ng-submit="submit()" name="AlumnoForm" novalidate role="form">
+		<!-- email -->
+		<div class="form-group col-sm-6">
+			<label for="email" class="col-sm-4 control-label">Email:</label>
+			<div class="col-sm-7">
+				<input type="text" data-ng-blur="GoToAlumnoEdit()" class="form-control" name="email" data-ng-model="alumno.email" id="email" placeholder="correo@alumno.com">
+			</div>
+		</div>
+		<!-- dni -->
+		<div class="form-group col-sm-6">
+			<label for="dni" class="col-sm-4 control-label">DNI:</label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" name="dni" data-ng-model="alumno.dni" id="dni" placeholder="Nro. documento">
+			</div>
+		</div>
+		<!-- nombre -->
+		<div class="form-group col-sm-6">
+			<label for="nombre" class="col-sm-4 control-label">Nombre:</label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" name="nombre" data-ng-model="alumno.nombre" id="nombre" placeholder="Nombre del alumno">
+			</div>
+		</div>
+		<!-- apellido -->
+		<div class="form-group col-sm-6">
+			<label for="apellido" class="col-sm-4 control-label">Apellido:</label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" name="apellido" data-ng-model="alumno.apellido" id="apellido" placeholder="Apellido del alumno">
+			</div>
+		</div>
+		<!-- profesion -->
+		<div class="form-group col-sm-6">
+			<label for="profesion" class="col-sm-4 control-label">Profesión:</label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" name="profesion" data-ng-model="alumno.profesion" id="profesion" placeholder="Profesión del alumno">
+			</div>
+		</div>
+		<!-- fechanac -->
+		<div class="form-group col-sm-6">
+			<label for="fechanac" class="col-sm-4 control-label">Fecha de nacimiento:</label>
+			<div class="col-sm-7">
+				<div class="input-group">
+					<input type="text" class="form-control" name="fechanac" data-ng-model="alumno.fechanac" id="fechanac" placeholder="aaaa-mm-dd">
+					<label title="Ver calendario" for="fechanac" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span></label>
+				</div>
+			</div>
+		</div>
+		<!-- fechaini -->
+		<div class="form-group col-sm-6">
+			<label for="fechaini" class="col-sm-4 control-label">Fecha de inicio:</label>
+			<div class="col-sm-7">
+				<div class="input-group">
+					<input type="text" class="form-control" name="fechaini" data-ng-model="alumno.fechaini" id="fechaini" placeholder="aaaa-mm-dd">
+					<label title="Ver calendario" for="fechaini" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span></label>
+				</div>
+			</div>
+		</div>
+		<!-- telefono -->
+		<div class="form-group col-sm-6">
+			<label for="telefono" class="col-sm-4 control-label">Teléfono:</label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" name="telefono" data-ng-model="alumno.telefono" id="telefono" placeholder="Teléfono del alumno">
+			</div>
+		</div>
+		<!-- domicilio -->
+		<div class="form-group col-sm-6">
+			<label for="domicilio" class="col-sm-4 control-label">Domicilio:</label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" name="domicilio" data-ng-model="alumno.domicilio" id="domicilio" placeholder="Domicilio del alumno">
+			</div>
+		</div>
+		<!-- localidad -->
+		<div class="form-group col-sm-6">
+			<label for="localidad" class="col-sm-4 control-label">Localidad:</label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" name="localidad" data-ng-model="alumno.localidad" id="localidad" placeholder="Localidad del alumno">
+			</div>
+		</div>
+		<!-- nombre_contacto -->
+		<div class="form-group col-sm-6">
+			<label for="nombre_contacto" class="col-sm-4 control-label">Nombre del contacto:</label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" name="nombre_contacto" data-ng-model="alumno.nombre_contacto" id="nombre_contacto" placeholder="Nombre del contacto">
+			</div>
+		</div>
+		<!-- apellido_contacto -->
+		<div class="form-group col-sm-6">
+			<label for="apellido_contacto" class="col-sm-4 control-label">Apellido del contacto:</label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" name="apellido_contacto" data-ng-model="alumno.apellido_contacto" id="apellido_contacto" placeholder="Apellido del contacto">
+			</div>
+		</div>
+		<!-- telefono_contacto -->
+		<div class="form-group col-sm-6">
+			<label for="telefono_contacto" class="col-sm-4 control-label">Teléfono del contacto:</label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" name="telefono_contacto" data-ng-model="alumno.telefono_contacto" id="telefono_contacto" placeholder="Teléfono del contacto">
+			</div>
+		</div>
+		<!-- sexo -->
+		<div class="form-group col-sm-6">
+			<label for="horario" class="col-sm-4 control-label">Sexo</label>
+			<div class="col-sm-7">
+				<select name="sexo" data-ng-model="alumno.sexo" id="sexo">
+					<option>N/A</option>
+					<option value=true>Mujer</option>
+					<option value=false>Hombre</option>
+				</select> 
+			</div>
+		</div>
+		<!-- confirmed -->
+		<div class="form-group col-sm-6">
+			<label for="confirmed" class="col-sm-4 control-label">Confirmado?</label>
+			<div class="col-sm-7">
+				<input type="checkbox" name="confirmed" data-ng-model="alumno.confirmed" id="confirmed"> 
+			</div>
+		</div>
+		<!-- primera_clase -->
+		<div class="form-group col-sm-6">
+			<label for="primera_clase" class="col-sm-4 control-label">Primera clase?</label>
+			<div class="col-sm-7">
+				<input type="checkbox" name="primera_clase" data-ng-model="alumno.primera_clase" id="primera_clase"> 
+			</div>
+		</div>
+		<!-- nro_clases -->
+		<div class="form-group col-sm-6">
+			<label for="nro_clases" class="col-sm-4 control-label">Cant. de clases</label>
+			<div class="col-sm-7">
+				<input type="number" min="0" class="form-control" name="nro_clases" data-ng-model="clase.nro_clases" id="nro_clases" placeholder="ej. 50">
+			</div>
+		</div>
+		<!-- admin -->
+		<div class="form-group col-sm-6">
+			<label for="admin" class="col-sm-4 control-label">Admin?</label>
+			<div class="col-sm-7">
+				<input type="checkbox" name="admin" data-ng-model="alumno.admin" id="admin"> 
+			</div>
+		</div>
+		<!-- Submit-->
+		<div class="col-sm-12">
+			<button type="submit" class="btn btn-primary btn-lg pull-right" data-ng-bind-html="FormButton | html_trusted"></button>
+		</div>
+	</form>
+</div>
