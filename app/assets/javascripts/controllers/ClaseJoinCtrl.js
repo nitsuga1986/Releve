@@ -5,18 +5,18 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 	$scope.JoinUser = function() {
 		startLoading();
 		ResourceClase.join($scope.clase, success, failure).$promise.then(function(data) {
-			stopLoading();
 			$('#calendar').calendar(options);
 			$('#alert-container').hide().html('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-check-square-o" aria-hidden="true"></i> Inscrpción exitosa! </strong> Ya hemos guardado tu lugar en la clase, te esperamos!</div>').slideDown();
+			stopLoading();
 		});
 	};
 	// Unjoin
 	$scope.UnJoinUser = function() {
 		startLoading();
 		ResourceClase.unjoin($scope.clase, success, failure).$promise.then(function(data) {
-			stopLoading();
 			$('#calendar').calendar(options);
 			$('#alert-container').hide().html('<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-times" aria-hidden="true"></i> Clase cancelada! </strong> Ya hemos cancelado tu inscripción a la clase. Gracias por avisar!</div>').slideDown();
+			stopLoading();
 		});
 	};
 	// Callback Success
