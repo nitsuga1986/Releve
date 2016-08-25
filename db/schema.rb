@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20160809153159) do
   create_table "asistencia", force: true do |t|
     t.integer  "clase_id"
     t.integer  "user_id"
+    t.boolean  "confirmed",  default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -47,8 +48,6 @@ ActiveRecord::Schema.define(version: 20160809153159) do
 
   create_table "users", force: true do |t|
     t.boolean  "admin",                  default: false
-    t.boolean  "confirmed",              default: false
-    t.boolean  "primera_clase",          default: true
     t.integer  "dni"
     t.string   "nombre"
     t.string   "apellido"
@@ -61,7 +60,10 @@ ActiveRecord::Schema.define(version: 20160809153159) do
     t.string   "nombre_contacto"
     t.string   "apellido_contacto"
     t.string   "telefono_contacto"
-    t.boolean  "sexo"
+    t.string   "sexo"
+    t.boolean  "confirmed",              default: false
+    t.boolean  "primera_clase",          default: true
+    t.integer  "nro_clases",             default: 1
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"

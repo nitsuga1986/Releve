@@ -1,6 +1,7 @@
 angular.module("TurnosApp").controller("AlumnoEditCtrl",['$scope', '$q', '$http', '$routeParams', '$location', 'ResourceAlumno', function($scope, $q, $http, $routeParams, $location, ResourceAlumno) {
 	$scope.FormErrors = [];
 	$scope.horariosArray = horariosArray;
+	$scope.sexosArray = sexosArray;
 	$scope.submiterror = false;
 	$scope.history_GoToAlumnoEdit = []; // Prevents loop search
 	$scope.GoToIndex = function(id) {$location.path("/alumno/index");};

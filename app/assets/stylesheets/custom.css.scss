@@ -1172,10 +1172,9 @@ a.eventlist.btn,a.eventmylist.btn{
 }
 #preload-01 { background: image-url("bootstrap-calendar/dark_wood.png") no-repeat -9999px -9999px; }
 #preload-02 { background: image-url("bootstrap-calendar/tick.png?2") no-repeat -9999px -9999px; }
-input[type=number].nodecoration::-webkit-inner-spin-button, 
-input[type=number].nodecoration::-webkit-outer-spin-button { 
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    margin: 0; 
+input[type='number'].nodecoration {
+    -moz-appearance:textfield;
+}
+tr.tr_clickable{
+	cursor:pointer;
 }

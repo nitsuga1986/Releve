@@ -27,7 +27,7 @@ class Api::AlumnosController < ApplicationController
   
   def create
 	if !@alumno = User.find_by_email(params[:email]) then
-		@alumno = User.new(params.permit(:email, :horadnirio, :nombre, :apellido, :profesion, :fechanac, :fechaini, :telefono, :domicilio, :localidad, :nombre_contacto, :apellido_contacto, :telefono_contacto, :confirmed, :primera_clase, :nro_clases, :admin))
+		@alumno = User.new(params.permit(:email, :dni, :nombre, :apellido, :profesion, :fechanac, :fechaini, :telefono, :domicilio, :localidad, :nombre_contacto, :apellido_contacto, :telefono_contacto, :sexo, :confirmed, :primera_clase, :nro_clases, :admin))
 		if @alumno.save then
 			render json: @alumno, status: :created
 		else
@@ -40,7 +40,7 @@ class Api::AlumnosController < ApplicationController
 
   def update
 	@alumno = User.find(params[:id])
-	if @alumno.update_attributes(params.permit(:email, :horadnirio, :nombre, :apellido, :profesion, :fechanac, :fechaini, :telefono, :domicilio, :localidad, :nombre_contacto, :apellido_contacto, :telefono_contacto, :confirmed, :primera_clase, :nro_clases, :admin)) then
+	if @alumno.update_attributes(params.permit(:email, :dni, :nombre, :apellido, :profesion, :fechanac, :fechaini, :telefono, :domicilio, :localidad, :nombre_contacto, :apellido_contacto, :telefono_contacto, :sexo, :confirmed, :primera_clase, :nro_clases, :admin)) then
 		if !params[:users].nil? then
 		end
 		head :no_content
