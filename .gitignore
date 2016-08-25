@@ -15,5 +15,3 @@
 /log/*.log
 /tmp
 
-/config/environments/development.rb
-/config/initializers/devise.rb
