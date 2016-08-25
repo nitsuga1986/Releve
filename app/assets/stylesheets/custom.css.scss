@@ -1178,3 +1178,16 @@ input[type='number'].nodecoration {
 tr.tr_clickable{
 	cursor:pointer;
 }
+div.footerdata > p {
+	color: #D5D3D3;
+	margin:0px;
+	a{color: #D5D3D3;}
+}
+hr.greyhr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #777;
+    margin: 1em 0;
+    padding: 0; 
+}

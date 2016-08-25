@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 		@user.update_attribute(:confirmed, true)
 		@user.update(user_params)
         bypass_sign_in(@user)
+        UserMailer.welcome_email(@user).deliver
         redirect_to '/dashboard/join/', notice: 'Hemos guardado tu email correctamente.'
       else
 		@landingpage=true
