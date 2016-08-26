@@ -55,18 +55,6 @@ jQuery(function($) {
 			speed: 60
 		});
 
-		// Popup Form Init
-		var i = 0;
-		var interval = 0.15;
-		$('.popup-form .dropdown-menu li').each(function() {
-			$(this).css('animation-delay', i + "s");
-			i += interval;
-		});
-		$('.popup-form .dropdown-menu li a').click(function(event) {
-			event.preventDefault();
-			$(this).parent().parent().prev('button').html($(this).html());
-		});
-
 		// Onepage Nav
 		$('.navbar.navbar-fixed-top .navbar-nav').onePageNav({
 			currentClass: 'active',
@@ -91,16 +79,6 @@ jQuery(function($) {
 	// Window Resize
 	$(window).resize(function() {
 		$('header').height($(window).height());
-	});
-
-	// Pricing Box Click Event
-	$('.pricing .box-main').click(function() {
-		$('.pricing .box-main').removeClass('active');
-		$('.pricing .box-second').removeClass('active');
-		$(this).addClass('active');
-		$(this).next($('.box-second')).addClass('active');
-		$('#pricing').css("background-image", "url(" + $(this).data('img') + ")");
-		$('#pricing').css("background-size", "cover");
 	});
 
 	// Mobile Nav

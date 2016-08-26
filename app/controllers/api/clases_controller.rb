@@ -35,11 +35,13 @@ class Api::ClasesController < ApplicationController
   def join 
 	@clase = Clase.find(params[:id])
 	@clase.add_asistencia(current_user.id)
+	UserMailer.join_email(current_user,@clase).deliver
 	respond_with @clase
   end
   def unjoin 
 	@clase = Clase.find(params[:id])
 	current_user.remove_from_clase(@clase)
+	UserMailer.unjoin_email(current_user,@clase).deliver
 	respond_with @clase
   end
   

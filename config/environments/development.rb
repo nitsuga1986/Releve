@@ -22,8 +22,8 @@ Rails.application.configure do
 	  address:              'smtp.gmail.com',
 	  port:                 587,
 	  domain:               'example.com',
-	  user_name:            ENV['GOOGLE_MAIL'],
-	  password:             ENV['GOOGLE_PASS'],
+	  user_name:            'agustinmancenido@gmail.com'	,
+	  password:             '32carpe104diem308',
 	  authentication:       'plain',
 	  enable_starttls_auto: true  }
   # Print deprecation notices to the Rails logger.

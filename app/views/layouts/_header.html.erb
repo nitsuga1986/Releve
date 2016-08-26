@@ -16,8 +16,10 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right main-nav">
-				<li><a href="/">Inicio</a></li>
-				<% if user_signed_in? && current_user.admin? %>
+				<% if !(user_signed_in? && current_user.admin?) %>
+					<li><a href="#intro">Inicio</a></li>
+				<% else %>
+					<li><a href="/">Inicio</a></li>
 					<li><a href="/dashboard/index"><i class="fa fa-calendar" aria-hidden="true"></i> Clases</a></li>
 					<li><a href="/alumno/index"><i class="fa fa-users" aria-hidden="true"></i> Alumnos</a></li>
 				<% end %>
@@ -30,10 +32,10 @@
 						<li class="user_header" title="Salir"><a data-method="DELETE" href="<%= destroy_user_session_path %>">Salir <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
 					<% end %>
 				<% else %>
-					<li><a href="#services">Actividades</a></li>
-					<li><a href="#team">Nuestro Equipo</a></li>
-					<li><a href="#location">Ubicacion</a></li>
-					<li><a href="#" data-toggle="modal" data-target="#modal1" class="btn-landing btn-blue">Comenzar!</a></li>
+					<li><a href="#actividades">Actividades</a></li>
+					<li><a href="#nuestro_equipo">Nuestro Equipo</a></li>
+					<li><a href="#ubicacion">Ubicacion</a></li>
+					<li><a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue">Comenzar!</a></li>
 				<% end %>
 			</ul>
 		</div>

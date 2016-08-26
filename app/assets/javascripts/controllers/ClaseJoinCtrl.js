@@ -145,8 +145,12 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 			});
 			// old_clase?
 			today = new Date();
-			fecha_clase = new Date(event.fecha);
-			if( fecha_clase > today) {	
+			fecha_clase = new Date(event.fecha+" "+event.horario);
+			if( fecha_clase > today) {
+				// cancelable?
+				if( today > new Date(fecha_clase.getTime() - (24 * 60 * 60 * 1000))) {
+						events[key_event].cancelable = false;
+				}else{	events[key_event].cancelable = true;}
 				events[key_event].old_clase = false;
 				next_clases_count+=1;
 				if (next_clases_count<10){
