@@ -46,7 +46,7 @@ jQuery(function($) {
 		});
 		$("#gallery-carrousel").owlCarousel({
 		  navigation : false, // Show next and prev buttons
-		  autoPlay : 3000,
+		  autoPlay : 2500,
 		  stopOnHover:true,
 		  slideSpeed : 300,
 		  paginationSpeed : 400,

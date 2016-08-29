@@ -1058,7 +1058,9 @@ hr.greyhr {
 	height: auto;
 	cursor:e-resize;
 }
-
+#carrousel-container{
+	height:80%;
+}
 
 #preload-01 { background: image-url("bootstrap-calendar/dark_wood.png") no-repeat -9999px -9999px; }
 #preload-02 { background: image-url("bootstrap-calendar/tick.png?2") no-repeat -9999px -9999px; }
