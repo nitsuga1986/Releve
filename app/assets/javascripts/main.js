@@ -45,10 +45,11 @@ jQuery(function($) {
 			pagination: true
 		});
 		$("#gallery-carrousel").owlCarousel({
-			autoPlay: 3000, //Set AutoPlay to 3 seconds
-			items : 3,
-			itemsDesktop : [1199,3],
-			itemsDesktopSmall : [979,3]
+			autoPlay: 2500, //Set AutoPlay to 3 seconds
+			navigation : false, // Show next and prev buttons
+			slideSpeed : 300,
+			paginationSpeed : 400,
+			singleItem:true
 		});
 		// Navbar Init
 		$('nav').addClass('original').clone().insertAfter('nav').addClass('navbar-fixed-top').css('position', 'fixed').css('top', '0').css('margin-top', '0').removeClass('original');
