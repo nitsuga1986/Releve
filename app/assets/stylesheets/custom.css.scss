@@ -151,7 +151,7 @@ body.landingpage {
 	}
 
 	.btn.btn-blue:hover {
-		background: #31b9ff;
+		background: #12849E;
 	}
 
 	.btn.btn-blue-fill {
@@ -212,11 +212,11 @@ body.landingpage {
 		position: static;
 	}
 	section{
-		border-top: 1px solid transparent;
-		border-image: -moz-linear-gradient(left, rgba(26,174,162,0) 0%, rgba(26,174,162,0.33) 10%, rgba(25,169,162,0.5) 15%, rgba(18,132,158,1) 50%, rgba(25,169,162,0.5) 85%, rgba(26,174,162,0.33) 90%, rgba(26,174,162,0) 100%) 1 1 1 1; /* FF3.6-15 */
-		border-image: -webkit-linear-gradient(left, rgba(26,174,162,0) 0%,rgba(26,174,162,0.33) 10%,rgba(25,169,162,0.5) 15%,rgba(18,132,158,1) 50%,rgba(25,169,162,0.5) 85%,rgba(26,174,162,0.33) 90%,rgba(26,174,162,0) 100%) 1 1 1 1; /* Chrome10-25,Safari5.1-6 */
-		border-image: linear-gradient(to right, rgba(26,174,162,0) 0%,rgba(26,174,162,0.33) 10%,rgba(25,169,162,0.5) 15%,rgba(18,132,158,1) 50%,rgba(25,169,162,0.5) 85%,rgba(26,174,162,0.33) 90%,rgba(26,174,162,0) 100%) 1 1 1 1;	 /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-		border-image-slice: 1;
+		#border-top: 1px solid transparent;
+		#border-image: -moz-linear-gradient(left, rgba(26,174,162,0) 0%, rgba(26,174,162,0.33) 10%, rgba(25,169,162,0.5) 15%, rgba(18,132,158,1) 50%, rgba(25,169,162,0.5) 85%, rgba(26,174,162,0.33) 90%, rgba(26,174,162,0) 100%) 1 1 1 1; /* FF3.6-15 */
+		#border-image: -webkit-linear-gradient(left, rgba(26,174,162,0) 0%,rgba(26,174,162,0.33) 10%,rgba(25,169,162,0.5) 15%,rgba(18,132,158,1) 50%,rgba(25,169,162,0.5) 85%,rgba(26,174,162,0.33) 90%,rgba(26,174,162,0) 100%) 1 1 1 1; /* Chrome10-25,Safari5.1-6 */
+		#border-image: linear-gradient(to right, rgba(26,174,162,0) 0%,rgba(26,174,162,0.33) 10%,rgba(25,169,162,0.5) 15%,rgba(18,132,158,1) 50%,rgba(25,169,162,0.5) 85%,rgba(26,174,162,0.33) 90%,rgba(26,174,162,0) 100%) 1 1 1 1;	 /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		#border-image-slice: 1;
 	}
 	.section {
 		padding: 40px 0;
