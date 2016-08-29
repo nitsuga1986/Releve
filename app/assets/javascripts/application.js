@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require owl.carousel.min
+//= require owl/owl.carousel.min
 //= require bootstrap.min
 //= require wow.min
 //= require typewriter

@@ -14,7 +14,9 @@
  *= require normalize
  *= require bootstrap
  *= require jquery-ui
- *= require owl
+ *= require owl/owl.carousel
+ *= require owl/owl.theme
+ *= require owl/owl.transitions
  *= require animate
  *= require font-awesome.min
  *= require et-icons
