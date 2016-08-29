@@ -113,7 +113,7 @@ body.landingpage {
 		font-size: 60px;
 		display: inline-block;
 		margin: 0 10px;
-		color: #00a8ff;
+		color: #1AAEA2;
 		-webkit-animation-name: flash;
 		animation-name: flash;
 		-webkit-animation-duration: 1s;
@@ -147,7 +147,7 @@ body.landingpage {
 	}
 
 	.btn.btn-blue {
-		background: #00a8ff;
+		background: #1AAEA2;
 	}
 
 	.btn.btn-blue:hover {
@@ -155,14 +155,14 @@ body.landingpage {
 	}
 
 	.btn.btn-blue-fill {
-		color: #00a8ff;
-		border-color: #00a8ff;
+		color: #1AAEA2;
+		border-color: #1AAEA2;
 		background: transparent;
 	}
 
 	.btn.btn-blue-fill:hover {
 		color: white;
-		background: #00a8ff;
+		background: #1AAEA2;
 	}
 
 	.btn.btn-white-fill {
@@ -172,7 +172,7 @@ body.landingpage {
 	}
 
 	.btn.btn-white-fill:hover {
-		color: #00a8ff;
+		color: #1AAEA2;
 		background: #fff;
 	}
 
@@ -205,7 +205,11 @@ body.landingpage {
 	}
 	/* Sections */
 	section {
+		position: relative;
 		background: #fff;
+	}
+	section#nuestro_equipo{
+		position: static;
 	}
 	section{
 		border-top: 1px solid transparent;
@@ -407,7 +411,7 @@ body.landingpage {
 	}
 
 	.service:hover {
-		border-color: #00a8ff;
+		border-color: #1AAEA2;
 	}
 
 	.service:hover .icon-holder {
@@ -535,7 +539,7 @@ body.landingpage {
 	}
 
 	footer .social-footer li:hover a {
-		color: #00a8ff;
+		color: #1AAEA2;
 	}
 	/* Form Control */
 
@@ -626,7 +630,7 @@ body.landingpage {
 	.btn.btn-submit {
 		width: 100%;
 		margin-top: 30px;
-		color: #00a8ff;
+		color: #1AAEA2;
 		border: 2px solid #fff;
 		background: #fff;
 	}
@@ -636,7 +640,7 @@ body.landingpage {
 	}
 
 	.btn.btn-submit:hover {
-		color: #00a8ff;
+		color: #1AAEA2;
 		background: #fff;
 	}
 
@@ -690,7 +694,7 @@ body.landingpage {
 		width: 100%;
 		padding: 15px 0;
 		color: #fff;
-		background: #00a8ff;
+		background: #1AAEA2;
 	}
 
 	.row.title {
@@ -727,11 +731,11 @@ body.landingpage {
 	}
 
 	.blue {
-		color: #00a8ff;
+		color: #1AAEA2;
 	}
 
 	.blue-bg {
-		background: #00a8ff;
+		background: #1AAEA2;
 	}
 
 	.muted {
@@ -787,10 +791,10 @@ body.landingpage {
 			width: 100%;
 			padding: 50px 50px 0;
 			text-align: left;
-			background: #00a8ff;
+			background: #1AAEA2;
 		}
 		.pricings .pricing .box-main.active {
-			background: #00a8ff;
+			background: #1AAEA2;
 			-webkit-transform: translateX(0%);
 			-ms-transform: translateX(0%);
 			transform: translateX(0%);
@@ -840,7 +844,7 @@ body.landingpage {
 		transition: all 0.3s ease;
 	}
 	nav.navbar .navbar-nav li.active a:not(.btn) {
-		color: #00a8ff !important;
+		color: #1AAEA2 !important;
 	}
 	nav.navbar-fixed-top {
 		z-index: 9499;
