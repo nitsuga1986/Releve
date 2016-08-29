@@ -45,9 +45,14 @@ jQuery(function($) {
 			pagination: true
 		});
 		$("#gallery-carrousel").owlCarousel({
-		  navigation : true, // Show next and prev buttons
+		  navigation : false, // Show next and prev buttons
+		  autoPlay : 3000,
+		  stopOnHover:true,
 		  slideSpeed : 300,
 		  paginationSpeed : 400,
+		  items : 4,
+		  itemsDesktop : [1199,3],
+		  itemsDesktopSmall : [979,3],
 		  singleItem:true
 		});
 		// Navbar Init
