@@ -113,7 +113,7 @@ body.landingpage {
 		font-size: 60px;
 		display: inline-block;
 		margin: 0 10px;
-		color: #1AAEA2;
+		color: #12849E;
 		-webkit-animation-name: flash;
 		animation-name: flash;
 		-webkit-animation-duration: 1s;
@@ -147,22 +147,22 @@ body.landingpage {
 	}
 
 	.btn.btn-blue {
-		background: #1AAEA2;
-	}
-
-	.btn.btn-blue:hover {
 		background: #12849E;
 	}
 
+	.btn.btn-blue:hover {
+		background: #1AAEA2;
+	}
+
 	.btn.btn-blue-fill {
-		color: #1AAEA2;
-		border-color: #1AAEA2;
+		color: #12849E;
+		border-color: #12849E;
 		background: transparent;
 	}
 
 	.btn.btn-blue-fill:hover {
 		color: white;
-		background: #1AAEA2;
+		background: #12849E;
 	}
 
 	.btn.btn-white-fill {
@@ -172,7 +172,7 @@ body.landingpage {
 	}
 
 	.btn.btn-white-fill:hover {
-		color: #1AAEA2;
+		color: #12849E;
 		background: #fff;
 	}
 
@@ -411,7 +411,7 @@ body.landingpage {
 	}
 
 	.service:hover {
-		border-color: #1AAEA2;
+		border-color: #12849E;
 	}
 
 	.service:hover .icon-holder {
@@ -539,7 +539,7 @@ body.landingpage {
 	}
 
 	footer .social-footer li:hover a {
-		color: #1AAEA2;
+		color: #12849E;
 	}
 	/* Form Control */
 
@@ -630,7 +630,7 @@ body.landingpage {
 	.btn.btn-submit {
 		width: 100%;
 		margin-top: 30px;
-		color: #1AAEA2;
+		color: #12849E;
 		border: 2px solid #fff;
 		background: #fff;
 	}
@@ -640,7 +640,7 @@ body.landingpage {
 	}
 
 	.btn.btn-submit:hover {
-		color: #1AAEA2;
+		color: #12849E;
 		background: #fff;
 	}
 
@@ -694,7 +694,7 @@ body.landingpage {
 		width: 100%;
 		padding: 15px 0;
 		color: #fff;
-		background: #1AAEA2;
+		background: #12849E;
 	}
 
 	.row.title {
@@ -731,11 +731,11 @@ body.landingpage {
 	}
 
 	.blue {
-		color: #1AAEA2;
+		color: #12849E;
 	}
 
 	.blue-bg {
-		background: #1AAEA2;
+		background: #12849E;
 	}
 
 	.muted {
@@ -791,10 +791,10 @@ body.landingpage {
 			width: 100%;
 			padding: 50px 50px 0;
 			text-align: left;
-			background: #1AAEA2;
+			background: #12849E;
 		}
 		.pricings .pricing .box-main.active {
-			background: #1AAEA2;
+			background: #12849E;
 			-webkit-transform: translateX(0%);
 			-ms-transform: translateX(0%);
 			transform: translateX(0%);
@@ -844,7 +844,7 @@ body.landingpage {
 		transition: all 0.3s ease;
 	}
 	nav.navbar .navbar-nav li.active a:not(.btn) {
-		color: #1AAEA2 !important;
+		color: #12849E !important;
 	}
 	nav.navbar-fixed-top {
 		z-index: 9499;
