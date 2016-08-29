@@ -1052,11 +1052,13 @@ hr.greyhr {
     #developer-data{font-size: 14px;}
 }
 
+#gallery-carrousel .item{
+  margin: 3px;
+}
 #gallery-carrousel .item img{
-	display: block;
-	width: 100%;
-	height: auto;
-	cursor:e-resize;
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 #preload-01 { background: image-url("bootstrap-calendar/dark_wood.png") no-repeat -9999px -9999px; }
