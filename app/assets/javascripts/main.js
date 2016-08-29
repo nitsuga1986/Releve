@@ -44,7 +44,12 @@ jQuery(function($) {
 			singleItem: true,
 			pagination: true
 		});
-
+		$("#gallery-carrousel").owlCarousel({
+		  navigation : true, // Show next and prev buttons
+		  slideSpeed : 300,
+		  paginationSpeed : 400,
+		  singleItem:true
+		});
 		// Navbar Init
 		$('nav').addClass('original').clone().insertAfter('nav').addClass('navbar-fixed-top').css('position', 'fixed').css('top', '0').css('margin-top', '0').removeClass('original');
 		$('.mobile-nav ul').html($('nav .navbar-nav').html());

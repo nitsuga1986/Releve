@@ -451,7 +451,7 @@ body.landingpage {
 		height: 250px;
 		padding-top: 60px;
 		opacity: 0;
-		background: rgba(0, 168, 255, 0.9);
+		background: rgba(26, 174, 162, 0.9);
 		-webkit-transition: opacity 0.45s ease;
 		transition: opacity 0.45s ease;
 	}
@@ -1051,6 +1051,14 @@ hr.greyhr {
     line-height: 1.5;
     #developer-data{font-size: 14px;}
 }
+
+#gallery-carrousel .item img{
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+
 #preload-01 { background: image-url("bootstrap-calendar/dark_wood.png") no-repeat -9999px -9999px; }
 #preload-02 { background: image-url("bootstrap-calendar/tick.png?2") no-repeat -9999px -9999px; }
 #preload-03 { background: image-url("backpattern.png") no-repeat -9999px -9999px; }
@@ -1061,3 +1069,11 @@ hr.greyhr {
 #preload-08 { background: image-url("table-3.jpg") no-repeat -9999px -9999px; }
 #preload-09 { background: image-url("footer.jpg") no-repeat -9999px -9999px; }
 #preload-10 { background: image-url("popup.jpg") no-repeat -9999px -9999px; }
+#preload-11 { background: image-url("carrousel/gallery_1.jpg") no-repeat -9999px -9999px; }
+#preload-12 { background: image-url("carrousel/gallery_2.jpg") no-repeat -9999px -9999px; }
+#preload-13 { background: image-url("carrousel/gallery_3.jpg") no-repeat -9999px -9999px; }
+#preload-14 { background: image-url("carrousel/gallery_4.jpg") no-repeat -9999px -9999px; }
+#preload-15 { background: image-url("carrousel/gallery_5.jpg") no-repeat -9999px -9999px; }
+#preload-16 { background: image-url("carrousel/gallery_6.jpg") no-repeat -9999px -9999px; }
+#preload-17 { background: image-url("carrousel/gallery_7.jpg") no-repeat -9999px -9999px; }
+#preload-18 { background: image-url("carrousel/gallery_8.jpg") no-repeat -9999px -9999px; }
