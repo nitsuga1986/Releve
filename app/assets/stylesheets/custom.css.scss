@@ -1045,7 +1045,11 @@ hr.greyhr {
     margin: 1em 0;
     padding: 0; 
 }
-
+#footer-data p, #footer-data a{
+    color: #8a8e91;
+    font-size: 18px;
+    line-height: 1.5;
+}
 #preload-01 { background: image-url("bootstrap-calendar/dark_wood.png") no-repeat -9999px -9999px; }
 #preload-02 { background: image-url("bootstrap-calendar/tick.png?2") no-repeat -9999px -9999px; }
 #preload-03 { background: image-url("backpattern.png") no-repeat -9999px -9999px; }
