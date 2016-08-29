@@ -30,6 +30,7 @@ jQuery(function($) {
 			else if ($(this).hasClass('cut-bottom'))
 				$(this).css('border-left-width', $(this).parent().width() + "px");
 		});
+		$('#carrousel-container').height($(window).height()*0.8);
 
 		// Sliders Init
 		$('.owl-schedule').owlCarousel({
