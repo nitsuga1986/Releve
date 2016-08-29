@@ -33,14 +33,22 @@ body.landingpage {
 	}
 	.preloader img {
 		position: absolute;
-		top: calc(50% - 32px);
+		top: calc(40% - 32px);
 		left: calc(50% - 32px);
 	}
-	.preloader div {
+	.preloader div:not(#quotes_container) {
 		display: none;
 		/* Preload the Second Pricing Image */
 		background: image-url("pricing2.jpg") no-repeat 9999px 9999px;
 		background-position: 9999px 9999px;
+	}
+	#quotes_container {
+		display:none;
+		text-align:center;
+		position: absolute;
+		top: calc(40% + 32px);
+		left: calc(10%);
+		width:80%;
 	}
 
 	/* Typography */
@@ -130,7 +138,7 @@ body.landingpage {
 	
 	/* Buttons */
 
-	.btn:not(.btn-social) {
+	.btn:not(.btn-social):not(#btn-preloader) {
 		font-size: 18px;
 		display: inline-block;
 		padding: 15px 30px;
@@ -142,7 +150,7 @@ body.landingpage {
 		transition: all 0.3s ease;
 	}
 
-	.btn:hover:not(.btn-social),.btn:focus:not(.btn-social) {
+	.btn:hover:not(.btn-social):not(#btn-preloader),.btn:focus:not(.btn-social):not(#btn-preloader) {
 		color: white;
 	}
 
