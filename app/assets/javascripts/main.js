@@ -88,12 +88,13 @@ jQuery(function($) {
 
 	// Mobile Nav
 	$('body').on('click', 'nav .navbar-toggle', function() {
-		//event.stopPropagation();
 		$('.mobile-nav').addClass('active');
+		$('#loginModalButton').addClass('btn-block');
 	});
 
 	$('body').on('click', '.mobile-nav a', function(event) {
 		$('.mobile-nav').removeClass('active');
+		$('#loginModalButton').removeClass('btn-block');
 		if(!this.hash) return;
 		event.preventDefault();
 		if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
