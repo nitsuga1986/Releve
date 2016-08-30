@@ -44,31 +44,10 @@
 	</div>
 	<!-- /.container-fluid -->
 </nav>
-<!-- Mobile navigation -->
-<div class="mobile-nav visible-xs-block">
-	<ul class="lead">
-		<% if !(user_signed_in? && current_user.admin?) %>
-			<li><a href="#intro">Inicio</a></li>
-		<% else %>
-			<li><a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue btn-block">Comenzar!</a></li>
-			<li><a href="/">Inicio</a></li>
-			<li><a href="/dashboard/index"><i class="fa fa-calendar" aria-hidden="true"></i> Clases</a></li>
-			<li><a href="/alumno/index"><i class="fa fa-users" aria-hidden="true"></i> Alumnos</a></li>
-		<% end %>
-		<% if user_signed_in? %>
-			<li><a href="/dashboard/join"><i class="fa fa-check-square-o" aria-hidden="true"></i> Mis Clases</a></li>
-			<% if current_user.confirmed? %>
-				<li class="user_header" title="Salir"><a data-method="DELETE" href="<%= destroy_user_session_path %>"><%= current_user.email %>  <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
-			<% else %>
-				<li><a href="#" data-toggle="modal" data-target="#modal2" class="btn btn-danger"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Confirmar mis datos</a></li>
-				<li class="user_header" title="Salir"><a data-method="DELETE" href="<%= destroy_user_session_path %>">Salir <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
-			<% end %>
-		<% else %>
-			<li><a href="#actividades">Actividades</a></li>
-			<li><a href="#galeria">Galeria</a></li>
-			<li><a href="#nuestro_equipo">Nuestro Equipo</a></li>
-			<li><a href="#ubicacion">Ubicacion</a></li>
-		<% end %>
+<!-- Holder for mobile navigation -->
+<div class="mobile-nav">
+	<ul>
 	</ul>
 	<a href="#" class="close-link"><i class="arrow_up"></i></a>
 </div>
+
