@@ -1,30 +1,9 @@
 	<div class="preloader">
 		<img src="<%= asset_path 'loader.gif' %>" alt="Preloader image">
-		<script>
-		var QuotesArray = [];
-		var Quotes_length = QuotesArray.length;
-		var Quotes_index = Math.floor(Math.random() * Quotes_length-1);
-		var stopQuotes = false;
-		var timerquotes;
-		function startQuotes() {
-			if (!stopQuotes){
-				document.getElementById('quotes_preloader').innerHTML = QuotesArray[Quotes_index];
-				Quotes_index++; if (Quotes_index == Quotes_length) {Quotes_index = 0;};
-				timerquotes = setTimeout(startQuotes, 3000);
-			}
-		}
-		function stopQuotesFunction() {
-			stopQuotes = true;
-			clearTimeout(timerquotes);
-			document.getElementById('btn-preloader').setAttribute("disabled", "disabled")
-			document.getElementById('btn-preloader').className += " active";
-		}
-		</script>
 		<div id="quotes_container">
 			<blockquote>
-				<p id="quotes_preloader"><%= @firstQuote %></p>
+				<p id="quotes_preloader"><%= @preloadQuote %></p>
 				<p id="quotes_author" class="text-muted pull-right"> - Joseph Pilates</p>
-				<!--<button id="btn-preloader" class="btn btn-xs btn-default pull-left" onclick="stopQuotesFunction()"><span class="glyphicon glyphicon-pause" aria-hidden="true"></span></button>-->
 			</blockquote>
 		</div>
 	</div>
