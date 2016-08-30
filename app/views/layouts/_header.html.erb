@@ -14,7 +14,7 @@
 			</a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		<div class="collapse navbar-collapse hidden-xs" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right main-nav">
 				<% if !(user_signed_in? && current_user.admin?) %>
 					<li><a href="#intro">Inicio</a></li>
@@ -44,3 +44,10 @@
 	</div>
 	<!-- /.container-fluid -->
 </nav>
+<!-- Holder for mobile navigation -->
+<div class="mobile-nav lead">
+	<ul>
+	</ul>
+	<a href="#" class="close-link"><i class="arrow_up"></i></a>
+</div>
+

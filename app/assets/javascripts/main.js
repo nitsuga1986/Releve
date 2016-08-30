@@ -88,7 +88,6 @@ jQuery(function($) {
 
 	// Mobile Nav
 	$('body').on('click', 'nav .navbar-toggle', function() {
-		event.stopPropagation();
 		$('.mobile-nav').addClass('active');
 	});
 
