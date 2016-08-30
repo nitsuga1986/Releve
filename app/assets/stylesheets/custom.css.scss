@@ -667,6 +667,13 @@ body.landingpage {
 		-ms-transform: scale(0);
 		transform: scale(0);
 	}
+	
+	.mobile-nav.active {
+		opacity: 1;
+		-webkit-transform: scale(1);
+		-ms-transform: scale(1);
+		transform: scale(1);
+	}
 
 	.mobile-nav ul {
 		//display: table-cell;
