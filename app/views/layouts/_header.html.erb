@@ -46,10 +46,11 @@
 </nav>
 <!-- Mobile navigation -->
 <div class="mobile-nav visible-xs-block">
-	<ul class="nav navbar-nav navbar-right main-nav">
+	<ul class="nav navbar-nav navbar-right main-nav lead">
 		<% if !(user_signed_in? && current_user.admin?) %>
 			<li><a href="#intro">Inicio</a></li>
 		<% else %>
+			<li><a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue btn-block">Comenzar!</a></li>
 			<li><a href="/">Inicio</a></li>
 			<li><a href="/dashboard/index"><i class="fa fa-calendar" aria-hidden="true"></i> Clases</a></li>
 			<li><a href="/alumno/index"><i class="fa fa-users" aria-hidden="true"></i> Alumnos</a></li>
@@ -67,7 +68,6 @@
 			<li><a href="#galeria">Galeria</a></li>
 			<li><a href="#nuestro_equipo">Nuestro Equipo</a></li>
 			<li><a href="#ubicacion">Ubicacion</a></li>
-			<li><a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue">Comenzar!</a></li>
 		<% end %>
 	</ul>
 	<a href="#" class="close-link"><i class="arrow_up"></i></a>
