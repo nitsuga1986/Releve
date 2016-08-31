@@ -34,7 +34,7 @@ body.landingpage {
 	}
 	.preloader img {
 		position: absolute;
-		top: calc(40% - 32px);
+		top: calc(20% - 32px);
 		left: calc(50% - 32px);
 	}
 	.preloader div:not(#quotes_container) {
@@ -44,7 +44,7 @@ body.landingpage {
 		transition: opacity 2s linear;
 		text-align:center;
 		position: absolute;
-		top: calc(40% + 32px);
+		top: calc(20% + 32px);
 		left: calc(10%);
 		width:80%;
 	}
@@ -129,7 +129,6 @@ body.landingpage {
 	}
 	a {
 		text-decoration: none;
-		color: white;
 		-webkit-transition: all 0.3s ease;
 		transition: all 0.3s ease;
 	}
@@ -690,6 +689,11 @@ body.landingpage {
 		background: #12849E;
 	}
 	
+	/* Panel */
+	div.panel-heading.bg-light-releve{
+		background-color:#1aaea2;
+		h4{color:white;}
+	}
 	/* Navigation Bar ( Navbar ) */
 	.navbar {
 		top: 50px;
@@ -868,9 +872,10 @@ body.landingpage {
 
 
 /************NITSUGA******************************************************************/
-body.landingpage {
-
-}
+.bg-releve{background-color:#12849e;}
+.text-releve{background-color:#12849e;}
+.bg-light-releve{background-color:#1aaea2;}
+.text-light-releve{background-color:#1aaea2;}
 .first{padding:150px}
 .first.notlandingpage{padding:100px}
 .notlandingpage.original .navbar-nav > li > a:not(.btn-danger) {
