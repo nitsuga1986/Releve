@@ -132,13 +132,8 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 			// Each user in event:
 			$.each(event.users, function(key_user, user) {
 				// joined?
-				if(user.id == $scope.user_id) {	
+				if(user.id == $scope.user_id) {
 					events[key_event].joined = true;
-					my_clase_count+=1;
-					// Mis Clases List
-					$(document.createElement('a')).addClass("eventmylist btn btn-default setClase").attr('type', 'button')
-					.attr('data-event-id', event.id).attr('title', 'Click para cancelar la inscripción')
-					.html('<i class="fa fa-check-square text-'+event.class+'" aria-hidden="true"></i> '+dateFormat(event.fecha)+' '+event.horario+'hs: '+event.actividad).appendTo(mylist);
 				} else {
 					events[key_event].joined = false;
 				}
@@ -154,6 +149,13 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 				events[key_event].old_clase = false;
 				next_clases_count+=1;
 				if (next_clases_count<10){
+					if(events[key_event].joined == true) {
+						// Mis Clases List
+						my_clase_count+=1;
+						$(document.createElement('a')).addClass("eventmylist btn btn-default setClase").attr('type', 'button')
+						.attr('data-event-id', event.id).attr('title', 'Click para cancelar la inscripción')
+						.html('<i class="fa fa-check-square text-'+event.class+'" aria-hidden="true"></i> '+dateFormat(event.fecha)+' '+event.horario+'hs: '+event.actividad).appendTo(mylist);
+					}
 					// Próximas clases List
 					if (event.joined!=true){
 					$(document.createElement('a')).addClass("eventlist btn btn-default setClase").attr('type', 'button')
@@ -181,7 +183,7 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 	// Calendar start
 	var calendar = $('#calendar').calendar(options);
 	// First Clase Modal
-	if ($scope.user_primera_clase){$('#first-clase-modal').modal('toggle')}
+	if ($scope.user_primera_clase){if(!$('#modal2').hasClass('in')){$('#first-clase-modal').modal('toggle')}}
 	stopLoading();
 
 }]);
