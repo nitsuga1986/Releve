@@ -145,7 +145,6 @@ body.landingpage {
 		-webkit-transition: all 0.3s ease;
 		transition: all 0.3s ease;
 	}
-
 	.btn:hover:not(.btn-social):not(#btn-preloader),.btn:focus:not(.btn-social):not(#btn-preloader) {
 		color: white;
 	}
@@ -825,6 +824,9 @@ body.landingpage {
 	}
 	nav.navbar-fixed-top .navbar-nav > li > a:not(.btn):not(.btn) {
 		color: #bbb;
+	}
+	.navbar.original .icon-bar {
+		background: white;
 	}
 	.icon-bar {
 		background: #1aaea2;
