@@ -638,7 +638,6 @@ body.landingpage {
 
 	/* Modal */
 	.modal-content.text-releve{
-		h4{color:#216776;}
 		color:#12849e;
 	}
 	/* Mobile Nav */
@@ -690,7 +689,7 @@ body.landingpage {
 	}
 	
 	/* Panel */
-	div.panel-heading.bg-light-releve{
+	div.panel-heading.bg-light-releve, div.modal-header.bg-light-releve{
 		background-color:#1aaea2;
 		h4{color:white;}
 	}
@@ -873,9 +872,9 @@ body.landingpage {
 
 /************NITSUGA******************************************************************/
 .bg-releve{background-color:#12849e;}
-.text-releve{background-color:#12849e;}
+.text-releve{color:#12849e;}
 .bg-light-releve{background-color:#1aaea2;}
-.text-light-releve{background-color:#1aaea2;}
+.text-light-releve{color:#1aaea2;}
 .first{padding:150px}
 .first.notlandingpage{padding:100px}
 .notlandingpage.original .navbar-nav > li > a:not(.btn-danger) {
