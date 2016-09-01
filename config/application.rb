@@ -17,28 +17,8 @@ module Releve
   class Application < Rails::Application
 	# Enable the asset pipeline
 	config.assets.enabled = true
+	config.assets.precompile += %w( api.js )
 	config.assets.precompile += %w[*.png *.jpg *.jpeg *.gif] 
-	config.assets.precompile += %w( 
-		jquery-ui/datepicker.js 
-		jquery-ui/autocomplete.js 
-		angular/angular.min.js 
-		angular/angular-resource.min.js
-		angular/angular-route.min.js
-		angular/ng-table.min.js
-		routes.js
-		config.js
-		services/resources.js
-		controllers/ClaseEditCtrl.js
-		controllers/ClaseIndexCtrl.js
-		controllers/ClaseShowCtrl.js
-		controllers/ClaseJoinCtrl.js
-		controllers/AlumnoEditCtrl.js
-		controllers/AlumnoIndexCtrl.js
-		controllers/AlumnoShowCtrl.js
-		bootstrap-calendar/underscore-min.js
-		bootstrap-calendar/calendar.js
-		filters/html_trusted.js
-	)
 	config.assets.precompile += %w(
 	  ie.js
 	  ie.css
