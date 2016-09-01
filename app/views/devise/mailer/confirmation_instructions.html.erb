@@ -1,0 +1,8 @@
+<div class="col-xs-12 col-sm-6 col-sm-offset-3">
+	<p><%= t('.greeting', :recipient => @resource.email, :default => "Bienvenido/a #{@resource.email}!") %></p>
+
+	<p><%= t('.instruction', :default => "Puedes confirmar tu cuenta de correo utilizando el link que se encuentra a continuación:") %></p>
+
+	<p><%= link_to t('.action', :default => "Confirmar mi cuenta"),
+			 confirmation_url(@resource, :confirmation_token => @token, locale: I18n.locale) %></p>
+</div>
