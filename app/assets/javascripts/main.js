@@ -52,7 +52,7 @@ jQuery(function($) {
 		});
 		// Navbar Init
 		$('nav').addClass('original').clone().insertAfter('nav').addClass('navbar-fixed-top').css('position', 'fixed').css('top', '0').css('margin-top', '0').removeClass('original');
-		$('.mobile-nav ul').html($('nav .navbar-nav').html());
+		// $('.mobile-nav ul').html($('nav .navbar-nav').html());
 		$('nav.navbar-fixed-top .navbar-brand img').attr('src', $('nav.navbar-fixed-top .navbar-brand img').data("active-url"));
 
 		// Typing Intro Init
