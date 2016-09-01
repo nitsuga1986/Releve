@@ -1,8 +1,5 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto:300,400,500,700);
-
 /***********************************************************************************/
 body.landingpage {
-	font-family: 'Roboto', 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
 	font-size: 14px;
 	overflow-x: hidden;
 	color: #2a3237;
@@ -61,7 +58,6 @@ body.landingpage {
 	h4,
 	h5,
 	h6 {
-		font-family: 'Roboto', 'Avenir Next', 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
 		position: relative;
 		margin: 10px 0;
 	}
@@ -940,20 +936,7 @@ hr.greyhr {
   width: 100%;
   height: auto;
 }
-// Show scroll for modal only when modal is opened
-.modal {
-  overflow-y: hidden; 
-}
-.modal-open .modal {
-  overflow-y: scroll;      
-}
 
-// Fix page shift when body scroll is killed
-.modal-open .modal-shiftfix,
-.modal-open .modal-shiftfix .navbar-fixed-top,
-.modal-open .modal-shiftfix .navbar-fixed-bottom {
-  overflow-y: scroll;      
-}
 #preload-01 { background: image-url("bootstrap-calendar/dark_wood.png") no-repeat -9999px -9999px; }
 #preload-02 { background: image-url("bootstrap-calendar/tick.png?2") no-repeat -9999px -9999px; }
 #preload-03 { background: image-url("backpattern.png") no-repeat -9999px -9999px; }
