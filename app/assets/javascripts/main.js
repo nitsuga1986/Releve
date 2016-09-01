@@ -87,8 +87,10 @@ jQuery(function($) {
 	});
 
 	// Mobile Nav
-	$('body').on('click', 'nav .navbar-toggle', function() {
-		$('.mobile-nav').addClass('active');
+	$('body').on('click', 'nav .navbar-header', function() {
+		if($("div.nav.navbar-nav").not(":visible")){
+			$('.mobile-nav').addClass('active');
+		}
 	});
 
 	$('body').on('click', '.mobile-nav a', function(event) {
