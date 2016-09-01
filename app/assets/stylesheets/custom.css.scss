@@ -940,7 +940,9 @@ hr.greyhr {
   width: 100%;
   height: auto;
 }
-
+.modal{
+   overflow: visible !important;
+}
 #preload-01 { background: image-url("bootstrap-calendar/dark_wood.png") no-repeat -9999px -9999px; }
 #preload-02 { background: image-url("bootstrap-calendar/tick.png?2") no-repeat -9999px -9999px; }
 #preload-03 { background: image-url("backpattern.png") no-repeat -9999px -9999px; }
