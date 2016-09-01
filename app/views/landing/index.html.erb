@@ -246,27 +246,10 @@
 					<p><i class="fa fa-map-marker text-danger" aria-hidden="true"></i> <strong>Parana 26, Piso 3 Dpto. M</strong></p>
 					<p>Ciudad Autónoma de Buenos Aires C1017AAB</p>
 					<p><i class="fa fa-phone" aria-hidden="true"></i> <a href="tel:11-4382-6446">+54 (011) 4382 - 6446</a></p>
-					<p><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:relevepilates@gmail.com?Subject=Releve%20Pilates" target="_blank">relevepilates@gmail.com</a></p>
+					<p><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:relevepilates@gmail.com?Subject=Releve%20Pilates">relevepilates@gmail.com</a></p>
 				</div>
 				<div class="col-xs-12 col-md-8">
-					<style>#map {width: 100%;height: 400px;}</style>
 					<div id="map"></div>
-					<script>
-					  function initMap() {
-						var mapDiv = document.getElementById('map');
-						var map = new google.maps.Map(mapDiv, {
-							center: {lat: -34.608301, lng: -58.387704},
-							zoom: 16
-						});
-						var image = '<%= asset_path 'logo.png' %>';
-						var beachMarker = new google.maps.Marker({
-							position: {lat: -34.608301, lng: -58.387704},
-							map: map,
-							icon: image
-						});
-					  }
-					</script>
-					<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFW30nj4FE0T263r8uRlMD3MrWxwrXqfY&callback=initMap"></script>
 				</div>
 			</div>
 			</div>
@@ -289,3 +272,21 @@
 
 	<%= render 'layouts/footer' %>
 	<%= render 'layouts/modals' %>
+	
+	
+<script>
+  function initMap() {
+	var mapDiv = document.getElementById('map');
+	var map = new google.maps.Map(mapDiv, {
+		center: {lat: -34.608301, lng: -58.387704},
+		zoom: 16
+	});
+	var image = '<%= asset_path 'logo.png' %>';
+	var beachMarker = new google.maps.Marker({
+		position: {lat: -34.608301, lng: -58.387704},
+		map: map,
+		icon: image
+	});
+  }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFW30nj4FE0T263r8uRlMD3MrWxwrXqfY&callback=initMap"></script>
