@@ -940,8 +940,19 @@ hr.greyhr {
   width: 100%;
   height: auto;
 }
-.modal{
-   overflow: visible !important;
+// Show scroll for modal only when modal is opened
+.modal {
+  overflow-y: hidden; 
+}
+.modal-open .modal {
+  overflow-y: scroll;      
+}
+
+// Fix page shift when body scroll is killed
+.modal-open .modal-shiftfix,
+.modal-open .modal-shiftfix .navbar-fixed-top,
+.modal-open .modal-shiftfix .navbar-fixed-bottom {
+  overflow-y: scroll;      
 }
 #preload-01 { background: image-url("bootstrap-calendar/dark_wood.png") no-repeat -9999px -9999px; }
 #preload-02 { background: image-url("bootstrap-calendar/tick.png?2") no-repeat -9999px -9999px; }
