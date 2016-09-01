@@ -84,7 +84,7 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 			$(document.body).off('click', 'a[data-event-id].setClase').on('click', 'a[data-event-id].setClase', function(){
 				id = $(this).attr('data-event-id');
 				setClaseModal(id);
-				$('#events-modal').modal('toggle');
+				$('#events-modal').modal('show');
 			});
 		},
 		onAfterSlideLoad: function(view) {
@@ -92,7 +92,7 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 			$('ul.list-unstyled > li[data-event-id].setClase').on('click', function(event){
 				id = $(this).attr('data-event-id');
 				setClaseModal(id);
-				$('#events-modal').modal('toggle');
+				$('#events-modal').modal('show');
 				return false;
 			});
 		},
@@ -183,7 +183,7 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 	// Calendar start
 	var calendar = $('#calendar').calendar(options);
 	// First Clase Modal
-	if ($scope.user_primera_clase){if(!$('#modal2').hasClass('in')){$('#first-clase-modal').modal('toggle')}}
+	if ($scope.user_primera_clase){if($scope.user_confirmed){$('#first-clase-modal').modal('show')}}
 	stopLoading();
 
 }]);

@@ -4,6 +4,7 @@
 	<input type="hidden" name="user_email" data-ng-init="user_email='<%= current_user.email %>'"/>
 	<input type="hidden" name="user_primera_clase" data-ng-init="user_primera_clase=<%= current_user.primera_clase %>"/>
 	<input type="hidden" name="user_nro_clases" data-ng-init="user_nro_clases=<%= current_user.nro_clases %>"/>
+	<input type="hidden" name="user_confirmed" data-ng-init="user_confirmed=<%= current_user.confirmed %>"/>
 	<div ng-view ></div>
 </div>
 <%= render 'layouts/modals' %>
