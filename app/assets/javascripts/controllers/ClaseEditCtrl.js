@@ -24,7 +24,9 @@ angular.module("TurnosApp").controller("ClaseEditCtrl",['$scope', '$q', '$http',
 		$scope.FormButton = '<i class="fa fa-user-plus fa-lg"></i> Agregar clase';
 		$scope.clase = new ResourceClase();
 		$scope.clase.users = [];
-		$scope.clase.fecha = $scope.SetToday()
+		$scope.clase.fecha = $scope.SetToday();
+		$scope.clase.max_users = 4; 
+		$scope.clase.actividad = 'Pilates'; 
 	}
 	// SUBMIT
 	$scope.submitted = false;
