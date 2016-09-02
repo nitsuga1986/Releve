@@ -30,9 +30,10 @@ $.datepicker.regional['es'] = {
 // Clase
 var claseDefaultPage = 1;	var claseDefaultCount = 100;
 var claseDefaultFilter = {}; 
-var claseDefaultSorting = {fecha: 'desc'};
-var horariosArray = ["09:00","10:00","11:00","12:00","13:00","17:00","18:00","19:00","20:00","--","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00"];
+var claseDefaultSorting = {fecha: 'desc',horario: 'desc'};
+var horariosArray = ["09:00","10:00","11:00","12:00","13:00","17:00","18:00","19:00","20:00","21:00","--","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00"];
 var columns_clase = [
+	{title:"Día",field:"dia",filter:"dia",visible:true,filter:{'dia':'text'}},
 	{title:"Fecha",field:"fecha",filter:"fecha",visible:true,filter:{'fecha':'text'}},
 	{title:"Horario",field:"horario",filter:"horario",visible:true,filter:{'horario':'text'}},
 	{title:"Actividad",field:"actividad",filter:"actividad",visible:true,filter:{'actividad':'text'}},
