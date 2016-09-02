@@ -17,7 +17,9 @@ module Releve
   class Application < Rails::Application
 	# Enable the asset pipeline
 	config.assets.enabled = true
-	config.assets.precompile += %w( api.js )
+	%w( api_root application landing mniauth_callbacks users ).each do |controller|
+		config.assets.precompile += ["#{controller}.js"]
+	end
 	config.assets.precompile += %w[*.png *.jpg *.jpeg *.gif] 
 	config.assets.precompile += %w(
 	  ie.js

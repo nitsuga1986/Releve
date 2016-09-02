@@ -13,7 +13,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- styles & fonts -->
     <%= stylesheet_link_tag "application", media: "all","data-turbolinks-track" => true %>
-    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   </head>
   
   <body class="<% if @landingpage %>landingpage<% end %>">
@@ -30,3 +29,5 @@
   <%= csrf_meta_tags %>
   <%= render 'layouts/shim' %>
 </html>
+
+<%= javascript_include_tag "application", params[:controller], "data-turbolinks-track" => true %>
