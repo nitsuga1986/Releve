@@ -154,17 +154,17 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 						my_clase_count+=1;
 						$miclase_btn = $(document.createElement('a')).addClass("eventmylist btn btn-default setClase").attr('type', 'button')
 						.attr('data-event-id', event.id).attr('title', 'Click para cancelar la inscripción')
-						.html('<i class="fa fa-check-square text-'+event.class+'" aria-hidden="true"></i> '+dateFormat(event.fecha)+' '+event.horario+'hs: '+event.actividad).appendTo(mylist);
+						.html('<i class="fa fa-check-square text-'+event.class+'" aria-hidden="true"></i> '+dayNamesShort[(new Date(event.fecha)).getDay()]+' '+dateFormat(event.fecha)+' '+event.horario+'hs: '+event.actividad).appendTo(mylist);
 					}
 					// Próximas clases List
 					if (event.joined!=true){
 						$clase_btn = $(document.createElement('a')).addClass("eventlist btn btn-default setClase").attr('type', 'button')
 						.attr('data-event-id', event.id).attr('title', 'Click para anotarse')
-						.html('<i class="fa fa-circle text-'+event.class+'" aria-hidden="true"></i> '+dateFormat(event.fecha)+' '+event.horario+'hs: '+event.actividad).appendTo(list);}
+						.html('<i class="fa fa-circle text-'+event.class+'" aria-hidden="true"></i> '+dayNamesShort[(new Date(event.fecha)).getDay()]+' '+dateFormat(event.fecha)+' '+event.horario+'hs: '+event.actividad).appendTo(list);}
 					else {
 						$clase_btn = $(document.createElement('a')).addClass("eventlist btn btn-default setClase").attr('type', 'button')
 						.attr('data-event-id', event.id).attr('title', 'Click para cancelar la inscripción')
-						.html('<i class="fa fa-check-square text-'+event.class+'" aria-hidden="true"></i> '+dateFormat(event.fecha)+' '+event.horario+'hs: '+event.actividad).appendTo(list);
+						.html('<i class="fa fa-check-square text-'+event.class+'" aria-hidden="true"></i> '+dayNamesShort[(new Date(event.fecha)).getDay()]+' '+dateFormat(event.fecha)+' '+event.horario+'hs: '+event.actividad).appendTo(list);
 					}
 				}
 			} else {
