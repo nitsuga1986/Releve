@@ -62,6 +62,24 @@ class Api::ClasesController < ApplicationController
 		render json: @clase, status: :conflict
 	end
   end
+  
+  def bulk
+	Date.parse(params[:fecha_start]).upto(Date.parse(params[:fecha_end])) do |date|
+		if !@clase = Clase.find_by_fecha_and_horario(date.strftime("%Y-%m-%d"),params[:horario]) then
+			params[:fecha] = date.strftime("%Y-%m-%d")
+			@clase = Clase.new(params.permit(:fecha, :horario, :actividad, :max_users, :instructor))
+			if @clase.save then
+				if !params[:users].nil? then
+					params[:users].each do |user|
+						@clase.add_asistencia(user[:id]) if user[:id]	
+					end
+				end
+			end
+		end
+	end
+	render json: @clase, status: :created
+  end
+
 
   def update
 	@clase = Clase.find(params[:id])

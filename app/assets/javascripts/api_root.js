@@ -21,6 +21,7 @@
 //= require services/resources
 //= require controllers/ClaseIndexCtrl
 //= require controllers/ClaseEditCtrl
+//= require controllers/ClaseBulkCtrl
 //= require controllers/ClaseShowCtrl
 //= require controllers/ClaseJoinCtrl
 //= require controllers/AlumnoIndexCtrl

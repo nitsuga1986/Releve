@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 		resources :clases do
 			collection do
 				get 'autocomplete'
+				get 'bulk'
 			end
 			member do
 				get 'join'

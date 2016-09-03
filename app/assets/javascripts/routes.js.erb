@@ -5,6 +5,7 @@ angular.module("TurnosApp")
 		// Clases 
 		.when("/dashboard/index", { title: 'Listado de clases',templateUrl: "<%= asset_path('clase/index.html') %> ", controller: "ClaseIndexCtrl", activetab: 'clase'})
 		.when("/dashboard/new", { title: 'Nueva clase',templateUrl: "<%= asset_path('clase/edit.html') %> ", controller: "ClaseEditCtrl", activetab: 'clase'})
+		.when("/dashboard/bulk", { title: 'Nuevas clases en masa',templateUrl: "<%= asset_path('clase/bulk.html') %> ", controller: "ClaseBulkCtrl", activetab: 'clase'})
 		.when("/dashboard/join", { title: 'Inscripciones',templateUrl: "<%= asset_path('clase/join.html') %> ", controller: "ClaseJoinCtrl", activetab: 'clase'})
 		.when("/dashboard/:id", { title: 'Detalles de la clase',templateUrl: "<%= asset_path('clase/show.html') %> ", controller: "ClaseShowCtrl", activetab: 'clase'})
 		.when("/dashboard/:id/edit", { title: 'Editar clase',templateUrl: "<%= asset_path('clase/edit.html') %> ", controller: "ClaseEditCtrl", activetab: 'clase'})

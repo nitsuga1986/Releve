@@ -21,7 +21,7 @@ angular.module("TurnosApp").controller("ClaseEditCtrl",['$scope', '$q', '$http',
 		$scope.clase.$promise.then(function( value ){},function( error ){$location.path("/dashboard/new");});	// if id not exists => ToNew
 	} else { 				// New
 		$scope.FormTitle = "<i class='fa fa-calendar'></i> Agregar nueva clase";
-		$scope.FormButton = '<i class="fa fa-user-plus fa-lg"></i> Agregar clase';
+		$scope.FormButton = '<i class="fa fa-calendar fa-lg"></i> Agregar clase';
 		$scope.clase = new ResourceClase();
 		$scope.clase.users = [];
 		$scope.clase.fecha = $scope.SetToday();
