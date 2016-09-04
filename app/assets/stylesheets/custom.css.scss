@@ -210,10 +210,6 @@ body.landingpage {
 		-webkit-transition: -webkit-transform 0.3s;
 		transition: transform 0.3s;
 	}
-	.intro-table-hover:hover {
-		background-image: image-url("table-2-hover.jpg");
-		background-position: 50% 50%;
-	}
 	.intro-table-third {
 		background-image: image-url("table-3.jpg");
 	}
@@ -226,23 +222,6 @@ body.landingpage {
 		-webkit-transform: scale(0.6);
 		-ms-transform: scale(0.6);
 		transform: scale(0.6);
-	}
-	.intro-table-hover:hover h4 {
-		-webkit-transform: translateY(0);
-		transform: translateY(0);
-	}
-	.intro-table-hover:hover .expand {
-		opacity: 1;
-		-webkit-transform: scale(1);
-		-ms-transform: scale(1);
-		transform: scale(1);
-	}
-	.intro-table-hover .hide-hover {
-		-webkit-transition: opacity 0.3s ease;
-		transition: opacity 0.3s ease;
-	}
-	.intro-table-hover:hover .hide-hover {
-		opacity: 0;
 	}
 	.intro-tables .intro-table {
 		position: relative;
@@ -268,7 +247,12 @@ body.landingpage {
 		color: white;
 		transition: all 0.3s ease;
 	}
-
+	.trialclass.bottom{
+		padding-bottom: 30px;
+		.expand {
+			color: white;
+		}
+	}
 	.owl-schedule .schedule-row:not(:last-child) {
 		border-bottom: 1px solid rgba(255, 255, 255, 0.4);
 	}
