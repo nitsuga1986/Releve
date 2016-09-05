@@ -3,18 +3,30 @@
 	<div class="col-sm-6 col-xs-12">
 		<div class="col-sm-12 toolsBar hidden-xs">
 			<div class="form-inline">
-				<a href="#" data-toggle="modal" data-target="#info-clase-modal"class="text-info" title="Consejos para tu clase"><i class="fa fa-info-circle fa-lg" aria-hidden="true"></i>  </a>
+				<!--
 				<div class="btn-group btn-group-view">
 					<button title="Ver Año" class="btn btn-default" data-calendar-view="year">Año</button>
 					<button title="Ver Mes" class="btn btn-default" data-calendar-view="month">Mes</button>
 					<button title="Ver Semana" class="btn btn-default" data-calendar-view="week">Semana</button>
 					<button title="Ver Día" class="btn btn-default" data-calendar-view="day">Día</button>
 				</div>
+				-->
 				<div class="btn-group">
 					<button title="Anterior" class="btn btn-primary" data-calendar-nav="prev"><< </button>
 					<button title="Ir a Hoy" class="btn btn-primary" data-calendar-nav="today">Hoy</button>
 					<button title="Siguiente" class="btn btn-primary" data-calendar-nav="next"> >></button>
 				</div>
+				<div class="btn-group btn-group-view" id="daySelector">
+					<button title="Lunes" class="btn btn-default" data-ng-class="{'active':filterDay[1] }" data-ng-click="filterDaychange(1)" data-ng-model="d1">Lu</button>
+					<button title="Martes" class="btn btn-default" data-ng-class="{'active':filterDay[2] }" data-ng-click="filterDaychange(2)" data-ng-model="d2">Ma</button>
+					<button title="Miércoles" class="btn btn-default" data-ng-class="{'active':filterDay[3] }" data-ng-click="filterDaychange(3)" data-ng-model="d3">Mi</button>
+					<button title="Jueves" class="btn btn-default" data-ng-class="{'active':filterDay[4] }" data-ng-click="filterDaychange(4)" data-ng-model="d4">Ju</button>
+					<button title="Viernes" class="btn btn-default" data-ng-class="{'active':filterDay[5] }" data-ng-click="filterDaychange(5)" data-ng-model="d5">Vi</button>
+					<button title="Sábado" class="btn btn-default" data-ng-class="{'active':filterDay[6] }" data-ng-click="filterDaychange(6)" data-ng-model="d6">Sá</button>
+					<button title="Domingo" class="btn btn-default" data-ng-class="{'active':filterDay[0] }" data-ng-click="filterDaychange(0)" data-ng-model="d0">Do</button>
+				</div>
+				<a href="#" data-toggle="modal" data-target="#info-clase-modal"class="text-info" title="Consejos para tu clase"><i class="fa fa-info-circle fa-lg" aria-hidden="true"></i>  </a>
+				<span id="toolsBarTitle"></span>
 				<!--
 				<div class="btn-group pull-right">
 					<button class="btn btn-default">Pilates</button>
@@ -23,7 +35,6 @@
 					<button class="btn btn-default">Todo</button>
 				</div>
 				-->
-				<span id="toolsBarTitle"></span>
 			</div>
 		</div>
 		<div class="col-xs-12 col-sm-6">

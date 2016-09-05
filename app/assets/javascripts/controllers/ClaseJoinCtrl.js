@@ -1,7 +1,12 @@
 angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams', '$location', 'ResourceClase', function($scope, $routeParams, $location, ResourceClase) {
 	startLoading();
 	$scope.clase = {};
-
+	// filterDay
+	$scope.filterDay=[true,true,true,true,true,true,true]
+	$scope.filterDaychange = function(day) {
+		$scope.filterDay[day] = !$scope.filterDay[day];
+		eventsLoader($scope.clases);
+	};
 	// Join
 	$scope.JoinUser = function() {
 		startLoading();
@@ -149,34 +154,37 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 				events[key_event].old_clase = true;
 				events[key_event].class = 'default';
 			}
-			//// Print
+			//// Print events
 			if(events[key_event].old_clase == false){
-				datePanelid = (dateFormat(event.fecha)).replace(/\//g, '');
-				$datePanel = $('#'+datePanelid);
-				if( !$datePanel.length ) {
-					$accordionlist.append('<div class="panel panel-default accordionlist" id="'+datePanelid+'"><div class="panel-heading"><h4 class="panel-title"><a class="btn-block" href="javascript:;" data-toggle="collapse" data-parent="#accordion" data-target="#collapse'+datePanelid+'"><i class="indicator glyphicon glyphicon-chevron-right pull-right"></i> '+dayNames[(new Date(event.fecha+'T12:00:00Z')).getDay()]+' '+dateFormat(event.fecha)+'</a></h4></div><div id="collapse'+datePanelid+'" class="panel-collapse collapse"><div class="panel-body" id="'+datePanelid+'-body"></div></div></div>');
-					next_clases_count+=1;
-				}
-				$datePanel_body = $('#'+datePanelid+'-body');
-				if (next_clases_count<10){
-					if(events[key_event].joined == true) {
-						// Mis Clases List
-						my_clase_count+=1;
-						$miclase_btn = $(document.createElement('a')).addClass("eventmylist btn btn-default setClase").attr('type', 'button')
-						.attr('data-event-id', event.id).attr('title', 'Click para cancelar la inscripción')
-						.html('<i class="fa fa-check-square text-'+event.class+'" aria-hidden="true"></i> '+dayNamesShort[(new Date(event.fecha+'T12:00:00Z')).getDay()]+' '+dateFormat(event.fecha)+' '+event.horario+'hs: '+event.actividad).appendTo(mylist);
+				if($scope.filterDay[(new Date(event.fecha+'T12:00:00Z')).getDay()]){ //dayfilter
+					datePanelid = (dateFormat(event.fecha)).replace(/\//g, '');
+					$datePanel = $('#'+datePanelid);
+					if( !$datePanel.length ) {
+						$accordionlist.append('<div class="panel panel-default accordionlist" id="'+datePanelid+'"><div class="panel-heading"><h4 class="panel-title"><a class="btn-block" href="javascript:;" data-toggle="collapse" data-parent="#accordion" data-target="#collapse'+datePanelid+'"><i class="indicator glyphicon glyphicon-chevron-right pull-right"></i> '+dateFormat(event.fecha)+' <span class="text-muted">'+dayNames[(new Date(event.fecha+'T12:00:00Z')).getDay()]+'</span></a></h4></div><div id="collapse'+datePanelid+'" class="panel-collapse collapse"><div class="panel-body" id="'+datePanelid+'-body"></div></div></div>');
+						next_clases_count+=1;
 					}
-					// Próximas clases List
-					if (event.joined!=true){
-						$clase_btn = $(document.createElement('a')).addClass("eventlist btn btn-default btn-block setClase").attr('type', 'button')
-						.attr('data-event-id', event.id).attr('title', 'Click para anotarse')
-						.html('<i class="fa fa-circle text-'+event.class+'" aria-hidden="true"></i> '+event.horario+'hs: '+event.actividad+' con '+event.instructor).appendTo($datePanel_body);}
-					else {
-						$clase_btn = $(document.createElement('a')).addClass("eventlist btn btn-default btn-block setClase").attr('type', 'button')
-						.attr('data-event-id', event.id).attr('title', 'Click para cancelar la inscripción')
-						.html('<i class="fa fa-check-square text-'+event.class+'" aria-hidden="true"></i> '+event.horario+'hs: '+event.actividad+' con '+event.instructor).appendTo($datePanel_body);
+					$datePanel_body = $('#'+datePanelid+'-body');
+					if (next_clases_count<10){
+						console.log(($scope.filterDay[(new Date(event.fecha+'T12:00:00Z')).getDay()]));
+							// Próximas clases List
+							if (event.joined!=true){
+								$clase_btn = $(document.createElement('a')).addClass("eventlist btn btn-default btn-block setClase").attr('type', 'button')
+								.attr('data-event-id', event.id).attr('title', 'Click para anotarse')
+								.html('<i class="fa fa-circle text-'+event.class+'" aria-hidden="true"></i> '+event.horario+'hs: '+event.actividad+' con '+event.instructor).appendTo($datePanel_body);}
+							else {
+								$clase_btn = $(document.createElement('a')).addClass("eventlist btn btn-default btn-block setClase").attr('type', 'button')
+								.attr('data-event-id', event.id).attr('title', 'Click para cancelar la inscripción')
+								.html('<i class="fa fa-check-square text-'+event.class+'" aria-hidden="true"></i> '+event.horario+'hs: '+event.actividad+' con '+event.instructor).appendTo($datePanel_body);
+							}
 					}
 				}
+			}
+			//// Print Mis Clases List
+			if(events[key_event].old_clase == false && events[key_event].joined == true){
+				my_clase_count+=1;
+				$miclase_btn = $(document.createElement('a')).addClass("eventmylist btn btn-default setClase").attr('type', 'button')
+				.attr('data-event-id', event.id).attr('title', 'Click para cancelar la inscripción')
+				.html('<i class="fa fa-check-square text-'+event.class+'" aria-hidden="true"></i> '+dayNamesShort[(new Date(event.fecha+'T12:00:00Z')).getDay()]+' '+dateFormat(event.fecha)+' '+event.horario+'hs: '+event.actividad).appendTo(mylist);
 			}
 		});
 		function toggleChevron(e) {
