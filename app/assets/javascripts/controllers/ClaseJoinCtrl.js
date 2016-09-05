@@ -162,9 +162,9 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 					if(events[key_event].joined == true) {
 						// Mis Clases List
 						my_clase_count+=1;
-						$miclase_btn = $(document.createElement('a')).addClass("eventmylist btn btn-default btn-block setClase").attr('type', 'button')
+						$miclase_btn = $(document.createElement('a')).addClass("eventmylist btn btn-default setClase").attr('type', 'button')
 						.attr('data-event-id', event.id).attr('title', 'Click para cancelar la inscripción')
-						.html('<i class="fa fa-check-square text-'+event.class+'" aria-hidden="true"></i> '+event.horario+'hs: '+event.actividad+' con '+event.instructor).appendTo(mylist);
+						.html('<i class="fa fa-check-square text-'+event.class+'" aria-hidden="true"></i> '+dayNamesShort[(new Date(event.fecha+'T12:00:00Z')).getDay()]+' '+dateFormat(event.fecha)+' '+event.horario+'hs: '+event.actividad).appendTo(mylist);
 					}
 					// Próximas clases List
 					if (event.joined!=true){
