@@ -672,10 +672,26 @@ body.landingpage {
 		background: #12849E;
 	}
 	
-	/* Panel */
+	/* Panels */
 	div.panel-heading.bg-light-releve, div.modal-header.bg-light-releve{
 		background-color:#1aaea2;
 		h4{color:white;}
+	}
+	div.panel.accordionlist{
+		margin-bottom:2px;
+		.panel-body{
+			padding: 0;
+		}
+		a {
+			overflow-x: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+	}
+	#myeventlist a{
+			overflow-x: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
 	}
 	/* Navigation Bar ( Navbar ) */
 	.navbar {
