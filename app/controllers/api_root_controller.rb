@@ -1,11 +1,15 @@
 class ApiRootController < ApplicationController
 
 	def index
-		url = request.path_info
-		if !url.include?('join')
-			if !current_user.try(:admin?)
-				redirect_to root_path
+		if user_signed_in?
+			url = request.path_info
+			if !url.include?('join')
+				if !current_user.try(:admin?)
+					redirect_to root_path
+				end
 			end
+		else
+			redirect_to new_user_session_path
 		end
 	end
   
