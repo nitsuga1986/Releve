@@ -153,11 +153,11 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 			if(events[key_event].old_clase == false){
 				datePanelid = (dateFormat(event.fecha)).replace(/\//g, '');
 				$datePanel = $('#'+datePanelid);
-				if( !$datePanel.length )         // use this if you are using id to check
-				{ $accordionlist.append('<div class="panel panel-default accordionlist" id="'+datePanelid+'"><div class="panel-heading"><h4 class="panel-title"><a class="btn-block" href="javascript:;" data-toggle="collapse" data-parent="#accordion" data-target="#collapse'+datePanelid+'"><i class="indicator glyphicon glyphicon-chevron-right pull-right"></i> '+dayNames[(new Date(event.fecha+'T12:00:00Z')).getDay()]+' '+dateFormat(event.fecha)+'</a></h4></div><div id="collapse'+datePanelid+'" class="panel-collapse collapse"><div class="panel-body" id="'+datePanelid+'-body"></div></div></div>');}
-				
+				if( !$datePanel.length ) {
+					$accordionlist.append('<div class="panel panel-default accordionlist" id="'+datePanelid+'"><div class="panel-heading"><h4 class="panel-title"><a class="btn-block" href="javascript:;" data-toggle="collapse" data-parent="#accordion" data-target="#collapse'+datePanelid+'"><i class="indicator glyphicon glyphicon-chevron-right pull-right"></i> '+dayNames[(new Date(event.fecha+'T12:00:00Z')).getDay()]+' '+dateFormat(event.fecha)+'</a></h4></div><div id="collapse'+datePanelid+'" class="panel-collapse collapse"><div class="panel-body" id="'+datePanelid+'-body"></div></div></div>');
+					next_clases_count+=1;
+				}
 				$datePanel_body = $('#'+datePanelid+'-body');
-				next_clases_count+=1;
 				if (next_clases_count<10){
 					if(events[key_event].joined == true) {
 						// Mis Clases List
