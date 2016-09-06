@@ -73,6 +73,13 @@ var columns_alumno = [
 	{title:"Sexo",field:"sexo",filter:"sexo",visible:true,filter:{'sexo':'text'}},
 	{title:"Registro confirmado?",field:"confirmed",filter:"confirmed",visible:true,filter:{'confirmed':'text'}},
 	{title:"Primera clase?",field:"primera_clase",filter:"primera_clase",visible:true,filter:{'primera_clase':'text'}},
-	{title:"# de clases",field:"nro_clases",filter:"nro_clases",visible:true,filter:{'nro_clases':'text'}},
 	{title:"Admin?",field:"admin",filter:"admin",visible:true,filter:{'admin':'text'}},
 ];
+// Actividad
+var actividadDefaultPage = 1;	var actividadDefaultCount = 100;
+var actividadDefaultFilter = {}; 
+var actividadDefaultSorting = {nombre: 'desc'};
+var columns_actividad = [
+	{title:"Nombre",field:"nombre",filter:"nombre",visible:true,filter:{'nombre':'text'}},
+];
+var ActividadIndexDefault = 0; // Pilates

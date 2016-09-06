@@ -1,0 +1,19 @@
+<h2 data-ng-bind-html="FormTitle | html_trusted">Actividad</h2>
+<hr class="actividad"/>
+<div class="col-sm-12"><h3>Detalle</h3></div>
+<!-- Formulario -->
+<div class="col-sm-12">
+	<form class="form-horizontal" data-ng-submit="submit()" name="ActividadForm" novalidate role="form">
+		<!-- nombre -->
+		<div class="form-group col-sm-6" >
+			<label for="nombre" class="col-sm-2 control-label">Nombre</label>
+			<div class="col-sm-10">
+				<input required type="text" class="form-control" name="nombre" data-ng-model="actividad.nombre" id="nombre" placeholder="ej. Pilates">
+			</div>
+		</div>
+		<!-- Submit-->
+		<div class="col-sm-12">
+			<button type="submit" class="btn btn-primary btn-lg pull-right" data-ng-bind-html="FormButton | html_trusted"></button>
+		</div>
+	</form>
+</div>

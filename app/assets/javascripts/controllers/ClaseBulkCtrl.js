@@ -1,10 +1,12 @@
-angular.module("TurnosApp").controller("ClaseBulkCtrl",['$scope', '$q', '$http', '$routeParams', '$location', 'ResourceClase', function($scope, $q, $http, $routeParams, $location, ResourceClase) {
+angular.module("TurnosApp").controller("ClaseBulkCtrl",['$scope', '$q', '$http', '$routeParams', '$location', 'ResourceClase', 'ResourceActividad', function($scope, $q, $http, $routeParams, $location, ResourceClase, ResourceActividad) {
 	$scope.FormErrors = [];
 	$scope.horariosArray = horariosArray;
 	$scope.submiterror = false;
 	$scope.history_GoToClaseBulk = []; // Prevents loop search
 	$scope.GoToIndex = function(id) {$location.path("/dashboard/index");};
-
+	$scope.GoToNewActividad = function() {$location.path("/dashboard/actividad/new");};
+	$scope.ActividadIndex = [];
+	$scope.ActividadIndex = ResourceActividad.index();
 	// SetToday
 	$scope.SetToday = function(scope_date) {
 		today = new Date();
@@ -20,8 +22,10 @@ angular.module("TurnosApp").controller("ClaseBulkCtrl",['$scope', '$q', '$http',
 	$scope.clase.users = [];
 	$scope.clase.fecha_start = $scope.SetToday();
 	$scope.clase.fecha_end = $scope.SetToday();
-	$scope.clase.max_users = 4; 
-	$scope.clase.actividad = 'Pilates'; 
+	$scope.clase.max_users = 4;
+	$scope.ActividadIndex.$promise.then(function(data) {
+		$scope.clase.actividad_id = $scope.ActividadIndex[ActividadIndexDefault].id;
+	});
 	// SUBMIT
 	$scope.submitted = false;
 	$scope.submit = function() {
@@ -63,7 +67,7 @@ angular.module("TurnosApp").controller("ClaseBulkCtrl",['$scope', '$q', '$http',
 	// Autocomplete
 	$(function() {
 		$( "#search_user" ).autocomplete({
-			source: '/api/clases/autocomplete',
+			source: '/api/alumnos/autocomplete',
 			minLength: 2,
 			select: function( event, ui ) {
 				$scope.clase.users = $scope.clase.users.concat(ui.item);

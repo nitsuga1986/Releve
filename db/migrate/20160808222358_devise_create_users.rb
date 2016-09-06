@@ -11,7 +11,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :apellido
       t.string :profesion
       t.date :fechanac
-      t.date :fechaini
+      t.date :fechaini, :default => Date.today
       t.string :telefono
       t.string :domicilio
       t.string :localidad
@@ -23,7 +23,6 @@ class DeviseCreateUsers < ActiveRecord::Migration
       ## Logica
       t.boolean :confirmed, default: false
       t.boolean :primera_clase, default: true
-      t.integer :nro_clases, default: 1
     
       ## Database authenticatable
       t.string :email,              null: false, default: ""

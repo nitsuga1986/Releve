@@ -130,18 +130,27 @@
 				<input type="checkbox" name="primera_clase" data-ng-model="alumno.primera_clase" id="primera_clase"> 
 			</div>
 		</div>
-		<!-- nro_clases -->
-		<div class="form-group col-sm-6">
-			<label for="nro_clases" class="col-sm-4 control-label">Cant. de clases</label>
-			<div class="col-sm-7">
-				<input type="number" min="0" class="form-control" name="nro_clases" data-ng-model="alumno.nro_clases" id="nro_clases" placeholder="ej. 50">
-			</div>
-		</div>
 		<!-- admin -->
 		<div class="form-group col-sm-6">
 			<label for="admin" class="col-sm-4 control-label">Admin?</label>
 			<div class="col-sm-7">
 				<input type="checkbox" name="admin" data-ng-model="alumno.admin" id="admin"> 
+			</div>
+		</div>
+		<!-- actividades -->
+		<div class="form-group col-sm-6" data-ng-repeat="actividad in alumno.actividades">
+			<label for="admin" class="col-sm-4 control-label">{{actividad.nombre}}</label>
+			<div class="col-xs-12 col-sm-4">
+				<div class="col-xs-3">Plan</div>
+				<div class="col-xs-9">
+					<input type="number" min="1" class="form-control" name="max_users" data-ng-model="actividad.cantidad" placeholder="ej. 5">
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-4">
+				<div class="col-xs-3 col-sm-6">Prueba?</div>
+				<div class="col-xs-9 col-sm-6">
+					<input type="checkbox" name="admin" data-ng-model="actividad.clase_de_prueba"> 
+				</div>
 			</div>
 		</div>
 		<!-- Submit-->

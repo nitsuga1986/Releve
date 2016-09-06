@@ -27,6 +27,9 @@
 //= require controllers/AlumnoIndexCtrl
 //= require controllers/AlumnoEditCtrl
 //= require controllers/AlumnoShowCtrl
+//= require controllers/ActividadIndexCtrl
+//= require controllers/ActividadEditCtrl
+//= require controllers/ActividadShowCtrl
 //= require bootstrap-calendar/underscore-min
 //= require bootstrap-calendar/calendar
 //= require routes

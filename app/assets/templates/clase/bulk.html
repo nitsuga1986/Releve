@@ -51,9 +51,14 @@
 		</div>
 		<!-- actividad -->
 		<div class="form-group col-sm-6">
-			<label for="actividad" class="col-sm-4 control-label">Actividad:</label>
+			<label for="actividad" class="col-sm-4 control-label">Actividad</label>
 			<div class="col-sm-7">
-				<input type="text" class="form-control" name="actividad" data-ng-model="clase.actividad" id="actividad" placeholder="Pilates | Estiramiento">
+				<div class="input-group">
+					<select required class="form-control" data-ng-blur="GoToClaseEdit()" name="actividad" data-ng-model="clase.actividad_id" id="actividad" data-ng-options="actividad.id as actividad.nombre for actividad in ActividadIndex"></select> 
+					<!-- <label title="Detalles de la actividad" for="actividad" class="input-group-addon btn btn-primary" data-ng-click="GoToActividadShow()"><i class="fa fa-eye"></i></label> -->
+					<!-- <label title="Ver actividads" for="actividad" class="input-group-addon btn btn-primary" data-ng-click="GoToActividadIndex()"><i class="fa fa-university"></i></label> -->
+					<label title="Agregar nueva actividad" for="actividad" class="input-group-addon btn btn-success" data-ng-click="GoToNewActividad()"><i class="fa fa-plus-square"></i></label>
+				</div>
 			</div>
 		</div>
 		<!-- max_users -->

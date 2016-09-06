@@ -2,6 +2,11 @@
 angular.module("TurnosApp")
 	.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 		$routeProvider
+		// Actividad 
+		.when("/dashboard/actividad/index", { title: 'Listado de actividades',templateUrl: "<%= asset_path('actividad/index.html') %> ", controller: "ActividadIndexCtrl", activetab: 'actividad'})
+		.when("/dashboard/actividad/new", { title: 'Nuevo actividad',templateUrl: "<%= asset_path('actividad/edit.html') %> ", controller: "ActividadEditCtrl", activetab: 'actividad'})
+		.when("/dashboard/actividad/:id", { title: 'Detalles de la actividad',templateUrl: "<%= asset_path('actividad/show.html') %> ", controller: "ActividadShowCtrl", activetab: 'actividad'})
+		.when("/dashboard/actividad/:id/edit", { title: 'Editar actividad',templateUrl: "<%= asset_path('actividad/edit.html') %> ", controller: "ActividadEditCtrl", activetab: 'actividad'})
 		// Clases 
 		.when("/dashboard/index", { title: 'Listado de clases',templateUrl: "<%= asset_path('clase/index.html') %> ", controller: "ClaseIndexCtrl", activetab: 'clase'})
 		.when("/dashboard/new", { title: 'Nueva clase',templateUrl: "<%= asset_path('clase/edit.html') %> ", controller: "ClaseEditCtrl", activetab: 'clase'})

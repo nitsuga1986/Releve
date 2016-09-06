@@ -1,4 +1,4 @@
-angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams', '$location', 'ResourceClase', function($scope, $routeParams, $location, ResourceClase) {
+angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams', '$location', 'ResourceClase', 'ResourceAlumno', function($scope, $routeParams, $location, ResourceClase, ResourceAlumno) {
 	startLoading();
 	$scope.clase = {};
 	// filterDay
@@ -128,64 +128,73 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 		var next_clases_count=0;
 		var my_clase_count=0;
 		// Each event:
-		$.each(events, function(key_event, event) {
-			//// Set variables
-			// completa?
-			if( events[key_event].users.length >=  events[key_event].max_users) {	
-				events[key_event].completa = true; events[key_event].class = 'default';
-			} else {
-				events[key_event].completa = false;}
-			// Each user in event:
-			$.each(event.users, function(key_user, user) {
-				// joined?
-				if(user.id == $scope.user_id) { events[key_event].joined = true;
-				} else { 						events[key_event].joined = false;}
-			});
-			// old_clase?
-			today = new Date();
-			fecha_clase = new Date(event.fecha+" "+event.horario);
-			if( fecha_clase > today) {
-				// cancelable?
-				if( today > new Date(fecha_clase.getTime() - (24 * 60 * 60 * 1000))) {
-						events[key_event].cancelable = false;
-				}else{	events[key_event].cancelable = true;}
-				events[key_event].old_clase = false;
-			} else {
-				events[key_event].old_clase = true;
-				events[key_event].class = 'default';
-			}
-			//// Print events
-			if(events[key_event].old_clase == false){
-				if($scope.filterDay[(new Date(event.fecha+'T12:00:00Z')).getDay()]){ //dayfilter
-					datePanelid = (dateFormat(event.fecha)).replace(/\//g, '');
-					$datePanel = $('#'+datePanelid);
-					if( !$datePanel.length ) {
-						$accordionlist.append('<div class="panel panel-default accordionlist" id="'+datePanelid+'"><div class="panel-heading"><h4 class="panel-title"><a class="btn-block" href="javascript:;" data-toggle="collapse" data-parent="#accordion" data-target="#collapse'+datePanelid+'"><i class="indicator glyphicon glyphicon-chevron-right pull-right"></i> '+dateFormat(event.fecha)+' <span class="text-muted">'+dayNames[(new Date(event.fecha+'T12:00:00Z')).getDay()]+'</span></a></h4></div><div id="collapse'+datePanelid+'" class="panel-collapse collapse"><div class="panel-body" id="'+datePanelid+'-body"></div></div></div>');
-						next_clases_count+=1;
-					}
-					$datePanel_body = $('#'+datePanelid+'-body');
-					if (next_clases_count<10){
-						console.log(($scope.filterDay[(new Date(event.fecha+'T12:00:00Z')).getDay()]));
-							// Próximas clases List
-							if (event.joined!=true){
-								$clase_btn = $(document.createElement('a')).addClass("eventlist btn btn-default btn-block setClase").attr('type', 'button')
-								.attr('data-event-id', event.id).attr('title', 'Click para anotarse')
-								.html('<i class="fa fa-circle text-'+event.class+'" aria-hidden="true"></i> '+event.horario+'hs: '+event.actividad+' con '+event.instructor).appendTo($datePanel_body);}
-							else {
-								$clase_btn = $(document.createElement('a')).addClass("eventlist btn btn-default btn-block setClase").attr('type', 'button')
-								.attr('data-event-id', event.id).attr('title', 'Click para cancelar la inscripción')
-								.html('<i class="fa fa-check-square text-'+event.class+'" aria-hidden="true"></i> '+event.horario+'hs: '+event.actividad+' con '+event.instructor).appendTo($datePanel_body);
-							}
+		 
+		ResourceAlumno.show({ id: $scope.user_id }).$promise.then(function(data) {
+			$.each(data.actividades, function(index_actividades) {
+				$.each(data.packs, function(index_packs) {
+					if(data.actividades[index_actividades].id==data.packs[index_packs].actividad_id){
+						data.actividades[index_actividades].cantidad = data.packs[index_packs].cantidad;
+						data.actividades[index_actividades].clase_de_prueba = data.packs[index_packs].clase_de_prueba;
+			}});});
+			$scope.alumno = data;
+			$.each(events, function(key_event, event) {
+				//// Set variables
+				// completa?
+				if( events[key_event].users.length >=  events[key_event].max_users) {
+					events[key_event].completa = true; events[key_event].class = 'default';
+				} else {
+					events[key_event].completa = false;}
+				// Each user in event:
+				$.each(event.users, function(key_user, user) {
+					// joined?
+					if(user.id == $scope.user_id) { events[key_event].joined = true;
+					} else { 						events[key_event].joined = false;}
+				});
+				// old_clase?
+				today = new Date();
+				fecha_clase = new Date(event.fecha+" "+event.horario);
+				if( fecha_clase > today) {
+					// cancelable?
+					if( today > new Date(fecha_clase.getTime() - (24 * 60 * 60 * 1000))) {
+							events[key_event].cancelable = false;
+					}else{	events[key_event].cancelable = true;}
+					events[key_event].old_clase = false;
+				} else {
+					events[key_event].old_clase = true;
+					events[key_event].class = 'default';
+				}
+				//// Print events
+				if(events[key_event].old_clase == false){
+					if($scope.filterDay[(new Date(event.fecha+'T12:00:00Z')).getDay()]){ //dayfilter
+						datePanelid = (dateFormat(event.fecha)).replace(/\//g, '');
+						$datePanel = $('#'+datePanelid);
+						if( !$datePanel.length ) {
+							$accordionlist.append('<div class="panel panel-default accordionlist" id="'+datePanelid+'"><div class="panel-heading"><h4 class="panel-title"><a class="btn-block" href="javascript:;" data-toggle="collapse" data-parent="#accordion" data-target="#collapse'+datePanelid+'"><i class="indicator glyphicon glyphicon-chevron-right pull-right"></i> '+dateFormat(event.fecha)+' <span class="text-muted">'+dayNames[(new Date(event.fecha+'T12:00:00Z')).getDay()]+'</span></a></h4></div><div id="collapse'+datePanelid+'" class="panel-collapse collapse"><div class="panel-body" id="'+datePanelid+'-body"></div></div></div>');
+							next_clases_count+=1;
+						}
+						$datePanel_body = $('#'+datePanelid+'-body');
+						if (next_clases_count<10){
+								// Próximas clases List
+								if (event.joined!=true){
+									$clase_btn = $(document.createElement('a')).addClass("eventlist btn btn-default btn-block setClase").attr('type', 'button')
+									.attr('data-event-id', event.id).attr('title', 'Click para anotarse')
+									.html('<i class="fa fa-circle text-'+event.class+'" aria-hidden="true"></i> '+event.horario+'hs: '+event.actividad+' con '+event.instructor).appendTo($datePanel_body);}
+								else {
+									$clase_btn = $(document.createElement('a')).addClass("eventlist btn btn-default btn-block setClase").attr('type', 'button')
+									.attr('data-event-id', event.id).attr('title', 'Click para cancelar la inscripción')
+									.html('<i class="fa fa-check-square text-'+event.class+'" aria-hidden="true"></i> '+event.horario+'hs: '+event.actividad+' con '+event.instructor).appendTo($datePanel_body);
+								}
+						}
 					}
 				}
-			}
-			//// Print Mis Clases List
-			if(events[key_event].old_clase == false && events[key_event].joined == true){
-				my_clase_count+=1;
-				$miclase_btn = $(document.createElement('a')).addClass("eventmylist btn btn-default setClase").attr('type', 'button')
-				.attr('data-event-id', event.id).attr('title', 'Click para cancelar la inscripción')
-				.html('<i class="fa fa-check-square text-'+event.class+'" aria-hidden="true"></i> '+dayNamesShort[(new Date(event.fecha+'T12:00:00Z')).getDay()]+' '+dateFormat(event.fecha)+' '+event.horario+'hs: '+event.actividad).appendTo(mylist);
-			}
+				//// Print Mis Clases List
+				if(events[key_event].old_clase == false && events[key_event].joined == true){
+					my_clase_count+=1;
+					$miclase_btn = $(document.createElement('a')).addClass("eventmylist btn btn-default setClase").attr('type', 'button')
+					.attr('data-event-id', event.id).attr('title', 'Click para cancelar la inscripción')
+					.html('<i class="fa fa-check-square text-'+event.class+'" aria-hidden="true"></i> '+dayNamesShort[(new Date(event.fecha+'T12:00:00Z')).getDay()]+' '+dateFormat(event.fecha)+' '+event.horario+'hs: '+event.actividad).appendTo(mylist);
+				}
+			});
 		});
 		function toggleChevron(e) {
 			$(e.target)
@@ -199,7 +208,7 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 		if (next_clases_count==0){$(document.createElement('p')).html('No hay clases disponibles en este momento').appendTo($accordionlist);}
 		if (my_clase_count==0){$(document.createElement('p')).html('No tienes clases programadas =(').appendTo(mylist);}
 		// join_complete(boolean)
-		if (($scope.user_primera_clase && my_clase_count>0)||(!$scope.user_primera_clase && my_clase_count>=$scope.user_nro_clases)){$scope.join_complete=true;}else{$scope.join_complete=false;}
+		if (($scope.user_primera_clase && my_clase_count>0)||(!$scope.user_primera_clase && my_clase_count>=$scope.user_nro_clases)){$scope.join_complete=false;}else{$scope.join_complete=false;}
 		// events => $scope.clases (!!!)
 		$scope.clases = events;
 	}

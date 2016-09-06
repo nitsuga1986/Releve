@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
 
-
 	namespace "api" do
-		resources :alumnos
-		resources :clases do
+		resources :alumnos do
 			collection do
 				get 'autocomplete'
-				get 'bulk'
+			end
+		end
+		resources :actividad
+		resources :clases do
+			collection do
+				get 'search'
+				post 'bulk'
 			end
 			member do
 				get 'join'

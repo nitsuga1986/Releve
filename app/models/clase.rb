@@ -1,20 +1,21 @@
 class Clase < ActiveRecord::Base
 	has_many :asistencias
 	has_many :users, through: :asistencias
-	#belongs_to :instructor, class_name: "User", foreign_key: "user_id"
+	belongs_to :actividad
 	before_destroy :destroy_asistencias
 	
 	def as_json(options = { })
 		h = super(options)
 		h[:users] = self.users
+		h[:actividad] = self.actividad.nombre
 		h[:start] = DateTime.strptime(self.fecha.strftime('%Y-%m-%d')+" "+self.horario, '%Y-%m-%d %H:%M').strftime('%Q')
 		h[:end] = (DateTime.strptime(self.fecha.strftime('%Y-%m-%d')+" "+self.horario, '%Y-%m-%d %H:%M')+ 1.hours).strftime('%Q')
-		h[:title] = self.actividad+" ("+self.instructor+")"
-		if self.actividad=="Pilates"
+		h[:title] = self.actividad.nombre+" ("+self.instructor+")"
+		if self.actividad.nombre=="Pilates"
 			h[:class] = "info"
-		elsif self.actividad=="Estiramiento"
+		elsif self.actividad.nombre=="Estiramiento"
 			h[:class] = "warning"
-		elsif self.actividad=="Dance Pilates"
+		elsif self.actividad.nombre=="Dance Pilates"
 			h[:class] = "info"
 		else
 			h[:class] = "default"

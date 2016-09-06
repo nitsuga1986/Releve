@@ -18,3 +18,4 @@
 //= require typewriter
 //= require jquery.onepagenav
 //= require main
+$(window).load(function(){$('#modal2').modal('show');});

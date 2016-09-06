@@ -16,13 +16,11 @@ class Api::AlumnosController < ApplicationController
 	end
   end
   
-  def search
-	@alumno = User.find_by_email(params[:find_by_email])
-	if !@alumno.nil? then
-		render json:  @alumno
-	else
-		head :no_content
-	end
+  def autocomplete
+	like= "%".concat(params[:term].concat("%"))
+	@users = User.where("email like ?", like)
+	list = @users.map {|u| Hash[ label:u.email, id: u.id, email: u.email]}
+	render json: list
   end
   
   def create
@@ -40,8 +38,15 @@ class Api::AlumnosController < ApplicationController
 
   def update
 	@alumno = User.find(params[:id])
+	@alumno.actividades.each{|x| x.remove_user_from_actividad(@alumno)}
 	if @alumno.update_attributes(params.permit(:email, :dni, :nombre, :apellido, :profesion, :fechanac, :fechaini, :telefono, :domicilio, :localidad, :nombre_contacto, :apellido_contacto, :telefono_contacto, :sexo, :confirmed, :primera_clase, :nro_clases, :admin)) then
-		if !params[:users].nil? then
+		if !params[:actividades].nil? then
+			params[:actividades].each do |actividad|
+				if !actividad[:cantidad].nil? then
+					if actividad[:clase_de_prueba].nil? then actividad[:clase_de_prueba] = false end
+					@alumno.add_actividad_to_alumno(actividad[:id],actividad[:cantidad],actividad[:clase_de_prueba]) if actividad[:id]	
+				end
+			end
 		end
 		head :no_content
 	else

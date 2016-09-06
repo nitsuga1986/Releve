@@ -1,10 +1,11 @@
-angular.module("TurnosApp").controller("AlumnoEditCtrl",['$scope', '$q', '$http', '$routeParams', '$location', 'ResourceAlumno', function($scope, $q, $http, $routeParams, $location, ResourceAlumno) {
+angular.module("TurnosApp").controller("AlumnoEditCtrl",['$scope', '$q', '$http', '$routeParams', '$location', 'ResourceAlumno', 'ResourceActividad', function($scope, $q, $http, $routeParams, $location, ResourceAlumno, ResourceActividad) {
 	$scope.FormErrors = [];
 	$scope.horariosArray = horariosArray;
 	$scope.sexosArray = sexosArray;
 	$scope.submiterror = false;
 	$scope.history_GoToAlumnoEdit = []; // Prevents loop search
 	$scope.GoToIndex = function(id) {$location.path("/alumno/index");};
+	$scope.ActividadIndex = [];
 
 	// SetToday
 	$scope.SetToday = function(scope_date) {
@@ -19,13 +20,33 @@ angular.module("TurnosApp").controller("AlumnoEditCtrl",['$scope', '$q', '$http'
 		$scope.FormTitle = "<i class='fa fa-user'></i> Editar datos de la alumno";
 		$scope.FormButton = '<i class="fa fa-edit fa-lg"></i> Guardar cambios';
 		$scope.alumno = ResourceAlumno.show({ id: $routeParams.id });
-		$scope.alumno.$promise.then(function( value ){},function( error ){$location.path("/alumno/new");});	// if id not exists => ToNew
+		$scope.alumno.$promise.then(function( value ){
+			ResourceActividad.index().$promise.then(function(ActividadIndex){
+				$scope.ActividadIndex = ActividadIndex;
+				$.each($scope.alumno.actividades, function(index_actividades) {
+					$.each($scope.alumno.packs, function(index_packs) {
+						if($scope.alumno.actividades[index_actividades].id==$scope.alumno.packs[index_packs].actividad_id){
+							$scope.alumno.actividades[index_actividades].cantidad = $scope.alumno.packs[index_packs].cantidad;
+							$scope.alumno.actividades[index_actividades].clase_de_prueba = $scope.alumno.packs[index_packs].clase_de_prueba;
+						}
+					});
+				});
+				$.each($scope.ActividadIndex, function(index_actividades) {
+					notincluded = true;
+					$.each($scope.alumno.actividades, function(index_actividades_alumno) {
+						if($scope.ActividadIndex[index_actividades].id==$scope.alumno.actividades[index_actividades_alumno].id){notincluded=false;}
+					});
+					if(notincluded){$scope.alumno.actividades.push($scope.ActividadIndex[index_actividades]);}
+				});
+			});
+		},function( error ){$location.path("/alumno/new");});	// if id not exists => ToNew
 	} else { 				// New
 		$scope.FormTitle = "<i class='fa fa-user'></i> Agregar nuevo alumno";
 		$scope.FormButton = '<i class="fa fa-alumno-plus fa-lg"></i> Agregar alumno';
 		$scope.alumno = new ResourceAlumno();
 		$scope.alumno.alumnos = [];
-		$scope.alumno.fecha = $scope.SetToday()
+		$scope.alumno.fecha_inicio = $scope.SetToday();
+		$scope.alumno.actividades = ResourceActividad.index();
 	}
 	// SUBMIT
 	$scope.submitted = false;
