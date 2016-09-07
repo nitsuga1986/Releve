@@ -1,5 +1,11 @@
 class Pack < ActiveRecord::Base
-	belongs_to :user, class_name: "User", foreign_key: "user_id"
-	belongs_to :actividad, class_name: "Actividad", foreign_key: "actividad_id"
+	belongs_to :user
+	belongs_to :actividad
 	
+	def as_json(options = { })
+		h = super(options)
+		h[:actividad] = self.actividad
+		h
+	end
+
 end

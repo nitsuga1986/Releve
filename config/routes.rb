@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 		resources :alumnos do
 			collection do
 				get 'autocomplete'
+				get 'current'
 			end
 		end
 		resources :actividad
@@ -13,8 +14,8 @@ Rails.application.routes.draw do
 				post 'bulk'
 			end
 			member do
-				get 'join'
-				get 'unjoin'
+				post 'join'
+				post 'unjoin'
 			end
 		end
 	end

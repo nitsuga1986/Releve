@@ -8,12 +8,12 @@ class Api::AlumnosController < ApplicationController
   end
 
   def show
-	if current_user.try(:admin?)
-		@alumno = User.find(params[:id])
-		respond_with @alumno
-	else
-		redirect_to root_path
-	end
+	@alumno = User.find(params[:id])
+	respond_with @alumno
+  end
+  
+  def current
+	respond_with current_user
   end
   
   def autocomplete
@@ -27,6 +27,17 @@ class Api::AlumnosController < ApplicationController
 	if !@alumno = User.find_by_email(params[:email]) then
 		@alumno = User.new(params.permit(:email, :dni, :nombre, :apellido, :profesion, :fechanac, :fechaini, :telefono, :domicilio, :localidad, :nombre_contacto, :apellido_contacto, :telefono_contacto, :sexo, :confirmed, :primera_clase, :nro_clases, :admin))
 		if @alumno.save then
+			if !params[:packs].nil? then
+				params[:packs].each do |pack|
+					pac = @alumno.packs.new
+					pac.actividad = Actividad.find(pack[:actividad_id])
+					pac.cantidad = pack[:cantidad] if !pack[:cantidad].nil?
+					pac.noperiod = pack[:noperiod] if !pack[:noperiod].nil?
+					pac.fecha_start = pack[:fecha_start] if !pack[:fecha_start].nil?
+					pac.fecha_end = pack[:fecha_end] if !pack[:fecha_end].nil?
+					pac.save
+				end
+			end
 			render json: @alumno, status: :created
 		else
 			render json: @alumno.errors, status: :unprocessable_entity
@@ -40,12 +51,15 @@ class Api::AlumnosController < ApplicationController
 	@alumno = User.find(params[:id])
 	@alumno.actividades.each{|x| x.remove_user_from_actividad(@alumno)}
 	if @alumno.update_attributes(params.permit(:email, :dni, :nombre, :apellido, :profesion, :fechanac, :fechaini, :telefono, :domicilio, :localidad, :nombre_contacto, :apellido_contacto, :telefono_contacto, :sexo, :confirmed, :primera_clase, :nro_clases, :admin)) then
-		if !params[:actividades].nil? then
-			params[:actividades].each do |actividad|
-				if !actividad[:cantidad].nil? then
-					if actividad[:clase_de_prueba].nil? then actividad[:clase_de_prueba] = false end
-					@alumno.add_actividad_to_alumno(actividad[:id],actividad[:cantidad],actividad[:clase_de_prueba]) if actividad[:id]	
-				end
+		if !params[:packs].nil? then
+			params[:packs].each do |pack|
+				pac = @alumno.packs.new
+				pac.actividad = Actividad.find(pack[:actividad_id])
+				pac.cantidad = pack[:cantidad] if !pack[:cantidad].nil?
+				pac.noperiod = pack[:noperiod] if !pack[:noperiod].nil?
+				pac.fecha_start = pack[:fecha_start] if !pack[:fecha_start].nil?
+				pac.fecha_end = pack[:fecha_end] if !pack[:fecha_end].nil?
+				pac.save
 			end
 		end
 		head :no_content

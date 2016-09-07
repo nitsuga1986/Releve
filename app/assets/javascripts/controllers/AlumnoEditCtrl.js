@@ -23,20 +23,15 @@ angular.module("TurnosApp").controller("AlumnoEditCtrl",['$scope', '$q', '$http'
 		$scope.alumno.$promise.then(function( value ){
 			ResourceActividad.index().$promise.then(function(ActividadIndex){
 				$scope.ActividadIndex = ActividadIndex;
-				$.each($scope.alumno.actividades, function(index_actividades) {
-					$.each($scope.alumno.packs, function(index_packs) {
-						if($scope.alumno.actividades[index_actividades].id==$scope.alumno.packs[index_packs].actividad_id){
-							$scope.alumno.actividades[index_actividades].cantidad = $scope.alumno.packs[index_packs].cantidad;
-							$scope.alumno.actividades[index_actividades].clase_de_prueba = $scope.alumno.packs[index_packs].clase_de_prueba;
-						}
-					});
-				});
 				$.each($scope.ActividadIndex, function(index_actividades) {
 					notincluded = true;
-					$.each($scope.alumno.actividades, function(index_actividades_alumno) {
-						if($scope.ActividadIndex[index_actividades].id==$scope.alumno.actividades[index_actividades_alumno].id){notincluded=false;}
+					$.each($scope.alumno.packs, function(index_pack) {
+						if($scope.ActividadIndex[index_actividades].id==$scope.alumno.packs[index_pack].actividad_id){notincluded=false;}
 					});
-					if(notincluded){$scope.alumno.actividades.push($scope.ActividadIndex[index_actividades]);}
+					if(notincluded){
+						missing_pack = {"actividad_id":$scope.ActividadIndex[index_actividades].id,"cantidad":null,"noperiod":true,"fecha_start":null,"fecha_end":null,"actividad":$scope.ActividadIndex[index_actividades]}
+						$scope.alumno.packs.push(missing_pack);
+					}
 				});
 			});
 		},function( error ){$location.path("/alumno/new");});	// if id not exists => ToNew

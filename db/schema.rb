@@ -57,11 +57,16 @@ ActiveRecord::Schema.define(version: 20160906004632) do
   create_table "packs", force: true do |t|
     t.integer  "user_id"
     t.integer  "actividad_id"
-    t.integer  "cantidad",        default: 1
-    t.boolean  "clase_de_prueba", default: true
+    t.integer  "cantidad",     default: 1
+    t.boolean  "noperiod",     default: true
+    t.date     "fecha_start"
+    t.date     "fecha_end"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "packs", ["actividad_id"], name: "index_packs_on_actividad_id", using: :btree
+  add_index "packs", ["user_id"], name: "index_packs_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.boolean  "admin",                  default: false
@@ -70,7 +75,7 @@ ActiveRecord::Schema.define(version: 20160906004632) do
     t.string   "apellido"
     t.string   "profesion"
     t.date     "fechanac"
-    t.date     "fechaini",               default: '2016-09-05'
+    t.date     "fechaini",               default: '2016-09-06'
     t.string   "telefono"
     t.string   "domicilio"
     t.string   "localidad"

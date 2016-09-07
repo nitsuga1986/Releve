@@ -29,14 +29,14 @@ class Api::ClasesController < ApplicationController
 	@clase = Clase.find(params[:id])
 	@clase.add_asistencia(current_user.id)
 	UserMailer.join_email(current_user,@clase).deliver
-	respond_with @clase
+	render json: @clase, status: :created
   end
   
   def unjoin 
 	@clase = Clase.find(params[:id])
 	current_user.remove_from_clase(@clase)
 	UserMailer.unjoin_email(current_user,@clase).deliver
-	respond_with @clase
+	render json: @clase, status: :created
   end
   
   def create

@@ -12,23 +12,11 @@ class User < ActiveRecord::Base
   def as_json(options = { })
 	h = super(options)
 	h[:packs] = self.packs
-	h[:actividades] = self.actividades
 	h
   end
  
   def remove_from_clase(clase)
 	asistencias.where(:clase_id => clase.id).first.destroy if asistencias.where(:clase_id => clase.id).count > 0
-  end
-  
-  def add_actividad_to_alumno(actividad_id,actividad_cantidad,actividad_clase_de_prueba)
-	if self.actividades.where(:id => actividad_id).count == 0 then
-		pac = self.packs.new
-		pac.user = self
-		pac.actividad = Actividad.find(actividad_id)
-		pac.cantidad = actividad_cantidad
-		pac.clase_de_prueba = actividad_clase_de_prueba
-		pac.save
-	end
   end
  
   def self.find_for_oauth(auth, signed_in_resource = nil)

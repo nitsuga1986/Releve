@@ -7,8 +7,8 @@ angular.module("TurnosApp").factory("ResourceClase",['$resource', function($reso
       'show':    { method: 'GET', isArray: false },
       'update':  { method: 'PUT' },
       'destroy': { method: 'DELETE' },
-      'join':    { method: 'GET', isArray: false, url: '/api/clases/:id/join' },
-      'unjoin':    { method: 'GET', isArray: false, url: '/api/clases/:id/unjoin' },
+      'join':    { method: 'POST', isArray: false, url: '/api/clases/:id/join' },
+      'unjoin':  { method: 'POST', isArray: false, url: '/api/clases/:id/unjoin' },
       'bulk':    { method: 'POST', isArray: false, url: '/api/clases/bulk' },
     }
   );
@@ -22,6 +22,7 @@ angular.module("TurnosApp").factory("ResourceAlumno",['$resource', function($res
       'show':    { method: 'GET', isArray: false },
       'update':  { method: 'PUT' },
       'destroy': { method: 'DELETE' },
+      'current': { method: 'GET', isArray: false, url: '/api/alumnos/current' },
     }
   );
 }]);

@@ -122,22 +122,24 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 	
 	// eventsLoader
 	function eventsLoader(events) {
-		function dateFormat(date) {date = date.split('-'); date = date[2]+'/'+date[1]; return date;}
-		var mylist = $('#myeventlist').html('');
-		var $accordionlist = $('#accordionlist').html('');
-		var next_clases_count=0;
-		var my_clase_count=0;
-		// Each event:
-		 
-		ResourceAlumno.show({ id: $scope.user_id }).$promise.then(function(data) {
-			$.each(data.actividades, function(index_actividades) {
-				$.each(data.packs, function(index_packs) {
-					if(data.actividades[index_actividades].id==data.packs[index_packs].actividad_id){
-						data.actividades[index_actividades].cantidad = data.packs[index_packs].cantidad;
-						data.actividades[index_actividades].clase_de_prueba = data.packs[index_packs].clase_de_prueba;
-			}});});
+		ResourceAlumno.current().$promise.then(function(data){
 			$scope.alumno = data;
+			$scope.alumno.actividad_counter = [];
+			function dateFormat(date) {date = date.split('-'); date = date[2]+'/'+date[1]; return date;}
+			var mylist = $('#myeventlist').html('');
+			var $accordionlist = $('#accordionlist').html('');
+			var proximas_clases_count=0;
+			var my_clase_count=0;
+			// Each event:
 			$.each(events, function(key_event, event) {
+				pack = $.grep($scope.alumno.packs, function(e){ return e.actividad_id == events[key_event].actividad_id; })[0];
+				sd = new Date(pack.fecha_start+'T12:00:00Z');
+				ed = new Date(pack.fecha_end+'T12:00:00Z');
+				cd = new Date(events[key_event].fecha+'T12:00:00Z');
+				if(!pack.noperiod && cd>sd && ed>cd){
+					if ($scope.alumno.actividad_counter[events[key_event].actividad_id] == undefined){
+						$scope.alumno.actividad_counter[events[key_event].actividad_id] = 1;
+				}else{	$scope.alumno.actividad_counter[events[key_event].actividad_id] += 1;}}
 				//// Set variables
 				// completa?
 				if( events[key_event].users.length >=  events[key_event].max_users) {
@@ -147,8 +149,13 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 				// Each user in event:
 				$.each(event.users, function(key_user, user) {
 					// joined?
-					if(user.id == $scope.user_id) { events[key_event].joined = true;
-					} else { 						events[key_event].joined = false;}
+					if(user.id == $scope.alumno.id) {
+						events[key_event].joined = true;
+						if(pack.noperiod){
+							if ($scope.alumno.actividad_counter[events[key_event].actividad_id] == undefined){
+								$scope.alumno.actividad_counter[events[key_event].actividad_id] = 1;
+						}else{	$scope.alumno.actividad_counter[events[key_event].actividad_id] += 1;}}
+					} else {events[key_event].joined = false;}
 				});
 				// old_clase?
 				today = new Date();
@@ -170,10 +177,10 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 						$datePanel = $('#'+datePanelid);
 						if( !$datePanel.length ) {
 							$accordionlist.append('<div class="panel panel-default accordionlist" id="'+datePanelid+'"><div class="panel-heading"><h4 class="panel-title"><a class="btn-block" href="javascript:;" data-toggle="collapse" data-parent="#accordion" data-target="#collapse'+datePanelid+'"><i class="indicator glyphicon glyphicon-chevron-right pull-right"></i> '+dateFormat(event.fecha)+' <span class="text-muted">'+dayNames[(new Date(event.fecha+'T12:00:00Z')).getDay()]+'</span></a></h4></div><div id="collapse'+datePanelid+'" class="panel-collapse collapse"><div class="panel-body" id="'+datePanelid+'-body"></div></div></div>');
-							next_clases_count+=1;
+							proximas_clases_count+=1;
 						}
 						$datePanel_body = $('#'+datePanelid+'-body');
-						if (next_clases_count<10){
+						if (proximas_clases_count<10){
 								// Próximas clases List
 								if (event.joined!=true){
 									$clase_btn = $(document.createElement('a')).addClass("eventlist btn btn-default btn-block setClase").attr('type', 'button')
@@ -195,27 +202,31 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 					.html('<i class="fa fa-check-square text-'+event.class+'" aria-hidden="true"></i> '+dayNamesShort[(new Date(event.fecha+'T12:00:00Z')).getDay()]+' '+dateFormat(event.fecha)+' '+event.horario+'hs: '+event.actividad).appendTo(mylist);
 				}
 			});
+			function toggleChevron(e) {
+				$(e.target)
+					.prev('.panel-heading')
+					.find("i.indicator")
+					.toggleClass('glyphicon-chevron-down glyphicon-chevron-right');
+			}
+			$('#accordionlist').off('hidden.bs.collapse', toggleChevron).on('hidden.bs.collapse', toggleChevron);
+			$('#accordionlist').off('shown.bs.collapse', toggleChevron).on('shown.bs.collapse', toggleChevron);
+			// Empty Lists text: 
+			if (proximas_clases_count==0){$(document.createElement('p')).html('No hay clases disponibles en este momento').appendTo($accordionlist);}
+			if (my_clase_count==0){$(document.createElement('p')).html('No tienes clases programadas =(').appendTo(mylist);}
+			// join_complete(boolean)
+			$scope.alumno.actividad_overquota = [];
+			$.each($scope.alumno.packs, function(key_packs, pack) {
+				$scope.alumno.actividad_overquota[pack.actividad_id] = (pack.cantidad <= $scope.alumno.actividad_counter[pack.actividad_id])
+			});
+			if (($scope.alumno.primera_clase && my_clase_count>0)||(!$scope.alumno.primera_clase && my_clase_count>=$scope.user_nro_clases)){$scope.join_complete=false;}else{$scope.join_complete=false;}
+			// events => $scope.clases (!!!)
+			$scope.clases = events;
 		});
-		function toggleChevron(e) {
-			$(e.target)
-				.prev('.panel-heading')
-				.find("i.indicator")
-				.toggleClass('glyphicon-chevron-down glyphicon-chevron-right');
-		}
-		$('#accordionlist').off('hidden.bs.collapse', toggleChevron).on('hidden.bs.collapse', toggleChevron);
-		$('#accordionlist').off('shown.bs.collapse', toggleChevron).on('shown.bs.collapse', toggleChevron);
-		// Empty Lists text: 
-		if (next_clases_count==0){$(document.createElement('p')).html('No hay clases disponibles en este momento').appendTo($accordionlist);}
-		if (my_clase_count==0){$(document.createElement('p')).html('No tienes clases programadas =(').appendTo(mylist);}
-		// join_complete(boolean)
-		if (($scope.user_primera_clase && my_clase_count>0)||(!$scope.user_primera_clase && my_clase_count>=$scope.user_nro_clases)){$scope.join_complete=false;}else{$scope.join_complete=false;}
-		// events => $scope.clases (!!!)
-		$scope.clases = events;
 	}
 	// Calendar start
 	var calendar = $('#calendar').calendar(options);
 	// First Clase Modal
-	if ($scope.user_primera_clase){if($scope.user_confirmed){$('#first-clase-modal').modal('show')}}
+	if ($scope.user_primera_clase){if($scope.alumno.confirmed){$('#first-clase-modal').modal('show')}}
 	stopLoading();
 
 }]);

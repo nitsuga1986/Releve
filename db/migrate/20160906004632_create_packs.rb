@@ -1,10 +1,12 @@
 class CreatePacks < ActiveRecord::Migration
   def change
     create_table :packs do |t|
-      t.integer :user_id
-      t.integer :actividad_id
+      t.belongs_to :user, index: true
+      t.belongs_to :actividad, index: true
       t.integer :cantidad, default: 1
-      t.boolean :clase_de_prueba, default: true
+      t.boolean :noperiod, default: true
+      t.date :fecha_start
+      t.date :fecha_end
 
       t.timestamps
     end
