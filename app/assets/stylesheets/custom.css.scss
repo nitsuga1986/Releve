@@ -722,12 +722,25 @@ body.landingpage {
 	nav.navbar-fixed-top .navbar-nav > li > a:not(.btn):not(.btn) {
 		color: #bbb;
 	}
-	.navbar.original .icon-bar {
-		background: white;
+	.navbar.original {
+		.navbar-nav > li > a:not(.btn-danger):hover {
+			color: #1aaea2;
+		}
+		.icon-bar {
+			background: white;
+		}
 	}
-	.notlandingpage.original {
+	.navbar.navbar-fixed-top {
+		.navbar-nav > li > a:not(.btn-danger):hover {
+			color: #12849e;
+		}
+	}
+	.navbar.notlandingpage {
 		.navbar-nav > li > a:not(.btn-danger) {
 			color: #928E8E;
+		}
+		.navbar-nav > li > a:not(.btn-danger):hover {
+			color: #12849e;
 		}
 		.icon-bar {
 			background: #1aaea2;
