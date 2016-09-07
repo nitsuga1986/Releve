@@ -140,7 +140,7 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 					if ($scope.alumno.actividad_counter[events[key_event].actividad_id] == undefined){
 						$scope.alumno.actividad_counter[events[key_event].actividad_id] = 1;
 				}else{	$scope.alumno.actividad_counter[events[key_event].actividad_id] += 1;}}
-				//// Set variables	
+				//// Set variables
 				// completa?
 				if( events[key_event].users.length >=  events[key_event].max_users) {
 					events[key_event].completa = true; events[key_event].class = 'default';
