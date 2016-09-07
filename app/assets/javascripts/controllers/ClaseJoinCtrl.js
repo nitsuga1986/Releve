@@ -132,14 +132,6 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 			var my_clase_count=0;
 			// Each event:
 			$.each(events, function(key_event, event) {
-				pack = $.grep($scope.alumno.packs, function(e){ return e.actividad_id == events[key_event].actividad_id; })[0];
-				sd = new Date(pack.fecha_start+'T12:00:00Z');
-				ed = new Date(pack.fecha_end+'T12:00:00Z');
-				cd = new Date(events[key_event].fecha+'T12:00:00Z');
-				if(!pack.noperiod && cd>sd && ed>cd){
-					if ($scope.alumno.actividad_counter[events[key_event].actividad_id] == undefined){
-						$scope.alumno.actividad_counter[events[key_event].actividad_id] = 1;
-				}else{	$scope.alumno.actividad_counter[events[key_event].actividad_id] += 1;}}
 				//// Set variables
 				// completa?
 				if( events[key_event].users.length >=  events[key_event].max_users) {
