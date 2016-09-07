@@ -133,7 +133,9 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 			// Each event:
 			$.each(events, function(key_event, event) {
 				if($scope.alumno.packs==undefined){$scope.alumno.packs=[{"actividad_id":1,"cantidad":1,"noperiod":true,"actividad":{"id":1,"nombre":"Pilates"}}];}
-				pack = $.grep($scope.alumno.packs, function(e){ return e.actividad_id == events[key_event].actividad_id; })[0];
+				var pack = $.grep($scope.alumno.packs, function(e){ return e.actividad_id == events[key_event].actividad_id; })[0];
+				console.log($scope.alumno.packs);
+				console.log(pack);
 				sd = new Date(pack.fecha_start+'T12:00:00Z');
 				ed = new Date(pack.fecha_end+'T12:00:00Z');
 				cd = new Date(events[key_event].fecha+'T12:00:00Z');
