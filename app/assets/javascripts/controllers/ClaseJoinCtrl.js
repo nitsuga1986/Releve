@@ -133,6 +133,7 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl", ['$scope', '$routeParams
 			// Each event:
 			$.each(events, function(key_event, event) {
 				pack = $.grep($scope.alumno.packs, function(e){ return e.actividad_id == events[key_event].actividad_id; })[0];
+				if(pack==undefined){pack=[];}
 				console.log(pack);
 				sd = new Date(pack.fecha_start+'T12:00:00Z');
 				ed = new Date(pack.fecha_end+'T12:00:00Z');
