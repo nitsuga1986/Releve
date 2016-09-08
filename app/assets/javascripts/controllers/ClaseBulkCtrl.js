@@ -24,6 +24,7 @@ angular.module("TurnosApp").controller("ClaseBulkCtrl",['$scope', '$q', '$http',
 	$scope.clase.fecha_start = $scope.SetToday();
 	$scope.clase.fecha_end = $scope.SetToday();
 	$scope.clase.max_users = 4;
+	$scope.clase.trialable = true;
 	$scope.ActividadIndex.$promise.then(function(data) {
 		$scope.clase.actividad_id = $scope.ActividadIndex[ActividadIndexDefault].id;
 	});

@@ -75,6 +75,13 @@
 				<select required class="form-control" data-ng-blur="GoToClaseEdit()" name="instructor" data-ng-model="clase.instructor_id" id="instructor" data-ng-options="instructor.id as instructor.nombre_completo for instructor in InstructorIndex"></select> 
 			</div>
 		</div>
+		<!-- trialable -->
+		<div class="form-group col-sm-6">
+			<label for="trialable" class="col-sm-4 control-label">1ra Gratis?</label>
+			<div class="col-sm-7">
+				<input type="checkbox" name="trialable" data-ng-model="clase.trialable" id="trialable"> 
+			</div>
+		</div>
 		<!-- Users -->
 		<div class="col-sm-12"><h3>Alumnos</h3></div>
 		<div class="form-group col-sm-12"> <!-- Search -->
