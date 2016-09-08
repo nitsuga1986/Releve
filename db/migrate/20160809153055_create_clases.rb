@@ -10,7 +10,7 @@ class CreateClases < ActiveRecord::Migration
       t.boolean :cancelada, default: false
       t.boolean :trialable, default: true
       t.string :comment
-      t.integer :duracion, default: 1
+      t.decimal :duracion, default: 1
 
       t.timestamps
     end
