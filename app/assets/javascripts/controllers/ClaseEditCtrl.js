@@ -29,6 +29,7 @@ angular.module("TurnosApp").controller("ClaseEditCtrl",['$scope', '$q', '$http',
 		$scope.clase.users = [];
 		$scope.clase.fecha = $scope.SetToday();
 		$scope.clase.max_users = 4; 
+		$scope.clase.duracion = 1; 
 		$scope.clase.trialable = true; 
 		$scope.clase.actividad = 'Pilates'; 
 		$scope.ActividadIndex.$promise.then(function(data) {

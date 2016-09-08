@@ -41,7 +41,7 @@ class Api::ClasesController < ApplicationController
   
   def create
 	if !@clase = Clase.find_by_fecha_and_horario(params[:fecha],params[:horario]) then
-		@clase = Clase.new(params.permit(:fecha, :horario, :max_users, :cancelada, :comment))
+		@clase = Clase.new(params.permit(:fecha, :horario, :max_users, :duracion, :trialable, :cancelada, :comment))
 		@clase.actividad = Actividad.find(params[:actividad_id])
 		@clase.instructor = User.find(params[:instructor_id])
 		if @clase.save then
@@ -66,7 +66,7 @@ class Api::ClasesController < ApplicationController
 				logger.debug(date)
 				if !@clase = Clase.find_by_fecha_and_horario(date.strftime("%Y-%m-%d"),params[:horario]) then
 					params[:fecha] = date.strftime("%Y-%m-%d")
-					@clase = Clase.new(params.permit(:fecha, :horario, :max_users))
+					@clase = Clase.new(params.permit(:fecha, :horario, :max_users, :duracion, :trialable))
 					@clase.actividad = Actividad.find(params[:actividad_id])
 					@clase.instructor = User.find(params[:instructor_id])
 					if @clase.save then
