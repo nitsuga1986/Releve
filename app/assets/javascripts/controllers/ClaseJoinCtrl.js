@@ -20,6 +20,7 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl",['$scope', '$location', '
 			return Api.index(params.url()).$promise.then(function(data) {
 				$scope.clases = data;
 				angular.forEach(data, function(value, key) {
+					data[key]["duracion"] = data[key]["duracion"]+' hs'
 					data[key]["instructor_nombre_completo"] = value.instructor.nombre_completo;
 					data[key]["cant_users"] = value.users.length+" / "+value.max_users;
 					data[key]["fecha_fixed"] = dateFormat(value.fecha) ;
