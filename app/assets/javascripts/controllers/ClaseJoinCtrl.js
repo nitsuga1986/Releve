@@ -52,16 +52,18 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl",['$scope', '$location', '
 			}else{																								clases[index_clase].joined = false;}
 			// actividad_counter []
 			pack = $.grep($scope.alumno.packs, function(e){ return e.actividad_id == events[index_clase].actividad_id; })[0];
-			if(pack.noperiod){
-				if ($scope.alumno.actividad_counter[clases[index_clase].actividad_id] == undefined){	$scope.alumno.actividad_counter[clases[index_clase].actividad_id] = 1;
-				}else{																					$scope.alumno.actividad_counter[clases[index_clase].actividad_id] += 1;}
-			}else{
-				sd = new Date(pack.fecha_start+'T12:00:00Z');
-				ed = new Date(pack.fecha_end+'T12:00:00Z');
-				cd = new Date(events[key_event].fecha+'T12:00:00Z');
-				if(cd>sd && ed>cd){
-					if ($scope.alumno.actividad_counter[events[key_event].actividad_id] == undefined){	$scope.alumno.actividad_counter[events[key_event].actividad_id] = 1;
-				}else{																					$scope.alumno.actividad_counter[events[key_event].actividad_id] += 1;}}
+			if(pack!=undefined){
+				if(pack.noperiod){
+					if ($scope.alumno.actividad_counter[clases[index_clase].actividad_id] == undefined){	$scope.alumno.actividad_counter[clases[index_clase].actividad_id] = 1;
+					}else{																					$scope.alumno.actividad_counter[clases[index_clase].actividad_id] += 1;}
+				}else{
+					sd = new Date(pack.fecha_start+'T12:00:00Z');
+					ed = new Date(pack.fecha_end+'T12:00:00Z');
+					cd = new Date(events[key_event].fecha+'T12:00:00Z');
+					if(cd>sd && ed>cd){
+						if ($scope.alumno.actividad_counter[events[key_event].actividad_id] == undefined){	$scope.alumno.actividad_counter[events[key_event].actividad_id] = 1;
+					}else{																					$scope.alumno.actividad_counter[events[key_event].actividad_id] += 1;}}
+				}
 			}
 			// old_clase? cancelable?
 			td = new Date();
