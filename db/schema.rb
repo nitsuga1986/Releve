@@ -37,7 +37,8 @@ ActiveRecord::Schema.define(version: 20160906004632) do
     t.date     "fecha"
     t.string   "horario"
     t.integer  "max_users"
-    t.boolean  "cancelada"
+    t.boolean  "cancelada",    default: false
+    t.boolean  "trialable",    default: true
     t.string   "comment"
     t.integer  "duracion",     default: 1
     t.datetime "created_at"
@@ -77,7 +78,7 @@ ActiveRecord::Schema.define(version: 20160906004632) do
     t.string   "apellido"
     t.string   "profesion"
     t.date     "fechanac"
-    t.date     "fechaini",               default: '2016-09-07'
+    t.date     "fechaini",               default: '2016-09-08'
     t.string   "telefono"
     t.string   "domicilio"
     t.string   "localidad"
