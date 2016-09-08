@@ -7,7 +7,8 @@ class CreateClases < ActiveRecord::Migration
       t.date :fecha
       t.string :horario
       t.integer :max_users
-      t.boolean :cancelada
+      t.boolean :cancelada, default: false
+      t.boolean :trialable, default: true
       t.string :comment
       t.integer :duracion, default: 1
 
