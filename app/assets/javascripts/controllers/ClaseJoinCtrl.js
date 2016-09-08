@@ -1,4 +1,4 @@
-angular.module("TurnosApp").controller("ClaseJoinCtrl",['$scope', '$location', 'ResourceClase', '$filter','NgTableParams', '$timeout', function($scope, $location, ResourceClase, $filter, NgTableParams, $timeout) {
+angular.module("TurnosApp").controller("ClaseJoinCtrl",['$scope', '$location', 'ResourceClase', 'ResourceAlumno', '$filter','NgTableParams', '$timeout', function($scope, $location, ResourceClase, ResourceAlumno, $filter, NgTableParams, $timeout) {
 	$scope.alumno = ResourceAlumno.current();
 	$scope.alumno.actividad_counter = []; // Count clases for each actividad
 	// ngTable
