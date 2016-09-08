@@ -65,7 +65,7 @@ var columns_claseJoin = [
 	{title:"Horario",field:"horario",filter:"horario",visible:true,filter:{'horario':'text'}, sortable: "horario", sortDirection: "desc",groupable:"horario"},
 	{title:"Actividad",field:"actividad",filter:"actividad",visible:true,filter:{'actividad':'text'}, sortable: "actividad", sortDirection: "desc",groupable:"actividad"},
 	{title:"Instructor",field:"instructor_nombre_completo",filter:"instructor_nombre_completo",visible:true,filter:{'instructor_nombre_completo':'text'}, sortable: "instructor_nombre_completo", sortDirection: "desc",groupable:"instructor_nombre_completo"},
-	{title:"Día",field:"dia",filter:"dia",visible:true,filter:{'dia':'text'}, sortable: "dia", sortDirection: "desc",groupable:"dia"},
+	{title:"Día",field:"dia",filter:"dia",visible:false,filter:{'dia':'text'}, sortable: "dia", sortDirection: "desc",groupable:"dia"},
 	{title:"Duración",field:"duracion",filter:"duracion",visible:true,filter:{'duracion':'text'}, sortable: "duracion", sortDirection: "desc",groupable:"duracion"},
 	{title:"Alumnos",field:"cant_users",filter:"cant_users",visible:false,filter:{'cant_users':'text'}, sortable: "cant_users", sortDirection: "desc",groupable:"cant_users"},
 	{title:"Max.Alumnos",field:"max_users",filter:"max_users",visible:false,filter:{'max_users':'text'}, sortable: "max_users", sortDirection: "desc",groupable:"max_users"},
