@@ -1,4 +1,4 @@
-angular.module("TurnosApp").controller("ClaseEditCtrl",['$scope', '$q', '$http', '$routeParams', '$location', 'ResourceClase', 'ResourceActividad', function($scope, $q, $http, $routeParams, $location, ResourceClase, ResourceActividad) {
+angular.module("TurnosApp").controller("ClaseEditCtrl",['$scope', '$q', '$http', '$routeParams', '$location', 'ResourceClase', 'ResourceActividad', 'ResourceAlumno', function($scope, $q, $http, $routeParams, $location, ResourceClase, ResourceActividad, ResourceAlumno) {
 	$scope.FormErrors = [];
 	$scope.horariosArray = horariosArray;
 	$scope.submiterror = false;
@@ -7,6 +7,7 @@ angular.module("TurnosApp").controller("ClaseEditCtrl",['$scope', '$q', '$http',
 	$scope.GoToNewActividad = function() {$location.path("/dashboard/actividad/new");};
 	$scope.ActividadIndex = [];
 	$scope.ActividadIndex = ResourceActividad.index();
+	$scope.InstructorIndex = ResourceAlumno.instructores();
 	// SetToday
 	$scope.SetToday = function(scope_date) {
 		today = new Date();
@@ -31,6 +32,9 @@ angular.module("TurnosApp").controller("ClaseEditCtrl",['$scope', '$q', '$http',
 		$scope.clase.actividad = 'Pilates'; 
 		$scope.ActividadIndex.$promise.then(function(data) {
 			$scope.clase.actividad_id = $scope.ActividadIndex[ActividadIndexDefault].id;
+		});
+		$scope.InstructorIndex.$promise.then(function(data) {
+			$scope.clase.instructor_id = $scope.InstructorIndex[InstructorIndexDefault].id;
 		});
 	}
 	// SUBMIT

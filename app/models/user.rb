@@ -12,7 +12,16 @@ class User < ActiveRecord::Base
   def as_json(options = { })
 	h = super(options)
 	h[:packs] = self.packs
+	h[:nombre_completo] = self.nombre_completo
 	h
+  end
+  
+  def nombre_completo
+	if !self.nombre.nil? and !self.apellido.nil?
+		return self.nombre+" "+self.apellido
+	else
+		return self.email
+	end
   end
  
   def remove_from_clase(clase)

@@ -1,34 +1,32 @@
-angular.module("TurnosApp").controller("AlumnoIndexCtrl",['$scope', '$location', 'ResourceAlumno', '$filter','ngTableParams', '$timeout', function($scope, $location, ResourceAlumno, $filter, ngTableParams, $timeout) {
+angular.module("TurnosApp").controller("AlumnoIndexCtrl",['$scope', '$location', 'ResourceAlumno', '$filter','NgTableParams', '$timeout', function($scope, $location, ResourceAlumno, $filter, NgTableParams, $timeout) {
 	$scope.GoToEdit = function(id) {$location.path("/alumno/"+id+"/edit/");};
 	$scope.GoToNew = function() {$location.path("/alumno/new");};
 	// ngTable
+	function dateFormat(date) {date = date.split('-'); date = date[2]+'/'+date[1]; return date;}
 	var Api = ResourceAlumno;
 	$scope.columns_alumno = columns_alumno
-	$scope.tableParams = new ngTableParams({
+	$scope.cant_visible_cols = $.grep(columns_alumno, function(e){ return e.visible == true; }).length+1;
+    $scope.tableParams = new NgTableParams({
 		page: alumnoDefaultPage,         	// initial first page
 		count: alumnoDefaultCount,         	// initial count per page
 		filter: alumnoDefaultFilter, 		// initial filter
 		sorting: alumnoDefaultSorting 		// initial sorting
 	}, {
 		total: 0,           // length of data
-		getData: function($defer, params) {
+		getData: function(params) {
 			// ajax request to api
-			$scope.loading=true;
-			Api.index({}, function(data) {
-				// update table params
+			return Api.index(params.url()).$promise.then(function(data) {
 				$scope.alumnos = data;
-				params.total(data.length);
 				var filteredData = params.filter() ?
 				$filter('filter')(data, params.filter()) : data;
 				var orderedData = params.sorting() ?
 				$filter('orderBy')(filteredData, params.orderBy()) : data;
-				$scope.tableResults = '('+data.length+')';
+				params.total(data.inlineCount);
 				$scope.loading=false;
-				// set new data
-				$defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+				return orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
 			});
 		}
-	});
+    });
 	// Reload button
 	$scope.reloadTable = function(id) {
 		$scope.tableParams.reload();

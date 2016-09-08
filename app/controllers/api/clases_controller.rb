@@ -4,13 +4,13 @@ class Api::ClasesController < ApplicationController
 
   def index
 	@clase = Clase.all
-	respond_with @clase
+	render json:  @clase
   end
 
   def show
 	if current_user.try(:admin?)
 		@clase = Clase.find(params[:id])
-		respond_with @clase
+		render json:  @clase
 	else
 		redirect_to root_path
 	end
@@ -41,8 +41,9 @@ class Api::ClasesController < ApplicationController
   
   def create
 	if !@clase = Clase.find_by_fecha_and_horario(params[:fecha],params[:horario]) then
-		@clase = Clase.new(params.permit(:fecha, :horario, :max_users, :instructor, :cancelada, :comment))
+		@clase = Clase.new(params.permit(:fecha, :horario, :max_users, :cancelada, :comment))
 		@clase.actividad = Actividad.find(params[:actividad_id])
+		@clase.instructor = User.find(params[:instructor_id])
 		if @clase.save then
 			if !params[:users].nil? then
 				params[:users].each do |user|
@@ -59,14 +60,15 @@ class Api::ClasesController < ApplicationController
   end
   
   def bulk
-	if params[:fecha_start].present? && params[:fecha_end].present? && params[:horario].present? && params[:max_users].present? && params[:instructor].present? && params[:actividad_id].present? then
+	if params[:fecha_start].present? && params[:fecha_end].present? && params[:horario].present? && params[:max_users].present? && params[:instructor_id].present? && params[:actividad_id].present? then
 		Date.parse(params[:fecha_start]).upto(Date.parse(params[:fecha_end])) do |date|
 			if (params[:bool_monday]==true && date.wday==1)||(params[:bool_tuesday]==true && date.wday==2)||(params[:bool_wednesday]==true && date.wday==3)||(params[:bool_thursday]==true && date.wday==4)||(params[:bool_friday]==true && date.wday==5)||(params[:bool_saturday]==true && date.wday==6)||(params[:bool_sunday]==true && date.wday==0) then
 				logger.debug(date)
 				if !@clase = Clase.find_by_fecha_and_horario(date.strftime("%Y-%m-%d"),params[:horario]) then
 					params[:fecha] = date.strftime("%Y-%m-%d")
-					@clase = Clase.new(params.permit(:fecha, :horario, :max_users, :instructor))
+					@clase = Clase.new(params.permit(:fecha, :horario, :max_users))
 					@clase.actividad = Actividad.find(params[:actividad_id])
+					@clase.instructor = User.find(params[:instructor_id])
 					if @clase.save then
 						if !params[:users].nil? then
 							params[:users].each do |user|

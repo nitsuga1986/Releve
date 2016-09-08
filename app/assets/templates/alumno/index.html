@@ -26,17 +26,17 @@
 </div>
 -->
 <div class="col-xs-12" >
-	<div class="table-responsive">
+	<div class="table-responsive">		
 		<table data-ng-table="tableParams" show-filter="false" class="table table-striped table-hover table-condensed">
 			<thead>
 				<tr>
 					<th data-ng-repeat="column in columns_alumno" data-ng-show="column.visible"
-						class="text-center sortable" data-ng-class="{
-						'sort-asc': tableParams.isSortBy(column.field, 'asc'),
-						'sort-desc': tableParams.isSortBy(column.field, 'desc')
-						}"
+						class="text-center sortable" ng-class="{
+							'sort-asc': tableParams.isSortBy(column.field, 'asc'),
+							'sort-desc': tableParams.isSortBy(column.field, 'desc')
+						  }"
 						ng-click="tableParams.sorting(column.field, tableParams.isSortBy(column.field, 'asc') ? 'desc' : 'asc')">
-						<div>{{column.title}}</div>
+						<div class="sort-indicator">{{column.title}}</div>
 					</th>
 					<th>Acciones</th>
 				</tr>
@@ -49,14 +49,13 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr data-ng-repeat="alumno in $data" class="tr_clickable">
+				<tr ng-repeat="alumno in $data">
 					<td data-ng-repeat="column in columns_alumno" data-ng-click="GoToEdit(alumno.id)" data-ng-show="column.visible" sortable="column.field" filter="column.filter">
-						<span data-ng-if="column.field=='cancelada'"><strong><i class="fa fa-times text-danger" aria-hidden="true"></i></strong></span>
-						<span data-ng-if="column.field!='cancelada'">{{alumno[column.field]}}</span>
+						{{alumno[column.field]}}
 					</td>
 					<td>
 						<div class="btn-group btn-group-xs" role="group" aria-label="...">
-							<a type="button" class="btn btn-warning" href="/alumno/{{alumno.id}}/edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+							<a type="button" class="btn btn-warning" href="/dashboard/{{alumno.id}}/edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
 							<button data-ng-click="toDestroy(alumno.id)" type="button" class="btn btn-danger" data-toggle="modal" data-target=".confirmation-modal"><i class="fa fa-trash" aria-hidden="true"></i></button>
 						</div>
 					</td>

@@ -13,7 +13,12 @@ class Api::AlumnosController < ApplicationController
   end
   
   def current
-	respond_with current_user
+	render json: current_user
+  end
+  
+  def instructores
+	@alumno = User.where(instructor:true)
+	render json: @alumno
   end
   
   def autocomplete
@@ -25,7 +30,7 @@ class Api::AlumnosController < ApplicationController
   
   def create
 	if !@alumno = User.find_by_email(params[:email]) then
-		@alumno = User.new(params.permit(:email, :dni, :nombre, :apellido, :profesion, :fechanac, :fechaini, :telefono, :domicilio, :localidad, :nombre_contacto, :apellido_contacto, :telefono_contacto, :sexo, :confirmed, :primera_clase, :nro_clases, :admin))
+		@alumno = User.new(params.permit(:email, :dni, :nombre, :apellido, :profesion, :fechanac, :fechaini, :telefono, :domicilio, :localidad, :nombre_contacto, :apellido_contacto, :telefono_contacto, :sexo, :confirmed, :primera_clase, :nro_clases, :admin, :instructor))
 		if @alumno.save then
 			if !params[:packs].nil? then
 				params[:packs].each do |pack|
@@ -50,7 +55,7 @@ class Api::AlumnosController < ApplicationController
   def update
 	@alumno = User.find(params[:id])
 	@alumno.actividades.each{|x| x.remove_user_from_actividad(@alumno)}
-	if @alumno.update_attributes(params.permit(:email, :dni, :nombre, :apellido, :profesion, :fechanac, :fechaini, :telefono, :domicilio, :localidad, :nombre_contacto, :apellido_contacto, :telefono_contacto, :sexo, :confirmed, :primera_clase, :nro_clases, :admin)) then
+	if @alumno.update_attributes(params.permit(:email, :dni, :nombre, :apellido, :profesion, :fechanac, :fechaini, :telefono, :domicilio, :localidad, :nombre_contacto, :apellido_contacto, :telefono_contacto, :sexo, :confirmed, :primera_clase, :nro_clases, :admin, :instructor)) then
 		if !params[:packs].nil? then
 			params[:packs].each do |pack|
 				pac = @alumno.packs.new

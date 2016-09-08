@@ -50,9 +50,9 @@
 		</div>
 		<!-- instructor -->
 		<div class="form-group col-sm-6">
-			<label for="instructor" class="col-sm-4 control-label">Instructor</label>
+			<label for="instructor" class="col-sm-4 control-label">Instructor/a</label>
 			<div class="col-sm-7">
-				<input type="text" class="form-control" name="instructor" data-ng-model="clase.instructor" id="instructor" placeholder="ej. Byron Farnfader" to-title-case>
+				<select required class="form-control" data-ng-blur="GoToClaseEdit()" name="instructor" data-ng-model="clase.instructor_id" id="instructor" data-ng-options="instructor.id as instructor.nombre_completo for instructor in InstructorIndex"></select> 
 			</div>
 		</div>
 		<!-- comment -->

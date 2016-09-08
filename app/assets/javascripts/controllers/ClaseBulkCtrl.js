@@ -1,4 +1,4 @@
-angular.module("TurnosApp").controller("ClaseBulkCtrl",['$scope', '$q', '$http', '$routeParams', '$location', 'ResourceClase', 'ResourceActividad', function($scope, $q, $http, $routeParams, $location, ResourceClase, ResourceActividad) {
+angular.module("TurnosApp").controller("ClaseBulkCtrl",['$scope', '$q', '$http', '$routeParams', '$location', 'ResourceClase', 'ResourceActividad', 'ResourceAlumno', function($scope, $q, $http, $routeParams, $location, ResourceClase, ResourceActividad, ResourceAlumno) {
 	$scope.FormErrors = [];
 	$scope.horariosArray = horariosArray;
 	$scope.submiterror = false;
@@ -7,6 +7,7 @@ angular.module("TurnosApp").controller("ClaseBulkCtrl",['$scope', '$q', '$http',
 	$scope.GoToNewActividad = function() {$location.path("/dashboard/actividad/new");};
 	$scope.ActividadIndex = [];
 	$scope.ActividadIndex = ResourceActividad.index();
+	$scope.InstructorIndex = ResourceAlumno.instructores();
 	// SetToday
 	$scope.SetToday = function(scope_date) {
 		today = new Date();

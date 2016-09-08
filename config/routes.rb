@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 		resources :alumnos do
 			collection do
 				get 'autocomplete'
-				get 'current'
+				post 'current'
+				post 'instructores'
 			end
 		end
 		resources :actividad

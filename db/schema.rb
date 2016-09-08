@@ -32,12 +32,14 @@ ActiveRecord::Schema.define(version: 20160906004632) do
 
   create_table "clases", force: true do |t|
     t.integer  "actividad_id"
+    t.integer  "instructor"
+    t.integer  "reemplazo"
     t.date     "fecha"
     t.string   "horario"
     t.integer  "max_users"
-    t.string   "instructor"
     t.boolean  "cancelada"
     t.string   "comment"
+    t.integer  "duracion",     default: 1
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -75,7 +77,7 @@ ActiveRecord::Schema.define(version: 20160906004632) do
     t.string   "apellido"
     t.string   "profesion"
     t.date     "fechanac"
-    t.date     "fechaini",               default: '2016-09-06'
+    t.date     "fechaini",               default: '2016-09-07'
     t.string   "telefono"
     t.string   "domicilio"
     t.string   "localidad"
@@ -85,6 +87,7 @@ ActiveRecord::Schema.define(version: 20160906004632) do
     t.string   "sexo"
     t.boolean  "confirmed",              default: false
     t.boolean  "primera_clase",          default: true
+    t.boolean  "instructor",             default: false
     t.string   "email",                  default: "",           null: false
     t.string   "encrypted_password",     default: "",           null: false
     t.string   "reset_password_token"

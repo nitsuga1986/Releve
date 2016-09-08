@@ -23,6 +23,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       ## Logica
       t.boolean :confirmed, default: false
       t.boolean :primera_clase, default: true
+      t.boolean :instructor, default: false
     
       ## Database authenticatable
       t.string :email,              null: false, default: ""
