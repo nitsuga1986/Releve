@@ -71,7 +71,7 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl",['$scope', '$location', '
 				}else{														clases[index_clase].cancelable = true;}
 																			clases[index_clase].old_clase = false;
 			} else {														clases[index_clase].old_clase = true;}
-		}
+		});
 		return clases
 	};
 	// eventModal
