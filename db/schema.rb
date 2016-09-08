@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20160906004632) do
     t.boolean  "cancelada",    default: false
     t.boolean  "trialable",    default: true
     t.string   "comment"
-    t.integer  "duracion",     default: 1
+    t.decimal  "duracion",     default: 1.0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
