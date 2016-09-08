@@ -15,12 +15,14 @@ angular.module("TurnosApp").controller("ActividadIndexCtrl",['$scope', '$cacheFa
 		total: 0,           // length of data
 		getData: function(params) {
 			// ajax request to api
+			startLoading();
 			return Api.index(params.url()).$promise.then(function(data) {
 				$scope.actividades = data;
 				var orderedData = params.sorting() ?
 				$filter('orderBy')(data, params.orderBy()) : data;
 				params.total(orderedData.inlineCount);
 				$scope.loading=false;
+				stopLoading();
 				return orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
 			});
 		}

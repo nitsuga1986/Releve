@@ -117,5 +117,4 @@ angular.module("TurnosApp").controller("ClaseEditCtrl",['$scope', '$q', '$http',
 		   }
 		});
 	});
-		
-}]);
+stopLoading();}]);

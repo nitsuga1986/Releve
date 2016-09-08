@@ -21,5 +21,16 @@
 //= require bootstrap-calendar/underscore-min
 //= require bootstrap-calendar/calendar
 //= require routes
-
-
+// startLoading
+function startLoading() {
+	$('#AppContainer').fadeOut();
+	$('#ReleveImgNav').hide();
+	$('#LoadingImg').show();
+}
+// stopLoading
+function stopLoading() {
+	$('#LoadingImg').hide();
+	$('#ReleveImgNav').show();
+	$('#AppContainer').fadeIn();
+}
+startLoading();

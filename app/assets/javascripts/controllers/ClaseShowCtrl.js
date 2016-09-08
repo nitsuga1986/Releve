@@ -23,4 +23,4 @@ angular.module("TurnosApp").controller("ClaseShowCtrl",['$scope', '$routeParams'
 			ResourceClase.destroy($scope.clase, success, failure);
 		})
 	};
-}]);
+stopLoading();}]);

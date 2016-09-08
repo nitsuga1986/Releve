@@ -19,6 +19,7 @@ angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$location', 
 		groupOptions: {isExpanded: false},
 		getData: function(params) {
 			// ajax request to api
+			startLoading();
 			return Api.index(params.url()).$promise.then(function(data) {
 				$scope.clases = data;
 				angular.forEach(data, function(value, key) {
@@ -33,6 +34,7 @@ angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$location', 
 				$filter('orderBy')(filteredData, params.orderBy()) : data;
 				params.total(data.inlineCount);
 				$scope.loading=false;
+				stopLoading();
 				return orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
 			});
 		}

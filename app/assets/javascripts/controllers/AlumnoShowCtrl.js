@@ -23,4 +23,4 @@ angular.module("TurnosApp").controller("AlumnoShowCtrl",['$scope', '$routeParams
 			ResourceAlumno.destroy($scope.alumno, success, failure);
 		})
 	};
-}]);
+stopLoading();}]);
