@@ -38,18 +38,19 @@ $.datepicker.regional['es'] = {
 // Clase
 var claseDefaultPage = 1;	var claseDefaultCount = 25;
 var claseDefaultFilter = {};   
-var claseDefaultGroupingBy = 'fecha'; var claseDefaultGrouping = {fecha: "desc"}
+var claseDefaultGroupingBy = 'fecha'; var claseDefaultGrouping = {fecha: "asc"}
 var claseDefaultSorting = {fecha: 'desc',horario: 'asc'};
 var horariosArray = ["09:00","10:00","11:00","12:00","13:00","17:00","18:00","19:00","20:00","21:00","--","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00"];
 var columns_clase = [
-	{title:"Fecha",field:"fecha",filter:"fecha",visible:false,filter:{'fecha':'text'}, sortable: "fecha", sortDirection: "desc",groupable:"fecha"},
+	{title:"Fecha",field:"fecha",filter:"fecha",visible:false,filter:{'fecha':'text'}, sortable: "fecha", sortDirection: "asc",groupable:"fecha"},
 	{title:"Horario",field:"horario",filter:"horario",visible:true,filter:{'horario':'text'}, sortable: "horario", sortDirection: "desc",groupable:"horario"},
 	{title:"Actividad",field:"actividad",filter:"actividad",visible:true,filter:{'actividad':'text'}, sortable: "actividad", sortDirection: "desc",groupable:"actividad"},
 	{title:"Instructor",field:"instructor_nombre_completo",filter:"instructor_nombre_completo",visible:true,filter:{'instructor_nombre_completo':'text'}, sortable: "instructor_nombre_completo", sortDirection: "desc",groupable:"instructor_nombre_completo"},
-	{title:"Día",field:"dia",filter:"dia",visible:true,filter:{'dia':'text'}, sortable: "dia", sortDirection: "desc",groupable:"dia"},
+	{title:"Día",field:"dia",filter:"dia",visible:false,filter:{'dia':'text'}, sortable: "dia", sortDirection: "desc",groupable:"dia"},
 	{title:"Duración",field:"duracion",filter:"duracion",visible:true,filter:{'duracion':'text'}, sortable: "duracion", sortDirection: "desc",groupable:"duracion"},
 	{title:"Alumnos",field:"cant_users",filter:"cant_users",visible:false,filter:{'cant_users':'text'}, sortable: "cant_users", sortDirection: "desc",groupable:"cant_users"},
 	{title:"Max.Alumnos",field:"max_users",filter:"max_users",visible:false,filter:{'max_users':'text'}, sortable: "max_users", sortDirection: "desc",groupable:"max_users"},
+	{title:"Alumnos",field:"cant_users",filter:"cant_users",visible:true,filter:{'cant_users':'text'}, sortable: "cant_users", sortDirection: "desc",groupable:"cant_users"},
 	{title:"Cancelada?",field:"cancelada",filter:"cancelada",visible:false,filter:{'cancelada':'text'}, sortable: "cancelada", sortDirection: "desc",groupable:"cancelada"},
 	{title:"Comentarios",field:"comment",filter:"comment",visible:false,filter:{'comment':'text'}, sortable: "comment", sortDirection: "desc",groupable:"comment"},
 	{title:"Fecha de creación",field:"created_at",filter:"created_at",visible:false,filter:{'created_at':'text'}, sortable: "created_at", sortDirection: "desc",groupable:"created_at"},
@@ -58,10 +59,10 @@ var columns_clase = [
 // Clase Join
 var claseJoinDefaultPage = 1;	var claseJoinDefaultCount = 25;
 var claseJoinDefaultFilter = {};   
-var claseJoinDefaultGroupingBy = 'fecha'; var claseJoinDefaultGrouping = {fecha: "desc"}
+var claseJoinDefaultGroupingBy = 'fecha'; var claseJoinDefaultGrouping = {fecha: "asc"}
 var claseJoinDefaultSorting = {fecha: 'desc',horario: 'asc'};
 var columns_claseJoin = [
-	{title:"Fecha",field:"fecha",filter:"fecha",visible:false,filter:{'fecha':'text'}, sortable: "fecha", sortDirection: "desc",groupable:"fecha"},
+	{title:"Fecha",field:"fecha",filter:"fecha",visible:false,filter:{'fecha':'text'}, sortable: "fecha", sortDirection: "asc",groupable:"fecha"},
 	{title:"Horario",field:"horario",filter:"horario",visible:true,filter:{'horario':'text'}, sortable: "horario", sortDirection: "desc",groupable:"horario"},
 	{title:"Actividad",field:"actividad",filter:"actividad",visible:true,filter:{'actividad':'text'}, sortable: "actividad", sortDirection: "desc",groupable:"actividad"},
 	{title:"Instructor",field:"instructor_nombre_completo",filter:"instructor_nombre_completo",visible:true,filter:{'instructor_nombre_completo':'text'}, sortable: "instructor_nombre_completo", sortDirection: "desc",groupable:"instructor_nombre_completo"},

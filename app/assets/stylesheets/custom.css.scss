@@ -197,12 +197,12 @@ body.landingpage {
 		background-position: 0% 0%;
 	}
 	.intro-table-first {
-		background-image: image-url("table-1.jpg");
+		background-color:#12849e;
 	}
 	.intro-table-hover {
 		-webkit-transition: background-image 0.3s ease, background-position 0.3s;
 		transition: background-image 0.3s ease, background-position 0.3s;
-		background-image: image-url("table-2.jpg");
+		background-color:#20AAC9;
 	}
 	.intro-table-hover h4 {
 		-webkit-transform: translateY(170px);
@@ -211,7 +211,7 @@ body.landingpage {
 		transition: transform 0.3s;
 	}
 	.intro-table-third {
-		background-image: image-url("table-3.jpg");
+		background-color:#1aaea2;
 	}
 	.intro-table-hover .expand {
 		margin: 30px;
@@ -896,6 +896,7 @@ body.landingpage {
 .text-releve{color:#12849e;}
 .bg-light-releve{background-color:#1aaea2;}
 .text-light-releve{color:#1aaea2;}
+.strike { text-decoration: line-through;}
 .first{padding-top:150px}
 .first.notlandingpage{padding-top:100px}
 .form-horizontal label.control-label {
@@ -910,9 +911,6 @@ a.eventlist.btn,a.eventmylist.btn{
 	with:45px;
 	height:50px;
 }
-#preload-01 { background: image-url("bootstrap-calendar/dark_wood.png") no-repeat -9999px -9999px; }
-#preload-02 { background: image-url("bootstrap-calendar/tick.png?2") no-repeat -9999px -9999px; }
-#preload-02 { background: image-url("bootstrap-calendar/tick.png?2") no-repeat -9999px -9999px; }
 input[type='number'].nodecoration {
     -moz-appearance:textfield;
 }

@@ -50,7 +50,7 @@
 		</div>
 		<!-- duracion -->
 		<div class="form-group col-sm-6">
-			<label for="duracion" class="col-sm-4 control-label">Duración.</label>
+			<label for="duracion" class="col-sm-4 control-label">Duración</label>
 			<div class="col-sm-7">
 				<input type="number" min="0.5" max="24" step="0.5" class="form-control" name="duracion" data-ng-model="clase.duracion" id="duracion" placeholder="ej. 1.5">
 			</div>
@@ -59,7 +59,14 @@
 		<div class="form-group col-sm-6">
 			<label for="instructor" class="col-sm-4 control-label">Instructor/a</label>
 			<div class="col-sm-7">
-				<select required class="form-control" data-ng-blur="GoToClaseEdit()" name="instructor" data-ng-model="clase.instructor_id" id="instructor" data-ng-options="instructor.id as instructor.nombre_completo for instructor in InstructorIndex"></select> 
+				<select required class="form-control" name="instructor" data-ng-blur="GoToClaseEdit()" data-ng-model="clase.instructor_id" id="instructor" data-ng-options="instructor.id as instructor.nombre_completo for instructor in InstructorIndex"></select> 
+			</div>
+		</div>
+		<!-- reemplazo -->
+		<div class="form-group col-sm-6">
+			<label for="reemplazo" class="col-sm-4 control-label">Reemplazo</label>
+			<div class="col-sm-7">
+				<select required class="form-control" name="reemplazo" data-ng-model="clase.reemplazo_id" id="reemplazo" data-ng-options="instructor.id as instructor.nombre_completo for instructor in InstructorIndex"></select> 
 			</div>
 		</div>
 		<!-- comment -->

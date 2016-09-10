@@ -21,7 +21,11 @@ angular.module("TurnosApp").controller("ClaseEditCtrl",['$scope', '$q', '$http',
 		$scope.FormTitle = "<i class='fa fa-calendar'></i> Editar datos de la clase";
 		$scope.FormButton = '<i class="fa fa-edit fa-lg"></i> Guardar cambios';
 		$scope.clase = ResourceClase.show({ id: $routeParams.id });
-		$scope.clase.$promise.then(function( value ){},function( error ){$location.path("/dashboard/new");});	// if id not exists => ToNew
+		$scope.clase.$promise.then(function( value ){
+			$scope.clase.duracion = parseFloat($scope.clase.duracion);
+			$scope.clase.instructor_id = $scope.clase.instructor.id;
+			if($scope.clase.reemplazo!=null){$scope.clase.reemplazo_id = $scope.clase.reemplazo.id};
+		},function( error ){$location.path("/dashboard/new");});	// if id not exists => ToNew
 	} else { 				// New
 		$scope.FormTitle = "<i class='fa fa-calendar'></i> Agregar nueva clase";
 		$scope.FormButton = '<i class="fa fa-calendar fa-lg"></i> Agregar clase';
@@ -95,12 +99,12 @@ angular.module("TurnosApp").controller("ClaseEditCtrl",['$scope', '$q', '$http',
 			}
 		});
 	});
-	// GoTo
+	// GoTo Search
   	$scope.GoToClaseEdit = function() {
-		if($scope.history_GoToClaseEdit.indexOf($scope.clase.fecha+$scope.clase.horario) == -1){
-			if($scope.clase.fecha!=undefined&&$scope.clase.fecha!=null&&$scope.clase.fecha!=''&&$scope.clase.horario!=undefined&&$scope.clase.horario!=null&&$scope.clase.horario!=''){
-				$scope.history_GoToClaseEdit.push($scope.clase.fecha+$scope.clase.horario);
-				$http.get('/api/clases/search', {params: { fecha:$scope.clase.fecha, horario:$scope.clase.horario}}).
+		if($scope.history_GoToClaseEdit.indexOf($scope.clase.fecha+$scope.clase.horario+$scope.clase.instructor_id) == -1){
+			if($scope.clase.fecha!=undefined&&$scope.clase.fecha!=null&&$scope.clase.fecha!=''&&$scope.clase.horario!=undefined&&$scope.clase.horario!=null&&$scope.clase.horario!=''&&$scope.clase.instructor_id!=undefined&&$scope.clase.instructor_id!=null&&$scope.clase.instructor_id!=''){
+				$scope.history_GoToClaseEdit.push($scope.clase.fecha+$scope.clase.horario+$scope.clase.instructor_id);
+				$http.get('/api/clases/search', {params: { fecha:$scope.clase.fecha, horario:$scope.clase.horario, instructor:$scope.clase.instructor_id}}).
 				success(function(data, status, headers, config) {
 					if(data.id!=undefined){
 						$location.path("/dashboard/"+data.id+"/edit");

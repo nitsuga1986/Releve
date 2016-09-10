@@ -22,10 +22,11 @@
 			  </td>
 			</tr>
 			<tr ng-hide="group.$hideRows" ng-repeat="clase in group.data" ng-repeat-end>
-				<td data-ng-repeat="column in columns_claseJoin" data-ng-click="GoToEdit(clase.id)" data-ng-show="column.visible" sortable="column.field" filter="column.filter">
-					{{clase[column.field]}}
-					<button data-ng-if="column.field=='horario' && !clase.old_clase && !clase.joined && !alumno.actividad_overquota[clase.actividad_id] && !clase.completa" data-ng-click="eventModal($parent.$index)" class="btn btn-default btn-xs" type="button" value="Input">Agendarme</button>
-					<button data-ng-if="column.field=='horario' && !clase.old_clase && clase.joined && clase.cancelable" data-ng-click="eventModal($parent.$index)" class="btn btn-default btn-xs" type="button" value="Input">Cancelar</button>
+				<td data-ng-class="{'strike': clase.cancelada && column.field!='instructor_nombre_completo'}" data-ng-repeat="column in columns_claseJoin" data-ng-click="GoToEdit(clase.id)" data-ng-show="column.visible" sortable="column.field" filter="column.filter">
+					<span data-ng-if="(column.field=='instructor_nombre_completo' && clase.cancelada)" class="text-danger">Clase cancelada</span>
+					<span data-ng-if="!(column.field=='instructor_nombre_completo' && clase.cancelada)">{{clase[column.field]}}</span>
+					<button data-ng-if="column.field=='horario' && !clase.cancelada && !clase.joined && !alumno.actividad_overquota[clase.actividad_id] && !clase.completa" data-ng-click="eventModal(clase.id)" class="btn btn-default btn-xs" type="button" value="Input">Agendarme</button>
+					<button data-ng-if="column.field=='horario' && !clase.cancelada && clase.joined && clase.cancelable" data-ng-click="eventModal(clase.id)" class="btn btn-default btn-xs" type="button" value="Input">Cancelar</button>
 				</td>
 			</tr>
 			<tr class="ng-table-filters" data-ng-init="tableParams">
@@ -47,21 +48,20 @@
                 <h4>Programar mis clases</h4>
             </div>
             <div class="modal-body">
-				<p class="lead" data-ng-if="clase.old_clase">La clase de <strong>{{clase.actividad}}</strong> del día <strong>{{clase.fecha | date:'dd/MM/yyyy'}} a las {{clase.horario}}</strong> con {{clase.instructor.nombre_completo}} ya fue realizada y <span class="text-danger">no está disponible</span></p>
-				<p class="lead" data-ng-if="!clase.old_clase && clase.joined && !clase.cancelable">Lo sentimos pero la clase es en menos de 24hs y <span class="text-danger">ya no es posible cancelarla</span>. Esperamos que puedas asisitir! <span class="text-muted">La clase de <strong>{{clase.actividad}}</strong> está programada para el día <strong>{{clase.fecha | date:'dd/MM/yyyy'}} a las {{clase.horario}}</strong> con {{clase.instructor.nombre_completo}}.</span></p>
-				<p class="lead" data-ng-if="!clase.old_clase && clase.joined && clase.cancelable">¿No vas a poder asistir a la clase de <strong>{{clase.actividad}}</strong> el día <strong>{{clase.fecha | date:'dd/MM/yyyy'}} a las {{clase.horario}}</strong> con {{clase.instructor.nombre_completo}}?</p>
-				<p class="lead" data-ng-if="!clase.old_clase && !clase.joined && alumno.actividad_overquota[clase.actividad_id] && alumno.primera_clase">Ya has programado tu clase de prueba! Puedes cancelarla y elegir este horario si lo prefieres.</p>
-				<p class="lead" data-ng-if="!clase.old_clase && !clase.joined && alumno.actividad_overquota[clase.actividad_id] && !alumno.primera_clase">Ya has programado todas las clases disponibles en tu plan. Puedes cancelar alguna y elegir este horario si lo prefieres.</p>
-				<p class="lead" data-ng-if="!clase.old_clase && !clase.joined && !alumno.actividad_overquota[clase.actividad_id] && clase.completa">Lo sentimos pero la clase de <strong>{{clase.actividad}}</strong> del día <strong>{{clase.fecha | date:'dd/MM/yyyy'}} a las {{clase.horario}}</strong> con {{clase.instructor.nombre_completo}} está completa y <span class="text-danger">no está disponible</span></p>
-				<p class="lead" data-ng-if="!clase.old_clase && !clase.joined && !alumno.actividad_overquota[clase.actividad_id] && !clase.completa" >¿Te agendamos para la clase de <strong>{{clase.actividad}}</strong> el día <strong>{{clase.fecha | date:'dd/MM/yyyy'}} a las {{clase.horario}}</strong> con {{clase.instructor.nombre_completo}}?</p>
-				<p class="alert alert-danger" role="alert" data-ng-if="!clase.old_clase && !clase.joined && !alumno.actividad_overquota[clase.actividad_id] && !clase.completa && !clase.cancelable" ><strong>Atención!</strong> esta clase es en menos de 24hs. Ten en cuenta que una vez realizada la inscripción no es posible cancelarla.</p>
-				<p class="alert alert-warning" role="alert" data-ng-if="!clase.old_clase && !clase.joined && !alumno.actividad_overquota[clase.actividad_id] && !clase.completa && clase.cancelable" ><strong>Recuerda!</strong> las clases se pueden cancelar únicamente hasta 24hs antes.</p>
+				<p class="lead" data-ng-if="clase.joined && !clase.cancelable">Lo sentimos pero la clase es en menos de 24hs y <span class="text-danger">ya no es posible cancelarla</span>. Esperamos que puedas asisitir! <span class="text-muted">La clase de <strong>{{clase.actividad}}</strong> está programada para el día <strong>{{clase.fecha | date:'dd/MM/yyyy'}} a las {{clase.horario}}</strong> con {{clase.instructor.nombre_completo}}.</span></p>
+				<p class="lead" data-ng-if="clase.joined && clase.cancelable">¿No vas a poder asistir a la clase de <strong>{{clase.actividad}}</strong> el día <strong>{{clase.fecha | date:'dd/MM/yyyy'}} a las {{clase.horario}}</strong> con {{clase.instructor.nombre_completo}}?</p>
+				<p class="lead" data-ng-if="!clase.joined && alumno.actividad_overquota[clase.actividad_id] && alumno.primera_clase">Ya has programado tu clase de prueba! Puedes cancelarla y elegir este horario si lo prefieres.</p>
+				<p class="lead" data-ng-if="!clase.joined && alumno.actividad_overquota[clase.actividad_id] && !alumno.primera_clase">Ya has programado todas las clases disponibles en tu plan. Puedes cancelar alguna y elegir este horario si lo prefieres.</p>
+				<p class="lead" data-ng-if="!clase.joined && !alumno.actividad_overquota[clase.actividad_id] && clase.completa">Lo sentimos pero la clase de <strong>{{clase.actividad}}</strong> del día <strong>{{clase.fecha | date:'dd/MM/yyyy'}} a las {{clase.horario}}</strong> con {{clase.instructor.nombre_completo}} está completa y <span class="text-danger">no está disponible</span></p>
+				<p class="lead" data-ng-if="!clase.cancelada && !clase.joined && !alumno.actividad_overquota[clase.actividad_id] && !clase.completa" >¿Te agendamos para la clase de <strong>{{clase.actividad}}</strong> el día <strong>{{clase.fecha | date:'dd/MM/yyyy'}} a las {{clase.horario}}</strong> con {{clase.instructor.nombre_completo}}?</p>
+				<p class="alert alert-danger" role="alert" data-ng-if="!clase.joined && !alumno.actividad_overquota[clase.actividad_id] && !clase.completa && !clase.cancelable" ><strong>Atención!</strong> esta clase es en menos de 24hs. Ten en cuenta que una vez realizada la inscripción no es posible cancelarla.</p>
+				<p class="alert alert-warning" role="alert" data-ng-if="!clase.joined && !alumno.actividad_overquota[clase.actividad_id] && !clase.completa && clase.cancelable" ><strong>Recuerda!</strong> las clases se pueden cancelar únicamente hasta 24hs antes.</p>
             </div>
             <div class="modal-footer">
                 <a href="#" data-dismiss="modal" class="btn btn-default ">Close</a>
-				<a href="#" data-ng-if="clase.old_clase || (!clase.old_clase && !clase.joined && ((alumno.actividad_overquota[clase.actividad_id]) || (!alumno.actividad_overquota[clase.actividad_id] && clase.completa)))" data-dismiss="modal" class="btn btn-default" disabled="disabled">No disponible</a>
-				<a href="#" data-ng-if="!clase.old_clase && clase.joined && clase.cancelable" data-dismiss="modal" class="btn btn-danger"  data-ng-click="UnJoinUser()">No voy a poder ir</a>
-                <a href="#" data-ng-if="!clase.old_clase && !clase.joined && !alumno.actividad_overquota[clase.actividad_id] && !clase.completa" data-dismiss="modal" class="btn btn-primary"  data-ng-click="JoinUser()">Agendarme!</a>
+				<a href="#" data-ng-if="!clase.joined && ((alumno.actividad_overquota[clase.actividad_id]) || (!alumno.actividad_overquota[clase.actividad_id] && clase.completa))" data-dismiss="modal" class="btn btn-default" disabled="disabled">No disponible</a>
+				<a href="#" data-ng-if="clase.joined && clase.cancelable" data-dismiss="modal" class="btn btn-danger"  data-ng-click="UnJoinUser()">No voy a poder ir</a>
+                <a href="#" data-ng-if="!clase.joined && !alumno.actividad_overquota[clase.actividad_id] && !clase.completa" data-dismiss="modal" class="btn btn-primary"  data-ng-click="JoinUser()">Agendarme!</a>
             </div>
         </div>
     </div>

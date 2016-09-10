@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 20160906004632) do
     t.string   "apellido"
     t.string   "profesion"
     t.date     "fechanac"
-    t.date     "fechaini",               default: '2016-09-08'
+    t.date     "fechaini",               default: '2016-09-09'
     t.string   "telefono"
     t.string   "domicilio"
     t.string   "localidad"

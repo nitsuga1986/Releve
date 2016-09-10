@@ -9,13 +9,13 @@ class UserMailer < ActionMailer::Base
   def join_email(user,clase)
     @user = user
     @clase = clase
-    mail(to: @user.email, subject: 'Te esperamos para la clase de '+clase.actividad.nombre+' del  a las '+clase.horario+' con '+clase.instructor)
+    mail(to: @user.email, subject: 'Te esperamos para la clase de '+clase.actividad.nombre+' del  a las '+clase.horario+' con '+clase.instructor.nombre_completo)
   end
   
   def unjoin_email(user,clase)
     @user = user
     @clase = clase
-    mail(to: @user.email, subject: 'Te damos la bienvenida a Releve Pilates!')
+    mail(to: @user.email, subject: 'Hemos cancelado tu clase de '+clase.actividad.nombre+' del  a las '+clase.horario+' con '+clase.instructor.nombre_completo)
   end
 
 end

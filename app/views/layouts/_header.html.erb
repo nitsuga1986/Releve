@@ -8,7 +8,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">
+			<a class="navbar-brand" href="/">
 				<img id="ReleveImgNav" src="<%= asset_path 'logo.png' %>" data-active-url="<%= asset_path 'logo-active.png' %>" alt="Releve" class="img-rounded">
 				<img id="LoadingImg" alt="Loading" src="<%= asset_path 'loader.gif' %>">
 			</a>
@@ -16,26 +16,36 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav navbar-right main-nav">
-				<% if !(user_signed_in? && current_user.admin?) %>
-					<li><a href="#intro">Inicio</a></li>
-				<% else %>
-					<li><a href="/">Inicio</a></li>
-					<li><a href="/dashboard/index"><i class="fa fa-calendar" aria-hidden="true"></i> Clases</a></li>
-					<li><a href="/alumno/index"><i class="fa fa-users" aria-hidden="true"></i> Alumnos</a></li>
+				<% if current_page?('/') %>
+				<li><a href="#intro">Inicio</a></li>
+				<li><a href="#actividades" class="hidden-sm">Actividades</a></li>
+				<li><a href="#galeria">Galeria</a></li>
+				<li><a href="#nuestro_equipo" class="hidden-sm hidden-md">Nuestro Equipo</a></li>
+				<li><a href="#ubicacion">Ubicacion</a></li>
 				<% end %>
 				<% if user_signed_in? %>
-					<li><a href="/dashboard/join"><i class="fa fa-check-square-o" aria-hidden="true"></i> Mis Clases</a></li>
-					<% if current_user.confirmed? %>
-						<li class="user_header" title="Salir"><a data-method="DELETE" href="<%= destroy_user_session_path %>"><%= current_user.email %>  <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
-					<% else %>
+					<li><a href="/">Inicio</a></li>
+					<% if current_user.admin? %>
+						<li class="dropdown">
+						  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
+						  <ul class="dropdown-menu">
+							<li><a href="/dashboard/index" class="text-admin"><i class="fa fa-calendar" aria-hidden="true"></i> Clases</a></li>
+							<li><a href="/alumno/index" class="text-admin"><i class="fa fa-users" aria-hidden="true"></i> Alumnos</a></li>
+						  </ul>
+						</li>
+					<% end %>
+					<li class="dropdown">
+					  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mi cuenta <span class="caret"></span></a>
+					  <ul class="dropdown-menu">
+						<li><a href="/dashboard/join"><i class="fa fa-check-square-o" aria-hidden="true"></i> Mis clases</a></li>
+						<li role="separator" class="divider"></li>
+						<li class="user_header" title="Salir"><a data-method="DELETE" href="<%= destroy_user_session_path %>"><i class="fa fa-sign-out" aria-hidden="true"></i> Cerrar sesión</a></li>
+					  </ul>
+					</li>
+					<% if !current_user.confirmed? %>
 						<li><a href="#" data-toggle="modal" data-target="#modal2" class="btn btn-danger"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Confirmar mis datos</a></li>
-						<li class="user_header" title="Salir"><a data-method="DELETE" href="<%= destroy_user_session_path %>">Salir <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
 					<% end %>
 				<% else %>
-					<li><a href="#actividades" class="hidden-sm">Actividades</a></li>
-					<li><a href="#galeria">Galeria</a></li>
-					<li><a href="#nuestro_equipo" class="hidden-sm hidden-md">Nuestro Equipo</a></li>
-					<li><a href="#ubicacion">Ubicacion</a></li>
 					<li><a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-primary">Comenzar!</a></li>
 				<% end %>
 			</ul>
@@ -52,8 +62,8 @@
 			<a class="btn btn-default btn-lg" href="#intro">Inicio</a>
 		<% else %>
 			<a class="btn btn-default btn-lg" href="/">Inicio</a>
-			<a class="btn btn-default btn-lg" href="/dashboard/index"><i class="fa fa-calendar" aria-hidden="true"></i> Clases</a>
-			<a class="btn btn-default btn-lg" href="/alumno/index"><i class="fa fa-users" aria-hidden="true"></i> Alumnos</a>
+			<a class="btn btn-default btn-lg text-admin" href="/dashboard/index"><i class="fa fa-calendar" aria-hidden="true"></i> Clases</a>
+			<a class="btn btn-default btn-lg text-admin" href="/alumno/index"><i class="fa fa-users" aria-hidden="true"></i> Alumnos</a>
 		<% end %>
 		<% if user_signed_in? %>
 			<a class="btn btn-default btn-lg" href="/dashboard/join"><i class="fa fa-check-square-o" aria-hidden="true"></i> Mis Clases</a>

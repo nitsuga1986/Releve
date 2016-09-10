@@ -3,6 +3,7 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl",['$scope', '$location', '
 	$scope.alumno.actividad_counter = []; // Count clases for each actividad
 	// ngTable
 	function dateFormat(date) {date = date.split('-'); date = date[2]+'/'+date[1]; return date;}
+	td = new Date();
 	var Api = ResourceClase;
 	$scope.columns_claseJoin = columns_claseJoin;
 	$scope.cant_visible_cols = $.grep(columns_claseJoin, function(e){ return e.visible == true; }).length+1;
@@ -19,7 +20,7 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl",['$scope', '$location', '
 		getData: function(params) {
 			// ajax request to api
 			startLoading();
-			return Api.index(params.url()).$promise.then(function(data) {
+			return Api.index_usr(params.url()).$promise.then(function(data) {
 				angular.forEach(data, function(value, key) {
 					data[key]["duracion"] = data[key]["duracion"]+' hs'
 					data[key]["instructor_nombre_completo"] = value.instructor.nombre_completo;
@@ -48,8 +49,8 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl",['$scope', '$location', '
 			if(clase.users.length >= clase.max_users){	clases[index_clase].completa = true;
 			} else {									clases[index_clase].completa = false;}
 			// joined?
-			if(jQuery.isEmptyObject( $.grep(clase.users, function(e){ return e.id == $scope.alumno.id; }))){	clases[index_clase].joined = true;
-			}else{																								clases[index_clase].joined = false;}
+			if(jQuery.isEmptyObject( $.grep(clase.users, function(e){ return e.id == $scope.alumno.id; }))){	clases[index_clase].joined = false;
+			}else{																								clases[index_clase].joined = true;}
 			// actividad_counter []
 			pack = $.grep($scope.alumno.packs, function(e){ return e.actividad_id == events[index_clase].actividad_id; })[0];
 			if(pack!=undefined){
@@ -66,7 +67,6 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl",['$scope', '$location', '
 				}
 			}
 			// old_clase? cancelable?
-			td = new Date();
 			dc = new Date(clase.fecha+" "+clase.horario);
 			if(dc>td){
 				if( td > new Date(dc.getTime() - (24 * 60 * 60 * 1000))) {	clases[index_clase].cancelable = false;
@@ -77,8 +77,8 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl",['$scope', '$location', '
 		return clases
 	};
 	// eventModal
-	$scope.eventModal = function(index) {
-		$scope.clase = $scope.clases[index];
+	$scope.eventModal = function(clase_id) {
+		$scope.clase = $.grep($scope.clases, function(e){ return e.id == clase_id; })[0];
 		$('#events-modal').modal('show');
 	};
 	// Join

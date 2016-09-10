@@ -6,6 +6,11 @@ class Api::ClasesController < ApplicationController
 	@clase = Clase.all
 	render json:  @clase
   end
+  
+  def index_usr
+	@clase = Clase.where('fecha > ?', DateTime.now)
+	render json:  @clase
+  end
 
   def show
 	if current_user.try(:admin?)
@@ -17,7 +22,7 @@ class Api::ClasesController < ApplicationController
   end
   
   def search
-	@clase = Clase.find_by_fecha_and_horario(params[:fecha],params[:horario])
+	@clase = Clase.find_by_fecha_and_horario_and_instructor(params[:fecha],params[:horario],params[:instructor])
 	if !@clase.nil? then
 		render json:  @clase
 	else
@@ -44,6 +49,7 @@ class Api::ClasesController < ApplicationController
 		@clase = Clase.new(params.permit(:fecha, :horario, :max_users, :duracion, :trialable, :cancelada, :comment))
 		@clase.actividad = Actividad.find(params[:actividad_id])
 		@clase.instructor = User.find(params[:instructor_id])
+		@clase.reemplazo = User.find(params[:reemplazo_id])
 		if @clase.save then
 			if !params[:users].nil? then
 				params[:users].each do |user|
@@ -96,7 +102,9 @@ class Api::ClasesController < ApplicationController
 		@clase.users.each{|x| x.remove_from_clase(@clase) if !params[:users].map{|y| y[:id]}.include? x.id }
 	end
 	@clase.actividad = Actividad.find(params[:actividad_id])
-	if @clase.update_attributes(params.permit(:fecha, :horario, :max_users, :instructor, :cancelada, :comment)) then
+	@clase.instructor = User.find(params[:instructor_id])
+	@clase.reemplazo = User.find(params[:reemplazo_id])
+	if @clase.update_attributes(params.permit(:fecha, :horario, :max_users, :duracion, :trialable, :cancelada, :comment)) then
 		if !params[:users].nil? then
 			params[:users].each do |user|
 				@clase.add_asistencia(user[:id]) if user[:id]	

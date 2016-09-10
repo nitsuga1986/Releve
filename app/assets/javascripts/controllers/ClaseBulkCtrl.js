@@ -29,6 +29,9 @@ angular.module("TurnosApp").controller("ClaseBulkCtrl",['$scope', '$q', '$http',
 	$scope.ActividadIndex.$promise.then(function(data) {
 		$scope.clase.actividad_id = $scope.ActividadIndex[ActividadIndexDefault].id;
 	});
+	$scope.InstructorIndex.$promise.then(function(data) {
+		$scope.clase.instructor_id = $scope.InstructorIndex[InstructorIndexDefault].id;
+	});
 	// SUBMIT
 	$scope.submitted = false;
 	$scope.submit = function() {
