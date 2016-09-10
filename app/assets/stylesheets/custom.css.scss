@@ -719,11 +719,11 @@ body.landingpage {
 		background: white;
 		box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.05);
 	}
-	nav.navbar-fixed-top .navbar-nav > li > a:not(.btn):not(.btn) {
+	nav.navbar-fixed-top .navbar-nav > li > a:not(.btn) {
 		color: #bbb;
 	}
 	.navbar.original {
-		.navbar-nav > li > a:not(.btn-danger):hover {
+		.navbar-nav > li > a:hover:not(.btn-primary .btn-danger) {
 			color: #1aaea2;
 		}
 		.icon-bar {
@@ -731,15 +731,15 @@ body.landingpage {
 		}
 	}
 	.navbar.navbar-fixed-top {
-		.navbar-nav > li > a:not(.btn-danger):hover {
+		.navbar-nav > li > a:hover:not(.btn-primary .btn-danger) {
 			color: #12849e;
 		}
 	}
 	.navbar.notlandingpage {
-		.navbar-nav > li > a:not(.btn-danger) {
+		.navbar-nav > li > a:not(.btn-danger):not(.btn-primary) {
 			color: #928E8E;
 		}
-		.navbar-nav > li > a:not(.btn-danger):hover {
+		.navbar-nav > li > a:not(.btn-danger):not(.btn-primary):hover {
 			color: #12849e;
 		}
 		.icon-bar {

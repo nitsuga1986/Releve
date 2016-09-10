@@ -17,7 +17,11 @@
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav navbar-right main-nav">
 				<% if current_page?('/') %>
-				<li><a href="#intro">Inicio</a></li>
+					<li><a href="#intro">Inicio</a></li>
+				<% else %>
+					<li><a href="/">Inicio</a></li>
+				<% end %>
+				<% if current_page?('/') %>
 				<li><a href="#actividades" class="hidden-sm">Actividades</a></li>
 				<li><a href="#galeria">Galeria</a></li>
 				<li><a href="#nuestro_equipo" class="hidden-sm hidden-md">Nuestro Equipo</a></li>
