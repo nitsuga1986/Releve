@@ -79,7 +79,7 @@ class Api::ClasesController < ApplicationController
 					params[:fecha] = date.strftime("%Y-%m-%d")
 					@clase = Clase.new(params.permit(:fecha, :horario, :max_users, :duracion, :trialable))
 					@clase.actividad = Actividad.find(params[:actividad_id])
-					@clase.instructor = User.find(params[:instructor_id]) if !params[:reemplazo_id].nil?
+					@clase.instructor = User.find(params[:instructor_id])
 					if @clase.save then
 						if !params[:users].nil? then
 							params[:users].each do |user|
