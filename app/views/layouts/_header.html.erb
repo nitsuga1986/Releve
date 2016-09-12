@@ -63,7 +63,7 @@
 		<% if !user_signed_in? %>
 			<a class="btn btn-primary btn-lg" href="#" data-toggle="modal" data-target="#modal1" >Comenzar!</a>
 		<% else %>
-			<a class="btn btn-default btn-lg" data-method="DELETE" href="<%= destroy_user_session_path %>">Salir <i class="fa fa-sign-out" aria-hidden="true"></i></a>
+			<a class="btn btn-primary btn-lg" data-method="DELETE" href="<%= destroy_user_session_path %>">Salir <i class="fa fa-sign-out" aria-hidden="true"></i></a>
 		<% end %>
 		<% if current_page?('/') %>
 			<a class="btn btn-default btn-lg" href="#intro">Inicio</a>
@@ -77,10 +77,10 @@
 			<a class="btn btn-default btn-lg" href="#ubicacion">Ubicacion</a>
 		<% end %>
 		<% if user_signed_in? %>
-			<a class="btn btn-default btn-lg" href="/dashboard/join"><i class="fa fa-check-square-o" aria-hidden="true"></i> Mis Clases</a>
+			<a class="btn btn-primary btn-lg" href="/dashboard/join"><i class="fa fa-check-square-o" aria-hidden="true"></i> Mis Clases</a>
 			<% if current_user.admin? %>
-				<a class="btn btn-primary btn-lg text-admin" href="/dashboard/index"><i class="fa fa-calendar" aria-hidden="true"></i> Clases</a>
-				<a class="btn btn-primary btn-lg text-admin" href="/alumno/index"><i class="fa fa-users" aria-hidden="true"></i> Alumnos</a>
+				<a class="btn btn-danger btn-lg text-admin" href="/dashboard/index"><i class="fa fa-calendar" aria-hidden="true"></i> Clases</a>
+				<a class="btn btn-danger btn-lg text-admin" href="/alumno/index"><i class="fa fa-users" aria-hidden="true"></i> Alumnos</a>
 			<% end %>
 			<% if !current_user.confirmed? %>
 				<a class="btn btn-default btn-lg" data-method="DELETE" href="<%= destroy_user_session_path %>"><%= current_user.email %>  <i class="fa fa-sign-out" aria-hidden="true"></i></a>
