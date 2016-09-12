@@ -60,27 +60,31 @@
 <!-- Holder for mobile navigation -->
 <div class="mobile-nav lead">
 	<div class="btn-group-vertical btn-block" role="group" aria-label="...">
+		<% if !user_signed_in? %>
 			<a class="btn btn-primary btn-lg" href="#" data-toggle="modal" data-target="#modal1" >Comenzar!</a>
-		<% if !(user_signed_in? && current_user.admin?) %>
+		<% else %>
+			<a class="btn btn-default btn-lg" data-method="DELETE" href="<%= destroy_user_session_path %>">Salir <i class="fa fa-sign-out" aria-hidden="true"></i></a>
+		<% end %>
+		<% if current_page?('/') %>
 			<a class="btn btn-default btn-lg" href="#intro">Inicio</a>
 		<% else %>
 			<a class="btn btn-default btn-lg" href="/">Inicio</a>
-			<a class="btn btn-default btn-lg text-admin" href="/dashboard/index"><i class="fa fa-calendar" aria-hidden="true"></i> Clases</a>
-			<a class="btn btn-default btn-lg text-admin" href="/alumno/index"><i class="fa fa-users" aria-hidden="true"></i> Alumnos</a>
 		<% end %>
-		<% if user_signed_in? %>
-			<a class="btn btn-default btn-lg" href="/dashboard/join"><i class="fa fa-check-square-o" aria-hidden="true"></i> Mis Clases</a>
-			<% if current_user.confirmed? %>
-				<a class="btn btn-default btn-lg" data-method="DELETE" href="<%= destroy_user_session_path %>"><%= current_user.email %>  <i class="fa fa-sign-out" aria-hidden="true"></i></a>
-			<% else %>
-				<a class="btn btn-danger" href="#" data-toggle="modal" data-target="#modal2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Confirmar mis datos</a>
-				<a class="btn btn-default btn-lg" data-method="DELETE" href="<%= destroy_user_session_path %>">Salir <i class="fa fa-sign-out" aria-hidden="true"></i></a>
-			<% end %>
-		<% else %>
+		<% if current_page?('/') %>
 			<a class="btn btn-default btn-lg" href="#actividades">Actividades</a>
 			<a class="btn btn-default btn-lg" href="#galeria">Galeria</a>
 			<a class="btn btn-default btn-lg" href="#nuestro_equipo">Nuestro Equipo</a>
 			<a class="btn btn-default btn-lg" href="#ubicacion">Ubicacion</a>
+		<% end %>
+		<% if user_signed_in? %>
+			<a class="btn btn-default btn-lg" href="/dashboard/join"><i class="fa fa-check-square-o" aria-hidden="true"></i> Mis Clases</a>
+			<% if current_user.admin? %>
+				<a class="btn btn-primary btn-lg text-admin" href="/dashboard/index"><i class="fa fa-calendar" aria-hidden="true"></i> Clases</a>
+				<a class="btn btn-primary btn-lg text-admin" href="/alumno/index"><i class="fa fa-users" aria-hidden="true"></i> Alumnos</a>
+			<% end %>
+			<% if !current_user.confirmed? %>
+				<a class="btn btn-default btn-lg" data-method="DELETE" href="<%= destroy_user_session_path %>"><%= current_user.email %>  <i class="fa fa-sign-out" aria-hidden="true"></i></a>
+			<% end %>
 		<% end %>
 	</div>
 	<a href="#" class="close-link"><i class="arrow_up"></i></a>

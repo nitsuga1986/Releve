@@ -2,7 +2,7 @@
 	<table data-ng-table="tableParams" show-filter="false" class="table table-striped table-hover table-condensed">
 		<thead>
 			<tr>
-				<th data-ng-repeat="column in columns_claseJoin" data-ng-show="column.visible">
+				<th data-ng-repeat="column in columns_claseJoin" data-ng-show="column.visible" data-ng-class="{'hidden-xs': column.hiddenxs}">
 					{{column.title}}
 				</th>
 			</tr>
@@ -17,7 +17,7 @@
 			  </td>
 			</tr>
 			<tr ng-hide="group.$hideRows" ng-repeat="clase in group.data" ng-repeat-end>
-				<td data-ng-class="{'strike': clase.cancelada && column.field!='instructor_nombre_completo'}" data-ng-repeat="column in columns_claseJoin" data-ng-click="GoToEdit(clase.id)" data-ng-show="column.visible" sortable="column.field" filter="column.filter">
+				<td data-ng-class="{'strike': clase.cancelada && column.field!='instructor_nombre_completo','hidden-xs': column.hiddenxs}" data-ng-repeat="column in columns_claseJoin" data-ng-click="GoToEdit(clase.id)" data-ng-show="column.visible" sortable="column.field" filter="column.filter">
 					<span data-ng-if="(column.field=='instructor_nombre_completo' && clase.cancelada)" class="text-danger">Clase cancelada</span>
 					<span data-ng-if="!(column.field=='instructor_nombre_completo' && clase.cancelada)">{{clase[column.field]}}</span>
 					<button data-ng-if="column.field=='horario' && !clase.cancelada && !clase.joined && !alumno.actividad_overquota[clase.actividad_id] && !clase.completa" data-ng-click="eventModal(clase.id)" class="btn btn-default btn-xs" type="button" value="Input">Agendarme</button>
@@ -25,7 +25,7 @@
 				</td>
 			</tr>
 			<tr class="ng-table-filters" data-ng-init="tableParams">
-				<th data-ng-repeat="column in columns_claseJoin" data-ng-show="column.visible" class="filter">
+				<th data-ng-repeat="column in columns_claseJoin" data-ng-show="column.visible" data-ng-class="{'hidden-xs': column.hiddenxs}" class="filter">
 					<div data-ng-repeat="(name, filter) in column.filter">
 						<div data-ng-include="'ng-table/filters/' + filter + '.html'"></div>
 					</div>

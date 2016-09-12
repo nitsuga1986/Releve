@@ -61,21 +61,21 @@ var claseJoinDefaultPage = 1;	var claseJoinDefaultCount = 5;
 var claseJoinDefaultFilter = {};   
 var claseJoinDefaultGroupingBy = 'fecha'; var claseJoinDefaultGrouping = {fecha: "asc"}
 var claseJoinDefaultSorting = {fecha: 'desc',horario: 'asc'};
-var claseJoinPageSizes = [6, 12, 15, 25, 50];
+var claseJoinPageSizes = [5, 15, 25, 50];
 var columns_claseJoin = [
-	{title:"Fecha",field:"fecha",filter:"fecha",visible:false,filter:{'fecha':'text'}, sortable: "fecha", sortDirection: "asc",groupable:"fecha"},
-	{title:"Horario",field:"horario",filter:"horario",visible:true,filter:{'horario':'text'}, sortable: "horario", sortDirection: "desc",groupable:"horario"},
-	{title:"Actividad",field:"actividad",filter:"actividad",visible:true,filter:{'actividad':'text'}, sortable: "actividad", sortDirection: "desc",groupable:"actividad"},
-	{title:"Instructor",field:"instructor_nombre_completo",filter:"instructor_nombre_completo",visible:true,filter:{'instructor_nombre_completo':'text'}, sortable: "instructor_nombre_completo", sortDirection: "desc",groupable:"instructor_nombre_completo"},
-	{title:"Día",field:"dia",filter:"dia",visible:false,filter:{'dia':'text'}, sortable: "dia", sortDirection: "desc",groupable:"dia"},
-	{title:"Duración",field:"duracion",filter:"duracion",visible:true,filter:{'duracion':'text'}, sortable: "duracion", sortDirection: "desc",groupable:"duracion"},
-	{title:"Alumnos",field:"cant_users",filter:"cant_users",visible:false,filter:{'cant_users':'text'}, sortable: "cant_users", sortDirection: "desc",groupable:"cant_users"},
-	{title:"Max.Alumnos",field:"max_users",filter:"max_users",visible:false,filter:{'max_users':'text'}, sortable: "max_users", sortDirection: "desc",groupable:"max_users"},
-	{title:"Cancelada?",field:"cancelada",filter:"cancelada",visible:false,filter:{'cancelada':'text'}, sortable: "cancelada", sortDirection: "desc",groupable:"cancelada"},
-	{title:"1raGratis?",field:"trialable",filter:"trialable",visible:false,filter:{'trialable':'text'}, sortable: "trialable", sortDirection: "desc",groupable:"trialable"},
-	{title:"Comentarios",field:"comment",filter:"comment",visible:false,filter:{'comment':'text'}, sortable: "comment", sortDirection: "desc",groupable:"comment"},
-	{title:"Fecha de creación",field:"created_at",filter:"created_at",visible:false,filter:{'created_at':'text'}, sortable: "created_at", sortDirection: "desc",groupable:"created_at"},
-	{title:"Ùltima modificación",field:"updated_at",filter:"updated_at",visible:false,filter:{'updated_at':'text'}, sortable: "updated_at", sortDirection: "desc",groupable:"updated_at"},
+	{title:"Fecha",field:"fecha",filter:"fecha",visible:false,filter:{'fecha':'text'}, sortable: "fecha", sortDirection: "asc",groupable:"fecha",hiddenxs:false},
+	{title:"Horario",field:"horario",filter:"horario",visible:true,filter:{'horario':'text'}, sortable: "horario", sortDirection: "desc",groupable:"horario",hiddenxs:false},
+	{title:"Actividad",field:"actividad",filter:"actividad",visible:true,filter:{'actividad':'text'}, sortable: "actividad", sortDirection: "desc",groupable:"actividad",hiddenxs:false},
+	{title:"Instructor",field:"instructor_nombre_completo",filter:"instructor_nombre_completo",visible:true,filter:{'instructor_nombre_completo':'text'}, sortable: "instructor_nombre_completo", sortDirection: "desc",groupable:"instructor_nombre_completo",hiddenxs:false},
+	{title:"Día",field:"dia",filter:"dia",visible:false,filter:{'dia':'text'}, sortable: "dia", sortDirection: "desc",groupable:"dia",hiddenxs:false},
+	{title:"Duración",field:"duracion",filter:"duracion",visible:true,filter:{'duracion':'text'}, sortable: "duracion", sortDirection: "desc",groupable:"duracion",hiddenxs:true},
+	{title:"Alumnos",field:"cant_users",filter:"cant_users",visible:false,filter:{'cant_users':'text'}, sortable: "cant_users", sortDirection: "desc",groupable:"cant_users",hiddenxs:false},
+	{title:"Max.Alumnos",field:"max_users",filter:"max_users",visible:false,filter:{'max_users':'text'}, sortable: "max_users", sortDirection: "desc",groupable:"max_users",hiddenxs:false},
+	{title:"Cancelada?",field:"cancelada",filter:"cancelada",visible:false,filter:{'cancelada':'text'}, sortable: "cancelada", sortDirection: "desc",groupable:"cancelada",hiddenxs:false},
+	{title:"1raGratis?",field:"trialable",filter:"trialable",visible:false,filter:{'trialable':'text'}, sortable: "trialable", sortDirection: "desc",groupable:"trialable",hiddenxs:false},
+	{title:"Comentarios",field:"comment",filter:"comment",visible:false,filter:{'comment':'text'}, sortable: "comment", sortDirection: "desc",groupable:"comment",hiddenxs:false},
+	{title:"Fecha de creación",field:"created_at",filter:"created_at",visible:false,filter:{'created_at':'text'}, sortable: "created_at", sortDirection: "desc",groupable:"created_at",hiddenxs:false},
+	{title:"Ùltima modificación",field:"updated_at",filter:"updated_at",visible:false,filter:{'updated_at':'text'}, sortable: "updated_at", sortDirection: "desc",groupable:"updated_at",hiddenxs:false},
 ];
 // Alumno
 var alumnoDefaultPage = 1;	var alumnoDefaultCount = 25;
