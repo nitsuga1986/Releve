@@ -20,7 +20,7 @@ angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$location', 
 		getData: function(params) {
 			// ajax request to api
 			startLoading();
-			return Api.index(params.url()).$promise.then(function(data) {
+			return Api.index().$promise.then(function(data) {
 				angular.forEach(data, function(value, key) {
 					data[key]["instructor_nombre_completo"] = value.instructor.nombre_completo;
 					data[key]["cant_users"] = value.users.length+" / "+value.max_users;

@@ -16,7 +16,7 @@ angular.module("TurnosApp").controller("AlumnoIndexCtrl",['$scope', '$location',
 		getData: function(params) {
 			// ajax request to api
 			startLoading();
-			return Api.index(params.url()).$promise.then(function(data) {
+			return Api.index().$promise.then(function(data) {
 				params.total(data.inlineCount);
 				$scope.alumnos = data;
 				stopLoading();

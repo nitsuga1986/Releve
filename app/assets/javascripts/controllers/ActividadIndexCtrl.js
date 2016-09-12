@@ -16,7 +16,7 @@ angular.module("TurnosApp").controller("ActividadIndexCtrl",['$scope', '$cacheFa
 		getData: function(params) {
 			// ajax request to api
 			startLoading();
-			return Api.index(params.url()).$promise.then(function(data) {
+			return Api.index().$promise.then(function(data) {
 				params.total(data.inlineCount);
 				$scope.actividades = data;
 				stopLoading();
