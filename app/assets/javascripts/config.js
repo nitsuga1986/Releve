@@ -57,10 +57,11 @@ var columns_clase = [
 	{title:"Ùltima modificación",field:"updated_at",filter:"updated_at",visible:false,filter:{'updated_at':'text'}, sortable: "updated_at", sortDirection: "desc",groupable:"updated_at"},
 ];
 // Clase Join
-var claseJoinDefaultPage = 1;	var claseJoinDefaultCount = 25;
+var claseJoinDefaultPage = 1;	var claseJoinDefaultCount = 5;
 var claseJoinDefaultFilter = {};   
 var claseJoinDefaultGroupingBy = 'fecha'; var claseJoinDefaultGrouping = {fecha: "asc"}
 var claseJoinDefaultSorting = {fecha: 'desc',horario: 'asc'};
+var claseJoinPageSizes = [6, 12, 15, 25, 50];
 var columns_claseJoin = [
 	{title:"Fecha",field:"fecha",filter:"fecha",visible:false,filter:{'fecha':'text'}, sortable: "fecha", sortDirection: "asc",groupable:"fecha"},
 	{title:"Horario",field:"horario",filter:"horario",visible:true,filter:{'horario':'text'}, sortable: "horario", sortDirection: "desc",groupable:"horario"},

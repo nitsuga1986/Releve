@@ -14,6 +14,7 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl",['$scope', '$location', '
 		group: claseJoinDefaultGrouping
 	}, {
 		total: 0,          			 			// length of data
+		counts: claseJoinPageSizes,				// page size buttons
 		groupBy: claseJoinDefaultGroupingBy,
 		groupOptions: {isExpanded: true},
 		getData: function(params) {
