@@ -1,4 +1,4 @@
-angular.module("TurnosApp").controller("ClaseJoinCtrl",['$scope', '$location', 'ResourceClase', 'ResourceAlumno', '$filter','NgTableParams', '$timeout', function($scope, $location, ResourceClase, ResourceAlumno, $filter, NgTableParams, $timeout) {
+angular.module("TurnosApp").controller("ClaseJoinCtrl",['$scope', '$location', 'ResourceClase', 'ResourceAlumno', '$filter','NgTableParams', '$timeout', '$cacheFactory', function($scope, $location, ResourceClase, ResourceAlumno, $filter, NgTableParams, $timeout, $cacheFactory) {
 	$scope.alumno = ResourceAlumno.current();
 	$scope.alumno.actividad_counter = []; // Count clases for each actividad
 	// ngTable
@@ -20,7 +20,7 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl",['$scope', '$location', '
 		getData: function(params) {
 			// ajax request to api
 			startLoading();
-			return Api.index_usr(params.url()).$promise.then(function(data) {
+			return Api.index_usr().$promise.then(function(data) {
 				angular.forEach(data, function(value, key) {
 					data[key]["duracion"] = data[key]["duracion"]+' hs'
 					data[key]["instructor_nombre_completo"] = value.instructor.nombre_completo;
@@ -78,6 +78,7 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl",['$scope', '$location', '
 	};
 	// Join
 	$scope.JoinUser = function() {
+		$cacheFactory.get('$http').remove("/api/clases/index_usr");
 		startLoading();
 		ResourceClase.join($scope.clase, success, failure).$promise.then(function(data) {
 			$scope.tableParams.reload();
@@ -87,6 +88,7 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl",['$scope', '$location', '
 	};
 	// Unjoin
 	$scope.UnJoinUser = function() {
+		$cacheFactory.get('$http').remove("/api/clases/index_usr");
 		startLoading();
 		ResourceClase.unjoin($scope.clase, success, failure).$promise.then(function(data) {
 			$scope.tableParams.reload();

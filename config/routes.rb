@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 			collection do
 				get 'search'
 				post 'bulk'
-				post 'index_usr'
+				get 'index_usr'
 			end
 			member do
 				post 'join'
