@@ -17,9 +17,9 @@
 			  </td>
 			</tr>
 			<tr ng-hide="group.$hideRows" ng-repeat="clase in group.data" ng-repeat-end>
-				<td data-ng-class="{'strike': clase.cancelada && column.field!='instructor_nombre_completo','hidden-xs': column.hiddenxs}" data-ng-repeat="column in columns_claseJoin" data-ng-click="GoToEdit(clase.id)" data-ng-show="column.visible" sortable="column.field" filter="column.filter">
-					<span data-ng-if="(column.field=='instructor_nombre_completo' && clase.cancelada)" class="text-danger">Clase cancelada</span>
-					<span data-ng-if="!(column.field=='instructor_nombre_completo' && clase.cancelada)">{{clase[column.field]}}</span>
+				<td data-ng-class="{'strike': clase.cancelada && column.field!='nc_instructor','hidden-xs': column.hiddenxs}" data-ng-repeat="column in columns_claseJoin" data-ng-click="GoToEdit(clase.id)" data-ng-show="column.visible" sortable="column.field" filter="column.filter">
+					<span data-ng-if="(column.field=='nc_instructor' && clase.cancelada)" class="text-danger">Clase cancelada</span>
+					<span data-ng-if="!(column.field=='nc_instructor' && clase.cancelada)">{{clase[column.field]}}</span>
 					<span data-ng-if="column.field=='horario' && !clase.old_clase && !clase.cancelable" class="label label-warning">< 24hs</span>
 					<button data-ng-if="column.field=='horario' && !clase.cancelada && !clase.joined && !alumno.actividad_overquota[clase.actividad_id] && !clase.completa" data-ng-click="eventModal(clase.id)" class="btn btn-default btn-xs" type="button">Agendarme</button>
 					<button data-ng-if="column.field=='horario' && !clase.cancelada && clase.joined && clase.cancelable" data-ng-click="eventModal(clase.id)" class="btn btn-default btn-xs" type="button">Cancelar</button>
@@ -57,54 +57,6 @@
                 <a href="#" data-dismiss="modal" class="btn btn-default ">Close</a>
 				<a href="#" data-ng-if="!clase.joined && ((alumno.actividad_overquota[clase.actividad_id]) || (!alumno.actividad_overquota[clase.actividad_id] && clase.completa))" data-dismiss="modal" class="btn btn-default" disabled="disabled">No disponible</a>
 				<a href="#" data-ng-if="clase.joined && clase.cancelable" data-dismiss="modal" class="btn btn-danger"  data-ng-click="UnJoinUser()">No voy a poder ir</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="first-clase-modal" tabindex='-1'>
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header bg-light-releve">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4>Mi primera clase!</h4>
-            </div>
-            <div class="modal-body lead">
-				<strong><i class="fa fa-heart" aria-hidden="true"></i> Te damos la bienvenida a Releve Pilates!</strong><br/><br/>
-				<i class="fa fa-calendar-check-o" aria-hidden="true"></i> Aquí encontrarás todas las clases disponibles, selecciona el horario que prefieras y empieza a programar tu entrenamiento! <br/><br/>
-				<span class="muted"><i class="fa fa-calendar" aria-hidden="true"></i> Una vez que asistas a la primera clase, tu instructor o instructora habilitará este espacio para que programes todas las clases correspondientes a tu plan</span>
-            </div>
-            <div class="modal-footer">
-                <a href="#" data-dismiss="modal" class="btn btn-primary">A entrenar!</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="info-clase-modal" tabindex='-1'>
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3><i class="fa fa-info-circle" aria-hidden="true"></i> Consejos para la clase</h3>
-            </div>
-            <div class="modal-body">
-				<strong class="lead">Vestimenta:</strong>
-				<ul>
-					<li>La ropa de pilates debe ser cómoda y permitir libertad de movimiento, pero a diferencia de otras disciplinas, si es holgada no será la más adecuada.</li>
-					<li>El instructor debe comprobar continuamente cómo se está realizando el ejercicio y la ropa de pilates debe ser adecuada  para permitir esa verificación. Cuando practicas ejercicios de pilates el instructor visualiza el contorno del cuerpo y corrige el movimiento.</li>
-					<li>Pilates se practica en calcetines o descalzo. En el caso de los calcetines se recomienda -por comodidad e higiene- un par limpio de recambio solo para los ejercicios.</li>
-					<li>No olvides cintas para el pelo, será mucho más cómodo y podrás concentrarte mejor.</li>
-				</ul>
-				<strong class="lead">Para tener en cuenta:</strong>
-				<ul>
-					<li>Avisa a tu instructor de cualquier lesión para que podamos cuidarte y orientar el entrenamiento de forma adecuada.</li>
-					<li>El control de nuestro propio cuerpo es fundamental para salir adelante en una clase de Pilates. Deberemos conseguir disociar movimientos de grupos musculares con la mayor concentración que podamos, en eso consiste</li>
-					<li>Nuestra respiración también toma partida en las clases de Pilates. Conseguiremos un control total de la respiración, ya que ésta forma parte de los seis principios básicos de esta disciplina</li>
-				</ul>
-            </div>
-            <div class="modal-footer">
-                <a href="#" data-dismiss="modal" class="btn btn-success">Entendido</a>
             </div>
         </div>
     </div>

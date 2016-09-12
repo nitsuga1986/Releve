@@ -23,7 +23,8 @@ angular.module("TurnosApp").controller("UsrMisClasesCtrl",['$scope', '$location'
 			return Api.history_usr().$promise.then(function(data) {
 				angular.forEach(data, function(value, key) {
 					data[key]["duracion"] = data[key]["duracion"]+' hs'
-					data[key]["instructor_nombre_completo"] = value.instructor.nombre_completo;
+					data[key]["nc_instructor"] = value.instructor.nombre_completo;
+					if(value.reemplazo!=undefined){data[key]["nc_reemplazo"] = value.reemplazo.nombre_completo};
 					data[key]["cant_users"] = value.users.length+" / "+value.max_users;
 					data[key]["fecha_fixed"] = dateFormat(value.fecha) ;
 					data[key]["dia"] = dayNames[(new Date(value.fecha+'T12:00:00Z')).getDay()];

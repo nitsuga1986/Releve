@@ -17,9 +17,10 @@
 			  </td>
 			</tr>
 			<tr ng-hide="group.$hideRows" ng-repeat="clase in group.data" ng-repeat-end>
-				<td data-ng-class="{'strike': clase.cancelada && column.field!='instructor_nombre_completo','hidden-xs': column.hiddenxs}" data-ng-repeat="column in columns_claseJoin" data-ng-click="GoToEdit(clase.id)" data-ng-show="column.visible" sortable="column.field" filter="column.filter">
-					<span data-ng-if="(column.field=='instructor_nombre_completo' && clase.cancelada)" class="text-danger">Clase cancelada</span>
-					<span data-ng-if="!(column.field=='instructor_nombre_completo' && clase.cancelada)">{{clase[column.field]}}</span>
+				<td data-ng-class="{'strike': clase.cancelada && column.field!='nc_instructor','hidden-xs': column.hiddenxs}" data-ng-repeat="column in columns_claseJoin" data-ng-click="GoToEdit(clase.id)" data-ng-show="column.visible" sortable="column.field" filter="column.filter">
+					<span data-ng-if="column.field=='nc_instructor' && clase.cancelada" class="text-danger">Clase cancelada</span>
+					<span data-ng-if="column.field=='nc_instructor' && !clase.cancelada && clase.nc_reemplazo" class="text-danger">{{clase['nc_reemplazo']}}</span>
+					<span data-ng-if="!(column.field=='nc_instructor' && clase.cancelada) && !(column.field=='nc_instructor' && clase.nc_reemplazo)">{{clase[column.field]}}</span>
 					<span data-ng-if="column.field=='horario' && !clase.cancelable" class="label label-warning">< 24hs</span>
 					<button data-ng-if="column.field=='horario' && !clase.cancelada && !clase.joined && !alumno.actividad_overquota[clase.actividad_id] && !clase.completa" data-ng-click="eventModal(clase.id)" class="btn btn-default btn-xs" type="button">Agendarme</button>
 					<button data-ng-if="column.field=='horario' && !clase.cancelada && clase.joined && clase.cancelable" data-ng-click="eventModal(clase.id)" class="btn btn-default btn-xs" type="button">Cancelar</button>
