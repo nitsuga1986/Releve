@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 				get 'search'
 				post 'bulk'
 				get 'index_usr'
+				get 'history_usr'
 			end
 			member do
 				post 'join'

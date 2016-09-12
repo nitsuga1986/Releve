@@ -30,6 +30,9 @@ ActiveRecord::Schema.define(version: 20160906004632) do
     t.datetime "updated_at"
   end
 
+  add_index "asistencia", ["clase_id"], name: "index_asistencia_on_clase_id", using: :btree
+  add_index "asistencia", ["user_id"], name: "index_asistencia_on_user_id", using: :btree
+
   create_table "clases", force: true do |t|
     t.integer  "actividad_id"
     t.integer  "instructor"
@@ -78,7 +81,7 @@ ActiveRecord::Schema.define(version: 20160906004632) do
     t.string   "apellido"
     t.string   "profesion"
     t.date     "fechanac"
-    t.date     "fechaini",               default: '2016-09-09'
+    t.date     "fechaini",               default: '2016-09-12'
     t.string   "telefono"
     t.string   "domicilio"
     t.string   "localidad"

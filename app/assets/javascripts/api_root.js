@@ -7,11 +7,13 @@
 //= require config
 //= require filters/html_trusted
 //= require services/resources
+//= require controllers/UsrMisClasesCtrl
+//= require controllers/UsrAgendaCtrl
+//= require controllers/UsrProgramarCtrl
 //= require controllers/ClaseIndexCtrl
 //= require controllers/ClaseEditCtrl
 //= require controllers/ClaseBulkCtrl
 //= require controllers/ClaseShowCtrl
-//= require controllers/ClaseJoinCtrl
 //= require controllers/AlumnoIndexCtrl
 //= require controllers/AlumnoEditCtrl
 //= require controllers/AlumnoShowCtrl

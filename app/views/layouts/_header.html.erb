@@ -40,7 +40,9 @@
 					<li class="dropdown">
 					  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mi cuenta <span class="caret"></span></a>
 					  <ul class="dropdown-menu">
-						<li><a href="/dashboard/join"><i class="fa fa-check-square-o" aria-hidden="true"></i> Mis clases</a></li>
+						<li><a href="/dashboard/mis_clases"><i class="fa fa-calendar-check-o " aria-hidden="true"></i> Mis clases</a></li>
+						<li><a href="/dashboard/agenda"><i class="fa fa-calendar" aria-hidden="true"></i> Agenda</a></li>
+						<li><a href="/dashboard/programar"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i> Programar</a></li>
 						<li role="separator" class="divider"></li>
 						<li class="user_header" title="Salir"><a data-method="DELETE" href="<%= destroy_user_session_path %>"><i class="fa fa-sign-out" aria-hidden="true"></i> Cerrar sesión</a></li>
 					  </ul>
@@ -77,7 +79,9 @@
 			<a class="btn btn-default btn-lg" href="#ubicacion">Ubicacion</a>
 		<% end %>
 		<% if user_signed_in? %>
-			<a class="btn btn-primary btn-lg" href="/dashboard/join"><i class="fa fa-check-square-o" aria-hidden="true"></i> Mis Clases</a>
+			<a class="btn btn-primary btn-lg" href="/dashboard/mis_clases"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Mis Clases</a>
+			<a class="btn btn-primary btn-lg" href="/dashboard/agenda"><i class="fa fa-calendar" aria-hidden="true"></i> Agenda</a>
+			<a class="btn btn-primary btn-lg" href="/dashboard/programar"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i> Programar</a>
 			<% if current_user.admin? %>
 				<a class="btn btn-danger btn-lg text-admin" href="/dashboard/index"><i class="fa fa-calendar" aria-hidden="true"></i> Clases</a>
 				<a class="btn btn-danger btn-lg text-admin" href="/alumno/index"><i class="fa fa-users" aria-hidden="true"></i> Alumnos</a>

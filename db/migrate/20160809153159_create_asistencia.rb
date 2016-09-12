@@ -1,10 +1,9 @@
 class CreateAsistencia < ActiveRecord::Migration
   def change
     create_table :asistencia do |t|
-      t.integer :user_id
-      t.integer :clase_id
+      t.belongs_to :user, index: true
+      t.belongs_to :clase, index: true
       t.boolean :confirmed, default: false
-
       t.timestamps
     end
   end

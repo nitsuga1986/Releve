@@ -11,6 +11,7 @@ angular.module("TurnosApp").factory("ResourceClase",['$resource', function($reso
       'unjoin':  	{ method: 'POST', isArray: false, url: '/api/clases/:id/unjoin' },
       'bulk':    	{ method: 'POST', isArray: false, url: '/api/clases/bulk' },
       'index_usr':  { method: 'GET', isArray: true, url: '/api/clases/index_usr', cache : true },
+      'history_usr':  { method: 'GET', isArray: true, url: '/api/clases/history_usr', cache : true },
     }
   );
 }]);
