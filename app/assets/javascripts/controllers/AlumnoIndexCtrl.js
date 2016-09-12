@@ -17,15 +17,10 @@ angular.module("TurnosApp").controller("AlumnoIndexCtrl",['$scope', '$location',
 			// ajax request to api
 			startLoading();
 			return Api.index(params.url()).$promise.then(function(data) {
-				$scope.alumnos = data;
-				var filteredData = params.filter() ?
-				$filter('filter')(data, params.filter()) : data;
-				var orderedData = params.sorting() ?
-				$filter('orderBy')(filteredData, params.orderBy()) : data;
 				params.total(data.inlineCount);
-				$scope.loading=false;
+				$scope.alumnos = data;
 				stopLoading();
-				return orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
+				return data;
 			});
 		}
     });

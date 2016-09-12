@@ -2,13 +2,8 @@
 	<table data-ng-table="tableParams" show-filter="false" class="table table-striped table-hover table-condensed">
 		<thead>
 			<tr>
-				<th data-ng-repeat="column in columns_claseJoin" data-ng-show="column.visible"
-					class="text-center sortable" ng-class="{
-						'sort-asc': tableParams.isSortBy(column.field, 'asc'),
-						'sort-desc': tableParams.isSortBy(column.field, 'desc')
-					  }"
-					ng-click="tableParams.sorting(column.field, tableParams.isSortBy(column.field, 'asc') ? 'desc' : 'asc')">
-					<div class="sort-indicator">{{column.title}}</div>
+				<th data-ng-repeat="column in columns_claseJoin" data-ng-show="column.visible">
+					{{column.title}}
 				</th>
 			</tr>
 		</thead>

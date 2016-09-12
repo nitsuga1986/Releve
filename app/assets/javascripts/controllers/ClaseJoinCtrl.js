@@ -11,10 +11,9 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl",['$scope', '$location', '
 		page: claseJoinDefaultPage,         	// initial first page
 		count: claseJoinDefaultCount,         	// initial count per page
 		filter: claseJoinDefaultFilter, 		// initial filter
-		sorting: claseJoinDefaultSorting, 		// initial sorting
 		group: claseJoinDefaultGrouping
 	}, {
-		total: 0,           // length of data
+		total: 0,          			 			// length of data
 		groupBy: claseJoinDefaultGroupingBy,
 		groupOptions: {isExpanded: true},
 		getData: function(params) {
@@ -29,15 +28,10 @@ angular.module("TurnosApp").controller("ClaseJoinCtrl",['$scope', '$location', '
 					data[key]["dia"] = dayNames[(new Date(value.fecha+'T12:00:00Z')).getDay()];
 				});
 				data = $scope.condicionesClases(data);
-				$scope.clases = data;
-				var filteredData = params.filter() ?
-				$filter('filter')(data, params.filter()) : data;
-				var orderedData = params.sorting() ?
-				$filter('orderBy')(filteredData, params.orderBy()) : data;
 				params.total(data.inlineCount);
-				$scope.loading=false;
+				$scope.clases = data;
 				stopLoading();
-				return orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
+				return data;
 			});
 		}
     });
