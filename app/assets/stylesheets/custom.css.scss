@@ -7,6 +7,19 @@ body.landingpage {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	background: rgba(209, 170, 75, 0) asset_url("backpattern.png") repeat scroll 0 0;
+	.parallax {
+		position: absolute;
+		overflow: hidden;
+		width: 100%;
+		-webkit-transform: translateZ(0);
+		-ms-transform: translateZ(0);
+		transform: translateZ(0);
+	}
+
+	.parallax img {
+		width: 100%;
+		height: 100%;
+	}
 	/* Landing effect */
 
 	/* Preloader */
