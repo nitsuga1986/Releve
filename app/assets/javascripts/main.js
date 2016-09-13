@@ -104,7 +104,7 @@ jQuery(function($) {
 			$('.preloader').hide();
 			$('.parallax, header').addClass('animated fadeIn').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
 				$('.intro-tables').addClass('animated fadeInUp').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend');
-				$('.sp-container').css("-webkit-animation-play-state", "running").css("animation-play-state", "running");
+				$('#sp-container').addClass('sp-container');$('#sp-wrapsp-left').addClass('sp-wrap sp-left');$('#sp-wrapsp-right').addClass('sp-wrap sp-right');
 			});
 		});
 		// Typing Intro Init
