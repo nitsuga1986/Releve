@@ -59,8 +59,10 @@ jQuery(function($) {
 
 		$('header').height($(window).height() + 80);
 		$('header > .container').height($('header').height());
-		$('.sp-container').width($(window).width()*0.8);	//900px
-		$('.sp-wrap').width(((($('.sp-container').width())/2)-50)+ "px");		//25px+400px+25px x2
+		$('.sp-container').width($(window).width()*0.8);									//900px
+		$('.sp-content:after').attr('left',(2/3));
+		$('.sp-wrap.sp-left').width(((($('.sp-container').width())*(2/3))-50)+ "px");		//25px+400px+25px x2
+		$('.sp-wrap.sp-right').width(((($('.sp-container').width())*(1/3))-50)+ "px");		//25px+400px+25px x2
 		
 		
 		
