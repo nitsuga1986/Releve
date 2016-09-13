@@ -33,6 +33,10 @@ body.landingpage {
 		height: 400px;
 		position: relative;
 		margin: 125px 0 auto auto;
+		-webkit-animation-delay: 8s;
+		-moz-animation-delay: 8s;
+		-ms-animation-delay: 8s;
+		animation-delay: 8s;
 	}
 	.sp-content {
 		width: 100%;
