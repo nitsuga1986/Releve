@@ -58,6 +58,7 @@ jQuery(function($) {
 		}
 
 		$('header').height($(window).height() + 80);
+		$('header > .container').height($(window).height() + 80);
 		$('section .cut').each(function() {
 			if ($(this).hasClass('cut-top'))
 				$(this).css('border-right-width', $(this).parent().width() + "px");
