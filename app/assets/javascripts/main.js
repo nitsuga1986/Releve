@@ -104,7 +104,7 @@ jQuery(function($) {
 			$('.preloader').hide();
 			$('.parallax, header').addClass('animated fadeIn').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
 				$('.intro-tables').addClass('animated fadeInUp').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend');
-				$('.sp-content').css("-webkit-animation-play-state", "running").css("animation-play-state", "running");
+				$('.sp-container').css("-webkit-animation-play-state", "running").css("animation-play-state", "running");
 			});
 		});
 		// Typing Intro Init
