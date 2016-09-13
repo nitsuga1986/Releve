@@ -22,9 +22,13 @@ body.landingpage {
 		height: 100%;
 	}
 	
+	
 	/* Landing effect */
-	.sp-container {
+	
+	.sp-container > h2 {
 		font-family: 'MisoRegular';
+	}
+	.sp-container {
 		width: 900px;
 		height: 400px;
 		position: relative;
@@ -51,14 +55,16 @@ body.landingpage {
 		color: #000;
 		text-shadow: 0px 0px 1px rgba(0,0,0,0.9);
 	}
+	.sp-wrap > h2 {
+		font-size: 70px;
+		line-height: 80px;
+	}
 	.sp-wrap {
 	    box-sizing: content-box;
 		width: 400px;
 		padding: 0px 25px;
 		height: 100%;
 		text-align: right;
-		font-size: 70px;
-		line-height: 80px;
 		float: left;
 		position: relative;
 		overflow: hidden;
@@ -71,10 +77,12 @@ body.landingpage {
 		text-shadow: 0px 0px 1px rgba(255,255,255,0.9);
 	}
 	.sp-wrap.sp-right{
+		position: relative;
+	}
+	.sp-wrap.sp-right > h2{
 		font-family: 'MisoBold';
 		font-size: 180px;
 		line-height: 130px;
-		position: relative;
 	}
 	.sp-left span.sp-top {
 		-webkit-animation: slideLeft 0.5s ease-in 0.6s backwards;
