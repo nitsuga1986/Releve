@@ -49,25 +49,30 @@ body.landingpage {
 		background: #000;
 		height: 100%;
 		position: absolute;
-		left: 50%;
+		left: 70%;
 	}
 	.sp-container h2 {
 		color: #000;
 		text-shadow: 0px 0px 1px rgba(0,0,0,0.9);
 	}
 	.sp-wrap > h2 {
-		font-size: 70px;
-		line-height: 80px;
+		font-size: 3.5em;
+		line-height: 1.2em;
 	}
 	.sp-wrap {
-		width:50%;
 	    box-sizing: content-box;
-		padding: 0px 25px;
+		padding: 0px 1%;
 		height: 100%;
 		text-align: right;
 		float: left;
 		position: relative;
 		overflow: hidden;
+	}
+	.sp-wrap.sp-left {
+		width:68%;
+	}
+	.sp-wrap.sp-right {
+		width:28%;
 	}
 	.sp-wrap span {
 		display: block;
