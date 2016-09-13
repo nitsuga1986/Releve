@@ -58,7 +58,12 @@ jQuery(function($) {
 		}
 
 		$('header').height($(window).height() + 80);
-		$('header > .container').height($(window).height() + 80);
+		$('header > .container').height($('header').height());
+		$('.sp-container').width($(window).width()*0.8);	//900px
+		$('.sp-wrap').width($('.sp-container').width()-50px);		//25px+400px+25px x2
+		
+		
+		
 		$('section .cut').each(function() {
 			if ($(this).hasClass('cut-top'))
 				$(this).css('border-right-width', $(this).parent().width() + "px");
