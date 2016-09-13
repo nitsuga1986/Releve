@@ -24,6 +24,7 @@ body.landingpage {
 	
 	/* Landing effect */
 	.sp-container {
+		font-family: 'MisoRegular';
 		width: 900px;
 		height: 400px;
 		position: relative;
@@ -59,12 +60,10 @@ body.landingpage {
 		line-height: 80px;
 		float: left;
 		position: relative;
-		background: #12849e;
 		overflow: hidden;
 	}
 	.sp-wrap span {
 		display: block;
-		background: #12849e;
 	}
 	.sp-container .sp-right h2 {
 		color: #fff;
