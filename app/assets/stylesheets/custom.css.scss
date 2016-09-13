@@ -29,10 +29,12 @@ body.landingpage {
 		font-family: 'MisoRegular';
 	}
 	.sp-container {
+		-webkit-animation-play-state: paused; /* Chrome, Safari, Opera */
+		animation-play-state: paused;
 		width:70%;
 		height: 400px;
 		position: relative;
-		margin: 100px 0 auto auto;
+		margin: 125px 0 auto auto;
 	}
 	.sp-content {
 		width: 100%;
@@ -61,7 +63,7 @@ body.landingpage {
 	}
 	.sp-wrap {
 	    box-sizing: content-box;
-		padding: 0px 1%;
+		padding: 0px 2%;
 		height: 100%;
 		text-align: right;
 		float: left;
@@ -69,10 +71,10 @@ body.landingpage {
 		overflow: hidden;
 	}
 	.sp-wrap.sp-left {
-		width:68%;
+		width:66%;
 	}
 	.sp-wrap.sp-right {
-		width:28%;
+		width:26%;
 	}
 	.sp-wrap span {
 		display: block;
@@ -298,6 +300,7 @@ body.landingpage {
 		color: white;
 		background: rgba(28, 36, 65, 0.93);
 		background: image-url("header.jpg");
+		box-shadow: 0 0 0 1000px rgba(18, 132, 158, 0.7) inset;
 		background-size: cover;
 	}
 	header .table {
