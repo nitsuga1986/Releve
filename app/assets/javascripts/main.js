@@ -60,6 +60,8 @@ jQuery(function($) {
 		$('header').height($(window).height() + 80);
 		$('header > .container').height($('header').height());
 		
+		
+		
 		$('section .cut').each(function() {
 			if ($(this).hasClass('cut-top'))
 				$(this).css('border-right-width', $(this).parent().width() + "px");
@@ -103,8 +105,11 @@ jQuery(function($) {
 		$('.preloader').addClass('animated fadeOut').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
 			$('.preloader').hide();
 			$('.parallax, header').addClass('animated fadeIn').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+				$('#sp-container').addClass('sp-container');
+				$('#sp-content').addClass('sp-content');
+				$('#sp-wrapsp-left').addClass('sp-wrap sp-left');
+				$('#sp-wrapsp-right').addClass('sp-wrap sp-right');
 				$('.intro-tables').addClass('animated fadeInUp').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend');
-				$('#sp-container').addClass('sp-container');$('#sp-wrapsp-left').addClass('sp-wrap sp-left');$('#sp-wrapsp-right').addClass('sp-wrap sp-right');
 			});
 		});
 		// Typing Intro Init
