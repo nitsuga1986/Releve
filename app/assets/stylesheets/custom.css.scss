@@ -8,32 +8,7 @@ body.landingpage {
 	-moz-osx-font-smoothing: grayscale;
 	background: rgba(209, 170, 75, 0) asset_url("backpattern.png") repeat scroll 0 0;
 	/* Landing effect */
-	.sp-container {
-		 position: relative;
-		 width: 100%;
-	}
-	.sp-content {
-		 position: relative;
-		 width: 100%;
-	}
-	.sp-wrap::after {
-		 background: #000000 none repeat scroll 0% 0%;
-		 content: "";
-		 height: 100%;
-		 width: 4px;
-	}
-	.sp-wrap {
-		 float: left;
-		 font-size: 70px;
-		 line-height: 80px;
-		 overflow: hidden;
-		 padding: 0px 25px;
-		 position: relative;
-		 text-align: right;
-	}
-	.sp-wrap span {
-		 display: block;
-	}
+
 	/* Preloader */
 	.preloader {
 		position: fixed;
