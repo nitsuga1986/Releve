@@ -60,7 +60,7 @@ jQuery(function($) {
 		$('header').height($(window).height() + 80);
 		$('header > .container').height($('header').height());
 		$('.sp-container').width($(window).width()*0.8);	//900px
-		$('.sp-wrap').width((($('.sp-container').width())*1-50)+ "px");		//25px+400px+25px x2
+		$('.sp-wrap').width(((($('.sp-container').width())/2)-50)+ "px");		//25px+400px+25px x2
 		
 		
 		
