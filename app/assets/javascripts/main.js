@@ -106,9 +106,6 @@ jQuery(function($) {
 			$('.preloader').hide();
 			$('.parallax, header').addClass('animated fadeIn').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
 				$('#sp-container').addClass('sp-container');
-				$('#sp-content').addClass('sp-content');
-				$('#sp-wrapsp-left').addClass('sp-wrap sp-left');
-				$('#sp-wrapsp-right').addClass('sp-wrap sp-right');
 				$('.intro-tables').addClass('animated fadeInUp').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend');
 			});
 		});
