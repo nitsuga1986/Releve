@@ -29,8 +29,6 @@ body.landingpage {
 		font-family: 'MisoRegular';
 	}
 	.sp-container {
-		-webkit-animation-play-state: paused; /* Chrome, Safari, Opera */
-		animation-play-state: paused;
 		width:70%;
 		height: 400px;
 		position: relative;
@@ -40,6 +38,8 @@ body.landingpage {
 		width: 100%;
 		height: 400px;
 		position: relative;
+		-webkit-animation-play-state: paused; /* Chrome, Safari, Opera */
+		animation-play-state: paused;
 		-webkit-animation: open 0.4s linear forwards;
 		-moz-animation: open 0.4s linear forwards;
 		-ms-animation: open 0.4s linear forwards;
