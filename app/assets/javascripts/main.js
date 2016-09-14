@@ -100,20 +100,20 @@ jQuery(function($) {
 			scrollSpeed: 400,
 			filter: ':not(.btn)'
 		});
+		
+
 		// Preloader
 		$('.intro-tables, .parallax, header').css('opacity', '0');
 		$('.preloader').addClass('animated fadeOut').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
 			$('.preloader').hide();
 			$('.parallax, header').addClass('animated fadeIn').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-				$('#sp-container').addClass('sp-container');
 				$('.intro-tables').addClass('animated fadeInUp').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend');
+				$('#intro > .container').addClass('run-animation').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend');
 			});
-		});
-		// Typing Intro Init
-		$(".typed").typewriter({
-			speed: 60
 		});
 	});
 
 
 });
+
+
