@@ -49,6 +49,7 @@ body.landingpage {
 
 	/* Landing effect */
 	@media (max-width: 992px) {
+		h2.hidden-mddown{display: none;}
 		.sp-container {
 			height: 400px;
 			width:100%;
@@ -72,30 +73,33 @@ body.landingpage {
 				}
 				h2 {
 					font-family: "Palatino Linotype","Book Antiqua",Palatino,serif;
-					color: #000000;
-					text-shadow: 0px 0px 1px rgba(102, 51, 0, 0.9);
-					font-size: 2em;
-					line-height: 1.2em;
+					color: #ffffff;
+					text-shadow: 0 0 1px rgba(2, 84, 103, 0.9);
+					font-size: 2.5em;
+					line-height: 1em;
 				}
 				.sp-wrap.sp-left span.sp-bottom {
-					font: 1.2em/2 "Great Vibes",Helvetica,sans-serif;
+					font-size: 0.8em;
+					line-height: 2em;
 				}
 				.sp-wrap.sp-right h2 {
 						color: white;
 						font-family: "Lucida Console",Monaco,monospace;
-						font-size: 70px;
+						font-size: 7em;
 						font-weight: bold;
-						line-height: 80px;
+						line-height: 0.8em;
+						font-style:normal;
 				}
 			}
 		}
 	} 	//@screen-xs
 	@media (min-width: 992px) {
+		h2.hidden-mdup{display: none;}
 		.sp-container {
 			height: 400px;
 			width:70%;
 			.sp-content:after {
-				height: 90%;
+				height: 80%;
 				width: 4px;
 				right: 30%;
 			}
@@ -114,20 +118,22 @@ body.landingpage {
 				}
 				h2 {
 					font-family: "Palatino Linotype","Book Antiqua",Palatino,serif;
-					color: #000000;
-					text-shadow: 0px 0px 1px rgba(102, 51, 0, 0.9);
-					font-size: 3.5em;
-					line-height: 1.2em;
+					color: #ffffff;
+					text-shadow: 0 0 1px rgba(2, 84, 103, 0.9);
+					font-size: 3.7em;
+					line-height: 1.1em;
 				}
 				.sp-wrap.sp-left span.sp-bottom {
-					font: 1.2em/2 "Great Vibes",Helvetica,sans-serif;
+					font-size: 0.8em;
+					line-height: 2em;
 				}
 				.sp-wrap.sp-right h2 {
 						color: white;
 						font-family: "Lucida Console",Monaco,monospace;
-						font-size: 136px;
+						font-size: 9em;
 						font-weight: bold;
-						line-height: 110px;
+						line-height: 0.8em;
+						font-style:normal;
 				}
 			}
 		}
@@ -138,7 +144,7 @@ body.landingpage {
 		margin: 165px 0 auto auto;
 		.sp-content:after {
 			content: '';
-			background: #000;
+			background: #025467;
 			position: absolute;
 		}
 		.sp-content {
@@ -178,35 +184,41 @@ body.landingpage {
 				-ms-animation: slideLeft 0.5s ease-in 0.6s backwards;
 				animation: slideLeft 0.5s ease-in 0.6s backwards;
 			}
-			.sp-left span.sp-mid {
+			.sp-left span.sp-mid-top {
 				-webkit-animation: slideLeft 0.5s ease-in 1s backwards;
 				-moz-animation: slideLeft 0.5s ease-in 1s backwards;
 				-ms-animation: slideLeft 0.5s ease-in 1s backwards;
 				animation: slideLeft 0.5s ease-in 1s backwards;
 			}
-			.sp-left span.sp-bottom {
+			.sp-left span.sp-mid {
 				-webkit-animation: slideLeft 0.5s ease-in 1.4s backwards;
 				-moz-animation: slideLeft 0.5s ease-in 1.4s backwards;
 				-ms-animation: slideLeft 0.5s ease-in 1.4s backwards;
 				animation: slideLeft 0.5s ease-in 1.4s backwards;
 			}
-			.sp-right span.sp-top {
-				-webkit-animation: slideRight 0.5s ease-in 2s backwards;
-				-moz-animation: slideRight 0.5s ease-in 2s backwards;
-				-ms-animation: slideRight 0.5s ease-in 2s backwards;
-				animation: slideRight 0.5s ease-in 2s backwards;
+			.sp-left span.sp-bottom {
+				-webkit-animation: slideLeft 0.5s ease-in 1.8s backwards;
+				-moz-animation: slideLeft 0.5s ease-in 1.8s backwards;
+				-ms-animation: slideLeft 0.5s ease-in 1.8s backwards;
+				animation: slideLeft 0.5s ease-in 1.8s backwards;
 			}
-			.sp-right span.sp-mid {
+			.sp-right span.sp-top {
 				-webkit-animation: slideRight 0.5s ease-in 2.4s backwards;
 				-moz-animation: slideRight 0.5s ease-in 2.4s backwards;
 				-ms-animation: slideRight 0.5s ease-in 2.4s backwards;
 				animation: slideRight 0.5s ease-in 2.4s backwards;
 			}
-			.sp-right span.sp-bottom {
+			.sp-right span.sp-mid {
 				-webkit-animation: slideRight 0.5s ease-in 2.8s backwards;
 				-moz-animation: slideRight 0.5s ease-in 2.8s backwards;
 				-ms-animation: slideRight 0.5s ease-in 2.8s backwards;
 				animation: slideRight 0.5s ease-in 2.8s backwards;
+			}
+			.sp-right span.sp-bottom {
+				-webkit-animation: slideRight 0.5s ease-in 3.2s backwards;
+				-moz-animation: slideRight 0.5s ease-in 3.2s backwards;
+				-ms-animation: slideRight 0.5s ease-in 3.2s backwards;
+				animation: slideRight 0.5s ease-in 3.2s backwards;
 			}
 		}
 	}
@@ -256,7 +268,6 @@ body.landingpage {
 		color: white;
 		background: rgba(28, 36, 65, 0.93);
 		background: image-url("header.jpg");
-		box-shadow: 0 0 0 1000px rgba(51, 153, 153, 0.86) inset;
 		background-size: cover;
 	}
 	header .table {
@@ -346,12 +357,12 @@ body.landingpage {
 		background-position: 0% 0%;
 	}
 	.intro-table-first {
-		background-color:#F88717;
+		background-image: image-url("table-1.jpg");
 	}
 	.intro-table-hover {
 		-webkit-transition: background-image 0.3s ease, background-position 0.3s;
 		transition: background-image 0.3s ease, background-position 0.3s;
-		background-color:#CC6500;
+		background-image: image-url("table-2.jpg");
 	}
 	.intro-table-hover h4 {
 		-webkit-transform: translateY(170px);
@@ -360,8 +371,8 @@ body.landingpage {
 		transition: transform 0.3s;
 	}
 	.intro-table-third {
-		background-color:#A75300;
-	}
+		background-image: image-url("table-3.jpg");
+}
 	.intro-table-hover .expand {
 		margin: 30px;
 		margin-top: 120px;

@@ -107,8 +107,9 @@ jQuery(function($) {
 		$('.preloader').addClass('animated fadeOut').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
 			$('.preloader').hide();
 			$('.parallax, header').addClass('animated fadeIn').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-				$('.intro-tables').addClass('animated fadeInUp').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend');
-				$('#intro > .container').addClass('run-animation').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend');
+				$('.intro-tables').addClass('animated fadeInUp').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+					$('#intro > .container').addClass('run-animation').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend');
+				});
 			});
 		});
 	});
