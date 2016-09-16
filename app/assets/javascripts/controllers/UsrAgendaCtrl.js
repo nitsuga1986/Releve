@@ -104,7 +104,7 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$location', '
 		pack = $.grep($scope.alumno.packs, function(e){ return e.actividad_id == clase.actividad_id; })[0];
 		if (state){
 			if (pack != undefined){
-				if(($scope.alumno.actividad_counter[clase.actividad_id]+$scope.alumno.selected_counter[clase.actividad_id]) < pack.cantidad){
+				if(pack.cantidad > ($scope.alumno.actividad_counter[clase.actividad_id]+$scope.alumno.selected_counter[clase.actividad_id])){
 					$scope.alumno.selected_counter[clase.actividad_id] += 1;
 				}else{preventClase(index_clase);}
 			}else{preventClase(index_clase);}
