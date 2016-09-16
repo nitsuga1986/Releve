@@ -12,10 +12,11 @@ class UsersController < ApplicationController
         redirect_to '/app/agenda/', notice: 'Hemos guardado tu email correctamente.'
       else
 		@show_errors = true
+		render 'landing/finish_signup'
       end
     else
 		@landingpage=true
-		render 'landing/index'
+		render 'landing/finish_signup'
     end
   end
  

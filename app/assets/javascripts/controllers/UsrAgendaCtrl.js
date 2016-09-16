@@ -1,7 +1,6 @@
 angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$location', 'ResourceClase', 'ResourceAlumno', '$filter','NgTableParams', '$timeout', '$cacheFactory', function($scope, $location, ResourceClase, ResourceAlumno, $filter, NgTableParams, $timeout, $cacheFactory) {
 	ResourceAlumno.current().$promise.then(function(data) {
 		$scope.alumno = data;
-		$scope.alumno.actividad_counter = []; // Count clases for each actividad
 		$scope.selectmultiple = false;
 		if ($scope.alumno.primera_clase){if($scope.alumno.confirmed){$('#first-clase-modal').modal('show')}};
 		// ngTable
@@ -9,7 +8,6 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$location', '
 		// changeselection
 		$scope.changeselection = function() {
 				$scope.selectmultiple = !$scope.selectmultiple;
-				console.log($scope.selectmultiple);
 		};	
 		td = new Date();
 		var Api = ResourceClase;
@@ -50,6 +48,8 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$location', '
 	// condicionesClases
 	$scope.condicionesClases = function(clases) {
 		// Each clase:
+		$scope.alumno.actividad_counter = []; // Count clases for each actividad
+		$scope.alumno.selected_counter = []; // Count clases for each checkbox
 		$.each(clases, function(index_clase, clase) {
 			// completa?
 			if(clase.users.length >= clase.max_users){	clases[index_clase].completa = true;
@@ -59,9 +59,10 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$location', '
 			}else{																								clases[index_clase].joined = true;}
 			// actividad_counter []
 			pack = $.grep($scope.alumno.packs, function(e){ return e.actividad_id == clases[index_clase].actividad_id; })[0];
-			if(pack!=undefined){
+			if(pack!=undefined && clases[index_clase].joined){
 				if(pack.noperiod){
 					if ($scope.alumno.actividad_counter[clases[index_clase].actividad_id] == undefined){	$scope.alumno.actividad_counter[clases[index_clase].actividad_id] = 1;
+																											$scope.alumno.selected_counter[clases[index_clase].actividad_id] = 0;
 					}else{																					$scope.alumno.actividad_counter[clases[index_clase].actividad_id] += 1;}
 				}else{
 					sd = new Date(pack.fecha_start+'T12:00:00Z');
@@ -91,6 +92,23 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$location', '
 	$scope.multipleEventModal = function(clase_id) {
 		$scope.selectedclases = $.grep($scope.clases, function(e){ return e.checked == true; });
 		$('#multiple-events-modal').modal('show');
+	};
+	// verifyPlan
+	$scope.verifyPlan = function(state,clase_id) {
+		function preventClase(index_clase) {
+			$scope.clases[index_clase].checked=false;
+			$('#alert-modal').modal('show');
+		}
+		var clase = {}; var index_clase=0;
+		$.each($scope.clases, function(index, each_clase) {if(each_clase.id == clase_id){clase = each_clase;index_clase = index;return false;}});
+		pack = $.grep($scope.alumno.packs, function(e){ return e.actividad_id == clase.actividad_id; })[0];
+		if (state){
+			if (pack != undefined){
+				if(($scope.alumno.actividad_counter[clase.actividad_id]+$scope.alumno.selected_counter[clase.actividad_id]) < pack.cantidad){
+					$scope.alumno.selected_counter[clase.actividad_id] += 1;
+				}else{preventClase(index_clase);}
+			}else{preventClase(index_clase);}
+		}else{$scope.alumno.selected_counter[clase.actividad_id] -= 1;}
 	};
 	// JoinMultiple
 	$scope.JoinMultiple = function() {

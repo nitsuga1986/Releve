@@ -27,10 +27,13 @@
 			</tr>
 			<tr ng-hide="group.$hideRows" ng-repeat="clase in group.data" ng-repeat-end>
 				<td data-ng-class="{'strike': clase.cancelada && column.field!='nc_instructor','hidden-xs': column.hiddenxs}" data-ng-repeat="column in columns_claseJoin" data-ng-click="GoToEdit(clase.id)" data-ng-show="column.visible" sortable="column.field" filter="column.filter">
-					<span data-ng-if="column.field=='horario'&& !alumno.primera_clase && selectmultiple && !clase.cancelada && !clase.joined && !alumno.actividad_overquota[clase.actividad_id] && !clase.completa"><input type="checkbox" data-ng-model="clase.checked"></span>
+					<span data-ng-if="column.field=='horario'&& !alumno.primera_clase && selectmultiple && !clase.cancelada && !clase.joined && !alumno.actividad_overquota[clase.actividad_id] && !clase.completa"><input id="selectable{{clase.id}}" type="checkbox" data-ng-model="clase.checked" data-ng-change="verifyPlan(clase.checked,clase.id)"></span>
 					<span data-ng-if="column.field=='nc_instructor' && clase.cancelada" class="text-danger">Clase cancelada</span>
 					<span data-ng-if="column.field=='nc_instructor' && !clase.cancelada && clase.nc_reemplazo" class="text-danger">{{clase['nc_reemplazo']}}</span>
-					<span data-ng-if="!(column.field=='nc_instructor' && clase.cancelada) && !(column.field=='nc_instructor' && clase.nc_reemplazo)">{{clase[column.field]}}</span>
+					<label for="selectable{{clase.id}}" data-ng-if="selectmultiple" class="selectmultiple">
+						<span data-ng-if="!(column.field=='nc_instructor' && clase.cancelada) && !(column.field=='nc_instructor' && clase.nc_reemplazo)">{{clase[column.field]}}</span>
+					</label>
+					<span data-ng-if="!selectmultiple && !(column.field=='nc_instructor' && clase.cancelada) && !(column.field=='nc_instructor' && clase.nc_reemplazo)">{{clase[column.field]}}</span>
 					<span data-ng-if="column.field=='horario' && !clase.cancelable" class="label label-warning">< 24hs</span>
 					<span data-ng-if="column.field=='horario' && clase.completa" class="label label-danger">Completa</span>
 					<button data-ng-if="column.field=='horario' && !clase.cancelada && !clase.joined && !alumno.actividad_overquota[clase.actividad_id] && !clase.completa" data-ng-click="eventModal(clase.id)" class="btn btn-default btn-xs" type="button">Agendarme</button>
@@ -84,8 +87,10 @@
             </div>
             <div class="modal-body">
 				<p class="lead">¿Te agendamos para las siguientes clases?</p>
-				<ul class="fa-ul">
-					<li data-ng-repeat="clase in selectedclases" data-ng-if="clase.checked"><i class="fa-li fa fa-close cursorpointer" data-ng-click="clase.checked=false"></i> {{clase.fecha_fixed}} {{clase.horario}}</strong> {{clase.actividad}} con {{clase.nc_instructor}} </li>
+				<p data-ng-if="!selectedclases.length"> No has seleccionado ninguna clase aún =(</p>
+				<ul class="fa-ul" data-ng-if="selectedclases.length" >
+					<li data-ng-repeat="clase in selectedclases" data-ng-if="clase.checked"><i class="fa-li fa fa-close cursorpointer" data-ng-click="clase.checked=false"></i><strong> {{clase.fecha_fixed}} {{clase.horario}}hs</strong> {{clase.actividad}} con {{clase.nc_instructor}} </li>
+				</ul>
             </div>
             <div class="modal-footer">
                 <a href="#" data-dismiss="modal" class="btn btn-default ">Close</a>
@@ -109,6 +114,23 @@
             </div>
             <div class="modal-footer">
                 <a href="#" data-dismiss="modal" class="btn btn-primary">A entrenar!</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="alert-modal" tabindex='-1'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-light-releve">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4>Tu entrenamiento Releve</h4>
+            </div>
+            <div class="modal-body lead">
+				<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Has alcanzado el límite de clases para tu plan. <span class="text-muted">Si deseas agendar más clases, avísale a tu instructor para ampliar tu plan de entrenamiento.</span>
+            </div>
+            <div class="modal-footer">
+                <a href="#" data-dismiss="modal" class="btn btn-default ">Close</a>
             </div>
         </div>
     </div>
