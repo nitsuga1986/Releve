@@ -2,9 +2,15 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$location', '
 	ResourceAlumno.current().$promise.then(function(data) {
 		$scope.alumno = data;
 		$scope.alumno.actividad_counter = []; // Count clases for each actividad
+		$scope.selectmultiple = false;
 		if ($scope.alumno.primera_clase){if($scope.alumno.confirmed){$('#first-clase-modal').modal('show')}};
 		// ngTable
 		function dateFormat(date) {date = date.split('-'); date = date[2]+' de '+monthNames[parseInt(date[1])-1]; return date;}
+		// changeselection
+		$scope.changeselection = function() {
+				$scope.selectmultiple = !$scope.selectmultiple;
+				console.log($scope.selectmultiple);
+		};	
 		td = new Date();
 		var Api = ResourceClase;
 		$scope.columns_claseJoin = columns_claseJoin;
@@ -24,6 +30,7 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$location', '
 				startLoading();
 				return Api.index_usr().$promise.then(function(data) {
 					angular.forEach(data, function(value, key) {
+						data[key]['checked'] = false;
 						data[key]["duracion"] = data[key]["duracion"]+' hs'
 						data[key]["nc_instructor"] = value.instructor.nombre_completo;
 						if(value.reemplazo!=undefined){data[key]["nc_reemplazo"] = value.reemplazo.nombre_completo};
@@ -80,6 +87,21 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$location', '
 		$scope.clase = $.grep($scope.clases, function(e){ return e.id == clase_id; })[0];
 		$('#events-modal').modal('show');
 	};
+	// multipleEventModal
+	$scope.multipleEventModal = function(clase_id) {
+		$scope.selectedclases = $.grep($scope.clases, function(e){ return e.checked == true; });
+		$('#multiple-events-modal').modal('show');
+	};
+	// JoinMultiple
+	$scope.JoinMultiple = function() {
+		$cacheFactory.get('$http').remove("/api/clases/index_usr");
+		startLoading();
+		ResourceClase.join_multiple($scope.selectedclases, success, failure).$promise.then(function(data) {
+			$scope.tableParams.reload();
+			$('#alert-container').hide().html('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-check-square-o" aria-hidden="true"></i> Inscrpción exitosa! </strong> Ya te agendamos para las clases seleccionadas, te esperamos!</div>').slideDown();
+			stopLoading();
+		});
+	};
 	// Join
 	$scope.JoinUser = function() {
 		$cacheFactory.get('$http').remove("/api/clases/index_usr");
@@ -103,7 +125,7 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$location', '
 	// Callback Success
 	function success(response) {
 		console.log("success", response);
-		$location.path("/dashboard/join");
+		$location.path("/app/agenda");
 	}
 	// Callback Failure
 	function failure(response) {

@@ -1,4 +1,4 @@
-angular.module("TurnosApp").controller("ActividadEditCtrl",['$scope', '$q', '$http', '$routeParams', '$cacheFactory', '$location', 'ResourceActividad', function($scope, $q, $http, $routeParams, $cacheFactory, $location, ResourceActividad) {
+angular.module("TurnosApp").controller("ActividadEditCtrl",['$scope', '$q', '$http', '$routeParams', '$location', 'ResourceActividad', function($scope, $q, $http, $routeParams, $location, ResourceActividad) {
 
 	$scope.submiterror = false;
 	// Edit or New
@@ -21,8 +21,7 @@ angular.module("TurnosApp").controller("ActividadEditCtrl",['$scope', '$q', '$ht
 			// Success
 			function success(response) {
 				console.log("success", response);
-				$cacheFactory.get('$http').remove("/dashboard/actividad");
-				$location.path("/dashboard/actividad/index");
+				$location.path("/actividad/index");
 			}
 			// Failure
 			function failure(response) {
@@ -47,5 +46,4 @@ angular.module("TurnosApp").controller("ActividadEditCtrl",['$scope', '$q', '$ht
 			window.scrollTo(0, 0);
 		}
 	};
-		
-}]);
+stopLoading();}]);

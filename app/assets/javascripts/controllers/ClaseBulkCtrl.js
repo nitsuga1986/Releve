@@ -3,8 +3,8 @@ angular.module("TurnosApp").controller("ClaseBulkCtrl",['$scope', '$q', '$http',
 	$scope.horariosArray = horariosArray;
 	$scope.submiterror = false;
 	$scope.history_GoToClaseBulk = []; // Prevents loop search
-	$scope.GoToIndex = function(id) {$location.path("/dashboard/index");};
-	$scope.GoToNewActividad = function() {$location.path("/dashboard/actividad/new");};
+	$scope.GoToIndex = function(id) {$location.path("/clase/index");};
+	$scope.GoToNewActividad = function() {$location.path("/actividad/new");};
 	$scope.ActividadIndex = [];
 	$scope.ActividadIndex = ResourceActividad.index();
 	$scope.InstructorIndex = ResourceAlumno.instructores();
@@ -41,7 +41,7 @@ angular.module("TurnosApp").controller("ClaseBulkCtrl",['$scope', '$q', '$http',
 			// Success
 			function success(response) {
 				console.log("success", response);
-				$location.path("/dashboard/index");
+				$location.path("/clase/index");
 			}
 			// Failure
 			function failure(response) {

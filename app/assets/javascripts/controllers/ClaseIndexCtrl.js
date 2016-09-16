@@ -1,7 +1,7 @@
 angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$location', 'ResourceClase', '$filter','NgTableParams', '$timeout', function($scope, $location, ResourceClase, $filter, NgTableParams, $timeout) {
-	$scope.GoToEdit = function(id) {$location.path("/dashboard/"+id+"/edit/");};
-	$scope.GoToNew = function() {$location.path("/dashboard/new");};
-	$scope.GoToBulk = function() {$location.path("/dashboard/bulk");};
+	$scope.GoToEdit = function(id) {$location.path("/clase/"+id+"/edit/");};
+	$scope.GoToNew = function() {$location.path("/clase/new");};
+	$scope.GoToBulk = function() {$location.path("/clase/bulk");};
 	// ngTable
 	function dateFormat(date) {date = date.split('-'); date = date[2]+'/'+date[1]; return date;}
 	var Api = ResourceClase;
@@ -42,7 +42,7 @@ angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$location', 
 	// Success
 	function success(response) {
 		console.log("success", response);
-		$location.path("/dashboard/index");
+		$location.path("/clase/index");
 		$scope.tableParams.reload();
 	}
 	// Failure

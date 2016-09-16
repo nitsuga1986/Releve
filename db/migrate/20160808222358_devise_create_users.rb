@@ -24,6 +24,9 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.boolean :confirmed, default: false
       t.boolean :primera_clase, default: true
       t.boolean :instructor, default: false
+      t.boolean :reminders, default: true
+      t.boolean :newsletter, default: true
+      t.boolean :accept_terms, default: false
     
       ## Database authenticatable
       t.string :email,              null: false, default: ""

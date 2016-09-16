@@ -3,8 +3,8 @@ angular.module("TurnosApp").controller("ClaseEditCtrl",['$scope', '$q', '$http',
 	$scope.horariosArray = horariosArray;
 	$scope.submiterror = false;
 	$scope.history_GoToClaseEdit = []; // Prevents loop search
-	$scope.GoToIndex = function(id) {$location.path("/dashboard/index");};
-	$scope.GoToNewActividad = function() {$location.path("/dashboard/actividad/new");};
+	$scope.GoToIndex = function(id) {$location.path("/clase/index");};
+	$scope.GoToNewActividad = function() {$location.path("/actividad/new");};
 	$scope.ActividadIndex = [];
 	$scope.ActividadIndex = ResourceActividad.index();
 	$scope.InstructorIndex = ResourceAlumno.instructores();
@@ -25,7 +25,7 @@ angular.module("TurnosApp").controller("ClaseEditCtrl",['$scope', '$q', '$http',
 			$scope.clase.duracion = parseFloat($scope.clase.duracion);
 			$scope.clase.instructor_id = $scope.clase.instructor.id;
 			if($scope.clase.reemplazo!=null){$scope.clase.reemplazo_id = $scope.clase.reemplazo.id};
-		},function( error ){$location.path("/dashboard/new");});	// if id not exists => ToNew
+		},function( error ){$location.path("/clase/new");});	// if id not exists => ToNew
 	} else { 				// New
 		$scope.FormTitle = "<i class='fa fa-calendar'></i> Agregar nueva clase";
 		$scope.FormButton = '<i class="fa fa-calendar fa-lg"></i> Agregar clase';
@@ -52,7 +52,7 @@ angular.module("TurnosApp").controller("ClaseEditCtrl",['$scope', '$q', '$http',
 			// Success
 			function success(response) {
 				console.log("success", response);
-				$location.path("/dashboard/index");
+				$location.path("/clase/index");
 			}
 			// Failure
 			function failure(response) {
@@ -107,7 +107,7 @@ angular.module("TurnosApp").controller("ClaseEditCtrl",['$scope', '$q', '$http',
 				$http.get('/api/clases/search', {params: { fecha:$scope.clase.fecha, horario:$scope.clase.horario, instructor:$scope.clase.instructor_id}}).
 				success(function(data, status, headers, config) {
 					if(data.id!=undefined){
-						$location.path("/dashboard/"+data.id+"/edit");
+						$location.path("/clase/"+data.id+"/edit");
 					}else{};
 				});
 			};

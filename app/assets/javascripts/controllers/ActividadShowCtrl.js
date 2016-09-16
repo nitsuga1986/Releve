@@ -1,11 +1,10 @@
-angular.module("TurnosApp").controller("ActividadShowCtrl",['$scope', '$routeParams', '$cacheFactory', '$location', 'ResourceActividad', function($scope, $routeParams, $cacheFactory, $location, ResourceActividad) {
+angular.module("TurnosApp").controller("ActividadShowCtrl",['$scope', '$routeParams', '$location', 'ResourceActividad', function($scope, $routeParams, $location, ResourceActividad) {
 	$scope.actividad = ResourceActividad.show({ id: $routeParams.id });
-	$scope.actividad.$promise.then(function(data){console.log(data);},function( error ){$location.path("/dashboard/actividad/index");});
+	$scope.actividad.$promise.then(function(data){console.log(data);},function( error ){$location.path("/actividad/index");});
 	// Success
 	function success(response) {
 		console.log("success", response);
-		$cacheFactory.get('$http').remove("/dashboard/actividad");
-		$location.path("/dashboard/actividad/index");
+		$location.path("/actividad/index");
 	}
 	// Failure
 	function failure(response) {
@@ -24,4 +23,4 @@ angular.module("TurnosApp").controller("ActividadShowCtrl",['$scope', '$routePar
 			ResourceActividad.destroy($scope.actividad, success, failure);
 		})
 	};
-}]);
+stopLoading();}]);

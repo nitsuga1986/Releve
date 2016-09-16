@@ -2,25 +2,27 @@
 angular.module("TurnosApp")
 	.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 		$routeProvider
-		// Actividad 
-		.when("/dashboard/actividad/index", { title: 'Listado de actividades',templateUrl: "<%= asset_path('actividad/index.html') %> ", controller: "ActividadIndexCtrl", activetab: 'actividad'})
-		.when("/dashboard/actividad/new", { title: 'Nuevo actividad',templateUrl: "<%= asset_path('actividad/edit.html') %> ", controller: "ActividadEditCtrl", activetab: 'actividad'})
-		.when("/dashboard/actividad/:id", { title: 'Detalles de la actividad',templateUrl: "<%= asset_path('actividad/show.html') %> ", controller: "ActividadShowCtrl", activetab: 'actividad'})
-		.when("/dashboard/actividad/:id/edit", { title: 'Editar actividad',templateUrl: "<%= asset_path('actividad/edit.html') %> ", controller: "ActividadEditCtrl", activetab: 'actividad'})
-		// Clases 
-		.when("/dashboard/index", { title: 'Listado de clases',templateUrl: "<%= asset_path('clase/index.html') %> ", controller: "ClaseIndexCtrl", activetab: 'clase'})
-		.when("/dashboard/new", { title: 'Nueva clase',templateUrl: "<%= asset_path('clase/edit.html') %> ", controller: "ClaseEditCtrl", activetab: 'clase'})
-		.when("/dashboard/bulk", { title: 'Nuevas clases en masa',templateUrl: "<%= asset_path('clase/bulk.html') %> ", controller: "ClaseBulkCtrl", activetab: 'clase'})
-		.when("/dashboard/mis_clases", { title: 'Inscripciones',templateUrl: "<%= asset_path('usr/usr_mis_clases.html') %> ", controller: "UsrMisClasesCtrl", activetab: 'clase'})
-		.when("/dashboard/agenda", { title: 'Inscripciones',templateUrl: "<%= asset_path('usr/usr_agenda.html') %> ", controller: "UsrAgendaCtrl", activetab: 'clase'})
-		.when("/dashboard/programar", { title: 'Inscripciones',templateUrl: "<%= asset_path('usr/usr_programar.html') %> ", controller: "UsrProgramarCtrl", activetab: 'clase'})
-		.when("/dashboard/:id", { title: 'Detalles de la clase',templateUrl: "<%= asset_path('clase/show.html') %> ", controller: "ClaseShowCtrl", activetab: 'clase'})
-		.when("/dashboard/:id/edit", { title: 'Editar clase',templateUrl: "<%= asset_path('clase/edit.html') %> ", controller: "ClaseEditCtrl", activetab: 'clase'})
+		// Api 
+		.when("/app/mi_info", { title: 'Mi info',templateUrl: "<%= asset_path('usr/usr_mi_info.html') %> ", controller: "UsrMiInfoCtrl", activetab: 'clase'})
+		.when("/app/mis_clases", { title: 'Mis Clases',templateUrl: "<%= asset_path('usr/usr_mis_clases.html') %> ", controller: "UsrMisClasesCtrl", activetab: 'clase'})
+		.when("/app/agenda", { title: 'Agenda',templateUrl: "<%= asset_path('usr/usr_agenda.html') %> ", controller: "UsrAgendaCtrl", activetab: 'clase'})
+		.when("/app/programar", { title: 'Programar',templateUrl: "<%= asset_path('usr/usr_programar.html') %> ", controller: "UsrProgramarCtrl", activetab: 'clase'})
+		// Clases
+		.when("/clase/index", { title: 'Listado de clases',templateUrl: "<%= asset_path('clase/index.html') %> ", controller: "ClaseIndexCtrl", activetab: 'clase'})
+		.when("/clase/new", { title: 'Nueva clase',templateUrl: "<%= asset_path('clase/edit.html') %> ", controller: "ClaseEditCtrl", activetab: 'clase'})
+		.when("/clase/bulk", { title: 'Nuevas clases en masa',templateUrl: "<%= asset_path('clase/bulk.html') %> ", controller: "ClaseBulkCtrl", activetab: 'clase'})
+		.when("/clase/:id", { title: 'Detalles de la clase',templateUrl: "<%= asset_path('clase/show.html') %> ", controller: "ClaseShowCtrl", activetab: 'clase'})
+		.when("/clase/:id/edit", { title: 'Editar clase',templateUrl: "<%= asset_path('clase/edit.html') %> ", controller: "ClaseEditCtrl", activetab: 'clase'})
 		// Alumnos 
 		.when("/alumno/index", { title: 'Listado de alumnos',templateUrl: "<%= asset_path('alumno/index.html') %> ", controller: "AlumnoIndexCtrl", activetab: 'alumno'})
 		.when("/alumno/new", { title: 'Nuevo alumno',templateUrl: "<%= asset_path('alumno/edit.html') %> ", controller: "AlumnoEditCtrl", activetab: 'alumno'})
 		.when("/alumno/:id", { title: 'Detalles de la alumno',templateUrl: "<%= asset_path('alumno/show.html') %> ", controller: "AlumnoShowCtrl", activetab: 'alumno'})
 		.when("/alumno/:id/edit", { title: 'Editar alumno',templateUrl: "<%= asset_path('alumno/edit.html') %> ", controller: "AlumnoEditCtrl", activetab: 'alumno'})
+		// Actividad 
+		.when("/actividad/index", { title: 'Listado de actividades',templateUrl: "<%= asset_path('actividad/index.html') %> ", controller: "ActividadIndexCtrl", activetab: 'actividad'})
+		.when("/actividad/new", { title: 'Nuevo actividad',templateUrl: "<%= asset_path('actividad/edit.html') %> ", controller: "ActividadEditCtrl", activetab: 'actividad'})
+		.when("/actividad/:id", { title: 'Detalles de la actividad',templateUrl: "<%= asset_path('actividad/show.html') %> ", controller: "ActividadShowCtrl", activetab: 'actividad'})
+		.when("/actividad/:id/edit", { title: 'Editar actividad',templateUrl: "<%= asset_path('actividad/edit.html') %> ", controller: "ActividadEditCtrl", activetab: 'actividad'})
 		// Otros
 		.otherwise({ redirectTo: "/" });
 		// Fixes # in the routes. Not in IE...

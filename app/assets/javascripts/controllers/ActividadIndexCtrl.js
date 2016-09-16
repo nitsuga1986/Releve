@@ -1,7 +1,7 @@
-angular.module("TurnosApp").controller("ActividadIndexCtrl",['$scope', '$cacheFactory', '$location', 'ResourceActividad', '$filter','NgTableParams', '$timeout', function($scope, $cacheFactory, $location, ResourceActividad, $filter, NgTableParams, $timeout) {
+angular.module("TurnosApp").controller("ActividadIndexCtrl",['$scope', '$location', 'ResourceActividad', '$filter','NgTableParams', '$timeout', function($scope, $location, ResourceActividad, $filter, NgTableParams, $timeout) {
 	//	$scope.practicantes = ResourcePracticante.index();
-	$scope.GoToEdit = function(id) {$location.path("/dashboard/actividad/"+id+"/edit/");};
-	$scope.GoToNew = function() {$location.path("/dashboard/actividad/new");};
+	$scope.GoToEdit = function(id) {$location.path("/actividad/"+id+"/edit/");};
+	$scope.GoToNew = function() {$location.path("/actividad/new");};
 	// ngTable
 	function dateFormat(date) {date = date.split('-'); date = date[2]+'/'+date[1]; return date;}
 	var Api = ResourceActividad;
@@ -26,7 +26,6 @@ angular.module("TurnosApp").controller("ActividadIndexCtrl",['$scope', '$cacheFa
     });
 	// Reload button
 	$scope.reloadTable = function(id) {
-		$cacheFactory.get('$http').remove("/dashboard/actividad");
 		$scope.tableParams.reload();
 	};
 }]);

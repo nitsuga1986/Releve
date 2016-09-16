@@ -184,6 +184,20 @@
 				<input type="checkbox" name="instructor" data-ng-model="alumno.instructor" id="instructor"> 
 			</div>
 		</div>
+		<!-- reminders -->
+		<div class="form-group col-sm-6">
+			<label for="reminders" class="col-sm-4 control-label">Recordatorios?</label>
+			<div class="col-sm-7">
+				<input type="checkbox" name="reminders" data-ng-model="alumno.reminders" id="reminders"> 
+			</div>
+		</div>
+		<!-- newsletter -->
+		<div class="form-group col-sm-6">
+			<label for="newsletter" class="col-sm-4 control-label">Noticias?</label>
+			<div class="col-sm-7">
+				<input type="checkbox" name="newsletter" data-ng-model="alumno.newsletter" id="newsletter"> 
+			</div>
+		</div>
 		<!-- Submit-->
 		<div class="col-sm-12">
 			<button type="submit" class="btn btn-primary btn-lg pull-right" data-ng-bind-html="FormButton | html_trusted"></button>

@@ -20,6 +20,11 @@
 						<label for="recipient-name" class="control-label">Teléfono:</label>
 						<%= f.phone_field :telefono, value: '', class: 'form-control' , placeholder: '15-M1-CELU-L7R' %>
 					  </div>
+					<div class="form-group">
+						<%= f.check_box :reminders %> <%= t('.reminders', :default => "Deseo recibir novedades y promociones") %><br/>
+						<%= f.check_box :accept_terms %> <%= t('.accept_terms', :default => "") %>Acepto <u><a href="/terminos_y_condiciones">términos y condiciones de uso</a></u>
+					</div>
+					  
 				  </div>
 				  <div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -10,6 +10,7 @@
 //= require controllers/UsrMisClasesCtrl
 //= require controllers/UsrAgendaCtrl
 //= require controllers/UsrProgramarCtrl
+//= require controllers/UsrMiInfoCtrl
 //= require controllers/ClaseIndexCtrl
 //= require controllers/ClaseEditCtrl
 //= require controllers/ClaseBulkCtrl
@@ -20,8 +21,6 @@
 //= require controllers/ActividadIndexCtrl
 //= require controllers/ActividadEditCtrl
 //= require controllers/ActividadShowCtrl
-//= require bootstrap-calendar/underscore-min
-//= require bootstrap-calendar/calendar
 //= require routes
 // startLoading
 function startLoading() {

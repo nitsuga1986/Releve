@@ -120,4 +120,4 @@ angular.module("TurnosApp").controller("AlumnoEditCtrl",['$scope', '$q', '$http'
 		});
 	});
 		
-}]);
+stopLoading();}]);

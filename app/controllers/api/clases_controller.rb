@@ -42,6 +42,14 @@ class Api::ClasesController < ApplicationController
 	render json: @clase, status: :created
   end
   
+  def join_multiple
+	params[:_json].each do |clase|
+		@clase = Clase.find(clase[:id])
+		@clase.add_asistencia(current_user.id)
+	end
+	render json: @clase, status: :created
+  end
+  
   def unjoin 
 	@clase = Clase.find(params[:id])
 	current_user.remove_from_clase(@clase)

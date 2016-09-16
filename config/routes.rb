@@ -15,17 +15,23 @@ Rails.application.routes.draw do
 				post 'bulk'
 				get 'index_usr'
 				get 'history_usr'
+				post 'join_multiple'
 			end
 			member do
 				post 'join'
 				post 'unjoin'
+				put 'update_current'
 			end
 		end
 	end
 	
-	match '/dashboard/*all' => 'api_root#index', via: [:get], as: :clases_index
-	match '/alumno/*all' => 'api_root#index', via: [:get], as: :alumnos_index
+	match '/app/*all' => 'api_root#index', via: [:get], as: :usr_app
+	match '/clase/*all' => 'api_root#index', via: [:get], as: :clase_index
+	match '/alumno/*all' => 'api_root#index', via: [:get], as: :alumno_index
+	match '/actividad/*all' => 'api_root#index', via: [:get], as: :actividad_index
+	
 	match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], as: :finish_signup
+	match '/confirmacion' => 'landing#confirmation', via: [:get], as: :confirmation
 
 	devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
 	root "landing#index"

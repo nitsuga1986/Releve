@@ -30,7 +30,7 @@ class Api::AlumnosController < ApplicationController
   
   def create
 	if !@alumno = User.find_by_email(params[:email]) then
-		@alumno = User.new(params.permit(:email, :dni, :nombre, :apellido, :profesion, :fechanac, :fechaini, :telefono, :domicilio, :localidad, :nombre_contacto, :apellido_contacto, :telefono_contacto, :sexo, :confirmed, :primera_clase, :nro_clases, :admin, :instructor))
+		@alumno = User.new(params.permit(:email, :dni, :nombre, :apellido, :profesion, :fechanac, :fechaini, :telefono, :domicilio, :localidad, :nombre_contacto, :apellido_contacto, :telefono_contacto, :sexo, :confirmed, :primera_clase, :nro_clases, :admin, :instructor, :sexo, :reminders, :newsletter, :accept_terms))
 		if @alumno.save then
 			if !params[:packs].nil? then
 				params[:packs].each do |pack|
@@ -55,7 +55,7 @@ class Api::AlumnosController < ApplicationController
   def update
 	@alumno = User.find(params[:id])
 	@alumno.actividades.each{|x| x.remove_user_from_actividad(@alumno)}
-	if @alumno.update_attributes(params.permit(:email, :dni, :nombre, :apellido, :profesion, :fechanac, :fechaini, :telefono, :domicilio, :localidad, :nombre_contacto, :apellido_contacto, :telefono_contacto, :sexo, :confirmed, :primera_clase, :nro_clases, :admin, :instructor)) then
+	if @alumno.update_attributes(params.permit(:email, :dni, :nombre, :apellido, :profesion, :fechanac, :fechaini, :telefono, :domicilio, :localidad, :nombre_contacto, :apellido_contacto, :telefono_contacto, :sexo, :confirmed, :primera_clase, :nro_clases, :admin, :instructor, :sexo, :reminders, :newsletter, :accept_terms)) then
 		if !params[:packs].nil? then
 			params[:packs].each do |pack|
 				pac = @alumno.packs.new
@@ -73,6 +73,16 @@ class Api::AlumnosController < ApplicationController
 	end
   end
 
+  def update_current
+	@alumno = current_user
+	if @alumno.update_attributes(params.permit(:email, :dni, :nombre, :apellido, :profesion, :fechanac, :telefono, :domicilio, :localidad, :nombre_contacto, :apellido_contacto, :telefono_contacto, :sexo, :reminders,:newsletter)) then
+		head :no_content
+	else
+		render json: @alumno.errors, status: :unprocessable_entity
+	end
+  end
+
+      
   def destroy
 	@alumno = User.find(params[:id])    
 	@alumno.destroy

@@ -4,7 +4,7 @@ angular.module("TurnosApp").controller("ClaseShowCtrl",['$scope', '$routeParams'
 	// Success
 	function success(response) {
 		console.log("success", response);
-		$location.path("/dashboard/index");
+		$location.path("/clase/index");
 	}
 	// Failure
 	function failure(response) {

@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 20160906004632) do
     t.string   "apellido"
     t.string   "profesion"
     t.date     "fechanac"
-    t.date     "fechaini",               default: '2016-09-12'
+    t.date     "fechaini",               default: '2016-09-15'
     t.string   "telefono"
     t.string   "domicilio"
     t.string   "localidad"
@@ -92,6 +92,9 @@ ActiveRecord::Schema.define(version: 20160906004632) do
     t.boolean  "confirmed",              default: false
     t.boolean  "primera_clase",          default: true
     t.boolean  "instructor",             default: false
+    t.boolean  "reminders",              default: true
+    t.boolean  "newsletter",             default: false
+    t.boolean  "accept_terms",           default: false
     t.string   "email",                  default: "",           null: false
     t.string   "encrypted_password",     default: "",           null: false
     t.string   "reset_password_token"
