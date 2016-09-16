@@ -1,6 +1,8 @@
 class Clase < ActiveRecord::Base
 	has_many :asistencias
 	has_many :users, through: :asistencias
+	has_many :wait_lists
+	has_many :users, through: :wait_lists
 	belongs_to :actividad
 	belongs_to :instructor, class_name: "User", foreign_key: "instructor"
 	belongs_to :reemplazo, class_name: "User", foreign_key: "reemplazo"

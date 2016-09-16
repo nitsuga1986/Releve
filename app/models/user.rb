@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   has_many :actividades, through: :packs
   has_many :asistencias
   has_many :clases, through: :asistencias
+  has_many :wait_lists
+  has_many :clases, through: :wait_lists
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
