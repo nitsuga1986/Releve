@@ -1,11 +1,13 @@
 <div class="row"><div id="alert-container" class="col-xs-12"></div></div>
 <div class="row"><div class="col-xs-12">
-	<button data-ng-if="!alumno.primera_clase" type="button" class="btn btn-default" data-ng-click="changeselection()">
-		<span data-ng-if="!selectmultiple"><i class="fa fa-check-circle" aria-hidden="true"></i> Seleccionar múltiples clases</span>
-		<span data-ng-if="selectmultiple"><i class="fa fa-check-circle-o" aria-hidden="true"></i></span>
+	<button data-ng-if="!selectmultiple" data-ng-if="!alumno.primera_clase" type="button" class="btn btn-default" data-ng-click="changeselection()">
+		<span ><i class="fa fa-check-circle" aria-hidden="true"></i> Seleccionar múltiples clases</span>
 	</button>
-	<button data-ng-if="selectmultiple" data-ng-click="multipleEventModal()" type="button" class="btn btn-default">
-		<span>Agendar clases</span>
+	<button class="hidden-xs" data-ng-if="selectmultiple" data-ng-click="multipleEventModal()" type="button" class="btn btn-primary">
+		Agendar clases
+	</button>
+	<button data-ng-if="selectmultiple" data-ng-click="multipleEventModal()" type="button" class="btn btn-primary btn-absolute visible-xs-block">
+		<i class="fa fa-calendar-plus-o" aria-hidden="true"></i>
 	</button>
 </div></div>
 <div class="table-responsive">

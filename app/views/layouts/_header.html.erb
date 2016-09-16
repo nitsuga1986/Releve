@@ -45,7 +45,7 @@
 						<!--<li><a href="/app/programar"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i> Programar</a></li>-->
 						<li><a href="/app/mi_info"><i class="fa fa-cogs" aria-hidden="true"></i> Mi Info</a></li>
 						<li role="separator" class="divider"></li>
-						<li class="user_header" title="Salir"><a data-method="DELETE" href="<%= destroy_user_session_path %>"><i class="fa fa-sign-out" aria-hidden="true"></i> Cerrar sesión</a></li>
+						<li class="user_header" title="Cerrar sesión"><a data-method="DELETE" href="<%= destroy_user_session_path %>"><i class="fa fa-sign-out" aria-hidden="true"></i> Cerrar sesión</a></li>
 					  </ul>
 					</li>
 					<% if !current_user.confirmed? %>
@@ -66,7 +66,7 @@
 		<% if !user_signed_in? %>
 			<a class="btn btn-primary btn-lg" href="#" data-toggle="modal" data-target="#modal1" >Comenzar!</a>
 		<% else %>
-			<a class="btn btn-primary btn-lg" data-method="DELETE" href="<%= destroy_user_session_path %>">Salir <i class="fa fa-sign-out" aria-hidden="true"></i></a>
+			<a class="btn btn-primary btn-lg" data-method="DELETE" href="<%= destroy_user_session_path %>">Cerrar sesión <i class="fa fa-sign-out" aria-hidden="true"></i></a>
 		<% end %>
 		<% if current_page?('/') %>
 			<a class="btn btn-default btn-lg" href="#intro">Inicio</a>
