@@ -7,10 +7,6 @@ class UsersController < ApplicationController
       if params[:user][:email].present? && params[:user][:telefono].present? && params[:user][:reminders].present? && params[:user][:accept_terms].present? && params[:user][:accept_terms]=="1"
 		@user.update(user_params)
 		UserMailer.welcome_email(@user).deliver if @user.confirmed == false
-		rescue Net::SMTPAuthenticationError, Net::SMTPServerBusy, Net::SMTPSyntaxError, Net::SMTPFatalError, Net::SMTPUnknownError => e
-			logger.debug("Problems sending mail")
-			logger.debug(e)
-		end
 		@user.update_attribute(:confirmed, true)
         bypass_sign_in(@user)
         redirect_to '/app/agenda/', notice: 'Hemos guardado tu email correctamente.'
