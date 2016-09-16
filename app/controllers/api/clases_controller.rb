@@ -57,6 +57,12 @@ class Api::ClasesController < ApplicationController
 	render json: @clase, status: :created
   end
   
+  def waitlist 
+	@clase = Clase.find(params[:id])
+	@clase.add_wait_list(current_user.id)
+	render json: @clase, status: :created
+  end
+  
   def create
 	if !@clase = Clase.find_by_fecha_and_horario(params[:fecha],params[:horario]) then
 		@clase = Clase.new(params.permit(:fecha, :horario, :max_users, :duracion, :trialable, :cancelada, :comment))

@@ -9,6 +9,7 @@ angular.module("TurnosApp").factory("ResourceClase",['$resource', function($reso
       'destroy': 		{ method: 'DELETE' },
       'join':    		{ method: 'POST', isArray: false, url: '/api/clases/:id/join' },
       'join_multiple':  { method: 'POST', isArray: false, url: '/api/clases/join_multiple' },
+      'waitlist':    	{ method: 'POST', isArray: false, url: '/api/clases/:id/waitlist' },
       'unjoin':  		{ method: 'POST', isArray: false, url: '/api/clases/:id/unjoin' },
       'bulk':    		{ method: 'POST', isArray: false, url: '/api/clases/bulk' },
       'index_usr': 		{ method: 'GET', isArray: true, url: '/api/clases/index_usr', cache : true },

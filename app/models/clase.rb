@@ -2,7 +2,7 @@ class Clase < ActiveRecord::Base
 	has_many :asistencias
 	has_many :users, through: :asistencias
 	has_many :wait_lists
-	has_many :users, through: :wait_lists
+	has_many :wait_users, through: :wait_lists, source: :user
 	belongs_to :actividad
 	belongs_to :instructor, class_name: "User", foreign_key: "instructor"
 	belongs_to :reemplazo, class_name: "User", foreign_key: "reemplazo"
@@ -30,6 +30,15 @@ class Clase < ActiveRecord::Base
 			asist.clase = self
 			asist.user = User.find(user_id)
 			asist.save
+		end
+	end
+	
+	def add_wait_list (user_id)
+		if self.wait_users.where(:id => user_id).count == 0 then
+			wait = self.wait_lists.new
+			wait.clase = self
+			wait.user = User.find(user_id)
+			wait.save
 		end
 	end
 	

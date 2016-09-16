@@ -1,6 +1,6 @@
 <% if @show_confirm_form || (user_signed_in? && !current_user.confirmed?) %>
 	<!-- Confirmation Modal -->
-	<div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="ConfirmEmail" aria-hidden="true">
+	<div class="modal fade" id="modal2" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="ConfirmEmail" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content text-releve">
 				  <div class="modal-header bg-light-releve">

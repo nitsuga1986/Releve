@@ -140,6 +140,16 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$location', '
 			stopLoading();
 		});
 	};
+	// WaitListUser
+	$scope.WaitListUser = function() {
+		$cacheFactory.get('$http').remove("/api/clases/index_usr");
+		startLoading();
+		ResourceClase.waitlist($scope.clase, success, failure).$promise.then(function(data) {
+			$scope.tableParams.reload();
+			$('#alert-container').hide().html('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-check-square-o" aria-hidden="true"></i> Lista actualizada! </strong> Ya te hemos agregado a la lista de espera.</div>').slideDown();
+			stopLoading();
+		});
+	};
 	// Callback Success
 	function success(response) {
 		console.log("success", response);
