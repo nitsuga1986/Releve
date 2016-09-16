@@ -5,9 +5,9 @@ class UsersController < ApplicationController
     if request.patch? && params[:user] # Revisa si el request es de tipo patch, es decir, llenaron el formulario y lo ingresaron
       @user = User.find(params[:id])
       if params[:user][:email].present? && params[:user][:telefono].present? && params[:user][:reminders].present? && params[:user][:accept_terms].present? && params[:user][:accept_terms]=="1"
+		@user.update(user_params)
 		UserMailer.welcome_email(@user).deliver if @user.confirmed == false
 		@user.update_attribute(:confirmed, true)
-		@user.update(user_params)
         bypass_sign_in(@user)
         redirect_to '/app/agenda/', notice: 'Hemos guardado tu email correctamente.'
       else
