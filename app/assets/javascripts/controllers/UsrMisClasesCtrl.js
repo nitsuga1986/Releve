@@ -103,7 +103,7 @@ angular.module("TurnosApp").controller("UsrMisClasesCtrl",['$scope', '$location'
 	// Callback Success
 	function success(response) {
 		console.log("success", response);
-		$location.path("/app/agenda");
+		$location.path("/app/mis_clases");
 	}
 	// Callback Failure
 	function failure(response) {

@@ -6,7 +6,6 @@ angular.module("TurnosApp")
 		.when("/app/mi_info", { title: 'Mi info',templateUrl: "<%= asset_path('usr/usr_mi_info.html') %> ", controller: "UsrMiInfoCtrl", activetab: 'clase'})
 		.when("/app/mis_clases", { title: 'Mis Clases',templateUrl: "<%= asset_path('usr/usr_mis_clases.html') %> ", controller: "UsrMisClasesCtrl", activetab: 'clase'})
 		.when("/app/agenda", { title: 'Agenda',templateUrl: "<%= asset_path('usr/usr_agenda.html') %> ", controller: "UsrAgendaCtrl", activetab: 'clase'})
-		.when("/app/programar", { title: 'Programar',templateUrl: "<%= asset_path('usr/usr_programar.html') %> ", controller: "UsrProgramarCtrl", activetab: 'clase'})
 		// Clases
 		.when("/clase/index", { title: 'Listado de clases',templateUrl: "<%= asset_path('clase/index.html') %> ", controller: "ClaseIndexCtrl", activetab: 'clase'})
 		.when("/clase/new", { title: 'Nueva clase',templateUrl: "<%= asset_path('clase/edit.html') %> ", controller: "ClaseEditCtrl", activetab: 'clase'})

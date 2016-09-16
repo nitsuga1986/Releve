@@ -9,7 +9,6 @@
 //= require services/resources
 //= require controllers/UsrMisClasesCtrl
 //= require controllers/UsrAgendaCtrl
-//= require controllers/UsrProgramarCtrl
 //= require controllers/UsrMiInfoCtrl
 //= require controllers/ClaseIndexCtrl
 //= require controllers/ClaseEditCtrl
