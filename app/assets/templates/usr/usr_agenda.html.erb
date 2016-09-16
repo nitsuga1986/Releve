@@ -3,8 +3,8 @@
 	<button data-ng-if="!selectmultiple" data-ng-if="!alumno.primera_clase" type="button" class="btn btn-default" data-ng-click="changeselection()">
 		<span ><i class="fa fa-check-circle" aria-hidden="true"></i> Seleccionar múltiples clases</span>
 	</button>
-	<button class="hidden-xs" data-ng-if="selectmultiple" data-ng-click="multipleEventModal()" type="button" class="btn btn-primary">
-		Agendar clases
+	<button data-ng-if="selectmultiple" data-ng-click="multipleEventModal()" type="button" class="btn btn-primary hidden-xs">
+		<i class="fa fa-calendar-plus-o" aria-hidden="true"></i> Agendar clases
 	</button>
 	<button data-ng-if="selectmultiple" data-ng-click="multipleEventModal()" type="button" class="btn btn-primary btn-absolute visible-xs-block">
 		<i class="fa fa-calendar-plus-o" aria-hidden="true"></i>

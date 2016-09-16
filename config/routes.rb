@@ -32,7 +32,7 @@ Rails.application.routes.draw do
 	match '/actividad/*all' => 'api_root#index', via: [:get], as: :actividad_index
 	
 	match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], as: :finish_signup
-	match '/confirmacion' => 'landing#confirmation', via: [:get], as: :confirmation
+	match '/terminos_y_condiciones' => 'landing#terms', via: [:get], as: :terms
 
 	devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
 	root "landing#index"

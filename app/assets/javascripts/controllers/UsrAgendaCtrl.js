@@ -104,6 +104,8 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$location', '
 		pack = $.grep($scope.alumno.packs, function(e){ return e.actividad_id == clase.actividad_id; })[0];
 		if (state){
 			if (pack != undefined){
+				if($scope.alumno.actividad_counter[clase.actividad_id]==undefined){$scope.alumno.actividad_counter[clase.actividad_id]=0;}
+				if($scope.alumno.selected_counter[clase.actividad_id]==undefined){$scope.alumno.selected_counter[clase.actividad_id]=0;}
 				if(pack.cantidad > ($scope.alumno.actividad_counter[clase.actividad_id]+$scope.alumno.selected_counter[clase.actividad_id])){
 					$scope.alumno.selected_counter[clase.actividad_id] += 1;
 				}else{preventClase(index_clase);}
@@ -112,6 +114,10 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$location', '
 	};
 	// JoinMultiple
 	$scope.JoinMultiple = function() {
+		angular.forEach($cacheFactory.info(), function(ob, key) {
+		   console.log($cacheFactory);
+		   console.log($cacheFactory.get(key));
+		});
 		$cacheFactory.get('$http').remove("/api/clases/index_usr");
 		startLoading();
 		ResourceClase.join_multiple($scope.selectedclases, success, failure).$promise.then(function(data) {

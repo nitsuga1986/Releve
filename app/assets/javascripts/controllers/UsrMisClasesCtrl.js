@@ -1,8 +1,6 @@
 angular.module("TurnosApp").controller("UsrMisClasesCtrl",['$scope', '$location', 'ResourceClase', 'ResourceAlumno', '$filter','NgTableParams', '$timeout', '$cacheFactory', function($scope, $location, ResourceClase, ResourceAlumno, $filter, NgTableParams, $timeout, $cacheFactory) {
 	ResourceAlumno.current().$promise.then(function(data) {
 		$scope.alumno = data;
-		$scope.alumno.actividad_counter = []; // Count clases for each actividad
-		if ($scope.alumno.primera_clase){if($scope.alumno.confirmed){$('#first-clase-modal').modal('show')}};
 		// ngTable
 		function dateFormat(date) {date = date.split('-'); date = date[2]+' de '+monthNames[parseInt(date[1])-1]; return date;}
 		td = new Date();
@@ -43,6 +41,7 @@ angular.module("TurnosApp").controller("UsrMisClasesCtrl",['$scope', '$location'
 	// condicionesClases
 	$scope.condicionesClases = function(clases) {
 		// Each clase:
+		$scope.alumno.actividad_counter = []; // Count clases for each actividad
 		$.each(clases, function(index_clase, clase) {
 			// completa?
 			if(clase.users.length >= clase.max_users){	clases[index_clase].completa = true;
@@ -52,7 +51,7 @@ angular.module("TurnosApp").controller("UsrMisClasesCtrl",['$scope', '$location'
 			}else{																								clases[index_clase].joined = true;}
 			// actividad_counter []
 			pack = $.grep($scope.alumno.packs, function(e){ return e.actividad_id == clases[index_clase].actividad_id; })[0];
-			if(pack!=undefined){
+			if(pack!=undefined && clases[index_clase].joined){
 				if(pack.noperiod){
 					if ($scope.alumno.actividad_counter[clases[index_clase].actividad_id] == undefined){	$scope.alumno.actividad_counter[clases[index_clase].actividad_id] = 1;
 					}else{																					$scope.alumno.actividad_counter[clases[index_clase].actividad_id] += 1;}
@@ -92,7 +91,7 @@ angular.module("TurnosApp").controller("UsrMisClasesCtrl",['$scope', '$location'
 	};
 	// Unjoin
 	$scope.UnJoinUser = function() {
-		$cacheFactory.get('$http').remove("/api/clases/index_usr");
+		$cacheFactory.get('$http').remove("/api/clases/history_usr");
 		startLoading();
 		ResourceClase.unjoin($scope.clase, success, failure).$promise.then(function(data) {
 			$scope.tableParams.reload();
