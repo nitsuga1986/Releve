@@ -11,7 +11,7 @@ class UsersController < ApplicationController
         bypass_sign_in(@user)
         redirect_to '/app/agenda/', notice: 'Hemos guardado tu email correctamente.'
       else
-        redirect_to confirmation_path
+		@show_errors = true
       end
     else
 		@landingpage=true
