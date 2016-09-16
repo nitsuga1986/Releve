@@ -41,7 +41,6 @@ class Api::ClasesController < ApplicationController
 	UserMailer.join_email(current_user,@clase).deliver
 	rescue Net::SMTPAuthenticationError, Net::SMTPServerBusy, Net::SMTPSyntaxError, Net::SMTPFatalError, Net::SMTPUnknownError => e
 		logger.debug("Problems sending mail")
-		logger.debug(e)
 	end
 	render json: @clase, status: :created
   end
@@ -60,7 +59,6 @@ class Api::ClasesController < ApplicationController
 	UserMailer.unjoin_email(current_user,@clase).deliver
 	rescue Net::SMTPAuthenticationError, Net::SMTPServerBusy, Net::SMTPSyntaxError, Net::SMTPFatalError, Net::SMTPUnknownError => e
 		logger.debug("Problems sending mail")
-		logger.debug(e)
 	end
 	render json: @clase, status: :created
   end
