@@ -363,6 +363,7 @@ body.landingpage {
 		-webkit-transition: background-image 0.3s ease, background-position 0.3s;
 		transition: background-image 0.3s ease, background-position 0.3s;
 		background-image: image-url("table-2.jpg");
+		h5{font-size:2em;}
 	}
 	.intro-table-hover h4 {
 		-webkit-transform: translateY(170px);
@@ -1085,6 +1086,8 @@ button.btn-absolute{
 #preload-15 { background: image-url("carrousel/gallery_5.jpg") no-repeat -9999px -9999px; }
 #preload-16 { background: image-url("carrousel/gallery_6.jpg") no-repeat -9999px -9999px; }
 #preload-17 { background: image-url("carrousel/gallery_7.jpg") no-repeat -9999px -9999px; }
+#preload-16 { background: image-url("carrousel/gallery_8.jpg") no-repeat -9999px -9999px; }
+#preload-17 { background: image-url("carrousel/gallery_9.jpg") no-repeat -9999px -9999px; }
 
 /**/
 @-webkit-keyframes open{

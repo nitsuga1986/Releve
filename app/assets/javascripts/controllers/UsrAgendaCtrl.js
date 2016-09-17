@@ -37,10 +37,11 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$location', '
 						data[key]["dia"] = dayNames[(new Date(value.fecha+'T12:00:00Z')).getDay()];
 					});
 					data = $scope.condicionesClases(data);
-					params.total(data.inlineCount);
 					$scope.clases = data;
+					filteredData = params.filter() ? $filter('filter')(data, params.filter()): data;	
+					params.total(filteredData.inlineCount);
 					stopLoading();
-					return data;
+					return filteredData;
 				});
 			}
 		});
@@ -155,6 +156,12 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$location', '
 			$('#alert-container').hide().html('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-check-square-o" aria-hidden="true"></i> Lista actualizada! </strong> Ya te hemos agregado a la lista de espera.</div>').slideDown();
 			stopLoading();
 		});
+	};
+	// filterDay
+	$scope.filterDay=[true,true,true,true,true,true,true]
+	$scope.filterDaychange = function(day) {
+		$scope.filterDay[day] = !$scope.filterDay[day];
+		
 	};
 	// Callback Success
 	function success(response) {
