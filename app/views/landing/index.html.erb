@@ -42,7 +42,7 @@
 		<div class="cut cut-top"></div>
 		<div class="container">
 			<div class="row intro-tables">
-				<div class="col-md-4 ">
+				<div class="col-md-4">
 					<div class="intro-table intro-table-hover">
 						<h4>Te invitamos</br>a probar una </br><strong>clase sin cargo</strong></h4>
 						<button href="#" data-toggle="modal" data-target="#modal1" class="btn btn-lg btn-primary">Comenzá hoy!</button>
@@ -56,11 +56,11 @@
 							<div class="item">
 								<% (0..2).each do |j| %><% k = (i==0) ? j : (i==1) ? j+3 : j+6 %>
 								<div class="schedule-row row">
-									<div class="col-xs-9">
+									<div class="col-xs-8">
 										<h5 class="regular white"><%= @nextclases[k].actividad.nombre %> (<%= @nextclases[k].instructor.nombre_completo %>)</h5>
 									</div>
-									<div class="col-xs-3 text-right">
-										<h5 class="white"><%= @nextclases[k].horario %>hs</h5>
+									<div class="col-xs-4 text-right">
+										<h5 class="white"><%= I18n.t('date.abbr_day_names')[@nextclases[2].fecha.wday] %> <%= @nextclases[k].horario %>hs</h5>
 									</div>
 								</div>
 								<% end %>
