@@ -42,6 +42,9 @@ class Clase < ActiveRecord::Base
 		end
 	end
 	
+	def completa?
+		return self.users.count >= self.max_users
+	end
 	private
 	def destroy_asistencias
 		asistencias.each{|x| x.destroy}		

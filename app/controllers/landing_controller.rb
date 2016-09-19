@@ -7,5 +7,3 @@ class LandingController < ApplicationController
   def terms
   end
 end
-
-
