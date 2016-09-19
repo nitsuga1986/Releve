@@ -8,7 +8,7 @@ class Api::ClasesController < ApplicationController
   end
   
   def index_usr
-	@clase = Clase.where('fecha > ?', DateTime.now).limit(150)
+	@clase = Clase.where('fecha > ?', DateTime.now).order(:fecha).limit(150)
 	render json:  @clase
   end
   
