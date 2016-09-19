@@ -1,5 +1,5 @@
 	<div class="preloader">
-		<a href="/app/agenda" class="btn btn-block btn-primary"><i class="fa fa-sign-in" aria-hidden="true"></i> Ingresar</a>
+		<a href="/app/agenda" class="btn btn-block btn-primary"><i class="fa fa-sign-in" aria-hidden="true"></i><strong> Ingresar</strong></a>
 		<img src="<%= asset_path 'loader.gif' %>" alt="Preloader image">
 		<div id="quotes_container">
 			<blockquote>
@@ -42,9 +42,15 @@
 		<div class="cut cut-top"></div>
 		<div class="container">
 			<div class="row intro-tables">
+				<div class="col-md-4 ">
+					<div class="intro-table intro-table-hover">
+						<h4>Te invitamos a probar una clase sin cargo!</h4>
+						<button href="#" data-toggle="modal" data-target="#modal1" class="btn btn-lg btn-primary">Comenzá hoy!</button>
+					</div>
+				</div>
 				<div class="col-md-4">
 					<div class="intro-table intro-table-first">
-						<h5 class="white heading">Horarios de hoy</h5>
+						<h5 class="white heading"><span class="open-blink"></span> Próximas clases</h5>
 						<div class="owl-carousel owl-schedule bottom">
 							<div class="item">
 								<div class="schedule-row row">
@@ -98,15 +104,6 @@
 									</div>
 								</div>
 							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 ">
-					<div class="intro-table intro-table-hover">
-						<h5 class="white heading">Te invitamos a probar una clase sin cargo!</h5>
-						<div class="trialclass bottom">
-							<h4 class="white heading small-pt"><a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-lg btn-primary">Comenzá hoy!</a></h4>
-							<p class="expand"><strong>Te estamos esperando</strong></p>
 						</div>
 					</div>
 				</div>
@@ -174,7 +171,7 @@
 		<div class="container">
 			<div class="row text-center title">
 				<h2>Vení a conocer nuestro espacio</h2>
-				<h4 class="light muted">Mejora tu calidad de vida empezando por tu columna fiquifanfader</h4>
+				<h4 class="light muted">Mejora tu calidad de vida empezando por tu columna</h4>
 			</div>
 			<div class="row">
 				<div class="col-xs-12">
