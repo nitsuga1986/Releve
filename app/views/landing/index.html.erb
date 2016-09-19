@@ -23,11 +23,11 @@
 							<span class="sp-bottom">Joseph Pilates</span>
 						</h2>
 						<h2 class="hidden-mdup">
-							<span class="sp-mid">"Una persona es tan joven como lo sea su columna vertebral”</span>
-							<span class="sp-bottom">Joseph Pilates</span>
+							<span class="sp-center">"Una persona es tan joven como lo sea su columna vertebral”</span>
+							<span class="sp-centerbottom">Joseph Pilates</span>
 						</h2>
 					</div>
-					<div class="sp-wrap sp-right">
+					<div class="sp-wrap sp-right hidden-xs">
 						<h2>
 							<span class="sp-top">RE</span> 
 							<span class="sp-mid">LE</span> 
@@ -44,7 +44,7 @@
 			<div class="row intro-tables">
 				<div class="col-md-4 ">
 					<div class="intro-table intro-table-hover">
-						<h4>Te invitamos a probar una clase sin cargo!</h4>
+						<h4>Te invitamos</br>a probar una </br><strong>clase sin cargo</strong></h4>
 						<button href="#" data-toggle="modal" data-target="#modal1" class="btn btn-lg btn-primary">Comenzá hoy!</button>
 					</div>
 				</div>
@@ -52,78 +52,39 @@
 					<div class="intro-table intro-table-first">
 						<h5 class="white heading"><span class="open-blink"></span> Próximas clases</h5>
 						<div class="owl-carousel owl-schedule bottom">
+							<% (0..2).each do |i| %>
 							<div class="item">
+								<% (0..2).each do |j| %><% k = (i==0) ? j : (i==1) ? j+3 : j+6 %>
 								<div class="schedule-row row">
-									<div class="col-xs-6">
-										<h5 class="regular white">Entrenamiento matutino</h5>
+									<div class="col-xs-9">
+										<h5 class="regular white"><%= @nextclases[k].actividad.nombre %> (<%= @nextclases[k].instructor.nombre_completo %>)</h5>
 									</div>
-									<div class="col-xs-6 text-right">
-										<h5 class="white">09:00 - 10:00</h5>
+									<div class="col-xs-3 text-right">
+										<h5 class="white"><%= @nextclases[k].horario %>hs</h5>
 									</div>
 								</div>
-								<div class="schedule-row row">
-									<div class="col-xs-6">
-										<h5 class="regular white">Estiramiento</h5>
-									</div>
-									<div class="col-xs-6 text-right">
-										<h5 class="white">19:00 - 20:00</h5>
-									</div>
-								</div>
-								<div class="schedule-row row">
-									<div class="col-xs-6">
-										<h5 class="regular white">Pilates</h5>
-									</div>
-									<div class="col-xs-6 text-right">
-										<h5 class="white">17:00 - 18:00</h5>
-									</div>
-								</div>
-							</div>
-							<div class="item">
-								<div class="schedule-row row">
-									<div class="col-xs-6">
-										<h5 class="regular white">Entrenamiento matutino</h5>
-									</div>
-									<div class="col-xs-6 text-right">
-										<h5 class="white">09:00 - 10:00</h5>
-									</div>
-								</div>
-								<div class="schedule-row row">
-									<div class="col-xs-6">
-										<h5 class="regular white">Estiramiento</h5>
-									</div>
-									<div class="col-xs-6 text-right">
-										<h5 class="white">19:00 - 20:00</h5>
-									</div>
-								</div>
-								<div class="schedule-row row">
-									<div class="col-xs-6">
-										<h5 class="regular white">Pilates</h5>
-									</div>
-									<div class="col-xs-6 text-right">
-										<h5 class="white">17:00 - 18:00</h5>
-									</div>
-								</div>
-							</div>
+								<% end %>
+							</div> 
+							<% end %>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="intro-table intro-table-third">
-						<h5 class="white heading">Clientes felices</h5>
-						<div class="owl-testimonials bottom">
+						<h5 class=""><i class="fa fa-comment fa-flip-horizontal" aria-hidden="true"></i> Mira los comentarios:</h5>
+						<div class="owl-testimonials">
 							<div class="item">
-								<h4 class="white heading content">Lorem ipsum dolor sit amet</h4>
-								<h5 class="white heading light author">Bayron</h5>
+							  <p>"Releve Pilates el mejor lugar, sin dudas!!! Hace un año que sigo eligiendo este maravilloso espacio. La dedicación a cada alumna/alumno hace que cada clase sea espectacular!!"</p>
+							  <div><a href="https://www.facebook.com/relevepilates/reviews?ref=page_internal"><i class="fa fa-facebook" aria-hidden="true"></i>/reviews</a></div>
 							</div>
 							<div class="item">
-								<h4 class="white heading content">Option meliore sententiae id pro</h4>
-								<h5 class="white heading light author">El agu</h5>
+							  <p>"Excelente atención , las mejores clases de pilates en un ambiente hermoso."</p>
+							  <div><a href="https://www.facebook.com/relevepilates/reviews?ref=page_internal"><i class="fa fa-facebook" aria-hidden="true"></i>/reviews</a></div>
 							</div>
 							<div class="item">
-								<h4 class="white heading content">Nobis tation vis id. </h4>
-								<h5 class="white heading light author">Vicky</h5>
+							  <p>"Excelente, el trabajo es personalizado y eficaz, en un ambiente relajado."</p>
+							  <div><a href="https://www.facebook.com/relevepilates/reviews?ref=page_internal"><i class="fa fa-facebook" aria-hidden="true"></i>/reviews</a></div>
 							</div>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -137,7 +98,8 @@
 			</div>
 			<div class="row services">
 				<div class="col-md-4">
-					<div class="service">
+					<div class="service ribbon_box">
+						<div class="ribbon"><span>Proximamente!</span></div>
 						<div class="icon-holder">
 							<img src="<%= asset_path 'icons/dance-blue.png' %>" alt="" class="icon">
 						</div>
@@ -152,10 +114,13 @@
 						</div>
 						<h4 class="heading">Pilates</h4>
 						<p class="description">Se trabaja en circuito integrando Reformer, Cadillac, Chair y Corrector espinal, más un espacio para hacer mat y distintos accesorios.</p>
+						<a href="#descripcion"><i class="fa fa-plus" aria-hidden="true"></i> Ver más</a>
+
 					</div>
 				</div>
 				<div class="col-md-4">
-					<div class="service">
+					<div class="service ribbon_box">
+						<div class="ribbon"><span>Proximamente!</span></div>
 						<div class="icon-holder">
 							<img src="<%= asset_path 'icons/stretching-blue.png' %>" alt="" class="icon">
 						</div>
@@ -166,6 +131,37 @@
 			</div>
 		</div>
 		<div class="cut cut-bottom"></div>
+	</section>
+	<section id="descripcion" class="section section-padded">
+		<div class="container">
+			<div class="row text-center title">
+				<h2>Pilates</h2>
+				<h4 class="light muted">Encontra el espacio perfecto para vos!</h4>
+			</div>
+			<div class="row">
+				<div class="col col-md-12 col-sm-12 col-xs-12">
+					<div>
+						Se trabaja en circuito integrando Reformer, Cadillac, Chair y Corrector espinal, más un espacio para hacer mat y distintos accesorios. La duración de la clase es de 1 hora<br><br>
+						<strong>CLASE GRUPAL</strong><br>
+						Cada alumno tiene su entrenamiento personalizado compartiendo un instructor con un máximo de 4 alumnos.<br><br>						
+						<strong>CLASES PRIVADAS</strong><br>						
+						Ideal para personas que necesitan mayor atención, como por ejemplo: patologías graves de columna, rehabilitaciones y/o tercera edad.
+						En la clase privada hay un instructor por alumno.<br>		<br>				
+						<strong>EMBARAZADAS</strong><br>						
+						Las embarazadas comparten la clase grupal teniendo un entrenamiento especial para su período gestacional. Eso les 
+						permite tener mayor flexibilidad horaria. En caso de querer una atención más personalizada también pueden optar por 
+						las clases privadas o semiprivadas.<br>	<br>					
+						<strong>TERCERA EDAD</strong><br>						
+						Los alumnos mayores pueden venir perfectamente a las clases grupales. Tenemos una trayectoria de más de 10 años 
+						trabajando con la tercera edad.
+						El intructor arma su entrenamiento de acuerdo a sus posibilidades físicas.
+						También pueden optar por la opción de clases privadas o semiprivadas si se sienten inseguros o requieren mayor atención.<br><br>						
+						<strong>CAPACITACIONES</strong><br>						
+						Si querés capacitarte con nosotros, envianos un correo a <a href="mailto:relevepilates@gmail.com?Subject=Releve%20Pilates">relevepilates@gmail.com</a> y te enviamos toda la info.
+					</div>
+				</div>
+			</div>
+		</div>
 	</section>
 	<section id="galeria" class="section section-padded">
 		<div class="container">
@@ -190,73 +186,18 @@
 			</div>
 		</div>
 	</section>
-	<section id="nuestro_equipo" class="section gray-bg">
+	<section id="ubicacion" class="section section-padded">
 		<div class="container">
-			<div class="row title text-center">
-				<h2 class="margin-top">Nuestro equipo</h2>
-				<h4 class="light muted">Conocé el dream team de Releve!</h4>
-			</div>
-			<div class="row">
-				<div class="col-md-4">
-					<div class="team text-center">
-						<div class="cover" style="background:url(<%= asset_path 'team/team-cover1.jpg' %>); background-size:cover;">
-							<div class="overlay text-center">
-								<h3 class="white">Pilates</h3>
-								<h5 class="light light-white">5 - 8 clases por semana</h5>
-							</div>
-						</div>
-						<img src="<%= asset_path 'team/team1.jpg' %>" alt="Team Image" class="avatar">
-						<div class="title">
-							<h4>Vic Farnfader</h4>
-							<h5 class="muted regular">Alta Instrutora</h5>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="team text-center">
-						<div class="cover" style="background:url(<%= asset_path 'team/team-cover2.jpg' %>); background-size:cover;">
-							<div class="overlay text-center">
-								<h3 class="white">100% malcriado</h3>
-								<h5 class="light light-white">Echado toda la semana</h5>
-							</div>
-						</div>
-						<img src="<%= asset_path 'team/team2.jpg' %>" alt="Team Image" class="avatar">
-						<div class="title">
-							<h4>Bayron Farnfader</h4>
-							<h5 class="muted regular">Wooof</h5>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="team text-center">
-						<div class="cover" style="background:url(<%= asset_path 'team/team-cover3.jpg' %>); background-size:cover;">
-							<div class="overlay text-center">
-								<h3 class="white">Fitness</h3>
-								<h5 class="light light-white">1 - 5 sessions / month</h5>
-							</div>
-						</div>
-						<img src="<%= asset_path 'team/team3.jpg' %>" alt="Team Image" class="avatar">
-						<div class="title">
-							<h4>Eva Williams</h4>
-							<h5 class="muted regular">Personal Trainer</h5>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<section id="ubicacion" class="section">
-			<div class="container">
-			<div class="row title text-center">
-				<h2 class="margin-top">Donde encontrarnos</h2>
+			<div class="row text-center title">
+				<h2>Donde encontrarnos</h2>
 				<h4 class="light muted">Un espacio de salud en el corazón de la Capital</h4>
 			</div>
 			<div class="row">
 				<div class="col-xs-12 col-md-4">
 					<p><i class="fa fa-map-marker text-danger" aria-hidden="true"></i> <strong>Parana 26, Piso 3 Dpto. M</strong></p>
-					<p>Ciudad Autónoma de Buenos Aires C1017AAB</p>
-					<p><i class="fa fa-phone" aria-hidden="true"></i> <a href="tel:11-4382-6446">+54 (011) 4382 - 6446</a></p>
-					<p><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:relevepilates@gmail.com?Subject=Releve%20Pilates">relevepilates@gmail.com</a></p>
+					<p class="hidden-xs">Ciudad Autónoma de Buenos Aires C1017AAB</p>
+					<p><i class="fa fa-phone text-primary" aria-hidden="true"></i> <a href="tel:11-4382-6446">+54 (011) 4382 - 6446</a></p>
+					<p><i class="fa fa-envelope-o text-warning" aria-hidden="true"></i> <a href="mailto:relevepilates@gmail.com?Subject=Releve%20Pilates">relevepilates@gmail.com</a></p>
 				</div>
 				<div class="col-xs-12 col-md-8">
 					<div id="map"></div>
