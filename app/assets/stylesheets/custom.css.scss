@@ -385,7 +385,9 @@ body.landingpage {
 		background-position: 0% 0%;
 	}
 	.intro-table-first {
-		h5{color:white;}
+		h5{
+			font-size:1.125em;
+			color:white;}
 		background-image: image-url("table-1.jpg");
 	}
 	.intro-table-hover {
