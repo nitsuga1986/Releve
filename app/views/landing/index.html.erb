@@ -57,10 +57,10 @@
 								<% (0..2).each do |j| %><% k = (i==0) ? j : (i==1) ? j+3 : j+6 %>
 								<div class="schedule-row row">
 									<div class="col-xs-8">
-										<h5 class="regular white"><%= @nextclases[k].actividad.nombre %> (<%= @nextclases[k].instructor.nombre_completo %>)</h5>
+										<h5><%= @nextclases[k].actividad.nombre %> (<%= @nextclases[k].instructor.nombre_completo %>)</h5>
 									</div>
 									<div class="col-xs-4 text-right">
-										<h5 class="white"><%= I18n.t('date.abbr_day_names')[@nextclases[2].fecha.wday] %> <%= @nextclases[k].horario %>hs</h5>
+										<h5><%= I18n.t('date.abbr_day_names')[@nextclases[2].fecha.wday] %> <%= @nextclases[k].horario %>hs</h5>
 									</div>
 								</div>
 								<% end %>
