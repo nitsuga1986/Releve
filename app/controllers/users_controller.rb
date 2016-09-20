@@ -10,14 +10,13 @@ class UsersController < ApplicationController
 		@user.update_attribute(:confirmed, true)
         bypass_sign_in(@user)
         redirect_to '/app/agenda/', notice: 'Hemos guardado tu email correctamente.'
+        return
       else
 		@show_errors = true
-		render 'landing/finish_signup'
       end
-    else
-		@landingpage=true
-		render 'landing/finish_signup'
     end
+	@landingpage=true
+	render 'landing/finish_signup'
   end
  
   private

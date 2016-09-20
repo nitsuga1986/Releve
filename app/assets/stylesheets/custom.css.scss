@@ -450,8 +450,10 @@ body.landingpage {
 		color: white;
 		transition: all 0.3s ease;
 		h5{
+			font-size:1em;
 			text-overflow: ellipsis;
 			white-space: nowrap;
+			overflow: hidden;
 		}
 	}
 	.trialclass.bottom{
@@ -1121,7 +1123,7 @@ button.btn-absolute{
     right: 1%;
     z-index: 9999;
 }
-
+.formalert{display:none;}
 
 
 

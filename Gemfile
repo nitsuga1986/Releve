@@ -41,6 +41,7 @@ gem 'heroku-deflater', group: :production
 # gem 'debugger', group: [:development, :test]
 
 gem "devise"
+gem "recaptcha", require: "recaptcha/rails"
 gem "omniauth"
 gem "omniauth-facebook"
 gem "omniauth-twitter"

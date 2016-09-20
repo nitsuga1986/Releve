@@ -24,7 +24,8 @@
 				<% if current_page?('/') %>
 				<li><a href="#actividades" class="hidden-sm">Actividades</a></li>
 				<li><a href="#galeria">Galeria</a></li>
-				<li><a href="#ubicacion">Ubicación</a></li>
+				<li><a href="#ubicacion">Contacto</a></li>
+				<li><a href="#precios">Precios</a></li>
 				<% end %>
 				<% if user_signed_in? %>
 					<% if current_user.admin? %>
@@ -75,7 +76,8 @@
 		<% if current_page?('/') %>
 			<a class="btn btn-default btn-lg" href="#actividades">Actividades</a>
 			<a class="btn btn-default btn-lg" href="#galeria">Galeria</a>
-			<a class="btn btn-default btn-lg" href="#ubicacion">Ubicacion</a>
+			<a class="btn btn-default btn-lg" href="#ubicacion">Contacto</a>
+			<a class="btn btn-default btn-lg" href="#precios">Precios</a>
 		<% end %>
 		<% if user_signed_in? %>
 			<a class="btn btn-primary btn-lg" href="/app/agenda"><i class="fa fa-calendar" aria-hidden="true"></i> Agenda</a>

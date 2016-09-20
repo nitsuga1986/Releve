@@ -112,6 +112,27 @@ jQuery(function($) {
 				});
 			});
 		});
+		
+				
+		// this is the id of the form
+		$("form#pricing").submit(function(e) {
+			console.log('posted');
+			$.ajax({
+				   type: "POST",
+				   dataType: "html",
+				   url: "/pricing",
+				   data: $("form#pricing").serialize(), // serializes the form's elements.
+				   success: function(result){
+						$('#formsuccess').slideDown;
+					},
+					error: function(result){
+						$('#formerror').slideDown;
+					}
+				 });
+
+			e.preventDefault(); // avoid to execute the actual submit of the form.
+		});
+				
 	});
 
 
