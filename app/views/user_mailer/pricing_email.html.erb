@@ -1,38 +1,121 @@
-<h3>Hola <%= @nombre %> <%= @apellido %>, gracias por comunicarte con Releve!</h3>
-<p class="lead">Contamos con una amplia disponibilidad horaria para las diferentes actividades.	Podes consultar todas las clases y horarios disponibles registrándote en nuestro <a href="http://relevepilates.com.ar/">sitio web</a>.</p>
-<!-- A Real Hero (and a real human being) -->
-<p><%= image_tag('espacio.png') %></p><!-- /hero -->
-<!-- Callout Panel -->
-<p class="callout">
-Nuestros instructores te están esperando, ingresá a la agenda y comenzá a programar tu entrenamiento. <a href="http://relevepilates.com.ar/app/agenda">Comenzar ahora!</a>
-</p><!-- /Callout Panel -->
-<h3>Precios:</small></h3>
-<h4>Pilates</h4>
-<p><strong>Instructores:</strong> Victoria Barnfather, Florencia Cagnone.</p>
-<h5>Clases grupales</h5>
-<ul>
-	<li>1 vez x semana $550</li>
-	<li>2 veces x semana $900</li>
-	<li>3 veces x semana $1100</li>
-</ul>
-<h5>Clases privadas</h5>
-<ul>
-	<li>1 vez x semana $2000</li>
-	<li>2 veces x semana $3500</li>
-	<li>3 veces x semana $4400</li>
-</ul>
-<br/><br/><br/>
-<h3>Consultá por otras actividades y modalidades de entrenamiento</small></h3>
-<p>Estamos en permanente crecimiento, agregando nuevas actividades y grupos de entrenamiento para que puedas descubrir todo tu potencial.</p>
-<div class="consultar">
-	<div class="icon_text"><%= image_tag('icon_group.png') %><p>Clases grupales de hasta 4 personas</p></div><!-- /hero -->
-	<div class="icon_text"><%= image_tag('icon_private.png') %><p>Clases privadas y semiprivadas</p></div><!-- /hero -->
-	<div class="icons_actividades">
-		<%= image_tag('icons/dance-blue.png') %>
-		<%= image_tag('pilates-blue.png') %>
-		<%= image_tag('stretching-blue.png') %>
-	</div>
-	<a href="mailto:relevepilates@gmail.com" class="btn">Consultar</a>
-</div>
-<br/>
-<br/>		
+  
+  <!-- Logo Left Nav Right + Vertical Padding : BEGIN -->
+  <table border="0" width="600" cellpadding="0" cellspacing="0" align="center" class="email-container" style="margin: auto;">
+    <tr>
+      <td height="30" style="font-size: 0; line-height: 0;">&nbsp;</td>
+    </tr>
+    <tr>
+      <td>
+		<div style="font-size: 22px;line-height: 1;" class="hh-center">Hola <%= @nombre %> <%= @apellido %>, gracias por comunicarte con Releve!</div><br>
+         Disponemos de una amplia disponibilidad horaria para las diferentes actividades. Podes consultar todas las clases y horarios disponibles registrándote en nuestro <a href="http://relevepilates.com.ar/">sitio web</a>. Las puertas están abiertas:<br><br>
+      </td>
+    </tr>
+    <tr>
+      <td height="30" style="font-size: 0; line-height: 0;">&nbsp;</td>
+    </tr>
+  </table>
+  <!-- Logo Left Nav Right + Vertical Padding : END -->
+ 
+  <!-- Email Container : BEGIN -->
+  <!-- This table wraps the whole body email within it's width (600px), sets the background color (white) and border (thin, gray, solid) -->
+    <table border="0" width="600" cellpadding="0" cellspacing="0" align="center" bgcolor="#ffffff" style="border: 1px solid #e5e5e5;margin: auto;" class="email-container">
+  
+      <!-- Single Fluid Image, No Crop : BEGIN -->
+      <tr>
+        <td>
+			<%= image_tag('espacio.png',alt:"Estudio", height:"350", width:"600", border:"0", style:"display: block;", class:"fluid") %>
+        </td>
+      </tr>
+      <!-- Single Fluid Image, No Crop : END -->
+    
+      <!-- Full Width, Fluid Column : BEGIN -->
+      <tr>
+        <td style="border-bottom: 1px solid #e5e5e5;">
+          <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center">
+            <tr>
+              <td style="padding: 30px; font-family: sans-serif; font-size: 16px; line-height: 22px; color: #444444;">
+                 Nuestros instructores te están esperando, ingresá a Releve y comenzá a programar tu entrenamiento. <a href="relevepilates.com.ar/app/agenda">Comenzar ahora! </a>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <!-- Full Width, Fluid Column : END -->
+      <!-- Two Columns, With Padding ==> Stacked Layout : BEGIN -->
+      <tr>
+        <td style="border-bottom: 1px solid #e5e5e5;padding: 0 30px;">
+          <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center" class="fluid">
+            <tr>
+              <td height="30" style="font-size: 0; line-height: 0;" class="empty-spacer">&nbsp;</td>
+            </tr><br/>
+            <tr><br/><div style="font-size: 22px;line-height: 1;" class="hh-center">Nuestros precios:</div></tr>		
+            <tr>
+              <td valign="top" style="padding-right: 30px;" class="hh-force-col-center">
+                <%= image_tag('clases_grupales.png', alt:"Clases grupales", height: "200", border: "0", style: "display: block;margin: auto;", class: "hh-force-col-center" ) %>
+              </td>
+              <td valign="top" class="hh-force-col" width="100%" style="padding-left: 0;">
+                <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                  <tr>
+                    <td style="width:100%; font-family: sans-serif; font-size: 16px; line-height: 22px; color: #444444; text-align: left;">
+                      <div style="font-size: 0; line-height: 0; display: none; height: 30px;" class="hh-visible"></div>
+                      <div style="font-size: 22px;line-height: 1;" class="hh-center">Pilates: clases grupales</div><br>
+                      Con un máximo de hasta 4 alumnos por instructor.<br><br>
+                      <table cellspacing="0" cellpadding="0" border="0" class="button" style="margin: 0;">
+                        <tr>
+                          <td>
+                            <ul class="">
+								<li>1 vez x semana $550</li>
+								<li>2 veces x semana $900</li>
+								<li>3 veces x semana $1100</li>
+							</ul>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td height="30" style="font-size: 0; line-height: 0;">&nbsp;</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <!-- Two Columns, With Padding ==> Stacked Layout : END -->
+      
+      <!-- Two Columns, One Column Without Padding ==> Stacked Layout : BEGIN -->
+      <tr>
+        <td style="padding: 10px 30px;border-bottom: 1px solid #e5e5e5;">
+          <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center" class="fluid">
+            <tr>
+              <td valign="top" class="hh-force-col">
+                <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                  <tr>
+                    <td style="width:100%; font-family: sans-serif; font-size: 16px; line-height: 22px; color: #444444; text-align: left;">
+                      <div style="font-size: 0; line-height: 0; display: none; height: 30px;" class="hh-visible"></div>
+                      <div style="font-size: 22px;line-height: 1;" class="hh-center"><br>Pilates: clases privadas</div><br>
+                      Con un máximo de 1 alumno por instructor.<br><br>
+                      <table cellspacing="0" cellpadding="0" border="0" class="button" style="margin: 0;">
+                        <tr>
+                          <td>
+                            <ul class="">
+								<li>1 vez x semana $2000</li>
+								<li>2 veces x semana $3500</li>
+								<li>3 veces x semana $4400</li>
+							</ul>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <td valign="top" class="hh-force-col-center">
+				 <%= image_tag('clases_privadas.png', alt:"Clases privadas", height: "200", border: "0", style: "display: block;margin: auto;", class: "hh-fluid" )%>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <!-- Two Columns, One Column Without Padding ==> Stacked Layout : END -->

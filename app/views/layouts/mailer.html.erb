@@ -1,88 +1,67 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html lang="es-AR" xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-		<meta name="viewport" content="width=device-width" />
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>Releve Pilates</title>
-		<meta name="description" content="Releve Pilates" />
-		<meta name="keywords" content="Pilates, Releve, Ejercicio, Salud, Cuerpo, Danza, Congreso, Plaza Congreso, CABA, Capital Federal, Ciudad Autónoma de Buenos Aires," />
-		<meta name="author" content="Nitsuga" />
-		<link href="http://relevepilates.com.ar/" hreflang="es-AR"/>		
-		<%= stylesheet_link_tag "mailer", media: "all","data-turbolinks-track" => true %>
-	</head>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <meta charset="utf-8"> <!-- utf-8 works for most cases -->
+	<meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
+	<title>Releve Pilates</title>
+	<meta name="description" content="Releve Pilates" />
+	<meta name="keywords" content="Pilates, Releve, Ejercicio, Salud, Cuerpo, Danza, Congreso, Plaza Congreso, CABA, Capital Federal, Ciudad Autónoma de Buenos Aires," />
+	<meta name="author" content="Nitsuga" />
+	<link href="http://relevepilates.com.ar/" hreflang="es-AR"/>		
+	<%= stylesheet_link_tag "mailer", media: "all","data-turbolinks-track" => true %>
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" bgcolor="#f4f4f4" style="margin:0; padding:0; -webkit-text-size-adjust:none; -ms-text-size-adjust:none;">
+<table cellpadding="0" cellspacing="0" border="0" height="100%" width="100%" bgcolor="#f4f4f4" id="bodyTable" style="border-collapse: collapse;table-layout: fixed;margin:0 auto;"><tr><td>
 
+<!-- CSS Image background in Outlook : BEGIN -->
+<!-- Best used with absolute image paths -->
+<!--[if gte mso 9]>
+  <v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t">
+    <v:fill type="tile" color="#f4f4f4" src="assets/nice_snow.png">
+  </v:background>
+<![endif]-->
+<!-- CSS Image background in Outlook : END -->
 
-	<body bgcolor="#FFFFFF">
-		<!-- HEADER -->
-		<table class="head-wrap" bgcolor="#12849e">
-			<tr>
-				<td></td>
-				<td class="header container">
-					<div class="content">
-						<table bgcolor="#12849e">
-							<tr>
-								<td class="logo"><img src="<%= image_path('Releve_pie.png') %>"/></td>
-								<td class="label">
-									<h6 class="collapse">RELEVE PILATES</h6>
-									<h7 class="collapse">Disfrutá entrenar</h7>
-								</td>
-							</tr>
-						</table>
-					</div>
-				</td>
-				<td></td>
-			</tr>
-		</table><!-- /HEADER -->
+  <!-- Logo Left, Nav Right, 100% Nav Bar : BEGIN -->
+  <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center" bgcolor="#12849e" style="text-align: center;">
+    <tr>
+      <td>
+        <table border="0" width="600" cellpadding="0" cellspacing="0" align="center" style="margin: auto;" class="email-container">
+          <tr>
+            <td class="hh-force-col-center" valign="middle" style="text-align: left;">
+			<%= image_tag('Releve_pie.png' ,alt:"Releve", height:"145px", border:"0") %>
+            </td>
+            <td class="hh-force-col-center" valign="middle" style="padding: 0;text-align: center;">
+              <h1 style="margin: 0;font-family: Helvetica Neue,Helvetica,Arial,sans-serif;font-size: 3em;line-height: 1em;color: #ffffff;">RELEVE PILATES</h1>&nbsp;&nbsp;
+              <h2 style="margin: 0;color: #ffffff;font-family: Helvetica Neue,Helvetica,Arial,sans-serif;font-size: 1.4em;line-height: 0;">Disfrutá de entrenarte</h2>&nbsp;&nbsp;
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <!-- Logo Left, Nav Right, 100% Nav Bar : END -->
 
-<!-- BODY -->
-		<table class="body-wrap">
-			<tr>
-				<td></td>
-				<td class="container" bgcolor="#FFFFFF">
-					<div class="content">
-						<table>
-							<tr>
-								<td>	
-									<%= yield %>
-									<!-- social & contact -->
-									<table class="social" width="100%">
-										<tr>
-											<td>
-												<!--- column 1 -->
-												<table align="left" class="column">
-													<tr>
-														<td>				
-															<h5 class="">Conectate con nosotros:</h5>
-															<p class="">
-																<a href="https://www.facebook.com/relevepilates/" class="soc-btn fb">Facebook</a>
-																<a href="https://www.instagram.com/relevepilates/" class="soc-btn in">Instagram</a>
-																<a href="https://plus.google.com/108856335950426948454/" class="soc-btn gp">Google+</a>
-															</p>
-														</td>
-													</tr>
-												</table><!-- /column 1 -->	
-												<!--- column 2 -->
-												<table align="left" class="column">
-													<tr>
-														<td>				
-															<h5 class="">Información de contacto:</h5>				
-															<p>Dirección: <strong>Parana 26, <br/>Piso 3 Dpto. M, CABA</strong>								
-															<p>Email: <strong><a href="emailto:hseldon@trantor.com">relevepilates@gmail.com</a></strong><br/>
-															Teléfono: <strong>+54 (011) 4382-6446</strong></p>
-														</td>
-													</tr>
-												</table><!-- /column 2 -->
-												<span class="clear"></span>	
-											</td>
-										</tr>
-									</table><!-- /social & contact -->
-								</td>
-							</tr>
-						</table>
-					</div>
-				</td>
-				<td></td>
-			</tr>
-		</table><!-- /BODY -->
-	</body>
+	<%= yield %>
+
+  </table>
+  <!-- Email Container : END -->
+  
+  <!-- Footer : BEGIN -->
+  <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center" class="email-container">
+    <tr>
+      <td style="text-align: center;padding: 20px;font-family: sans-serif; font-size: 12px; line-height: 18px;color: #888888;">
+        <a href="https://www.facebook.com/relevepilates/"><%= image_tag('social-icons-fb.png') %></a>
+        <a href="https://www.instagram.com/relevepilates/"><%= image_tag('social-icons-in.png') %></a>
+        <a href="https://plus.google.com/108856335950426948454/"><%= image_tag('social-icons-go.png') %></a>
+        <a href="https://www.youtube.com/channel/UCANspzZurd6hdJqrJPZBU8w"><%= image_tag('social-icons-yt.png') %></a><br/>
+        <strong>Releve Pilates</strong> Parana 26, Piso 3 Dpto. M, CABA. +54(011)4382-6446. relevepilates@gmail.com.<br/>
+      </td>
+    </tr>
+  </table>
+  <!-- Footer : END -->
+
+</td></tr></table>
+</body>
 </html>
