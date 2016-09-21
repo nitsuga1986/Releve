@@ -189,3 +189,7 @@
 			}
 
     }
+
+
+	@media (max-width: 768px) {.hidden-small{display: none;}}
+	@media (min-width: 768px) {.hidden-large{display: none;}}
