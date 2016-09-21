@@ -112,27 +112,23 @@ jQuery(function($) {
 				});
 			});
 		});
-		
-				
-		// this is the id of the form
-		$("form#pricing").submit(function(e) {
-			console.log('posted');
-			$.ajax({
-				   type: "POST",
-				   dataType: "html",
-				   url: "/pricing",
-				   data: $("form#pricing").serialize(), // serializes the form's elements.
-				   success: function(result){
-						$('#formsuccess').slideDown;
-					},
-					error: function(result){
-						$('#formerror').slideDown;
-					}
-				 });
-
-			e.preventDefault(); // avoid to execute the actual submit of the form.
+		//callback handler for form submit
+		$("form#pricing").submit(function(event){
+			event.preventDefault();
+			var $inputs = $('form#pricing :input');
+			var postData = {};$inputs.each(function() {postData[this.name] = $(this).val();});postData=JSON.stringify(postData);
+			var formURL = $(this).attr("action");
+			$.ajax(
+			{
+				type: "POST",
+				url : formURL,
+				contentType: "application/json",
+				dataType: "json",
+				data : postData,
+				success:function(data, textStatus, jqXHR) {$('#formerror').hide();$('#formsuccess').slideDown();},
+				error: function(jqXHR, textStatus, errorThrown) {$('#formsuccess').hide();$('#formerror').slideDown();grecaptcha.reset();}
+			});
 		});
-				
 	});
 
 

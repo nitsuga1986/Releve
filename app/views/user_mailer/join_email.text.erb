@@ -1,2 +1,10 @@
-Hola <%= @user.nombre_completo %>
-Te damos la bienvenida a Releve Pilates!!
+Te agendamos para la siguiente clase:
+
+Día: <%= I18n.t('date.day_names')[@clase.fecha.wday] %> <%= @clase.fecha.strftime("%d/%m/%Y") %>.
+Horario: <%= @clase.horario %>hs.
+Instructor: <%= @clase.instructor.nombre_completo %>.
+Dirección: Parana 26,Piso 3 Dpto. M, CABA.
+
+
+Te esperamos!
+Equipo de Releve.

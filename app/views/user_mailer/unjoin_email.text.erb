@@ -1,2 +1,8 @@
-Hola <%= @user.nombre_completo %>
-Te damos la bienvenida a Releve Pilates!!
+Hemos cancelado tu inscripción para la siguiente clase:
+
+Día: <%= I18n.t('date.day_names')[@clase.fecha.wday] %> <%= @clase.fecha.strftime("%d/%m/%Y") %>.
+Horario: <%= @clase.horario %>hs.
+Instructor: <%= @clase.instructor.nombre_completo %>.
+
+
+Equipo de Releve.

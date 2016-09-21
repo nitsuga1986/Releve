@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="es-AR" xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Releve Pilates</title>
+		<meta name="description" content="Releve Pilates" />
+		<meta name="keywords" content="Pilates, Releve, Ejercicio, Salud, Cuerpo, Danza, Congreso, Plaza Congreso, CABA, Capital Federal, Ciudad Autónoma de Buenos Aires," />
+		<meta name="author" content="Nitsuga" />
+		<link href="http://relevepilates.com.ar/" hreflang="es-AR"/>		
+		<%= stylesheet_link_tag "mailer", media: "all","data-turbolinks-track" => true %>
+	</head>
+
+
+	<body bgcolor="#FFFFFF">
+		<!-- HEADER -->
+		<table class="head-wrap" bgcolor="#12849e">
+			<tr>
+				<td></td>
+				<td class="header container">
+					<div class="content">
+						<table bgcolor="#12849e">
+							<tr>
+								<td class="logo"><img src="<%= image_path('Releve_pie.png') %>"/></td>
+								<td class="label">
+									<h6 class="collapse">RELEVE PILATES</h6>
+									<h7 class="collapse">Disfrutá entrenar</h7>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</td>
+				<td></td>
+			</tr>
+		</table><!-- /HEADER -->
+
+<!-- BODY -->
+		<table class="body-wrap">
+			<tr>
+				<td></td>
+				<td class="container" bgcolor="#FFFFFF">
+					<div class="content">
+						<table>
+							<tr>
+								<td>	
+									<%= yield %>
+									<!-- social & contact -->
+									<table class="social" width="100%">
+										<tr>
+											<td>
+												<!--- column 1 -->
+												<table align="left" class="column">
+													<tr>
+														<td>				
+															<h5 class="">Conectate con nosotros:</h5>
+															<p class="">
+																<a href="https://www.facebook.com/relevepilates/" class="soc-btn fb">Facebook</a>
+																<a href="https://www.instagram.com/relevepilates/" class="soc-btn in">Instagram</a>
+																<a href="https://plus.google.com/108856335950426948454/" class="soc-btn gp">Google+</a>
+															</p>
+														</td>
+													</tr>
+												</table><!-- /column 1 -->	
+												<!--- column 2 -->
+												<table align="left" class="column">
+													<tr>
+														<td>				
+															<h5 class="">Información de contacto:</h5>				
+															<p>Dirección: <strong>Parana 26, <br/>Piso 3 Dpto. M, CABA</strong>								
+															<p>Email: <strong><a href="emailto:hseldon@trantor.com">relevepilates@gmail.com</a></strong><br/>
+															Teléfono: <strong>+54 (011) 4382-6446</strong></p>
+														</td>
+													</tr>
+												</table><!-- /column 2 -->
+												<span class="clear"></span>	
+											</td>
+										</tr>
+									</table><!-- /social & contact -->
+								</td>
+							</tr>
+						</table>
+					</div>
+				</td>
+				<td></td>
+			</tr>
+		</table><!-- /BODY -->
+	</body>
+</html>

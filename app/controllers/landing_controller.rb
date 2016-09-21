@@ -9,19 +9,17 @@ class LandingController < ApplicationController
 	end
 
 	def pricing
-		if verify_recaptcha
-			logger.debug('------------------------------- verified')
-			respond_to do |format|
-				format.json { head :ok }
+		if params[:email].present? && params[:firstname].present? && params[:lastname].present?
+			if verify_recaptcha
+				UserMailer.pricing_email(params[:email],params[:firstname],params[:lastname]).deliver
+				render json: {message: "ok"}, status: :ok 
+				return
+			else
+				render json: {message: "bad_captcha"}, status: :bad_request
+				return
 			end
-			return
-		else
-			logger.debug('------------------------------- NOT verified')
 		end
-		
-		respond_to do |format|
-			format.json { head :error }
-		end
+		render json: {message: "bad_request"}, status: :bad_request
 	end
   
 end
