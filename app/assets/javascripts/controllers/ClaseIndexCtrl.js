@@ -39,34 +39,17 @@ angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$location', 
 		$scope.tableParams.reload();
 	};
 	$scope.toDestroy = "";
-	// Success
-	function success(response) {
-		console.log("success", response);
-		$location.path("/clase/index");
-		$scope.tableParams.reload();
-	}
-	// Failure
-	function failure(response) {
-		console.log("failure", response)
-		_.each(response.data, function(errors, key) {
-			_.each(errors, function(e) {
-				$scope.form[key].$dirty = true;
-				$scope.form[key].$setValidity(e, false);
-			});
-		});
-	}
 	// Destroy
 	$scope.toDestroy = function(clase_id) {
-			console.log("clase_id",clase_id)
 		$scope.IdToDestroy = clase_id;
 	};
 	$scope.destroyClase = function() {
+		$scope.got_to_url_success("/clase/index");
 		$('.confirmation-modal').on('hidden.bs.modal', function (e) {
 			$.each($scope.clases, function(index) {
-				console.log("Clase",$scope.clases[index])
 				if($scope.clases[index]!=undefined && $scope.clases[index].id == $scope.IdToDestroy) { //Remove from array
-					console.log("Claseindex",$scope.clases[index])
-					ResourceClase.destroy($scope.clases[index], success, failure);
+					ResourceClase.destroy($scope.deleteVariablesClaseToSend($scope.clases[index],true,true), $scope.callbackSuccess, $scope.callbackFailure);
+					$scope.tableParams.reload();
 				}    
 			});
 		})

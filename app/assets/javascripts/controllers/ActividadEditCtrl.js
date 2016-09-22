@@ -1,5 +1,4 @@
 angular.module("TurnosApp").controller("ActividadEditCtrl",['$scope', '$q', '$http', '$routeParams', '$location', 'ResourceActividad', function($scope, $q, $http, $routeParams, $location, ResourceActividad) {
-
 	$scope.submiterror = false;
 	// Edit or New
 	if ($routeParams.id) { 	// Edit
@@ -16,30 +15,14 @@ angular.module("TurnosApp").controller("ActividadEditCtrl",['$scope', '$q', '$ht
 	// SUBMIT
 	$scope.submitted = false;
 	$scope.submit = function() {
+		$scope.got_to_url_success("/actividad/index");
 		if ($scope.ActividadForm.$valid) {
 			console.log("valid submit");
-			// Success
-			function success(response) {
-				console.log("success", response);
-				$location.path("/actividad/index");
-			}
-			// Failure
-			function failure(response) {
-				$scope.submiterror = true;
-				window.scrollTo(0, 0);
-				console.log("failure", response)
-				_.each(response.data, function(errors, key) {
-					_.each(errors, function(e) {
-						$scope.form[key].$dirty = true;
-						$scope.form[key].$setValidity(e, false);
-					});
-				});
-			}
 			// Update or Create
 			if ($routeParams.id) {
-				ResourceActividad.update($scope.actividad, success, failure);
+				ResourceActividad.update($scope.actividad, $scope.callbackSuccess, $scope.callbackFailure);
 			} else {
-				ResourceActividad.create($scope.actividad, success, failure); 	
+				ResourceActividad.create($scope.actividad, $scope.callbackSuccess, $scope.callbackFailure); 	
 			}
 		} else {
 			$scope.ActividadForm.submitted = true;

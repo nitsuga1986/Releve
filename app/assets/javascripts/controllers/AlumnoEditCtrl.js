@@ -6,7 +6,6 @@ angular.module("TurnosApp").controller("AlumnoEditCtrl",['$scope', '$q', '$http'
 	$scope.history_GoToAlumnoEdit = []; // Prevents loop search
 	$scope.GoToIndex = function(id) {$location.path("/alumno/index");};
 	$scope.ActividadIndex = [];
-
 	// SetToday
 	$scope.SetToday = function(scope_date) {
 		today = new Date();
@@ -46,31 +45,15 @@ angular.module("TurnosApp").controller("AlumnoEditCtrl",['$scope', '$q', '$http'
 	// SUBMIT
 	$scope.submitted = false;
 	$scope.submit = function() {
+		$scope.got_to_url_success("/alumno/index");
 		$scope.FormErrors = [];
 		if ($scope.AlumnoForm.$valid) {
 			console.log("valid submit");
-			// Success
-			function success(response) {
-				console.log("success", response);
-				$location.path("/alumno/index");
-			}
-			// Failure
-			function failure(response) {
-				$scope.submiterror = true;
-				window.scrollTo(0, 0);
-				console.log("failure", response)
-				_.each(response.data, function(errors, key) {
-					_.each(errors, function(e) {
-						$scope.form[key].$dirty = true;
-						$scope.form[key].$setValidity(e, false);
-					});
-				});
-			}
 			// Update or Create
 			if ($routeParams.id) {
-				ResourceAlumno.update($scope.alumno, success, failure);
+				ResourceAlumno.update($scope.alumno, $scope.callbackSuccess, $scope.callbackFailure);
 			} else {
-				ResourceAlumno.create($scope.alumno, success, failure); 	
+				ResourceAlumno.create($scope.alumno, $scope.callbackSuccess, $scope.callbackFailure); 	
 			}
 		} else {
 			$scope.AlumnoForm.submitted = true;

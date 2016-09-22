@@ -29,34 +29,19 @@ angular.module("TurnosApp").controller("AlumnoIndexCtrl",['$scope', '$location',
 		$scope.tableParams.reload();
 	};
 	$scope.toDestroy = "";
-	// Success
-	function success(response) {
-		console.log("success", response);
-		$location.path("/alumno/index");
-		$scope.tableParams.reload();
-	}
-	// Failure
-	function failure(response) {
-		console.log("failure", response)
-		_.each(response.data, function(errors, key) {
-			_.each(errors, function(e) {
-				$scope.form[key].$dirty = true;
-				$scope.form[key].$setValidity(e, false);
-			});
-		});
-	}
 	// Destroy
 	$scope.toDestroy = function(alumno_id) {
 			console.log("alumno_id",alumno_id)
 		$scope.IdToDestroy = alumno_id;
 	};
 	$scope.destroyAlumno = function() {
+		$scope.got_to_url_success("/alumno/index");
 		$('.confirmation-modal').on('hidden.bs.modal', function (e) {
 			$.each($scope.alumnos, function(index) {
 				console.log("Alumno",$scope.alumnos[index])
 				if($scope.alumnos[index]!=undefined && $scope.alumnos[index].id == $scope.IdToDestroy) { //Remove from array
 					console.log("Alumnoindex",$scope.alumnos[index])
-					ResourceAlumno.destroy($scope.alumnos[index], success, failure);
+					ResourceAlumno.destroy($scope.alumnos[index], $scope.callbackSuccess, $scope.callbackFailure);
 				}    
 			});
 		})

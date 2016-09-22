@@ -1,5 +1,27 @@
 // start APP
-angular.module("TurnosApp",['ngRoute','ngResource','ngTable']);
+angular.module("TurnosApp",['ngRoute','ngResource','ngTable']).run(['$rootScope','$location',function($rootScope,$location) {
+	// got_to_url_success
+	$rootScope.got_to_url_success = function(url) {$rootScope.got_to_url_success = url;}
+	// Callback Success
+	$rootScope.callbackSuccess = function(response) {
+		console.log("success", response); if(!$rootScope.got_to_url_success){$rootScope.got_to_url_success="/";}
+		$location.path($rootScope.got_to_url_success);
+		return true
+	}
+	// Callback Failure
+	$rootScope.callbackFailure = function(response) {
+		window.scrollTo(0, 0);
+		console.log("failure", response);
+		return true
+	}
+	// Delete Variables Clase
+	$rootScope.deleteVariablesClaseToSend = function(clase,instructor,users) {
+		if(instructor){delete clase.instructor;}if(users){delete clase.users;}
+		delete clase.reemplazo;delete clase.created_at;delete clase.updated_at;delete clase.trialable;delete clase.cancelada;delete clase.cant_users;delete clase.fecha_fixed;
+		return clase
+	}
+
+}]);
 // Constants
 var ActividadIndexDefault = 0; // Pilates
 var InstructorIndexDefault = 0; // Victoria Barnfather

@@ -77,7 +77,7 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$location', '
 			// old_clase? cancelable?
 			dc = new Date(clase.fecha+" "+clase.horario);
 			if(dc>td){
-				if( td > new Date(dc.getTime() - (24 * 60 * 60 * 1000))) {	clases[index_clase].cancelable = false;
+				if( td > new Date(dc.getTime() - (12 * 60 * 60 * 1000))) {	clases[index_clase].cancelable = false;
 				}else{														clases[index_clase].cancelable = true;}
 																			clases[index_clase].old_clase = false;
 			} else {														clases[index_clase].old_clase = true;}
@@ -115,13 +115,14 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$location', '
 	};
 	// JoinMultiple
 	$scope.JoinMultiple = function() {
+		$scope.got_to_url_success("/app/agenda");
 		angular.forEach($cacheFactory.info(), function(ob, key) {
 		   console.log($cacheFactory);
 		   console.log($cacheFactory.get(key));
 		});
 		$cacheFactory.get('$http').remove("/api/clases/index_usr");
 		startLoading();
-		ResourceClase.join_multiple($scope.selectedclases, success, failure).$promise.then(function(data) {
+		ResourceClase.join_multiple($scope.selectedclases, $scope.callbackSuccess, $scope.callbackFailure).$promise.then(function(data) {
 			$scope.tableParams.reload();
 			$('#alert-container').hide().html('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-check-square-o" aria-hidden="true"></i> Inscrpción exitosa! </strong> Ya te agendamos para las clases seleccionadas, te esperamos!</div>').slideDown();
 			stopLoading();
@@ -129,9 +130,10 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$location', '
 	};
 	// Join
 	$scope.JoinUser = function() {
+		$scope.got_to_url_success("/app/agenda");
 		$cacheFactory.get('$http').remove("/api/clases/index_usr");
 		startLoading();
-		ResourceClase.join($scope.clase, success, failure).$promise.then(function(data) {
+		ResourceClase.join($scope.deleteVariablesClaseToSend($scope.clase,true,true), $scope.callbackSuccess, $scope.callbackFailure).$promise.then(function(data) {
 			$scope.tableParams.reload();
 			$('#alert-container').hide().html('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-check-square-o" aria-hidden="true"></i> Inscrpción exitosa! </strong> Ya hemos guardado tu lugar en la clase, te esperamos!</div>').slideDown();
 			stopLoading();
@@ -139,9 +141,10 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$location', '
 	};
 	// Unjoin
 	$scope.UnJoinUser = function() {
+		$scope.got_to_url_success("/app/agenda");
 		$cacheFactory.get('$http').remove("/api/clases/index_usr");
 		startLoading();
-		ResourceClase.unjoin($scope.clase, success, failure).$promise.then(function(data) {
+		ResourceClase.unjoin($scope.deleteVariablesClaseToSend($scope.clase,true,true), $scope.callbackSuccess, $scope.callbackFailure).$promise.then(function(data) {
 			$scope.tableParams.reload();
 			$('#alert-container').hide().html('<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-times" aria-hidden="true"></i> Clase cancelada! </strong> Ya hemos cancelado tu inscripción a la clase. Gracias por avisar!</div>').slideDown();
 			stopLoading();
@@ -149,9 +152,10 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$location', '
 	};
 	// WaitListUser
 	$scope.WaitListUser = function() {
+		$scope.got_to_url_success("/app/agenda");
 		$cacheFactory.get('$http').remove("/api/clases/index_usr");
 		startLoading();
-		ResourceClase.waitlist($scope.clase, success, failure).$promise.then(function(data) {
+		ResourceClase.waitlist($scope.deleteVariablesClaseToSend($scope.clase,true,true), $scope.callbackSuccess, $scope.callbackFailure).$promise.then(function(data) {
 			$scope.tableParams.reload();
 			$('#alert-container').hide().html('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-check-square-o" aria-hidden="true"></i> Lista actualizada! </strong> Ya te hemos agregado a la lista de espera.</div>').slideDown();
 			stopLoading();
@@ -163,21 +167,4 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$location', '
 		$scope.filterDay[day] = !$scope.filterDay[day];
 		
 	};
-	// Callback Success
-	function success(response) {
-		console.log("success", response);
-		$location.path("/app/agenda");
-	}
-	// Callback Failure
-	function failure(response) {
-		$scope.submiterror = true;
-		window.scrollTo(0, 0);
-		console.log("failure", response)
-		_.each(response.data, function(errors, key) {
-			_.each(errors, function(e) {
-				$scope.form[key].$dirty = true;
-				$scope.form[key].$setValidity(e, false);
-			});
-		});
-	}
 }]);

@@ -1,13 +1,5 @@
 <h3 data-ng-bind-html="FormTitle | html_trusted">Alumno</h3>
-<hr class="alumno"/>
-<!-- SubmitError -->
-<div class="alert alert-success" role="alert" data-ng-show="formsuccessalert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Los datos se han guardado correctamente
-</div>
-<div class="alert alert-danger" role="alert" data-ng-show="formerroralert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Hubo algún problema con los datos enviados y no se han guardado los cambios
-</div>
-
+<div class="row"><div id="alert-container" class="col-xs-12"></div></div>
 <!-- Formulario -->
 <div class="col-sm-12">
 	<form class="form-horizontal" data-ng-submit="submit()" name="AlumnoForm" novalidate role="form">

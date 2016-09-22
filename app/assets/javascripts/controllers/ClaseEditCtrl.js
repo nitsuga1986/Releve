@@ -46,31 +46,15 @@ angular.module("TurnosApp").controller("ClaseEditCtrl",['$scope', '$q', '$http',
 	// SUBMIT
 	$scope.submitted = false;
 	$scope.submit = function() {
+		$scope.got_to_url_success("/clase/index");
 		$scope.FormErrors = [];
 		if ($scope.ClaseForm.$valid) {
 			console.log("valid submit");
-			// Success
-			function success(response) {
-				console.log("success", response);
-				$location.path("/clase/index");
-			}
-			// Failure
-			function failure(response) {
-				$scope.submiterror = true;
-				window.scrollTo(0, 0);
-				console.log("failure", response)
-				_.each(response.data, function(errors, key) {
-					_.each(errors, function(e) {
-						$scope.form[key].$dirty = true;
-						$scope.form[key].$setValidity(e, false);
-					});
-				});
-			}
 			// Update or Create
 			if ($routeParams.id) {
-				ResourceClase.update($scope.clase, success, failure);
+				ResourceClase.update($scope.clase, $scope.callbackSuccess, $scope.callbackFailure);
 			} else {
-				ResourceClase.create($scope.clase, success, failure); 	
+				ResourceClase.create($scope.clase, $scope.callbackSuccess, $scope.callbackFailure); 	
 			}
 		} else {
 			$scope.ClaseForm.submitted = true;

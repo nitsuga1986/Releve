@@ -38,10 +38,38 @@ angular.module("TurnosApp").controller("UsrMisClasesCtrl",['$scope', '$location'
 			}
 		});
 	});
-	// condicionesClases
+	// eventModal
+	$scope.eventModal = function(clase_id) {
+		$scope.clase = $.grep($scope.clases, function(e){ return e.id == clase_id; })[0];
+		$('#events-modal').modal('show');
+	};
+	// Join
+	$scope.JoinUser = function() {
+		$scope.got_to_url_success("/app/mis_clases");
+		$cacheFactory.get('$http').remove("/api/clases/index_usr");
+		startLoading();
+		ResourceClase.join($scope.deleteVariablesClaseToSend($scope.clase,true,true), $scope.callbackSuccess, $scope.callbackFailure).$promise.then(function(data) {
+			$scope.tableParams.reload();
+			$('#alert-container').hide().html('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-check-square-o" aria-hidden="true"></i> Inscrpción exitosa! </strong> Ya hemos guardado tu lugar en la clase, te esperamos!</div>').slideDown();
+			stopLoading();
+		});
+	};
+	// Unjoin
+	$scope.UnJoinUser = function() {
+		$scope.got_to_url_success("/app/mis_clases");
+		$cacheFactory.get('$http').remove("/api/clases/history_usr");
+		startLoading();
+		ResourceClase.unjoin($scope.deleteVariablesClaseToSend($scope.clase,true,true), $scope.callbackSuccess, $scope.callbackFailure).$promise.then(function(data) {
+			$scope.tableParams.reload();
+			$('#alert-container').hide().html('<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-times" aria-hidden="true"></i> Clase cancelada! </strong> Ya hemos cancelado tu inscripción a la clase. Gracias por avisar!</div>').slideDown();
+			stopLoading();
+		});
+	};
+	//condicionesClases
 	$scope.condicionesClases = function(clases) {
 		// Each clase:
 		$scope.alumno.actividad_counter = []; // Count clases for each actividad
+		$scope.alumno.selected_counter = []; // Count clases for each checkbox
 		$.each(clases, function(index_clase, clase) {
 			// completa?
 			if(clase.users.length >= clase.max_users){	clases[index_clase].completa = true;
@@ -54,6 +82,7 @@ angular.module("TurnosApp").controller("UsrMisClasesCtrl",['$scope', '$location'
 			if(pack!=undefined && clases[index_clase].joined){
 				if(pack.noperiod){
 					if ($scope.alumno.actividad_counter[clases[index_clase].actividad_id] == undefined){	$scope.alumno.actividad_counter[clases[index_clase].actividad_id] = 1;
+																											$scope.alumno.selected_counter[clases[index_clase].actividad_id] = 0;
 					}else{																					$scope.alumno.actividad_counter[clases[index_clase].actividad_id] += 1;}
 				}else{
 					sd = new Date(pack.fecha_start+'T12:00:00Z');
@@ -67,53 +96,11 @@ angular.module("TurnosApp").controller("UsrMisClasesCtrl",['$scope', '$location'
 			// old_clase? cancelable?
 			dc = new Date(clase.fecha+" "+clase.horario);
 			if(dc>td){
-				if( td > new Date(dc.getTime() - (24 * 60 * 60 * 1000))) {	clases[index_clase].cancelable = false;
+				if( td > new Date(dc.getTime() - (12 * 60 * 60 * 1000))) {	clases[index_clase].cancelable = false;
 				}else{														clases[index_clase].cancelable = true;}
 																			clases[index_clase].old_clase = false;
 			} else {														clases[index_clase].old_clase = true;}
 		});
 		return clases
 	};
-	// eventModal
-	$scope.eventModal = function(clase_id) {
-		$scope.clase = $.grep($scope.clases, function(e){ return e.id == clase_id; })[0];
-		$('#events-modal').modal('show');
-	};
-	// Join
-	$scope.JoinUser = function() {
-		$cacheFactory.get('$http').remove("/api/clases/index_usr");
-		startLoading();
-		ResourceClase.join($scope.clase, success, failure).$promise.then(function(data) {
-			$scope.tableParams.reload();
-			$('#alert-container').hide().html('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-check-square-o" aria-hidden="true"></i> Inscrpción exitosa! </strong> Ya hemos guardado tu lugar en la clase, te esperamos!</div>').slideDown();
-			stopLoading();
-		});
-	};
-	// Unjoin
-	$scope.UnJoinUser = function() {
-		$cacheFactory.get('$http').remove("/api/clases/history_usr");
-		startLoading();
-		ResourceClase.unjoin($scope.clase, success, failure).$promise.then(function(data) {
-			$scope.tableParams.reload();
-			$('#alert-container').hide().html('<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-times" aria-hidden="true"></i> Clase cancelada! </strong> Ya hemos cancelado tu inscripción a la clase. Gracias por avisar!</div>').slideDown();
-			stopLoading();
-		});
-	};
-	// Callback Success
-	function success(response) {
-		console.log("success", response);
-		$location.path("/app/mis_clases");
-	}
-	// Callback Failure
-	function failure(response) {
-		$scope.submiterror = true;
-		window.scrollTo(0, 0);
-		console.log("failure", response)
-		_.each(response.data, function(errors, key) {
-			_.each(errors, function(e) {
-				$scope.form[key].$dirty = true;
-				$scope.form[key].$setValidity(e, false);
-			});
-		});
-	}
 }]);

@@ -37,30 +37,14 @@ angular.module("TurnosApp").controller("UsrMiInfoCtrl",['$scope', '$q', '$http',
 	// SUBMIT
 	$scope.submitted = false;
 	$scope.submit = function() {
+		$scope.got_to_url_success("/app/mi_info");
 		$scope.FormErrors = [];
 		if ($scope.AlumnoForm.$valid) {
 			console.log("valid submit");
-			// Success
-			function success(response) {
-				console.log("success", response);
-				$location.path("/app/mi_info");
-				$scope.formsuccessalert = true;
-			}
-			// Failure
-			function failure(response) {
-				$scope.formerroralert = true;
-				$scope.submiterror = true;
-				window.scrollTo(0, 0);
-				console.log("failure", response)
-				_.each(response.data, function(errors, key) {
-					_.each(errors, function(e) {
-						$scope.form[key].$dirty = true;
-						$scope.form[key].$setValidity(e, false);
-					});
-				});
-			}
 			// Update
-			ResourceAlumno.update_current($scope.alumno, success, failure);
+			ResourceAlumno.update_current($scope.alumno, $scope.callbackSuccess, $scope.callbackFailure);
+			$('#alert-container').hide().html('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-check-square-o" aria-hidden="true"></i> listo! </strong> Los datos se han guardado correctamente</div>').slideDown();
+			window.scrollTo(0, 0);
 		} else {
 			$scope.AlumnoForm.submitted = true;
 			window.scrollTo(0, 0);
