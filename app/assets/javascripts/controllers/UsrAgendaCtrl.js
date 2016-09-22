@@ -38,7 +38,9 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$location', '
 					});
 					data,$scope.alumno = $scope.condicionesClases(data,$scope.alumno);
 					$scope.clases = data;
-					filteredData = params.filter() ? $filter('filter')(data, params.filter()): data;	
+					if($scope.filterDay.every(function(element,index){return element===[false,false,false,false,false,false,false][index];})){data=[];}
+					dayData = jQuery.grep(data,function(clase){return $scope.dayCriteria.indexOf(clase.dia) !== -1;});
+					filteredData = params.filter() ? $filter('filter')(dayData, params.filter()): dayData;	
 					params.total(filteredData.inlineCount);
 					stopLoading();
 					return filteredData;
@@ -77,13 +79,13 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$location', '
 	};
 	// JoinMultiple
 	$scope.JoinMultiple = function() {
+		startLoading();
 		$scope.got_to_url_success("/app/agenda");
 		angular.forEach($cacheFactory.info(), function(ob, key) {
 		   console.log($cacheFactory);
 		   console.log($cacheFactory.get(key));
 		});
 		$cacheFactory.get('$http').remove("/api/clases/index_usr");
-		startLoading();
 		ResourceClase.join_multiple($scope.selectedclases, $scope.callbackSuccess, $scope.callbackFailure).$promise.then(function(data) {
 			$scope.tableParams.reload();
 			$('#alert-container').hide().html('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-check-square-o" aria-hidden="true"></i> Inscrpción exitosa! </strong> Ya te agendamos para las clases seleccionadas, te esperamos!</div>').slideDown();
@@ -92,9 +94,9 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$location', '
 	};
 	// Join
 	$scope.JoinUser = function() {
+		startLoading();
 		$scope.got_to_url_success("/app/agenda");
 		$cacheFactory.get('$http').remove("/api/clases/index_usr");
-		startLoading();
 		ResourceClase.join($scope.deleteVariablesClaseToSend($scope.clase,true,true), $scope.callbackSuccess, $scope.callbackFailure).$promise.then(function(data) {
 			$scope.tableParams.reload();
 			$('#alert-container').hide().html('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-check-square-o" aria-hidden="true"></i> Inscrpción exitosa! </strong> Ya hemos guardado tu lugar en la clase, te esperamos!</div>').slideDown();
@@ -103,9 +105,9 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$location', '
 	};
 	// Unjoin
 	$scope.UnJoinUser = function() {
+		startLoading();
 		$scope.got_to_url_success("/app/agenda");
 		$cacheFactory.get('$http').remove("/api/clases/index_usr");
-		startLoading();
 		ResourceClase.unjoin($scope.deleteVariablesClaseToSend($scope.clase,true,true), $scope.callbackSuccess, $scope.callbackFailure).$promise.then(function(data) {
 			$scope.tableParams.reload();
 			$('#alert-container').hide().html('<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-times" aria-hidden="true"></i> Clase cancelada! </strong> Ya hemos cancelado tu inscripción a la clase. Gracias por avisar!</div>').slideDown();
@@ -114,9 +116,9 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$location', '
 	};
 	// WaitListUser
 	$scope.WaitListUser = function() {
+		startLoading();
 		$scope.got_to_url_success("/app/agenda");
 		$cacheFactory.get('$http').remove("/api/clases/index_usr");
-		startLoading();
 		ResourceClase.waitlist($scope.deleteVariablesClaseToSend($scope.clase,true,true), $scope.callbackSuccess, $scope.callbackFailure).$promise.then(function(data) {
 			$scope.tableParams.reload();
 			$('#alert-container').hide().html('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-check-square-o" aria-hidden="true"></i> Lista actualizada! </strong> Ya te hemos agregado a la lista de espera.</div>').slideDown();
@@ -124,9 +126,31 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$location', '
 		});
 	};
 	// filterDay
-	$scope.filterDay=[true,true,true,true,true,true,true]
+	$scope.dayCriteria = dayNames;
+	$scope.filterDay=[true,true,true,true,true,true,true];
+	$scope.filterAll=true;
+	filterDaychangeAllClass = function() {
+		if($scope.filterDay.every(function(element,index){return element===[true,true,true,true,true,true,true][index];})){
+				$( "button.changeAll > i" ).removeClass('fa-square-o').addClass('fa-square'); return true
+		}else{	$( "button.changeAll > i" ).removeClass('fa-square').addClass('fa-square-o');return false
+	}};
+	$scope.filterDaychangeAll = function() {
+		if(filterDaychangeAllClass()){$scope.filterDay=[false,false,false,false,false,false,false]}
+		else{$scope.filterDay=[true,true,true,true,true,true,true]};
+		filterDaychangeAllClass();
+		$scope.tableParams.reload();
+	};
 	$scope.filterDaychange = function(day) {
 		$scope.filterDay[day] = !$scope.filterDay[day];
-		
+		dayCriteria=[]; 
+		angular.forEach(dayNames,function(value,key){
+			if($scope.filterDay[key]){
+				dayCriteria.push(dayNames[key])
+			}
+			$scope.dayCriteria=dayCriteria;
+		});
+		filterDaychangeAllClass();
+		$('button.filterDayButton').blur();
+		$scope.tableParams.reload();
 	};
 }]);

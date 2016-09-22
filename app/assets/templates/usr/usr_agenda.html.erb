@@ -9,19 +9,16 @@
 	<button data-ng-if="selectmultiple" data-ng-click="multipleEventModal()" type="button" class="btn btn-primary btn-lg btn-absolute visible-xs-block">
 		<i class="fa fa-calendar-plus-o" aria-hidden="true"></i>
 	</button>
-	<!--
 	<div class="btn-group btn-group-view" id="daySelector">
-		<button title="Lunes" class="btn btn-default" data-ng-class="{'active':filterDay[1] }" data-ng-click="filterDaychange(1)" data-ng-model="d1">Lu</button>
-		<button title="Martes" class="btn btn-default" data-ng-class="{'active':filterDay[2] }" data-ng-click="filterDaychange(2)" data-ng-model="d2">Ma</button>
-		<button title="Miércoles" class="btn btn-default" data-ng-class="{'active':filterDay[3] }" data-ng-click="filterDaychange(3)" data-ng-model="d3">Mi</button>
-		<button title="Jueves" class="btn btn-default" data-ng-class="{'active':filterDay[4] }" data-ng-click="filterDaychange(4)" data-ng-model="d4">Ju</button>
-		<button title="Viernes" class="btn btn-default" data-ng-class="{'active':filterDay[5] }" data-ng-click="filterDaychange(5)" data-ng-model="d5">Vi</button>
-		<button title="Sábado" class="btn btn-default" data-ng-class="{'active':filterDay[6] }" data-ng-click="filterDaychange(6)" data-ng-model="d6">Sá</button>
-		<button title="Domingo" class="btn btn-default" data-ng-class="{'active':filterDay[0] }" data-ng-click="filterDaychange(0)" data-ng-model="d0">Do</button>
+		<button title="Todos/Ninguno" class="btn btn-default filterDayButton changeAll" data-ng-click="filterDaychangeAll()" data-ng-model="all"><i class="fa fa-square" aria-hidden="true"></i></button>
+		<button title="Lunes" class="btn btn-default filterDayButton" data-ng-class="{'active':filterDay[1] }" data-ng-click="filterDaychange(1)" data-ng-model="d1">Lu</button>
+		<button title="Martes" class="btn btn-default filterDayButton" data-ng-class="{'active':filterDay[2] }" data-ng-click="filterDaychange(2)" data-ng-model="d2">Ma</button>
+		<button title="Miércoles" class="btn btn-default filterDayButton" data-ng-class="{'active':filterDay[3] }" data-ng-click="filterDaychange(3)" data-ng-model="d3">Mi</button>
+		<button title="Jueves" class="btn btn-default filterDayButton" data-ng-class="{'active':filterDay[4] }" data-ng-click="filterDaychange(4)" data-ng-model="d4">Ju</button>
+		<button title="Viernes" class="btn btn-default filterDayButton" data-ng-class="{'active':filterDay[5] }" data-ng-click="filterDaychange(5)" data-ng-model="d5">Vi</button>
+		<button title="Sábado" class="btn btn-default filterDayButton" data-ng-class="{'active':filterDay[6] }" data-ng-click="filterDaychange(6)" data-ng-model="d6">Sá</button>
+		<button title="Domingo" class="btn btn-default filterDayButton" data-ng-class="{'active':filterDay[0] }" data-ng-click="filterDaychange(0)" data-ng-model="d0">Do</button>
 	</div>
--->
-	
-	
 </div></div>
 <div class="table-responsive">
 	<table data-ng-table="tableParams" show-filter="false" class="table table-striped table-hover table-condensed">
