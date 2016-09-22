@@ -36,7 +36,7 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$location', '
 						data[key]["fecha_fixed"] = dateFormat(value.fecha) ;
 						data[key]["dia"] = dayNames[(new Date(value.fecha+'T12:00:00Z')).getDay()];
 					});
-					data = $scope.condicionesClases(data);
+					data,$scope.alumno = $scope.condicionesClases(data,$scope.alumno);
 					$scope.clases = data;
 					filteredData = params.filter() ? $filter('filter')(data, params.filter()): data;	
 					params.total(filteredData.inlineCount);
@@ -46,44 +46,6 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$location', '
 			}
 		});
 	});
-	// condicionesClases
-	$scope.condicionesClases = function(clases) {
-		// Each clase:
-		$scope.alumno.actividad_counter = []; // Count clases for each actividad
-		$scope.alumno.selected_counter = []; // Count clases for each checkbox
-		$.each(clases, function(index_clase, clase) {
-			// completa?
-			if(clase.users.length >= clase.max_users){	clases[index_clase].completa = true;
-			} else {									clases[index_clase].completa = false;}
-			// joined?
-			if(jQuery.isEmptyObject( $.grep(clase.users, function(e){ return e.id == $scope.alumno.id; }))){	clases[index_clase].joined = false;
-			}else{																								clases[index_clase].joined = true;}
-			// actividad_counter []
-			pack = $.grep($scope.alumno.packs, function(e){ return e.actividad_id == clases[index_clase].actividad_id; })[0];
-			if(pack!=undefined && clases[index_clase].joined){
-				if(pack.noperiod){
-					if ($scope.alumno.actividad_counter[clases[index_clase].actividad_id] == undefined){	$scope.alumno.actividad_counter[clases[index_clase].actividad_id] = 1;
-																											$scope.alumno.selected_counter[clases[index_clase].actividad_id] = 0;
-					}else{																					$scope.alumno.actividad_counter[clases[index_clase].actividad_id] += 1;}
-				}else{
-					sd = new Date(pack.fecha_start+'T12:00:00Z');
-					ed = new Date(pack.fecha_end+'T12:00:00Z');
-					cd = new Date(events[key_event].fecha+'T12:00:00Z');
-					if(cd>sd && ed>cd){
-						if ($scope.alumno.actividad_counter[events[key_event].actividad_id] == undefined){	$scope.alumno.actividad_counter[events[key_event].actividad_id] = 1;
-					}else{																					$scope.alumno.actividad_counter[events[key_event].actividad_id] += 1;}}
-				}
-			}
-			// old_clase? cancelable?
-			dc = new Date(clase.fecha+" "+clase.horario);
-			if(dc>td){
-				if( td > new Date(dc.getTime() - (12 * 60 * 60 * 1000))) {	clases[index_clase].cancelable = false;
-				}else{														clases[index_clase].cancelable = true;}
-																			clases[index_clase].old_clase = false;
-			} else {														clases[index_clase].old_clase = true;}
-		});
-		return clases
-	};
 	// eventModal
 	$scope.eventModal = function(clase_id) {
 		$scope.clase = $.grep($scope.clases, function(e){ return e.id == clase_id; })[0];

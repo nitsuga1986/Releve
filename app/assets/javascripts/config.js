@@ -2,25 +2,62 @@
 angular.module("TurnosApp",['ngRoute','ngResource','ngTable']).run(['$rootScope','$location',function($rootScope,$location) {
 	// got_to_url_success
 	$rootScope.got_to_url_success = function(url) {$rootScope.got_to_url_success = url;}
-	// Callback Success
+	// callbackSuccess
 	$rootScope.callbackSuccess = function(response) {
 		console.log("success", response); if(!$rootScope.got_to_url_success){$rootScope.got_to_url_success="/";}
 		$location.path($rootScope.got_to_url_success);
 		return true
 	}
-	// Callback Failure
+	// callbackFailure
 	$rootScope.callbackFailure = function(response) {
 		window.scrollTo(0, 0);
 		console.log("failure", response);
 		return true
 	}
-	// Delete Variables Clase
+	// deleteVariablesClaseToSend
 	$rootScope.deleteVariablesClaseToSend = function(clase,instructor,users) {
 		if(instructor){delete clase.instructor;}if(users){delete clase.users;}
 		delete clase.reemplazo;delete clase.created_at;delete clase.updated_at;delete clase.trialable;delete clase.cancelada;delete clase.cant_users;delete clase.fecha_fixed;
 		return clase
 	}
-
+	//condicionesClases
+	$rootScope.condicionesClases = function(clases,alumno) {
+		// Each clase:
+		alumno.actividad_counter = []; // Count clases for each actividad
+		alumno.selected_counter = []; // Count clases for each checkbox
+		$.each(clases, function(index_clase, clase) {
+			// completa?
+			if(clase.users.length >= clase.max_users){	clases[index_clase].completa = true;
+			} else {									clases[index_clase].completa = false;}
+			// joined?
+			if(jQuery.isEmptyObject( $.grep(clase.users, function(e){ return e.id == alumno.id; }))){	clases[index_clase].joined = false;
+			}else{																						clases[index_clase].joined = true;}
+			// actividad_counter []
+			pack = $.grep(alumno.packs, function(e){ return e.actividad_id == clases[index_clase].actividad_id; })[0];
+			if(pack!=undefined && clases[index_clase].joined){
+				if(pack.noperiod){
+					if (alumno.actividad_counter[clases[index_clase].actividad_id] == undefined){	alumno.actividad_counter[clases[index_clase].actividad_id] = 1;
+																									alumno.selected_counter[clases[index_clase].actividad_id] = 0;
+					}else{																			alumno.actividad_counter[clases[index_clase].actividad_id] += 1;}
+				}else{
+					sd = new Date(pack.fecha_start+'T12:00:00Z');
+					ed = new Date(pack.fecha_end+'T12:00:00Z');
+					cd = new Date(events[key_event].fecha+'T12:00:00Z');
+					if(cd>sd && ed>cd){
+						if (alumno.actividad_counter[events[key_event].actividad_id] == undefined){	alumno.actividad_counter[events[key_event].actividad_id] = 1;
+					}else{																			alumno.actividad_counter[events[key_event].actividad_id] += 1;}}
+				}
+			}
+			// old_clase? cancelable?
+			dc = new Date(clase.fecha+" "+clase.horario);
+			if(dc>td){
+				if( td > new Date(dc.getTime() - (12 * 60 * 60 * 1000))) {	clases[index_clase].cancelable = false;
+				}else{														clases[index_clase].cancelable = true;}
+																			clases[index_clase].old_clase = false;
+			} else {														clases[index_clase].old_clase = true;}
+		});
+		return clases,alumno
+	};
 }]);
 // Constants
 var ActividadIndexDefault = 0; // Pilates
