@@ -1,7 +1,6 @@
 <div class="row"><div id="alert-container" class="col-xs-12"></div></div>
 <div class="row"><div class="col-xs-12">
 	<div class="btn-group btn-group-view" id="daySelector">
-		<button title="Todos/Ninguno" class="btn btn-default filterDayButton changeAll" data-ng-click="filterDaychangeAll()" data-ng-model="all"><i class="fa fa-square" aria-hidden="true"></i></button>
 		<button title="Lunes" class="btn btn-default filterDayButton" data-ng-class="{'active':filterDay[1] }" data-ng-click="filterDaychange(1)" data-ng-model="d1">Lu</button>
 		<button title="Martes" class="btn btn-default filterDayButton" data-ng-class="{'active':filterDay[2] }" data-ng-click="filterDaychange(2)" data-ng-model="d2">Ma</button>
 		<button title="Miércoles" class="btn btn-default filterDayButton" data-ng-class="{'active':filterDay[3] }" data-ng-click="filterDaychange(3)" data-ng-model="d3">Mi</button>
@@ -9,6 +8,7 @@
 		<button title="Viernes" class="btn btn-default filterDayButton" data-ng-class="{'active':filterDay[5] }" data-ng-click="filterDaychange(5)" data-ng-model="d5">Vi</button>
 		<button title="Sábado" class="btn btn-default filterDayButton" data-ng-class="{'active':filterDay[6] }" data-ng-click="filterDaychange(6)" data-ng-model="d6">Sá</button>
 		<button title="Domingo" class="btn btn-default filterDayButton" data-ng-class="{'active':filterDay[0] }" data-ng-click="filterDaychange(0)" data-ng-model="d0">Do</button>
+		<button title="Todos/Ninguno" class="btn btn-default filterDayButton changeAll" data-ng-click="filterDaychangeAll()" data-ng-model="all"><i class="fa fa-square" aria-hidden="true"></i></button>
 	</div>
 	<button data-ng-if="!selectmultiple" data-ng-if="!alumno.primera_clase" type="button" class="btn btn-default" data-ng-click="changeselection()">
 		<span ><i class="fa fa-check-circle" aria-hidden="true"></i> Seleccionar múltiples clases</span>

@@ -135,12 +135,14 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$location', '
 		}else{	$( "button.changeAll > i" ).removeClass('fa-square').addClass('fa-square-o');return false
 	}};
 	$scope.filterDaychangeAll = function() {
+		startLoading();
 		if(filterDaychangeAllClass()){$scope.filterDay=[false,false,false,false,false,false,false]}
 		else{$scope.filterDay=[true,true,true,true,true,true,true]};
 		filterDaychangeAllClass();
 		$scope.tableParams.reload();
 	};
 	$scope.filterDaychange = function(day) {
+		startLoading();
 		$scope.filterDay[day] = !$scope.filterDay[day];
 		dayCriteria=[]; 
 		angular.forEach(dayNames,function(value,key){
