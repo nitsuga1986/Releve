@@ -25,4 +25,10 @@ class UserMailer < ActionMailer::Base
 		mail(to: email, subject: 'Info Releve')
 	end
 
+	def remainder_email(user)
+		@user = user
+		@clases = user.clases.order(:fecha,:horario)
+		mail(to: @user.email, subject: 'Tu semana Releve!')
+	end
+	
 end

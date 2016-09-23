@@ -1,4 +1,4 @@
-angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$location', 'ResourceClase', 'ResourceAlumno', '$filter','NgTableParams', '$timeout', '$cacheFactory', function($scope, $location, ResourceClase, ResourceAlumno, $filter, NgTableParams, $timeout, $cacheFactory) {
+angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$rootScope', '$location', 'ResourceClase', 'ResourceAlumno', '$filter','NgTableParams', '$timeout', '$cacheFactory', function($scope, $rootScope, $location, ResourceClase, ResourceAlumno, $filter, NgTableParams, $timeout, $cacheFactory) {
 	ResourceAlumno.current().$promise.then(function(data) {
 		$scope.alumno = data;
 		$scope.selectmultiple = false;
@@ -17,7 +17,8 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$location', '
 			page: claseJoinDefaultPage,         	// initial first page
 			count: claseJoinDefaultCount,         	// initial count per page
 			filter: claseJoinDefaultFilter, 		// initial filter
-			group: claseJoinDefaultGrouping
+			sorting: claseJoinDefaultSorting,		// initial sorting
+			group: claseJoinDefaultGrouping			// initial grouping
 		}, {
 			total: 0,          			 			// length of data
 			counts: claseJoinPageSizes,				// page size buttons
@@ -38,12 +39,15 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$location', '
 					});
 					data,$scope.alumno = $scope.condicionesClases(data,$scope.alumno);
 					$scope.clases = data;
+					// Filter & Sort
 					if($scope.filterDay.every(function(element,index){return element===[false,false,false,false,false,false,false][index];})){data=[];}
 					dayData = jQuery.grep(data,function(clase){return $scope.dayCriteria.indexOf(clase.dia) !== -1;});
 					filteredData = params.filter() ? $filter('filter')(dayData, params.filter()): dayData;	
-					params.total(filteredData.inlineCount);
+					orderedData = params.sorting() ? $filter('orderBy')(filteredData, params.orderBy()) : data;
+					// Show
+					params.total(orderedData.inlineCount);
 					stopLoading();
-					return filteredData;
+					return orderedData;
 				});
 			}
 		});
@@ -79,9 +83,9 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$location', '
 	};
 	// JoinMultiple
 	$scope.JoinMultiple = function() {
-		if(selectedclases.length){
+		if($scope.selectedclases.length){
 			startLoading();
-			$scope.got_to_url_success("/app/agenda");
+			$rootScope.got_to_url_success = "/app/agenda";
 			angular.forEach($cacheFactory.info(), function(ob, key) {
 			   console.log($cacheFactory);
 			   console.log($cacheFactory.get(key));
@@ -97,7 +101,7 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$location', '
 	// Join
 	$scope.JoinUser = function() {
 		startLoading();
-		$scope.got_to_url_success("/app/agenda");
+		$rootScope.got_to_url_success = "/app/agenda";
 		$cacheFactory.get('$http').remove("/api/clases/index_usr");
 		ResourceClase.join($scope.deleteVariablesClaseToSend($scope.clase,true,true), $scope.callbackSuccess, $scope.callbackFailure).$promise.then(function(data) {
 			$scope.tableParams.reload();
@@ -108,7 +112,7 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$location', '
 	// Unjoin
 	$scope.UnJoinUser = function() {
 		startLoading();
-		$scope.got_to_url_success("/app/agenda");
+		$rootScope.got_to_url_success = "/app/agenda";
 		$cacheFactory.get('$http').remove("/api/clases/index_usr");
 		ResourceClase.unjoin($scope.deleteVariablesClaseToSend($scope.clase,true,true), $scope.callbackSuccess, $scope.callbackFailure).$promise.then(function(data) {
 			$scope.tableParams.reload();
@@ -119,7 +123,7 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$location', '
 	// WaitListUser
 	$scope.WaitListUser = function() {
 		startLoading();
-		$scope.got_to_url_success("/app/agenda");
+		$rootScope.got_to_url_success = "/app/agenda";
 		$cacheFactory.get('$http').remove("/api/clases/index_usr");
 		ResourceClase.waitlist($scope.deleteVariablesClaseToSend($scope.clase,true,true), $scope.callbackSuccess, $scope.callbackFailure).$promise.then(function(data) {
 			$scope.tableParams.reload();

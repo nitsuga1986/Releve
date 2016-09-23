@@ -1,4 +1,4 @@
-angular.module("TurnosApp").controller("AlumnoIndexCtrl",['$scope', '$location', 'ResourceAlumno', '$filter','NgTableParams', '$timeout', function($scope, $location, ResourceAlumno, $filter, NgTableParams, $timeout) {
+angular.module("TurnosApp").controller("AlumnoIndexCtrl",['$scope', '$rootScope', '$location', 'ResourceAlumno', '$filter','NgTableParams', '$timeout', function($scope, $rootScope, $location, ResourceAlumno, $filter, NgTableParams, $timeout) {
 	$scope.GoToEdit = function(id) {$location.path("/alumno/"+id+"/edit/");};
 	$scope.GoToNew = function() {$location.path("/alumno/new");};
 	// ngTable
@@ -35,7 +35,7 @@ angular.module("TurnosApp").controller("AlumnoIndexCtrl",['$scope', '$location',
 		$scope.IdToDestroy = alumno_id;
 	};
 	$scope.destroyAlumno = function() {
-		$scope.got_to_url_success("/alumno/index");
+		$rootScope.got_to_url_success = "/alumno/index";
 		$('.confirmation-modal').on('hidden.bs.modal', function (e) {
 			$.each($scope.alumnos, function(index) {
 				console.log("Alumno",$scope.alumnos[index])

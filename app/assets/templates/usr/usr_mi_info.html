@@ -107,6 +107,14 @@
 		<div class="form-group col-xs-12 col-sm-6">
 			<label for="instructor"><input type="checkbox" name="instructor" data-ng-model="alumno.newsletter" id="instructor"> Deseo recibir novedades y promociones por correo</label>
 		</div>
+		<!-- Planes -->
+		<div class="col-sm-12"><h4>Actividades</h4></div>
+		<div class="form-group col-xs-12">
+			<ul class="">
+				<li data-ng-repeat="pack in alumno.packs">Plan de <strong>{{pack.actividad.nombre}}</strong>: Puedes agendar hasta un máximo de {{pack.cantidad}} de clases.</li>
+			</ul>
+			<p class="text-muted">Consulta con tu instructor para modificar tus planes.</p>
+		</div>
 		<!-- Submit-->
 		<div class="form-group col-xs-12">
 			<button type="submit" class="btn btn-primary btn-lg pull-right" data-ng-bind-html="FormButton | html_trusted"></button>

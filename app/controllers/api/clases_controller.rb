@@ -8,13 +8,11 @@ class Api::ClasesController < ApplicationController
   end
   
   def index_usr
-	@clase = Clase.where('fecha > ?', DateTime.now).order(:fecha).limit(150)
-	render json:  @clase
+	@clases = Clase.where('fecha >= ?', DateTime.now).order(:fecha,:horario).limit(150)
   end
   
   def history_usr
-	@clase = current_user.clases
-	render json:  @clase
+	@clases = current_user.clases
   end
 
   def show

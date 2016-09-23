@@ -31,7 +31,7 @@
 			<thead>
 				<tr>
 					<th data-ng-repeat="column in columns_alumno" data-ng-show="column.visible"
-						class="text-center sortable" ng-class="{
+						class="text-center sortable" data-ng-class="{
 							'sort-asc': tableParams.isSortBy(column.field, 'asc'),
 							'sort-desc': tableParams.isSortBy(column.field, 'desc')
 						  }"
@@ -49,7 +49,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="alumno in $data">
+				<tr data-ng-repeat="alumno in $data">
 					<td data-ng-repeat="column in columns_alumno" data-ng-click="GoToEdit(alumno.id)" data-ng-show="column.visible" sortable="column.field" filter="column.filter">
 						{{alumno[column.field]}}
 					</td>

@@ -1,4 +1,4 @@
-angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$location', 'ResourceClase', '$filter','NgTableParams', '$timeout', function($scope, $location, ResourceClase, $filter, NgTableParams, $timeout) {
+angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$rootScope', '$location', 'ResourceClase', '$filter','NgTableParams', '$timeout', function($scope, $rootScope, $location, ResourceClase, $filter, NgTableParams, $timeout) {
 	$scope.GoToEdit = function(id) {$location.path("/clase/"+id+"/edit/");};
 	$scope.GoToNew = function() {$location.path("/clase/new");};
 	$scope.GoToBulk = function() {$location.path("/clase/bulk");};
@@ -44,7 +44,7 @@ angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$location', 
 		$scope.IdToDestroy = clase_id;
 	};
 	$scope.destroyClase = function() {
-		$scope.got_to_url_success("/clase/index");
+		$rootScope.got_to_url_success = "/clase/index";
 		$('.confirmation-modal').on('hidden.bs.modal', function (e) {
 			$.each($scope.clases, function(index) {
 				if($scope.clases[index]!=undefined && $scope.clases[index].id == $scope.IdToDestroy) { //Remove from array

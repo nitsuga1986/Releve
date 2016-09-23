@@ -22,4 +22,10 @@ class UserMailerPreview < ActionMailer::Preview
 	UserMailer.pricing_email('agustinmanenido@gmail.com','Agustín','Manceñido')
   end
   
+  def remainder_email
+    user = User.first
+    clases = User.first.clases
+    UserMailer.remainder_email(user)
+  end
+  
 end

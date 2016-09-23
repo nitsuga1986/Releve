@@ -1,4 +1,4 @@
-angular.module("TurnosApp").controller("AlumnoEditCtrl",['$scope', '$q', '$http', '$routeParams', '$location', 'ResourceAlumno', 'ResourceActividad', function($scope, $q, $http, $routeParams, $location, ResourceAlumno, ResourceActividad) {
+angular.module("TurnosApp").controller("AlumnoEditCtrl",['$scope', '$rootScope', '$q', '$http', '$routeParams', '$location', 'ResourceAlumno', 'ResourceActividad', function($scope, $rootScope, $q, $http, $routeParams, $location, ResourceAlumno, ResourceActividad) {
 	$scope.FormErrors = [];
 	$scope.horariosArray = horariosArray;
 	$scope.sexosArray = sexosArray;
@@ -45,7 +45,7 @@ angular.module("TurnosApp").controller("AlumnoEditCtrl",['$scope', '$q', '$http'
 	// SUBMIT
 	$scope.submitted = false;
 	$scope.submit = function() {
-		$scope.got_to_url_success("/alumno/index");
+		$rootScope.got_to_url_success = "/alumno/index";
 		$scope.FormErrors = [];
 		if ($scope.AlumnoForm.$valid) {
 			console.log("valid submit");

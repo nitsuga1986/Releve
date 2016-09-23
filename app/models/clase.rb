@@ -7,14 +7,16 @@ class Clase < ActiveRecord::Base
 	belongs_to :instructor, class_name: "User", foreign_key: "instructor"
 	belongs_to :reemplazo, class_name: "User", foreign_key: "reemplazo"
 	before_destroy :destroy_asistencias
-	
+
 	def as_json(options = { })
 		h = super(options)
 		h[:users] = self.users
 		h[:actividad] = self.actividad.nombre
-		h[:start] = DateTime.strptime(self.fecha.strftime('%Y-%m-%d')+" "+self.horario, '%Y-%m-%d %H:%M').strftime('%Q')
-		h[:end] = (DateTime.strptime(self.fecha.strftime('%Y-%m-%d')+" "+self.horario, '%Y-%m-%d %H:%M')+ 1.hours).strftime('%Q')
-		h[:title] = self.actividad.nombre+" ("+self.instructor.nombre_completo+")"
+		h[:wait_lists] = self.wait_lists
+		h[:completa] = self.completa?
+		h[:old] = self.old?
+		h[:cancelable] = self.cancelable?
+		h[:dia] = self.dia
 		if !self.instructor.nil? then
 			h[:instructor] = self.instructor
 		end
@@ -42,9 +44,11 @@ class Clase < ActiveRecord::Base
 		end
 	end
 	
-	def completa?
-		return self.users.count >= self.max_users
-	end
+	def completa?() self.users.count >= self.max_users end
+	def old?() DateTime.strptime(self.fecha.strftime('%Y-%m-%d')+" "+self.horario+' -0300', '%Y-%m-%d %H:%M %Z') < DateTime.now end
+	def cancelable?() DateTime.strptime(self.fecha.strftime('%Y-%m-%d')+" "+self.horario+' -0300', '%Y-%m-%d %H:%M %Z') - (12.0/24) > DateTime.now end
+	def dia() I18n.t('date.day_names')[self.fecha.wday] end
+	
 	private
 	def destroy_asistencias
 		asistencias.each{|x| x.destroy}		

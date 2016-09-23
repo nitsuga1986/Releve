@@ -1,4 +1,4 @@
-angular.module("TurnosApp").controller("UsrMisClasesCtrl",['$scope', '$location', 'ResourceClase', 'ResourceAlumno', '$filter','NgTableParams', '$timeout', '$cacheFactory', function($scope, $location, ResourceClase, ResourceAlumno, $filter, NgTableParams, $timeout, $cacheFactory) {
+angular.module("TurnosApp").controller("UsrMisClasesCtrl",['$scope', '$rootScope', '$location', 'ResourceClase', 'ResourceAlumno', '$filter','NgTableParams', '$timeout', '$cacheFactory', function($scope, $rootScope, $location, ResourceClase, ResourceAlumno, $filter, NgTableParams, $timeout, $cacheFactory) {
 	ResourceAlumno.current().$promise.then(function(data) {
 		$scope.alumno = data;
 		// ngTable
@@ -11,7 +11,8 @@ angular.module("TurnosApp").controller("UsrMisClasesCtrl",['$scope', '$location'
 			page: claseJoinDefaultPage,         	// initial first page
 			count: claseJoinDefaultCount,         	// initial count per page
 			filter: claseJoinDefaultFilter, 		// initial filter
-			group: claseJoinDefaultGrouping
+			sorting: claseJoinDefaultSorting,		// initial sorting
+			group: claseJoinDefaultGrouping			// initial grouping
 		}, {
 			total: 0,          			 			// length of data
 			counts: claseJoinPageSizes,				// page size buttons
@@ -31,10 +32,13 @@ angular.module("TurnosApp").controller("UsrMisClasesCtrl",['$scope', '$location'
 					});
 					data,$scope.alumno = $scope.condicionesClases(data,$scope.alumno);
 					$scope.clases = data;
+					// Filter & Sort
 					filteredData = params.filter() ? $filter('filter')(data, params.filter()): data;	
-					params.total(filteredData.inlineCount);
+					orderedData = params.sorting() ? $filter('orderBy')(filteredData, params.orderBy()) : data;
+					// Show
+					params.total(orderedData.inlineCount);
 					stopLoading();
-					return filteredData;
+					return orderedData;
 				});
 			}
 		});
@@ -47,7 +51,7 @@ angular.module("TurnosApp").controller("UsrMisClasesCtrl",['$scope', '$location'
 	// Unjoin
 	$scope.UnJoinUser = function() {
 		startLoading();
-		$scope.got_to_url_success("/app/mis_clases");
+		$rootScope.got_to_url_success = "/app/mis_clases";
 		$cacheFactory.get('$http').remove("/api/clases/history_usr");
 		ResourceClase.unjoin($scope.deleteVariablesClaseToSend($scope.clase,true,true), $scope.callbackSuccess, $scope.callbackFailure).$promise.then(function(data) {
 			$scope.tableParams.reload();

@@ -34,15 +34,15 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr class="ng-table-group" ng-repeat-start="group in $groups">
+			<tr class="ng-table-group" data-ng-repeat-start="group in $groups">
 			  <td colspan="{{cant_visible_cols}}">
-				<a href="" ng-click="group.$hideRows = !group.$hideRows">
-				  <span class="glyphicon" ng-class="{ 'glyphicon-chevron-right': group.$hideRows, 'glyphicon-chevron-down': !group.$hideRows }"></span>
+				<a href="" data-ng-click="group.$hideRows = !group.$hideRows">
+				  <span class="glyphicon" data-ng-class="{ 'glyphicon-chevron-right': group.$hideRows, 'glyphicon-chevron-down': !group.$hideRows }"></span>
 				  <strong>{{ group.data[0].dia }}</strong> {{ group.data[0].fecha_fixed }}
 				</a>
 			  </td>
 			</tr>
-			<tr ng-hide="group.$hideRows" ng-repeat="clase in group.data" ng-repeat-end>
+			<tr data-ng-hide="group.$hideRows" data-ng-repeat="clase in group.data" data-ng-if="!clase.old" data-ng-class="{'success': clase.joined}" data-ng-repeat-end>
 				<td id="AgendaCol" data-ng-class="{'strike': clase.cancelada && column.field!='nc_instructor','hidden-xs': column.hiddenxs}" data-ng-repeat="column in columns_claseJoin" data-ng-click="GoToEdit(clase.id)" data-ng-show="column.visible" sortable="column.field" filter="column.filter">
 					<label data-ng-if="column.field=='horario'&& !alumno.primera_clase && selectmultiple && !clase.cancelada && !clase.joined && !alumno.actividad_overquota[clase.actividad_id] && !clase.completa" ><input id="selectable{{clase.id}}" type="checkbox" data-ng-model="clase.checked" data-ng-change="verifyPlan(clase.checked,clase.id)"></label>
 					<span data-ng-if="column.field=='nc_instructor' && clase.cancelada" class="text-danger">Clase cancelada</span>

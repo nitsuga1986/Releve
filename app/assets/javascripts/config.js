@@ -1,7 +1,5 @@
 // start APP
 angular.module("TurnosApp",['ngRoute','ngResource','ngTable']).run(['$rootScope','$location',function($rootScope,$location) {
-	// got_to_url_success
-	$rootScope.got_to_url_success = function(url) {$rootScope.got_to_url_success = url;}
 	// callbackSuccess
 	$rootScope.callbackSuccess = function(response) {
 		console.log("success", response); if(!$rootScope.got_to_url_success){$rootScope.got_to_url_success="/";}
@@ -26,9 +24,6 @@ angular.module("TurnosApp",['ngRoute','ngResource','ngTable']).run(['$rootScope'
 		alumno.actividad_counter = []; // Count clases for each actividad
 		alumno.selected_counter = []; // Count clases for each checkbox
 		$.each(clases, function(index_clase, clase) {
-			// completa?
-			if(clase.users.length >= clase.max_users){	clases[index_clase].completa = true;
-			} else {									clases[index_clase].completa = false;}
 			// joined?
 			if(jQuery.isEmptyObject( $.grep(clase.users, function(e){ return e.id == alumno.id; }))){	clases[index_clase].joined = false;
 			}else{																						clases[index_clase].joined = true;}
@@ -48,13 +43,6 @@ angular.module("TurnosApp",['ngRoute','ngResource','ngTable']).run(['$rootScope'
 					}else{																			alumno.actividad_counter[events[key_event].actividad_id] += 1;}}
 				}
 			}
-			// old_clase? cancelable?
-			dc = new Date(clase.fecha+" "+clase.horario);
-			if(dc>td){
-				if( td > new Date(dc.getTime() - (12 * 60 * 60 * 1000))) {	clases[index_clase].cancelable = false;
-				}else{														clases[index_clase].cancelable = true;}
-																			clases[index_clase].old_clase = false;
-			} else {														clases[index_clase].old_clase = true;}
 		});
 		return clases,alumno
 	};

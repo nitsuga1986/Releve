@@ -1,5 +1,5 @@
 <div class="col-sm-12">
-	<h3><i class="fa fa-calendar" ng-class="{ 'text-danger': clase.cancelada}"></i> Clase del {{clase.fecha}} a las {{clase.horario}} </h3>
+	<h3><i class="fa fa-calendar" data-ng-class="{ 'text-danger': clase.cancelada}"></i> Clase del {{clase.fecha}} a las {{clase.horario}} </h3>
 	<hr class="clase"/>
 	<a class="btn btn-warning pull-right" href="/clase/{{clase.id}}/edit"><i class="fa fa-edit fa-lg"></i> Editar</a>
 	<button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target=".confirmation-modal"><i class="fa fa-trash-o fa-lg"></i> Eliminar</button>
@@ -23,11 +23,11 @@
 
 
 <div class="col-sm-12">
-	<h3 class="collapsableTitle" ng-click="hideUsers = !hideUsers" ng-init="hideUsers=false">
-		<span class="glyphicon" ng-class="{ 'glyphicon-chevron-right': hideUsers, 'glyphicon-chevron-down': !hideUsers }"></span> Alumnos
+	<h3 class="collapsableTitle" data-ng-click="hideUsers = !hideUsers" data-ng-init="hideUsers=false">
+		<span class="glyphicon" data-ng-class="{ 'glyphicon-chevron-right': hideUsers, 'glyphicon-chevron-down': !hideUsers }"></span> Alumnos
 	</h3>
 </div>
-<div class="col-sm-12" ng-hide="hideUsers">
+<div class="col-sm-12" data-ng-hide="hideUsers">
 	<div class="table-responsive">
 		<table class="table table-striped table-condensed table-hover">
 			<thead>

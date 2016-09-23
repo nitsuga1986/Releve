@@ -1,5 +1,5 @@
 <div class="col-sm-12">
-	<h3><i class="fa fa-user" ng-class="{ 'text-danger': alumno.cancelada}"></i> {{alumno.nombre}} {{alumno.apellido}} </h3>
+	<h3><i class="fa fa-user" data-ng-class="{ 'text-danger': alumno.cancelada}"></i> {{alumno.nombre}} {{alumno.apellido}} </h3>
 	<hr class="alumno"/>
 	<a class="btn btn-warning pull-right" href="/alumno/{{alumno.id}}/edit"><i class="fa fa-edit fa-lg"></i> Editar</a>
 	<button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target=".confirmation-modal"><i class="fa fa-trash-o fa-lg"></i> Eliminar</button>

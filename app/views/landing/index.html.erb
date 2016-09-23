@@ -61,7 +61,7 @@
 									<h5 title="<%= @nextclases[k].actividad.nombre %> (<%= @nextclases[k].instructor.nombre_completo %>)"><%= @nextclases[k].actividad.nombre %> (<%= @nextclases[k].instructor.nombre_completo %>)</h5>
 								</div>
 								<div class="col-xs-4 text-right">
-									<h5 title="<%= I18n.t('date.day_names')[@nextclases[k].fecha.wday] %> <%= @nextclases[k].horario %>hs"><%= I18n.t('date.abbr_day_names')[@nextclases[k].fecha.wday] %> <%= @nextclases[k].horario %>hs</h5>
+									<h5 title="<%= @nextclases[k].dia %> <%= @nextclases[k].horario %>hs"><%= I18n.t('date.abbr_day_names')[@nextclases[k].fecha.wday] %> <%= @nextclases[k].horario %>hs</h5>
 								</div>
 							</div>
 							<% end %>

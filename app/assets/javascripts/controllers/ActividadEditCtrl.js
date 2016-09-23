@@ -1,4 +1,4 @@
-angular.module("TurnosApp").controller("ActividadEditCtrl",['$scope', '$q', '$http', '$routeParams', '$location', 'ResourceActividad', function($scope, $q, $http, $routeParams, $location, ResourceActividad) {
+angular.module("TurnosApp").controller("ActividadEditCtrl",['$scope', '$rootScope', '$q', '$http', '$routeParams', '$location', 'ResourceActividad', function($scope, $rootScope, $q, $http, $routeParams, $location, ResourceActividad) {
 	$scope.submiterror = false;
 	// Edit or New
 	if ($routeParams.id) { 	// Edit
@@ -15,7 +15,7 @@ angular.module("TurnosApp").controller("ActividadEditCtrl",['$scope', '$q', '$ht
 	// SUBMIT
 	$scope.submitted = false;
 	$scope.submit = function() {
-		$scope.got_to_url_success("/actividad/index");
+		$rootScope.got_to_url_success = "/actividad/index";
 		if ($scope.ActividadForm.$valid) {
 			console.log("valid submit");
 			// Update or Create

@@ -1,0 +1,1 @@
+json.(actividad, :id, :nombre)

@@ -35,7 +35,7 @@
 			<thead>
 				<tr>
 					<th data-ng-repeat="column in columns_clase" data-ng-show="column.visible"
-						class="text-center sortable" ng-class="{
+						class="text-center sortable" data-ng-class="{
 							'sort-asc': tableParams.isSortBy(column.field, 'asc'),
 							'sort-desc': tableParams.isSortBy(column.field, 'desc')
 						  }"
@@ -53,15 +53,15 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr class="ng-table-group" ng-repeat-start="group in $groups">
+				<tr class="ng-table-group" data-ng-repeat-start="group in $groups">
 				  <td colspan="{{cant_visible_cols}}">
-					<a href="" ng-click="group.$hideRows = !group.$hideRows">
-					  <span class="glyphicon" ng-class="{ 'glyphicon-chevron-right': group.$hideRows, 'glyphicon-chevron-down': !group.$hideRows }"></span>
+					<a href="" data-ng-click="group.$hideRows = !group.$hideRows">
+					  <span class="glyphicon" data-ng-class="{ 'glyphicon-chevron-right': group.$hideRows, 'glyphicon-chevron-down': !group.$hideRows }"></span>
 					  <strong>{{ group.data[0].dia }}</strong> {{ group.data[0].fecha_fixed }}
 					</a>
 				  </td>
 				</tr>
-				<tr ng-hide="group.$hideRows" ng-repeat="clase in group.data" ng-repeat-end>
+				<tr data-ng-hide="group.$hideRows" data-ng-repeat="clase in group.data" data-ng-repeat-end>
 					<td data-ng-repeat="column in columns_clase" data-ng-click="GoToEdit(clase.id)" data-ng-show="column.visible" sortable="column.field" filter="column.filter">
 						<span data-ng-if="column.field=='cancelada'" data-ng-show="clase[column.field]"><strong><i class="fa fa-times text-danger" aria-hidden="true"></i></strong></span>
 						<span data-ng-if="column.field!='cancelada'">{{clase[column.field]}}</span>
