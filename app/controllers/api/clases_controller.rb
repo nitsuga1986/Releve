@@ -2,7 +2,7 @@ class Api::ClasesController < ApplicationController
   before_action :authenticate_user!
   respond_to :json
 
-	# routes.rb, resources.js, clases_controller.rb, templates/clase/index.html, javascripts/controllers/ClaseIndexCtrl.js
+  # routes.rb, resources.js, clases_controller.rb, templates/clase/index.html, javascripts/controllers/ClaseIndexCtrl.js
   def test_emails
 	logger.debug('sending test_emails')
 	UserMailer.welcome_email(current_user).deliver
