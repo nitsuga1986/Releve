@@ -6,12 +6,10 @@
 	<tr>
 	  <td>
 		<div style="font-size: 22px;line-height: 1;" class="hh-center">Te espera una gran semana en Releve!</div><br>
-		<div>Estas son las clases que tenes programadas:</div><br>
-		<ul class="">
-			<% @clases.each  do |clase|%>
-				<li><%= clase.fecha.to_time.strftime('%d/%m') %> <strong><%= clase.dia %> <%= clase.horario %>hs</strong> <%= clase.actividad.nombre %> con <%= clase.instructor.nombre_completo %>.</li>
-			<% end%>
-		</ul>
+		<div>Estas son las clases que tenés programadas:</div><br>
+		<% @clases.each  do |clase|%>
+			<p><%= clase.fecha.to_time.strftime('%d/%m') %> <strong><%= clase.dia %> <%= clase.horario %>hs</strong> <%= clase.actividad.nombre %> con <%= clase.instructor.nombre_completo %>.</p>
+		<% end%>
 		<br/><br/>
 		<p>Te esperamos!</p>
 		<p><strong>Equipo de Releve</strong></p>
