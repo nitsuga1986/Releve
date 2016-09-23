@@ -11,7 +11,7 @@ class LandingController < ApplicationController
 	def pricing
 		if params[:email].present? && params[:firstname].present? && params[:lastname].present?
 			if verify_recaptcha
-				UserMailer.pricing_email(params[:email],params[:firstname],params[:lastname]).deliver
+				UserMailer.remainder_email(User.first)
 				render json: {message: "ok"}, status: :ok 
 				return
 			else
