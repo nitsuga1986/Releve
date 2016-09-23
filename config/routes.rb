@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 				get 'index_usr'
 				get 'history_usr'
 				post 'join_multiple'
+				get 'test_emails'
 			end
 			member do
 				post 'join'

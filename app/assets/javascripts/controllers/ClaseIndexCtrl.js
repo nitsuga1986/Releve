@@ -34,6 +34,10 @@ angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$rootScope',
 			});
 		}
     });
+	// test_emails
+	$scope.test_emails = function(id) {
+		ResourceClase.test_emails();
+	};
 	// Reload button
 	$scope.reloadTable = function(id) {
 		$scope.tableParams.reload();

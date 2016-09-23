@@ -2,6 +2,17 @@ class Api::ClasesController < ApplicationController
   before_action :authenticate_user!
   respond_to :json
 
+	# routes.rb, resources.js, clases_controller.rb, templates/clase/index.html, javascripts/controllers/ClaseIndexCtrl.js
+  def test_emails
+	logger.debug('sending test_emails')
+	UserMailer.welcome_email(current_user).deliver
+	UserMailer.join_email(current_user,Clase.last).deliver
+	UserMailer.unjoin_email(current_user,Clase.last).deliver
+	UserMailer.pricing_email(current_user.email,"Nombre","Apellido").deliver
+	UserMailer.remainder_email(current_user).deliver
+	render json:  current_user
+  end
+  
   def index
 	@clase = Clase.all
 	render json:  @clase
