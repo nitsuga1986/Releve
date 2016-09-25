@@ -393,9 +393,9 @@ body.landingpage {
 	.intro-table-hover {
 		background-image: image-url("table-2.jpg");
 		padding: 1.875em;
-		text-align:center;
+		text-align:left;
 		h4{
-			font-size:2em;
+			font-size:1.6em;
 			color:white;
 		}
 		button{
@@ -455,6 +455,13 @@ body.landingpage {
 			white-space: nowrap;
 			overflow: hidden;
 		}
+	}
+	#descripcion{
+		h2	{
+			span{vertical-align:middle;}
+			img{height:1.2em;}
+		}
+		
 	}
 	.trialclass.bottom{
 		padding-bottom: 1.875em;
