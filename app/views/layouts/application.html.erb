@@ -14,7 +14,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- styles & fonts -->
     <%= stylesheet_link_tag "application", media: "all","data-turbolinks-track" => true %>
-    <%= analytics_init if GoogleAnalytics.valid_tracker? %>
+	<% if Rails.env.production? %>
+	  <%= analytics_init if GoogleAnalytics.valid_tracker? %>
+	<% end %>
   </head>
   
   <body class="<% if @landingpage %>landingpage<% end %>">

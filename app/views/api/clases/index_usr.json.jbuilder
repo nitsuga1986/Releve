@@ -6,8 +6,8 @@ json.array! @clases do |clase|
   json.cancelable clase.cancelable?
   json.dia clase.dia
   json.users clase.users, partial: 'api/users/user', as: :user
-  json.instructor clase.instructor, partial: 'api/users/instructor', as: :instructor
-  json.reemplazo clase.reemplazo, partial: 'api/users/reemplazo', as: :reemplazo
+  json.instructor clase.instructor.nombre_completo if clase.instructor.present?
+  json.reemplazo clase.reemplazo.nombre_completo if clase.reemplazo.present?
 end
 
 
