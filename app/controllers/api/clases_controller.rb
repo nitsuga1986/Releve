@@ -7,6 +7,7 @@ class Api::ClasesController < ApplicationController
 	logger.debug('sending test_emails')
 	UserMailer.welcome_email(current_user).deliver
 	UserMailer.join_email(current_user,Clase.last).deliver
+	UserMailer.join_multiple_email(current_user,Clase.first(4)).deliver
 	UserMailer.unjoin_email(current_user,Clase.last).deliver
 	UserMailer.pricing_email(current_user.email,"Nombre","Apellido").deliver
 	UserMailer.remainder_email(current_user).deliver
