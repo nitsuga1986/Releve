@@ -1,0 +1,8 @@
+Hemos agendado tus clases:
+
+<% @clases.each  do |clase|%>
+	<%= clase.fecha.to_time.strftime('%d/%m') %>  <%= clase.dia %> <%= clase.horario %>hs <%= clase.actividad.nombre %> con <%= clase.instructor.nombre_completo %>.
+<% end%>
+
+Te esperamos!
+Equipo de Releve

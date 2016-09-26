@@ -1,0 +1,22 @@
+<!-- Logo Left Nav Right + Vertical Padding : BEGIN -->
+<table border="0" width="600" cellpadding="0" cellspacing="0" align="center" class="email-container" style="margin: auto;">
+	<tr>
+	  <td height="30" style="font-size: 0; line-height: 0;">&nbsp;</td>
+	</tr>
+	<tr>
+	  <td>
+		<div style="font-size: 22px;line-height: 1;" class="hh-center">Hemos agendado tus clases:</div><br>
+		<% @clases.each  do |clase|%>
+			<p><%= clase.fecha.to_time.strftime('%d/%m') %> <strong><%= clase.dia %> <%= clase.horario %>hs</strong> <%= clase.actividad.nombre %> con <%= clase.instructor.nombre_completo %>.</p>
+		<% end%>
+		<br/><br/>
+		<p>Te esperamos!</p>
+		<p><strong>Equipo de Releve</strong></p>
+		<br/><br/><br/><br/>
+	  </td>
+	</tr>
+	<tr>
+	  <td height="30" style="font-size: 0; line-height: 0;">&nbsp;</td>
+	</tr>
+</table>
+<!-- Logo Left Nav Right + Vertical Padding : END -->

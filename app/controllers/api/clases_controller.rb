@@ -52,10 +52,13 @@ class Api::ClasesController < ApplicationController
   end
   
   def join_multiple
+	@clases= []
 	params[:_json].each do |clase|
 		@clase = Clase.find(clase[:id])
 		@clase.add_asistencia(current_user.id)
+		@clases.push(@clase)
 	end
+	UserMailer.join_multiple_email(current_user,@clases).deliver
 	render json: @clase, status: :created
   end
   

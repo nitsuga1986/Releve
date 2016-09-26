@@ -13,6 +13,12 @@ class UserMailer < ActionMailer::Base
 		mail(to: @user.email, subject: 'Agendado: '+clase.actividad.nombre+' el '+I18n.t('date.day_names')[@clase.fecha.wday]+' '+@clase.fecha.strftime("%d/%m/%Y")+' a las '+clase.horario+' con '+clase.instructor.nombre_completo)
 	end
 
+	def join_multiple_email(user,clases)
+		@user = user
+		@clases = clases
+		mail(to: @user.email, subject: 'Hemos agendado tus clases')
+	end
+
 	def unjoin_email(user,clase)
 		@user = user
 		@clase = clase
