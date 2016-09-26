@@ -9,12 +9,11 @@
 	<meta name="keywords" content="Pilates, Releve, Ejercicio, Salud, Cuerpo, Danza, Congreso, Plaza Congreso, CABA, Capital Federal, Ciudad Autónoma de Buenos Aires," />
 	<meta name="author" content="Nitsuga" />
 	<link href="http://relevepilates.com.ar/" hreflang="es-AR"/>
-	<%= render 'layouts/favicon' %>
+	<%= render 'favicon' %>
     <!-- bootstrap fix -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- styles & fonts -->
     <%= stylesheet_link_tag "application", media: "all","data-turbolinks-track" => true %>
-    <%= analytics_init if GoogleAnalytics.valid_tracker? %>
   </head>
   
   <body class="<% if @landingpage %>landingpage<% end %>">
