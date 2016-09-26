@@ -27,10 +27,14 @@ angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$rootScope',
 					data[key]["fecha_fixed"] = dateFormat(value.fecha) ;
 					data[key]["dia"] = dayNames[(new Date(value.fecha+'T12:00:00Z')).getDay()];
 				});
-				params.total(data.inlineCount);
 				$scope.clases = data;
+				// Filter & Sort
+				filteredData = params.filter() ? $filter('filter')(data, params.filter()): data;	
+				orderedData = params.sorting() ? $filter('orderBy')(filteredData, params.orderBy()) : filteredData;
+				// Show
+				params.total(orderedData.inlineCount);
 				stopLoading();
-				return data;
+				return orderedData;
 			});
 		}
     });

@@ -17,10 +17,14 @@ angular.module("TurnosApp").controller("ActividadIndexCtrl",['$scope', '$locatio
 			// ajax request to api
 			startLoading();
 			return Api.index().$promise.then(function(data) {
-				params.total(data.inlineCount);
 				$scope.actividades = data;
+				// Filter & Sort
+				filteredData = params.filter() ? $filter('filter')(data, params.filter()): data;	
+				orderedData = params.sorting() ? $filter('orderBy')(filteredData, params.orderBy()) : filteredData;
+				// Show
+				params.total(orderedData.inlineCount);
 				stopLoading();
-				return data;
+				return orderedData;
 			});
 		}
     });

@@ -6,6 +6,7 @@
 //= require angular/ng-table.min
 //= require config
 //= require filters/html_trusted
+//= require filters/true_false
 //= require services/resources
 //= require controllers/UsrMisClasesCtrl
 //= require controllers/UsrAgendaCtrl
