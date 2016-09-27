@@ -111,7 +111,7 @@
 		<div class="col-sm-12"><h4>Actividades</h4></div>
 		<div class="form-group col-xs-12">
 			<ul class="">
-				<li data-ng-repeat="pack in alumno.packs">Plan de <strong>{{pack.actividad.nombre}}</strong>: <span data-ng-if="pack.cantidad">Puedes agendar hasta un máximo de {{pack.cantidad}} de clases.</span><span data-ng-if="pack.cantidad">Aún no tines cargado ningún plan para esta actividad.</span></li>
+				<li data-ng-repeat="pack in alumno.packs">Plan de <strong>{{pack.actividad.nombre}}</strong>: <span data-ng-if="pack.cantidad">Puedes agendar hasta un máximo de {{pack.cantidad}} de clases.</span><span data-ng-if="!pack.cantidad">Aún no tines cargado ningún plan para esta actividad.</span></li>
 			</ul>
 			<p class="text-muted">Consulta con tu instructor para modificar tus planes.</p>
 		</div>
