@@ -151,7 +151,7 @@ var columns_alumno = [
 	{title:"Apellido de contacto",field:"apellido_contacto",filter:"apellido_contacto",visible:false,filter:{'apellido_contacto':'text'}},
 	{title:"Teléfono de contacto",field:"telefono_contacto",filter:"telefono_contacto",visible:false,filter:{'telefono_contacto':'text'}},
 	{title:"Sexo",field:"sexo",filter:"sexo",visible:true,filter:{'sexo':'text'}},
-	{title:"Registro confirmado?",field:"confirmed",filter:"confirmed",visible:true,filter:{'confirmed':'text'}},
+	{title:"Registro confirmado?",field:"confirmed",filter:"confirmed",visible:false,filter:{'confirmed':'text'}},
 	{title:"Primera clase?",field:"primera_clase",filter:"primera_clase",visible:true,filter:{'primera_clase':'text'}},
 	{title:"Admin?",field:"admin",filter:"admin",visible:true,filter:{'admin':'text'}},
 ];
