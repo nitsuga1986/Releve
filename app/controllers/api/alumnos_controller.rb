@@ -13,7 +13,7 @@ class Api::AlumnosController < ApplicationController
   end
   
   def current
-	render json: current_user
+	@user = current_user
   end
   
   def instructores
