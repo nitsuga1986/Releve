@@ -15,8 +15,7 @@ class Api::ClasesController < ApplicationController
   end
   
   def index
-	@clase = Clase.all
-	render json:  @clase
+	@clases = Clase.all.order(:fecha,:horario)
   end
   
   def index_usr

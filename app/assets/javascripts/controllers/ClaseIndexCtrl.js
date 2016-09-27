@@ -2,6 +2,11 @@ angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$rootScope',
 	$scope.GoToEdit = function(id) {$location.path("/clase/"+id+"/edit/");};
 	$scope.GoToNew = function() {$location.path("/clase/new");};
 	$scope.GoToBulk = function() {$location.path("/clase/bulk");};
+	// currentDate
+	var fullDate = new Date();
+	var twoDigitMonth = (fullDate.getMonth() + 1)+"";if(twoDigitMonth.length==1)	twoDigitMonth="0" +twoDigitMonth;
+	var twoDigitDate = fullDate.getDate()+"";if(twoDigitDate.length==1)	twoDigitDate="0" +twoDigitDate;
+	var currentDate = fullDate.getFullYear() + "-" + twoDigitMonth + "-" +  twoDigitDate;
 	// ngTable
 	function dateFormat(date) {date = date.split('-'); date = date[2]+'/'+date[1]; return date;}
 	var Api = ResourceClase;
@@ -14,9 +19,10 @@ angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$rootScope',
 		sorting: claseDefaultSorting, 		// initial sorting
 		group: claseDefaultGrouping
 	}, {
-		total: 0,           // length of data
+		total: 0,           				// length of data
+		counts: clasePageSizes,				// page size buttons
 		groupBy: claseDefaultGroupingBy,
-		groupOptions: {isExpanded: false},
+		groupOptions: {isExpanded: true},
 		getData: function(params) {
 			// ajax request to api
 			startLoading();
@@ -31,6 +37,8 @@ angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$rootScope',
 				// Filter & Sort
 				filteredData = params.filter() ? $filter('filter')(data, params.filter()): data;	
 				orderedData = params.sorting() ? $filter('orderBy')(filteredData, params.orderBy()) : filteredData;
+				// set Page for current date
+				$.each(orderedData,function(idx, val){if (val['fecha'] == currentDate) {params.page(Math.floor(idx/params.count()));return false;}});
 				// Show
 				params.total(orderedData.inlineCount);
 				stopLoading();

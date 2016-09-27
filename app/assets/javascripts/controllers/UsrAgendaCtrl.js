@@ -15,13 +15,13 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$rootScope', 
 		$scope.cant_visible_cols = $.grep(columns_claseAgenda, function(e){ return e.visible == true; }).length+1;
 		$scope.tableParams = new NgTableParams({
 			page: claseAgendaDefaultPage,         	// initial first page
-			count: claseAgendaDefaultCount,         	// initial count per page
+			count: claseAgendaDefaultCount,         // initial count per page
 			filter: claseAgendaDefaultFilter, 		// initial filter
 			sorting: claseAgendaDefaultSorting,		// initial sorting
-			group: claseAgendaDefaultGrouping			// initial grouping
+			group: claseAgendaDefaultGrouping		// initial grouping
 		}, {
 			total: 0,          			 			// length of data
-			counts: claseAgendaPageSizes,				// page size buttons
+			counts: claseAgendaPageSizes,			// page size buttons
 			groupBy: claseAgendaDefaultGroupingBy,
 			groupOptions: {isExpanded: true},
 			getData: function(params) {

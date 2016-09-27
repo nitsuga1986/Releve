@@ -48,9 +48,6 @@ angular.module("TurnosApp",['ngRoute','ngResource','ngTable']).run(['$rootScope'
 		$.each(alumno.packs, function(key_packs, pack) {
 			alumno.actividad_overquota[pack.actividad_id] = (pack.cantidad <= alumno.actividad_counter[pack.actividad_id])
 		});
-		console.log(alumno.actividad_overquota)
-		console.log(alumno.actividad_counter)
-		console.log(clases)
 		return clases,alumno
 	};
 }]);
@@ -114,10 +111,11 @@ var columns_claseMisClases = [
 	{title:"Instructor",field:"instructor",filter:"instructor",visible:true,filter:{'instructor':'text'}, sortable: "instructor", sortDirection: "desc",hiddenxs:false},
 ];
 // Clase
-var claseDefaultPage = 1;	var claseDefaultCount = 25;
+var claseDefaultPage = 1;	var claseDefaultCount = 15;
 var claseDefaultFilter = {};   
-var claseDefaultGroupingBy = 'fecha'; var claseDefaultGrouping = {fecha: "asc"}
+var claseDefaultGroupingBy = 'fecha'; var claseDefaultGrouping = {fecha: "desc"}
 var claseDefaultSorting = {fecha: 'desc',horario: 'asc'};
+var clasePageSizes = [15, 25, 50, 100];
 var horariosArray = ["09:00","10:00","11:00","12:00","13:00","17:00","18:00","19:00","20:00","21:00","--","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00"];
 var columns_clase = [
 	{title:"Fecha",field:"fecha",filter:"fecha",visible:false,filter:{'fecha':'text'}, sortable: "fecha", sortDirection: "asc",groupable:"fecha"},
@@ -126,13 +124,11 @@ var columns_clase = [
 	{title:"Instructor",field:"instructor",filter:"instructor",visible:true,filter:{'instructor':'text'}, sortable: "instructor", sortDirection: "desc",groupable:"instructor"},
 	{title:"Día",field:"dia",filter:"dia",visible:false,filter:{'dia':'text'}, sortable: "dia", sortDirection: "desc",groupable:"dia"},
 	{title:"Duración",field:"duracion",filter:"duracion",visible:true,filter:{'duracion':'text'}, sortable: "duracion", sortDirection: "desc",groupable:"duracion"},
-	{title:"Alumnos",field:"cant_users",filter:"cant_users",visible:false,filter:{'cant_users':'text'}, sortable: "cant_users", sortDirection: "desc",groupable:"cant_users"},
+	{title:"Alumnos",field:"cant_users",filter:"cant_users",visible:true,filter:{'cant_users':'text'}, sortable: "cant_users", sortDirection: "desc",groupable:"cant_users"},
 	{title:"Max.Alumnos",field:"max_users",filter:"max_users",visible:false,filter:{'max_users':'text'}, sortable: "max_users", sortDirection: "desc",groupable:"max_users"},
-	{title:"Cancelada?",field:"cancelada",filter:"cancelada",visible:false,filter:{'cancelada':'text'}, sortable: "cancelada", sortDirection: "desc",groupable:"cancelada"},
-	{title:"Cancelada?",field:"trialable",filter:"trialable",visible:true,filter:{'trialable':'text'}, sortable: "trialable", sortDirection: "desc",groupable:"trialable"},
+	{title:"Cancelada?",field:"cancelada",filter:"cancelada",visible:true,filter:{'cancelada':'text'}, sortable: "cancelada", sortDirection: "desc",groupable:"cancelada"},
+	{title:"Prueba?",field:"trialable",filter:"trialable",visible:true,filter:{'trialable':'text'}, sortable: "trialable", sortDirection: "desc",groupable:"trialable"},
 	{title:"Comentarios",field:"comment",filter:"comment",visible:false,filter:{'comment':'text'}, sortable: "comment", sortDirection: "desc",groupable:"comment"},
-	{title:"Fecha de creación",field:"created_at",filter:"created_at",visible:false,filter:{'created_at':'text'}, sortable: "created_at", sortDirection: "desc",groupable:"created_at"},
-	{title:"Ùltima modificación",field:"updated_at",filter:"updated_at",visible:false,filter:{'updated_at':'text'}, sortable: "updated_at", sortDirection: "desc",groupable:"updated_at"},
 ];
 // Alumno
 var alumnoDefaultPage = 1;	var alumnoDefaultCount = 25;
