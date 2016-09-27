@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  after_create :set_fechaini
   has_many :packs
   has_many :actividades, through: :packs
   has_many :asistencias
@@ -77,4 +78,10 @@ class User < ActiveRecord::Base
       return false
     end
   end
+  
+  private
+  def set_fechaini
+	self.update_attribute(:fechaini,Date.today)
+  end
+  
 end
