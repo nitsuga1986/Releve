@@ -29,8 +29,8 @@ angular.module("TurnosApp",['ngRoute','ngResource','ngTable']).run(['$rootScope'
 			}else{																						clases[index_clase].joined = true;}
 			// actividad_counter []
 			pack = $.grep(alumno.packs, function(e){ return e.actividad_id == clases[index_clase].actividad_id; })[0];
-			if(pack!=undefined && clases[index_clase].joined){
-				if(pack.noperiod){
+			if(clases[index_clase].joined){
+				if(pack==undefined||pack.noperiod){
 					if (alumno.actividad_counter[clases[index_clase].actividad_id] == undefined){	alumno.actividad_counter[clases[index_clase].actividad_id] = 1;
 																									alumno.selected_counter[clases[index_clase].actividad_id] = 0;
 					}else{																			alumno.actividad_counter[clases[index_clase].actividad_id] += 1;}
@@ -44,6 +44,13 @@ angular.module("TurnosApp",['ngRoute','ngResource','ngTable']).run(['$rootScope'
 				}
 			}
 		});
+		alumno.actividad_overquota = [];
+		$.each(alumno.packs, function(key_packs, pack) {
+			alumno.actividad_overquota[pack.actividad_id] = (pack.cantidad <= alumno.actividad_counter[pack.actividad_id])
+		});
+		console.log(alumno.actividad_overquota)
+		console.log(alumno.actividad_counter)
+		console.log(clases)
 		return clases,alumno
 	};
 }]);
@@ -82,6 +89,30 @@ $.datepicker.regional['es'] = {
 	changeYear: true,
 	//showButtonPanel: true
 });
+//  Agenda
+var claseAgendaDefaultPage = 1;	var claseAgendaDefaultCount = 15;
+var claseAgendaDefaultFilter = {};   
+var claseAgendaDefaultGroupingBy = 'fecha'; var claseAgendaDefaultGrouping = {fecha: "asc"}
+var claseAgendaDefaultSorting = {fecha: 'desc',horario: 'asc'};
+var claseAgendaPageSizes = [15, 25, 50, 100];
+var columns_claseAgenda = [
+	{title:"Fecha",field:"fecha",filter:"fecha",visible:false,filter:{'fecha':'text'}, sortable: "fecha", sortDirection: "asc",groupable:"fecha",hiddenxs:false},
+	{title:"Horario",field:"horario",filter:"horario",visible:true,filter:{'horario':'text'}, sortable: "horario", sortDirection: "desc",groupable:"horario",hiddenxs:false},
+	{title:"Actividad",field:"actividad",filter:"actividad",visible:true,filter:{'actividad':'text'}, sortable: "actividad", sortDirection: "desc",groupable:"actividad",hiddenxs:false},
+	{title:"Instructor",field:"instructor",filter:"instructor",visible:true,filter:{'instructor':'text'}, sortable: "instructor", sortDirection: "desc",groupable:"instructor",hiddenxs:false},
+	{title:"Duración",field:"duracion",filter:"duracion",visible:true,filter:{'duracion':'text'}, sortable: "duracion", sortDirection: "desc",groupable:"duracion",hiddenxs:true},
+];
+//  Mis Clases
+var claseMisClasesDefaultPage = 1;	var claseMisClasesDefaultCount = 15;
+var claseMisClasesDefaultFilter = {};
+var claseMisClasesDefaultSorting = {fecha: 'desc',horario: 'asc'};
+var claseMisClasesPageSizes = [15, 25, 50, 100];
+var columns_claseMisClases = [
+	{title:"Fecha",field:"fecha_fixed",filter:"fecha_fixed",visible:true,filter:{'fecha_fixed':'text'}, sortable: "fecha", sortDirection: "asc",hiddenxs:false},
+	{title:"Horario",field:"horario",filter:"horario",visible:true,filter:{'horario':'text'}, sortable: "horario", sortDirection: "desc",hiddenxs:false},
+	{title:"Actividad",field:"actividad",filter:"actividad",visible:true,filter:{'actividad':'text'}, sortable: "actividad", sortDirection: "desc",hiddenxs:true},
+	{title:"Instructor",field:"instructor",filter:"instructor",visible:true,filter:{'instructor':'text'}, sortable: "instructor", sortDirection: "desc",hiddenxs:false},
+];
 // Clase
 var claseDefaultPage = 1;	var claseDefaultCount = 25;
 var claseDefaultFilter = {};   
@@ -92,7 +123,7 @@ var columns_clase = [
 	{title:"Fecha",field:"fecha",filter:"fecha",visible:false,filter:{'fecha':'text'}, sortable: "fecha", sortDirection: "asc",groupable:"fecha"},
 	{title:"Horario",field:"horario",filter:"horario",visible:true,filter:{'horario':'text'}, sortable: "horario", sortDirection: "desc",groupable:"horario"},
 	{title:"Actividad",field:"actividad",filter:"actividad",visible:true,filter:{'actividad':'text'}, sortable: "actividad", sortDirection: "desc",groupable:"actividad"},
-	{title:"Instructor",field:"nc_instructor",filter:"nc_instructor",visible:true,filter:{'nc_instructor':'text'}, sortable: "nc_instructor", sortDirection: "desc",groupable:"nc_instructor"},
+	{title:"Instructor",field:"instructor",filter:"instructor",visible:true,filter:{'instructor':'text'}, sortable: "instructor", sortDirection: "desc",groupable:"instructor"},
 	{title:"Día",field:"dia",filter:"dia",visible:false,filter:{'dia':'text'}, sortable: "dia", sortDirection: "desc",groupable:"dia"},
 	{title:"Duración",field:"duracion",filter:"duracion",visible:true,filter:{'duracion':'text'}, sortable: "duracion", sortDirection: "desc",groupable:"duracion"},
 	{title:"Alumnos",field:"cant_users",filter:"cant_users",visible:false,filter:{'cant_users':'text'}, sortable: "cant_users", sortDirection: "desc",groupable:"cant_users"},
@@ -102,27 +133,6 @@ var columns_clase = [
 	{title:"Comentarios",field:"comment",filter:"comment",visible:false,filter:{'comment':'text'}, sortable: "comment", sortDirection: "desc",groupable:"comment"},
 	{title:"Fecha de creación",field:"created_at",filter:"created_at",visible:false,filter:{'created_at':'text'}, sortable: "created_at", sortDirection: "desc",groupable:"created_at"},
 	{title:"Ùltima modificación",field:"updated_at",filter:"updated_at",visible:false,filter:{'updated_at':'text'}, sortable: "updated_at", sortDirection: "desc",groupable:"updated_at"},
-];
-// Clase Join
-var claseJoinDefaultPage = 1;	var claseJoinDefaultCount = 5;
-var claseJoinDefaultFilter = {};   
-var claseJoinDefaultGroupingBy = 'fecha'; var claseJoinDefaultGrouping = {fecha: "asc"}
-var claseJoinDefaultSorting = {fecha: 'desc',horario: 'asc'};
-var claseJoinPageSizes = [5, 15, 25, 50];
-var columns_claseJoin = [
-	{title:"Fecha",field:"fecha",filter:"fecha",visible:false,filter:{'fecha':'text'}, sortable: "fecha", sortDirection: "asc",groupable:"fecha",hiddenxs:false},
-	{title:"Horario",field:"horario",filter:"horario",visible:true,filter:{'horario':'text'}, sortable: "horario", sortDirection: "desc",groupable:"horario",hiddenxs:false},
-	{title:"Actividad",field:"actividad",filter:"actividad",visible:true,filter:{'actividad':'text'}, sortable: "actividad", sortDirection: "desc",groupable:"actividad",hiddenxs:false},
-	{title:"Instructor",field:"nc_instructor",filter:"nc_instructor",visible:true,filter:{'nc_instructor':'text'}, sortable: "nc_instructor", sortDirection: "desc",groupable:"nc_instructor",hiddenxs:false},
-	{title:"Día",field:"dia",filter:"dia",visible:false,filter:{'dia':'text'}, sortable: "dia", sortDirection: "desc",groupable:"dia",hiddenxs:false},
-	{title:"Duración",field:"duracion",filter:"duracion",visible:true,filter:{'duracion':'text'}, sortable: "duracion", sortDirection: "desc",groupable:"duracion",hiddenxs:true},
-	{title:"Alumnos",field:"cant_users",filter:"cant_users",visible:false,filter:{'cant_users':'text'}, sortable: "cant_users", sortDirection: "desc",groupable:"cant_users",hiddenxs:false},
-	{title:"Max.Alumnos",field:"max_users",filter:"max_users",visible:false,filter:{'max_users':'text'}, sortable: "max_users", sortDirection: "desc",groupable:"max_users",hiddenxs:false},
-	{title:"Cancelada?",field:"cancelada",filter:"cancelada",visible:false,filter:{'cancelada':'text'}, sortable: "cancelada", sortDirection: "desc",groupable:"cancelada",hiddenxs:false},
-	{title:"1raGratis?",field:"trialable",filter:"trialable",visible:false,filter:{'trialable':'text'}, sortable: "trialable", sortDirection: "desc",groupable:"trialable",hiddenxs:false},
-	{title:"Comentarios",field:"comment",filter:"comment",visible:false,filter:{'comment':'text'}, sortable: "comment", sortDirection: "desc",groupable:"comment",hiddenxs:false},
-	{title:"Fecha de creación",field:"created_at",filter:"created_at",visible:false,filter:{'created_at':'text'}, sortable: "created_at", sortDirection: "desc",groupable:"created_at",hiddenxs:false},
-	{title:"Ùltima modificación",field:"updated_at",filter:"updated_at",visible:false,filter:{'updated_at':'text'}, sortable: "updated_at", sortDirection: "desc",groupable:"updated_at",hiddenxs:false},
 ];
 // Alumno
 var alumnoDefaultPage = 1;	var alumnoDefaultCount = 25;

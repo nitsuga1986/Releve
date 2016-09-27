@@ -44,9 +44,9 @@ angular.module("TurnosApp").controller("AlumnoIndexCtrl",['$scope', '$rootScope'
 			$.each($scope.alumnos, function(index) {
 				console.log("Alumno",$scope.alumnos[index])
 				if($scope.alumnos[index]!=undefined && $scope.alumnos[index].id == $scope.IdToDestroy) { //Remove from array
-					console.log("Alumnoindex",$scope.alumnos[index])
 					ResourceAlumno.destroy($scope.alumnos[index], $scope.callbackSuccess, $scope.callbackFailure);
-				}    
+					$scope.tableParams.reload();
+				}
 			});
 		})
 	};

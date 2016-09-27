@@ -5,36 +5,29 @@ angular.module("TurnosApp").controller("UsrMisClasesCtrl",['$scope', '$rootScope
 		function dateFormat(date) {date = date.split('-'); date = date[2]+' de '+monthNames[parseInt(date[1])-1]; return date;}
 		td = new Date();
 		var Api = ResourceClase;
-		$scope.columns_claseJoin = columns_claseJoin;
-		$scope.cant_visible_cols = $.grep(columns_claseJoin, function(e){ return e.visible == true; }).length+1;
+		$scope.columns_claseMisClases = columns_claseMisClases;
+		$scope.cant_visible_cols = $.grep(columns_claseMisClases, function(e){ return e.visible == true; }).length+1;
 		$scope.tableParams = new NgTableParams({
-			page: claseJoinDefaultPage,         	// initial first page
-			count: claseJoinDefaultCount,         	// initial count per page
-			filter: claseJoinDefaultFilter, 		// initial filter
-			sorting: claseJoinDefaultSorting,		// initial sorting
-			group: claseJoinDefaultGrouping			// initial grouping
+			page: claseMisClasesDefaultPage,         	// initial first page
+			count: claseMisClasesDefaultCount,         	// initial count per page
+			filter: claseMisClasesDefaultFilter, 		// initial filter
+			sorting: claseMisClasesDefaultSorting,		// initial sorting
 		}, {
 			total: 0,          			 			// length of data
-			counts: claseJoinPageSizes,				// page size buttons
-			groupBy: claseJoinDefaultGroupingBy,
-			groupOptions: {isExpanded: true},
+			counts: claseMisClasesPageSizes,				// page size buttons
 			getData: function(params) {
 				// ajax request to api
 				startLoading();
 				return Api.history_usr().$promise.then(function(data) {
 					angular.forEach(data, function(value, key) {
 						data[key]["duracion"] = data[key]["duracion"]+' hs'
-						data[key]["nc_instructor"] = value.instructor;
-						if(value.reemplazo!=undefined){data[key]["nc_reemplazo"] = value.reemplazo};
-						data[key]["cant_users"] = value.users.length+" / "+value.max_users;
-						data[key]["fecha_fixed"] = dateFormat(value.fecha) ;
-						data[key]["dia"] = dayNames[(new Date(value.fecha+'T12:00:00Z')).getDay()];
+						data[key]["horario"] = data[key]["horario"]+' hs'
+						data[key]["fecha_fixed"] = value.dia+' '+dateFormat(value.fecha) ;
 					});
 					data,$scope.alumno = $scope.condicionesClases(data,$scope.alumno);
 					$scope.clases = data;
 					// Filter & Sort
-					filteredData = params.filter() ? $filter('filter')(data, params.filter()): data;	
-					orderedData = params.sorting() ? $filter('orderBy')(filteredData, params.orderBy()) : data;
+					orderedData = params.sorting() ? $filter('orderBy')(data, params.orderBy()) : data;
 					// Show
 					params.total(orderedData.inlineCount);
 					stopLoading();
@@ -53,7 +46,7 @@ angular.module("TurnosApp").controller("UsrMisClasesCtrl",['$scope', '$rootScope
 		startLoading();
 		$rootScope.got_to_url_success = "/app/mis_clases";
 		$cacheFactory.get('$http').remove("/api/clases/history_usr");
-		ResourceClase.unjoin($scope.clase,true,true, $scope.callbackSuccess, $scope.callbackFailure).$promise.then(function(data) {
+		ResourceClase.unjoin($scope.deleteVariablesClaseToSend($scope.clase,true,true), $scope.callbackSuccess, $scope.callbackFailure).$promise.then(function(data) {
 			$scope.tableParams.reload();
 			$('#alert-container').hide().html('<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-times" aria-hidden="true"></i> Clase cancelada! </strong> Ya hemos cancelado tu inscripción a la clase. Gracias por avisar!</div>').slideDown();
 			stopLoading();

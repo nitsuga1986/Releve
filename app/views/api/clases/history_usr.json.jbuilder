@@ -1,7 +1,6 @@
 json.array! @clases do |clase|
-  json.(clase, :id, :actividad_id, :cancelada, :comment, :duracion, :fecha, :horario, :max_users, :trialable)
+  json.(clase, :id, :cancelada, :comment, :fecha, :horario)
   json.actividad clase.actividad.nombre
-  json.completa clase.completa?
   json.old clase.old?
   json.cancelable clase.cancelable?
   json.dia clase.dia

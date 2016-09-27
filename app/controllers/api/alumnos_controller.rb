@@ -60,7 +60,7 @@ class Api::AlumnosController < ApplicationController
 			params[:packs].each do |pack|
 				pac = @alumno.packs.new
 				pac.actividad = Actividad.find(pack[:actividad_id])
-				pac.cantidad = pack[:cantidad] if !pack[:cantidad].nil?
+				pac.cantidad = !pack[:cantidad].nil? ? pack[:cantidad] : 1
 				pac.noperiod = pack[:noperiod] if !pack[:noperiod].nil?
 				pac.fecha_start = pack[:fecha_start] if !pack[:fecha_start].nil?
 				pac.fecha_end = pack[:fecha_end] if !pack[:fecha_end].nil?

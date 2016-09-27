@@ -33,7 +33,9 @@ class UserMailer < ActionMailer::Base
 
 	def remainder_email(user)
 		@user = user
-		@clases = user.clases.order(:fecha,:horario)
+		start_date = Date.today
+		end_date = start_date + 7.days
+		@clases = user.clases.where(:fecha => start_date..end_date).order(:fecha,:horario)
 		mail(to: @user.email, subject: 'Tu semana Releve!')
 	end
 	
