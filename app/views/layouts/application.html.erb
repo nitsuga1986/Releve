@@ -1,10 +1,11 @@
 <!DOCTYPE HTML>
 <html lang="es-AR" data-ng-app="ReleveApp">
 	
-  <head>
+  <head itemscope itemtype="http://schema.org/WebSite">
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Releve Pilates</title>
+	<title itemprop='name'>Releve Pilates</title>
+	<link rel="canonical" href="http://www.relevepilates.com.ar/" itemprop="url">
 	<meta name="description" content="Releve Pilates" />
 	<meta name="keywords" content="Pilates, Releve, Ejercicio, Salud, Cuerpo, Danza, Congreso, Plaza Congreso, CABA, Capital Federal, Ciudad Autónoma de Buenos Aires," />
 	<meta name="author" content="Nitsuga" />
@@ -35,3 +36,27 @@
 </html>
 
 <%= javascript_include_tag "application", params[:controller], "data-turbolinks-track" => true %>
+
+
+<!-- schema.org markup -->
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "url": "http://www.relevepilates.com.ar/",
+  "logo": "http://www.relevepilates.com.ar/logo.png",
+  "contactPoint": [{
+    "@type": "ContactPoint",
+    "telephone": "+54 (011) 4382 - 6446",
+    "contactType": "customer service",
+    "areaServed": "AR",
+    "availableLanguage": ["Spanish","English"]
+  }],
+  "sameAs": [
+    "https://www.facebook.com/relevepilates/",
+    "https://www.instagram.com/relevepilates/",
+    "https://plus.google.com/108856335950426948454/",
+    "https://www.youtube.com/channel/UCANspzZurd6hdJqrJPZBU8w"
+  ]
+}
+</script>
