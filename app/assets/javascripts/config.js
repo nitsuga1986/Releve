@@ -88,11 +88,11 @@ $.datepicker.regional['es'] = {
 	//showButtonPanel: true
 });
 //  Agenda
-var claseAgendaDefaultPage = 1;	var claseAgendaDefaultCount = 15;
+var claseAgendaDefaultPage = 1;	var claseAgendaDefaultCount = 5;
 var claseAgendaDefaultFilter = {};   
 var claseAgendaDefaultGroupingBy = 'fecha'; var claseAgendaDefaultGrouping = {fecha: "asc"}
 var claseAgendaDefaultSorting = {fecha: 'desc',horario: 'asc'};
-var claseAgendaPageSizes = [15, 25, 50, 100];
+var claseAgendaPageSizes = [5, 15, 25, 50, 100];
 var columns_claseAgenda = [
 	{title:"Fecha",field:"fecha",filter:"fecha",visible:false,filter:{'fecha':'text'}, sortable: "fecha", sortDirection: "asc",groupable:"fecha",hiddenxs:false},
 	{title:"Horario",field:"horario",filter:"horario",visible:true,filter:{'horario':'text'}, sortable: "horario", sortDirection: "desc",groupable:"horario",hiddenxs:false},
