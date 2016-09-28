@@ -1,4 +1,4 @@
-json.(@user, :id, :nombre, :apellido, :email, :profesion, :dni, :telefono, :domicilio, :localidad, :fechanac, :sexo, :nombre_contacto, :apellido_contacto, :telefono_contacto, :reminders, :newsletter)
+json.(@user, :id, :nombre, :apellido, :email, :profesion, :dni, :telefono, :domicilio, :localidad, :fechanac, :sexo, :nombre_contacto, :apellido_contacto, :telefono_contacto, :reminders, :newsletter, :primera_clase, :confirmed)
 json.packs @user.packs do |pack|
   json.id pack.id
   json.actividad_id pack.actividad_id
