@@ -27,7 +27,7 @@
 			<label for="fecha_start" class="col-sm-4 control-label">Desde</label>
 			<div class="col-sm-7">
 				<div class="input-group">
-					<input type="text" class="form-control" name="fecha_start" data-ng-model="clase.fecha_start" data-ng-blur="GoToClaseBulk()" id="fecha_start" placeholder="aaaa-mm-dd">
+					<input type="text" class="form-control" name="fecha_start" data-ng-model="clase.fecha_start" id="fecha_start" placeholder="aaaa-mm-dd">
 					<label title="Ver calendario" for="fecha_start" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span></label>
 				</div>
 			</div>
@@ -36,7 +36,7 @@
 		<div class="form-group col-sm-6">
 			<label for="horario" class="col-sm-4 control-label">Horario</label>
 			<div class="col-sm-7">
-				<select class="form-control" data-ng-blur="GoToClaseBulk()" name="horario" data-ng-model="clase.horario" id="horario" data-ng-options="horario as horario for horario in horariosArray"></select> 
+				<select class="form-control" name="horario" data-ng-model="clase.horario" id="horario" data-ng-options="horario as horario for horario in horariosArray"></select> 
 			</div>
 		</div>
 		<!-- fecha_end -->
@@ -44,7 +44,7 @@
 			<label for="fecha_end" class="col-sm-4 control-label">Hasta</label>
 			<div class="col-sm-7">
 				<div class="input-group">
-					<input type="text" class="form-control" name="fecha_end" data-ng-model="clase.fecha_end" data-ng-blur="GoToClaseBulk()" id="fecha_end" placeholder="aaaa-mm-dd">
+					<input type="text" class="form-control" name="fecha_end" data-ng-model="clase.fecha_end" id="fecha_end" placeholder="aaaa-mm-dd">
 					<label title="Ver calendario" for="fecha_end" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span></label>
 				</div>
 			</div>

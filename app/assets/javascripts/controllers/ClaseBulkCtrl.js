@@ -2,7 +2,6 @@ angular.module("TurnosApp").controller("ClaseBulkCtrl",['$scope', '$rootScope', 
 	$scope.FormErrors = [];
 	$scope.horariosArray = horariosArray;
 	$scope.submiterror = false;
-	$scope.history_GoToClaseBulk = []; // Prevents loop search
 	$scope.GoToIndex = function(id) {$location.path("/clase/index");};
 	$scope.GoToNewActividad = function() {$location.path("/actividad/new");};
 	$scope.ActividadIndex = [];

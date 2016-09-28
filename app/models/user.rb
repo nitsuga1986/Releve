@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
   has_many :clases, through: :asistencias
   has_many :wait_lists
   has_many :wait_clases, through: :wait_lists, source: :clase
+  has_many :instructorados, class_name: "Clase", foreign_key: "instructor"
+  has_many :reemplazoados, class_name: "Clase", foreign_key: "reemplazo"  
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

@@ -131,6 +131,17 @@ var columns_clase = [
 	{title:"Prueba?",field:"trialable",filter:"trialable",visible:true,filter:{'trialable':'text'}, sortable: "trialable", sortDirection: "desc",groupable:"trialable"},
 	{title:"Comentarios",field:"comment",filter:"comment",visible:false,filter:{'comment':'text'}, sortable: "comment", sortDirection: "desc",groupable:"comment"},
 ];
+// Instructor
+var claseInstructorPage = 1;	var claseInstructorCount = 15;
+var claseInstructorFilter = {};
+var claseInstructorSorting = {fecha: 'asc',horario: 'asc'};
+var clasePageSizes = [15, 25, 50, 100];
+var columns_instructor = [
+	{title:"Fecha",field:"fecha_fixed",filter:"fecha",visible:true,filter:{'fecha':'text'}},
+	{title:"Horario",field:"horario",filter:"horario",visible:true,filter:{'horario':'text'}},
+	{title:"Alumnos",field:"cant_users",filter:"cant_users",visible:true,filter:{'cant_users':'text'}, sortable: "cant_users", sortDirection: "desc",groupable:"cant_users"},
+	{title:"Alumnos",field:"users",filter:"users",visible:true,filter:{'users':'text'}, sortable: "users", sortDirection: "desc",groupable:"users"},
+];
 // Alumno
 var alumnoDefaultPage = 1;	var alumnoDefaultCount = 25;
 var alumnoDefaultFilter = {}; 

@@ -37,6 +37,7 @@
 							  <ul class="dropdown-menu">
 								<li><a href="/clase/index" class="text-admin"><i class="fa fa-calendar" aria-hidden="true"></i> Clases</a></li>
 								<li><a href="/alumno/index" class="text-admin"><i class="fa fa-users" aria-hidden="true"></i> Alumnos</a></li>
+								<li><a href="/clase/instructor" class="text-admin"><i class="fa fa-search" aria-hidden="true"></i> Instructor</a></li>
 							  </ul>
 							</li>
 						<% end %>
@@ -92,6 +93,7 @@
 				<% if current_user.admin? %>
 					<a class="btn btn-danger btn-lg text-admin" href="/clase/index"><i class="fa fa-calendar" aria-hidden="true"></i> Clases</a>
 					<a class="btn btn-danger btn-lg text-admin" href="/alumno/index"><i class="fa fa-users" aria-hidden="true"></i> Alumnos</a>
+					<a class="btn btn-danger btn-lg text-admin" href="/clase/instructor"><i class="fa fa-search" aria-hidden="true"></i> Alumnos</a>
 				<% end %>
 			<% end %>
 			<% if !current_user.confirmed? %>
