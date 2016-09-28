@@ -271,3 +271,29 @@
   }
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCS61_zaaWYmJIMekUGT1arDldQP5w5K7M&callback=initMap"></script>
+
+<script type="application/ld+json">[
+	<% (0..9).each do |k| %>
+		<% if !@nextclases[k].nil?  && !@nextclases[k].instructor.nil?%>
+			{
+			  "@context": "http://schema.org",
+			  "@type": "Event",
+			  "name": "<%= @nextclases[k].actividad.nombre %>",
+			  "startDate" : "<%= DateTime.strptime(@nextclases[k].fecha.strftime('%Y-%m-%d')+" "+@nextclases[k].horario+' -0300', '%Y-%m-%d %H:%M %Z').to_time.iso8601 %>",
+			  "endDate" : "<%= (DateTime.strptime(@nextclases[k].fecha.strftime('%Y-%m-%d')+" "+@nextclases[k].horario+' -0300', '%Y-%m-%d %H:%M %Z')+1.hour).to_time.iso8601 %>",
+			  "url" : "http://www.relevepilates.com.ar/app/agenda/",
+			  "organizer":"Releve",
+			  "performer":"<%= @nextclases[k].instructor.nombre_completo %>",
+			  <% if @nextclases[k].actividad.nombre=="Pilates" %>
+			  "description":"CLASE GRUPAL: se trabaja en circuito o Pilates Estudio. Como máximo 4 personas, es un trabajo personalizado y dura 1 hora.",
+			  <% end %>
+			  "location" : {
+				"@type" : "Place",
+				"sameAs" : "https://www.google.com.ar/maps/place/Releve+Pilates/@-34.608566,-58.387711,15z/data=!4m2!3m1!1s0x0:0x90828179f531169a?sa=X&ved=0ahUKEwjDkpGYgbLPAhXGHJAKHbNOA3cQ_BIIcjAP",
+				"name" : "Releve Pilates",
+				"address" : "Paraná 26, Congreso, Ciudad Autónoma de Buenos Aires, Argentina."
+			  }
+			}<% if k != (0..8).last %>,<% end %>
+		<% end %>
+	<% end %>
+]</script>
