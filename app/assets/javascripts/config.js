@@ -135,7 +135,7 @@ var columns_clase = [
 var alumnoDefaultPage = 1;	var alumnoDefaultCount = 25;
 var alumnoDefaultFilter = {}; 
 var alumnoDefaultGroupingBy = 'fecha'; var alumnoDefaultGrouping = {fecha: "desc"}
-var alumnoDefaultSorting = {email: 'desc'};
+var alumnoDefaultSorting = {email: 'asc'};
 var sexosArray = ["Mujer","Hombre"];
 var columns_alumno = [
 	{title:"Email",field:"email",filter:"email",visible:true,filter:{'email':'text'}},
