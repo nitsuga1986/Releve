@@ -26,6 +26,14 @@ class User < ActiveRecord::Base
 		return self.email
 	end
   end
+  
+  def label
+	if !self.nombre.nil? and !self.apellido.nil?
+		return self.nombre+" "+self.apellido+" ("+self.email+")"
+	else
+		return self.email
+	end
+  end
  
   def remove_from_clase(clase)
 	asistencias.where(:clase_id => clase.id).first.destroy if asistencias.where(:clase_id => clase.id).count > 0
