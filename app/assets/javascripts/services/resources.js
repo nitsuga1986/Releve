@@ -3,7 +3,7 @@ angular.module("TurnosApp").factory("ResourceClase",['$resource', function($reso
   return $resource("/api/clases/:id", { id: "@id" },
     {
       'create':  		{ method: 'POST' },
-      'index':   		{ method: 'GET', isArray: true },
+      'index':   		{ method: 'GET', isArray: true, cache : true },
       'show':    		{ method: 'GET', isArray: false },
       'update':  		{ method: 'PUT' },
       'destroy': 		{ method: 'DELETE' },

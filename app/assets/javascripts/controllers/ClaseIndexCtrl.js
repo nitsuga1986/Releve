@@ -2,6 +2,7 @@ angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$rootScope',
 	$scope.GoToEdit = function(id) {$location.path("/clase/"+id+"/edit/");};
 	$scope.GoToNew = function() {$location.path("/clase/new");};
 	$scope.GoToBulk = function() {$location.path("/clase/bulk");};
+	firstload=true;
 	// currentDate
 	var fullDate = new Date();
 	var twoDigitMonth = (fullDate.getMonth() + 1)+"";if(twoDigitMonth.length==1)	twoDigitMonth="0" +twoDigitMonth;
@@ -38,7 +39,7 @@ angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$rootScope',
 				filteredData = params.filter() ? $filter('filter')(data, params.filter()): data;	
 				orderedData = params.sorting() ? $filter('orderBy')(filteredData, params.orderBy()) : filteredData;
 				// set Page for current date
-				$.each(orderedData,function(idx, val){if (val['fecha'] == currentDate) {params.page(Math.floor(idx/params.count()));return false;}});
+				if(firstload){$.each(orderedData,function(idx, val){if (val['fecha'] == currentDate) {params.page(Math.floor(idx/params.count()));return false;}});firstload=false;}
 				// Show
 				params.total(orderedData.inlineCount);
 				stopLoading();
