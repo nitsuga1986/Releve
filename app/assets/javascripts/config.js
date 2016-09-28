@@ -114,7 +114,7 @@ var columns_claseMisClases = [
 // Clase
 var claseDefaultPage = 1;	var claseDefaultCount = 15;
 var claseDefaultFilter = {};   
-var claseDefaultGroupingBy = 'fecha'; var claseDefaultGrouping = {fecha: "desc"}
+var claseDefaultGroupingBy = 'fecha'; var claseDefaultGrouping = {fecha: "asc"}
 var claseDefaultSorting = {fecha: 'desc',horario: 'asc'};
 var clasePageSizes = [15, 25, 50, 100];
 var horariosArray = ["09:00","10:00","11:00","12:00","13:00","17:00","18:00","19:00","20:00","21:00","--","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00"];
