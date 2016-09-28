@@ -84,6 +84,7 @@ $.datepicker.regional['es'] = {
 	dateFormat: "yy-mm-dd",
 	changeMonth: true,
 	changeYear: true,
+	yearRange: "-80:+0",
 	//showButtonPanel: true
 });
 //  Agenda
