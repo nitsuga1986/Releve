@@ -137,16 +137,7 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$rootScope', 
 				$( "button.changeAll > i" ).removeClass('fa-square-o').addClass('fa-square'); return true
 		}else{	$( "button.changeAll > i" ).removeClass('fa-square').addClass('fa-square-o');return false
 	}};
-	$scope.filterDaychangeAll = function() {
-		startLoading();
-		if(filterDaychangeAllClass()){$scope.filterDay=[false,false,false,false,false,false,false]}
-		else{$scope.filterDay=[true,true,true,true,true,true,true]};
-		filterDaychangeAllClass();
-		$scope.tableParams.reload();
-	};
-	$scope.filterDaychange = function(day) {
-		startLoading();
-		$scope.filterDay[day] = !$scope.filterDay[day];
+	changeDayCriteria = function() {
 		dayCriteria=[]; 
 		angular.forEach(dayNames,function(value,key){
 			if($scope.filterDay[key]){
@@ -154,6 +145,19 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$rootScope', 
 			}
 			$scope.dayCriteria=dayCriteria;
 		});
+	};
+	$scope.filterDaychangeAll = function() {
+		startLoading();
+		if(filterDaychangeAllClass()){$scope.filterDay=[false,false,false,false,false,false,false]}
+		else{$scope.filterDay=[true,true,true,true,true,true,true]};
+		changeDayCriteria();
+		filterDaychangeAllClass();
+		$scope.tableParams.reload();
+	};
+	$scope.filterDaychange = function(day) {
+		startLoading();
+		$scope.filterDay[day] = !$scope.filterDay[day];
+		changeDayCriteria();
 		filterDaychangeAllClass();
 		$('button.filterDayButton').blur();
 		$scope.tableParams.reload();
