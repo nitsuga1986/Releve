@@ -100,7 +100,6 @@ jQuery(function($) {
 			scrollSpeed: 400,
 			filter: ':not(.btn)'
 		});
-		
 
 		// Preloader
 		$('.intro-tables, .parallax, header').css('opacity', '0');
