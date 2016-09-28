@@ -37,27 +37,4 @@
 </html>
 
 <%= javascript_include_tag "application", params[:controller], "data-turbolinks-track" => true %>
-
-
-<!-- schema.org markup -->
-<script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "Organization",
-  "url": "http://www.relevepilates.com.ar/",
-  "logo": "http://www.relevepilates.com.ar/logo.png",
-  "contactPoint": [{
-    "@type": "ContactPoint",
-    "telephone": "+54 (011) 4382 - 6446",
-    "contactType": "customer service",
-    "areaServed": "AR",
-    "availableLanguage": ["Spanish","English"]
-  }],
-  "sameAs": [
-    "https://www.facebook.com/relevepilates/",
-    "https://www.instagram.com/relevepilates/",
-    "https://plus.google.com/+RelevePilatesBuenosAires/",
-    "https://www.youtube.com/channel/UCANspzZurd6hdJqrJPZBU8w"
-  ]
-}
-</script>
+<%= javascript_include_tag "markupOrganization", :type => "application/ld+json" , "data-turbolinks-track" => true %>
