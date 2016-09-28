@@ -141,6 +141,7 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$rootScope', 
 			}
 			$scope.dayCriteria=dayCriteria;
 		});
+		$scope.tableParams.page(1);
 	};
 	$scope.filterDaychangeAll = function() {
 		startLoading();
