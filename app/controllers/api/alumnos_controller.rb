@@ -90,7 +90,7 @@ class Api::AlumnosController < ApplicationController
   
   def update_current
 	@alumno = current_user
-	if @alumno.update_attributes(params.permit(:email, :dni, :nombre, :apellido, :profesion, :fechanac, :telefono, :domicilio, :localidad, :nombre_contacto, :apellido_contacto, :telefono_contacto, :sexo, :reminders,:newsletter)) then
+	if @alumno.update_attributes(params.permit(:email, :dni, :nombre, :apellido, :profesion, :fechanac, :telefono, :domicilio, :localidad, :nombre_contacto, :apellido_contacto, :telefono_contacto, :sexo, :reminders, :newsletter)) then
 		head :no_content
 	else
 		render json: @alumno.errors, status: :unprocessable_entity

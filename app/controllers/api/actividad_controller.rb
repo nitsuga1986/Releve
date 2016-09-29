@@ -1,7 +1,7 @@
 class Api::ActividadController < ApplicationController
   before_action :authenticate_user!
   before_action only: [:create, :destroy] do redirect_to :new_user_session_path unless current_user && current_user.admin?   end
-  before_action only: [:index, :update] do redirect_to :new_user_session_path unless current_user && (current_user.instructor?||current_user.admin?)   end
+  before_action only: [:update] do redirect_to :new_user_session_path unless current_user && (current_user.instructor?||current_user.admin?)   end
   
   respond_to :json
 
@@ -27,10 +27,6 @@ class Api::ActividadController < ApplicationController
   
   # INSTRUCTOR
   ###########################
-  def index
-		@actividad = Actividad.all
-		respond_with @actividad
-  end
   def update
 	@actividad = Actividad.find(params[:id])
 	if @actividad.update_attributes(params.permit(:nombre)) then
@@ -42,6 +38,9 @@ class Api::ActividadController < ApplicationController
   
   # USER
   ###########################
-
+  def index
+		@actividad = Actividad.all
+		respond_with @actividad
+  end
 end
 
