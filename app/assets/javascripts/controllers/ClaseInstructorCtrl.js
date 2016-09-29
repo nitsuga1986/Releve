@@ -60,6 +60,11 @@ angular.module("TurnosApp").controller("ClaseInstructorCtrl",['$scope', '$rootSc
 			window.scrollTo(0, 0);
 		}
 	};
+
+	$scope.searchToday = function() {
+		$scope.clase.fecha_end = SetDay(0);
+		$scope.clase.fecha_start = SetDay(0);
+	}
 	// Datepicker
 	 var datelist = []; // initialize empty array
 	 $(function() {

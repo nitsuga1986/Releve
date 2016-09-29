@@ -46,9 +46,7 @@ class Api::ClasesController < ApplicationController
   
   def instructor
 	@clases = User.find(params[:instructor_id]).instructorados.where('fecha >= ? AND fecha <= ?',params[:fecha_start],params[:fecha_end])
-	if !@clases.nil? then
-		render json:  @clases
-	else
+	if @clases.nil? then
 		head :no_content
 	end
   end

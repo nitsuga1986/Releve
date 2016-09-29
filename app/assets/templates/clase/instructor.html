@@ -41,7 +41,10 @@
 		</div>
 		<!-- Submit-->
 		<div class="col-lg-2">
-			<button type="submit" class="btn btn-primary btn-block" data-ng-bind-html="FormButton | html_trusted"></button>
+			<div class="btn-group btn-block">
+					<button type="submit" class="btn btn-primary" data-ng-bind-html="FormButton | html_trusted"></button>
+					<button data-ng-click="searchToday()" class="btn btn-primary" title="Clases de hoy"><i class="fa fa-search-plus" aria-hidden="true"></i></button>
+			</div>
 		</div>
 	</form>
 </div>
@@ -63,9 +66,11 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr data-ng-repeat="clase in $data">
+				<tr data-ng-repeat="clase in $data" data-ng-class="{'danger': clase.cancelada,'warning': clase.reemplazo}">
 					<td data-ng-repeat="column in columns_instructor" data-ng-click="GoToEdit(clase.id)" data-ng-show="column.visible" sortable="column.field" filter="column.filter">
 						<span data-ng-if="column.field!='users'">{{clase[column.field]}}</span>
+<!--Cancelada-->		<span data-ng-if="column.field=='fecha_fixed' && clase.cancelada" class="text-danger" title="{{clase['comment']}}">Cancelada</span>
+<!--Reemplazo-->		<span data-ng-if="column.field=='fecha_fixed' && clase.reemplazo" class="text-warning" title="{{clase['comment']}}">{{clase.reemplazo}}</span>
 						<span data-ng-if="column.field=='users'">
 							<span data-ng-repeat="user in clase[column.field]">{{user.nombre_completo}}<span data-ng-if="!$last">, </span></span>
 						</span>
