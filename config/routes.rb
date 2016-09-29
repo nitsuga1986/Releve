@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 				get 'autocomplete'
 				post 'current'
 				post 'instructores'
+				put 'update_current'
 			end
 		end
 		resources :actividad
@@ -23,7 +24,6 @@ Rails.application.routes.draw do
 				post 'join'
 				post 'unjoin'
 				post 'waitlist'
-				post 'update_current'
 			end
 		end
 	end
