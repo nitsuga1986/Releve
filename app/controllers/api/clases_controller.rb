@@ -1,7 +1,7 @@
 class Api::ClasesController < ApplicationController
   before_action :authenticate_user!
-  #before_action only: [:test_emails, :create, :bulk, :destroy] do redirect_to :new_user_session_path unless current_user && current_user.admin?   end
-  #before_action only: [:index, :show, :search, :instructor, :update] do redirect_to :new_user_session_path unless current_user && current_user.instructor?   end
+  before_action only: [:test_emails, :create, :bulk, :destroy] do redirect_to :new_user_session_path unless current_user && current_user.admin?   end
+  before_action only: [:index, :show, :search, :instructor, :update] do redirect_to :new_user_session_path unless current_user && current_user.instructor?   end
 
   respond_to :json
 
