@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 				post 'join'
 				post 'unjoin'
 				post 'waitlist'
-				put 'update_current'
+				post 'update_current'
 			end
 		end
 	end
