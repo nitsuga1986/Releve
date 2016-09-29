@@ -32,13 +32,6 @@
 				<input type="text" class="form-control" name="profesion" data-ng-model="alumno.profesion" id="profesion" placeholder="Profesión del alumno">
 			</div>
 		</div>
-		<!-- dni -->
-		<div class="form-group col-sm-6">
-			<label for="dni" class="col-sm-4 control-label">DNI</label>
-			<div class="col-sm-7">
-				<input type="number" min="0" class="form-control nodecoration" name="dni" data-ng-model="alumno.dni" id="dni" placeholder="Nro. documento">
-			</div>
-		</div>
 		<!-- telefono -->
 		<div class="form-group col-sm-6">
 			<label for="telefono" class="col-sm-4 control-label">Teléfono:</label>
@@ -58,6 +51,13 @@
 			<label for="localidad" class="col-sm-4 control-label">Localidad:</label>
 			<div class="col-sm-7">
 				<input type="text" class="form-control" name="localidad" data-ng-model="alumno.localidad" id="localidad" placeholder="Localidad del alumno">
+			</div>
+		</div>
+		<!-- dni -->
+		<div class="form-group col-sm-6">
+			<label for="dni" class="col-sm-4 control-label">DNI</label>
+			<div class="col-sm-7">
+				<input type="number" min="0" class="form-control nodecoration" name="dni" data-ng-model="alumno.dni" id="dni" placeholder="Nro. documento">
 			</div>
 		</div>
 		<!-- fechanac -->
@@ -111,7 +111,7 @@
 		<div class="col-sm-12"><h4>Actividades</h4></div>
 		<div class="form-group col-xs-12">
 			<ul class="">
-				<li data-ng-repeat="pack in alumno.packs">Plan de <strong>{{pack.actividad}}</strong>: <span data-ng-if="pack.cantidad">Puedes agendar hasta un máximo de {{pack.cantidad}} de clases.</span><span data-ng-if="!pack.cantidad">Aún no tines cargado ningún plan para esta actividad.</span></li>
+				<li data-ng-repeat="pack in alumno.packs" data-ng-if="pack.cantidad">Plan de <strong>{{pack.actividad}}</strong>: <span data-ng-if="pack.cantidad">Puedes agendar hasta un máximo de {{pack.cantidad}} de clases.</span></li>
 			</ul>
 			<p class="text-muted">Consulta con tu instructor para modificar tus planes.</p>
 		</div>

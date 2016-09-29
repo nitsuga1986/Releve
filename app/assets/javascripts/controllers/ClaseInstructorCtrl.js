@@ -83,4 +83,19 @@ angular.module("TurnosApp").controller("ClaseInstructorCtrl",['$scope', '$rootSc
 		   }
 		});
 	});
+	// Destroy
+	$scope.toDestroy = function(clase_id) {
+		$scope.IdToDestroy = clase_id;
+	};
+	$scope.destroyClase = function() {
+		$rootScope.got_to_url_success = "/clase/index";
+		$('.confirmation-modal').on('hidden.bs.modal', function (e) {
+			$.each($scope.clases, function(index) {
+				if($scope.clases[index]!=undefined && $scope.clases[index].id == $scope.IdToDestroy) { //Remove from array
+					ResourceClase.destroy($scope.deleteVariablesClaseToSend($scope.clases[index],true,true), $scope.callbackSuccess, $scope.callbackFailure);
+					$scope.tableParams.reload();
+				}    
+			});
+		})
+	};
 stopLoading();}]);

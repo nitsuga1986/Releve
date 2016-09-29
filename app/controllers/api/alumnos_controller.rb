@@ -1,33 +1,12 @@
 class Api::AlumnosController < ApplicationController
   before_action :authenticate_user!
+  before_action only: [:create, :destroy] do redirect_to :new_user_session_path unless current_user && current_user.admin?   end
+  before_action only: [:index, :show, :autocomplete, :update] do redirect_to :new_user_session_path unless current_user && current_user.instructor?   end
+  
   respond_to :json
 
-  def index
-	@alumno = User.all
-	respond_with @alumno
-  end
-
-  def show
-	@alumno = User.find(params[:id])
-	respond_with @alumno
-  end
-  
-  def current
-	@user = current_user
-  end
-  
-  def instructores
-	@alumno = User.where(instructor:true)
-	render json: @alumno
-  end
-  
-  def autocomplete
-	like= "%".concat(params[:term].concat("%"))
-	@users = User.where("email like ? OR nombre like ? OR apellido like ?", like, like, like)
-	list = @users.map {|u| Hash[ label:u.label, id: u.id, email: u.email]}
-	render json: list
-  end
-  
+  # ADMIN
+  ###########################
   def create
 	if !@alumno = User.find_by_email(params[:email]) then
 		@alumno = User.new(params.permit(:email, :dni, :nombre, :apellido, :profesion, :fechanac, :fechaini, :telefono, :domicilio, :localidad, :nombre_contacto, :apellido_contacto, :telefono_contacto, :sexo, :confirmed, :primera_clase, :nro_clases, :admin, :instructor, :sexo, :reminders, :newsletter, :accept_terms))
@@ -52,6 +31,31 @@ class Api::AlumnosController < ApplicationController
 	end
   end
 
+  def destroy
+	@alumno = User.find(params[:id])    
+	@alumno.destroy
+	head :no_content
+  end
+  
+  # INSTRUCTOR
+  ###########################
+  def index
+	@alumno = User.all
+	respond_with @alumno
+  end
+
+  def show
+	@alumno = User.find(params[:id])
+	respond_with @alumno
+  end
+
+  def autocomplete
+	like= "%".concat(params[:term].concat("%"))
+	@users = User.where("email like ? OR nombre like ? OR apellido like ?", like, like, like)
+	list = @users.map {|u| Hash[ label:u.label, id: u.id, email: u.email]}
+	render json: list
+  end
+
   def update
 	@alumno = User.find(params[:id])
 	@alumno.actividades.each{|x| x.remove_user_from_actividad(@alumno)}
@@ -72,7 +76,18 @@ class Api::AlumnosController < ApplicationController
 		render json: @alumno.errors, status: :unprocessable_entity
 	end
   end
-
+  
+  # USER
+  ###########################
+  def current
+	@user = current_user
+  end
+  
+  def instructores
+	@alumno = User.where(instructor:true)
+	render json: @alumno
+  end
+  
   def update_current
 	@alumno = current_user
 	if @alumno.update_attributes(params.permit(:email, :dni, :nombre, :apellido, :profesion, :fechanac, :telefono, :domicilio, :localidad, :nombre_contacto, :apellido_contacto, :telefono_contacto, :sexo, :reminders,:newsletter)) then
@@ -80,13 +95,6 @@ class Api::AlumnosController < ApplicationController
 	else
 		render json: @alumno.errors, status: :unprocessable_entity
 	end
-  end
-
-      
-  def destroy
-	@alumno = User.find(params[:id])    
-	@alumno.destroy
-	head :no_content
   end
   
 end

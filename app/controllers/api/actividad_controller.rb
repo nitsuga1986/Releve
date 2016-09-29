@@ -1,43 +1,47 @@
 class Api::ActividadController < ApplicationController
   before_action :authenticate_user!
-  respond_to :json
+  before_action only: [:create, :destroy] do redirect_to :new_user_session_path unless current_user && current_user.admin?   end
+  before_action only: [:index, :update] do redirect_to :new_user_session_path unless current_user && current_user.instructor?   end
   
-	def index
-		@actividad = Actividad.all
-		respond_with @actividad
-	end
+  respond_to :json
 
-	def show
-		@actividad = Actividad.find(params[:id])
-		respond_with @actividad
-	end
-
-	def create
-		if !@actividad = Actividad.find_by_nombre(params[:nombre]) then
-			@actividad = Actividad.new(params.permit(:nombre))
-			if @actividad.save then
-				render json: @actividad, status: :created #, location: @actividad
-			else
-				render json: @actividad.errors, status: :unprocessable_entity
-			end
-		else
-			render json: @actividad, status: :conflict
-		end
-	end
-
-	def update
-		@actividad = Actividad.find(params[:id])
-		if @actividad.update_attributes(params.permit(:nombre)) then
-			head :no_content
+  # ADMIN
+  ###########################
+  def create
+	if !@actividad = Actividad.find_by_nombre(params[:nombre]) then
+		@actividad = Actividad.new(params.permit(:nombre))
+		if @actividad.save then
+			render json: @actividad, status: :created #, location: @actividad
 		else
 			render json: @actividad.errors, status: :unprocessable_entity
 		end
+	else
+		render json: @actividad, status: :conflict
 	end
-
-	def destroy
-		@actividad = Actividad.find(params[:id])    
-		@actividad.destroy
+  end
+  def destroy
+	@actividad = Actividad.find(params[:id])    
+	@actividad.destroy
+	head :no_content
+  end
+  
+  # INSTRUCTOR
+  ###########################
+  def index
+		@actividad = Actividad.all
+		respond_with @actividad
+  end
+  def update
+	@actividad = Actividad.find(params[:id])
+	if @actividad.update_attributes(params.permit(:nombre)) then
 		head :no_content
+	else
+		render json: @actividad.errors, status: :unprocessable_entity
 	end
+  end
+  
+  # USER
+  ###########################
+
 end
 

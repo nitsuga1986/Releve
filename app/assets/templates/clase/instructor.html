@@ -77,7 +77,7 @@
 					<td>
 						<div class="btn-group btn-group-xs" role="group" aria-label="...">
 							<a type="button" class="btn btn-warning" href="/clase/{{clase.id}}/edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-							<!--<button data-ng-click="toDestroy(clase.id)" type="button" class="btn btn-danger" data-toggle="modal" data-target=".confirmation-modal"><i class="fa fa-trash" aria-hidden="true"></i></button>-->
+							<button data-ng-click="toDestroy(clase.id)" type="button" class="btn btn-danger" data-toggle="modal" data-target=".confirmation-modal"><i class="fa fa-trash" aria-hidden="true"></i></button>
 						</div>
 					</td>
 				</tr>
@@ -91,4 +91,21 @@
 			</tbody>
 		</table>
 	</div>
+</div>
+
+<!-- MODAL -->
+<div aria-hidden="true" aria-labelledby="confirmationModal" role="dialog" tabindex="-1" class="modal fade confirmation-modal" style="display: none;">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button aria-label="Close" data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span></button>
+				<h4 id="confirmationModal" class="modal-title">¿Seguro que desea eliminar esta clase?<a href="#confirmationModal" class="anchorjs-link"><span class="anchorjs-icon"></span></a></h4>
+			</div>
+			<div class="modal-body text-center">
+				<button data-dismiss="modal" class="btn btn-default" type="button" data-ng-click="IdToDestroy = null">Mejor no...</button>
+				<button data-dismiss="modal" class="btn btn-danger" type="button" data-ng-click="destroyClase()">Si si</button>
+			</div>
+			<!-- <div class="modal-footer"></div> -->
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
 </div>

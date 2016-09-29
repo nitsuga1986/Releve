@@ -1,7 +1,13 @@
 class Api::ClasesController < ApplicationController
   before_action :authenticate_user!
+  before_action only: [:test_emails, :create, :bulk, :destroy] do redirect_to :new_user_session_path unless current_user && current_user.admin?   end
+  before_action only: [:index, :show, :search, :instructor, :update] do redirect_to :new_user_session_path unless current_user && current_user.instructor?   end
+
   respond_to :json
 
+  
+  # ADMIN
+  ###########################
   # routes.rb, resources.js, clases_controller.rb, templates/clase/index.html, javascripts/controllers/ClaseIndexCtrl.js
   def test_emails
 	logger.debug('sending test_emails')
@@ -13,75 +19,7 @@ class Api::ClasesController < ApplicationController
 	UserMailer.remainder_email(current_user).deliver
 	render json:  current_user
   end
-  
-  def index
-	@clases = Clase.all.order(:fecha,:horario)
-  end
-  
-  def index_usr
-	@clases = Clase.where('fecha >= ?', DateTime.now).order(:fecha,:horario).limit(150)
-  end
-  
-  def history_usr
-	@clases = current_user.clases
-  end
 
-  def show
-	if current_user.try(:admin?)
-		@clase = Clase.find(params[:id])
-		render json:  @clase
-	else
-		redirect_to root_path
-	end
-  end
-  
-  def search
-	@clase = Clase.find_by_fecha_and_horario_and_instructor(params[:fecha],params[:horario],params[:instructor])
-	if !@clase.nil? then
-		render json:  @clase
-	else
-		head :no_content
-	end
-  end
-  
-  def instructor
-	@clases = User.find(params[:instructor_id]).instructorados.where('fecha >= ? AND fecha <= ?',params[:fecha_start],params[:fecha_end])
-	if @clases.nil? then
-		head :no_content
-	end
-  end
-
-  def join 
-	@clase = Clase.find(params[:id])
-	@clase.add_asistencia(current_user.id)
-	UserMailer.join_email(current_user,@clase).deliver
-	render json: @clase, status: :created
-  end
-  
-  def join_multiple
-	@clases= []
-	params[:_json].each do |clase|
-		@clase = Clase.find(clase[:id])
-		@clase.add_asistencia(current_user.id)
-		@clases.push(@clase)
-	end
-	UserMailer.join_multiple_email(current_user,@clases).deliver
-	render json: @clase, status: :created
-  end
-  
-  def unjoin 
-	@clase = Clase.find(params[:id])
-	current_user.remove_from_clase(@clase)
-	UserMailer.unjoin_email(current_user,@clase).deliver
-	render json: @clase, status: :created
-  end
-  
-  def waitlist 
-	@clase = Clase.find(params[:id])
-	@clase.add_wait_list(current_user.id)
-	render json: @clase, status: :created
-  end
-  
   def create
 	if !@clase = Clase.find_by_fecha_and_horario(params[:fecha],params[:horario]) then
 		@clase = Clase.new(params.permit(:fecha, :horario, :max_users, :duracion, :trialable, :cancelada, :comment))
@@ -132,6 +70,39 @@ class Api::ClasesController < ApplicationController
 	end
   end
 
+  def destroy
+	@clase = Clase.find(params[:id])    
+	@clase.destroy
+	head :no_content
+  end
+  
+  # INSTRUCTOR
+  ###########################
+  def index
+	@clases = Clase.all.order(:fecha,:horario)
+  end
+
+  def show
+	@clase = Clase.find(params[:id])
+	render json:  @clase
+  end
+  
+  def search
+	@clase = Clase.find_by_fecha_and_horario_and_instructor(params[:fecha],params[:horario],params[:instructor])
+	if !@clase.nil? then
+		render json:  @clase
+	else
+		head :no_content
+	end
+  end
+  
+  def instructor
+	@clases = User.find(params[:instructor_id]).instructorados.where('fecha >= ? AND fecha <= ?',params[:fecha_start],params[:fecha_end])
+	if @clases.nil? then
+		head :no_content
+	end
+  end
+
   def update
 	@clase = Clase.find(params[:id])
 	if params[:users].nil? then
@@ -153,11 +124,46 @@ class Api::ClasesController < ApplicationController
 		render json: @clase.errors, status: :unprocessable_entity
 	end
   end
+  
+  # USER
+  ###########################
+  def index_usr
+	@clases = Clase.where('fecha >= ?', DateTime.now).order(:fecha,:horario).limit(150).select{ |item| !item.old? }
+  end
+  
+  def history_usr
+	@clases = current_user.clases
+  end
 
-  def destroy
-	@clase = Clase.find(params[:id])    
-	@clase.destroy
-	head :no_content
+  def join 
+	@clase = Clase.find(params[:id])
+	@clase.add_asistencia(current_user.id)
+	UserMailer.join_email(current_user,@clase).deliver
+	render json: @clase, status: :created
+  end
+  
+  def join_multiple
+	@clases= []
+	params[:_json].each do |clase|
+		@clase = Clase.find(clase[:id])
+		@clase.add_asistencia(current_user.id)
+		@clases.push(@clase)
+	end
+	UserMailer.join_multiple_email(current_user,@clases).deliver
+	render json: @clase, status: :created
+  end
+  
+  def unjoin 
+	@clase = Clase.find(params[:id])
+	current_user.remove_from_clase(@clase)
+	UserMailer.unjoin_email(current_user,@clase).deliver
+	render json: @clase, status: :created
+  end
+  
+  def waitlist 
+	@clase = Clase.find(params[:id])
+	@clase.add_wait_list(current_user.id)
+	render json: @clase, status: :created
   end
   
 end
