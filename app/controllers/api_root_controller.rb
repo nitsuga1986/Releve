@@ -4,7 +4,7 @@ class ApiRootController < ApplicationController
 		if user_signed_in?
 			url = request.path_info
 			if !url.include?('app')
-				if (!current_user.try(:instructor?) || !current_user.try(:admin?))
+				if !(current_user.try(:instructor?) || current_user.try(:admin?))
 					redirect_to root_path
 				end
 			end
