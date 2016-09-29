@@ -1,7 +1,7 @@
 class Api::ActividadController < ApplicationController
   before_action :authenticate_user!
- # before_action only: [:create, :destroy] do redirect_to :new_user_session_path unless current_user && current_user.admin?   end
- # before_action only: [:index, :update] do redirect_to :new_user_session_path unless current_user && current_user.instructor?   end
+  before_action only: [:create, :destroy] do redirect_to :new_user_session_path unless current_user && current_user.admin?   end
+  before_action only: [:index, :update] do redirect_to :new_user_session_path unless current_user && (current_user.instructor?||current_user.admin?)   end
   
   respond_to :json
 
