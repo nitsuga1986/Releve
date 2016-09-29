@@ -1,7 +1,7 @@
 class Api::AlumnosController < ApplicationController
   before_action :authenticate_user!
-  before_action only: [:create, :destroy] do redirect_to :new_user_session_path unless current_user && current_user.admin?   end
-  before_action only: [:index, :show, :autocomplete, :update] do redirect_to :new_user_session_path unless current_user && current_user.instructor?   end
+  #before_action only: [:create, :destroy] do redirect_to :new_user_session_path unless current_user && current_user.admin?   end
+  #before_action only: [:index, :show, :autocomplete, :update] do redirect_to :new_user_session_path unless current_user && current_user.instructor?   end
   
   respond_to :json
 
