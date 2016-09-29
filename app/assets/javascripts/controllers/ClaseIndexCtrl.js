@@ -29,10 +29,8 @@ angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$rootScope',
 			startLoading();
 			return Api.index().$promise.then(function(data) {
 				angular.forEach(data, function(value, key) {
-					data[key]["instructor_nombre_completo"] = value.instructor.nombre_completo;
 					data[key]["cant_users"] = value.users.length+" / "+value.max_users;
 					data[key]["fecha_fixed"] = dateFormat(value.fecha) ;
-					data[key]["dia"] = dayNames[(new Date(value.fecha+'T12:00:00Z')).getDay()];
 				});
 				$scope.clases = data;
 				// Filter & Sort
