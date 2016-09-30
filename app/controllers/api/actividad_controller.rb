@@ -39,7 +39,7 @@ class Api::ActividadController < ApplicationController
   # USER
   ###########################
   def index
-		@actividad = Actividad.all
+		@actividad = Actividad.all.order(:id)
 		respond_with @actividad
   end
 end

@@ -84,7 +84,7 @@ class Api::AlumnosController < ApplicationController
   end
   
   def instructores
-	@alumno = User.where(instructor:true)
+	@alumno = User.where(instructor:true).order(:id)
 	render json: @alumno
   end
   
