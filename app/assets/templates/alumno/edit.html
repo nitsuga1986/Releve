@@ -163,29 +163,6 @@
 			</div>
 		</div>
 		<div data-ng-if="is_admin" class="col-sm-12"><h3>Datos de la cuenta</h3></div>
-		<!-- instructor -->
-		<div data-ng-if="is_admin" class="form-group col-sm-6">
-			<label for="instructor" class="col-sm-4 control-label">Instructor?</label>
-			<div class="col-sm-7">
-				<input type="checkbox" name="instructor" data-ng-model="alumno.instructor" id="instructor"> 
-			</div>
-		</div>
-		
-		<div class="col-sm-12"data-ng-if="is_admin" ><h3><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Administrador</h3></div>
-		<!-- confirmed -->
-		<div data-ng-if="is_admin" class="form-group col-sm-6">
-			<label for="confirmed" class="col-sm-4 control-label">Confirmado?</label>
-			<div class="col-sm-7">
-				<input type="checkbox" name="confirmed" data-ng-model="alumno.confirmed" id="confirmed"> 
-			</div>
-		</div>
-		<!-- admin -->
-		<div data-ng-if="is_admin" class="form-group col-sm-6">
-			<label for="admin" class="col-sm-4 control-label">Admin?</label>
-			<div class="col-sm-7">
-				<input type="checkbox" name="admin" data-ng-model="alumno.admin" id="admin"> 
-			</div>
-		</div>
 		<!-- reminders -->
 		<div data-ng-if="is_admin" class="form-group col-sm-6">
 			<label for="reminders" class="col-sm-4 control-label">Recordatorios?</label>
@@ -198,6 +175,29 @@
 			<label for="newsletter" class="col-sm-4 control-label">Noticias?</label>
 			<div class="col-sm-7">
 				<input type="checkbox" name="newsletter" data-ng-model="alumno.newsletter" id="newsletter"> 
+			</div>
+		</div>
+		<!-- instructor -->
+		<div data-ng-if="is_admin" class="form-group col-sm-6">
+			<label for="instructor" class="col-sm-4 control-label">Instructor?</label>
+			<div class="col-sm-7">
+				<input type="checkbox" name="instructor" data-ng-model="alumno.instructor" id="instructor"> 
+			</div>
+		</div>
+		
+		<div class="col-sm-12" data-ng-if="is_admin" ><h3 class="text-danger"><i class="fa fa-exclamation-triangle text-danger" aria-hidden="true"></i> Administrador</h3></div>
+		<!-- confirmed -->
+		<div data-ng-if="is_admin" class="form-group col-sm-6">
+			<label for="confirmed" class="col-sm-4 control-label text-danger">Confirmado?</label>
+			<div class="col-sm-7">
+				<input type="checkbox" name="confirmed" data-ng-model="alumno.confirmed" id="confirmed"> 
+			</div>
+		</div>
+		<!-- admin -->
+		<div data-ng-if="is_admin" class="form-group col-sm-6">
+			<label for="admin" class="col-sm-4 control-label text-danger">Admin?</label>
+			<div class="col-sm-7">
+				<input type="checkbox" name="admin" data-ng-model="alumno.admin" id="admin"> 
 			</div>
 		</div>
 		<!-- Submit-->
