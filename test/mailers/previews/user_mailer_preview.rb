@@ -33,5 +33,10 @@ class UserMailerPreview < ActionMailer::Preview
     clases = User.first.clases
     UserMailer.remainder_email(user)
   end
+	
+  def waitlist_email
+    clase = Clase.first
+    UserMailer.waitlist_email(clase)
+  end
   
 end

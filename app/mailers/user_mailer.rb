@@ -1,6 +1,6 @@
 class UserMailer < ActionMailer::Base
 	layout 'mailer'
-	default from: "relevepilates@gmail.com"
+	default from: "relevepilates@gmail.com@gmail.com"
 
 	def welcome_email(user)
 		@user = user
@@ -23,6 +23,12 @@ class UserMailer < ActionMailer::Base
 		@user = user
 		@clase = clase
 		mail(to: @user.email, subject: 'Inscripción cancelada: '+clase.actividad.nombre+' el '+I18n.t('date.day_names')[@clase.fecha.wday]+' '+@clase.fecha.strftime("%d/%m/%Y")+' a las '+clase.horario+' con '+clase.instructor.nombre_completo)
+	end
+	
+	def waitlist_email(clase)
+		@clase = clase
+		emails = clase.wait_users.collect(&:email).join(",")
+		mail(to: 'relevepilates@gmail.com@gmail.com', bcc: emails,  subject: 'Tenemos un lugar para vos!')
 	end
 
 	def pricing_email(email,nombre,apellido)

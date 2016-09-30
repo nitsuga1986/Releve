@@ -54,9 +54,11 @@ angular.module("TurnosApp")
 
 angular.module("TurnosApp").run(['$location', '$rootScope', function($location, $rootScope) {
 	$rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
-		$rootScope.title = " | "+current.$$route.title;
+		if(current.$$route.title!=undefined&&current.$$route.title!=''){
+			$rootScope.title = " | "+current.$$route.title;
+			document.title = document.title+$rootScope.title;
+		}
 		$rootScope.activetab = current.$$route.activetab;
-		document.title = document.title+$rootScope.title;
 	});
 }]);
 
