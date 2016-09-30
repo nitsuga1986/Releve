@@ -44,6 +44,7 @@ class Clase < ActiveRecord::Base
 		end
 	end
 	
+	def destroy_wait_lists() wait_lists.each{|x| x.destroy}	end
 	def completa?() self.users.count >= self.max_users end
 	def old?() DateTime.strptime(self.fecha.strftime('%Y-%m-%d')+" "+self.horario+' -0300', '%Y-%m-%d %H:%M %Z') < DateTime.now end
 	def cancelable?() DateTime.strptime(self.fecha.strftime('%Y-%m-%d')+" "+self.horario+' -0300', '%Y-%m-%d %H:%M %Z') - (12.0/24) > DateTime.now end
