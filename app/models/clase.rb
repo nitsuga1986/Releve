@@ -6,7 +6,7 @@ class Clase < ActiveRecord::Base
 	belongs_to :actividad
 	belongs_to :instructor, class_name: "User", foreign_key: "instructor"
 	belongs_to :reemplazo, class_name: "User", foreign_key: "reemplazo"
-	before_destroy :destroy_asistencias
+	before_destroy :destroy_related
 
 	def as_json(options = { })
 		h = super(options)
@@ -50,8 +50,9 @@ class Clase < ActiveRecord::Base
 	def dia() I18n.t('date.day_names')[self.fecha.wday] end
 	
 	private
-	def destroy_asistencias
-		asistencias.each{|x| x.destroy}		
+	def destroy_related
+		asistencias.each{|x| x.destroy}
+		wait_lists.each{|x| x.destroy}		
     end
 	
 end

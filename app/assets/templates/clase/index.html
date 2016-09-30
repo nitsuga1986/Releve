@@ -1,8 +1,8 @@
 <h3><i class="fa fa-calendar" data-ng-hide="loading"></i><i class="fa fa-spinner fa-pulse" data-ng-show="loading"></i> Listado de clases <span data-ng-bind="tableResults"></span>
-<button data-ng-click="GoToNew()" class="btn btn-success pull-right"><i class="fa fa-plus-square fa-lg"></i> Nueva clase</button>
-<button data-ng-click="GoToBulk()" class="btn btn-success pull-right"><i class="fa fa-plus-square fa-lg"></i> Agregar en cantidad</button>
+<button data-ng-if="is_admin" data-ng-click="GoToNew()" class="btn btn-success pull-right"><i class="fa fa-plus-square fa-lg"></i> Nueva clase</button>
+<button data-ng-if="is_admin" data-ng-click="GoToBulk()" class="btn btn-success pull-right"><i class="fa fa-plus-square fa-lg"></i> Agregar en cantidad</button>
 </h3>
-<hr class="clase"/>
+<hr data-ng-if="is_admin" class="clase"/>
 <div class="col-xs-12">
 	<div class="btn-group pull-right">
 		<button class="btn btn-default" data-ng-class="{active:sel_columns}" data-ng-click="sel_columns = !sel_columns"><i class="fa fa-columns fa-lg"></i> Columnas</button>
@@ -57,7 +57,7 @@
 					<td>
 						<div class="btn-group btn-group-xs" role="group" aria-label="...">
 							<a type="button" class="btn btn-warning" href="/clase/{{clase.id}}/edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-							<button data-ng-click="toDestroy(clase.id)" type="button" class="btn btn-danger" data-toggle="modal" data-target=".confirmation-modal"><i class="fa fa-trash" aria-hidden="true"></i></button>
+							<button data-ng-if="is_admin" data-ng-click="toDestroy(clase.id)" type="button" class="btn btn-danger" data-toggle="modal" data-target=".confirmation-modal"><i class="fa fa-trash" aria-hidden="true"></i></button>
 						</div>
 					</td>
 				</tr>

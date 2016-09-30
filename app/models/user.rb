@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :wait_clases, through: :wait_lists, source: :clase
   has_many :instructorados, class_name: "Clase", foreign_key: "instructor"
   has_many :reemplazoados, class_name: "Clase", foreign_key: "reemplazo"  
+  before_destroy :destroy_related
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -95,4 +96,10 @@ class User < ActiveRecord::Base
 	self.update_attribute(:fechaini,Date.today)
   end
   
+  private
+  def destroy_related
+	asistencias.each{|x| x.destroy}	
+	wait_lists.each{|x| x.destroy}		
+	packs.each{|x| x.destroy}		
+  end
 end
