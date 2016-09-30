@@ -31,6 +31,7 @@ angular.module("TurnosApp").factory("ResourceAlumno",['$resource', function($res
       'destroy': 		{ method: 'DELETE' },
       'current': 		{ method: 'POST', isArray: false, url: '/api/alumnos/current' },
       'instructores': 	{ method: 'POST', isArray: true, url: '/api/alumnos/instructores' },
+      'usr_clases': 	{ method: 'POST', isArray: true, url: '/api/alumnos/:id/usr_clases'},
     }
   );
 }]);

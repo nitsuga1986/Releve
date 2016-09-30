@@ -8,6 +8,9 @@ Rails.application.routes.draw do
 				post 'instructores'
 				put 'update_current'
 			end
+			member do
+				post 'usr_clases'
+			end
 		end
 		resources :actividad
 		resources :clases do

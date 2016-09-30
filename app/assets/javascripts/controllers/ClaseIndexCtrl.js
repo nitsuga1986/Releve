@@ -34,7 +34,9 @@ angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$rootScope',
 				});
 				$scope.clases = data;
 				// Filter & Sort
-				filteredData = params.filter() ? $filter('filter')(data, params.filter()): data;	
+				if($scope.filterDay.every(function(element,index){return element===[false,false,false,false,false,false,false][index];})){data=[];}
+				dayData = jQuery.grep(data,function(clase){return $scope.dayCriteria.indexOf(clase.dia) !== -1;});
+				filteredData = params.filter() ? $filter('filter')(dayData, params.filter()): dayData;	
 				orderedData = params.sorting() ? $filter('orderBy')(filteredData, params.orderBy()) : filteredData;
 				// set Page for current date
 				if(firstload){$.each(orderedData,function(idx, val){if (val['fecha'] == currentDate) {params.page(Math.floor(idx/params.count()));return false;}});firstload=false;}
@@ -68,6 +70,41 @@ angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$rootScope',
 				}    
 			});
 		})
+	};
+	// filterDay
+	$scope.dayCriteria = dayNames;
+	$scope.filterDay=[true,true,true,true,true,true,true];
+	$scope.filterAll=true;
+	filterDaychangeAllClass = function() {
+		if($scope.filterDay.every(function(element,index){return element===[true,true,true,true,true,true,true][index];})){
+				$( "button.changeAll > i" ).removeClass('fa-square-o').addClass('fa-square'); return true
+		}else{	$( "button.changeAll > i" ).removeClass('fa-square').addClass('fa-square-o');return false
+	}};
+	changeDayCriteria = function() {
+		dayCriteria=[]; 
+		angular.forEach(dayNames,function(value,key){
+			if($scope.filterDay[key]){
+				dayCriteria.push(dayNames[key])
+			}
+			$scope.dayCriteria=dayCriteria;
+		});
+		$scope.tableParams.page(1);
+	};
+	$scope.filterDaychangeAll = function() {
+		startLoading();
+		if(filterDaychangeAllClass()){$scope.filterDay=[false,false,false,false,false,false,false]}
+		else{$scope.filterDay=[true,true,true,true,true,true,true]};
+		changeDayCriteria();
+		filterDaychangeAllClass();
+		$scope.tableParams.reload();
+	};
+	$scope.filterDaychange = function(day) {
+		startLoading();
+		$scope.filterDay[day] = !$scope.filterDay[day];
+		changeDayCriteria();
+		filterDaychangeAllClass();
+		$('button.filterDayButton').blur();
+		$scope.tableParams.reload();
 	};
 }]);
 

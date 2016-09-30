@@ -1,7 +1,7 @@
 class Api::AlumnosController < ApplicationController
   before_action :authenticate_user!
   before_action only: [:create, :destroy] do redirect_to :new_user_session_path unless current_user && current_user.admin?   end
-  before_action only: [:index, :show, :autocomplete, :update] do redirect_to :new_user_session_path unless current_user && (current_user.instructor?||current_user.admin?)   end
+  before_action only: [:index, :show, :autocomplete, :update, :usr_clases] do redirect_to :new_user_session_path unless current_user && (current_user.instructor?||current_user.admin?)   end
   
   respond_to :json
 
@@ -75,6 +75,11 @@ class Api::AlumnosController < ApplicationController
 	else
 		render json: @alumno.errors, status: :unprocessable_entity
 	end
+  end
+
+  def usr_clases
+	@clases = User.find(params[:id]).clases.order(:fecha,:horario)
+	render json: @clases, status: :ok
   end
   
   # USER

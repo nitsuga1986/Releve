@@ -3,6 +3,7 @@ angular.module("TurnosApp").controller("AlumnoEditCtrl",['$scope', '$rootScope',
 	$scope.horariosArray = horariosArray;
 	$scope.sexosArray = sexosArray;
 	$scope.submiterror = false;
+	$scope.GoToEdit = function(id) {$location.path("/clase/"+id+"/edit/");};
 	$scope.history_GoToAlumnoEdit = []; // Prevents loop search
 	$scope.GoToIndex = function(id) {$location.path("/alumno/index");};
 	$scope.ActividadIndex = [];
@@ -19,6 +20,7 @@ angular.module("TurnosApp").controller("AlumnoEditCtrl",['$scope', '$rootScope',
 		$scope.FormTitle = "<i class='fa fa-user'></i> Editar datos de la alumno";
 		$scope.FormButton = '<i class="fa fa-edit fa-lg"></i> Guardar cambios';
 		$scope.alumno = ResourceAlumno.show({ id: $routeParams.id });
+		$scope.clases = ResourceAlumno.usr_clases({ id: $routeParams.id });
 		$scope.alumno.$promise.then(function( value ){
 			ResourceActividad.index().$promise.then(function(ActividadIndex){
 				$scope.ActividadIndex = ActividadIndex;

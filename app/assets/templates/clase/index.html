@@ -4,6 +4,16 @@
 </h3>
 <hr data-ng-if="is_admin" class="clase"/>
 <div class="col-xs-12">
+	<div class="btn-group btn-group-view" id="daySelector">
+		<button title="Lunes" class="btn btn-default filterDayButton" data-ng-class="{'active':filterDay[1] }" data-ng-click="filterDaychange(1)" data-ng-model="d1">Lu</button>
+		<button title="Martes" class="btn btn-default filterDayButton" data-ng-class="{'active':filterDay[2] }" data-ng-click="filterDaychange(2)" data-ng-model="d2">Ma</button>
+		<button title="Miércoles" class="btn btn-default filterDayButton" data-ng-class="{'active':filterDay[3] }" data-ng-click="filterDaychange(3)" data-ng-model="d3">Mi</button>
+		<button title="Jueves" class="btn btn-default filterDayButton" data-ng-class="{'active':filterDay[4] }" data-ng-click="filterDaychange(4)" data-ng-model="d4">Ju</button>
+		<button title="Viernes" class="btn btn-default filterDayButton" data-ng-class="{'active':filterDay[5] }" data-ng-click="filterDaychange(5)" data-ng-model="d5">Vi</button>
+		<button title="Sábado" class="btn btn-default filterDayButton" data-ng-class="{'active':filterDay[6] }" data-ng-click="filterDaychange(6)" data-ng-model="d6">Sá</button>
+		<button title="Domingo" class="btn btn-default filterDayButton" data-ng-class="{'active':filterDay[0] }" data-ng-click="filterDaychange(0)" data-ng-model="d0">Do</button>
+		<button title="Todos/Ninguno" class="btn btn-default filterDayButton changeAll" data-ng-click="filterDaychangeAll()" data-ng-model="all"><i class="fa fa-square" aria-hidden="true"></i></button>
+	</div>
 	<div class="btn-group pull-right">
 		<button class="btn btn-default" data-ng-class="{active:sel_columns}" data-ng-click="sel_columns = !sel_columns"><i class="fa fa-columns fa-lg"></i> Columnas</button>
 		<!--<button data-ng-click="tableParams.sorting({})" class="btn btn-default pull-right">Limpiar orden</button>-->
@@ -40,6 +50,13 @@
 					</th>
 					<th>Acciones</th>
 				</tr>
+				<tr class="ng-table-filters" data-ng-init="tableParams">
+					<th data-ng-repeat="column in columns_clase" data-ng-show="column.visible" class="filter">
+						<div data-ng-repeat="(name, filter) in column.filter">
+							<div data-ng-include="'ng-table/filters/' + filter + '.html'"></div>
+						</div>
+					</th>
+				</tr>
 			</thead>
 			<tbody>
 				<tr class="ng-table-group" data-ng-repeat-start="group in $groups">
@@ -53,6 +70,8 @@
 				<tr data-ng-hide="group.$hideRows" data-ng-repeat="clase in group.data" data-ng-repeat-end>
 					<td data-ng-repeat="column in columns_clase" data-ng-click="GoToEdit(clase.id)" data-ng-show="column.visible" sortable="column.field" filter="column.filter">
 						{{clase[column.field] | true_false}}
+<!-- <12hs -->			<span data-ng-if="column.field=='horario' && !clase.cancelable" class="label label-warning">< 12hs</span>
+<!--Cancelada-->		<span data-ng-if="column.field=='cancelada' && clase.cancelada" class="label label-danger" title="{{clase['comment']}}">Cancelada</span>
 					</td>
 					<td>
 						<div class="btn-group btn-group-xs" role="group" aria-label="...">
@@ -60,13 +79,6 @@
 							<button data-ng-if="is_admin" data-ng-click="toDestroy(clase.id)" type="button" class="btn btn-danger" data-toggle="modal" data-target=".confirmation-modal"><i class="fa fa-trash" aria-hidden="true"></i></button>
 						</div>
 					</td>
-				</tr>
-				<tr class="ng-table-filters" data-ng-init="tableParams">
-					<th data-ng-repeat="column in columns_clase" data-ng-show="column.visible" class="filter">
-						<div data-ng-repeat="(name, filter) in column.filter">
-							<div data-ng-include="'ng-table/filters/' + filter + '.html'"></div>
-						</div>
-					</th>
 				</tr>
 			</tbody>
 		</table>

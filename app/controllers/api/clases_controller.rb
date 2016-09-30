@@ -113,7 +113,6 @@ class Api::ClasesController < ApplicationController
 	@clase.actividad = Actividad.find(params[:actividad_id])
 	@clase.instructor = User.find(params[:instructor_id])
 	@clase.reemplazo = (!params[:reemplazo_id].nil? ? User.find(params[:reemplazo_id]) : nil)
-	
 	if @clase.update_attributes(params.permit(:fecha, :horario, :max_users, :duracion, :trialable, :cancelada, :comment)) then
 		if !params[:users].nil? then
 			params[:users].each do |user|
