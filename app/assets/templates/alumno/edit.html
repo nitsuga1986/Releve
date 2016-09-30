@@ -221,7 +221,7 @@
 		</thead>
 		<tbody>
 			<tr data-ng-repeat="clase in clases" data-ng-click="GoToEdit(clase.id)" data-ng-class="{'text-muted':clase.old}">
-				<td>{{clase.fecha}} <span data-ng-if="clase.cancelada" class="label label-danger" title="{{clase['comment']}}">Cancelada</span><span data-ng-if="!clase.old && !clase.cancelable" class="label label-warning">< 12hs</span></td>
+				<td>{{clase.dia}} {{clase.fecha}} <span data-ng-if="clase.cancelada" class="label label-danger" title="{{clase['comment']}}">Cancelada</span><span data-ng-if="!clase.old && !clase.cancelable" class="label label-warning">< 12hs</span></td>
 				<td>{{clase.horario}}</td>
 				<td>{{clase.instructor.nombre_completo}}</td>
 			</tr>
