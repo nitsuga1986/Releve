@@ -39,9 +39,9 @@ angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$rootScope',
 				filteredData = params.filter() ? $filter('filter')(dayData, params.filter()): dayData;	
 				orderedData = params.sorting() ? $filter('orderBy')(filteredData, params.orderBy()) : filteredData;
 				// set Page for current date
-				if(firstload){$.each(orderedData,function(idx, val){if (val['fecha'] == currentDate) {params.page(Math.floor(idx/params.count()));return false;}});firstload=false;}
+				// if(firstload){$.each(orderedData,function(idx, val){if (val['fecha'] == currentDate) {params.page(Math.floor(idx/params.count()));return false;}});firstload=false;}
 				// Show
-				params.total(orderedData.length);
+				params.total(orderedData.inlineCount);
 				stopLoading();
 				return orderedData;
 			});
