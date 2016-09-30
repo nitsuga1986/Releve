@@ -41,7 +41,7 @@ angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$rootScope',
 				// set Page for current date
 				if(firstload){$.each(orderedData,function(idx, val){if (val['fecha'] == currentDate) {params.page(Math.floor(idx/params.count()));return false;}});firstload=false;}
 				// Show
-				params.total(orderedData.inlineCount);
+				params.total(orderedData.length);
 				stopLoading();
 				return orderedData;
 			});
