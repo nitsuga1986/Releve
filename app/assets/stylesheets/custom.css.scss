@@ -1074,7 +1074,7 @@ body.landingpage {
 	}
 }
 #AgendaCol{
-	label {
+	label:not(.btn) {
 	  display: block-inline;
 	  padding-left: 15px;
 	  text-indent: -15px;
