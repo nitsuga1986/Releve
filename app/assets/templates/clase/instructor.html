@@ -65,8 +65,8 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr data-ng-repeat="clase in $data" data-ng-class="{'danger': clase.cancelada,'warning': clase.reemplazo}">
-					<td data-ng-repeat="column in columns_instructor" data-ng-click="GoToEdit(clase.id)" data-ng-show="column.visible" sortable="column.field" filter="column.filter">
+				<tr data-ng-repeat="clase in $data" data-ng-class="{'danger': clase.cancelada,'warning': clase.reemplazo}" data-ng-click="GoToEdit(clase.id)">
+					<td data-ng-repeat="column in columns_instructor" data-ng-show="column.visible" sortable="column.field" filter="column.filter">
 						<span data-ng-if="column.field!='users'">{{clase[column.field]}}</span>
 <!--Cancelada-->		<span data-ng-if="column.field=='fecha_fixed' && clase.cancelada" class="text-danger" title="{{clase['comment']}}">Cancelada</span>
 <!--Reemplazo-->		<span data-ng-if="column.field=='fecha_fixed' && clase.reemplazo" class="text-warning" title="{{clase['comment']}}">{{clase.reemplazo}}</span>

@@ -9,6 +9,7 @@ angular.module("TurnosApp").controller("ClaseInstructorCtrl",['$scope', '$rootSc
 	};
 	function dateFormat(date) {date = date.split('-'); date = date[2]+'/'+date[1]; return date;}
 	// From
+	$scope.GoToEdit = function(id) {$location.path("/clase/"+id+"/edit/");};
 	$scope.columns_instructor = columns_instructor;
 	$scope.clase = new ResourceClase();
 	$scope.InstructorIndex = ResourceAlumno.instructores();
