@@ -17,7 +17,6 @@ angular.module("TurnosApp").controller("AlumnoEditCtrl",['$scope', '$rootScope',
 	};
 	// Edit or New
 	if ($routeParams.id) { 	// Edit
-		$scope.FormTitle = "<i class='fa fa-user'></i> Editar datos de la alumno";
 		$scope.FormButton = '<i class="fa fa-edit fa-lg"></i> Guardar cambios';
 		$scope.alumno = ResourceAlumno.show({ id: $routeParams.id });
 		$scope.clases = ResourceAlumno.usr_clases({ id: $routeParams.id });
