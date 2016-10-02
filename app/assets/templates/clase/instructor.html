@@ -12,10 +12,13 @@
 <div class="col-sm-12">
 	<form class="form-horizontal" data-ng-submit="submit()" name="ClaseForm" novalidate role="form">
 		<!-- instructor -->
-		<div class="form-group col-lg-4">
+		<div class="form-group col-lg-5">
 			<label for="instructor" class="col-lg-4 control-label">Instructor/a</label>
 			<div class="col-lg-7">
-				<select required class="form-control" name="instructor" data-ng-model="clase.instructor_id" id="instructor" data-ng-options="instructor.id as instructor.nombre_completo for instructor in InstructorIndex"></select> 
+				<div class="input-group btn-block">
+					<select required class="form-control" name="instructor" data-ng-model="clase.instructor_id" id="instructor" data-ng-options="instructor.id as instructor.nombre_completo for instructor in InstructorIndex"></select> 
+					<label data-ng-click="searchToday()" class="input-group-addon btn btn-primary" title="Clases de hoy"><i class="fa fa-search-plus" aria-hidden="true"></i> Hoy</label>
+				</div>
 			</div>
 		</div>
 		<!-- fecha_start -->
@@ -39,11 +42,8 @@
 			</div>
 		</div>
 		<!-- Submit-->
-		<div class="col-lg-2">
-			<div class="btn-group pull-right">
-					<button type="submit" class="btn btn-primary" data-ng-bind-html="FormButton | html_trusted"></button>
-					<button data-ng-click="searchToday()" class="btn btn-primary" title="Clases de hoy"><i class="fa fa-search-plus" aria-hidden="true"></i></button>
-			</div>
+		<div class="col-lg-1">
+			<button type="submit" class="btn btn-primary" data-ng-bind-html="FormButton | html_trusted"></button>
 		</div>
 	</form>
 </div>
