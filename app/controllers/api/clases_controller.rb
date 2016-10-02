@@ -1,7 +1,7 @@
 class Api::ClasesController < ApplicationController
   before_action :authenticate_user!
   before_action only: [:test_emails, :create, :bulk, :destroy] do redirect_to :new_user_session_path unless current_user && current_user.admin?   end
-  before_action only: [:index, :show, :search, :instructor, :update] do redirect_to :new_user_session_path unless current_user && (current_user.instructor?||current_user.admin?) end
+  before_action only: [:index, :show, :search, :instructor, :update, :edit_bulk] do redirect_to :new_user_session_path unless current_user && (current_user.instructor?||current_user.admin?) end
 
   respond_to :json
 
@@ -10,7 +10,6 @@ class Api::ClasesController < ApplicationController
   ###########################
   # routes.rb, resources.js, clases_controller.rb, templates/clase/index.html, javascripts/controllers/ClaseIndexCtrl.js
   def test_emails
-	logger.debug('sending test_emails')
 	UserMailer.welcome_email(current_user).deliver
 	UserMailer.join_email(current_user,Clase.last).deliver
 	UserMailer.join_multiple_email(current_user,Clase.first(4)).deliver
@@ -45,7 +44,6 @@ class Api::ClasesController < ApplicationController
 	if params[:fecha_start].present? && params[:fecha_end].present? && params[:horario].present? && params[:max_users].present? && params[:instructor_id].present? && params[:actividad_id].present? then
 		Date.parse(params[:fecha_start]).upto(Date.parse(params[:fecha_end])) do |date|
 			if (params[:bool_monday]==true && date.wday==1)||(params[:bool_tuesday]==true && date.wday==2)||(params[:bool_wednesday]==true && date.wday==3)||(params[:bool_thursday]==true && date.wday==4)||(params[:bool_friday]==true && date.wday==5)||(params[:bool_saturday]==true && date.wday==6)||(params[:bool_sunday]==true && date.wday==0) then
-				logger.debug(date)
 				if !@clase = Clase.find_by_fecha_and_horario(date.strftime("%Y-%m-%d"),params[:horario]) then
 					params[:fecha] = date.strftime("%Y-%m-%d")
 					@clase = Clase.new(params.permit(:fecha, :horario, :max_users, :duracion, :trialable))
@@ -122,6 +120,31 @@ class Api::ClasesController < ApplicationController
 		head :no_content
 	else
 		render json: @clase.errors, status: :unprocessable_entity
+	end
+  end
+  
+  def edit_bulk
+  
+	if params[:fecha_start].present? && params[:fecha_end].present? && params[:horario].present? && params[:actividad_id].present? then
+		Date.parse(params[:fecha_start]).upto(Date.parse(params[:fecha_end])) do |date|
+			if (params[:bool_monday]==true && date.wday==1)||(params[:bool_tuesday]==true && date.wday==2)||(params[:bool_wednesday]==true && date.wday==3)||(params[:bool_thursday]==true && date.wday==4)||(params[:bool_friday]==true && date.wday==5)||(params[:bool_saturday]==true && date.wday==6)||(params[:bool_sunday]==true && date.wday==0) then
+				if @clase = Clase.find_by_fecha_and_horario_and_actividad_id(date.strftime("%Y-%m-%d"),params[:horario],params[:actividad_id]) then
+					@clase.comment = (!params[:comment].nil? ? params[:comment] : '')
+					@clase.cancelada = (!params[:cancelada].nil? ? params[:cancelada] : false)
+					@clase.trialable = (!params[:trialable].nil? ? params[:trialable] : false)
+					@clase.instructor = (!params[:instructor_id].nil? ? User.find(params[:instructor_id]) : nil)
+					@clase.reemplazo = (!params[:reemplazo_id].nil? ? User.find(params[:reemplazo_id]) : nil)
+					@clase.update_attributes(params.permit(:max_users, :duracion))
+					@clase.save
+				end
+			end
+		end
+		render json: @clase, status: :created
+	else
+		render json: {
+			error: "Missing data",
+			status: :unprocessable_entity
+		}
 	end
   end
   

@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 			collection do
 				get 'search'
 				post 'bulk'
+				post 'edit_bulk'
 				post 'instructor'
 				get 'index_usr'
 				get 'history_usr'

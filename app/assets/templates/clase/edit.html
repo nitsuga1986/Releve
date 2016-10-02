@@ -29,32 +29,6 @@
 				<select class="form-control" data-ng-blur="GoToClaseEdit()" name="horario" data-ng-model="clase.horario" id="horario" data-ng-options="horario as horario for horario in horariosArray"></select> 
 			</div>
 		</div>
-		<!-- actividad -->
-		<div class="form-group col-sm-6">
-			<label for="actividad" class="col-sm-4 control-label">Actividad</label>
-			<div class="col-sm-7">
-				<div class="input-group">
-					<select class="form-control" data-ng-blur="GoToClaseEdit()" name="actividad" data-ng-model="clase.actividad_id" id="actividad" data-ng-options="actividad.id as actividad.nombre for actividad in ActividadIndex"></select> 
-					<!-- <label title="Detalles de la actividad" for="actividad" class="input-group-addon btn btn-primary" data-ng-click="GoToActividadShow()"><i class="fa fa-eye"></i></label> -->
-					<!-- <label title="Ver actividads" for="actividad" class="input-group-addon btn btn-primary" data-ng-click="GoToActividadIndex()"><i class="fa fa-university"></i></label> -->
-					<label title="Agregar nueva actividad" for="actividad" class="input-group-addon btn btn-success" data-ng-click="GoToNewActividad()"><i class="fa fa-plus-square"></i></label>
-				</div>
-			</div>
-		</div>
-		<!-- max_users -->
-		<div class="form-group col-sm-6">
-			<label for="max_users" class="col-sm-4 control-label">Alumnos Max.</label>
-			<div class="col-sm-7">
-				<input type="number" min="1" class="form-control" name="max_users" data-ng-model="clase.max_users" id="max_users" placeholder="ej. 5">
-			</div>
-		</div>
-		<!-- duracion -->
-		<div class="form-group col-sm-6">
-			<label for="duracion" class="col-sm-4 control-label">Duración</label>
-			<div class="col-sm-7">
-				<input type="number" min="0.5" max="24" step="0.5" class="form-control" name="duracion" data-ng-model="clase.duracion" id="duracion" placeholder="ej. 1.5">
-			</div>
-		</div>
 		<!-- instructor -->
 		<div class="form-group col-sm-6">
 			<label for="instructor" class="col-sm-4 control-label">Instructor/a</label>
@@ -69,11 +43,44 @@
 				<select class="form-control" name="reemplazo" data-ng-model="clase.reemplazo_id" id="reemplazo" data-ng-options="instructor.id as instructor.nombre_completo for instructor in InstructorIndex"><option value="">Elegir reemplazo</option></select> 
 			</div>
 		</div>
+		<!-- actividad -->
+		<div class="form-group col-sm-6">
+			<label for="actividad" class="col-sm-4 control-label">Actividad</label>
+			<div class="col-sm-7">
+				<div class="input-group btn-block">
+					<select class="form-control" data-ng-blur="GoToClaseEdit()" name="actividad" data-ng-model="clase.actividad_id" id="actividad" data-ng-options="actividad.id as actividad.nombre for actividad in ActividadIndex"></select> 
+					<!-- <label title="Detalles de la actividad" for="actividad" class="input-group-addon btn btn-primary" data-ng-click="GoToActividadShow()"><i class="fa fa-eye"></i></label> -->
+					<!-- <label title="Ver actividads" for="actividad" class="input-group-addon btn btn-primary" data-ng-click="GoToActividadIndex()"><i class="fa fa-university"></i></label> -->
+					<label title="Agregar nueva actividad" for="actividad" class="input-group-addon btn btn-success" data-ng-click="GoToNewActividad()" data-ng-if="is_admin"><i class="fa fa-plus-square"></i></label>
+				</div>
+			</div>
+		</div>
+		<!-- duracion -->
+		<div class="form-group col-sm-6">
+			<label for="duracion" class="col-sm-4 control-label">Duración</label>
+			<div class="col-sm-7">
+				<input type="number" min="0.5" max="24" step="0.5" class="form-control" name="duracion" data-ng-model="clase.duracion" id="duracion" placeholder="ej. 1.5">
+			</div>
+		</div>
+		<!-- max_users -->
+		<div class="form-group col-sm-6">
+			<label for="max_users" class="col-sm-4 control-label">Alumnos Max.</label>
+			<div class="col-sm-7">
+				<input type="number" min="1" class="form-control" name="max_users" data-ng-model="clase.max_users" id="max_users" placeholder="ej. 5">
+			</div>
+		</div>
 		<!-- comment -->
 		<div class="form-group col-sm-6">
-			<label for="comment" class="col-sm-4 control-label">Comentarios:</label>
+			<label for="comment" class="col-sm-4 control-label">Cancelada por</label>
 			<div class="col-sm-7">
-				<input type="text" class="form-control" name="comment" data-ng-model="clase.comment" id="comment" placeholder="ej. Esta clase no se recupera porque...">
+				<input type="text" class="form-control" name="comment" data-ng-model="clase.comment" id="comment" placeholder="Feriado del...">
+			</div>
+		</div>
+		<!-- trialable -->
+		<div class="form-group col-sm-6">
+			<label for="trialable" class="col-sm-4 control-label">1ra s/cargo?</label>
+			<div class="col-sm-7">
+				<input type="checkbox" name="trialable" data-ng-model="clase.trialable" id="trialable"> 
 			</div>
 		</div>
 		<!-- cancelada -->
@@ -81,13 +88,6 @@
 			<label for="cancelada" class="col-sm-4 control-label">Clase cancelada?</label>
 			<div class="col-sm-7">
 				<input type="checkbox" name="cancelada" data-ng-model="clase.cancelada" id="cancelada"> 
-			</div>
-		</div>
-		<!-- trialable -->
-		<div class="form-group col-sm-6">
-			<label for="trialable" class="col-sm-4 control-label">1ra Gratis?</label>
-			<div class="col-sm-7">
-				<input type="checkbox" name="trialable" data-ng-model="clase.trialable" id="trialable"> 
 			</div>
 		</div>
 		<!-- Users -->

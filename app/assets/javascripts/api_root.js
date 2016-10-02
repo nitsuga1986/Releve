@@ -15,6 +15,7 @@
 //= require controllers/ClaseEditCtrl
 //= require controllers/ClaseInstructorCtrl
 //= require controllers/ClaseBulkCtrl
+//= require controllers/ClaseEditBulkCtrl
 //= require controllers/ClaseShowCtrl
 //= require controllers/AlumnoIndexCtrl
 //= require controllers/AlumnoEditCtrl

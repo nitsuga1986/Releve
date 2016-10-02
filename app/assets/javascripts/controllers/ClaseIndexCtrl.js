@@ -2,6 +2,7 @@ angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$rootScope',
 	$scope.GoToEdit = function(id) {$location.path("/clase/"+id+"/edit/");};
 	$scope.GoToNew = function() {$location.path("/clase/new");};
 	$scope.GoToBulk = function() {$location.path("/clase/bulk");};
+	$scope.GoToEditBulk = function() {$location.path("/clase/edit_bulk");};
 	firstload=true;
 	// currentDate
 	var fullDate = new Date();
@@ -72,11 +73,14 @@ angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$rootScope',
 		})
 	};
 	// filterDay
+	var allTrueArray=[true,true,true,true,true,true,true];
+	var allFalseArray=[false,false,false,false,false,false,false];
+	
 	$scope.dayCriteria = dayNames;
-	$scope.filterDay=[true,true,true,true,true,true,true];
+	$scope.filterDay=allTrueArray.slice(0);
 	$scope.filterAll=true;
 	filterDaychangeAllClass = function() {
-		if($scope.filterDay.every(function(element,index){return element===[true,true,true,true,true,true,true][index];})){
+		if($scope.filterDay.every(function(element,index){return element===allTrueArray[index];})){
 				$( "button.changeAll > i" ).removeClass('fa-square-o').addClass('fa-square'); return true
 		}else{	$( "button.changeAll > i" ).removeClass('fa-square').addClass('fa-square-o');return false
 	}};
@@ -92,14 +96,15 @@ angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$rootScope',
 	};
 	$scope.filterDaychangeAll = function() {
 		startLoading();
-		if(filterDaychangeAllClass()){$scope.filterDay=[false,false,false,false,false,false,false]}
-		else{$scope.filterDay=[true,true,true,true,true,true,true]};
+		if(filterDaychangeAllClass()){$scope.filterDay=allFalseArray.slice(0);}
+		else{$scope.filterDay=allTrueArray.slice(0);};
 		changeDayCriteria();
 		filterDaychangeAllClass();
 		$scope.tableParams.reload();
 	};
 	$scope.filterDaychange = function(day) {
 		startLoading();
+		if($scope.filterDay.every(function(element,index){return element===allTrueArray[index];})){$scope.filterDay=allFalseArray.slice(0);}
 		$scope.filterDay[day] = !$scope.filterDay[day];
 		changeDayCriteria();
 		filterDaychangeAllClass();
