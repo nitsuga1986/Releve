@@ -31,7 +31,7 @@ Rails.application.routes.draw do
 		end
 	end
 	
-	match '/app/*all' => 'api_root#index', via: [:get], as: :usr_app
+	match '/app/(*all)' => 'api_root#index', via: [:get], as: :usr_app
 	match '/clase/*all' => 'api_root#index', via: [:get], as: :clase_index
 	match '/alumno/*all' => 'api_root#index', via: [:get], as: :alumno_index
 	match '/actividad/*all' => 'api_root#index', via: [:get], as: :actividad_index

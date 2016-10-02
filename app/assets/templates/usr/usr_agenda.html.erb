@@ -49,7 +49,7 @@
 			<tr data-ng-hide="group.$hideRows" data-ng-repeat="clase in group.data" data-ng-if="!clase.old" data-ng-class="{'success': clase.joined}" data-ng-repeat-end>
 				<td id="AgendaCol" data-ng-class="{'strike': clase.cancelada && column.field!='instructor','hidden-xs': column.hiddenxs}" data-ng-repeat="column in columns_claseAgenda" data-ng-click="GoToEdit(clase.id)" data-ng-show="column.visible" sortable="column.field" filter="column.filter">
 <!--Checkbox-->		<label data-ng-if="column.field=='horario'&& !alumno.primera_clase && selectmultiple && !clase.cancelada && !clase.joined && !alumno.actividad_overquota[clase.actividad_id] && !clase.completa" ><input id="selectable{{clase.id}}" type="checkbox" data-ng-model="clase.checked" data-ng-change="verifyPlan(clase.checked,clase.id)"></label>
-<!--Cancelada-->	<span data-ng-if="column.field=='instructor' && clase.cancelada" class="text-danger" title="{{clase['comment']}}">Clase cancelada</span>
+<!--Cancelada-->	<span data-ng-if="column.field=='instructor' && clase.cancelada" class="text-danger" title="{{clase['comment']}}"><span data-ng-if="clase['comment']">{{clase['comment']}}</span><span data-ng-if="!clase['comment']">Clase cancelada</span></span>
 <!--Reemplazo-->	<span data-ng-if="column.field=='instructor' && !clase.cancelada && clase.reemplazo" class="text-danger" title="Clase regular de {{clase['instructor']}}">{{clase['reemplazo']}}</span>
 					<label for="selectable{{clase.id}}" data-ng-if="selectmultiple" class="selectmultiple">
 <!--Field(mult)-->		<span data-ng-if="!(column.field=='instructor' && clase.cancelada) && !(column.field=='instructor' && clase.reemplazo)">{{clase[column.field]}}</span>
