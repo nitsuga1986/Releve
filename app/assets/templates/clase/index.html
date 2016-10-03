@@ -1,4 +1,4 @@
-<h3><i class="fa fa-calendar" data-ng-hide="loading"></i><i class="fa fa-spinner fa-pulse" data-ng-show="loading"></i> Listado de clases <span data-ng-bind="tableResults"></span></h3>
+<h3><i class="fa fa-calendar"></i> Listado de clases <span data-ng-if="tableParams.data.length" class="text-muted">({{ tableParams.data.length }} días)</span></h3>
 <hr data-ng-if="is_admin" class="clase"/>
 <div class="col-xs-12">
 	<div class="btn-group btn-group-view" id="daySelector">

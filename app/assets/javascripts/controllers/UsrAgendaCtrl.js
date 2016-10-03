@@ -83,10 +83,6 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$rootScope', 
 		if($scope.selectedclases.length){
 			startLoading();
 			$rootScope.got_to_url_success = "/app/agenda";
-			angular.forEach($cacheFactory.info(), function(ob, key) {
-			   console.log($cacheFactory);
-			   console.log($cacheFactory.get(key));
-			});
 			$cacheFactory.get('$http').remove("/api/clases/index_usr");
 			ResourceClase.join_multiple($scope.selectedclases, $scope.callbackSuccess, $scope.callbackFailure).$promise.then(function(data) {
 				$('#alert-container').hide().html('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-check-square-o" aria-hidden="true"></i> Inscripción exitosa! </strong> Ya te agendamos para las clases seleccionadas, te esperamos!</div>').slideDown();

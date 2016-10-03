@@ -7,6 +7,7 @@ angular.module("TurnosApp").controller("AlumnoEditCtrl",['$scope', '$rootScope',
 	$scope.history_GoToAlumnoEdit = []; // Prevents loop search
 	$scope.GoToIndex = function(id) {$location.path("/alumno/index");};
 	$scope.ActividadIndex = [];
+	function dateFormat(date) {date = date.split('-'); date = date[2]+'/'+date[1]; return date;}
 	// SetToday
 	$scope.SetToday = function(scope_date) {
 		today = new Date();
@@ -19,7 +20,12 @@ angular.module("TurnosApp").controller("AlumnoEditCtrl",['$scope', '$rootScope',
 	if ($routeParams.id) { 	// Edit
 		$scope.FormButton = '<i class="fa fa-edit fa-lg"></i> Guardar cambios';
 		$scope.alumno = ResourceAlumno.show({ id: $routeParams.id });
-		$scope.clases = ResourceAlumno.usr_clases({ id: $routeParams.id });
+		$scope.clases = ResourceAlumno.usr_clases({ id: $routeParams.id }).$promise.then(function( data ){
+			angular.forEach(data, function(value, key) {
+				data[key]["fecha_fixed"] = dateFormat(value.fecha) ;
+			});
+			$scope.clases = data;
+		});
 		$scope.alumno.$promise.then(function( value ){
 			ResourceActividad.index().$promise.then(function(ActividadIndex){
 				$scope.ActividadIndex = ActividadIndex;

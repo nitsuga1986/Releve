@@ -143,16 +143,15 @@ var columns_instructor = [
 	{title:"Alumnos",field:"users",filter:"users",visible:true,filter:{'users':'text'}, sortable: "users", sortDirection: "desc",groupable:"users"},
 ];
 // Alumno
-var alumnoDefaultPage = 1;	var alumnoDefaultCount = 25;
-var alumnoDefaultFilter = {}; 
-var alumnoDefaultGroupingBy = 'fecha'; var alumnoDefaultGrouping = {fecha: "desc"}
-var alumnoDefaultSorting = {email: 'asc'};
-var sexosArray = ["Mujer","Hombre"];
+var alumnoDefaultPage = 1;	var alumnoDefaultCount = 100;
+var alumnoDefaultFilter = {};
+var alumnoDefaultSorting = {nombre: 'asc',apellido: 'asc'};
+var sexosArray = ["Mujer","Hombre","No declara"];
 var columns_alumno = [
-	{title:"Email",field:"email",filter:"email",visible:true,filter:{'email':'text'}},
-	{title:"DNI",field:"dni",filter:"dni",visible:false,filter:{'dni':'text'}},
 	{title:"Nombre",field:"nombre",filter:"nombre",visible:true,filter:{'nombre':'text'}},
 	{title:"Apellido",field:"apellido",filter:"apellido",visible:true,filter:{'apellido':'text'}},
+	{title:"Email",field:"email",filter:"email",visible:true,filter:{'email':'text'}},
+	{title:"DNI",field:"dni",filter:"dni",visible:false,filter:{'dni':'text'}},
 	{title:"Profesión",field:"profesion",filter:"profesion",visible:false,filter:{'profesion':'text'}},
 	{title:"Fecha de nacimiento",field:"fechanac",filter:"fechanac",visible:false,filter:{'fechanac':'text'}},
 	{title:"Fecha de inicio",field:"fechaini",filter:"fechaini",visible:false,filter:{'fechaini':'text'}},

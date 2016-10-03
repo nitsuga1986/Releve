@@ -18,7 +18,6 @@ angular.module("TurnosApp").controller("ClaseInstructorCtrl",['$scope', '$rootSc
 	$scope.InstructorIndex.$promise.then(function(data) {
 		$scope.clase.instructor_id = $scope.InstructorIndex[InstructorIndexDefault].id;
 	});
-	$scope.FormTitle = "<i class='fa fa-search'></i> Clases por instructor";
 	$scope.FormButton = '<i class="fa fa-search"></i> Buscar';
 
 	// SUBMIT
@@ -65,6 +64,7 @@ angular.module("TurnosApp").controller("ClaseInstructorCtrl",['$scope', '$rootSc
 	$scope.searchToday = function() {
 		$scope.clase.fecha_end = SetDay(0);
 		$scope.clase.fecha_start = SetDay(0);
+		$scope.submit();
 	}
 	// Datepicker
 	 var datelist = []; // initialize empty array

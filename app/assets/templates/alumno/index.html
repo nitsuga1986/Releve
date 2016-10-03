@@ -1,4 +1,4 @@
-<h3><i class="fa fa-user" data-ng-hide="loading"></i><i class="fa fa-spinner fa-pulse" data-ng-show="loading"></i> Listado de alumnos <span data-ng-bind="tableResults"></span>
+<h3><i class="fa fa-user"></i> Listado de alumnos <span data-ng-if="tableParams.data.length" class="text-muted">({{ tableParams.data.length }} alumnos)</span></h3>
 <button data-ng-if="is_admin" data-ng-click="GoToNew()" class="btn btn-success pull-right"><i class="fa fa-plus-square fa-lg"></i> Nuevo alumno</button>
 </h3>
 <hr data-ng-if="is_admin" class="alumno"/>

@@ -1,4 +1,4 @@
-<h3 data-ng-bind-html="FormTitle | html_trusted">Clase</h3>
+<h3><i class="fa fa-search"></i> Clases por instructor <span data-ng-if="tableParams.data.length" class="text-muted">({{ tableParams.data.length }} clases)</span></h3>
 <button data-ng-click="GoToIndex()" class="btn btn-default pull-right" title="Lista de clases"><i class="fa fa-list fa-lg"></i></button>
 
 <hr class="clase"/>
@@ -10,7 +10,7 @@
 </div>
 <!-- Formulario -->
 <div class="col-sm-12">
-	<form class="form-horizontal" data-ng-submit="submit()" name="ClaseForm" novalidate role="form">
+	<form class="form-horizontal" data-ng-submit="submit()" name="ClaseForm" id="ClaseForm" novalidate role="form">
 		<!-- instructor -->
 		<div class="form-group col-lg-5">
 			<label for="instructor" class="col-lg-4 control-label">Instructor/a</label>

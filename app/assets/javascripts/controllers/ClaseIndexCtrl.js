@@ -1,8 +1,9 @@
-angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$rootScope', '$location', 'ResourceClase', '$filter','NgTableParams', '$timeout', function($scope, $rootScope, $location, ResourceClase, $filter, NgTableParams, $timeout) {
+angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$rootScope', '$location', 'ResourceClase', '$filter','NgTableParams', '$timeout', '$cacheFactory', function($scope, $rootScope, $location, ResourceClase, $filter, NgTableParams, $timeout, $cacheFactory) {
 	$scope.GoToEdit = function(id) {$location.path("/clase/"+id+"/edit/");};
 	$scope.GoToNew = function() {$location.path("/clase/new");};
 	$scope.GoToBulk = function() {$location.path("/clase/bulk");};
 	$scope.GoToEditBulk = function() {$location.path("/clase/edit_bulk");};
+	$cacheFactory.get('$http').remove("/api/clases");
 	firstload=true;
 	// currentDate
 	var fullDate = new Date();
@@ -54,6 +55,7 @@ angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$rootScope',
 	};
 	// Reload button
 	$scope.reloadTable = function(id) {
+		$cacheFactory.get('$http').remove("/api/clases");
 		$scope.tableParams.reload();
 	};
 	$scope.toDestroy = "";
@@ -62,6 +64,7 @@ angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$rootScope',
 		$scope.IdToDestroy = clase_id;
 	};
 	$scope.destroyClase = function() {
+		$cacheFactory.get('$http').remove("/api/clases");
 		$rootScope.got_to_url_success = "/clase/index";
 		$('.confirmation-modal').on('hidden.bs.modal', function (e) {
 			$.each($scope.clases, function(index) {
