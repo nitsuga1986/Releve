@@ -6,10 +6,14 @@ angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$rootScope',
 	$cacheFactory.get('$http').remove("/api/clases");
 	firstload=true;
 	// currentDate
-	var fullDate = new Date();
-	var twoDigitMonth = (fullDate.getMonth() + 1)+"";if(twoDigitMonth.length==1)	twoDigitMonth="0" +twoDigitMonth;
-	var twoDigitDate = fullDate.getDate()+"";if(twoDigitDate.length==1)	twoDigitDate="0" +twoDigitDate;
-	var currentDate = fullDate.getFullYear() + "-" + twoDigitMonth + "-" +  twoDigitDate;
+	for (i = 0; i < 3; i++) {
+		var fullDate = new Date(new Date().getTime() + i*24 * 60 * 60 * 1000);
+		var twoDigitMonth = (fullDate.getMonth() + 1)+"";if(twoDigitMonth.length==1)	twoDigitMonth="0" +twoDigitMonth;
+		var twoDigitDate = fullDate.getDate()+"";if(twoDigitDate.length==1)	twoDigitDate="0" +twoDigitDate;
+		if(i==0){var currentDate = fullDate.getFullYear() + "-" + twoDigitMonth + "-" +  twoDigitDate;}
+		if(i==1){var currentDate1 = fullDate.getFullYear() + "-" + twoDigitMonth + "-" +  twoDigitDate;}
+		if(i==2){var currentDate2 = fullDate.getFullYear() + "-" + twoDigitMonth + "-" +  twoDigitDate;}
+	}
 	// ngTable
 	function dateFormat(date) {date = date.split('-'); date = date[2]+'/'+date[1]; return date;}
 	var Api = ResourceClase;
@@ -40,10 +44,19 @@ angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$rootScope',
 				dayData = jQuery.grep(data,function(clase){return $scope.dayCriteria.indexOf(clase.dia) !== -1;});
 				filteredData = params.filter() ? $filter('filter')(dayData, params.filter()): dayData;	
 				orderedData = params.sorting() ? $filter('orderBy')(filteredData, params.orderBy()) : filteredData;
-				// set Page for current date
-				// if(firstload){$.each(orderedData,function(idx, val){if (val['fecha'] == currentDate) {params.page(Math.floor(idx/params.count()));return false;}});firstload=false;}
 				// Show
 				params.total(orderedData.inlineCount);
+				// set Page for current date
+				if(firstload){
+					lastfecha="";dateIndx=0;
+					$.each(orderedData,function(idx, val){
+						if(lastfecha!=val['fecha']){dateIndx++;lastfecha=val['fecha'];}
+						if (val['fecha']==currentDate||val['fecha']==currentDate1||val['fecha']==currentDate2) {
+							$scope.tableParams.page(1+Math.floor(dateIndx/params.count()));
+							return false;
+						}
+					});
+				firstload=false;}
 				stopLoading();
 				return orderedData;
 			});
