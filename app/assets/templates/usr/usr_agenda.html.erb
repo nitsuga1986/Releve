@@ -16,8 +16,8 @@
 			<button title="Todos/Ninguno" class="btn btn-default filterDayButton changeAll" data-ng-click="filterDaychangeAll()" data-ng-model="all"><i class="fa fa-square" aria-hidden="true"></i></button>
 		</div>
 	</div>
-	<div data-ng-if="!alumno.primera_clase" class="col-xs-12 col-sm-5 col-md-4 col-lg-3 pull-right">
-		<button data-ng-if="!selectmultiple" type="button" class="btn btn-warning btn-block" data-ng-click="changeselection()">
+	<div class="col-xs-12 col-sm-5 col-md-4 col-lg-3 pull-right" data-ng-if="!alumno.primera_clase">
+		<button data-ng-if="!selectmultiple" type="button" class="btn btn-info btn-block" data-ng-click="changeselection()">
 			<span><i class="fa fa-list-ul" aria-hidden="true"></i> Seleccionar múltiples clases</span>
 		</button>
 		<button data-ng-if="selectmultiple" data-ng-click="multipleEventModal()" type="button" class="btn btn-primary btn-block hidden-xs">
