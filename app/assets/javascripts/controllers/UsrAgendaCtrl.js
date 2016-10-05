@@ -70,13 +70,15 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$rootScope', 
 		pack = $.grep($scope.alumno.packs, function(e){ return e.actividad_id == clase.actividad_id; })[0];
 		if (state){
 			if (pack != undefined){
-				if($scope.alumno.actividad_counter[clase.actividad_id]==undefined){$scope.alumno.actividad_counter[clase.actividad_id]=0;}
-				if($scope.alumno.selected_counter[clase.actividad_id]==undefined){$scope.alumno.selected_counter[clase.actividad_id]=0;}
-				if(pack.cantidad > ($scope.alumno.actividad_counter[clase.actividad_id]+$scope.alumno.selected_counter[clase.actividad_id])){
-					$scope.alumno.selected_counter[clase.actividad_id] += 1;
+				if($scope.alumno.actividad_counter[clase.actividad_id]==undefined){$scope.alumno.actividad_counter[clase.actividad_id]=[];}
+				if($scope.alumno.actividad_counter[clase.actividad_id][clase.mes]==undefined){$scope.alumno.actividad_counter[clase.actividad_id][clase.mes]=0;}
+				if($scope.alumno.selected_counter[clase.actividad_id]==undefined){$scope.alumno.selected_counter[clase.actividad_id]=[];}
+				if($scope.alumno.selected_counter[clase.actividad_id][clase.mes]==undefined){$scope.alumno.selected_counter[clase.actividad_id][clase.mes]=0;}
+				if(pack.cantidad > ($scope.alumno.actividad_counter[clase.actividad_id][clase.mes]+$scope.alumno.selected_counter[clase.actividad_id][clase.mes])){
+					$scope.alumno.selected_counter[clase.actividad_id][clase.mes] += 1;
 				}else{preventClase(index_clase);}
 			}else{preventClase(index_clase);}
-		}else{$scope.alumno.selected_counter[clase.actividad_id] -= 1;}
+		}else{$scope.alumno.selected_counter[clase.actividad_id][clase.mes] -= 1;}
 	};
 	// JoinMultiple
 	$scope.JoinMultiple = function() {
