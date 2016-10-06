@@ -10,7 +10,9 @@
 		<% @clases.each  do |clase|%>
 			<p><%= clase.fecha.to_time.strftime('%d/%m') %> <strong><%= clase.dia %> <%= clase.horario %>hs</strong> <%= clase.actividad.nombre %> con <%= clase.instructor.nombre_completo %>.</p>
 		<% end%>
-		<br/><br/>
+		<br/>
+		<p style="color:#6C6A6A;"><strong>Recuerda</strong> que las clases se pueden cancelar únicamente hasta 12hs antes.</p>
+		<br/>
 		<p>Te esperamos!</p>
 		<p><strong>Equipo de Releve</strong></p>
 		<p>Paraná 26,Piso 3 Dpto. M, CABA.</p>
