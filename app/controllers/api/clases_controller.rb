@@ -179,11 +179,11 @@ class Api::ClasesController < ApplicationController
   def unjoin 
 	@clase = Clase.find(params[:id])
 	if @clase.completa? then
-		#UserMailer.waitlist_email(@clase).deliver 
+		UserMailer.waitlist_email(@clase).deliver 
 		@clase.destroy_wait_lists
 	end
 	current_user.remove_from_clase(@clase)
-	#UserMailer.unjoin_email(current_user,@clase).deliver
+	UserMailer.unjoin_email(current_user,@clase).deliver
 	render json: @clase, status: :created
   end
   
