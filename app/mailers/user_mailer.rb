@@ -1,6 +1,6 @@
 class UserMailer < ActionMailer::Base
 	layout 'mailer'
-	default from: "relevepilates@gmail.com@gmail.com"
+	default from: "relevepilates@gmail.com"
 
 	def welcome_email(user)
 		@user = user
@@ -28,7 +28,7 @@ class UserMailer < ActionMailer::Base
 	def waitlist_email(clase)
 		@clase = clase
 		emails = clase.wait_users.collect(&:email).join(",")
-		mail(to: 'relevepilates@gmail.com@gmail.com', bcc: emails,  subject: 'Tenemos un lugar para vos!')
+		mail(to: 'relevepilates@gmail.com', bcc: emails,  subject: 'Tenemos un lugar para vos!')
 	end
 
 	def pricing_email(email,nombre,apellido)
