@@ -42,12 +42,24 @@ angular.module("TurnosApp").controller("ClaseInstructorCtrl",['$scope', '$rootSc
 			}
 		});
 	};
-
+	// searchToday
 	$scope.searchToday = function() {
-		$scope.clase.fecha_end = SetDay(0);
 		$scope.clase.fecha_start = SetDay(0);
+		$scope.clase.fecha_end = SetDay(0);
 		$scope.submit();
 	}
+	// moreClases
+	$scope.moreClases = function() {
+		oldate = $("#fecha_end").datepicker( "getDate" );
+		oldate =  [oldate.getFullYear(),oldate.getMonth()+1,oldate.getDate()].join('-');
+		$scope.clase.fecha_start = oldate
+		var nwdate =  new Date($scope.clase.fecha_start);
+		nwdate.setDate(nwdate.getDate()+10);
+		nwdate =  [nwdate.getFullYear(),nwdate.getMonth()+1,nwdate.getDate()].join('-');
+		$scope.clase.fecha_end = nwdate;
+		$scope.submit();
+		window.scrollTo(0, 0);
+	};
 	// Datepicker
 	 var datelist = []; // initialize empty array
 	 $(function() {
@@ -57,7 +69,7 @@ angular.module("TurnosApp").controller("ClaseInstructorCtrl",['$scope', '$rootSc
 				$scope.clase.fecha_start=dateText;
 				$("#fecha_end").datepicker("option", "minDate", dateText);
 				var nwdate =  new Date(dateText);
-				nwdate.setDate(nwdate.getDate()+7);
+				nwdate.setDate(nwdate.getDate()+10);
 				nwdate =  [nwdate.getFullYear(),nwdate.getMonth()+1,nwdate.getDate()].join('-');
 				$("#fecha_end").datepicker("setDate", nwdate);
 				$scope.clase.fecha_end=nwdate;

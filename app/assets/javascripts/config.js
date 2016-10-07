@@ -162,7 +162,7 @@ var columns_instructor = [
 	{title:"Fecha",field:"fecha_fixed",filter:"fecha",visible:true,filter:{'fecha':'text'}},
 	{title:"Horario",field:"horario",filter:"horario",visible:true,filter:{'horario':'text'}},
 	{title:"Alumnos",field:"cant_users",filter:"cant_users",visible:true,filter:{'cant_users':'text'}, sortable: "cant_users", sortDirection: "desc",groupable:"cant_users"},
-	{title:"Alumnos",field:"users",filter:"users",visible:true,filter:{'users':'text'}, sortable: "users", sortDirection: "desc",groupable:"users"},
+	{title:"Listado",field:"users",filter:"users",visible:true,filter:{'users':'text'}, sortable: "users", sortDirection: "desc",groupable:"users"},
 ];
 // Alumno
 var alumnoDefaultPage = 1;	var alumnoDefaultCount = 100;
