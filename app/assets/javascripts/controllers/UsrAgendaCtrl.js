@@ -39,7 +39,7 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$rootScope', 
 					$scope.clases = data;
 					// Filter & Sort
 					if($scope.filterDay.every(function(element,index){return element===[false,false,false,false,false,false,false][index];})){data=[];}
-					dayData = jQuery.grep(data,function(clase){return $scope.dayCriteria.indexOf(clase.dia) !== -1;});
+					dayData = jQuery.grep(data,function(clase){return ($scope.dayCriteria.indexOf(clase.dia) !== -1 && !clase.old);});
 					filteredData = params.filter() ? $filter('filter')(dayData, params.filter()): dayData;	
 					orderedData = params.sorting() ? $filter('orderBy')(filteredData, params.orderBy()) : data;
 					// Show

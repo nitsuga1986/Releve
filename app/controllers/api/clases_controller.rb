@@ -151,7 +151,7 @@ class Api::ClasesController < ApplicationController
   # USER
   ###########################
   def index_usr
-	@clases = Clase.where('fecha >= ?', DateTime.now).order(:fecha,:horario).select{ |item| !item.old? }
+	@clases = Clase.where('fecha >= ?', DateTime.now.beginning_of_month).order(:fecha,:horario)
   end
   
   def history_usr
