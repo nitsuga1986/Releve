@@ -91,8 +91,8 @@ angular.module("TurnosApp").controller("ClaseInstructorCtrl",['$scope', '$rootSc
 		if (typeof $scope.is_instructor !== 'undefined' && $scope.is_instructor){	
 				$scope.clase.instructor_id = $scope.instructor_id;}
 		else{	$scope.clase.instructor_id = $scope.InstructorIndex[InstructorIndexDefault].id;}
-		$scope.clase.fecha_end = SetDay(+5);
-		$scope.clase.fecha_start = SetDay(-2);
+		$scope.clase.fecha_end = SetDay(+10);
+		$scope.clase.fecha_start = SetDay(0);
 		$scope.submit();
 	});
 	
