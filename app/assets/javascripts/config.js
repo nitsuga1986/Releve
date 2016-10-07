@@ -23,7 +23,7 @@ angular.module("TurnosApp",['ngRoute','ngResource','ngTable']).run(['$rootScope'
 		// Each clase:
 		alumno.actividad_counter = []; // Count clases for each actividad
 		alumno.actividad_counter_month = []; // Count clases for each actividad for month
-		alumno.selected_counter = []; // Count clases for each checkbox
+		if(alumno.selected_counter==undefined){alumno.selected_counter = [];} // Count clases for each checkbox
 		$.each(clases, function(index_clase, clase) {
 			month = parseInt(clases[index_clase].fecha.match(/\-(.*?)\-/)[1]);
 			clases[index_clase].mes = month;
@@ -37,12 +37,16 @@ angular.module("TurnosApp",['ngRoute','ngResource','ngTable']).run(['$rootScope'
 					if (alumno.actividad_counter[clases[index_clase].actividad_id] == undefined){
 						alumno.actividad_counter[clases[index_clase].actividad_id] = [];
 						alumno.actividad_counter[clases[index_clase].actividad_id][month] = 1;
-						alumno.selected_counter[clases[index_clase].actividad_id] = [];
-						alumno.selected_counter[clases[index_clase].actividad_id][month] = 0;
+						if (alumno.selected_counter[clases[index_clase].actividad_id] == undefined){
+							alumno.selected_counter[clases[index_clase].actividad_id] = [];
+							alumno.selected_counter[clases[index_clase].actividad_id][month] = 0;
+						}
 					}else{
 						if (alumno.actividad_counter[clases[index_clase].actividad_id][month] == undefined){
 						alumno.actividad_counter[clases[index_clase].actividad_id][month] = 1;
-						alumno.selected_counter[clases[index_clase].actividad_id][month] = 0;
+						if (alumno.selected_counter[clases[index_clase].actividad_id][month] == undefined){
+							alumno.selected_counter[clases[index_clase].actividad_id][month] = 0;
+						}
 						}else{
 						alumno.actividad_counter[clases[index_clase].actividad_id][month] += 1;
 						}

@@ -29,7 +29,8 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$rootScope', 
 				startLoading();
 				return Api.index_usr().$promise.then(function(data) {
 					angular.forEach(data, function(value, key) {
-						data[key]['checked'] = false;
+						if($scope.clases!=undefined && $scope.clases[key]['checked'] == true){data[key]['checked'] = true}
+						else{data[key]['checked'] = false};
 						data[key]["duracion"] = data[key]["duracion"]+' hs'
 						data[key]["cant_users"] = value.users.length+" / "+value.max_users;
 						data[key]["fecha_fixed"] = dateFormat(value.fecha) ;
@@ -79,6 +80,8 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$rootScope', 
 				}else{preventClase(index_clase);}
 			}else{preventClase(index_clase);}
 		}else{$scope.alumno.selected_counter[clase.actividad_id][clase.mes] -= 1;}
+		$scope.alumno.selected_counter_total = 0;
+		$.each($scope.alumno.selected_counter, function(index, arr) {if(arr!=undefined){$scope.alumno.selected_counter_total += arr.reduce(function(a, b) { return a + b; }, 0);}});
 	};
 	// JoinMultiple
 	$scope.JoinMultiple = function() {
