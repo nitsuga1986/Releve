@@ -55,6 +55,12 @@ angular.module("TurnosApp").controller("ClaseInstructorCtrl",['$scope', '$rootSc
 			defaultDate: "+0d",
 			onSelect: function(dateText) {
 				$scope.clase.fecha_start=dateText;
+				$("#fecha_end").datepicker("option", "minDate", dateText);
+				var nwdate =  new Date(dateText);
+				nwdate.setDate(nwdate.getDate()+7);
+				nwdate =  [nwdate.getFullYear(),nwdate.getMonth()+1,nwdate.getDate()].join('-');
+				$("#fecha_end").datepicker("setDate", nwdate);
+				$scope.clase.fecha_end=nwdate;
 		   }
 		});
 	});
@@ -93,6 +99,7 @@ angular.module("TurnosApp").controller("ClaseInstructorCtrl",['$scope', '$rootSc
 		else{	$scope.clase.instructor_id = $scope.InstructorIndex[InstructorIndexDefault].id;}
 		$scope.clase.fecha_end = SetDay(+10);
 		$scope.clase.fecha_start = SetDay(0);
+		$("#fecha_end").datepicker("option", "minDate", SetDay(0));
 		$scope.submit();
 	});
 	
