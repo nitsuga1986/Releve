@@ -6,22 +6,32 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <url>
   <loc>http://relevepilates.com.ar/</loc>
-  <changefreq>monthly</changefreq>
+  <changefreq>always</changefreq>
   <priority>1.0</priority>
+  <lastmod>2016-10-06</lastmod>
+</url>
+<url>
+  <loc>http://www.relevepilates.com.ar/app/agenda</loc>
+  <changefreq>always</changefreq>
+  <priority>1.0</priority>
+  <lastmod>2016-10-06</lastmod>
 </url>
 <url>
   <loc>http://relevepilates.com.ar/users/sign_in</loc>
   <changefreq>yearly</changefreq>
   <priority>0.5</priority>
+  <lastmod>2016-10-06</lastmod>
 </url>
 <url>
   <loc>http://relevepilates.com.ar/users/sign_up</loc>
   <changefreq>yearly</changefreq>
   <priority>0.5</priority>
+  <lastmod>2016-10-06</lastmod>
 </url>
 <url>
   <loc>http://relevepilates.com.ar/users/password/new</loc>
   <changefreq>yearly</changefreq>
   <priority>0.0</priority>
+  <lastmod>2016-10-06</lastmod>
 </url>
 </urlset>
