@@ -510,7 +510,7 @@ body.landingpage {
 			top: 4em;
 			-webkit-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 			transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
-			a{font-size: 0.9em;}
+			a{font-size: 0.8em;}
 		}
 		.description {
 			width: 80%;
@@ -531,6 +531,9 @@ body.landingpage {
 	}
 	.service.showsmall{
 		border: 0.0625em solid #1aaea2;
+		.heading {
+			a{font-size: 0.9em;}
+		}
 	}
 	.servicehover:hover {
 		border-color: #12849E;
