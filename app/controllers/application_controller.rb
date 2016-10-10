@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   end
   def correct_domain!
     unless request.host == 'www.relevepilates.com.ar'
-      redirect_to 'www.relevepilates.com.ar', :status => 301  # or explicitly 'http://www.mysite.com/'
+      redirect_to root_url, :status => 301  # or explicitly 'http://www.mysite.com/'
     end
   end
   
