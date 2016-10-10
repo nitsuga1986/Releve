@@ -221,6 +221,7 @@
 				<p class="hidden-xs">Ciudad Autónoma de Buenos Aires C1017AAB</p>
 				<p><i class="fa fa-phone text-primary" aria-hidden="true"></i> <a href="tel:11-4382-6446">+54 (011) 4382 - 6446</a></p>
 				<p><i class="fa fa-envelope-o text-warning" aria-hidden="true"></i> <a href="mailto:relevepilates@gmail.com?Subject=Releve%20Pilates">relevepilates@gmail.com</a></p>
+<div class="fb-page" data-href="https://www.facebook.com/relevepilates" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true"><blockquote cite="https://www.facebook.com/relevepilates" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/relevepilates">Releve Pilates</a></blockquote></div>
 			</div>
 			<div class="col-xs-12 col-md-8">
 				<div id="map"></div>
@@ -279,7 +280,7 @@
 <%= render 'layouts/footer' %>
 <%= render 'layouts/modals' %>
 
-
+<!-- Maps Plugin-->
 <script>
   function initMap() {
 	var mapDiv = document.getElementById('map');
@@ -296,7 +297,16 @@
   }
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCS61_zaaWYmJIMekUGT1arDldQP5w5K7M&callback=initMap"></script>
-
+<!-- Facebook Like Plugin-->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.8";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<!-- schema.org data-->
 <script type="application/ld+json">[
 	<% (0..9).each do |k| %>
 		<% if !@nextclases[k].nil?  && !@nextclases[k].instructor.nil?%>
