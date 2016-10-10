@@ -121,20 +121,18 @@
 			<h2>Actividades</h2>
 			<h4 class="light muted">Te invitamos a vivir la experiencia Releve</h4>
 		</div>
-		<div class="row services">
+		<div class="row services hidden-xs">
 			<div class="col-md-4">
-				<div class="service">
+				<div class="service servicehover">
 					<div class="icon-holder">
 						<img src="<%= asset_path 'icons/pilates-blue.png' %>" alt="" class="icon">
 					</div>
-					<h4 class="heading">Pilates</h4>
+					<h4 class="heading">Pilates<br/><a href="#descripcion"><i class="fa fa-plus" aria-hidden="true"></i> Ver más</a></h4>
 					<p class="description">Se trabaja en circuito integrando Reformer, Cadillac, Chair y Corrector espinal, más un espacio para hacer mat y distintos accesorios.</p>
-					<a href="#descripcion"><i class="fa fa-plus" aria-hidden="true"></i> Ver más</a>
-
 				</div>
 			</div>
 			<div class="col-md-4">
-				<div class="service ribbon_box">
+				<div class="service servicehover ribbon_box">
 					<div class="ribbon"><span>Próximamente!</span></div>
 					<div class="icon-holder">
 						<img src="<%= asset_path 'icons/dance-blue.png' %>" alt="" class="icon">
@@ -144,7 +142,7 @@
 				</div>
 			</div>
 			<div class="col-md-4">
-				<div class="service ribbon_box">
+				<div class="service servicehover ribbon_box">
 					<div class="ribbon"><span>Próximamente!</span></div>
 					<div class="icon-holder">
 						<img src="<%= asset_path 'icons/stretching-blue.png' %>" alt="" class="icon">
@@ -152,6 +150,32 @@
 					<h4 class="heading">Yoga</h4>
 					<p class="description">Trabajo completo del cuerpo, donde se educa la mente y el espíritu, para todos aquellos que deseen mejorar su calidad de vida.</p>
 				</div>
+			</div>
+		</div>
+		<div class="row services visible-xs-block">
+			<div class="col-xs-4">
+				<a href="#descripcion"><div class="service showsmall">
+					<div class="icon-holder">
+						<img src="<%= asset_path 'icons/pilates-blue.png' %>" alt="" class="icon">
+					</div>
+					<h4 class="heading">Pilates</h4>
+				</div></a>
+			</div>
+			<div class="col-xs-4">
+				<a href="#descripcion"><div class="service soon">
+					<div class="icon-holder">
+						<img src="<%= asset_path 'icons/dance-blue.png' %>" alt="" class="icon">
+					</div>
+					<h4 class="heading">Dance Pilates</h4>
+				</div></a>
+			</div>
+			<div class="col-xs-4">
+				<a href="#descripcion"><div class="service soon">
+					<div class="icon-holder">
+						<img src="<%= asset_path 'icons/stretching-blue.png' %>" alt="" class="icon">
+					</div>
+					<h4 class="heading">Yoga</h4>
+				</div></a>
 			</div>
 		</div>
 	</div>
