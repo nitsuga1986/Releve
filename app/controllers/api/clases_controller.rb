@@ -162,34 +162,42 @@ class Api::ClasesController < ApplicationController
 	@clase = Clase.find(params[:id])
 	@clase.add_asistencia(current_user.id)
 	UserMailer.join_email(current_user,@clase).deliver
+	Event.create(name:'join',content: "<strong>"+current_user.nombre_completo+"</strong> se agendó a la clase del <strong>"+@clase.dia+" "+@clase.fecha.strftime('%d/%m')+"</strong>")
 	render json: @clase, status: :created
   end
   
   def join_multiple
 	@clases= []
+	clasesagendadas = ""
 	params[:_json].each do |clase|
 		@clase = Clase.find(clase[:id])
 		@clase.add_asistencia(current_user.id)
 		@clases.push(@clase)
+		clasesagendadas = clasesagendadas+"<strong>"+@clase.dia+" "+@clase.fecha.strftime('%d/%m')+"</strong>"
+		clasesagendadas = clasesagendadas+", " if clase!=params[:_json].last 
 	end
 	UserMailer.join_multiple_email(current_user,@clases).deliver
+	Event.create(name:'joinmultiple',content: "<strong>"+current_user.nombre_completo+"</strong> se agendó en las siguientes clases: "+clasesagendadas)
 	render json: @clase, status: :created
   end
-  
+
   def unjoin 
 	@clase = Clase.find(params[:id])
 	if @clase.completa? then
 		UserMailer.waitlist_email(@clase).deliver 
 		@clase.destroy_wait_lists
+		Event.create(name:'waitlistclear',content: "Se hizo un lugar en la clase del "+@clase.dia+" "+@clase.fecha.strftime('%d/%m')+" y se avisó a las personas en lista de espera")
 	end
 	current_user.remove_from_clase(@clase)
 	UserMailer.unjoin_email(current_user,@clase).deliver
+	Event.create(name:'unjoin',content: "<strong>"+current_user.nombre_completo+"</strong> canceló su clase del <strong>"+@clase.dia+" "+@clase.fecha.strftime('%d/%m')+"</strong>")
 	render json: @clase, status: :created
   end
   
   def waitlist 
 	@clase = Clase.find(params[:id])
 	@clase.add_wait_list(current_user.id)
+	Event.create(name:'waitlist',content: "<strong>"+current_user.nombre_completo+"</strong> se agregó a la lista de espera de la clase del <strong>"+@clase.dia+" "+@clase.fecha.strftime('%d/%m')+"</strong>")
 	render json: @clase, status: :created
   end
   

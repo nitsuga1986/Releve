@@ -1,0 +1,23 @@
+<h3><i class="fa fa-bell"></i> Listado de eventos</h3>
+<hr class="event"/>
+
+<div class="col-xs-12">
+	<div class="table-responsive">
+	  <table class="table table-striped table-hover table-condensed">
+		<tbody>
+			<tr data-ng-repeat="event in events" data-ng-class="{success: event.name=='finish_signup'}">
+				<td>
+					<i data-ng-if="event.name=='join'" class="fa fa-play text-success" aria-hidden="true"></i>
+					<i data-ng-if="event.name=='joinmultiple'" class="fa fa-forward text-success" aria-hidden="true"></i>
+					<i data-ng-if="event.name=='unjoin'" class="fa fa-play fa-flip-horizontal text-danger" aria-hidden="true"></i>
+					<i data-ng-if="event.name=='waitlist'" class="fa fa-clock-o text-info" aria-hidden="true"></i>
+					<i data-ng-if="event.name=='waitlistclear'" class="fa fa-info text-info" aria-hidden="true"></i>
+					<i data-ng-if="event.name=='finish_signup'" class="fa fa-check-square text-success" aria-hidden="true"></i>
+					<i data-ng-if="event.name=='pricing'" class="fa fa-dollar text-warning" aria-hidden="true"></i>
+				</td>
+				<td data-ng-bind-html="event.content | html_trusted" data-ng-class="{'text-info': event.name=='waitlist'||event.name=='waitlistclear', 'text-warning': event.name=='pricing'}"></td>
+			</tr>
+		</tbody>
+	  </table>
+	</div>
+</div>

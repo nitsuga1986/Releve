@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 		@user.update(user_params)
 		UserMailer.welcome_email(@user).deliver if @user.confirmed == false
 		@user.update_attribute(:confirmed, true)
+		Event.create(name:'finish_signup',content: "<strong>"+@user.nombre_completo+"</strong> ha completado su registro correctamente")
         bypass_sign_in(@user)
         redirect_to '/app/agenda/', notice: 'Hemos guardado tu email correctamente.'
         return

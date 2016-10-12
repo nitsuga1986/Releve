@@ -39,6 +39,7 @@
 								<li><a href="/clase/index" class="text-admin"><i class="fa fa-calendar" aria-hidden="true"></i> Calendario</a></li>
 								<% if current_user.admin? %>
 										<li><a href="/alumno/index" class="text-admin"><i class="fa fa-users" aria-hidden="true"></i> Alumnos</a></li>
+										<li><a href="/eventos/index" class="text-admin"><i class="fa fa-bell" aria-hidden="true"></i> Eventos</a></li>
 								<% end %>
 							  </ul>
 							</li>
@@ -97,6 +98,7 @@
 					<a class="btn btn-danger btn-lg text-admin" href="/clase/index"><i class="fa fa-calendar" aria-hidden="true"></i> Calendario</a>
 					<% if current_user.admin? %>
 						<a class="btn btn-danger btn-lg text-admin" href="/alumno/index"><i class="fa fa-users" aria-hidden="true"></i> Alumnos</a>
+						<a class="btn btn-danger btn-lg text-admin" href="/eventos/index"><i class="fa fa-bell" aria-hidden="true"></i> Eventos</a>
 					<% end %>
 				<% end %>
 			<% end %>

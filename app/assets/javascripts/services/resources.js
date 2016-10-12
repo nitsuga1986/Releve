@@ -37,7 +37,7 @@ angular.module("TurnosApp").factory("ResourceAlumno",['$resource', function($res
   );
 }]);
 
-// User
+// Actividad
 angular.module("TurnosApp").factory("ResourceActividad",['$resource', function($resource) {
   return $resource("/api/actividad/:id", { id: "@id" },
     {
@@ -46,6 +46,15 @@ angular.module("TurnosApp").factory("ResourceActividad",['$resource', function($
       'show':    { method: 'GET', isArray: false },
       'update':  { method: 'PUT' },
       'destroy': { method: 'DELETE' },
+    }
+  );
+}]);
+
+// Event
+angular.module("TurnosApp").factory("ResourceEvent",['$resource', function($resource) {
+  return $resource("/api/event/:id", { id: "@id" },
+    {
+      'index':   { method: 'GET', isArray: true },
     }
   );
 }]);

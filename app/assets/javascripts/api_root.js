@@ -23,6 +23,7 @@
 //= require controllers/ActividadIndexCtrl
 //= require controllers/ActividadEditCtrl
 //= require controllers/ActividadShowCtrl
+//= require controllers/EventIndexCtrl
 //= require routes
 // startLoading
 function startLoading() {

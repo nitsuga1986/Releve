@@ -12,6 +12,7 @@ class LandingController < ApplicationController
 		if params[:email].present? && params[:firstname].present? && params[:lastname].present?
 			if verify_recaptcha
 				UserMailer.pricing_email(params[:email],params[:firstname],params[:lastname]).deliver
+				Event.create(name:'pricing',content: "<strong>"+params[:email]+"</strong> ("+params[:firstname]+" "+params[:lastname]+") ha solicitado los precios de las actividades")
 				render json: {message: "ok"}, status: :ok 
 				return
 			else
