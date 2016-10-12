@@ -4,8 +4,8 @@ angular.module("TurnosApp").controller("ClaseEditCtrl",['$scope', '$rootScope', 
 	$scope.submiterror = false;
 	$scope.history_GoToClaseEdit = []; // Prevents loop search
 	$scope.GoToIndex = function(id) {$location.path("/clase/index");};
-	$scope.GoToEdit = function(id) {$location.path("/alumno/"+id+"/edit/");};
-	$scope.GoToNewActividad = function() {$location.path("/actividad/new");};
+	$scope.GoToEdit = function(id) {if($scope.is_admin){$location.path("/alumno/"+id+"/edit/");}};
+	$scope.GoToNewActividad = function() {if($scope.is_admin){$location.path("/actividad/new");}};
 	$scope.ActividadIndex = [];
 	$scope.ActividadIndex = ResourceActividad.index();
 	$scope.InstructorIndex = ResourceAlumno.instructores();

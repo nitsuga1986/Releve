@@ -36,8 +36,10 @@
 							  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
 							  <ul class="dropdown-menu">
 								<li><a href="/clase/instructor" class="text-admin"><i class="fa fa-calendar-o" aria-hidden="true"></i> Clases</a></li>
-								<li><a href="/alumno/index" class="text-admin"><i class="fa fa-users" aria-hidden="true"></i> Alumnos</a></li>
 								<li><a href="/clase/index" class="text-admin"><i class="fa fa-calendar" aria-hidden="true"></i> Calendario</a></li>
+								<% if current_user.admin? %>
+										<li><a href="/alumno/index" class="text-admin"><i class="fa fa-users" aria-hidden="true"></i> Alumnos</a></li>
+								<% end %>
 							  </ul>
 							</li>
 						<% end %>
@@ -92,8 +94,10 @@
 				<a class="btn btn-primary btn-lg" href="/app/mi_info"><i class="fa fa-cogs" aria-hidden="true"></i> Mi Info</a>
 				<% if current_user.instructor?||current_user.admin? %>
 					<a class="btn btn-danger btn-lg text-admin" href="/clase/instructor"><i class="fa fa-calendar-o" aria-hidden="true"></i> Clases</a>
-					<a class="btn btn-danger btn-lg text-admin" href="/alumno/index"><i class="fa fa-users" aria-hidden="true"></i> Alumnos</a>
 					<a class="btn btn-danger btn-lg text-admin" href="/clase/index"><i class="fa fa-calendar" aria-hidden="true"></i> Calendario</a>
+					<% if current_user.admin? %>
+						<a class="btn btn-danger btn-lg text-admin" href="/alumno/index"><i class="fa fa-users" aria-hidden="true"></i> Alumnos</a>
+					<% end %>
 				<% end %>
 			<% end %>
 			<% if !current_user.confirmed? %>

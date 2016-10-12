@@ -1,7 +1,7 @@
 class Api::AlumnosController < ApplicationController
   before_action :authenticate_user!
-  before_action only: [:create, :destroy] do redirect_to :new_user_session_path unless current_user && current_user.admin?   end
-  before_action only: [:index, :show, :autocomplete, :update, :usr_clases] do redirect_to :new_user_session_path unless current_user && (current_user.instructor?||current_user.admin?)   end
+  before_action only: [:create, :destroy, :index, :show, :update] do redirect_to :new_user_session_path unless current_user && current_user.admin?   end
+  before_action only: [:autocomplete, :usr_clases] do redirect_to :new_user_session_path unless current_user && (current_user.instructor?||current_user.admin?)   end
   
   respond_to :json
 
@@ -37,8 +37,6 @@ class Api::AlumnosController < ApplicationController
 	head :no_content
   end
   
-  # INSTRUCTOR
-  ###########################
   def index
 	@alumno = User.all
 	respond_with @alumno
@@ -47,13 +45,6 @@ class Api::AlumnosController < ApplicationController
   def show
 	@alumno = User.find(params[:id])
 	respond_with @alumno
-  end
-
-  def autocomplete
-	like= "%".concat(params[:term].concat("%"))
-	@users = User.where("email like ? OR nombre like ? OR apellido like ?", like, like, like)
-	list = @users.map {|u| Hash[ label:u.label, id: u.id, email: u.email]}
-	render json: list
   end
 
   def update
@@ -75,6 +66,15 @@ class Api::AlumnosController < ApplicationController
 	else
 		render json: @alumno.errors, status: :unprocessable_entity
 	end
+  end
+  # INSTRUCTOR
+  ###########################
+
+  def autocomplete
+	like= "%".concat(params[:term].concat("%"))
+	@users = User.where("email like ? OR nombre like ? OR apellido like ?", like, like, like)
+	list = @users.map {|u| Hash[ label:u.label, id: u.id, email: u.email]}
+	render json: list
   end
 
   def usr_clases
