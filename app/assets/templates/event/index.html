@@ -18,7 +18,7 @@
 		<tbody>
 			<tr data-ng-repeat="event in events" data-ng-class="{success: event.name=='finish_signup'}"
 			data-ng-if="(event.name=='join'&&filter_join)||
-			(event.name=='joinmultiple'&&filter_joinmultiple)||
+			(event.name=='joinmultiple'&&filter_joinmultiple)||(event.name=='continuation'&&filter_joinmultiple)||
 			(event.name=='unjoin'&&filter_unjoin)||
 			(event.name=='waitlist'&&filter_waitlist)||
 			(event.name=='waitlistclear'&&filter_waitlistclear)||
@@ -27,13 +27,14 @@
 				<td>
 					<i data-ng-if="event.name=='join'" class="fa fa-play text-success" aria-hidden="true"></i>
 					<i data-ng-if="event.name=='joinmultiple'" class="fa fa-forward text-success" aria-hidden="true"></i>
+					<i data-ng-if="event.name=='continuation'" class="fa fa-ellipsis-h  text-default" aria-hidden="true"></i>
 					<i data-ng-if="event.name=='unjoin'" class="fa fa-play fa-flip-horizontal text-danger" aria-hidden="true"></i>
 					<i data-ng-if="event.name=='waitlist'" class="fa fa-clock-o text-info" aria-hidden="true"></i>
 					<i data-ng-if="event.name=='waitlistclear'" class="fa fa-info text-info" aria-hidden="true"></i>
 					<i data-ng-if="event.name=='finish_signup'" class="fa fa-check-square text-success" aria-hidden="true"></i>
 					<i data-ng-if="event.name=='pricing'" class="fa fa-dollar text-warning" aria-hidden="true"></i>
 				</td>
-				<td data-ng-bind-html="event.content | html_trusted" data-ng-class="{'text-info': event.name=='waitlist'||event.name=='waitlistclear', 'text-warning': event.name=='pricing'}"></td>
+				<td data-ng-bind-html="event.content | html_trusted" data-ng-class="{'text-info': event.name=='waitlist'||event.name=='waitlistclear', 'text-warning': event.name=='pricing', 'text-muted': event.name=='continuation'}"></td>
 				<td class="text-muted">{{event.created_at | date:'dd/MM HH:mm'}}</td>
 			</tr>
 		</tbody>

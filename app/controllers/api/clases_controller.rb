@@ -162,22 +162,28 @@ class Api::ClasesController < ApplicationController
 	@clase = Clase.find(params[:id])
 	@clase.add_asistencia(current_user.id)
 	UserMailer.join_email(current_user,@clase).deliver
-	Event.create(name:'join',content: "<strong>"+current_user.nombre_completo+"</strong> se agendó a la clase del <strong>"+@clase.dia+" "+@clase.fecha.strftime('%d/%m')+"</strong>")
+	Event.create(name:'join',content: "<strong>"+current_user.nombre_completo+"</strong> se agendó a la clase de "+@clase.actividad.nombre+" del <strong>"+@clase.dia+" "+@clase.fecha.strftime('%d/%m')+" "+@clase.horario+"hs</strong>")
 	render json: @clase, status: :created
   end
   
   def join_multiple
 	@clases= []
+	agendadasarray = []
 	clasesagendadas = ""
-	params[:_json].each do |clase|
+	params[:_json].each_with_index do |clase, index|
 		@clase = Clase.find(clase[:id])
 		@clase.add_asistencia(current_user.id)
 		@clases.push(@clase)
-		clasesagendadas = clasesagendadas+"<strong>"+@clase.dia+" "+@clase.fecha.strftime('%d/%m')+"</strong>"
+		clasesagendadas = clasesagendadas+" "+@clase.actividad.nombre+" <strong>"+@clase.dia+" "+@clase.fecha.strftime('%d/%m')+" "+@clase.horario+"hs</strong>"
 		clasesagendadas = clasesagendadas+", " if clase!=params[:_json].last 
+		if((index + 1) % 4 == 0)|| clase==params[:_json].last 
+			agendadasarray.push(clasesagendadas)
+			clasesagendadas = ""
+		end
 	end
-	UserMailer.join_multiple_email(current_user,@clases).deliver
-	Event.create(name:'joinmultiple',content: "<strong>"+current_user.nombre_completo+"</strong> se agendó en las siguientes clases: "+clasesagendadas)
+	agendadasarray.reverse.each { |x| Event.create(name:'continuation',content: x) }
+	Event.create(name:'joinmultiple',content: "<strong>"+current_user.nombre_completo+"</strong> se agendó en las siguientes clases: ")
+	#UserMailer.join_multiple_email(current_user,@clases).deliver
 	render json: @clase, status: :created
   end
 
@@ -189,8 +195,8 @@ class Api::ClasesController < ApplicationController
 		Event.create(name:'waitlistclear',content: "Se hizo un lugar en la clase del "+@clase.dia+" "+@clase.fecha.strftime('%d/%m')+" y se avisó a las personas en lista de espera")
 	end
 	current_user.remove_from_clase(@clase)
-	UserMailer.unjoin_email(current_user,@clase).deliver
-	Event.create(name:'unjoin',content: "<strong>"+current_user.nombre_completo+"</strong> canceló su clase del <strong>"+@clase.dia+" "+@clase.fecha.strftime('%d/%m')+"</strong>")
+	#UserMailer.unjoin_email(current_user,@clase).deliver
+	Event.create(name:'unjoin',content: "<strong>"+current_user.nombre_completo+"</strong> canceló su clase de "+@clase.actividad.nombre+" del <strong>"+@clase.dia+" "+@clase.fecha.strftime('%d/%m')+" "+@clase.horario+"hs</strong>")
 	render json: @clase, status: :created
   end
   
