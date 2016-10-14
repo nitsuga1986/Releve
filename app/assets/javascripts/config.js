@@ -154,6 +154,7 @@ var columns_clase = [
 	{title:"Comentarios",field:"comment",filter:"comment",visible:false,filter:{'comment':'text'}, sortable: "comment", sortDirection: "desc",groupable:"comment"},
 ];
 // Instructor
+var claseInstructorSorting = {fecha: 'asc',horario: 'asc'};
 var columns_instructor = [
 	{title:"Fecha",field:"fecha_fixed",filter:"fecha",visible:true,filter:{'fecha':'text'}},
 	{title:"Horario",field:"horario",filter:"horario",visible:true,filter:{'horario':'text'}},

@@ -15,6 +15,7 @@ angular.module("TurnosApp").controller("ClaseInstructorCtrl",['$scope', '$rootSc
 		$rootScope.got_to_url_success = "/clase/instructor";
 		$scope.FormErrors = [];
 		$scope.tableParams = new NgTableParams({
+			sorting: claseInstructorSorting, 		// initial sorting
 		}, {
 			counts: [],							// hides page sizes
 			getData: function(params) {

@@ -38,7 +38,7 @@
 								<li><a href="/clase/instructor" class="text-admin"><i class="fa fa-calendar-o" aria-hidden="true"></i> Clases</a></li>
 								<li><a href="/clase/agendar" class="text-admin"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i> Agendar</a></li>
 								<% if current_user.admin? %>
-										<li><a href="/clase/index" class="text-admin"><i class="fa fa-calendar" aria-hidden="true"></i> Calendario</a></li>
+										<!--<li><a href="/clase/index" class="text-admin"><i class="fa fa-calendar" aria-hidden="true"></i> Calendario</a></li>-->
 										<li><a href="/alumno/index" class="text-admin"><i class="fa fa-users" aria-hidden="true"></i> Alumnos</a></li>
 										<li><a href="/eventos/index" class="text-admin"><i class="fa fa-bell" aria-hidden="true"></i> Eventos</a></li>
 								<% end %>
@@ -98,7 +98,7 @@
 					<a class="btn btn-danger btn-lg text-admin" href="/clase/instructor"><i class="fa fa-calendar-o" aria-hidden="true"></i> Clases</a>
 					<a class="btn btn-danger btn-lg text-admin" href="/clase/agendar"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i> Agendar</a>
 					<% if current_user.admin? %>
-						<a class="btn btn-danger btn-lg text-admin" href="/clase/index"><i class="fa fa-calendar" aria-hidden="true"></i> Calendario</a>
+						<!--<a class="btn btn-danger btn-lg text-admin" href="/clase/index"><i class="fa fa-calendar" aria-hidden="true"></i> Calendario</a>-->
 						<a class="btn btn-danger btn-lg text-admin" href="/alumno/index"><i class="fa fa-users" aria-hidden="true"></i> Alumnos</a>
 						<a class="btn btn-danger btn-lg text-admin" href="/eventos/index"><i class="fa fa-bell" aria-hidden="true"></i> Eventos</a>
 					<% end %>
