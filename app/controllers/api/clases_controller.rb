@@ -165,7 +165,7 @@ class Api::ClasesController < ApplicationController
 		end
 	end
 	agendadasarray.reverse.each { |x| Event.create(name:'continuation',content: x) }
-	Event.create(name:'joinmultiple',content: "<strong>"+selected_user.nombre_completo+"</strong> se agendó en las siguientes clases: ")
+	Event.create(name:'joinmultiple',content: current_user.nombre_completo+" agendó a <strong>"+selected_user.nombre_completo+"</strong> en las siguientes clases: ")
 	UserMailer.join_multiple_email(selected_user,@clases).deliver
 	render json: @clase, status: :created
   end
