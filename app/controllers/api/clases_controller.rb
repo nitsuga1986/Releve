@@ -1,7 +1,7 @@
 class Api::ClasesController < ApplicationController
   before_action :authenticate_user!
   before_action only: [:test_emails, :create, :bulk, :destroy] do redirect_to :new_user_session_path unless current_user && current_user.admin?   end
-  before_action only: [:index, :show, :search, :instructor, :update, :edit_bulk] do redirect_to :new_user_session_path unless current_user && (current_user.instructor?||current_user.admin?) end
+  before_action only: [:index, :show, :search, :instructor, :update, :edit_bulk, :join_usr_multiple] do redirect_to :new_user_session_path unless current_user && (current_user.instructor?||current_user.admin?) end
 
   respond_to :json
 
@@ -146,6 +146,28 @@ class Api::ClasesController < ApplicationController
 			status: :unprocessable_entity
 		}
 	end
+  end
+  
+  def join_usr_multiple
+	selected_user = User.find(params[:_json][0]["alumno_id"])
+	@clases= []
+	agendadasarray = []
+	clasesagendadas = ""
+	params[:_json].each_with_index do |clase, index|
+		@clase = Clase.find(clase[:id])
+		@clase.add_asistencia(selected_user.id)
+		@clases.push(@clase)
+		clasesagendadas = clasesagendadas+" "+@clase.actividad.nombre+" <strong>"+@clase.dia+" "+@clase.fecha.strftime('%d/%m')+" "+@clase.horario+"hs</strong>"
+		clasesagendadas = clasesagendadas+", " if clase!=params[:_json].last 
+		if((index + 1) % 4 == 0)|| clase==params[:_json].last 
+			agendadasarray.push(clasesagendadas)
+			clasesagendadas = ""
+		end
+	end
+	agendadasarray.reverse.each { |x| Event.create(name:'continuation',content: x) }
+	Event.create(name:'joinmultiple',content: "<strong>"+selected_user.nombre_completo+"</strong> se agendó en las siguientes clases: ")
+	UserMailer.join_multiple_email(selected_user,@clases).deliver
+	render json: @clase, status: :created
   end
   
   # USER

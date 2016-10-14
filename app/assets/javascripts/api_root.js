@@ -13,6 +13,7 @@
 //= require controllers/UsrMiInfoCtrl
 //= require controllers/ClaseIndexCtrl
 //= require controllers/ClaseEditCtrl
+//= require controllers/ClaseAgendarCtrl
 //= require controllers/ClaseInstructorCtrl
 //= require controllers/ClaseBulkCtrl
 //= require controllers/ClaseEditBulkCtrl

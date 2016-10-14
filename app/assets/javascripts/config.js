@@ -154,15 +154,17 @@ var columns_clase = [
 	{title:"Comentarios",field:"comment",filter:"comment",visible:false,filter:{'comment':'text'}, sortable: "comment", sortDirection: "desc",groupable:"comment"},
 ];
 // Instructor
-var claseInstructorPage = 1;	var claseInstructorCount = 15;
-var claseInstructorFilter = {};
-var claseInstructorSorting = {fecha: 'asc',horario: 'asc'};
-var clasePageSizes = [15, 25, 50, 100];
 var columns_instructor = [
 	{title:"Fecha",field:"fecha_fixed",filter:"fecha",visible:true,filter:{'fecha':'text'}},
 	{title:"Horario",field:"horario",filter:"horario",visible:true,filter:{'horario':'text'}},
 	{title:"Alumnos",field:"cant_users",filter:"cant_users",visible:true,filter:{'cant_users':'text'}, sortable: "cant_users", sortDirection: "desc",groupable:"cant_users"},
 	{title:"Listado",field:"users",filter:"users",visible:true,filter:{'users':'text'}, sortable: "users", sortDirection: "desc",groupable:"users"},
+];
+// clases Agendar
+var columns_agendar = [
+	{title:"Fecha",field:"fecha_fixed",filter:"fecha_fixed",visible:true,filter:{'fecha':'text'}, sortable: "fecha", sortDirection: "asc",groupable:"fecha",hiddenxs:false},
+	{title:"Instructor",field:"instructor",filter:"instructor",visible:true,filter:{'instructor':'text'}, sortable: "instructor", sortDirection: "desc",groupable:"instructor",hiddenxs:false},
+	{title:"Actividad",field:"actividad",filter:"actividad",visible:true,filter:{'actividad':'text'}, sortable: "actividad", sortDirection: "desc",groupable:"actividad",hiddenxs:false},
 ];
 // Alumno
 var alumnoDefaultPage = 1;	var alumnoDefaultCount = 100;
