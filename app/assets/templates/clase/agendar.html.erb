@@ -137,6 +137,8 @@
 					<td data-ng-repeat="column in columns_agendar" data-ng-show="column.visible" sortable="column.field" filter="column.filter">
 						{{clase[column.field]}}
 <!--Completa-->			<span data-ng-if="column.field=='fecha_fixed' && clase.completa" class="label label-danger">Completa</span>
+<!--Cancelada-->		<span data-ng-if="column.field=='fecha_fixed' && clase.cancelada" class="label label-danger">Cancelada</span>
+<!--Agendado-->			<span data-ng-if="column.field=='fecha_fixed' && clase.joined" class="label label-success">Ya agendado</span>
 					</td>
 				</tr>
 			</tbody>

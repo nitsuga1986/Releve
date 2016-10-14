@@ -15,6 +15,7 @@ angular.module("TurnosApp").controller("ClaseAgendarCtrl",['$scope', '$rootScope
 					startLoading();
 					return ResourceClase.index_usr().$promise.then(function(data) {
 						dataFilteredByDay = [];
+						data,$scope.alumno = $scope.condicionesClases(data,$scope.alumno);
 						angular.forEach(data, function(value, key) {
 							data[key]["duracion"] = data[key]["duracion"]+' hs'
 							data[key]["cant_users"] = value.users.length+" / "+value.max_users;
@@ -26,11 +27,11 @@ angular.module("TurnosApp").controller("ClaseAgendarCtrl",['$scope', '$rootScope
 								($scope.filterDay[36]&&value.dia=='Jueves'&&value.horario=='09:00')||($scope.filterDay[37]&&value.dia=='Jueves'&&value.horario=='10:00')||($scope.filterDay[38]&&value.dia=='Jueves'&&value.horario=='11:00')||($scope.filterDay[39]&&value.dia=='Jueves'&&value.horario=='12:00')||($scope.filterDay[40]&&value.dia=='Jueves'&&value.horario=='13:00')||($scope.filterDay[41]&&value.dia=='Jueves'&&value.horario=='14:00')||($scope.filterDay[42]&&value.dia=='Jueves'&&value.horario=='15:00')||($scope.filterDay[43]&&value.dia=='Jueves'&&value.horario=='16:00')||($scope.filterDay[44]&&value.dia=='Jueves'&&value.horario=='17:00')||($scope.filterDay[45]&&value.dia=='Jueves'&&value.horario=='18:00')||($scope.filterDay[46]&&value.dia=='Jueves'&&value.horario=='19:00')||($scope.filterDay[47]&&value.dia=='Jueves'&&value.horario=='20:00')||
 								($scope.filterDay[48]&&value.dia=='Viernes'&&value.horario=='09:00')||($scope.filterDay[49]&&value.dia=='Viernes'&&value.horario=='10:00')||($scope.filterDay[50]&&value.dia=='Viernes'&&value.horario=='11:00')||($scope.filterDay[51]&&value.dia=='Viernes'&&value.horario=='12:00')||($scope.filterDay[52]&&value.dia=='Viernes'&&value.horario=='13:00')||($scope.filterDay[53]&&value.dia=='Viernes'&&value.horario=='14:00')||($scope.filterDay[54]&&value.dia=='Viernes'&&value.horario=='15:00')||($scope.filterDay[55]&&value.dia=='Viernes'&&value.horario=='16:00')||($scope.filterDay[56]&&value.dia=='Viernes'&&value.horario=='17:00')||($scope.filterDay[57]&&value.dia=='Viernes'&&value.horario=='18:00')||($scope.filterDay[58]&&value.dia=='Viernes'&&value.horario=='19:00')||($scope.filterDay[59]&&value.dia=='Viernes'&&value.horario=='20:00')
 							)){
-								data[key]['checked'] = true;
+								if(value.cancelada || value.completa){data[key]['checked'] = false;}
+								else{data[key]['checked'] = true;}
 								dataFilteredByDay.push(data[key]);
 							}
 						});
-						dataFilteredByDay,$scope.alumno = $scope.condicionesClases(dataFilteredByDay,$scope.alumno);
 						$scope.clases = dataFilteredByDay;
 						// Filter & Sort
 						filteredData = params.filter() ? $filter('filter')(dataFilteredByDay, params.filter()): dataFilteredByDay;	
