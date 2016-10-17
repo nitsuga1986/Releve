@@ -7,10 +7,14 @@
 	  <td>
 		<div style="font-size: 22px;line-height: 1;" class="hh-center">Hemos agendado tus clases:</div><br>
 		<% @clases.each  do |clase|%>
-			<p><%= clase.fecha.to_time.strftime('%d/%m') %> <strong><%= clase.dia %> <%= clase.horario %>hs</strong> <%= clase.actividad.nombre %> con <%= clase.instructor.nombre_completo %>.</p>
+			<p style="font-size: 16px;line-height: 1.48;"><%= clase.fecha.to_time.strftime('%d/%m') %> <strong><%= clase.dia %> <%= clase.horario %>hs</strong> <%= clase.actividad.nombre %> con <%= clase.instructor.nombre_completo %>.</p>
 		<% end%>
 		<br/>
-		<p style="color:#6C6A6A;"><strong>Recuerda</strong> que las clases se pueden cancelar únicamente hasta 12hs antes.</p>
+		<p style="font-size: 16px;line-height: 1.48; color:#6C6A6A;">Puedes ver y modificar tus clases agendadas ingresando <a href="http://www.relevepilates.com.ar/app/mis_clases">aqui</a>.</p>
+		<br/>
+		<p style="color:#6C6A6A;"><strong>Recuerda!</strong></p>
+		<p style="color:#6C6A6A;">Las clases se pueden cancelar únicamente hasta 12hs antes.</p>
+		<p style="color:#6C6A6A;">Las clases correspondientes a los combos se utilizan y recuperan dentro del mismo mes.</p>
 		<br/>
 		<p>Te esperamos!</p>
 		<p><strong>Equipo de Releve</strong></p>
