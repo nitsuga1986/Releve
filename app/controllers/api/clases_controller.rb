@@ -10,12 +10,12 @@ class Api::ClasesController < ApplicationController
   ###########################
   # routes.rb, resources.js, clases_controller.rb, templates/clase/index.html, javascripts/controllers/ClaseIndexCtrl.js
   def test_emails
-	UserMailer.welcome_email(current_user).deliver
-	UserMailer.join_email(current_user,Clase.last).deliver
-	UserMailer.join_multiple_email(current_user,Clase.first(4)).deliver
-	UserMailer.unjoin_email(current_user,Clase.last).deliver
-	UserMailer.pricing_email(current_user.email,"Nombre","Apellido").deliver
-	UserMailer.remainder_email(current_user).deliver
+	#UserMailer.welcome_email(current_user).deliver
+	#UserMailer.join_email(current_user,Clase.last).deliver
+	#UserMailer.join_multiple_email(current_user,Clase.first(4)).deliver
+	#UserMailer.unjoin_email(current_user,Clase.last).deliver
+	#UserMailer.pricing_email(current_user.email,"Nombre","Apellido").deliver
+	#UserMailer.remainder_email(current_user).deliver
 	render json:  current_user
   end
 
@@ -166,7 +166,7 @@ class Api::ClasesController < ApplicationController
 	end
 	agendadasarray.reverse.each { |x| Event.create(name:'continuation',content: x) }
 	Event.create(name:'joinmultiple',content: current_user.nombre_completo+" agendó a <strong>"+selected_user.nombre_completo+"</strong> en las siguientes clases: ")
-	UserMailer.join_multiple_email(selected_user,@clases).deliver
+	#UserMailer.join_multiple_email(selected_user,@clases).deliver
 	render json: @clase, status: :created
   end
   
@@ -183,7 +183,7 @@ class Api::ClasesController < ApplicationController
   def join 
 	@clase = Clase.find(params[:id])
 	@clase.add_asistencia(current_user.id)
-	UserMailer.join_email(current_user,@clase).deliver
+	#UserMailer.join_email(current_user,@clase).deliver
 	Event.create(name:'join',content: "<strong>"+current_user.nombre_completo+"</strong> se agendó a la clase de "+@clase.actividad.nombre+" del <strong>"+@clase.dia+" "+@clase.fecha.strftime('%d/%m')+" "+@clase.horario+"hs</strong>")
 	render json: @clase, status: :created
   end
@@ -205,19 +205,19 @@ class Api::ClasesController < ApplicationController
 	end
 	agendadasarray.reverse.each { |x| Event.create(name:'continuation',content: x) }
 	Event.create(name:'joinmultiple',content: "<strong>"+current_user.nombre_completo+"</strong> se agendó en las siguientes clases: ")
-	UserMailer.join_multiple_email(current_user,@clases).deliver
+	#UserMailer.join_multiple_email(current_user,@clases).deliver
 	render json: @clase, status: :created
   end
 
   def unjoin 
 	@clase = Clase.find(params[:id])
 	if @clase.completa? then
-		UserMailer.waitlist_email(@clase).deliver 
+		#UserMailer.waitlist_email(@clase).deliver 
 		@clase.destroy_wait_lists
 		Event.create(name:'waitlistclear',content: "Se hizo un lugar en la clase del "+@clase.dia+" "+@clase.fecha.strftime('%d/%m')+" y se avisó a las personas en lista de espera")
 	end
 	current_user.remove_from_clase(@clase)
-	UserMailer.unjoin_email(current_user,@clase).deliver
+	#UserMailer.unjoin_email(current_user,@clase).deliver
 	Event.create(name:'unjoin',content: "<strong>"+current_user.nombre_completo+"</strong> canceló su clase de "+@clase.actividad.nombre+" del <strong>"+@clase.dia+" "+@clase.fecha.strftime('%d/%m')+" "+@clase.horario+"hs</strong>")
 	render json: @clase, status: :created
   end

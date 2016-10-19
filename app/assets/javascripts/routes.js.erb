@@ -5,6 +5,7 @@ angular.module("TurnosApp")
 		// Api 
 		.when("/app/mi_info", { title: 'Mi info',templateUrl: "<%= asset_path('usr/usr_mi_info.html') %> ", controller: "UsrMiInfoCtrl", activetab: 'clase'})
 		.when("/app/mis_clases", { title: 'Mis Clases',templateUrl: "<%= asset_path('usr/usr_mis_clases.html') %> ", controller: "UsrMisClasesCtrl", activetab: 'clase'})
+		.when("/app/planificar", { title: 'Planificar mis horarios',templateUrl: "<%= asset_path('usr/usr_planificar.html') %> ", controller: "UsrPlanificarCtrl", activetab: 'clase'})
 		.when("/app/agenda", { title: 'Agenda',templateUrl: "<%= asset_path('usr/usr_agenda.html') %> ", controller: "UsrAgendaCtrl", activetab: 'clase'})
 		.when("/app/", {  redirectTo: "/app/agenda" })
 		// Clases

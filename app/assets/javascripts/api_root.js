@@ -6,10 +6,13 @@
 //= require angular/ng-table.min
 //= require config
 //= require filters/html_trusted
+//= require directives/onFinishRender
 //= require filters/true_false
 //= require services/resources
 //= require controllers/UsrMisClasesCtrl
 //= require controllers/UsrAgendaCtrl
+//= require controllers/UsrMiInfoCtrl
+//= require controllers/UsrPlanificarCtrl
 //= require controllers/UsrMiInfoCtrl
 //= require controllers/ClaseIndexCtrl
 //= require controllers/ClaseEditCtrl

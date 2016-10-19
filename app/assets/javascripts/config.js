@@ -122,6 +122,13 @@ var columns_claseAgenda = [
 	{title:"Instructor",field:"instructor",filter:"instructor",visible:true,filter:{'instructor':'text'}, sortable: "instructor", sortDirection: "desc",groupable:"instructor",hiddenxs:false},
 	{title:"Duración",field:"duracion",filter:"duracion",visible:true,filter:{'duracion':'text'}, sortable: "duracion", sortDirection: "desc",groupable:"duracion",hiddenxs:true},
 ];
+//  Planificar
+var columns_clasePlanificar = [
+	{title:"Fecha",field:"fecha_fixed",filter:"fecha",visible:true,filter:{'fecha':'text'}},
+	{title:"Actividad",field:"actividad",filter:"actividad",visible:true,filter:{'actividad':'text'}, sortable: "actividad", sortDirection: "desc",groupable:"actividad",hiddenxs:false},
+	{title:"Instructor",field:"instructor",filter:"instructor",visible:true,filter:{'instructor':'text'}, sortable: "instructor", sortDirection: "desc",groupable:"instructor",hiddenxs:false},
+	{title:"Duración",field:"duracion",filter:"duracion",visible:true,filter:{'duracion':'text'}, sortable: "duracion", sortDirection: "desc",groupable:"duracion",hiddenxs:true},
+];
 //  Mis Clases
 var claseMisClasesDefaultPage = 1;	var claseMisClasesDefaultCount = 15;
 var claseMisClasesDefaultFilter = {};

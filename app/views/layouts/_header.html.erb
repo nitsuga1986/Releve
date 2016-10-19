@@ -49,6 +49,9 @@
 						  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mi cuenta <span class="caret"></span></a>
 						  <ul class="dropdown-menu">
 							<li><a href="/app/agenda"><i class="fa fa-calendar" aria-hidden="true"></i> Agenda</a></li>
+							<% if !current_user.primera_clase?  %>
+								<li><a href="/app/planificar"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Planificar</a></li>
+							<% end %>							
 							<li><a href="/app/mis_clases"><i class="fa fa-calendar-check-o " aria-hidden="true"></i> Mis clases</a></li>
 							<li><a href="/app/mi_info"><i class="fa fa-cogs" aria-hidden="true"></i> Mi Info</a></li>
 							<li role="separator" class="divider"></li>
@@ -92,6 +95,9 @@
 				<a class="btn btn-primary btn-lg" href="/app/agenda"><i class="fa fa-ellipsis-v" aria-hidden="true"></i> ReleveApp</a>
 			<% else %>
 				<a class="btn btn-primary btn-lg" href="/app/agenda"><i class="fa fa-calendar" aria-hidden="true"></i> Agenda</a>
+				<% if !current_user.primera_clase?  %>
+					<a class="btn btn-primary btn-lg" href="/app/planificar"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Planificar</a>
+				<% end %>
 				<a class="btn btn-primary btn-lg" href="/app/mis_clases"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Mis Clases</a>
 				<a class="btn btn-primary btn-lg" href="/app/mi_info"><i class="fa fa-cogs" aria-hidden="true"></i> Mi Info</a>
 				<% if current_user.instructor?||current_user.admin? %>
