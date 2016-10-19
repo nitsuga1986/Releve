@@ -1,0 +1,173 @@
+<div class="row"><div id="alert-container" class="col-xs-12"></div></div>
+<div class="col-xs-12"><form data-ng-submit="submit()" name="ClaseForm" id="ClaseForm" novalidate role="form">
+	<div class="form-group" id="form_search_user">
+		<label class="col-sm-2 control-label">Alumno</label>
+		<div class="col-sm-5">
+			<p data-ng-if="alumno" data-ng-bind="alumno.nombre_completo"></p>
+			<input data-ng-hide="alumno" type="text" class="form-control" name="search_user" data-ng-model="search_user" id="search_user" placeholder="ej. vicky@barnfader.com">
+		</div>
+	</div>
+	<div class="row"><hr/></div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Lunes</label>
+		<div class="col-sm-10">
+			<div class="btn-group">
+				<button title="09:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[0] }" data-ng-click="filterDaychange(0,$event)">09</button>
+				<button title="10:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[1] }" data-ng-click="filterDaychange(1,$event)">10</button>
+				<button title="11:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[2] }" data-ng-click="filterDaychange(2,$event)">11</button>
+				<button title="12:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[3] }" data-ng-click="filterDaychange(3,$event)">12</button>
+				<button title="13:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[4] }" data-ng-click="filterDaychange(4,$event)">13</button>
+				<button title="14:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[5] }" data-ng-click="filterDaychange(5,$event)">14</button>
+			</div>
+			<div class="btn-group">
+				<button title="15:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[6] }" data-ng-click="filterDaychange(6,$event)">15</button>
+				<button title="16:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[7] }" data-ng-click="filterDaychange(7,$event)">16</button>
+				<button title="17:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[8] }" data-ng-click="filterDaychange(8,$event)">17</button>
+				<button title="18:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[9] }" data-ng-click="filterDaychange(9,$event)">18</button>
+				<button title="19:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[10] }" data-ng-click="filterDaychange(10,$event)">19</button>
+				<button title="20:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[11] }" data-ng-click="filterDaychange(11,$event)">20</button>
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Martes</label>
+		<div class="col-sm-10">
+			<div class="btn-group">
+				<button title="09:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[12] }" data-ng-click="filterDaychange(12,$event)">09</button>
+				<button title="10:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[13] }" data-ng-click="filterDaychange(13,$event)">10</button>
+				<button title="11:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[14] }" data-ng-click="filterDaychange(14,$event)">11</button>
+				<button title="12:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[15] }" data-ng-click="filterDaychange(15,$event)">12</button>
+				<button title="13:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[16] }" data-ng-click="filterDaychange(16,$event)">13</button>
+				<button title="14:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[17] }" data-ng-click="filterDaychange(17,$event)">14</button>
+			</div>
+			<div class="btn-group">
+				<button title="15:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[18] }" data-ng-click="filterDaychange(18,$event)">15</button>
+				<button title="16:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[19] }" data-ng-click="filterDaychange(19,$event)">16</button>
+				<button title="17:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[20] }" data-ng-click="filterDaychange(20,$event)">17</button>
+				<button title="18:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[21] }" data-ng-click="filterDaychange(21,$event)">18</button>
+				<button title="19:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[22] }" data-ng-click="filterDaychange(22,$event)">19</button>
+				<button title="20:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[23] }" data-ng-click="filterDaychange(23,$event)">20</button>
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Miércoles</label>
+		<div class="col-sm-10">
+			<div class="btn-group">
+				<button title="09:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[24] }" data-ng-click="filterDaychange(24,$event)">09</button>
+				<button title="10:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[25] }" data-ng-click="filterDaychange(25,$event)">10</button>
+				<button title="11:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[26] }" data-ng-click="filterDaychange(26,$event)">11</button>
+				<button title="12:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[27] }" data-ng-click="filterDaychange(27,$event)">12</button>
+				<button title="13:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[28] }" data-ng-click="filterDaychange(28,$event)">13</button>
+				<button title="14:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[29] }" data-ng-click="filterDaychange(29,$event)">14</button>
+			</div>
+			<div class="btn-group">
+				<button title="15:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[30] }" data-ng-click="filterDaychange(30,$event)">15</button>
+				<button title="16:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[31] }" data-ng-click="filterDaychange(31,$event)">16</button>
+				<button title="17:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[32] }" data-ng-click="filterDaychange(32,$event)">17</button>
+				<button title="18:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[33] }" data-ng-click="filterDaychange(33,$event)">18</button>
+				<button title="19:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[34] }" data-ng-click="filterDaychange(34,$event)">19</button>
+				<button title="20:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[35] }" data-ng-click="filterDaychange(35,$event)">20</button>
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Jueves</label>
+		<div class="col-sm-10">
+			<div class="btn-group">
+				<button title="09:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[36] }" data-ng-click="filterDaychange(36,$event)">09</button>
+				<button title="10:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[37] }" data-ng-click="filterDaychange(37,$event)">10</button>
+				<button title="11:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[38] }" data-ng-click="filterDaychange(38,$event)">11</button>
+				<button title="12:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[39] }" data-ng-click="filterDaychange(39,$event)">12</button>
+				<button title="13:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[40] }" data-ng-click="filterDaychange(40,$event)">13</button>
+				<button title="14:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[41] }" data-ng-click="filterDaychange(41,$event)">14</button>
+			</div>
+			<div class="btn-group">
+				<button title="15:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[42] }" data-ng-click="filterDaychange(42,$event)">15</button>
+				<button title="16:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[43] }" data-ng-click="filterDaychange(43,$event)">16</button>
+				<button title="17:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[44] }" data-ng-click="filterDaychange(44,$event)">17</button>
+				<button title="18:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[45] }" data-ng-click="filterDaychange(45,$event)">18</button>
+				<button title="19:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[46] }" data-ng-click="filterDaychange(46,$event)">19</button>
+				<button title="20:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[47] }" data-ng-click="filterDaychange(47,$event)">20</button>
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Viernes</label>
+		<div class="col-sm-10">
+			<div class="btn-group">
+				<button title="09:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[48] }" data-ng-click="filterDaychange(48,$event)">09</button>
+				<button title="10:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[49] }" data-ng-click="filterDaychange(49,$event)">10</button>
+				<button title="11:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[50] }" data-ng-click="filterDaychange(50,$event)">11</button>
+				<button title="12:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[51] }" data-ng-click="filterDaychange(51,$event)">12</button>
+				<button title="13:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[52] }" data-ng-click="filterDaychange(52,$event)">13</button>
+				<button title="14:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[53] }" data-ng-click="filterDaychange(53,$event)">14</button>
+			</div>
+			<div class="btn-group">
+				<button title="15:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[54] }" data-ng-click="filterDaychange(54,$event)">15</button>
+				<button title="16:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[55] }" data-ng-click="filterDaychange(55,$event)">16</button>
+				<button title="17:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[56] }" data-ng-click="filterDaychange(56,$event)">17</button>
+				<button title="18:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[57] }" data-ng-click="filterDaychange(57,$event)">18</button>
+				<button title="19:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[58] }" data-ng-click="filterDaychange(58,$event)">19</button>
+				<button title="20:00 hs" class="btn btn-default" data-ng-class="{'btn-success':filterDay[59] }" data-ng-click="filterDaychange(59,$event)">20</button>
+			</div>
+		</div>
+	</div>
+	<button type="submit" class="btn btn-default">Buscar clases</button>
+</form></div>
+
+<br/><hr/><br/>	
+
+<div class="col-xs-12" data-ng-show="clases.length">
+	<div class="table-responsive">
+		<table data-ng-table="tableParams" show-filter="false" class="table table-striped table-hover table-condensed">
+			<thead>
+				<tr>
+					<th></th>
+					<th data-ng-repeat="column in columns_agendar" data-ng-show="column.visible" class="text-center">
+						<div>{{column.title}}</div>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr data-ng-repeat="clase in $data" data-ng-class="{'danger': clase.cancelada,'warning': clase.reemplazo, 'text-muted': clase.old}" data-ng-click="GoToEdit(clase.id)">
+					<td>
+<!--Checkbox-->			<input id="selectable{{clase.id}}" type="checkbox" data-ng-model="clase.checked">
+					</td>
+					<td data-ng-repeat="column in columns_agendar" data-ng-show="column.visible" sortable="column.field" filter="column.filter">
+						{{clase[column.field]}}
+<!--Completa-->			<span data-ng-if="column.field=='fecha_fixed' && clase.completa" class="label label-danger">Completa</span>
+<!--Cancelada-->		<span data-ng-if="column.field=='fecha_fixed' && clase.cancelada" class="label label-danger">Cancelada</span>
+<!--Agendado-->			<span data-ng-if="column.field=='fecha_fixed' && clase.joined" class="label label-success">Ya agendado</span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<button data-ng-if="clases.length" data-ng-click="multipleEventModal()" type="button" class="btn btn-primary btn-block">
+	<i class="fa fa-calendar-plus-o" aria-hidden="true"></i> Agendar seleccionadas<span data-ng-if="alumno.selected_counter_total"> ({{alumno.selected_counter_total}})</span>
+</button>
+
+
+<div class="modal fade" id="multiple-events-modal" tabindex='-1'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-light-releve">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4>Programar mis clases</h4>
+            </div>
+            <div class="modal-body">
+				<p class="lead">¿Agendamos a {{alumno.nombre_completo}} para las siguientes clases?</p>
+				<p data-ng-if="!selectedclases.length"> No has seleccionado ninguna clase aún =(</p>
+				<ul class="fa-ul" data-ng-if="selectedclases.length" >
+					<li data-ng-repeat="clase in selectedclases" data-ng-if="clase.checked"><i class="fa-li fa fa-close cursorpointer" data-ng-click="clase.checked=false"></i><strong> {{clase.fecha_fixed}} {{clase.horario}}hs</strong> {{clase.actividad}} con {{clase.instructor}} </li>
+				</ul>
+            </div>
+            <div class="modal-footer">
+                <a href="#" data-dismiss="modal" class="btn btn-default ">Close</a>
+                <a data-ng-disabled="!selectedclases.length" href="#" data-dismiss="modal" class="btn btn-primary" data-ng-click="JoinMultiple()">Agendar!</a>
+            </div>
+        </div>
+    </div>
+</div>
