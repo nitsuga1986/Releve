@@ -24,6 +24,13 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.unjoin_email(user,clase)
   end
   
+  def unjoin_comment_email
+    user = User.first
+    clase = Clase.first
+	comentario = "Este es un comentario de prueba para el preview de los mailers"
+    UserMailer.unjoin_comment_email(user,clase,comentario)
+  end
+  
   def pricing_email
 	UserMailer.pricing_email('agustinmanenido@gmail.com','Agustín','Manceñido')
   end

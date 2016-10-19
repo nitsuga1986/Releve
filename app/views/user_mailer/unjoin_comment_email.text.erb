@@ -1,0 +1,7 @@
+Comentario de <%= @user.nombre_completo %>:
+"<%= @comentario %>"
+
+Clase cancelada:
+Día: <%= I18n.t('date.day_names')[@clase.fecha.wday] %> <%= @clase.fecha.strftime("%d/%m/%Y") %>.
+Horario: <%= @clase.horario %>hs.
+Instructor: <%= @clase.instructor.nombre_completo %>.

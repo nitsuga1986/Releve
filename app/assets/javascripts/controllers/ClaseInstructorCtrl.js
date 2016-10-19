@@ -85,7 +85,7 @@ angular.module("TurnosApp").controller("ClaseInstructorCtrl",['$scope', '$rootSc
 		$scope.IdToDestroy = clase_id;
 	};
 	$scope.destroyClase = function() {
-		$rootScope.got_to_url_success = "/clase/index";
+		$rootScope.got_to_url_success = "/clase/instructor";
 		$('.confirmation-modal').on('hidden.bs.modal', function (e) {
 			$.each($scope.clases, function(index) {
 				if($scope.clases[index]!=undefined && $scope.clases[index].id == $scope.IdToDestroy) { //Remove from array

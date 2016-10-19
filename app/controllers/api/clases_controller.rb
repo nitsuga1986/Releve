@@ -218,6 +218,7 @@ class Api::ClasesController < ApplicationController
 	end
 	current_user.remove_from_clase(@clase)
 	UserMailer.unjoin_email(current_user,@clase).deliver
+	UserMailer.unjoin_comment_email(current_user,@clase,params[:comentario]).deliver if params.has_key?(:comentario)
 	Event.create(name:'unjoin',content: "<strong>"+current_user.nombre_completo+"</strong> canceló su clase de "+@clase.actividad.nombre+" del <strong>"+@clase.dia+" "+@clase.fecha.strftime('%d/%m')+" "+@clase.horario+"hs</strong>")
 	render json: @clase, status: :created
   end

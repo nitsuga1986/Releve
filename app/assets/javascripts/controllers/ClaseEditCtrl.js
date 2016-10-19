@@ -98,6 +98,14 @@ angular.module("TurnosApp").controller("ClaseEditCtrl",['$scope', '$rootScope', 
 			};
 		};
 	};
+	// Destroy
+	$scope.destroyClase = function() {
+		$rootScope.got_to_url_success = "/clase/index";
+		$('.confirmation-modal').on('hidden.bs.modal', function (e) {
+			$scope.clase.users = null;
+			ResourceClase.destroy($scope.deleteVariablesClaseToSend ($scope.clase,true,true), $scope.callbackSuccess, $scope.callbackFailure);
+		})
+	};
 	// Datepicker
 	 var datelist = []; // initialize empty array
 	 $(function() {

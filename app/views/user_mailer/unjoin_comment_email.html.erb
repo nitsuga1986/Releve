@@ -1,0 +1,22 @@
+<!-- Logo Left Nav Right + Vertical Padding : BEGIN -->
+<table border="0" width="600" cellpadding="0" cellspacing="0" align="center" class="email-container" style="margin: auto;">
+	<tr>
+	  <td height="30" style="font-size: 0; line-height: 0;">&nbsp;</td>
+	</tr>
+	<tr>
+	  <td>
+		<div style="font-size: 22px;line-height: 1;" class="hh-center">Comentario de <%= @user.nombre_completo %>:</div><br>
+		<p>"<%= @comentario %>"</p>
+		<br/>
+		<p>Clase cancelada:</p>
+		<p><strong>Día</strong>: <%= I18n.t('date.day_names')[@clase.fecha.wday] %> <%= @clase.fecha.strftime("%d/%m/%Y") %>.</p>
+		<p><strong>Horario</strong>: <%= @clase.horario %>hs.</p>
+		<p><strong>Instructor</strong>: <%= @clase.instructor.nombre_completo %>.</p>
+		<br/><br/><br/>
+	  </td>
+	</tr>
+	<tr>
+	  <td height="30" style="font-size: 0; line-height: 0;">&nbsp;</td>
+	</tr>
+</table>
+<!-- Logo Left Nav Right + Vertical Padding : END -->

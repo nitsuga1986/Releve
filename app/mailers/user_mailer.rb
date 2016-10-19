@@ -24,6 +24,13 @@ class UserMailer < ActionMailer::Base
 		@clase = clase
 		mail(to: @user.email, subject: 'Inscripción cancelada: '+clase.actividad.nombre+' el '+I18n.t('date.day_names')[@clase.fecha.wday]+' '+@clase.fecha.strftime("%d/%m/%Y")+' a las '+clase.horario+' con '+clase.instructor.nombre_completo)
 	end
+
+	def unjoin_comment_email(user,clase,comentario)
+		@user = user
+		@clase = clase
+		@comentario = comentario
+		mail(to: 'relevepilates@gmail.com', subject: user.nombre_completo+' dejó un comentario al cancelar la clase del '+I18n.t('date.day_names')[@clase.fecha.wday]+' '+@clase.fecha.strftime("%d/%m/%Y")+' a las '+clase.horario+' con '+clase.instructor.nombre_completo)
+	end
 	
 	def waitlist_email(clase)
 		@clase = clase

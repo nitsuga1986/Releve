@@ -65,8 +65,8 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr data-ng-repeat="clase in $data" data-ng-class="{'danger': clase.cancelada,'warning': clase.reemplazo, 'text-muted': clase.old}" data-ng-click="GoToEdit(clase.id)">
-					<td data-ng-repeat="column in columns_instructor" data-ng-show="column.visible" sortable="column.field" filter="column.filter">
+				<tr data-ng-repeat="clase in $data" data-ng-class="{'danger': clase.cancelada,'warning': clase.reemplazo, 'text-muted': clase.old}">
+					<td data-ng-repeat="column in columns_instructor" data-ng-show="column.visible" sortable="column.field" filter="column.filter" data-ng-click="GoToEdit(clase.id)">
 						<span data-ng-if="column.field!='users'">{{clase[column.field]}}</span>
 <!--Completa-->			<span data-ng-if="column.field=='cant_users' && clase.completa" class="label label-danger">Completa</span>
 <!--Cancelada-->		<span data-ng-if="column.field=='fecha_fixed' && clase.cancelada" class="text-danger" title="{{clase['comment']}}">Cancelada</span>
@@ -78,7 +78,7 @@
 					<td>
 						<div class="btn-group btn-group-xs" role="group" aria-label="...">
 							<a type="button" class="btn btn-warning" href="/clase/{{clase.id}}/edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-							<button data-ng-click="toDestroy(clase.id)" type="button" class="btn btn-danger" data-toggle="modal" data-target=".confirmation-modal"><i class="fa fa-trash" aria-hidden="true"></i></button>
+							<button data-ng-if="is_admin" data-ng-click="toDestroy(clase.id)" type="button" class="btn btn-danger" data-toggle="modal" data-target=".confirmation-modal"><i class="fa fa-trash" aria-hidden="true"></i></button>
 						</div>
 					</td>
 				</tr>
