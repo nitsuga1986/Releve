@@ -103,18 +103,18 @@
 			<table class="table table-striped table-condensed table-hover">
 				<thead>
 					<tr>
+						<th></th>
 						<th>Email</th>
 						<th>Nombre</th>
 						<th>Apellido</th>
-						<th></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr data-ng-repeat="user in clase.users" data-ng-click="GoToEdit(user.id)">
+						<td><a class="btn btn-default btn-xs" data-ng-click="DeleteUser(user.id)"><i class="fa fa-times"></i></a></td>
 						<td>{{user.email}}</td>
 						<td>{{user.nombre}}</td>
 						<td>{{user.apellido}}</td>
-						<td><a class="btn btn-default btn-xs" data-ng-click="DeleteUser(user.id)"><i class="fa fa-times"></i></a></td>
 					</tr>
 				</tbody>
 			</table>
