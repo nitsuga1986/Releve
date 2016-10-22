@@ -9,6 +9,7 @@ angular.module("TurnosApp").controller("ClaseInstructorCtrl",['$scope', '$rootSc
 	};
 	function dateFormat(date) {date = date.split('-'); date = date[2]+'/'+date[1]; return date;}
 
+
 	// SUBMIT
 	$scope.submitted = false;
 	$scope.submit = function() {
