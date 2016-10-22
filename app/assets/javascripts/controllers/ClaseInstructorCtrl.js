@@ -1,10 +1,10 @@
 angular.module("TurnosApp").controller("ClaseInstructorCtrl",['$scope', '$rootScope', '$q', '$http', '$routeParams', '$location', 'ResourceClase', 'ResourceActividad', 'ResourceAlumno', '$filter', 'NgTableParams', function($scope, $rootScope, $q, $http, $routeParams, $location, ResourceClase, ResourceActividad, ResourceAlumno, $filter, NgTableParams) {
 	// SetDay
 	SetDay = function(plusDays) {
-		today = new Date();
-		dd = today.getDate()+plusDays;if(dd<10){dd='0'+dd } 
-		mm = today.getMonth()+1;if(mm<10){mm='0'+mm }  //January is 0!
-		yyyy = today.getFullYear();
+		var currentDate = new Date(new Date().getTime() + plusDays * 24 * 60 * 60 * 1000);
+		dd = currentDate.getDate();if(dd<10){dd='0'+dd } 
+		mm = currentDate.getMonth()+1;if(mm<10){mm='0'+mm }  //January is 0!
+		yyyy = currentDate.getFullYear();
 		return yyyy+'-'+mm+'-'+dd
 	};
 	function dateFormat(date) {date = date.split('-'); date = date[2]+'/'+date[1]; return date;}
