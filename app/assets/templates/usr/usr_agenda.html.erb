@@ -91,6 +91,8 @@
 				<p class="lead" data-ng-if="!clase.cancelada && !clase.joined && !alumno.actividad_overquota[clase.actividad_id][clase.mes] && clase.completa" >¿Te agregamos a la lista de espera para la clase de <strong>{{clase.actividad}}</strong> el día <strong>{{clase.fecha | date:'dd/MM/yyyy'}} a las {{clase.horario}}</strong> con {{clase.instructor}}? <span class="text-muted">En cuanto se desocupe un lugar enviaremos un mail a todos los que se encuentren en esta lista.</span></p>
 				<p class="alert alert-danger" role="alert" data-ng-if="!clase.joined && !alumno.actividad_overquota[clase.actividad_id][clase.mes] && !clase.completa && !clase.cancelable" ><strong>Atención!</strong> esta clase es en menos de 12hs. Ten en cuenta que una vez realizada la inscripción no es posible cancelarla.</p>
 				<p class="alert alert-warning" role="alert" data-ng-if="!clase.joined && !alumno.actividad_overquota[clase.actividad_id][clase.mes] && !clase.completa && clase.cancelable" ><strong>Recuerda!</strong> las clases se pueden cancelar únicamente hasta 12hs antes.</p>
+				<a href="#" data-ng-click="hideText=false"><i class="fa fa-comment-o" aria-hidden="true"></i> Dejanos tu comentario</a>
+				<textarea class="form-control" rows="3" placeholder="Dejanos tu comentario" data-ng-hide="hideText" data-ng-init="hideText=true" data-ng-model="clase.comentario"></textarea>
             </div>
             <div class="modal-footer">
                 <a href="#" data-dismiss="modal" class="btn btn-default ">Close</a>
