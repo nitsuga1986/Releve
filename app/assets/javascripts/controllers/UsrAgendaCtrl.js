@@ -2,10 +2,10 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$rootScope', 
 	ResourceAlumno.current().$promise.then(function(data) {
 		$scope.alumno = data;
 		if ($scope.alumno.primera_clase){
-			$scope.selectmultiple = true;
+			$scope.selectmultiple = false;
 			if($scope.alumno.confirmed){$('#first-clase-modal').modal('show')}
 		}else{
-			$scope.selectmultiple = false;
+			$scope.selectmultiple = true;
 		};
 		// ngTable
 		function dateFormat(date) {date = date.split('-'); date = date[2]+' de '+monthNames[parseInt(date[1])-1]; return date;}
