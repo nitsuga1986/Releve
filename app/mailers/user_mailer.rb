@@ -1,5 +1,4 @@
 class UserMailer < ActionMailer::Base
-	layout 'mailer'
 	default from: "relevepilates@gmail.com"
 
 	def welcome_email(user)

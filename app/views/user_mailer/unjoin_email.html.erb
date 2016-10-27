@@ -1,22 +1,332 @@
-<!-- Logo Left Nav Right + Vertical Padding : BEGIN -->
-<table border="0" width="600" cellpadding="0" cellspacing="0" align="center" class="email-container" style="margin: auto;">
-	<tr>
-	  <td height="30" style="font-size: 0; line-height: 0;">&nbsp;</td>
-	</tr>
-	<tr>
-	  <td>
-		<div style="font-size: 22px;line-height: 1;" class="hh-center">Hemos cancelado tu inscripción para la siguiente clase:</div><br>
-		<p><strong>Día</strong>: <%= I18n.t('date.day_names')[@clase.fecha.wday] %> <%= @clase.fecha.strftime("%d/%m/%Y") %>.</p>
-		<p><strong>Horario</strong>: <%= @clase.horario %>hs.</p>
-		<p><strong>Instructor</strong>: <%= @clase.instructor.nombre_completo %>.</p>
-		<br/><br/><br/>
-		<p>Gracias por avisar,</p>
-		<p><strong>Equipo de Releve</strong></p>
-		<br/><br/><br/><br/>
-	  </td>
-	</tr>
-	<tr>
-	  <td height="30" style="font-size: 0; line-height: 0;">&nbsp;</td>
-	</tr>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Releve Pilates | Clase cancelada</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<style type="text/css">
+    /* FONTS */
+    @media screen {
+        @font-face {
+          font-family: 'Lato';
+          font-style: normal;
+          font-weight: 400;
+          src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v11/qIIYRU-oROkIk8vfvxw6QvesZW2xOQ-xsNqO47m55DA.woff) format('woff');
+        }
+        
+        @font-face {
+          font-family: 'Lato';
+          font-style: normal;
+          font-weight: 700;
+          src: local('Lato Bold'), local('Lato-Bold'), url(https://fonts.gstatic.com/s/lato/v11/qdgUG4U09HnJwhYI-uK18wLUuEpTyoUstqEm5AMlJo4.woff) format('woff');
+        }
+        
+        @font-face {
+          font-family: 'Lato';
+          font-style: italic;
+          font-weight: 400;
+          src: local('Lato Italic'), local('Lato-Italic'), url(https://fonts.gstatic.com/s/lato/v11/RYyZNoeFgb0l7W3Vu1aSWOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+        }
+        
+        @font-face {
+          font-family: 'Lato';
+          font-style: italic;
+          font-weight: 700;
+          src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url(https://fonts.gstatic.com/s/lato/v11/HkF_qI1x_noxlxhrhMQYELO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+        }
+    }
+    
+    /* CLIENT-SPECIFIC STYLES */
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; }
+
+    /* RESET STYLES */
+    img { border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+    table { border-collapse: collapse !important; }
+    body { height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important; }
+
+    /* iOS BLUE LINKS */
+    a[x-apple-data-detectors] {
+        color: inherit !important;
+        text-decoration: none !important;
+        font-size: inherit !important;
+        font-family: inherit !important;
+        font-weight: inherit !important;
+        line-height: inherit !important;
+    }
+    
+    /* MOBILE STYLES */
+    @media screen and (max-width:600px){
+        h1 {
+            font-size: 32px !important;
+            line-height: 32px !important;
+        }
+    }
+
+    /* ANDROID CENTER FIX */
+    div[style*="margin: 16px 0;"] { margin: 0 !important; }
+</style>
+</head>
+<body style="background-color: #e6f8fc; margin: 0 !important; padding: 0 !important;">
+
+<!-- HIDDEN PREHEADER TEXT -->
+<div style="display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: 'Lato', Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;">
+    Tu clase se canceló correctamente, agendá tus próximas clases!
+</div>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <!-- HEADER -->
+    <tr>
+        <td align="center" style="background: url('<%= image_url('header_bg.png') %>') #12849e; background-size: cover;" bgcolor="#f5fcfe">
+            <!-- transparent background -->
+            <table border="0" cellspacing="0" cellpadding="0" style="background: rgba(18, 132, 158, 0.9)" bgcolor="#12849e"  width="100%">
+                <tr>
+                    <td align="center">
+                        <!--[if (gte mso 9)|(IE)]>
+                        <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+                        <tr>
+                        <td align="center" valign="top" width="600">
+                        <![endif]-->
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 400px;" >
+                            <tr>
+                                <td>
+                                    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;" >
+                                        <tr>
+                                            <td align="center">
+                                                <a href="http://www.relevepilates.com.ar/" target="_blank">
+                                                    <img width="40px" src="<%= image_url('Releve_pie.png') %>" style="display: block;width: 40px; max-width: 40px; min-width: 40px; " border="0">
+                                                </a>
+                                            </td>
+                                            <td valign="middle" width="100%" style="padding: 0;text-align: center;">
+                                              <h1 style="max-width: 400px; margin: 0;font-family: Helvetica Neue,Helvetica,Arial,sans-serif;font-size: 2.5em;line-height: 1em;color: #ffffff;">Releve Pilates</h1>&nbsp;&nbsp;
+                                              <h2 style="max-width: 400px; margin: 0;color: #ffffff;font-family: Helvetica Neue,Helvetica,Arial,sans-serif;font-size: 1.2em;line-height: 0;font-weight: normal;">Disfrutá entrenarte</h2>&nbsp;&nbsp;
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                        <!--[if (gte mso 9)|(IE)]>
+                        </td>
+                        </tr>
+                        </table>
+                        <![endif]-->
+                    </td>
+                </tr>
+                <!-- HERO -->
+                <tr>
+                    <td align="center" style="padding: 0px 10px 0px 10px;">
+                        <!--[if (gte mso 9)|(IE)]>
+                        <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+                        <tr>
+                        <td align="center" valign="top" width="600">
+                        <![endif]-->
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;" >
+                            <tr>
+                                <td bgcolor="#ffffff" align="center" valign="top" style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: Helvetica, Arial, sans-serif; font-size: 40px; line-height: 48px;">
+                                  <h1 style="font-size: 40px; font-weight: 400; margin: 0;">Cancelamos tu clase</h1>
+                                </td>
+                            </tr>
+                        </table>
+                        <!--[if (gte mso 9)|(IE)]>
+                        </td>
+                        </tr>
+                        </table>
+                        <![endif]-->
+                    </td>
+                </tr>
+            </table>
+            
+        </td>
+    </tr>
+    <!-- MAIN WRAPPER -->
+    <tr>
+        <td bgcolor="#e6f8fc" align="center" style="padding: 0px 10px 0px 10px;">
+            <!--[if (gte mso 9)|(IE)]>
+            <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+            <tr>
+            <td align="center" valign="top" width="600">
+            <![endif]-->
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;" >
+            <tr>
+                <td bgcolor="#ffffff" align="center" valign="top" style="padding: 0 0 35px 0; font-family: Open Sans, Helvetica, Arial, sans-serif;">
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="80%" style="max-width: 200px;">
+                        <tr>
+                            <td align="center" bgcolor="#D33228" style="color: #ffffff; font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 14px; padding: 10px; border-radius: 3px 3px 0 0;">
+                                 <%= @clase.dia.upcase.gsub(/(.{1})/, '\1 ') %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" bgcolor="#EFEFEF" style="color: #444444; font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 48px; padding: 15px; border-radius: 0 0 3px 3px;">
+                                <%= @clase.fecha.strftime("%d") %>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+              <!-- thanks text -->
+              <tr>
+                <td bgcolor="#ffffff" align="center" style="padding: 20px 30px 20px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;" >
+                  <p style="margin: 0;">Gracias por avisar!</p>
+                </td>
+              </tr>
+              <!-- Modificar text -->
+              <tr>
+                <td bgcolor="#ffffff" align="left" style="padding: 20px 30px 20px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;" >
+                  <p style="margin: 0;padding-bottom: 5px;"><strong>Día</strong>: <%= @clase.dia %> <%= @clase.fecha.strftime("%d/%m/%Y") %>.</p>
+                  <p style="margin: 0;padding-bottom: 5px;"><strong>Horario</strong>: <%= @clase.horario %>hs.</p>
+                  <p style="margin: 0;padding-bottom: 5px;"><strong>Instructor</strong>: <%= @clase.instructor.nombre_completo %>.</p>
+                  <p style="margin: 0;"><strong>Dirección</strong>: Paraná&nbsp;26, Piso&nbsp;3&nbsp;&nbsp;Dpto.&nbsp;M, CABA.</p>
+                </td>
+              </tr>
+              <!-- comment text -->
+              <tr>
+                <td bgcolor="#ffffff" align="left" style="padding: 20px 30px 20px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;" >
+                  <p style="margin: 0;">¿Querés contarnos el motivo de tu cancelación? Nos interesa tu opinión para poder brindar el mejor servicio. <a style="color: #666666; text-transform:underline; font-weight: 400; line-height: 25px;" href="mailto:relevepilates@gmail.com?Subject=Mi%20comentario">Envianos&nbsp;tu&nbsp;comentario!</a></p>
+                 
+                </td>
+              </tr>
+              <!-- Remainder text -->
+              <tr>
+                <td bgcolor="#ffffff" align="left" style="padding: 20px 30px 20px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;" >
+                  <p style="margin: 0;color:#D33228;padding-bottom: 10px;"><span style="text-decoration: underline;">Importante</span>!</p>
+                  <p style="margin: 0;padding-bottom: 10px;">Recuerda que:</p>
+                  <p style="margin: 0;padding-bottom: 5px;">&bull; Las clases se podrán recuperar únicamente cancelando con 12hs de anticipación.</p>
+                  <p style="margin: 0;">&bull; Las clases correspondientes a los combos se utilizan y recuperan dentro del mismo mes.</p>
+                </td>
+              </tr>
+              <!-- Modificar text -->
+              <tr>
+                <td bgcolor="#ffffff" align="left" style="padding: 20px 30px 20px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;" >
+                  <p style="margin: 0;">Puedes modificar tu calendario de entrenamiento ingresando a nuestro sitio:</p>
+                </td>
+              </tr>
+              <!-- BULLETPROOF BUTTON -->
+              <tr>
+                <td bgcolor="#ffffff" align="left" >
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td bgcolor="#ffffff" align="center" border="0" style="padding: 0 30px 20px 30px; border:0;margin:0;">
+                        <table border="0" cellspacing="0" cellpadding="0">
+                          <tr>
+                              <td align="center" style="border-radius: 3px;" bgcolor="#12849e"><a href="http://www.relevepilates.com.ar/app/agenda" target="_blank" style="font-size: 18px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 10px 30px; border-radius: 2px; border: 1px solid #0f6b80; display: inline-block;">Ir a Releve</a></td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <!-- END -->
+              <tr>
+                <td bgcolor="#ffffff" align="left" style="padding: 20px 30px 20px 30px; border-radius: 0px 0px 4px 4px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;" >
+                </td>
+              </tr>
+            </table>
+            <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </td>
+    </tr>
+    <!-- SOCIAL -->
+    <tr>
+        <td bgcolor="#e6f8fc" align="center" style="padding: 30px 10px 0px 10px;">
+            <!--[if (gte mso 9)|(IE)]>
+            <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+            <tr>
+            <td align="center" valign="top" width="600">
+            <![endif]-->
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;" >
+                <!-- HEADLINE -->
+                <tr>
+                  <td bgcolor="#292828" align="center" style="background: #292828 url('http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/rubber_grip.png') repeat scroll 0% 0%; padding: 30px 30px 30px 30px; border-radius: 4px 4px 4px 4px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;" >
+                  <!--[if (gte mso 9)|(IE)]>
+                  <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+                    <tr>
+                      <td align="center" valign="top" width="600">
+                        <![endif]-->       
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;">
+                          <tr>
+                            <td align="center" valign="top">
+                              <table width="160" cellpadding="0" cellspacing="0" border="0" class="right">
+                                <tr>
+                                  <td width="40" align="center">
+                                    <a href="https://www.facebook.com/relevepilates/" target="_blank"><img src="<%= image_url('social-icons-fb.png') %>" width="28" height="29" style="margin:0; padding:0; border:none; display:block;font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none;" border="0" alt="Seguinos&nbsp;en&nbsp;Facebook"></a>    
+                                  </td>
+                                  <td width="40" align="center">
+                                    <a href="https://www.instagram.com/relevepilates/" target="_blank"><img src="<%= image_url('social-icons-in.png') %>" width="28" height="29" style="margin:0; padding:0; border:none; display:block;" border="0" alt=""></a>    
+                                  </td>
+                                  <td width="40" align="center">
+                                    <a href="https://plus.google.com/+RelevePilatesBuenosAires/" target="_blank"><img src="<%= image_url('social-icons-go.png') %>" width="28" height="29" style="margin:0; padding:0; border:none; display:block;" border="0" alt=""></a>     
+                                  </td>
+                                  <td width="40" align="center">
+                                    <a href="https://www.youtube.com/channel/UCANspzZurd6hdJqrJPZBU8w" target="_blank"><img src="<%= image_url('social-icons-yt.png') %>" width="28" height="29" style="margin:0; padding:0; border:none; display:block;" border="0" alt=""></a>     
+                                  </td>
+                                </tr>
+                              </table>
+                            </td>
+                          </tr>
+                        </table>
+                        <!--[if (gte mso 9)|(IE)]>
+                      </td>
+                    </tr>
+                  </table>
+                  <![endif]-->
+                  </td>
+                </tr>
+            </table>
+            <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </td>
+    </tr>
+    <!-- FOOTER -->
+    <tr>
+        <td bgcolor="#e6f8fc" align="center" style="padding: 0px 10px 0px 10px;">
+            <!--[if (gte mso 9)|(IE)]>
+            <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+            <tr>
+            <td align="center" valign="top" width="600">
+            <![endif]-->
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;" >
+              <!-- NAVIGATION -->
+              <tr>
+                <td bgcolor="#e6f8fc" align="left" style="padding: 30px 30px 30px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 18px;" >
+                  <p style="margin: 0;">
+                    <a href="http://www.relevepilates.com.ar/app/agenda" target="_blank" style="color: #111111; font-weight: 700;">Agenda</a> -
+                    <a href="http://www.relevepilates.com.ar/app/mis_clases" target="_blank" style="color: #111111; font-weight: 700;">Mis Clases</a> -
+                    <a href="http://www.relevepilates.com.ar/#ubicacion" target="_blank" style="color: #111111; font-weight: 700;">Contacto</a> -
+                    <a href="http://www.relevepilates.com.ar/#precios" target="_blank" style="color: #111111; font-weight: 700;">Precios</a>
+                  </p>
+                </td>
+              </tr>
+              <!-- UNSUBSCRIBE -->
+              <tr>
+                <td bgcolor="#e6f8fc" align="left" style="padding: 0px 30px 30px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 18px;" >
+                  <p style="margin: 0;">Si no deseas recibir estas notificaciones, puedes detenerlas ingresando a la configuración de <a href="http://www.relevepilates.com.ar/app/mi_info" target="_blank" style="color: #111111; font-weight: 700;">tu cuenta</a>.</p>
+                </td>
+              </tr>
+              <!-- ADDRESS -->
+              <tr>
+                <td bgcolor="#e6f8fc" align="left" style="padding: 0px 30px 30px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 18px;" >
+                  <p style="margin: 0;"><strong>Releve Pilates</strong> Paraná 26, Piso 3 Dpto. M, CABA. +54(011)4382-6446. relevepilates@gmail.com.</p>
+                </td>
+              </tr>
+            </table>
+            <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </td>
+    </tr>
 </table>
-<!-- Logo Left Nav Right + Vertical Padding : END -->
+
+</body>
+</html>

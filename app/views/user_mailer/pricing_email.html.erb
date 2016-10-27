@@ -1,113 +1,412 @@
-  
-  <!-- Logo Left Nav Right + Vertical Padding : BEGIN -->
-  <table border="0" width="600" cellpadding="0" cellspacing="0" align="center" class="email-container" style="margin: auto;">
-    <tr>
-      <td height="30" style="font-size: 0; line-height: 0;">&nbsp;</td>
-    </tr>
-    <tr>
-      <td>
-		<div style="font-size: 22px;line-height: 1;" class="hh-center">Hola <%= @nombre %> <%= @apellido %>, gracias por comunicarte con Releve!</div><br>
-         Podes consultar todas las clases y horarios disponibles registrándote en nuestro <a href="http://relevepilates.com.ar/">sitio web</a>. Las puertas están abiertas:<br><br>
-      </td>
-    </tr>
-    <tr>
-      <td height="30" style="font-size: 0; line-height: 0;">&nbsp;</td>
-    </tr>
-  </table>
-  <!-- Logo Left Nav Right + Vertical Padding : END -->
- 
-  <!-- Email Container : BEGIN -->
-  <!-- This table wraps the whole body email within it's width (600px), sets the background color (white) and border (thin, gray, solid) -->
-    <table border="0" width="600" cellpadding="0" cellspacing="0" align="center" style="border: 1px solid #e5e5e5;margin: auto;" class="email-container">
-  
-      <!-- Single Fluid Image, No Crop : BEGIN -->
-      <tr>
-        <td>
-			<%= image_tag('espacio.png',alt:"Estudio", align:"middle", height:"350", width:"600", border:"0", style:"display: block;margin: 0 auto;", class:"fluid") %>
-        </td>
-      </tr>
-      <!-- Single Fluid Image, No Crop : END -->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Releve Pilates - Disfrutá entrenarte</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<style type="text/css">
+    /* FONTS */
+    @media screen {
+        @font-face {
+          font-family: 'Lato';
+          font-style: normal;
+          font-weight: 400;
+          src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v11/qIIYRU-oROkIk8vfvxw6QvesZW2xOQ-xsNqO47m55DA.woff) format('woff');
+        }
+        
+        @font-face {
+          font-family: 'Lato';
+          font-style: normal;
+          font-weight: 700;
+          src: local('Lato Bold'), local('Lato-Bold'), url(https://fonts.gstatic.com/s/lato/v11/qdgUG4U09HnJwhYI-uK18wLUuEpTyoUstqEm5AMlJo4.woff) format('woff');
+        }
+        
+        @font-face {
+          font-family: 'Lato';
+          font-style: italic;
+          font-weight: 400;
+          src: local('Lato Italic'), local('Lato-Italic'), url(https://fonts.gstatic.com/s/lato/v11/RYyZNoeFgb0l7W3Vu1aSWOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+        }
+        
+        @font-face {
+          font-family: 'Lato';
+          font-style: italic;
+          font-weight: 700;
+          src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url(https://fonts.gstatic.com/s/lato/v11/HkF_qI1x_noxlxhrhMQYELO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+        }
+    }
     
-      <!-- Full Width, Fluid Column : BEGIN -->
-      <tr>
-        <td style="border-bottom: 1px solid #e5e5e5;">
-          <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center">
-            <tr>
-              <td style="padding: 30px; font-family: sans-serif; font-size: 16px; line-height: 22px; color: #444444;">
-                 Nuestros instructores te están esperando, ingresá a Releve y comenzá a programar tu entrenamiento. <a href="relevepilates.com.ar/app/agenda">Comenzar ahora! </a>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-      <!-- Full Width, Fluid Column : END -->
-      <!-- Two Columns, With Padding ==> Stacked Layout : BEGIN -->
-      <tr>
-        <td style="border-bottom: 1px solid #e5e5e5;padding: 0 30px;">
-          <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center" class="fluid">
-            <tr>
-              <td height="30" style="font-size: 0; line-height: 0;" class="empty-spacer">&nbsp;</td>
-            </tr><br/>
-            <tr><br/><div style="font-size: 22px;line-height: 1;" class="hh-center">Nuestros precios:</div></tr>		
-            <tr>
-              <td valign="top" style="padding-right: 30px;" class="hh-force-col-center">
-                <%= image_tag('clases_grupales.png', alt:"Clases grupales", height: "200", border: "0", style: "display: block;margin: auto;", class: "hh-force-col-center" ) %>
-              </td>
-              <td valign="top" class="hh-force-col" width="100%" style="padding-left: 0;">
-                <table cellspacing="0" cellpadding="0" border="0" width="100%">
-                  <tr>
-                    <td style="width:100%; font-family: sans-serif; font-size: 16px; line-height: 22px; color: #444444; text-align: left;">
-                      <div style="font-size: 0; line-height: 0; display: none; height: 30px;" class="hh-visible"></div>
-                      <div style="font-size: 22px;line-height: 1;" class="hh-center">Pilates: clases grupales</div><br>
-                      La clase se trabaja en circuito o Pilates Estudio, como máximo 4 personas, es un trabajo personalizado y dura 1 hora.<br>
-						<div style="min-width:300px;">
-							<ul>
-								<li>1 vez x semana $560</li>
-								<li>2 veces x semana $760</li>
-								<li>3 veces x semana $1000</li>
-							</ul>
-						</div>
+    /* CLIENT-SPECIFIC STYLES */
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; }
+
+    /* RESET STYLES */
+    img { border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+    table { border-collapse: collapse !important; }
+    body { height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important; }
+
+    /* iOS BLUE LINKS */
+    a[x-apple-data-detectors] {
+        color: inherit !important;
+        text-decoration: none !important;
+        font-size: inherit !important;
+        font-family: inherit !important;
+        font-weight: inherit !important;
+        line-height: inherit !important;
+    }
+    
+    /* MOBILE STYLES */
+    @media screen and (max-width:600px){
+        h1 {
+            font-size: 32px !important;
+            line-height: 32px !important;
+        }
+    }
+
+    /* ANDROID CENTER FIX */
+    div[style*="margin: 16px 0;"] { margin: 0 !important; }
+</style>
+</head>
+<body style="background-color: #e6f8fc; margin: 0 !important; padding: 0 !important;">
+
+<!-- HIDDEN PREHEADER TEXT -->
+<div style="display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: 'Lato', Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;">
+    Consultá por planes para grupos, clases privadas y nuevas actividades.
+</div>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <!-- HEADER -->
+    <tr>
+        <td align="center" style="background: url('<%= image_url('header_bg.png') %>') #12849e; background-size: cover;" bgcolor="#f5fcfe">
+            <!-- transparent background -->
+            <table border="0" cellspacing="0" cellpadding="0" style="background: rgba(18, 132, 158, 0.9)" bgcolor="#12849e"  width="100%">
+            	<tr>
+                    <td align="center">
+                        <!--[if (gte mso 9)|(IE)]>
+                        <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+                        <tr>
+                        <td align="center" valign="top" width="600">
+                        <![endif]-->
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 400px;" >
+                            <tr>
+                                <td>
+                                    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;" >
+                                    	<tr>
+                                            <td align="center">
+                                                <a href="http://www.relevepilates.com.ar/" target="_blank">
+                                                    <img width="40px" src="<%= image_url('Releve_pie.png') %>" style="display: block;width: 40px; max-width: 40px; min-width: 40px; " border="0">
+                                                </a>
+                                            </td>
+                                            <td valign="middle" width="100%" style="padding: 0;text-align: center;">
+                                              <h1 style="max-width: 400px; margin: 0;font-family: Helvetica Neue,Helvetica,Arial,sans-serif;font-size: 2.5em;line-height: 1em;color: #ffffff;">Releve Pilates</h1>&nbsp;&nbsp;
+                                              <h2 style="max-width: 400px; margin: 0;color: #ffffff;font-family: Helvetica Neue,Helvetica,Arial,sans-serif;font-size: 1.2em;line-height: 0;font-weight: normal;">Disfrutá entrenarte</h2>&nbsp;&nbsp;
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                        <!--[if (gte mso 9)|(IE)]>
+                        </td>
+                        </tr>
+                        </table>
+                        <![endif]-->
+            		</td>
+                </tr>
+                <!-- HERO -->
+                <tr>
+                    <td align="center" style="padding: 0px 10px 0px 10px;">
+                        <!--[if (gte mso 9)|(IE)]>
+                        <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+                        <tr>
+                        <td align="center" valign="top" width="600">
+                        <![endif]-->
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;" >
+                            <tr>
+                                <td bgcolor="#ffffff" align="center" valign="top" style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: Helvetica, Arial, sans-serif; font-size: 40px; line-height: 48px;">
+                                  <h1 style="font-size: 40px; font-weight: 400; margin: 0;">Vení a conocernos y disfrutá entrenarte</h1>
+                                </td>
+                            </tr>
+                        </table>
+                        <!--[if (gte mso 9)|(IE)]>
+                        </td>
+                        </tr>
+                        </table>
+                        <![endif]-->
                     </td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
-            <tr>
-              <td height="30" style="font-size: 0; line-height: 0;">&nbsp;</td>
-            </tr>
-          </table>
+                </tr>
+            </table>
+            
         </td>
-      </tr>
-      <!-- Two Columns, With Padding ==> Stacked Layout : END -->
-      
-      <!-- Two Columns, One Column Without Padding ==> Stacked Layout : BEGIN -->
-      <tr>
-        <td style="padding: 10px 30px;border-bottom: 1px solid #e5e5e5;">
-          <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center" class="fluid">
+    </tr>
+    <!-- MAIN WRAPPER -->
+    <tr>
+        <td bgcolor="#e6f8fc" align="center" style="padding: 0px 10px 0px 10px;">
+            <!--[if (gte mso 9)|(IE)]>
+            <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
             <tr>
-              <td valign="top" class="hh-force-col">
-                <table cellspacing="0" cellpadding="0" border="0" width="100%">
-                  <tr>
-                    <td style="width:100%; font-family: sans-serif; font-size: 16px; line-height: 22px; color: #444444; text-align: left;padding-right:5px;">
-                      <div style="font-size: 0; line-height: 0; display: none; height: 30px;" class="hh-visible"></div>
-                      <div style="font-size: 22px;line-height: 1;" class="hh-center"><br>Pilates: clases privadas</div><br>
-                      Las clases privadas estan pensadas para un seguimiento aún más personalizado. Estas clases se coordinan con el instructor y duran 1 hora.<br>
-						<div style="min-width:300px;">
-							<ul>
-								<li>1 vez x semana $2500</li>
-								<li>2 veces x semana $3200</li>
-								<li>3 veces x semana $4000</li>
-							</ul>
-						</div>
+            <td align="center" valign="top" width="600">
+            <![endif]-->
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;" >
+              <!-- COPY -->
+              <tr>
+                <td bgcolor="#ffffff" align="left" style="padding: 20px 30px 20px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;" >
+                  <p style="margin: 0;">Queremos que seas parte de Releve, un lugar para disfrutar entrenando. Tenemos diferentes actividades y planes de pago para que encuentres tu espacio ideal:</p>
+                </td>
+              </tr>
+				<!-- PILATES: Clases grupales -->
+                <tr>
+                    <td bgcolor="#ffffff" align="left" style="padding-top: 20px;">
+                        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td width="75%" align="left" bgcolor="#eeeeee" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px;">
+                                    PILATES: Clases&nbsp;grupales
+                                </td>
+                                <td width="25%" align="left" bgcolor="#eeeeee" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;">
+                                    1 clase x semana
+                                </td>
+                                <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;">
+                                    $560
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
+                                    2 clases x semana
+                                </td>
+                                <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
+                                    $760
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
+                                    3 clases x semana
+                                </td>
+                                <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
+                                    $1000
+                                </td>
+                            </tr>
+                        </table>
                     </td>
-                  </tr>
-                </table>
-              </td>
-              <td valign="top" class="hh-force-col-center">
-				 <%= image_tag('clases_privadas.png', alt:"Clases privadas", height: "200", border: "0", style: "display: block;margin: auto;", class: "hh-fluid" )%>
-              </td>
+                </tr>
+                <tr>
+                    <td bgcolor="#ffffff" align="left" class="mobile" style="font-family: 'Montserrat', Arial, sans-serif; font-size:14px; line-height:22px; color:#666666; padding:10px 10px 0 10px; margin:0;" class="body-text">
+                    La clase se trabaja en circuito o Pilates Estudio, como máximo 4 personas, es un trabajo personalizado y dura 1 hora.
+                    </td>
+                </tr>
+                <!-- END PILATES: Clases grupales -->
+                <!-- PILATES: Clases privadas -->
+                <tr>
+                    <td bgcolor="#ffffff" align="left" style="padding-top: 20px;">
+                        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td width="75%" align="left" bgcolor="#eeeeee" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px;">
+                                    PILATES: Clases&nbsp;privadas
+                                </td>
+                                <td width="25%" align="left" bgcolor="#eeeeee" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;">
+                                    1 clase x semana
+                                </td>
+                                <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;">
+                                    $2500
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
+                                    2 clases x semana
+                                </td>
+                                <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
+                                    $3200
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
+                                    3 clases x semana
+                                </td>
+                                <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
+                                    $4000
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td bgcolor="#ffffff" align="left" class="mobile" style="font-family: 'Montserrat', Arial, sans-serif; font-size:14px; line-height:22px; color:#666666; padding:10px 10px 0 10px; margin:0;" class="body-text">
+                    Las clases privadas estan pensadas para un seguimiento aún más personalizado. Estas clases se coordinan con el instructor y duran 1 hora.
+                    </td>
+                </tr>
+                <!-- END PILATES: Clases privadas -->
+                <!-- DANCE PILATES -->
+                <tr>
+                    <td bgcolor="#ffffff" align="left" style="padding-top: 20px;">
+                        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td width="75%" align="left" bgcolor="#eeeeee" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px;">
+                                    Dance Pilates
+                                </td>
+                                <td width="25%" align="left" bgcolor="#eeeeee" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px;color:#12849e;">
+                                    Próximamente
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td bgcolor="#ffffff" align="left" class="mobile" style="font-family: 'Montserrat', Arial, sans-serif; font-size:14px; line-height:22px; color:#666666; padding:10px 10px 0 10px; margin:0;" class="body-text">
+                    Se fusiona el trabajo de Danza Clásica con Pilates, combinando movimientos de disociación, utilizando pesas y otros accesorios.
+                    </td>
+                </tr>
+                <!-- END DANCE PILATES -->
+                <!-- YOGA -->
+                <tr>
+                    <td bgcolor="#ffffff" align="left" style="padding-top: 20px;">
+                        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td width="75%" align="left" bgcolor="#eeeeee" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px;">
+                                    Yoga
+                                </td>
+                                <td width="25%" align="left" bgcolor="#eeeeee" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px;color:#12849e;">
+                                    Próximamente
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td bgcolor="#ffffff" align="left" class="mobile" style="font-family: 'Montserrat', Arial, sans-serif; font-size:14px; line-height:22px; color:#666666; padding:10px 10px 0 10px; margin:0;" class="body-text">
+                    Trabajo completo del cuerpo, donde se educa la mente y el espíritu, para todos aquellos que deseen mejorar su calidad de vida.
+                    </td>
+                </tr>
+                <!-- END YOGA -->
+              <!-- BULLETPROOF BUTTON -->
+              <tr>
+                <td bgcolor="#ffffff" align="left" >
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td bgcolor="#ffffff" align="center" border="0" style="padding: 20px 30px 20px 30px; border:0;margin:0;">
+                        <table border="0" cellspacing="0" cellpadding="0">
+                          <tr>
+                              <td align="center" style="border-radius: 3px;" bgcolor="#12849e"><a href="http://www.relevepilates.com.ar/app/agenda" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #0f6b80; display: inline-block;">Comenzá hoy!</a></td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <!-- VIDEO -->
+              <tr>
+                <td bgcolor="#ffffff" align="left" style="padding: 0px 0px 0px 0px;" >
+                  <a href="http://litmus.com" target="_blank">
+                      <img alt="" src="<%= image_url('espacio.png') %>" width="600" style="display: block; width: 100%; max-width: 100%; min-width: 100px; font-family: 'Lato', Helvetica, Arial, sans-serif; color: #ffffff; font-size: 18px;" border="0">
+                  </a>
+                </td>
+              </tr>
+              <!-- COPY -->
+              <tr>
+                <td bgcolor="#ffffff" align="left" style="padding: 40px 30px 10px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;" >
+                  <p style="margin: 0;">Podés consultar todas las clases y horarios disponibles registrándote en nuestro sitio e ingresando a la <a href="http://www.relevepilates.com.ar/app/agenda" style="color: #666666;text-decoration: underline;" >Agenda</a></p>
+                </td>
+              </tr>
+              <!-- END -->
+              <tr>
+                <td bgcolor="#ffffff" align="left" style="padding: 20px 30px 40px 30px; border-radius: 0px 0px 4px 4px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;" >
+                </td>
+              </tr>
+            </table>
+            <!--[if (gte mso 9)|(IE)]>
+            </td>
             </tr>
-          </table>
+            </table>
+            <![endif]-->
         </td>
-      </tr>
-      <!-- Two Columns, One Column Without Padding ==> Stacked Layout : END -->
+    </tr>
+    <!-- SOCIAL -->
+    <tr>
+        <td bgcolor="#e6f8fc" align="center" style="padding: 30px 10px 0px 10px;">
+            <!--[if (gte mso 9)|(IE)]>
+            <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+            <tr>
+            <td align="center" valign="top" width="600">
+            <![endif]-->
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;" >
+                <!-- HEADLINE -->
+                <tr>
+                  <td bgcolor="#292828" align="center" style="background: #292828 url('http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/rubber_grip.png') repeat scroll 0% 0%; padding: 30px 30px 30px 30px; border-radius: 4px 4px 4px 4px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;" >
+                  <!--[if (gte mso 9)|(IE)]>
+                  <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+                    <tr>
+                      <td align="center" valign="top" width="600">
+                        <![endif]-->       
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;">
+                          <tr>
+                            <td align="center" valign="top">
+                              <table width="160" cellpadding="0" cellspacing="0" border="0" class="right">
+                                <tr>
+                                  <td width="40" align="center">
+                                    <a href="https://www.facebook.com/relevepilates/" target="_blank"><img src="<%= image_url('social-icons-fb.png') %>" width="28" height="29" style="margin:0; padding:0; border:none; display:block;font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none;" border="0" alt="Seguinos&nbsp;en&nbsp;Facebook"></a>    
+                                  </td>
+                                  <td width="40" align="center">
+                                    <a href="https://www.instagram.com/relevepilates/" target="_blank"><img src="<%= image_url('social-icons-in.png') %>" width="28" height="29" style="margin:0; padding:0; border:none; display:block;" border="0" alt=""></a>    
+                                  </td>
+                                  <td width="40" align="center">
+                                    <a href="https://plus.google.com/+RelevePilatesBuenosAires/" target="_blank"><img src="<%= image_url('social-icons-go.png') %>" width="28" height="29" style="margin:0; padding:0; border:none; display:block;" border="0" alt=""></a>     
+                                  </td>
+                                  <td width="40" align="center">
+                                    <a href="https://www.youtube.com/channel/UCANspzZurd6hdJqrJPZBU8w" target="_blank"><img src="<%= image_url('social-icons-yt.png') %>" width="28" height="29" style="margin:0; padding:0; border:none; display:block;" border="0" alt=""></a>     
+                                  </td>
+                                </tr>
+                              </table>
+                            </td>
+                          </tr>
+                        </table>
+                        <!--[if (gte mso 9)|(IE)]>
+                      </td>
+                    </tr>
+                  </table>
+                  <![endif]-->
+                  </td>
+                </tr>
+            </table>
+            <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </td>
+    </tr>
+    <!-- FOOTER -->
+    <tr>
+        <td bgcolor="#e6f8fc" align="center" style="padding: 0px 10px 0px 10px;">
+            <!--[if (gte mso 9)|(IE)]>
+            <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+            <tr>
+            <td align="center" valign="top" width="600">
+            <![endif]-->
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;" >
+              <!-- ADDRESS -->
+              <tr>
+                <td bgcolor="#e6f8fc" align="left" style="padding: 20px 30px 30px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 18px;" >
+                  <p style="margin: 0;"><strong>Releve Pilates</strong> Paraná 26, CABA. +54(011)4382-6446. relevepilates@gmail.com.</p>
+                </td>
+              </tr>
+            </table>
+            <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
