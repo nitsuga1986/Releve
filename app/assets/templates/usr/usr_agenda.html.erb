@@ -1,4 +1,10 @@
 <div class="row"><div id="alert-container" class="col-xs-12"></div></div>
+
+<div class="row" data-ng-if="!alumno.primera_clase" ><div class="col-xs-12"><div class="alert alert-info alert-dismissible" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	<i class="fa fa-info-circle " aria-hidden="true"></i> ¿Querés agendar todas las clases del mes? Ingresá a <strong><a href="/app/planificar">Planificar</a></strong></div>
+</div></div>
+
 <div class="row" data-ng-if="alumno.primera_clase" ><div class="col-xs-12"><div class="alert alert-info alert-dismissible" role="alert">
 	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	<strong><i class="fa fa-info-circle " aria-hidden="true"></i> Agendá tu clase de prueba! </strong> Una vez que prgrames tu plan de entrenamiento con el instructor, podrás agendar todas tus clases.</div>

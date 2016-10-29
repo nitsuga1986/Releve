@@ -1163,8 +1163,21 @@ button.btn-absolute{
     z-index: 9999;
 }
 .formalert{display:none;}
-
-
+.registerline{
+    background-color: #c7c7c7;
+    height: 1px;
+    top: 0.45em;
+}
+.registertext{
+    font-size: 13px;
+    line-height: 15px;
+    text-transform: uppercase;
+    color: #999;
+    font-weight: 600;
+}
+.ui-datepicker{ 
+	z-index: 9600 !important;
+}
 
 #map {width: 100%;height: 25em;}
 #preload-03 { background: image-url("backpattern.png") no-repeat -624.9375em -624.9375em; }

@@ -163,12 +163,17 @@ var columns_clase = [
 // Instructor
 var claseInstructorSorting = {fecha: 'asc',horario: 'asc'};
 var columns_instructor = [
-	{title:"Fecha",field:"fecha_fixed",filter:"fecha",visible:true,filter:{'fecha':'text'}},
-	{title:"Horario",field:"horario",filter:"horario",visible:true,filter:{'horario':'text'}},
+	{title:"Fecha",field:"fecha",filter:"fecha",visible:false,filter:{'fecha':'text'}, sortable: "fecha", sortDirection: "asc",groupable:"fecha",hiddenxs:false},
+	{title:"Horario",field:"horario",filter:"horario",visible:true,filter:{'horario':'text'}, sortable: "horario", sortDirection: "desc",groupable:"horario",hiddenxs:false},
 	{title:"Alumnos",field:"cant_users",filter:"cant_users",visible:true,filter:{'cant_users':'text'}, sortable: "cant_users", sortDirection: "desc",groupable:"cant_users"},
 	{title:"Listado",field:"users",filter:"users",visible:true,filter:{'users':'text'}, sortable: "users", sortDirection: "desc",groupable:"users"},
 ];
 // clases Agendar
+var claseAgendaDefaultPage = 1;	var claseAgendaDefaultCount = 5;
+var claseAgendaDefaultFilter = {};   
+var claseAgendaDefaultGroupingBy = 'fecha'; var claseAgendaDefaultGrouping = {fecha: "asc"}
+var claseAgendaDefaultSorting = {fecha: 'desc',horario: 'asc'};
+var claseAgendaPageSizes = [5, 15, 25, 50, 100];
 var columns_agendar = [
 	{title:"Fecha",field:"fecha_fixed",filter:"fecha_fixed",visible:true,filter:{'fecha':'text'}, sortable: "fecha", sortDirection: "asc",groupable:"fecha",hiddenxs:false},
 	{title:"Alumnos",field:"cant_users",filter:"cant_users",visible:true,filter:{'cant_users':'text'}, sortable: "cant_users", sortDirection: "desc",groupable:"cant_users"},

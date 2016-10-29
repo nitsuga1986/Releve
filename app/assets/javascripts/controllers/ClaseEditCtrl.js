@@ -3,7 +3,7 @@ angular.module("TurnosApp").controller("ClaseEditCtrl",['$scope', '$rootScope', 
 	$scope.horariosArray = horariosArray;
 	$scope.submiterror = false;
 	$scope.history_GoToClaseEdit = []; // Prevents loop search
-	$scope.GoToIndex = function(id) {$location.path("/clase/index");};
+	$scope.GoToIndex = function(id) {$location.path("/clase/instructor");};
 	$scope.GoToEdit = function(id) {if($scope.is_admin){$location.path("/alumno/"+id+"/edit/");}};
 	$scope.GoToNewActividad = function() {if($scope.is_admin){$location.path("/actividad/new");}};
 	$scope.ActividadIndex = [];
@@ -47,7 +47,7 @@ angular.module("TurnosApp").controller("ClaseEditCtrl",['$scope', '$rootScope', 
 	// SUBMIT
 	$scope.submitted = false;
 	$scope.submit = function() {
-		$rootScope.got_to_url_success = "/clase/index";
+		$rootScope.got_to_url_success = "/clase/instructor";
 		$scope.FormErrors = [];
 		if ($scope.ClaseForm.$valid) {
 			console.log("valid submit");
@@ -100,7 +100,7 @@ angular.module("TurnosApp").controller("ClaseEditCtrl",['$scope', '$rootScope', 
 	};
 	// Destroy
 	$scope.destroyClase = function() {
-		$rootScope.got_to_url_success = "/clase/index";
+		$rootScope.got_to_url_success = "/clase/instructor";
 		$('.confirmation-modal').on('hidden.bs.modal', function (e) {
 			$scope.clase.users = null;
 			ResourceClase.destroy($scope.deleteVariablesClaseToSend ($scope.clase,true,true), $scope.callbackSuccess, $scope.callbackFailure);

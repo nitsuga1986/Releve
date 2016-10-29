@@ -3,10 +3,19 @@
 	<%= devise_error_messages! %>
 	<div class="panel panel-default devise-bs">
 	  <div class="panel-heading bg-light-releve">
-		<h4><%= t('.sign_up', :default => "Registrarse") %></h4>
+		<h4><%= t('.sign_up', :default => "Registrate en Releve") %></h4>
 	  </div>
 	  <div class="panel-body">
 		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: { role: "form" }) do |f| %>
+		  <div class="form-group">
+			  <a href="<%= user_facebook_omniauth_authorize_path %>" class="btn btn-block btn-social btn-facebook"><span class="fa fa-facebook"></span> Ingresar con Facebook</a>
+			  <a href="<%= user_twitter_omniauth_authorize_path %>" class="btn btn-block btn-social btn-twitter"><span class="fa fa-twitter"></span> Ingresar con Twitter</a>
+		  </div>
+		  <div class="col-xs-12">
+				<div class="col-xs-5 registerline"></div>
+				<div class="col-xs-2 registertext">o</div>
+				<div class="col-xs-5 registerline"></div>
+		  </div>
 		  <div class="form-group">
 			<%= f.label :email %>
 			<%= f.email_field :email, autofocus: true, class: "form-control" %>
@@ -22,7 +31,7 @@
 		  <div class="form-group">
 			<%= recaptcha_tags hl: 'es', display: { theme: 'white' } %>
 		  </div>
-		  <%= f.submit t('.sign_up', :default => "Registrarme"), class: "btn btn-primary" %>
+		  <%= f.submit t('.sign_up', :default => "Registrarme"), class: "btn btn-primary btn-block" %>
 		<% end %>
 	  </div>
 	</div>

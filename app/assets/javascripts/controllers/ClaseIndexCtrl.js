@@ -78,7 +78,7 @@ angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$rootScope',
 	};
 	$scope.destroyClase = function() {
 		$cacheFactory.get('$http').remove("/api/clases");
-		$rootScope.got_to_url_success = "/clase/index";
+		$rootScope.got_to_url_success = "/clase/instructor";
 		$('.confirmation-modal').on('hidden.bs.modal', function (e) {
 			$.each($scope.clases, function(index) {
 				if($scope.clases[index]!=undefined && $scope.clases[index].id == $scope.IdToDestroy) { //Remove from array
