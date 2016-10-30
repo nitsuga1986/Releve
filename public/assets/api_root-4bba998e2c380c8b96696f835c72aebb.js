@@ -5179,6 +5179,11 @@ var columns_instructor = [
 	{title:"Listado",field:"users",filter:"users",visible:true,filter:{'users':'text'}, sortable: "users", sortDirection: "desc",groupable:"users"},
 ];
 // clases Agendar
+var claseAgendaDefaultPage = 1;	var claseAgendaDefaultCount = 5;
+var claseAgendaDefaultFilter = {};   
+var claseAgendaDefaultGroupingBy = 'fecha'; var claseAgendaDefaultGrouping = {fecha: "asc"}
+var claseAgendaDefaultSorting = {fecha: 'desc',horario: 'asc'};
+var claseAgendaPageSizes = [5, 15, 25, 50, 100];
 var columns_agendar = [
 	{title:"Fecha",field:"fecha_fixed",filter:"fecha_fixed",visible:true,filter:{'fecha':'text'}, sortable: "fecha", sortDirection: "asc",groupable:"fecha",hiddenxs:false},
 	{title:"Alumnos",field:"cant_users",filter:"cant_users",visible:true,filter:{'cant_users':'text'}, sortable: "cant_users", sortDirection: "desc",groupable:"cant_users"},
@@ -5362,8 +5367,12 @@ angular.module("TurnosApp").controller("UsrMisClasesCtrl",['$scope', '$rootScope
 angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$rootScope', '$location', 'ResourceClase', 'ResourceAlumno', '$filter','NgTableParams', '$timeout', '$cacheFactory', function($scope, $rootScope, $location, ResourceClase, ResourceAlumno, $filter, NgTableParams, $timeout, $cacheFactory) {
 	ResourceAlumno.current().$promise.then(function(data) {
 		$scope.alumno = data;
-		$scope.selectmultiple = false;
-		if ($scope.alumno.primera_clase){if($scope.alumno.confirmed){$('#first-clase-modal').modal('show')}};
+		if ($scope.alumno.primera_clase){
+			$scope.selectmultiple = false;
+			if($scope.alumno.confirmed){$('#first-clase-modal').modal('show')}
+		}else{
+			$scope.selectmultiple = true;
+		};
 		// ngTable
 		function dateFormat(date) {date = date.split('-'); date = date[2]+' de '+monthNames[parseInt(date[1])-1]; return date;}
 		// changeselection
@@ -5775,7 +5784,7 @@ angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$rootScope',
 	};
 	$scope.destroyClase = function() {
 		$cacheFactory.get('$http').remove("/api/clases");
-		$rootScope.got_to_url_success = "/clase/index";
+		$rootScope.got_to_url_success = "/clase/instructor";
 		$('.confirmation-modal').on('hidden.bs.modal', function (e) {
 			$.each($scope.clases, function(index) {
 				if($scope.clases[index]!=undefined && $scope.clases[index].id == $scope.IdToDestroy) { //Remove from array
@@ -5845,7 +5854,7 @@ angular.module("TurnosApp").controller("ClaseEditCtrl",['$scope', '$rootScope', 
 	$scope.horariosArray = horariosArray;
 	$scope.submiterror = false;
 	$scope.history_GoToClaseEdit = []; // Prevents loop search
-	$scope.GoToIndex = function(id) {$location.path("/clase/index");};
+	$scope.GoToIndex = function(id) {$location.path("/clase/instructor");};
 	$scope.GoToEdit = function(id) {if($scope.is_admin){$location.path("/alumno/"+id+"/edit/");}};
 	$scope.GoToNewActividad = function() {if($scope.is_admin){$location.path("/actividad/new");}};
 	$scope.ActividadIndex = [];
@@ -5889,7 +5898,7 @@ angular.module("TurnosApp").controller("ClaseEditCtrl",['$scope', '$rootScope', 
 	// SUBMIT
 	$scope.submitted = false;
 	$scope.submit = function() {
-		$rootScope.got_to_url_success = "/clase/index";
+		$rootScope.got_to_url_success = "/clase/instructor";
 		$scope.FormErrors = [];
 		if ($scope.ClaseForm.$valid) {
 			console.log("valid submit");
@@ -5942,7 +5951,7 @@ angular.module("TurnosApp").controller("ClaseEditCtrl",['$scope', '$rootScope', 
 	};
 	// Destroy
 	$scope.destroyClase = function() {
-		$rootScope.got_to_url_success = "/clase/index";
+		$rootScope.got_to_url_success = "/clase/instructor";
 		$('.confirmation-modal').on('hidden.bs.modal', function (e) {
 			$scope.clase.users = null;
 			ResourceClase.destroy($scope.deleteVariablesClaseToSend ($scope.clase,true,true), $scope.callbackSuccess, $scope.callbackFailure);
@@ -6163,7 +6172,7 @@ angular.module("TurnosApp").controller("ClaseBulkCtrl",['$scope', '$rootScope', 
 	$scope.FormErrors = [];
 	$scope.horariosArray = horariosArray;
 	$scope.submiterror = false;
-	$scope.GoToIndex = function(id) {$location.path("/clase/index");};
+	$scope.GoToIndex = function(id) {$location.path("/clase/instructor");};
 	$scope.GoToNewActividad = function() {$location.path("/actividad/new");};
 	$scope.ActividadIndex = [];
 	$scope.ActividadIndex = ResourceActividad.index();
@@ -6195,7 +6204,7 @@ angular.module("TurnosApp").controller("ClaseBulkCtrl",['$scope', '$rootScope', 
 	// SUBMIT
 	$scope.submitted = false;
 	$scope.submit = function() {
-		$rootScope.got_to_url_success = "/clase/index";
+		$rootScope.got_to_url_success = "/clase/instructor";
 		$scope.FormErrors = [];
 		if ($scope.ClaseForm.$valid) {
 			console.log("valid submit");
@@ -6251,7 +6260,7 @@ angular.module("TurnosApp").controller("ClaseEditBulkCtrl",['$scope', '$rootScop
 	$scope.FormErrors = [];
 	$scope.horariosArray = horariosArray;
 	$scope.submiterror = false;
-	$scope.GoToIndex = function(id) {$location.path("/clase/index");};
+	$scope.GoToIndex = function(id) {$location.path("/clase/instructor");};
 	$scope.GoToNewActividad = function() {$location.path("/actividad/new");};
 	$scope.ActividadIndex = [];
 	$scope.ActividadIndex = ResourceActividad.index();
@@ -6282,7 +6291,7 @@ angular.module("TurnosApp").controller("ClaseEditBulkCtrl",['$scope', '$rootScop
 	// SUBMIT
 	$scope.submitted = false;
 	$scope.submit = function() {
-		$rootScope.got_to_url_success = "/clase/index";
+		$rootScope.got_to_url_success = "/clase/instructor";
 		$scope.FormErrors = [];
 		if ($scope.ClaseForm.$valid) {
 			console.log("valid submit");
@@ -6325,7 +6334,7 @@ angular.module("TurnosApp").controller("ClaseShowCtrl",['$scope', '$rootScope', 
 	$scope.clase.$promise.then(function(data){console.log(data);},function( error ){$location.path("/dashboard/index");});
 	// Destroy
 	$scope.destroyClase = function() {
-		$rootScope.got_to_url_success = "/clase/index";
+		$rootScope.got_to_url_success = "/clase/instructor";
 		$('.confirmation-modal').on('hidden.bs.modal', function (e) {
 			$scope.clase.users = null;
 			ResourceClase.destroy($scope.clase, $scope.callbackSuccess, $scope.callbackFailure);
