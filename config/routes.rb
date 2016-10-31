@@ -28,6 +28,8 @@ Rails.application.routes.draw do
 			member do
 				post 'join'
 				post 'unjoin'
+				post 'confirm'
+				post 'unconfirm'
 				post 'waitlist'
 			end
 		end

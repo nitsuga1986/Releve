@@ -1,7 +1,7 @@
 class Api::ClasesController < ApplicationController
   before_action :authenticate_user!
   before_action only: [:test_emails, :create, :bulk, :destroy] do redirect_to :new_user_session_path unless current_user && current_user.admin?   end
-  before_action only: [:index, :show, :search, :instructor, :update, :edit_bulk, :join_usr_multiple] do redirect_to :new_user_session_path unless current_user && (current_user.instructor?||current_user.admin?) end
+  before_action only: [:index, :show, :search, :instructor, :update, :edit_bulk, :join_usr_multiple, :confirm, :unconfirm] do redirect_to :new_user_session_path unless current_user && (current_user.instructor?||current_user.admin?) end
 
   respond_to :json
 
@@ -95,7 +95,11 @@ class Api::ClasesController < ApplicationController
   end
   
   def instructor
-	@clases = User.find(params[:instructor_id]).instructorados.where('fecha >= ? AND fecha <= ?',params[:fecha_start],params[:fecha_end])
+	if params[:instructor_id] == 9999999 then
+		@clases = Clase.where('fecha >= ? AND fecha <= ?',params[:fecha_start],params[:fecha_end])
+	else
+		@clases = User.find(params[:instructor_id]).instructorados.where('fecha >= ? AND fecha <= ?',params[:fecha_start],params[:fecha_end])
+	end
 	if @clases.nil? then
 		head :no_content
 	end
@@ -168,6 +172,18 @@ class Api::ClasesController < ApplicationController
 	Event.create(name:'joinmultiple',content: current_user.nombre_completo+" agendó a <strong>"+selected_user.nombre_completo+"</strong> en las siguientes clases: ")
 	UserMailer.join_multiple_email(selected_user,@clases).deliver
 	render json: @clase, status: :created
+  end
+
+  def confirm 
+	@clase = Clase.find(params[:id])
+	Asistencia.find(params[:asistencia_id]).update_attribute(:confirmed,true)
+	head :no_content
+  end
+
+  def unconfirm 
+	@clase = Clase.find(params[:id])
+	Asistencia.find(params[:asistencia_id]).update_attribute(:confirmed,false)
+	head :no_content
   end
   
   # USER

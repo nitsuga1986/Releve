@@ -37,8 +37,10 @@ class UserMailerPreview < ActionMailer::Preview
   
   def remainder_email
     user = User.first
-    clases = User.first.clases
-    UserMailer.remainder_email(user)
+	start_date = Date.today
+	end_date = start_date + 7.days
+    clases = User.first.clases.where(:fecha => start_date..end_date).order(:fecha,:horario)
+    UserMailer.remainder_email(user,clases)
   end
 	
   def waitlist_email

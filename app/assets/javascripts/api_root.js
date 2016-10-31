@@ -3,6 +3,7 @@
 //= require angular/angular.min
 //= require angular/angular-resource.min
 //= require angular/angular-route.min
+//= require angular/angular-cookies
 //= require angular/ng-table.min
 //= require config
 //= require filters/html_trusted
@@ -18,6 +19,7 @@
 //= require controllers/ClaseEditCtrl
 //= require controllers/ClaseAgendarCtrl
 //= require controllers/ClaseInstructorCtrl
+//= require controllers/ClaseDashboardCtrl
 //= require controllers/ClaseBulkCtrl
 //= require controllers/ClaseEditBulkCtrl
 //= require controllers/ClaseShowCtrl
