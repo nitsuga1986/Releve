@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161012182231) do
+ActiveRecord::Schema.define(version: 20161101171019) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,20 @@ ActiveRecord::Schema.define(version: 20161012182231) do
 
   add_index "packs", ["actividad_id"], name: "index_packs_on_actividad_id", using: :btree
   add_index "packs", ["user_id"], name: "index_packs_on_user_id", using: :btree
+
+  create_table "pagos", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "actividad_id"
+    t.integer  "monto"
+    t.integer  "mes"
+    t.date     "fecha"
+    t.string   "descripcion"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "pagos", ["actividad_id"], name: "index_pagos_on_actividad_id", using: :btree
+  add_index "pagos", ["user_id"], name: "index_pagos_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.boolean  "admin",                  default: false

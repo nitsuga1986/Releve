@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 	namespace "api" do
+		resources :actividad, :event,:pago
 		resources :alumnos do
 			collection do
 				get 'autocomplete'
@@ -10,9 +11,9 @@ Rails.application.routes.draw do
 			end
 			member do
 				post 'usr_clases'
+				post 'usr_pagos'
 			end
 		end
-		resources :actividad, :event
 		resources :clases do
 			collection do
 				get 'search'

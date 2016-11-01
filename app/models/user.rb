@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   after_create :set_fechaini
+  has_many :pagos
   has_many :packs
   has_many :actividades, through: :packs
   has_many :asistencias

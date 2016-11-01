@@ -81,6 +81,11 @@ class Api::AlumnosController < ApplicationController
 	@clases = User.find(params[:id]).clases.order(:fecha,:horario)
 	render json: @clases, status: :ok
   end
+
+  def usr_pagos
+	@pagos = User.find(params[:id]).pagos.order(:fecha)
+	render json: @pagos, status: :ok
+  end
   
   # USER
   ###########################
