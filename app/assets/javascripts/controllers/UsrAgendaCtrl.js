@@ -54,6 +54,11 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$rootScope', 
 			}
 		});
 	});
+	$scope.getMoreData = function () {
+		if($scope.tableParams != undefined && $scope.tableParams.count() < $scope.tableParams.total()){
+			$scope.tableParams.count($scope.tableParams.count()+claseAgendaDefaultIncreaseScroll);
+		}
+	}
 	// eventModal
 	$scope.eventModal = function(clase_id) {
 		$scope.clase = $.grep($scope.clases, function(e){ return e.id == clase_id; })[0];

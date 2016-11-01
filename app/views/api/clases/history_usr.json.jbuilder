@@ -1,12 +1,14 @@
-json.array! @clases do |clase|
-  json.(clase, :id, :cancelada, :comment, :fecha, :horario)
-  json.actividad clase.actividad.nombre
-  json.old clase.old?
-  json.cancelable clase.cancelable?
-  json.dia clase.dia
-  json.users clase.users, partial: 'api/users/user', as: :user
-  json.instructor clase.instructor.nombre_completo if clase.instructor.present?
-  json.reemplazo clase.reemplazo.nombre_completo if clase.reemplazo.present?
+json.array! @asistencias do |asistencia|
+  json.(asistencia, :confirmed)
+  json.old asistencia.clase.old?
+  json.(asistencia.clase, :id, :cancelada, :comment, :fecha, :horario)
+  json.actividad asistencia.clase.actividad.nombre
+  json.old asistencia.clase.old?
+  json.cancelable asistencia.clase.cancelable?
+  json.dia asistencia.clase.dia
+  json.users asistencia.clase.users, partial: 'api/users/user', as: :user
+  json.instructor asistencia.clase.instructor.nombre_completo if asistencia.clase.instructor.present?
+  json.reemplazo asistencia.clase.reemplazo.nombre_completo if asistencia.clase.reemplazo.present?
 end
 
 

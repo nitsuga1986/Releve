@@ -1,5 +1,5 @@
 // start APP
-angular.module("TurnosApp",['ngRoute','ngResource','ngTable','ngCookies']).run(['$rootScope','$location',function($rootScope,$location) {
+angular.module("TurnosApp",['ngRoute','ngResource','ngTable','ngCookies','infinite-scroll']).run(['$rootScope','$location',function($rootScope,$location) {
 	// callbackSuccess
 	$rootScope.callbackSuccess = function(response) {
 		console.log("success", response); if(!$rootScope.got_to_url_success){$rootScope.got_to_url_success="/";}
@@ -111,10 +111,10 @@ $.datepicker.regional['es'] = {
 });
 //  Agenda
 var claseAgendaDefaultPage = 1;	var claseAgendaDefaultCount = 5;
-var claseAgendaDefaultFilter = {};   
+var claseAgendaDefaultFilter = {}; var claseAgendaDefaultIncreaseScroll = 5;
 var claseAgendaDefaultGroupingBy = 'fecha'; var claseAgendaDefaultGrouping = {fecha: "asc"}
 var claseAgendaDefaultSorting = {fecha: 'desc',horario: 'asc'};
-var claseAgendaPageSizes = [5, 15, 25, 50, 100];
+var claseAgendaPageSizes = [];
 var columns_claseAgenda = [
 	{title:"Fecha",field:"fecha",filter:"fecha",visible:false,filter:{'fecha':'text'}, sortable: "fecha", sortDirection: "asc",groupable:"fecha",hiddenxs:false},
 	{title:"Horario",field:"horario",filter:"horario",visible:true,filter:{'horario':'text'}, sortable: "horario", sortDirection: "desc",groupable:"horario",hiddenxs:false},
@@ -179,11 +179,11 @@ var columns_dashboard = [
 	{title:"Alumnos",field:"cant_users",filter:"cant_users",visible:true,filter:{'cant_users':'text'}, sortable: "cant_users", sortDirection: "desc",groupable:"cant_users"},
 ];
 // clases Agendar
-var claseAgendaDefaultPage = 1;	var claseAgendaDefaultCount = 5;
-var claseAgendaDefaultFilter = {};   
-var claseAgendaDefaultGroupingBy = 'fecha'; var claseAgendaDefaultGrouping = {fecha: "asc"}
-var claseAgendaDefaultSorting = {fecha: 'desc',horario: 'asc'};
-var claseAgendaPageSizes = [5, 15, 25, 50, 100];
+var claseAgendarDefaultPage = 1;	var claseAgendarDefaultCount = 5;
+var claseAgendarDefaultFilter = {};   
+var claseAgendarDefaultGroupingBy = 'fecha'; var claseAgendarDefaultGrouping = {fecha: "asc"}
+var claseAgendarDefaultSorting = {fecha: 'desc',horario: 'asc'};
+var claseAgendarPageSizes = [5, 15, 25, 50, 100];
 var columns_agendar = [
 	{title:"Fecha",field:"fecha_fixed",filter:"fecha_fixed",visible:true,filter:{'fecha':'text'}, sortable: "fecha", sortDirection: "asc",groupable:"fecha",hiddenxs:false},
 	{title:"Alumnos",field:"cant_users",filter:"cant_users",visible:true,filter:{'cant_users':'text'}, sortable: "cant_users", sortDirection: "desc",groupable:"cant_users"},

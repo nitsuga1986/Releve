@@ -193,7 +193,7 @@ class Api::ClasesController < ApplicationController
   end
   
   def history_usr
-	@clases = current_user.clases
+	@asistencias = current_user.asistencias
   end
 
   def join 

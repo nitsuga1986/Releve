@@ -12,6 +12,7 @@
 			<tr data-ng-if="!$data.length"><td>No hay clases aún =/</td></tr>
 			<tr data-ng-repeat="clase in $data">
 				<td data-ng-class="{'strike': clase.cancelada && column.field!='instructor','hidden-xs': column.hiddenxs,'text-muted': clase.old}" data-ng-repeat="column in columns_claseMisClases" data-ng-click="GoToEdit(clase.id)" data-ng-show="column.visible" sortable="column.field" filter="column.filter">
+					<i data-ng-if="column.field=='fecha_fixed' && clase.confirmed" class="fa fa-check-square-o text-success" aria-hidden="true" title="Presente"></i>
 					<span data-ng-if="column.field=='instructor' && clase.reemplazo" class="text-danger" title="Clase regular de {{clase['instructor']}}">{{clase['reemplazo']}}</span>
 					<span data-ng-if="!(column.field=='instructor' && clase.reemplazo)">{{clase[column.field]}}</span>
 					<span data-ng-if="column.field=='horario' && !clase.old && !clase.cancelable" class="label label-warning">< 12hs</span>

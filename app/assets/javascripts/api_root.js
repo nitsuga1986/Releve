@@ -5,6 +5,7 @@
 //= require angular/angular-route.min
 //= require angular/angular-cookies
 //= require angular/ng-table.min
+//= require angular/ng-infinite-scroll.min
 //= require config
 //= require filters/html_trusted
 //= require directives/onFinishRender
