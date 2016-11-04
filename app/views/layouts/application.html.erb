@@ -19,6 +19,7 @@
 	<% if Rails.env.production? %>
 	  <%= analytics_init if GoogleAnalytics.valid_tracker? %>
 	<% end %>
+	<base href="/">
   </head>
   
   <body class="<% if @landingpage %>landingpage<% end %>">

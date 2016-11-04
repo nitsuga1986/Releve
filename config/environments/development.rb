@@ -37,11 +37,11 @@ Rails.application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
-
   # Adds additional error checking when serving assets at runtime.
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
+  config.static_cache_control = "public, s-maxage=15552000, max-age=2592000"
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true

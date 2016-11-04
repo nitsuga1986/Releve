@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 20161101171019) do
     t.integer  "actividad_id"
     t.integer  "monto"
     t.integer  "mes"
+    t.integer  "cant_clases"
     t.date     "fecha"
     t.string   "descripcion"
     t.datetime "created_at"

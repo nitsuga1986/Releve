@@ -1,5 +1,5 @@
 // start APP
-angular.module("TurnosApp",['ngRoute','ngResource','ngTable','ngCookies','infinite-scroll']).run(['$rootScope','$location',function($rootScope,$location) {
+angular.module("TurnosApp",['ngRoute','ngResource','ngTable','ngCookies']).run(['$rootScope','$location',function($rootScope,$location) {
 	// callbackSuccess
 	$rootScope.callbackSuccess = function(response) {
 		console.log("success", response); if(!$rootScope.got_to_url_success){$rootScope.got_to_url_success="/";}
@@ -110,8 +110,8 @@ $.datepicker.regional['es'] = {
 	//showButtonPanel: true
 });
 //  Agenda
-var claseAgendaDefaultPage = 1;	var claseAgendaDefaultCount = 5;
-var claseAgendaDefaultFilter = {}; var claseAgendaDefaultIncreaseScroll = 5;
+var claseAgendaDefaultPage = 1;	var claseAgendaDefaultCount = 10;
+var claseAgendaDefaultFilter = {}; var claseAgendaDefaultIncreaseScroll = 10;
 var claseAgendaDefaultGroupingBy = 'fecha'; var claseAgendaDefaultGrouping = {fecha: "asc"}
 var claseAgendaDefaultSorting = {fecha: 'desc',horario: 'asc'};
 var claseAgendaPageSizes = [];
@@ -220,4 +220,16 @@ var actividadDefaultFilter = {};
 var actividadDefaultSorting = {nombre: 'desc'};
 var columns_actividad = [
 	{title:"Nombre",field:"nombre",filter:"nombre",visible:true,filter:{'nombre':'text'}},
+];
+// Pago
+var pagoDefaultPage = 1;	var pagoDefaultCount = 25;
+var pagoDefaultFilter = {}; 
+var pagoDefaultSorting = {nombre: 'desc'};
+var columns_pago = [
+	{title:"Monto",field:"monto",filter:"monto",visible:true,filter:{'monto':'text'}},
+	{title:"Alumno",field:"alumno",filter:"alumno",visible:true,filter:{'alumno':'text'}},
+	{title:"Mes",field:"mes",filter:"mes",visible:true,filter:{'mes':'text'}},
+	{title:"Clases",field:"cant_clases",filter:"cant_clases",visible:true,filter:{'cant_clases':'text'}},
+	{title:"Actividad",field:"actividad",filter:"actividad",visible:true,filter:{'actividad':'text'}},
+	{title:"Fecha de pago",field:"fecha",filter:"fecha",visible:true,filter:{'fecha':'text'}},
 ];

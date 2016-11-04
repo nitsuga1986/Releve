@@ -3,7 +3,7 @@
 //= require angular/angular.min
 //= require angular/angular-resource.min
 //= require angular/angular-route.min
-//= require angular/angular-cookies
+//= require angular/angular-cookies.min
 //= require angular/ng-table.min
 //= require config
 //= require filters/html_trusted
@@ -29,6 +29,9 @@
 //= require controllers/ActividadIndexCtrl
 //= require controllers/ActividadEditCtrl
 //= require controllers/ActividadShowCtrl
+//= require controllers/PagoIndexCtrl
+//= require controllers/PagoEditCtrl
+//= require controllers/PagoShowCtrl
 //= require controllers/EventIndexCtrl
 //= require routes
 // startLoading

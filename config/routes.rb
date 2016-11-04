@@ -40,6 +40,7 @@ Rails.application.routes.draw do
 	match '/clase/*all' => 'api_root#index', via: [:get], as: :clase_index
 	match '/alumno/*all' => 'api_root#index', via: [:get], as: :alumno_index
 	match '/actividad/*all' => 'api_root#index', via: [:get], as: :actividad_index
+	match '/pago/*all' => 'api_root#index', via: [:get], as: :pago_index
 	match '/eventos/*all' => 'api_root#index', via: [:get], as: :events_index
 	
 	match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], as: :finish_signup

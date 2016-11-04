@@ -1,0 +1,33 @@
+<div class="col-sm-12">
+	<h2><i class="fa fa-cog"></i> Pago: {{pago.nombre}}</h2>
+	<hr class="pago"/>
+	<a class="btn btn-primary pull-right" href="/pago/{{pago.id}}/edit"><i class="fa fa-edit fa-lg"></i> Editar</a>
+	<button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target=".confirmation-modal"><i class="fa fa-trash-o fa-lg"></i> Eliminar</button>
+</div>
+<div class="col-sm-12"><h3>Detalle</h3></div>
+
+<div class="col-sm-12">
+    <div class="col-sm-6"><strong>Nombre: </strong>{{pago.nombre}}</div>
+</div>
+
+<div class="col-sm-12">
+    <div class="col-sm-6 text-muted"><strong>Creado: </strong>{{pago.created_at | date:'dd/MM/yyyy HH:mm:ss'}}</div>
+    <div class="col-sm-6 text-muted"><strong>Última modificación: </strong>{{pago.updated_at | date:'dd/MM/yyyy HH:mm:ss'}}</div>
+</div>
+
+<!-- MODAL -->
+<div aria-hidden="true" aria-labelledby="confirmationModal" role="dialog" tabindex="-1" class="modal fade confirmation-modal" style="display: none;">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button aria-label="Close" data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span></button>
+				<h4 id="confirmationModal" class="modal-title">¿Seguro que desea eliminar {{pago.nombre}} de la lista?<a href="#confirmationModal" class="anchorjs-link"><span class="anchorjs-icon"></span></a></h4>
+			</div>
+			<div class="modal-body text-center">
+				<button data-dismiss="modal" class="btn btn-default" type="button">Mejor no...</button>
+				<button data-dismiss="modal" class="btn btn-primary" type="button" data-ng-click="destroyPraticante()">Seguro</button>
+			</div>
+			<!-- <div class="modal-footer"></div> -->
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div>

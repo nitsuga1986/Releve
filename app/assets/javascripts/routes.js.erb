@@ -28,6 +28,11 @@ angular.module("TurnosApp")
 		.when("/actividad/new", { title: 'Nuevo actividad',templateUrl: "<%= asset_path('actividad/edit.html') %> ", controller: "ActividadEditCtrl", activetab: 'actividad'})
 		.when("/actividad/:id", { title: 'Detalles de la actividad',templateUrl: "<%= asset_path('actividad/show.html') %> ", controller: "ActividadShowCtrl", activetab: 'actividad'})
 		.when("/actividad/:id/edit", { title: 'Editar actividad',templateUrl: "<%= asset_path('actividad/edit.html') %> ", controller: "ActividadEditCtrl", activetab: 'actividad'})
+		// Pago 
+		.when("/pago/index", { title: 'Listado de pagos',templateUrl: "<%= asset_path('pago/index.html') %> ", controller: "PagoIndexCtrl", activetab: 'pago'})
+		.when("/pago/new", { title: 'Nuevo pago',templateUrl: "<%= asset_path('pago/edit.html') %> ", controller: "PagoEditCtrl", activetab: 'pago'})
+		.when("/pago/:id", { title: 'Detalles de la pago',templateUrl: "<%= asset_path('pago/show.html') %> ", controller: "PagoShowCtrl", activetab: 'pago'})
+		.when("/pago/:id/edit", { title: 'Editar pago',templateUrl: "<%= asset_path('pago/edit.html') %> ", controller: "PagoEditCtrl", activetab: 'pago'})
 		// Event 
 		.when("/eventos/index", { title: 'Listado de eventos',templateUrl: "<%= asset_path('event/index.html') %> ", controller: "EventIndexCtrl", activetab: 'event'})
 		// Otros
@@ -35,6 +40,7 @@ angular.module("TurnosApp")
 		// Fixes # in the routes. Not in IE...
 		if(window.history && window.history.pushState){$locationProvider.html5Mode(true);}
 }])
+
 // AngularJS Interceptor
 //The following AngularJS Interceptor can be used to globally handle any 401 error, and handle them by redirecting the user to the /login page.
 .factory('authHttpResponseInterceptor',['$q','$location','$window',function($q,$location,$window){ 
@@ -59,6 +65,7 @@ angular.module("TurnosApp")
     $httpProvider.interceptors.push('authHttpResponseInterceptor');
 }]);	
 
+// Title
 angular.module("TurnosApp").run(['$location', '$rootScope', function($location, $rootScope) {
 	$rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
 		if(current.$$route.title!=undefined&&current.$$route.title!=''){
@@ -69,6 +76,7 @@ angular.module("TurnosApp").run(['$location', '$rootScope', function($location, 
 	});
 }]);
 
+// Fix
 angular.module("TurnosApp").config(['$httpProvider',function($httpProvider) {
 	$httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
     $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';

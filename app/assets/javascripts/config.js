@@ -221,3 +221,15 @@ var actividadDefaultSorting = {nombre: 'desc'};
 var columns_actividad = [
 	{title:"Nombre",field:"nombre",filter:"nombre",visible:true,filter:{'nombre':'text'}},
 ];
+// Pago
+var pagoDefaultPage = 1;	var pagoDefaultCount = 25;
+var pagoDefaultFilter = {}; 
+var pagoDefaultSorting = {nombre: 'desc'};
+var columns_pago = [
+	{title:"Monto",field:"monto",filter:"monto",visible:true,filter:{'monto':'text'}},
+	{title:"Alumno",field:"alumno",filter:"alumno",visible:true,filter:{'alumno':'text'}},
+	{title:"Mes",field:"mes",filter:"mes",visible:true,filter:{'mes':'text'}},
+	{title:"Clases",field:"cant_clases",filter:"cant_clases",visible:true,filter:{'cant_clases':'text'}},
+	{title:"Actividad",field:"actividad",filter:"actividad",visible:true,filter:{'actividad':'text'}},
+	{title:"Fecha de pago",field:"fecha",filter:"fecha",visible:true,filter:{'fecha':'text'}},
+];
