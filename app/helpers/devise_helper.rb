@@ -5,8 +5,8 @@ module DeviseHelper
     messages = resource.errors.full_messages.map { |msg| content_tag(:p, msg) }.join
     html = <<-HTML
     </br>
-    <div class="alert alert-error alert-danger"> <button type="button"
-    class="close" data-dismiss="alert">×</button>
+    <div class="alert alert-error alert-danger"> 
+		<button type="button" class="close" data-dismiss="alert">×</button>
       #{messages}
     </div>
     HTML

@@ -1,6 +1,5 @@
 <%= subtitle " - Registrarme" %>
 <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
-	<%= devise_error_messages! %>
 	<div class="panel panel-default devise-bs">
 	  <div class="panel-heading bg-light-releve">
 		<h4><%= t('.sign_up', :default => "Registrate en Releve") %></h4>
@@ -15,6 +14,12 @@
 				<div class="col-xs-5 registerline"></div>
 				<div class="col-xs-2 registertext">o</div>
 				<div class="col-xs-5 registerline"></div>
+		  </div><br/>
+		  <div>
+			<%= devise_error_messages! %>
+			<% if !flash.empty? && !flash[:recaptcha_error].nil? %>
+				<div class="alert alert-error alert-danger"><%= flash[:recaptcha_error] %></div>
+			<% end %>
 		  </div>
 		  <div class="form-group">
 			<%= f.label :email %>

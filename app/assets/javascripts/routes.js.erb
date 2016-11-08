@@ -38,7 +38,16 @@ angular.module("TurnosApp")
 		// Otros
 		.otherwise({ redirectTo: "/" });
 		// Fixes # in the routes. Not in IE...
-		if(window.history && window.history.pushState){$locationProvider.html5Mode(true);}
+		if (window.history && window.history.pushState) {
+			$locationProvider.html5Mode({
+				enabled: true,
+				requireBase: true,
+				rewriteLinks: true
+			});
+		}
+		else {
+			$locationProvider.html5Mode(false);
+		}
 }])
 
 // AngularJS Interceptor

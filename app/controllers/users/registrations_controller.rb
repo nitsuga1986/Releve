@@ -9,18 +9,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  def create
-	if !verify_recaptcha
-		flash.delete :recaptcha_error
-		build_resource(sign_up_params)
-		resource.valid?
-		resource.errors.add(:base, "Hubo un error con el ReCaptcha. Inténtelo nuevamente.")
-		clean_up_passwords(resource)
-		respond_with_navigational(resource) { render_with_scope :new }
-	else
-		super
-	end
-  end
+  # def create
+  #   super
+  # end
 
   # GET /resource/edit
   # def edit
@@ -67,7 +58,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-
+  
   private
     def check_captcha
       unless verify_recaptcha

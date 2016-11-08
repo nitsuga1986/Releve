@@ -257,6 +257,12 @@ body.landingpage {
 		line-height: 1.5;
 		color: #8a8e91;
 	}
+	p.allfields{
+		font-size: 1.1em;
+		line-height: 1.2;
+		color: #D13B45;
+	}
+	
 	h1,
 	h2,
 	h3,
@@ -1160,7 +1166,7 @@ button.btn-absolute{
     position: fixed;
     bottom: 1%;
     right: 1%;
-    z-index: 9999;
+	z-index: 9549;
 }
 .formalert{display:none;}
 .registerline{

@@ -66,6 +66,7 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$rootScope', 
 	};
 	// verifyPlan
 	$scope.verifyPlan = function(state,clase_id) {
+		$('#absoluteButtonAgendar').prop("disabled", false);
 		function preventClase(index_clase) {
 			$scope.clases[index_clase].checked=false;
 			$('#alert-modal').modal('show');
@@ -75,6 +76,10 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$rootScope', 
 		pack = $.grep($scope.alumno.packs, function(e){ return e.actividad_id == clase.actividad_id; })[0];
 		if (state){
 			if (pack != undefined){
+		console.log('actividad_counter:')
+		console.log($scope.alumno.actividad_counter)
+		console.log('selected_counter:')
+		console.log($scope.alumno.selected_counter)
 				if($scope.alumno.actividad_counter[clase.actividad_id]==undefined){$scope.alumno.actividad_counter[clase.actividad_id]=[];}
 				if($scope.alumno.actividad_counter[clase.actividad_id][clase.mes]==undefined){$scope.alumno.actividad_counter[clase.actividad_id][clase.mes]=0;}
 				if($scope.alumno.selected_counter[clase.actividad_id]==undefined){$scope.alumno.selected_counter[clase.actividad_id]=[];}
@@ -115,7 +120,7 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$rootScope', 
 		$rootScope.got_to_url_success = "/app/agenda";
 		$cacheFactory.get('$http').remove("/api/clases/index_usr");
 		ResourceClase.unjoin($scope.deleteVariablesClaseToSend($scope.clase,true,true), $scope.callbackSuccess, $scope.callbackFailure).$promise.then(function(data) {
-			$('#alert-container').hide().html('<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-times" aria-hidden="true"></i> Clase cancelada! </strong> Ya hemos cancelado tu inscripción a la clase. Gracias por avisar!</div>').slideDown();
+			$('#alert-container').hide().html('<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-times" aria-hidden="true"></i> Clase cancelada! </strong> Ya hemos cancelado tu inscripción a la clase ¡Gracias por avisar!</div>').slideDown();
 			$scope.tableParams.reload();
 		});
 	};

@@ -41,21 +41,27 @@ class Api::ClasesController < ApplicationController
   end
   
   def bulk
-	if params[:fecha_start].present? && params[:fecha_end].present? && params[:horario].present? && params[:max_users].present? && params[:instructor_id].present? && params[:actividad_id].present? then
+	if params[:fecha_start].present? && params[:fecha_end].present? && params[:max_users].present? && params[:instructor_id].present? && params[:actividad_id].present? && params[:filterDay].present? then
 		Date.parse(params[:fecha_start]).upto(Date.parse(params[:fecha_end])) do |date|
-			if (params[:bool_monday]==true && date.wday==1)||(params[:bool_tuesday]==true && date.wday==2)||(params[:bool_wednesday]==true && date.wday==3)||(params[:bool_thursday]==true && date.wday==4)||(params[:bool_friday]==true && date.wday==5)||(params[:bool_saturday]==true && date.wday==6)||(params[:bool_sunday]==true && date.wday==0) then
-				if !@clase = Clase.find_by_fecha_and_horario(date.strftime("%Y-%m-%d"),params[:horario]) then
-					params[:fecha] = date.strftime("%Y-%m-%d")
-					@clase = Clase.new(params.permit(:fecha, :horario, :max_users, :duracion, :trialable))
-					@clase.actividad = Actividad.find(params[:actividad_id])
-					@clase.instructor = User.find(params[:instructor_id])
-					if @clase.save then
-						if !params[:users].nil? then
-							params[:users].each do |user|
-								@clase.add_asistencia(user[:id]) if user[:id]	
-							end
+			if (params[:filterDay][0..11].any? && date.wday==1)||(params[:filterDay][12..23].any? && date.wday==2)||(params[:filterDay][24..35].any? && date.wday==3)||(params[:filterDay][36..47].any? && date.wday==4)||(params[:filterDay][48..59].any? && date.wday==5) then
+				case date.wday
+					when 1 then horarioArray = params[:filterDay][0..11]	# Lunes
+					when 2 then horarioArray = params[:filterDay][12..23]	# Martes
+					when 3 then horarioArray = params[:filterDay][24..35]	# Miércoles
+					when 4 then horarioArray = params[:filterDay][36..47]	# Jueves
+					when 5 then horarioArray = params[:filterDay][48..59]	# Viernes
+				end
+				horarioArray.each_with_index do |horarioBool, index|
+					if horarioBool then
+						params[:horario] = ["09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00"][index]
+						params[:fecha] = date.strftime("%Y-%m-%d")
+						if !@clase = Clase.find_by_fecha_and_horario(params[:fecha],params[:horario]) then
+							@clase = Clase.new(params.permit(:fecha, :horario, :max_users, :duracion, :trialable))
+							@clase.actividad = Actividad.find(params[:actividad_id])
+							@clase.instructor = User.find(params[:instructor_id])
+							@clase.save
 						end
-					end
+					end				
 				end
 			end
 		end

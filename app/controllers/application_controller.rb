@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
   private
  
   def check_confirmed
-	  if user_signed_in? && !current_user.confirmed?
-		@show_confirm_form = true
+	  if user_signed_in? && !current_user.confirmed? && params[:action] != "finish_signup" && params[:action] != "destroy"
+		redirect_to finish_signup_url(current_user.id)
 	  end
   end
   

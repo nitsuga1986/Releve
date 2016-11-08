@@ -54,14 +54,14 @@ es:
       not_locked: no estaba bloqueada
       not_saved:
         one: 'El formulario tiene un error:'
-        other: 'El formulario tiene %{count} errores:'
+        other: 'El formulario tiene errores:'
   activerecord:
     models:
       user: Usuario
     attributes:
       user:
-        password: Contraseña
-        email: Dirección de correo
+        password: La contraseña
+        email: La dirección de correo
         password_confirmation: Confirmación de contraseña
         current_password: Contraseña actual
     errors: 
@@ -74,14 +74,14 @@ es:
             inclusion: "no está incluído en la lista"
             exclusion: "esta reservado"
             invalid: "es inválido"
-            confirmation: "no coincide con la confirmación"
+            confirmation: "no coincide con la contraseña"
             accepted: "debe ser aceptado"
             empty: "no puede estar vacío"
             blank: "no puede estar en blanco"
             too_long: "es muy largo (el máximo es {{count}} caracteres)"
-            too_short: "es muy corto (el mínimo es {{count}} caracteres)"
+            too_short: "es muy corta"
             wrong_length: "no posee la cantidad correcta de ce caracteres (deben ser {{count}} caracteres)"
-            taken: "ya ha sido utilizado"
+            taken: "ya ha sido utilizada"
             not_a_number: "no es un número"
             greater_than: "debe ser mayor que {{count}}"
             greater_than_or_equal_to: "debe ser mayor o igual a {{count}}"

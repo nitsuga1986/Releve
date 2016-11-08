@@ -78,3 +78,8 @@ es:
   click_to_unlock: "Clickee en el siguiente enlace para desbloquear su cuenta:"
   unlock_my_account: "Desbloquear mi cuenta"
   need_help: "¿Necesitas ayuda?"
+
+  #ReCaptcha
+  recaptcha:
+    errors:
+      verification_failed: 'La verificación de reCAPTCHA falló, por favor inténtelo nuevamente. '

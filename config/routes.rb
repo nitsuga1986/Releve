@@ -47,7 +47,6 @@ Rails.application.routes.draw do
 	match '/terminos_y_condiciones' => 'landing#terms', via: [:get], as: :terms
 	match '/pricing' => 'landing#pricing', via: [:post], as: :pricing, :defaults => { :format => 'json' }
 
-	devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
+	devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks', registrations: "users/registrations" }
 	root "landing#index"
-	
 end

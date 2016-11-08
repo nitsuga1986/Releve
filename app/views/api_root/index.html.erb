@@ -1,6 +1,6 @@
 <%= subtitle " - App" %>
 <%= render 'layouts/header' %>
-<div class="first notlandingpage col-sm-12" id="AppContainer" ng-app="TurnosApp">
+<div class="first notlandingpage col-sm-12" id="AppContainer">
 	<% if current_user.admin? %><input type="hidden" name="is_admin" data-ng-init="is_admin=<%= current_user.admin %>"/><% end %>
 	<% if current_user.instructor? %>
 		<input type="hidden" name="is_instructor" data-ng-init="is_instructor=<%= current_user.instructor %>"/>
@@ -10,5 +10,4 @@
 	<input type="hidden" name="user_primera_clase" data-ng-init="user_primera_clase=<%= current_user.primera_clase %>"/>
 	<div ng-view ></div>
 </div>
-<%= render 'layouts/modals' %>
 

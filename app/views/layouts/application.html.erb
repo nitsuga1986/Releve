@@ -1,10 +1,11 @@
 <!DOCTYPE HTML>
-<html lang="es-AR" data-ng-app="ReleveApp">
+<html lang="es-AR" data-ng-app="TurnosApp">
 	
   <head itemscope itemtype="http://schema.org/WebSite">
+	<title itemprop='name'>Releve Pilates<%= yield :subtitle %></title>
+	<base href="/">
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title itemprop='name'>Releve Pilates<%= yield :subtitle %></title>
 	<link rel="canonical" href="http://www.relevepilates.com.ar/" itemprop="url">
 	<link rel="alternate" href="http://www.relevepilates.com.ar/" hreflang="en-AR" />
 	<meta name="description" content="Releve Pilates - Disfrutá entrenarte: Estudio de Pilates y Calidad de vida." />
@@ -19,7 +20,6 @@
 	<% if Rails.env.production? %>
 	  <%= analytics_init if GoogleAnalytics.valid_tracker? %>
 	<% end %>
-	<base href="/">
   </head>
   
   <body class="<% if @landingpage %>landingpage<% end %>">
