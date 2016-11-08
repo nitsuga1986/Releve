@@ -1,0 +1,185 @@
+<h3><i class='fa fa-calendar'></i> Agregar clases</h3>
+
+<!-- SubmitError -->
+<div class="col-sm-12">
+	<div class="alert alert-danger" role="alert" data-ng-show="submiterror">
+		<h4>Algo raro pasó con la página... avisar Vicky porfa ;)</h4>
+	</div>
+</div>
+
+<!-- Formulario -->
+<div class="row"><div class="col-sm-12">
+	<form class="form-horizontal" data-ng-submit="submit()" name="ClaseForm" novalidate role="form">
+		<!-- Week row-->
+		<div class="row">
+			<div class="form-group col-xs-12">
+				<label class="col-sm-2 control-label">Lunes</label>
+				<div class="col-sm-10">
+					<div class="btn-group">
+						<button title="09:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[0] }" data-ng-click="filterDayChange(0,$event)">09</button>
+						<button title="10:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[1] }" data-ng-click="filterDayChange(1,$event)">10</button>
+						<button title="11:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[2] }" data-ng-click="filterDayChange(2,$event)">11</button>
+						<button title="12:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[3] }" data-ng-click="filterDayChange(3,$event)">12</button>
+						<button title="13:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[4] }" data-ng-click="filterDayChange(4,$event)">13</button>
+						<button title="14:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[5] }" data-ng-click="filterDayChange(5,$event)">14</button>
+					</div>
+					<div class="btn-group">
+						<button title="15:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[6] }" data-ng-click="filterDayChange(6,$event)">15</button>
+						<button title="16:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[7] }" data-ng-click="filterDayChange(7,$event)">16</button>
+						<button title="17:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[8] }" data-ng-click="filterDayChange(8,$event)">17</button>
+						<button title="18:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[9] }" data-ng-click="filterDayChange(9,$event)">18</button>
+						<button title="19:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[10] }" data-ng-click="filterDayChange(10,$event)">19</button>
+						<button title="20:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[11] }" data-ng-click="filterDayChange(11,$event)">20</button>
+					</div>
+				</div>
+			</div>
+			<div class="form-group col-xs-12">
+				<label class="col-sm-2 control-label">Martes</label>
+				<div class="col-sm-10">
+					<div class="btn-group">
+						<button title="09:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[12] }" data-ng-click="filterDayChange(12,$event)">09</button>
+						<button title="10:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[13] }" data-ng-click="filterDayChange(13,$event)">10</button>
+						<button title="11:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[14] }" data-ng-click="filterDayChange(14,$event)">11</button>
+						<button title="12:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[15] }" data-ng-click="filterDayChange(15,$event)">12</button>
+						<button title="13:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[16] }" data-ng-click="filterDayChange(16,$event)">13</button>
+						<button title="14:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[17] }" data-ng-click="filterDayChange(17,$event)">14</button>
+					</div>
+					<div class="btn-group">
+						<button title="15:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[18] }" data-ng-click="filterDayChange(18,$event)">15</button>
+						<button title="16:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[19] }" data-ng-click="filterDayChange(19,$event)">16</button>
+						<button title="17:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[20] }" data-ng-click="filterDayChange(20,$event)">17</button>
+						<button title="18:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[21] }" data-ng-click="filterDayChange(21,$event)">18</button>
+						<button title="19:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[22] }" data-ng-click="filterDayChange(22,$event)">19</button>
+						<button title="20:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[23] }" data-ng-click="filterDayChange(23,$event)">20</button>
+					</div>
+				</div>
+			</div>
+			<div class="form-group col-xs-12">
+				<label class="col-sm-2 control-label">Miércoles</label>
+				<div class="col-sm-10">
+					<div class="btn-group">
+						<button title="09:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[24] }" data-ng-click="filterDayChange(24,$event)">09</button>
+						<button title="10:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[25] }" data-ng-click="filterDayChange(25,$event)">10</button>
+						<button title="11:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[26] }" data-ng-click="filterDayChange(26,$event)">11</button>
+						<button title="12:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[27] }" data-ng-click="filterDayChange(27,$event)">12</button>
+						<button title="13:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[28] }" data-ng-click="filterDayChange(28,$event)">13</button>
+						<button title="14:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[29] }" data-ng-click="filterDayChange(29,$event)">14</button>
+					</div>
+					<div class="btn-group">
+						<button title="15:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[30] }" data-ng-click="filterDayChange(30,$event)">15</button>
+						<button title="16:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[31] }" data-ng-click="filterDayChange(31,$event)">16</button>
+						<button title="17:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[32] }" data-ng-click="filterDayChange(32,$event)">17</button>
+						<button title="18:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[33] }" data-ng-click="filterDayChange(33,$event)">18</button>
+						<button title="19:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[34] }" data-ng-click="filterDayChange(34,$event)">19</button>
+						<button title="20:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[35] }" data-ng-click="filterDayChange(35,$event)">20</button>
+					</div>
+				</div>
+			</div>
+			<div class="form-group col-xs-12">
+				<label class="col-sm-2 control-label">Jueves</label>
+				<div class="col-sm-10">
+					<div class="btn-group">
+						<button title="09:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[36] }" data-ng-click="filterDayChange(36,$event)">09</button>
+						<button title="10:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[37] }" data-ng-click="filterDayChange(37,$event)">10</button>
+						<button title="11:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[38] }" data-ng-click="filterDayChange(38,$event)">11</button>
+						<button title="12:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[39] }" data-ng-click="filterDayChange(39,$event)">12</button>
+						<button title="13:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[40] }" data-ng-click="filterDayChange(40,$event)">13</button>
+						<button title="14:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[41] }" data-ng-click="filterDayChange(41,$event)">14</button>
+					</div>
+					<div class="btn-group">
+						<button title="15:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[42] }" data-ng-click="filterDayChange(42,$event)">15</button>
+						<button title="16:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[43] }" data-ng-click="filterDayChange(43,$event)">16</button>
+						<button title="17:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[44] }" data-ng-click="filterDayChange(44,$event)">17</button>
+						<button title="18:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[45] }" data-ng-click="filterDayChange(45,$event)">18</button>
+						<button title="19:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[46] }" data-ng-click="filterDayChange(46,$event)">19</button>
+						<button title="20:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[47] }" data-ng-click="filterDayChange(47,$event)">20</button>
+					</div>
+				</div>
+			</div>
+			<div class="form-group col-xs-12">
+				<label class="col-sm-2 control-label">Viernes</label>
+				<div class="col-sm-10">
+					<div class="btn-group">
+						<button title="09:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[48] }" data-ng-click="filterDayChange(48,$event)">09</button>
+						<button title="10:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[49] }" data-ng-click="filterDayChange(49,$event)">10</button>
+						<button title="11:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[50] }" data-ng-click="filterDayChange(50,$event)">11</button>
+						<button title="12:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[51] }" data-ng-click="filterDayChange(51,$event)">12</button>
+						<button title="13:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[52] }" data-ng-click="filterDayChange(52,$event)">13</button>
+						<button title="14:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[53] }" data-ng-click="filterDayChange(53,$event)">14</button>
+					</div>
+					<div class="btn-group">
+						<button title="15:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[54] }" data-ng-click="filterDayChange(54,$event)">15</button>
+						<button title="16:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[55] }" data-ng-click="filterDayChange(55,$event)">16</button>
+						<button title="17:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[56] }" data-ng-click="filterDayChange(56,$event)">17</button>
+						<button title="18:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[57] }" data-ng-click="filterDayChange(57,$event)">18</button>
+						<button title="19:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[58] }" data-ng-click="filterDayChange(58,$event)">19</button>
+						<button title="20:00 hs" class="btn btn-default" data-ng-class="{'btn-success':clase.filterDay[59] }" data-ng-click="filterDayChange(59,$event)">20</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Others row-->
+		<div class="row">
+			<!-- fecha_start -->
+			<div class="form-group col-sm-6">
+				<label for="fecha_start" class="col-sm-4 control-label">Desde</label>
+				<div class="col-sm-7">
+					<div class="input-group">
+						<input type="text" class="form-control" name="fecha_start" data-ng-model="clase.fecha_start" id="fecha_start" placeholder="aaaa-mm-dd">
+						<label title="Ver calendario" for="fecha_start" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span></label>
+					</div>
+				</div>
+			</div>
+			<!-- fecha_end -->
+			<div class="form-group col-sm-6">
+				<label for="fecha_end" class="col-sm-4 control-label">Hasta</label>
+				<div class="col-sm-7">
+					<div class="input-group">
+						<input type="text" class="form-control" name="fecha_end" data-ng-model="clase.fecha_end" id="fecha_end" placeholder="aaaa-mm-dd">
+						<label title="Ver calendario" for="fecha_end" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span></label>
+					</div>
+				</div>
+			</div>
+			<!-- instructor -->
+			<div class="form-group col-sm-6">
+				<label for="instructor" class="col-sm-4 control-label">Instructor/a</label>
+				<div class="col-sm-7">
+					<select required class="form-control" data-ng-blur="GoToClaseEdit()" name="instructor" data-ng-model="clase.instructor_id" id="instructor" data-ng-options="instructor.id as instructor.nombre_completo for instructor in InstructorIndex"></select> 
+				</div>
+			</div>
+			<!-- actividad -->
+			<div class="form-group col-sm-6">
+				<label for="actividad" class="col-sm-4 control-label">Actividad</label>
+				<div class="col-sm-7">
+					<div class="input-group">
+						<select required class="form-control" data-ng-blur="GoToClaseEdit()" name="actividad" data-ng-model="clase.actividad_id" id="actividad" data-ng-options="actividad.id as actividad.nombre for actividad in ActividadIndex"></select> 
+						<!-- <label title="Detalles de la actividad" for="actividad" class="input-group-addon btn btn-primary" data-ng-click="GoToActividadShow()"><i class="fa fa-eye"></i></label> -->
+						<!-- <label title="Ver actividads" for="actividad" class="input-group-addon btn btn-primary" data-ng-click="GoToActividadIndex()"><i class="fa fa-university"></i></label> -->
+						<label title="Agregar nueva actividad" for="actividad" class="input-group-addon btn btn-success" data-ng-click="GoToNewActividad()"><i class="fa fa-plus-square"></i></label>
+					</div>
+				</div>
+			</div>
+			<!-- max_users -->
+			<div class="form-group col-sm-6">
+				<label for="max_users" class="col-sm-4 control-label">Alumnos Max.</label>
+				<div class="col-sm-7">
+					<input type="number" min="1" max="10" class="form-control" name="max_users" data-ng-model="clase.max_users" id="max_users" placeholder="ej. 5">
+				</div>
+			</div>
+			<!-- duracion -->
+			<div class="form-group col-sm-6">
+				<label for="duracion" class="col-sm-4 control-label">Duración.</label>
+				<div class="col-sm-7">
+					<input type="number" min="0.5" max="24" step="0.5" class="form-control" name="duracion" data-ng-model="clase.duracion" id="duracion" placeholder="ej. 1.5">
+				</div>
+			</div>
+		</div>
+
+
+		<!-- Submit-->
+		<div class="row"><div class="col-sm-3">
+			<button type="submit" class="btn btn-primary btn-block"><i class="fa fa-calendar fa-lg"></i> Agregar</button>
+		</div></div>
+	</form>
+</div></div>
+<br/><br/>
