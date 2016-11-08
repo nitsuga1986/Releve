@@ -1,13 +1,13 @@
 class Api::PagoController < ApplicationController
   before_action :authenticate_user!
+  # Admin & Instructor
   before_action only: [:create, :destroy, :update, :index, :show] do redirect_to :new_user_session_path unless current_user && (current_user.instructor?||current_user.admin?)   end
-  
+  # Api render
   respond_to :json
 
-  # INSTRUCTOR
-  ###########################
+  # Instructor
   def create
-	@pago = Pago.new(params.permit(:user_id, :actividad_id, :monto, :cant_clases, :mes, :fecha))
+	@pago = Pago.new(pago_params)
 	if @pago.save then
 		Event.create(name:'payment',content: @pago.user.nombre_completo+" abonó $"+@pago.monto.to_s+" por "+@pago.cant_clases.to_s+" clases de "+I18n.t('date.month_names')[@pago.mes-1]+" (cobró "+current_user.nombre_completo+")")
 		render json: @pago, status: :created #, location: @pago
@@ -24,7 +24,7 @@ class Api::PagoController < ApplicationController
   
   def update
 	@pago = Pago.find(params[:id])
-	if @pago.update_attributes(params.permit(:nombre)) then
+	if @pago.update_attributes(pago_params) then
 		head :no_content
 	else
 		render json: @pago.errors, status: :unprocessable_entity
@@ -32,7 +32,7 @@ class Api::PagoController < ApplicationController
   end
   
   def index
-	@pagos = Pago.all.order(:id)
+	@pagos = Pago.order(:id)
   end
   
   def show
@@ -40,8 +40,11 @@ class Api::PagoController < ApplicationController
 	respond_with @pagos
   end
   
-  # USER
-  ###########################
+  private
+  
+  def pago_params
+	 params.require(:pago).permit(:user_id, :monto, :cant_clases, :actividad_id, :mes, :fecha)
+  end
   
 end
 

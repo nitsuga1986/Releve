@@ -1,13 +1,14 @@
 class Api::ClasesController < ApplicationController
   before_action :authenticate_user!
+  # Admin
   before_action only: [:test_emails, :create, :bulk, :destroy] do redirect_to :new_user_session_path unless current_user && current_user.admin?   end
+  # Admin & Instructor
   before_action only: [:index, :show, :search, :instructor, :update, :edit_bulk, :join_usr_multiple, :confirm, :unconfirm] do redirect_to :new_user_session_path unless current_user && (current_user.instructor?||current_user.admin?) end
-
+  # Api render
   respond_to :json
 
   
-  # ADMIN
-  ###########################
+  # Admin
   # routes.rb, resources.js, clases_controller.rb, templates/clase/index.html, javascripts/controllers/ClaseIndexCtrl.js
   def test_emails
 	UserMailer.welcome_email(current_user).deliver
@@ -20,8 +21,8 @@ class Api::ClasesController < ApplicationController
   end
 
   def create
-	if !@clase = Clase.find_by_fecha_and_horario(params[:fecha],params[:horario]) then
-		@clase = Clase.new(params.permit(:fecha, :horario, :max_users, :duracion, :trialable, :cancelada, :comment))
+	if !@clase = Clase.find_by(fecha: params[:fecha], horario: params[:horario]) then
+		@clase = Clase.new(clase_params)
 		@clase.actividad = Actividad.find(params[:actividad_id])
 		@clase.instructor = User.find(params[:instructor_id])
 		@clase.reemplazo = User.find(params[:reemplazo_id]) if !params[:reemplazo_id].nil?
@@ -55,8 +56,8 @@ class Api::ClasesController < ApplicationController
 					if horarioBool then
 						params[:horario] = ["09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00"][index]
 						params[:fecha] = date.strftime("%Y-%m-%d")
-						if !@clase = Clase.find_by_fecha_and_horario(params[:fecha],params[:horario]) then
-							@clase = Clase.new(params.permit(:fecha, :horario, :max_users, :duracion, :trialable))
+						if !@clase = Clase.find_by(fecha: params[:fecha], horario: params[:horario]) then
+							@clase = Clase.new(clase_params)
 							@clase.actividad = Actividad.find(params[:actividad_id])
 							@clase.instructor = User.find(params[:instructor_id])
 							@clase.save
@@ -80,10 +81,9 @@ class Api::ClasesController < ApplicationController
 	head :no_content
   end
   
-  # INSTRUCTOR
-  ###########################
+  # Instructor
   def index
-	@clases = Clase.all.order(:fecha,:horario)
+	@clases = Clase.order(:fecha,:horario)
   end
 
   def show
@@ -92,7 +92,7 @@ class Api::ClasesController < ApplicationController
   end
   
   def search
-	@clase = Clase.find_by_fecha_and_horario_and_instructor(params[:fecha],params[:horario],params[:instructor])
+	@clase = Clase.find_by(fecha: params[:fecha], horario: params[:horario], instructor: params[:instructor])
 	if !@clase.nil? then
 		render json:  @clase
 	else
@@ -121,7 +121,7 @@ class Api::ClasesController < ApplicationController
 	@clase.actividad = Actividad.find(params[:actividad_id])
 	@clase.instructor = User.find(params[:instructor_id])
 	@clase.reemplazo = (!params[:reemplazo_id].nil? ? User.find(params[:reemplazo_id]) : nil)
-	if @clase.update_attributes(params.permit(:fecha, :horario, :max_users, :duracion, :trialable, :cancelada, :comment)) then
+	if @clase.update_attributes(clase_params) then
 		if !params[:users].nil? then
 			params[:users].each do |user|
 				@clase.add_asistencia(user[:id]) if user[:id]	
@@ -134,17 +134,16 @@ class Api::ClasesController < ApplicationController
   end
   
   def edit_bulk
-  
 	if params[:fecha_start].present? && params[:fecha_end].present? && params[:horario].present? && params[:actividad_id].present? then
 		Date.parse(params[:fecha_start]).upto(Date.parse(params[:fecha_end])) do |date|
 			if (params[:bool_monday]==true && date.wday==1)||(params[:bool_tuesday]==true && date.wday==2)||(params[:bool_wednesday]==true && date.wday==3)||(params[:bool_thursday]==true && date.wday==4)||(params[:bool_friday]==true && date.wday==5)||(params[:bool_saturday]==true && date.wday==6)||(params[:bool_sunday]==true && date.wday==0) then
-				if @clase = Clase.find_by_fecha_and_horario_and_actividad_id(date.strftime("%Y-%m-%d"),params[:horario],params[:actividad_id]) then
+				if @clase = Clase.find_by(fecha: date.strftime("%Y-%m-%d"), horario: params[:horario], actividad_id: params[:actividad_id]) then
 					@clase.comment = (!params[:comment].nil? ? params[:comment] : '')
 					@clase.cancelada = (!params[:cancelada].nil? ? params[:cancelada] : false)
 					@clase.trialable = (!params[:trialable].nil? ? params[:trialable] : false)
 					@clase.instructor = (!params[:instructor_id].nil? ? User.find(params[:instructor_id]) : nil)
 					@clase.reemplazo = (!params[:reemplazo_id].nil? ? User.find(params[:reemplazo_id]) : nil)
-					@clase.update_attributes(params.permit(:max_users, :duracion))
+					@clase.update_attributes(clase_params)
 					@clase.save
 				end
 			end
@@ -192,8 +191,7 @@ class Api::ClasesController < ApplicationController
 	head :no_content
   end
   
-  # USER
-  ###########################
+  # User
   def index_usr
 	@clases = Clase.where('fecha >= ?', DateTime.now.beginning_of_month).order(:fecha,:horario)
   end
@@ -251,5 +249,10 @@ class Api::ClasesController < ApplicationController
 	Event.create(name:'waitlist',content: "<strong>"+current_user.nombre_completo+"</strong> se agregó a la lista de espera de la clase del <strong>"+@clase.dia+" "+@clase.fecha.strftime('%d/%m')+"</strong>")
 	render json: @clase, status: :created
   end
+
+  private
   
+  def clase_params
+	 params.permit(:fecha, :horario, :max_users, :duracion, :trialable, :cancelada, :comment)
+  end
 end

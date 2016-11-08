@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 		resources :actividad, :event,:pago
 		resources :alumnos do
 			collection do
+				get 'search'
 				get 'autocomplete'
 				post 'current'
 				post 'instructores'
@@ -36,16 +37,15 @@ Rails.application.routes.draw do
 		end
 	end
 	
-	match '/app/(*all)' => 'api_root#index', via: [:get], as: :usr_app
-	match '/clase/*all' => 'api_root#index', via: [:get], as: :clase_index
-	match '/alumno/*all' => 'api_root#index', via: [:get], as: :alumno_index
-	match '/actividad/*all' => 'api_root#index', via: [:get], as: :actividad_index
-	match '/pago/*all' => 'api_root#index', via: [:get], as: :pago_index
-	match '/eventos/*all' => 'api_root#index', via: [:get], as: :events_index
-	
+	get '/app/(*all)' => 'api_root#index', as: :usr_app
+	get '/clase/*all' => 'api_root#index', as: :clase_index
+	get '/alumno/*all' => 'api_root#index', as: :alumno_index
+	get '/actividad/*all' => 'api_root#index', as: :actividad_index
+	get '/pago/*all' => 'api_root#index', as: :pago_index
+	get '/eventos/*all' => 'api_root#index', as: :events_index
+	get '/terminos_y_condiciones' => 'landing#terms', as: :terms
 	match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], as: :finish_signup
-	match '/terminos_y_condiciones' => 'landing#terms', via: [:get], as: :terms
-	match '/pricing' => 'landing#pricing', via: [:post], as: :pricing, :defaults => { :format => 'json' }
+	post '/pricing' => 'landing#pricing', as: :pricing, :defaults => { :format => 'json' }
 
 	devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks', registrations: "users/registrations" }
 	root "landing#index"
