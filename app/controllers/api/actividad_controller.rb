@@ -1,51 +1,52 @@
 class Api::ActividadController < ApplicationController
   before_action :authenticate_user!
   # Admin
-  before_action only: [:create, :destroy] do redirect_to :new_user_session_path unless current_user && current_user.admin?   end
+  before_action only: [:create, :destroy] do head :unauthorized unless current_user && current_user.admin?   end
   # Admin & Instructor
   before_action only: [:update] do redirect_to :new_user_session_path unless current_user && (current_user.instructor?||current_user.admin?)   end
   # Api render
   respond_to :json
-
+  # ETAG -fresh_when()- is a key we use to determine whether a page has changed.
+  etag { current_user.id }
+  
   # Admin
   def create
 	if !@actividad = Actividad.find_by(nombre: params[:nombre]) then
 		@actividad = Actividad.new(actividad_params)
 		if @actividad.save then
-			render json: @actividad, status: :created #, location: @actividad
+			render 'api/actividad/show', status: :created
 		else
-			render json: @actividad.errors, status: :unprocessable_entity
+			render json: @actividad.errors, status: :internal_server_error
 		end
 	else
-		render json: @actividad, status: :conflict
+		render 'api/actividad/show', status: :conflict
 	end
   end
   
   def destroy
-	@actividad = Actividad.find(params[:id])    
-	@actividad.destroy
-	head :no_content
+	Actividad.destroy(params[:id])
+	head :ok
   end
   
   # Instructor
   def update
 	@actividad = Actividad.find(params[:id])
 	if @actividad.update_attributes(actividad_params) then
-		head :no_content
+		head :ok
 	else
-		render json: @actividad.errors, status: :unprocessable_entity
+		render json: @actividad.errors, status: :internal_server_error
 	end
   end
   
   # User
   def index
-	@actividad = Actividad.order(:id)
-	respond_with @actividad
+	@actividades = Actividad.order(:id)
+	fresh_when(@actividades)
   end
   
   def show
 	@actividad = Actividad.find(params[:id])
-	respond_with @actividad
+	fresh_when(@actividad)
   end
   
   private

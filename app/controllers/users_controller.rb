@@ -8,9 +8,9 @@ class UsersController < ApplicationController
       if !@user_email || @user == @user_email
 		  if params[:user][:nombre].present? && params[:user][:apellido].present? && params[:user][:email].present? && params[:user][:telefono].present? && params[:user][:reminders].present? && params[:user][:accept_terms].present? && params[:user][:accept_terms]=="1"
 			@user.update(user_params)
-			UserMailer.welcome_email(@user).deliver if @user.confirmed == false
+			send_welcome_email(@user) if @user.confirmed == false
 			@user.update_attribute(:confirmed, true)
-			Event.create(name:'finish_signup',content: "<strong>"+@user.nombre_completo+"</strong> ha completado su registro correctamente")
+			register_event('finish_signup', "<strong>"+@user.nombre_completo+"</strong> ha completado su registro correctamente")
 			bypass_sign_in(@user)
 			redirect_to '/app/agenda/', notice: 'Hemos guardado tu email correctamente.'
 			return
@@ -28,11 +28,22 @@ class UsersController < ApplicationController
   end
  
   private
-    def user_params
-      accessible = [:nombre, :apellido, :email, :telefono, :reminders, :accept_terms]
-      accessible << [ :password, :password_confirmation ] unless params[:user][:password].blank?
-      params.require(:user).permit(accessible)
-    end
+  
+  def user_params
+	accessible = [:nombre, :apellido, :email, :telefono, :reminders, :accept_terms]
+	accessible << [ :password, :password_confirmation ] unless params[:user][:password].blank?
+	params.require(:user).permit(accessible)
+  end
+
+  def register_event(name,content)
+	Event.create(name: name,content: content)
+  end
+  
+  def send_welcome_email(user)
+	UserMailer.welcome_email(user).deliver
+  end
+
+
 end
 
 

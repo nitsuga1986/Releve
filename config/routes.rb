@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
 
 	namespace "api" do
-		resources :actividad, :event,:pago
+		resources :actividad, :event
+		resources :pago do
+			collection do
+				get 'index_user'
+			end
+		end
 		resources :alumnos do
 			collection do
 				get 'search'
@@ -10,28 +15,23 @@ Rails.application.routes.draw do
 				post 'instructores'
 				put 'update_current'
 			end
-			member do
-				post 'usr_clases'
-				post 'usr_pagos'
-			end
 		end
 		resources :clases do
 			collection do
 				get 'search'
 				post 'bulk'
 				post 'edit_bulk'
-				post 'instructor'
+				post 'index_instructor'
 				get 'index_usr'
 				get 'history_usr'
 				post 'join_multiple'
 				post 'join_usr_multiple'
-				get 'test_emails'
+				post 'edit_asistencias'
+				get 'index_user'
 			end
 			member do
 				post 'join'
 				post 'unjoin'
-				post 'confirm'
-				post 'unconfirm'
 				post 'waitlist'
 			end
 		end

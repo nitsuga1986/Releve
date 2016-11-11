@@ -5,7 +5,7 @@ class ApiRootController < ApplicationController
 			url = request.path_info
 			if !url.include?('app')
 				if !(current_user.try(:instructor?) || current_user.try(:admin?))
-					redirect_to root_path
+					head :unauthorized
 				end
 			end
 		else

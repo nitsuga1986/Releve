@@ -1,11 +1,13 @@
 class Api::AlumnosController < ApplicationController
   before_action :authenticate_user!
   # Admin
-  before_action only: [:create, :destroy, :index, :show, :update, :search] do redirect_to :new_user_session_path unless current_user && current_user.admin?   end
+  before_action only: [:create, :destroy, :index, :show, :update, :search] do head :unauthorized unless current_user && current_user.admin?   end
   # Admin & Instructor
-  before_action only: [:autocomplete, :usr_clases,:usr_pagos] do redirect_to :new_user_session_path unless current_user && (current_user.instructor?||current_user.admin?)   end
+  before_action only: [:autocomplete, :usr_clases,:usr_pagos] do head :unauthorized unless current_user && (current_user.instructor?||current_user.admin?)   end
   # Api render
   respond_to :json
+  # ETAG -fresh_when()- is a key we use to determine whether a page has changed.
+  etag { current_user.id }
 
   # Admin
   def create
@@ -23,29 +25,28 @@ class Api::AlumnosController < ApplicationController
 					pac.save
 				end
 			end
-			render json: @alumno, status: :created
+			render 'api/alumnos/show', status: :created
 		else
-			render json: @alumno.errors, status: :unprocessable_entity
+			render json: @alumno.errors, status: :internal_server_error
 		end
 	else
-		render json: @alumno, status: :conflict
+		render 'api/alumnos/show', status: :conflict
 	end
   end
 
   def destroy
-	@alumno = User.find(params[:id])    
-	@alumno.destroy
-	head :no_content
+	User.destroy(params[:id])
+	head :ok
   end
   
   def index
-	@alumno = User.all
-	respond_with @alumno
+	@alumnos = User.all
+	fresh_when(@alumnos)
   end
 
   def show
 	@alumno = User.find(params[:id])
-	respond_with @alumno
+	fresh_when(@alumno)
   end
 
   def update
@@ -63,55 +64,42 @@ class Api::AlumnosController < ApplicationController
 				pac.save
 			end
 		end
-		head :no_content
+		head :ok
 	else
-		render json: @alumno.errors, status: :unprocessable_entity
+		render json: @alumno.errors, status: :internal_server_error
 	end
   end
   
   def search
 	@alumno = User.find_by(email: params[:email])
-	if !@alumno.nil? then
-		render json:  @alumno
-	else
-		head :no_content
-	end
+	@alumno.present? ? (render 'api/alumnos/show') : (head :ok)
   end
   
   # Instructor
   def autocomplete
-	like= "%".concat(params[:term].concat("%"))
-	@users = User.where("email like ? OR nombre like ? OR apellido like ?", like, like, like)
+	like = "%".concat(params[:term].concat("%"))
+	@users = User.search_containing(like)
 	list = @users.map {|u| Hash[ label:u.label, id: u.id, email: u.email]}
-	render json: list
-  end
-
-  def usr_clases
-	@clases = User.find(params[:id]).clases.order(:fecha,:horario)
-	render json: @clases, status: :ok
-  end
-
-  def usr_pagos
-	@pagos = User.find(params[:id]).pagos.order(:fecha)
-	render json: @pagos, status: :ok
+	render json: list, status: :ok
   end
   
   # User
   def current
 	@user = current_user
+	fresh_when(@user)
   end
   
   def instructores
-	@alumno = User.where(instructor:true).order(:id)
-	render json: @alumno
+	@users = User.where(instructor:true).order(:id)
+	fresh_when(@users)
   end
   
   def update_current
 	@alumno = current_user
 	if @alumno.update_attributes(alumno_params) then
-		head :no_content
+		head :ok
 	else
-		render json: @alumno.errors, status: :unprocessable_entity
+		render json: @alumno.errors, status: :internal_server_error
 	end
   end
   

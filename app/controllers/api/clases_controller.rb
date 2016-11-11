@@ -6,20 +6,10 @@ class Api::ClasesController < ApplicationController
   before_action only: [:index, :show, :search, :instructor, :update, :edit_bulk, :join_usr_multiple, :confirm, :unconfirm] do redirect_to :new_user_session_path unless current_user && (current_user.instructor?||current_user.admin?) end
   # Api render
   respond_to :json
+  # ETAG -fresh_when()- is a key we use to determine whether a page has changed.
+  etag { current_user.id }
 
-  
   # Admin
-  # routes.rb, resources.js, clases_controller.rb, templates/clase/index.html, javascripts/controllers/ClaseIndexCtrl.js
-  def test_emails
-	UserMailer.welcome_email(current_user).deliver
-	UserMailer.join_email(current_user,Clase.last).deliver
-	UserMailer.join_multiple_email(current_user,Clase.first(4)).deliver
-	UserMailer.unjoin_email(current_user,Clase.last).deliver
-	UserMailer.pricing_email(current_user.email,"Nombre","Apellido").deliver
-	UserMailer.remainder_email(current_user).deliver
-	render json:  current_user
-  end
-
   def create
 	if !@clase = Clase.find_by(fecha: params[:fecha], horario: params[:horario]) then
 		@clase = Clase.new(clase_params)
@@ -32,12 +22,12 @@ class Api::ClasesController < ApplicationController
 					@clase.add_asistencia(user[:id]) if user[:id]	
 				end
 			end
-			render json: @clase, status: :created
+			head :created
 		else
-			render json: @clase.errors, status: :unprocessable_entity
+			render json: @clase.errors, status: :internal_server_error
 		end
 	else
-		render json: @clase, status: :conflict
+		head :conflict
 	end
   end
   
@@ -66,48 +56,53 @@ class Api::ClasesController < ApplicationController
 				end
 			end
 		end
-		render json: @clase, status: :created
+		head :created
 	else
-		render json: {
-			error: "Missing data",
-			status: :unprocessable_entity
-		}
+		head :bad_request
 	end
   end
 
   def destroy
-	@clase = Clase.find(params[:id])    
-	@clase.destroy
-	head :no_content
+	Clase.destroy(params[:id])
+	head :ok
   end
   
   # Instructor
   def index
 	@clases = Clase.order(:fecha,:horario)
+	fresh_when(@clases)
+  end
+
+  def index_user
+	@clases = User.find(params[:id]).clases.order(:fecha,:horario)
+	fresh_when(@clases)
   end
 
   def show
 	@clase = Clase.find(params[:id])
-	render json:  @clase
+	fresh_when(@clase)
   end
   
   def search
 	@clase = Clase.find_by(fecha: params[:fecha], horario: params[:horario], instructor: params[:instructor])
 	if !@clase.nil? then
-		render json:  @clase
+		fresh_when(@clase)
+		render 'api/clases/show'
 	else
-		head :no_content
+		head :ok
 	end
   end
   
-  def instructor
+  def index_instructor
 	if params[:instructor_id] == 9999999 then
-		@clases = Clase.where('fecha >= ? AND fecha <= ?',params[:fecha_start],params[:fecha_end])
+		@clases = Clase.btw_dates(params[:fecha_start],params[:fecha_end])
+		fresh_when(@clases)
 	else
-		@clases = User.find(params[:instructor_id]).instructorados.where('fecha >= ? AND fecha <= ?',params[:fecha_start],params[:fecha_end])
+		@clases = User.find(params[:instructor_id]).instructorados.btw_dates(params[:fecha_start],params[:fecha_end])
+		fresh_when(@clases)
 	end
 	if @clases.nil? then
-		head :no_content
+		head :ok
 	end
   end
 
@@ -127,9 +122,9 @@ class Api::ClasesController < ApplicationController
 				@clase.add_asistencia(user[:id]) if user[:id]	
 			end
 		end
-		head :no_content
+		head :ok
 	else
-		render json: @clase.errors, status: :unprocessable_entity
+		render json: @clase.errors, status: :internal_server_error
 	end
   end
   
@@ -148,12 +143,9 @@ class Api::ClasesController < ApplicationController
 				end
 			end
 		end
-		render json: @clase, status: :created
+		head :created
 	else
-		render json: {
-			error: "Missing data",
-			status: :unprocessable_entity
-		}
+		head :bad_request
 	end
   end
   
@@ -173,39 +165,36 @@ class Api::ClasesController < ApplicationController
 			clasesagendadas = ""
 		end
 	end
-	agendadasarray.reverse.each { |x| Event.create(name:'continuation',content: x) }
-	Event.create(name:'joinmultiple',content: current_user.nombre_completo+" agendó a <strong>"+selected_user.nombre_completo+"</strong> en las siguientes clases: ")
-	UserMailer.join_multiple_email(selected_user,@clases).deliver
-	render json: @clase, status: :created
+	agendadasarray.reverse.each { |x| register_event('continuation', x) }
+	register_event('joinmultiple', current_user.nombre_completo+" agendó a <strong>"+selected_user.nombre_completo+"</strong> en las siguientes clases: ")
+	send_join_multiple_email(selected_user,@clases)
+	head :ok
   end
 
-  def confirm 
-	@clase = Clase.find(params[:id])
-	Asistencia.find(params[:asistencia_id]).update_attribute(:confirmed,true)
-	head :no_content
-  end
-
-  def unconfirm 
-	@clase = Clase.find(params[:id])
-	Asistencia.find(params[:asistencia_id]).update_attribute(:confirmed,false)
-	head :no_content
+  def edit_asistencias
+	params[:_json].each do |asistencia|
+		Asistencia.find(asistencia['asistencia_id']).update_attribute(:confirmed,asistencia['confirmed'])
+	end
+	head :ok
   end
   
   # User
   def index_usr
-	@clases = Clase.where('fecha >= ?', DateTime.now.beginning_of_month).order(:fecha,:horario)
+	@clases = Clase.after_date(DateTime.now.beginning_of_month).order(:fecha,:horario)
+	fresh_when(@clases)
   end
   
   def history_usr
 	@asistencias = current_user.asistencias
+	fresh_when(@asistencias)
   end
 
   def join 
 	@clase = Clase.find(params[:id])
 	@clase.add_asistencia(current_user.id)
-	UserMailer.join_email(current_user,@clase).deliver
-	Event.create(name:'join',content: "<strong>"+current_user.nombre_completo+"</strong> se agendó a la clase de "+@clase.actividad.nombre+" del <strong>"+@clase.dia+" "+@clase.fecha.strftime('%d/%m')+" "+@clase.horario+"hs</strong>")
-	render json: @clase, status: :created
+	send_join_email(current_user,@clase)
+	register_event('join',"<strong>"+current_user.nombre_completo+"</strong> se agendó a la clase de "+@clase.actividad.nombre+" del <strong>"+@clase.dia+" "+@clase.fecha.strftime('%d/%m')+" "+@clase.horario+"hs</strong>")
+	head :ok
   end
   
   def join_multiple
@@ -223,31 +212,31 @@ class Api::ClasesController < ApplicationController
 			clasesagendadas = ""
 		end
 	end
-	agendadasarray.reverse.each { |x| Event.create(name:'continuation',content: x) }
-	Event.create(name:'joinmultiple',content: "<strong>"+current_user.nombre_completo+"</strong> se agendó en las siguientes clases: ")
-	UserMailer.join_multiple_email(current_user,@clases).deliver
-	render json: @clase, status: :created
+	agendadasarray.reverse.each { |x| register_event('continuation', x) }
+	register_event('joinmultiple', "<strong>"+current_user.nombre_completo+"</strong> se agendó en las siguientes clases: ")
+	send_join_multiple_email(current_user,@clases)
+	head :ok
   end
 
   def unjoin 
 	@clase = Clase.find(params[:id])
 	if @clase.completa? then
-		UserMailer.waitlist_email(@clase).deliver 
+		send_waitlist_email(@clase)
 		@clase.destroy_wait_lists
-		Event.create(name:'waitlistclear',content: "Se hizo un lugar en la clase del "+@clase.dia+" "+@clase.fecha.strftime('%d/%m')+" y se avisó a las personas en lista de espera")
+		register_event('waitlistclear', "Se hizo un lugar en la clase del "+@clase.dia+" "+@clase.fecha.strftime('%d/%m')+" y se avisó a las personas en lista de espera")
 	end
 	current_user.remove_from_clase(@clase)
-	UserMailer.unjoin_email(current_user,@clase).deliver
-	UserMailer.unjoin_comment_email(current_user,@clase,params[:comentario]).deliver if params.has_key?(:comentario)
-	Event.create(name:'unjoin',content: "<strong>"+current_user.nombre_completo+"</strong> canceló su clase de "+@clase.actividad.nombre+" del <strong>"+@clase.dia+" "+@clase.fecha.strftime('%d/%m')+" "+@clase.horario+"hs</strong>")
-	render json: @clase, status: :created
+	send_unjoin_email(current_user,@clase)
+	send_unjoin_comment_email(current_user,@clase,params[:comentario]) if params.has_key?(:comentario)
+	register_event('unjoin', "<strong>"+current_user.nombre_completo+"</strong> canceló su clase de "+@clase.actividad.nombre+" del <strong>"+@clase.dia+" "+@clase.fecha.strftime('%d/%m')+" "+@clase.horario+"hs</strong>")
+	head :ok
   end
   
   def waitlist 
 	@clase = Clase.find(params[:id])
 	@clase.add_wait_list(current_user.id)
-	Event.create(name:'waitlist',content: "<strong>"+current_user.nombre_completo+"</strong> se agregó a la lista de espera de la clase del <strong>"+@clase.dia+" "+@clase.fecha.strftime('%d/%m')+"</strong>")
-	render json: @clase, status: :created
+	register_event('waitlist', "<strong>"+current_user.nombre_completo+"</strong> se agregó a la lista de espera de la clase del <strong>"+@clase.dia+" "+@clase.fecha.strftime('%d/%m')+"</strong>")
+	head :ok
   end
 
   private
@@ -255,4 +244,16 @@ class Api::ClasesController < ApplicationController
   def clase_params
 	 params.permit(:fecha, :horario, :max_users, :duracion, :trialable, :cancelada, :comment)
   end
+
+  def register_event(name,content)
+	Event.create(name: name,content: content)
+  end
+  
+  # Emails
+  def send_join_multiple_email(user,clases)					UserMailer.join_multiple_email(user,clases).deliver end
+  def send_join_email(user,clase)							UserMailer.join_email(user,clase).deliver end
+  def send_waitlist_email(clase)							UserMailer.waitlist_email(clase).deliver end
+  def send_unjoin_email(user,clase)							UserMailer.unjoin_email(current_user,@clase).deliver end
+  def send_unjoin_comment_email(user, clase, comentario)	UserMailer.unjoin_comment_email(user, clase, comentario).deliver end
+
 end

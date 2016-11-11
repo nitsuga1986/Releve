@@ -1,11 +1,16 @@
 class Clase < ActiveRecord::Base
+	scope :btw_dates, ->(start_date, end_date) { where('fecha >= ? AND fecha <= ?', start_date, end_date) if (start_date.present? &&  end_date.present?) }
+	scope :after_date, ->(date) { where('fecha >= ?', date) if date.present? }
+
 	has_many :asistencias
 	has_many :users, through: :asistencias
 	has_many :wait_lists
 	has_many :wait_users, through: :wait_lists, source: :user
+	
 	belongs_to :actividad
 	belongs_to :instructor, class_name: "User", foreign_key: "instructor"
 	belongs_to :reemplazo, class_name: "User", foreign_key: "reemplazo"
+	
 	before_destroy :destroy_related
 
 	def as_json(options = { })

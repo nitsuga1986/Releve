@@ -3,7 +3,9 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable, :validatable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable
-  after_create :set_fechaini
+  
+  scope :search_containing, ->(param) { where("email like ? OR nombre like ? OR apellido like ?", param, param, param) if param.present? }
+
   has_many :pagos
   has_many :packs
   has_many :actividades, through: :packs
@@ -13,6 +15,8 @@ class User < ActiveRecord::Base
   has_many :wait_clases, through: :wait_lists, source: :clase
   has_many :instructorados, class_name: "Clase", foreign_key: "instructor"
   has_many :reemplazoados, class_name: "Clase", foreign_key: "reemplazo"  
+  
+  after_create :set_fechaini
   before_destroy :destroy_related
   
   # Include default devise modules. Others available are:
