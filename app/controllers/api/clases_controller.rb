@@ -181,7 +181,8 @@ class Api::ClasesController < ApplicationController
   # User
   def index_usr
 	@clases = Clase.after_date(DateTime.now.beginning_of_month).order(:fecha,:horario)
-	fresh_when(@clases)
+	asistencias = current_user.asistencias
+	fresh_when([@clases, asistencias])
   end
   
   def history_usr
