@@ -11,9 +11,9 @@ class LandingController < ApplicationController
 	def pricing
 		if params[:email].present? && params[:firstname].present? && params[:lastname].present?
 			if verify_recaptcha
-				send_pricing_email(params[:email],params[:firstname],params[:lastname])
-				register_event('pricing', "<strong>"+params[:email]+"</strong> ("+params[:firstname]+" "+params[:lastname]+") ha solicitado los precios de las actividades")
-				head :ok 
+				#send_pricing_email(params[:email],params[:firstname],params[:lastname])
+				#register_event('pricing', "<strong>"+params[:email]+"</strong> ("+params[:firstname]+" "+params[:lastname]+") ha solicitado los precios de las actividades")
+				render json: {}, status: :ok 
 				return
 			else
 				render json: {message: "bad_captcha"}, status: :bad_request
