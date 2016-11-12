@@ -1,6 +1,6 @@
 json.(@alumno, :id, :primera_clase, :email, :dni, :nombre, :apellido, :profesion, :fechanac,
 :fechaini, :telefono, :domicilio, :localidad, :nombre_contacto, :apellido_contacto, :telefono_contacto,
-:sexo, :reminders, :newsletter, :instructor, :confirmed, :admin)
+:sexo, :reminders, :newsletter, :instructor, :confirmed, :admin, :nombre_completo)
 json.packs @alumno.packs do |pack|
   json.id pack.id
   json.actividad_id pack.actividad_id
