@@ -1,9 +1,9 @@
 class Api::AlumnosController < ApplicationController
   before_action :authenticate_user!
   # Admin
-  before_action only: [:create, :destroy, :index, :show, :update, :search] do head :unauthorized unless current_user && current_user.admin?   end
+  before_action only: [:create, :destroy] do head :unauthorized unless current_user && current_user.admin?   end
   # Admin & Instructor
-  before_action only: [:autocomplete, :usr_clases,:usr_pagos] do head :unauthorized unless current_user && (current_user.instructor?||current_user.admin?)   end
+  before_action only: [:index, :show, :update, :search, :autocomplete, :usr_clases,:usr_pagos] do head :unauthorized unless current_user && (current_user.instructor?||current_user.admin?)   end
   # Api render
   respond_to :json
   # ETAG -fresh_when()- is a key we use to determine whether a page has changed.
@@ -39,6 +39,7 @@ class Api::AlumnosController < ApplicationController
 	head :ok
   end
   
+  # Instructor
   def index
 	@alumnos = User.all
 	fresh_when(@alumnos)
@@ -75,7 +76,6 @@ class Api::AlumnosController < ApplicationController
 	@alumno.present? ? (render 'api/alumnos/show') : (head :ok)
   end
   
-  # Instructor
   def autocomplete
 	like = "%".concat(params[:term].concat("%"))
 	@users = User.search_containing(like)
