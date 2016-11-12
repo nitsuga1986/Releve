@@ -33,12 +33,12 @@ class Api::PagoController < ApplicationController
   end
   
   def index
-	@pagos = Pago.order(:id)
+	@pagos = Pago.order(id: :desc)
 	fresh_when(@pagos)
   end
   
   def index_user
-	@pagos = User.find(params[:id]).pagos.order(:fecha)
+	@pagos = User.find(params[:id]).pagos.order(id: :desc)
 	fresh_when(@pagos)
   end
   
