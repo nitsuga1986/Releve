@@ -1,0 +1,106 @@
+<h3><i class="fa fa-paper-plane-o"></i> Enviar novedades</h3>
+
+<div class="row"><div class="col-xs-12"><hr/></div></div>
+
+<div class="row"><div id="alert-container" class="col-xs-12">
+	<div class="alert alert-danger" role="alert" data-ng-show="show_formerror">El mail debe contener al menos el <strong>Asunto</strong>, <strong>Título</strong> y <strong>Texto principal</strong>.</div>
+	<div class="alert alert-success" role="alert" data-ng-show="show_formsuccess"><strong>Listo!</strong> el mail se ha enviado correctamente.</div>
+</div></div>
+
+<div class="row"><div class="col-xs-12">
+	<form data-ng-submit="submit()" name="ClaseForm" id="ClaseForm" novalidate role="form">
+		<div class="form-group col-xs-12">
+			<label class="col-sm-2 control-label">Destinatarios</label>
+			<div class="col-sm-5">
+				<div class="radio">
+				  <label for="all">
+					<input type="radio" name="recipient" data-ng-model="alumno.recipient" id="all" value="all" checked>
+					Todos los alumnos
+				  </label>
+				</div>
+				<div class="radio">
+				  <label for="reminders">
+					<input type="radio" name="recipient" data-ng-model="alumno.recipient" id="reminders" value="reminders">
+					Sólo los que "desean recibir recordatorios por correo"
+				  </label>
+				</div>
+				<div class="radio">
+				  <label for="newsletter">
+					<input type="radio" name="recipient" data-ng-model="alumno.recipient" id="newsletter" value="newsletter">
+					Sólo los que "desean recibir novedades y promociones por correo"
+				  </label>
+				</div>
+				<div class="radio">
+				  <label for="test">
+					<input type="radio" name="recipient" data-ng-model="alumno.recipient" id="test" value="test">
+					Enviar prueba a Releve
+				  </label>
+				</div>
+			</div>
+		</div>
+		<!-- mail_subject -->
+		<div class="form-group col-sm-6">
+			<label for="mail_subject" class="col-sm-4 control-label">Asunto</label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" name="mail_subject" data-ng-model="alumno.mail_subject" id="mail_subject" placeholder="Mail muy interesante!">
+			</div>
+		</div>
+		<!-- mail_title -->
+		<div class="form-group col-sm-6">
+			<label for="mail_title" class="col-sm-4 control-label">Título</label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" name="mail_title" data-ng-model="alumno.mail_title" id="mail_title" placeholder="Esto te va a gustar">
+			</div>
+		</div>
+		<!-- mail_pretext -->
+		<div class="form-group col-sm-6">
+			<label for="mail_pretext" class="col-sm-4 control-label">Texto de notificación</label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" name="mail_pretext" data-ng-model="alumno.mail_pretext" id="mail_pretext" placeholder="Quiero que abras este mail">
+			</div>
+		</div>
+		<!-- mail_body -->
+		<div class="form-group col-sm-6">
+			<label for="mail_body" class="col-sm-4 control-label">Texto principal</label>
+			<div class="col-sm-7">
+				<textarea class="form-control" rows="4" class="form-control" name="mail_body" data-ng-model="alumno.mail_body" id="mail_body" placeholder="Acá va toda la info que necesitás"></textarea>
+			</div>
+		</div>
+		<!-- mail_button_text -->
+		<div class="form-group col-sm-6">
+			<label for="mail_button_text" class="col-sm-4 control-label">Texto del botón <span class="text-muted">(en blanco para no incluír)</span></label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" name="mail_button_text" data-ng-model="alumno.mail_button_text" id="mail_button_text" placeholder="Clickeame">
+			</div>
+		</div>
+		<!-- mail_button_link -->
+		<div class="form-group col-sm-6">
+			<label for="mail_button_link" class="col-sm-4 control-label">Link del botón:</label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" name="mail_button_link" data-ng-model="alumno.mail_button_link" id="mail_button_link" placeholder="http://www.relevepilates.com.ar/app/agenda">
+			</div>
+		</div>
+		<!-- mail_subtitle -->
+		<div class="form-group col-sm-6">
+			<label for="nombre_contacto" class="col-sm-4 control-label">Título secundario <span class="text-muted">(en blanco para no incluír)</span></label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" name="mail_subtitle" data-ng-model="alumno.mail_subtitle" id="mail_subtitle" placeholder="Esto te va a gustar">
+			</div>
+		</div>
+		<!-- mail_subbody -->
+		<div class="form-group col-sm-6">
+			<label for="mail_subbody" class="col-sm-4 control-label">Texto secundario</label>
+			<div class="col-sm-7">
+				<textarea class="form-control" rows="4" class="form-control" name="mail_subbody" data-ng-model="alumno.mail_subbody" id="mail_subbody" placeholder="Acá va toda la info que necesitás"></textarea>
+			</div>
+		</div>
+		<!-- include_reminder -->
+		<div class="form-group col-xs-12 col-sm-offset-2">
+			<label for="include_reminder"><input type="checkbox" name="include_reminder" data-ng-model="alumno.include_reminder" id="include_reminder"> Incluír recordatorio de cancelación.</label>
+		</div>
+		<div class="col-xs-12 col-sm-3"><button type="submit" class="btn btn-primary btn-block"><i class="fa fa-paper-plane-o"></i> Enviar</button></div>
+	</form>
+</div></div>
+
+
+<div class="row"><div class="col-xs-12"><hr/></div></div>

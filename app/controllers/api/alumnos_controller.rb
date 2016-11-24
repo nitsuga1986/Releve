@@ -1,7 +1,7 @@
 class Api::AlumnosController < ApplicationController
   before_action :authenticate_user!
   # Admin
-  before_action only: [:create, :destroy] do head :unauthorized unless current_user && current_user.admin?   end
+  before_action only: [:create, :destroy, :newsletter] do head :unauthorized unless current_user && current_user.admin?   end
   # Admin & Instructor
   before_action only: [:index, :show, :update, :search, :autocomplete, :usr_clases,:usr_pagos] do head :unauthorized unless current_user && (current_user.instructor?||current_user.admin?)   end
   # Api render
@@ -36,6 +36,11 @@ class Api::AlumnosController < ApplicationController
 
   def destroy
 	User.destroy(params[:id])
+	head :ok
+  end
+
+  def newsletter
+	send_newsletter_email_email(params[:recipient], params[:mail_subject], params[:mail_title], params[:mail_pretext], params[:mail_body], params[:mail_button_text], params[:mail_button_link], params[:mail_subtitle], params[:mail_subbody], params[:include_reminder])
 	head :ok
   end
   
@@ -112,5 +117,9 @@ class Api::AlumnosController < ApplicationController
   def alumno_params_admin
 	 params.require(:alumno).permit(:email, :dni, :nombre, :apellido, :profesion, :fechanac, :telefono, :domicilio, :localidad, :nombre_contacto, :apellido_contacto, :telefono_contacto, :sexo, :reminders, :newsletter, :fechaini, :confirmed, :primera_clase, :nro_clases, :admin, :instructor, :accept_terms)
   end
+  
+  def send_newsletter_email_email(recipient, mail_subject, mail_title, mail_pretext, mail_body, mail_button_text, mail_button_link, mail_subtitle, mail_subbody, include_reminder)	
+	 UserMailer.newsletter_email(recipient, mail_subject, mail_title, mail_pretext, mail_body, mail_button_text, mail_button_link, mail_subtitle, mail_subbody, include_reminder).deliver
+  end			
   
 end

@@ -48,5 +48,30 @@ class UserMailer < ActionMailer::Base
 		@clases = clases
 		mail(to: @user.email, subject: 'Tu semana Releve!')
 	end
+
+	def newsletter_email(recipient, mail_subject, mail_title, mail_pretext, mail_body, mail_button_text, mail_button_link, mail_subtitle, mail_subbody, include_reminder)
+		case recipient
+			when "all" then recipients = email_list(User.all)
+			when "reminders" then recipients = email_list(User.remaindable)
+			when "newsletter" then recipients = email_list(User.newsletterable)
+			when "test" then recipients = ""
+			else recipients = recipient
+		end
+		@mail_title = mail_title
+		@mail_body = mail_body
+		@mail_pretext = mail_pretext
+		@mail_button_text = mail_button_text
+		@mail_button_link = mail_button_link
+		@mail_subtitle = mail_subtitle
+		@mail_subbody = mail_subbody
+		@include_reminder = include_reminder
+		mail(to: 'relevepilates@gmail.com', bcc: recipients,  subject: mail_subject)
+	end
+	
+	private
+	
+	def email_list(users)
+		users.collect(&:email).join(",")
+	end
 	
 end

@@ -26,6 +26,7 @@
 //= require controllers/AlumnoIndexCtrl
 //= require controllers/AlumnoEditCtrl
 //= require controllers/AlumnoShowCtrl
+//= require controllers/AlumnoNewsletterCtrl
 //= require controllers/ActividadIndexCtrl
 //= require controllers/ActividadEditCtrl
 //= require controllers/ActividadShowCtrl

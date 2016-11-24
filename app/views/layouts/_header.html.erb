@@ -42,6 +42,7 @@
 								<% if current_user.admin? %>
 										<!--<li><a href="/clase/index" class="text-admin"><i class="fa fa-calendar" aria-hidden="true"></i> Calendario</a></li>-->
 										<li><a href="/eventos/index" class="text-admin"><i class="fa fa-bell" aria-hidden="true"></i> Eventos</a></li>
+										<li><a href="/alumno/newsletter" class="text-admin"><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Enviar novedades</a></li>
 								<% end %>
 							  </ul>
 							</li>
@@ -106,6 +107,7 @@
 					<% if current_user.admin? %>
 						<!--<a class="btn btn-danger btn-lg text-admin" href="/clase/index"><i class="fa fa-calendar" aria-hidden="true"></i> Calendario</a>-->
 						<a class="btn btn-danger btn-lg text-admin" href="/eventos/index"><i class="fa fa-bell" aria-hidden="true"></i> Eventos</a>
+						<a class="btn btn-danger btn-lg text-admin" href="/alumno/newsletter"><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Enviar novedades</a>
 					<% end %>
 				<% end %>
 			<% end %>

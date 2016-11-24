@@ -21,6 +21,7 @@ angular.module("TurnosApp")
 		// Alumnos 
 		.when("/alumno/index", { title: 'Listado de alumnos',templateUrl: "<%= asset_path('alumno/index.html') %> ", controller: "AlumnoIndexCtrl", activetab: 'alumno'})
 		.when("/alumno/new", { title: 'Nuevo alumno',templateUrl: "<%= asset_path('alumno/edit.html') %> ", controller: "AlumnoEditCtrl", activetab: 'alumno'})
+		.when("/alumno/newsletter", { title: 'Enviar novedades',templateUrl: "<%= asset_path('alumno/newsletter.html') %> ", controller: "AlumnoNewsletterCtrl", activetab: 'alumno'})
 		.when("/alumno/:id", { title: 'Detalles de la alumno',templateUrl: "<%= asset_path('alumno/show.html') %> ", controller: "AlumnoShowCtrl", activetab: 'alumno'})
 		.when("/alumno/:id/edit", { title: 'Editar alumno',templateUrl: "<%= asset_path('alumno/edit.html') %> ", controller: "AlumnoEditCtrl", activetab: 'alumno'})
 		// Actividad 

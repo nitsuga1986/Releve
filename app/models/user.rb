@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable
   
   scope :search_containing, ->(param) { where("email like ? OR nombre like ? OR apellido like ?", param, param, param) if param.present? }
+  scope :remaindable, -> { where(reminders: true) }
+  scope :newsletterable, -> { where(newsletter: true) }
 
   has_many :pagos
   has_many :packs

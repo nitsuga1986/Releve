@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 				get 'autocomplete'
 				post 'current'
 				post 'instructores'
+				post 'newsletter'
 				put 'update_current'
 			end
 		end
