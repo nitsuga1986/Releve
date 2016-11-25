@@ -1,6 +1,6 @@
 <%= @mail_title %> 
 
-<%= @mail_body %>
+<%= @mail_body.gsub(/(?:\n\r?|\r\n?)/, '<br>').html_safe %>
 
 <% if @mail_button_text %>
 	<%= @mail_button_link %> ingresando a <%= @mail_button_text %>
@@ -8,7 +8,7 @@
 
 <% if @mail_subtitle %>
 	<%= @mail_subtitle %>
-	<%= @mail_subbody %>
+	<%= @mail_subbody.gsub(/(?:\n\r?|\r\n?)/, '<br>').html_safe %>
 <% end %>
 
 
