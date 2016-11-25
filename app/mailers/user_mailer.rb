@@ -51,9 +51,9 @@ class UserMailer < ActionMailer::Base
 
 	def newsletter_email(recipient, mail_subject, mail_title, mail_pretext, mail_body, mail_button_text, mail_button_link, mail_subtitle, mail_subbody, include_reminder)
 		case recipient
-			when "all" then recipients = email_list(User.all)
-			when "reminders" then recipients = email_list(User.remaindable)
-			when "newsletter" then recipients = email_list(User.newsletterable)
+			when "all" then recipients = User.all.pluck(:email)
+			when "reminders" then recipients = User.remaindable.pluck(:email).reverse!
+			when "newsletter" then recipients = User.newsletterable.pluck(:email)
 			when "test" then recipients = ""
 			else recipients = recipient
 		end
@@ -68,13 +68,8 @@ class UserMailer < ActionMailer::Base
 		logger.info "BCC: --------------------------------------------"
 		logger.info recipients
 		logger.info "--------------------------------------------"
-		mail(to: 'relevepilates@gmail.com', bcc: recipients,  subject: mail_subject)
+		mail(:to => "nitsugaman@gmail.com" ,  :subject => mail_subject, :bcc => recipients)
 	end
-	
-	private
-	
-	def email_list(users)
-		users.collect(&:email).join(",")
-	end
+
 	
 end
