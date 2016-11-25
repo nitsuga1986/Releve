@@ -24,14 +24,11 @@
 		</div>
 	</div>
 	<div class="col-xs-12 col-sm-5 col-md-4 col-lg-3 pull-right" data-ng-if="!alumno.primera_clase">
-		<button data-ng-if="!selectmultiple" type="button" class="btn btn-info btn-block" data-ng-click="changeselection()">
-			<span><i class="fa fa-list-ul" aria-hidden="true"></i> Seleccionar múltiples clases</span>
-		</button>
 		<button data-ng-if="selectmultiple" data-ng-click="multipleEventModal()" type="button" class="btn btn-primary btn-block hidden-xs">
 			<i class="fa fa-calendar-plus-o" aria-hidden="true"></i> Agendar seleccionadas<span data-ng-if="alumno.selected_counter_total"> ({{alumno.selected_counter_total}})</span>
 		</button>
-		<button data-ng-if="selectmultiple" data-ng-click="multipleEventModal()" type="button" class="btn btn-primary btn-lg btn-absolute visible-xs-block">
-			<i class="fa fa-calendar-plus-o" aria-hidden="true"></i>
+		<button id="absoluteButtonAgendar" disabled="disabled" data-ng-if="selectmultiple" data-ng-click="multipleEventModal()" type="button" class="btn btn-primary btn-absolute visible-xs-block">
+			<i class="fa fa-calendar-plus-o" aria-hidden="true"></i> Agendar seleccionadas
 		</button>
 	</div>
 </div>
@@ -61,7 +58,7 @@
 <!--Field(mult)-->		<span data-ng-if="!(column.field=='instructor' && clase.cancelada) && !(column.field=='instructor' && clase.reemplazo)">{{clase[column.field]}}</span>
 					</label>
 <!--Field(!mult)-->	<span data-ng-if="!selectmultiple && !(column.field=='instructor' && clase.cancelada) && !(column.field=='instructor' && clase.reemplazo)">{{clase[column.field]}}</span>
-<!-- <12hs -->		<span data-ng-if="column.field=='horario' && !clase.cancelable" class="label label-warning">< 12hs</span>
+<!-- <6hs -->		<span data-ng-if="column.field=='horario' && !clase.cancelable" class="label label-warning">< 6hs</span>
 <!--Completa-->		<span data-ng-if="column.field=='horario' && clase.completa" class="label label-danger">Completa</span>
 <!--Checkbox-->		<label data-ng-if="column.field=='horario'&& !alumno.primera_clase && selectmultiple && !clase.cancelada && !clase.joined && !alumno.actividad_overquota[clase.actividad_id][clase.mes] && !clase.completa" ><input id="selectable{{clase.id}}" type="checkbox" data-ng-model="clase.checked" data-ng-change="verifyPlan(clase.checked,clase.id)"></label>
 <!--Agendarme-->	<button data-ng-if="column.field=='horario' && !clase.cancelada && !clase.joined && (alumno.actividad_overquota[clase.actividad_id][clase.mes]==false||(alumno.actividad_overquota[clase.actividad_id][clase.mes]==undefined&&alumno.actividad_counter[clase.actividad_id][clase.mes]!=1&&clase.trialable)) && !clase.completa && !selectmultiple" data-ng-click="eventModal(clase.id)" class="btn btn-default btn-xs" type="button">Agendarme</button>
@@ -90,14 +87,14 @@
                 <h4>Programar mis clases</h4>
             </div>
             <div class="modal-body">
-				<p class="lead" data-ng-if="clase.joined && !clase.cancelable">Lo sentimos pero la clase es en menos de 12hs y <span class="text-danger">ya no es posible cancelarla</span>. Esperamos que puedas asisitir! <span class="text-muted">La clase de <strong>{{clase.actividad}}</strong> está programada para el día <strong>{{clase.fecha | date:'dd/MM/yyyy'}} a las {{clase.horario}}</strong> con {{clase.instructor}}.</span></p>
+				<p class="lead" data-ng-if="clase.joined && !clase.cancelable">Lo sentimos pero la clase es en menos de 6hs y <span class="text-danger">ya no es posible cancelarla</span>. Esperamos que puedas asisitir! <span class="text-muted">La clase de <strong>{{clase.actividad}}</strong> está programada para el día <strong>{{clase.fecha | date:'dd/MM/yyyy'}} a las {{clase.horario}}</strong> con {{clase.instructor}}.</span></p>
 				<p class="lead" data-ng-if="clase.joined && clase.cancelable">¿No vas a poder asistir a la clase de <strong>{{clase.actividad}}</strong> el día <strong>{{clase.fecha | date:'dd/MM/yyyy'}} a las {{clase.horario}}</strong> con {{clase.instructor}}?</p>
 				<p class="lead" data-ng-if="!clase.joined && alumno.actividad_overquota[clase.actividad_id][clase.mes] && alumno.primera_clase">Ya has programado tu clase de prueba! Puedes cancelarla y elegir este horario si lo prefieres.</p>
 				<p class="lead" data-ng-if="!clase.joined && alumno.actividad_overquota[clase.actividad_id][clase.mes] && !alumno.primera_clase">Ya has programado todas las clases disponibles en tu plan. Puedes cancelar alguna y elegir este horario si lo prefieres.</p>
 				<p class="lead" data-ng-if="!clase.cancelada && !clase.joined && !alumno.actividad_overquota[clase.actividad_id][clase.mes] && !clase.completa" >¿Te agendamos para la clase de <strong>{{clase.actividad}}</strong> el día <strong>{{clase.fecha | date:'dd/MM/yyyy'}} a las {{clase.horario}}</strong> con {{clase.instructor}}?</p>
 				<p class="lead" data-ng-if="!clase.cancelada && !clase.joined && !alumno.actividad_overquota[clase.actividad_id][clase.mes] && clase.completa" >¿Te agregamos a la lista de espera para la clase de <strong>{{clase.actividad}}</strong> el día <strong>{{clase.fecha | date:'dd/MM/yyyy'}} a las {{clase.horario}}</strong> con {{clase.instructor}}? <span class="text-muted">En cuanto se desocupe un lugar enviaremos un mail a todos los que se encuentren en esta lista.</span></p>
-				<p class="alert alert-danger" role="alert" data-ng-if="!clase.joined && !alumno.actividad_overquota[clase.actividad_id][clase.mes] && !clase.completa && !clase.cancelable" ><strong>Atención!</strong> esta clase es en menos de 12hs. Ten en cuenta que una vez realizada la inscripción no es posible cancelarla.</p>
-				<p class="alert alert-warning" role="alert" data-ng-if="!clase.joined && !alumno.actividad_overquota[clase.actividad_id][clase.mes] && !clase.completa && clase.cancelable" ><strong>Recuerda!</strong> las clases se pueden cancelar únicamente hasta 12hs antes.</p>
+				<p class="alert alert-danger" role="alert" data-ng-if="!clase.joined && !alumno.actividad_overquota[clase.actividad_id][clase.mes] && !clase.completa && !clase.cancelable" >¡<strong>Atención</strong>! esta clase es en menos de 6hs y no es posible cancelarla una vez agnedada. Tené en cuenta que las clases se podrán recuperar únicamente cancelando con 6hs de anticipación.</p>
+				<p class="alert alert-warning" role="alert" data-ng-if="!clase.joined && !alumno.actividad_overquota[clase.actividad_id][clase.mes] && !clase.completa && clase.cancelable" >¡<strong>Recordá</strong> que las clases se podrán recuperar únicamente cancelando con 6hs de anticipación.</p>
 				<a href="#" data-ng-click="hideText=false"><i class="fa fa-comment-o" aria-hidden="true"></i> Dejanos tu comentario</a>
 				<textarea class="form-control" rows="3" placeholder="Dejanos tu comentario" data-ng-hide="hideText" data-ng-init="hideText=true" data-ng-model="clase.comentario"></textarea>
             </div>
@@ -125,7 +122,7 @@
 				<ul class="fa-ul" data-ng-if="selectedclases.length" >
 					<li data-ng-repeat="clase in selectedclases" data-ng-if="clase.checked"><i class="fa-li fa fa-close cursorpointer" data-ng-click="clase.checked=false"></i><strong> {{clase.fecha_fixed}} {{clase.horario}}hs</strong> {{clase.actividad}} con {{clase.instructor}} </li>
 				</ul>
-				<p class="alert alert-warning" role="alert"><strong>Recuerda!</strong> las clases se pueden cancelar únicamente hasta 12hs antes.</p>
+				<p class="alert alert-warning" role="alert">¡<strong>Recordá</strong>! que las clases se podrán recuperar únicamente cancelando con 6hs de anticipación.</p>
             </div>
             <div class="modal-footer">
                 <a href="#" data-dismiss="modal" class="btn btn-default ">Close</a>
@@ -144,7 +141,7 @@
             </div>
             <div class="modal-body lead">
 				<strong><i class="fa fa-heart" aria-hidden="true"></i> Te damos la bienvenida a Releve Pilates!</strong><br/><br/>
-				<i class="fa fa-calendar-check-o" aria-hidden="true"></i> Aquí encontrarás todas las clases disponibles, selecciona el horario que prefieras y empieza a programar tu entrenamiento! <br/><br/>
+				<i class="fa fa-calendar-check-o" aria-hidden="true"></i> Aquí encontrarás todas las clases disponibles, seleccioná el horario que prefieras y ¡empezá a programar tu entrenamiento! <br/><br/>
 				<span class="muted"><i class="fa fa-calendar" aria-hidden="true"></i> Una vez que asistas a la primera clase, tu instructor o instructora habilitará este espacio para que programes todas las clases correspondientes a tu plan</span>
             </div>
             <div class="modal-footer">
@@ -166,35 +163,6 @@
             </div>
             <div class="modal-footer">
                 <a href="#" data-dismiss="modal" class="btn btn-default ">Close</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="info-clase-modal" tabindex='-1'>
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3><i class="fa fa-info-circle" aria-hidden="true"></i> Consejos para la clase</h3>
-            </div>
-            <div class="modal-body">
-				<strong class="lead">Vestimenta:</strong>
-				<ul>
-					<li>La ropa de pilates debe ser cómoda y permitir libertad de movimiento, pero a diferencia de otras disciplinas, si es holgada no será la más adecuada.</li>
-					<li>El instructor debe comprobar continuamente cómo se está realizando el ejercicio y la ropa de pilates debe ser adecuada  para permitir esa verificación. Cuando practicas ejercicios de pilates el instructor visualiza el contorno del cuerpo y corrige el movimiento.</li>
-					<li>Pilates se practica en calcetines o descalzo. En el caso de los calcetines se recomienda -por comodidad e higiene- un par limpio de recambio solo para los ejercicios.</li>
-					<li>No olvides cintas para el pelo, será mucho más cómodo y podrás concentrarte mejor.</li>
-				</ul>
-				<strong class="lead">Para tener en cuenta:</strong>
-				<ul>
-					<li>Avisa a tu instructor de cualquier lesión para que podamos cuidarte y orientar el entrenamiento de forma adecuada.</li>
-					<li>El control de nuestro propio cuerpo es fundamental para salir adelante en una clase de Pilates. Deberemos conseguir disociar movimientos de grupos musculares con la mayor concentración que podamos, en eso consiste</li>
-					<li>Nuestra respiración también toma partida en las clases de Pilates. Conseguiremos un control total de la respiración, ya que ésta forma parte de los seis principios básicos de esta disciplina</li>
-				</ul>
-            </div>
-            <div class="modal-footer">
-                <a href="#" data-dismiss="modal" class="btn btn-success">Entendido</a>
             </div>
         </div>
     </div>

@@ -38,8 +38,8 @@
 				<p class="lead" data-ng-if="!clase.joined && !alumno.primera_clase">Ya has programado todas las clases disponibles en tu plan. Puedes cancelar alguna y elegir este horario si lo prefieres.</p>
 				<p class="lead" data-ng-if="!clase.joined && clase.completa">Lo sentimos pero la clase de <strong>{{clase.actividad}}</strong> del día <strong>{{clase.fecha | date:'dd/MM/yyyy'}} a las {{clase.horario}}</strong> con {{clase.instructor}} está completa y <span class="text-danger">no está disponible</span></p>
 				<p class="lead" data-ng-if="!clase.cancelada && !clase.joined && !clase.completa" >¿Te agendamos para la clase de <strong>{{clase.actividad}}</strong> el día <strong>{{clase.fecha | date:'dd/MM/yyyy'}} a las {{clase.horario}}</strong> con {{clase.instructor}}?</p>
-				<p class="alert alert-danger" role="alert" data-ng-if="!clase.joined && !clase.completa && !clase.cancelable" ><strong>Atención!</strong> esta clase es en menos de 6hs. Ten en cuenta que una vez realizada la inscripción no es posible cancelarla.</p>
-				<p class="alert alert-warning" role="alert" data-ng-if="!clase.joined && !clase.completa && clase.cancelable" ><strong>Recuerda!</strong> las clases se pueden cancelar únicamente hasta 6hs antes.</p>
+				<p class="alert alert-danger" role="alert" data-ng-if="!clase.joined && !clase.completa && !clase.cancelable" >¡<strong>Atención</strong>! esta clase es en menos de 6hs y no es posible cancelarla una vez agnedada. Tené en cuenta que las clases se podrán recuperar únicamente cancelando con 6hs de anticipación.</p>
+				<p class="alert alert-warning" role="alert" data-ng-if="!clase.joined && !clase.completa && clase.cancelable" >¡<strong>Recordá</strong> que las clases se podrán recuperar únicamente cancelando con 6hs de anticipación.</p>
 				<a href="#" data-ng-click="hideText=false"><i class="fa fa-comment-o" aria-hidden="true"></i> Dejanos tu comentario</a>
 				<textarea class="form-control" rows="3" placeholder="Dejanos tu comentario" data-ng-hide="hideText" data-ng-init="hideText=true" data-ng-model="clase.comentario"></textarea>
             </div>
