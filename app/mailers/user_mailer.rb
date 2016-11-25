@@ -68,7 +68,7 @@ class UserMailer < ActionMailer::Base
 		logger.info "BCC: --------------------------------------------"
 		logger.info recipients
 		logger.info "--------------------------------------------"
-		mail(:to => "nitsugaman@gmail.com" ,  :subject => mail_subject, :bcc => recipients)
+		mail(:to => "relevepilates@gmail.com" ,  :subject => mail_subject, :bcc => recipients)
 	end
 
 	
