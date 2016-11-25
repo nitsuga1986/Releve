@@ -65,7 +65,7 @@ class UserMailer < ActionMailer::Base
 		@mail_subtitle = mail_subtitle
 		@mail_subbody = mail_subbody
 		@include_reminder = include_reminder
-		mail(to: 'agustinmancenido@gmail.com', bcc: recipients,  subject: mail_subject)
+		mail(to: 'relevepilates@gmail.com', bcc: recipients,  subject: mail_subject)
 	end
 	
 	private
