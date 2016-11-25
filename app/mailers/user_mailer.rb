@@ -67,7 +67,8 @@ class UserMailer < ActionMailer::Base
 		@include_reminder = include_reminder
 		logger.info "BCC: --------------------------------------------"
 		logger.info recipients
-		mail(to: 'nitsugaman@gmail.com', bcc: recipients,  subject: mail_subject)
+		logger.info "--------------------------------------------"
+		mail(to: 'relevepilates@gmail.com', bcc: recipients,  subject: mail_subject)
 	end
 	
 	private
