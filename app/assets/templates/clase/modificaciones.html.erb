@@ -152,7 +152,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr data-ng-repeat="clase in $data" data-ng-class="{'danger': clase.cancelada,'warning': clase.reemplazo, 'text-muted': clase.old}" data-ng-click="GoToEdit(clase.id)">
+				<tr data-ng-repeat="clase in $data" data-ng-if="!clase.old" data-ng-class="{'danger': clase.cancelada,'warning': clase.reemplazo, 'text-muted': clase.old}" data-ng-click="GoToEdit(clase.id)">
 					<td>
 						<!-- Agendar --><span data-ng-if="agendar_selected">
 <!--Checkbox-->			<label data-ng-if="clase.joined && !clase.cancelada" class="text-success"><i class="fa fa-lg fa-check-square-o" aria-hidden="true"></i></label>

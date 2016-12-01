@@ -71,7 +71,7 @@
 		<tbody>
 			<tr class="ng-table-group" data-ng-repeat-start="group in $groups">
 			  <td colspan="{{cant_visible_cols}}">
-				<a href="" data-ng-click="group.$hideRows = !group.$hideRows">
+				<a href="" data-ng-click="group.$hideRows = !group.$hideRows" data-ng-class="{'text-muted': group.data[group.data.length-1].old}">
 				  <span class="glyphicon" data-ng-class="{ 'glyphicon-chevron-right': group.$hideRows, 'glyphicon-chevron-down': !group.$hideRows }"></span>
 				  <strong>{{ group.data[0].dia }}</strong> {{ group.data[0].fecha_fixed }}
 				</a>
