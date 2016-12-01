@@ -192,7 +192,7 @@ class Api::ClasesController < ApplicationController
 			clasescanceladas = ""
 		end
 	end
-	canceladasarray.reverse.each { |x| register_event('continuation', x) }
+	canceladasarray.reverse.each { |x| register_event('unjoin_continuation', x) }
 	register_event('unjoinmultiple', current_user.nombre_completo+" canceló a <strong>"+selected_user.nombre_completo+"</strong> de las siguientes clases: ")
 	send_unoin_multiple_email(selected_user,@clases)
 	head :ok
