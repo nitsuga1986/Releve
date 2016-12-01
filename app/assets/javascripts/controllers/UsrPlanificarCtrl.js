@@ -14,7 +14,7 @@ angular.module("TurnosApp").controller("UsrPlanificarCtrl",['$scope', '$rootScop
 				getData: function(params) {
 					// ajax request to api
 					startLoading();
-					return ResourceClase.index_usr().$promise.then(function(data) {
+					return ResourceClase.index_current().$promise.then(function(data) {
 						dataFilteredByDay = [];
 						data,$scope.alumno = $scope.condicionesClases(data,$scope.alumno);
 						angular.forEach(data, function(value, key) {
@@ -91,7 +91,7 @@ angular.module("TurnosApp").controller("UsrPlanificarCtrl",['$scope', '$rootScop
 			startLoading();
 			$scope.clases = {};
 			$rootScope.got_to_url_success = "/app/planificar";
-			$cacheFactory.get('$http').remove("/api/clases/index_usr");
+			$cacheFactory.get('$http').remove("/api/clases/index_current");
 			ResourceClase.join_multiple($scope.selectedclases, $scope.callbackSuccess, $scope.callbackFailure).$promise.then(function(data) {
 				$('#alert-container').hide().html('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-check-square-o" aria-hidden="true"></i> Inscripción exitosa! </strong> Ya te agendamos para las clases seleccionadas, te esperamos!</div>').slideDown();
 				$scope.tableParams.reload();

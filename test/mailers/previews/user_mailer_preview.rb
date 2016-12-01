@@ -18,6 +18,12 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.join_multiple_email(user,clases)
   end
   
+  def unjoin_multiple_email
+    user = User.first
+    clases = Clase.first(6)
+    UserMailer.unjoin_multiple_email(user,clases)
+  end
+  
   def unjoin_email
     user = User.first
     clase = Clase.first

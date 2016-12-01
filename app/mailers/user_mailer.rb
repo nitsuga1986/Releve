@@ -18,6 +18,12 @@ class UserMailer < ActionMailer::Base
 		mail(to: @user.email, subject: 'Hemos agendado tus clases')
 	end
 
+	def unjoin_multiple_email(user,clases)
+		@user = user
+		@clases = clases
+		mail(to: @user.email, subject: 'Hemos cancelado tus clases')
+	end
+
 	def unjoin_email(user,clase)
 		@user = user
 		@clase = clase

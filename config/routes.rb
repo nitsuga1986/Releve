@@ -23,11 +23,12 @@ Rails.application.routes.draw do
 				post 'bulk'
 				post 'edit_bulk'
 				post 'index_instructor'
-				get 'index_usr'
 				get 'history_usr'
 				post 'join_multiple'
 				post 'join_usr_multiple'
+				post 'unjoin_usr_multiple'
 				post 'edit_asistencias'
+				get 'index_current'
 				get 'index_user'
 			end
 			member do

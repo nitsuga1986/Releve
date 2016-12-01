@@ -9,6 +9,7 @@ angular.module("TurnosApp").factory("ResourceClase",['$resource', function($reso
       'destroy': 			{ method: 'DELETE' },
       'join':    			{ method: 'POST', isArray: false, url: '/api/clases/:id/join' },
       'join_multiple': 		{ method: 'POST', isArray: false, url: '/api/clases/join_multiple' },
+      'unjoin_usr_multiple':{ method: 'POST', isArray: false, url: '/api/clases/unjoin_usr_multiple' },
       'join_usr_multiple':  { method: 'POST', isArray: false, url: '/api/clases/join_usr_multiple' },
       'edit_asistencias':  	{ method: 'POST', isArray: false, url: '/api/clases/edit_asistencias' },
       'waitlist':    		{ method: 'POST', isArray: false, url: '/api/clases/:id/waitlist' },
@@ -16,7 +17,7 @@ angular.module("TurnosApp").factory("ResourceClase",['$resource', function($reso
       'bulk':    			{ method: 'POST', isArray: false, url: '/api/clases/bulk' },
       'edit_bulk':    		{ method: 'POST', isArray: false, url: '/api/clases/edit_bulk' },
       'index_instructor':  	{ method: 'POST', isArray: true, url: '/api/clases/index_instructor' },
-      'index_usr': 			{ method: 'GET', isArray: true, url: '/api/clases/index_usr', cache : true },
+      'index_current': 		{ method: 'GET', isArray: true, url: '/api/clases/index_current', cache : true },
       'index_user': 		{ method: 'GET', isArray: true, url: '/api/clases/index_user'},
       'history_usr':  		{ method: 'GET', isArray: true, url: '/api/clases/history_usr', cache : true },
     }

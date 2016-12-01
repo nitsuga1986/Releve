@@ -17,7 +17,7 @@
 //= require controllers/UsrMiInfoCtrl
 //= require controllers/ClaseIndexCtrl
 //= require controllers/ClaseEditCtrl
-//= require controllers/ClaseAgendarCtrl
+//= require controllers/ClaseModificacionesCtrl
 //= require controllers/ClaseInstructorCtrl
 //= require controllers/ClaseDashboardCtrl
 //= require controllers/ClaseBulkCtrl

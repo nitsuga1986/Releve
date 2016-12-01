@@ -1,8 +1,14 @@
 <h3><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Planificá tu entrenamiento</h3>
+
 <div class="row"><div id="alert-container" class="col-xs-12"></div></div>
 <div class="row" data-ng-hide="clases.length"><div id="alert-container" class="col-xs-12">
 	<div class="alert alert-success" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		<strong><i class="fa fa-clock-o" aria-hidden="true"></i> Elegí tus horarios de entrenamiento</strong> y buscaremos las clases disponibles para los próximos meses.
+	</div>
+</div></div>
+<div class="row" data-ng-show="clases.length"><div id="alert-container" class="col-xs-12">
+	<div class="alert alert-info" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<i class="fa fa-info-circle" aria-hidden="true"></i> Agendá todas las clases de tu plan para asegurar tu lugar!
 	</div>
 </div></div>
 
@@ -117,12 +123,8 @@
 		<button type="submit" class="btn btn-primary btn-block"><i class="fa fa-search" aria-hidden="true"></i> Buscar clases</button>
 	</div>
 </form></div>
-<div class="row"><div class="col-xs-12"><hr/></div></div>
-<div class="row" data-ng-show="clases.length"><div id="alert-container" class="col-xs-12">
-	<div class="alert alert-info" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		<i class="fa fa-info-circle" aria-hidden="true"></i> Agendá todas las clases de tu plan para asegurar tu lugar!
-	</div>
-</div></div>
+
+
 <div class="row" data-ng-show="clases.length">
 	<div class="col-xs-12 col-sm-5 col-md-4 col-lg-3 pull-right" data-ng-if="!alumno.primera_clase">
 		<button data-ng-click="multipleEventModal()" type="button" class="btn btn-primary btn-block hidden-xs">
@@ -152,14 +154,14 @@
 <!--Checkbox-->			<label data-ng-if="clase.completa" class="text-danger"><i class="fa fa-lg fa-square" aria-hidden="true"></i></label>
 <!--Checkbox-->			<label data-ng-if="!clase.cancelada && !clase.joined && !clase.completa"><input id="selectable{{clase.id}}" type="checkbox" data-ng-model="clase.checked" data-ng-change="verifyPlan(clase.checked,clase.id)"></label>
 					</td>
-				<td id="AgendaCol" data-ng-class="{'strike': clase.cancelada && column.field!='instructor' && column.field!='fecha_fixed','hidden-xs': column.hiddenxs}" data-ng-repeat="column in columns_clasePlanificar" data-ng-click="GoToEdit(clase.id)" data-ng-show="column.visible" sortable="column.field" filter="column.filter">
+				<td id="AgendaCol" data-ng-class="{'strike': clase.cancelada && column.field!='instructor' && column.field!='fecha_fixed','hidden-xs': column.hiddenxs}" data-ng-repeat="column in columns_clasePlanificar" data-ng-show="column.visible" sortable="column.field" filter="column.filter">
 <!--Cancelada-->	<span data-ng-if="column.field=='instructor' && clase.cancelada" class="text-danger" title="{{clase['comment']}}"><span data-ng-if="clase['comment']">{{clase['comment']}}</span><span data-ng-if="!clase['comment']">Clase cancelada</span></span>
 <!--Reemplazo-->	<span data-ng-if="column.field=='instructor' && !clase.cancelada && clase.reemplazo" class="text-danger" title="Clase regular de {{clase['instructor']}}">{{clase['reemplazo']}}</span>
 <!--Field-->		<span data-ng-if="!(column.field=='instructor' && clase.cancelada) && !(column.field=='instructor' && clase.reemplazo)">{{clase[column.field]}}</span>
 <!-- <6hs -->		<span data-ng-if="column.field=='fecha_fixed' && !clase.cancelable" class="label label-warning">< 6hs</span>
-<!--Agendarme-->	<label data-ng-if="column.field=='fecha_fixed' && !clase.cancelada && !clase.joined && !clase.completa" for="selectable{{clase.id}}" class="btn btn-default btn-xs"> Agendarme</label>
+<!--Agendarme-->	<label data-ng-if="column.field=='fecha_fixed' && !clase.cancelada && !clase.joined && !clase.completa" for="selectable{{clase.id}}" class="btn btn-default btn-xs"> <span data-ng-if="!clase.checked">Agendarme</span><span data-ng-if="clase.checked">No agendarme</span></label>
 <!--Completa-->		<span data-ng-if="column.field=='fecha_fixed' && clase.completa" class="label label-danger">Completa</span>
-<!--Cancelada-->		<span data-ng-if="column.field=='fecha_fixed' && clase.cancelada" class="label label-danger">Cancelada</span>
+<!--Cancelada-->	<span data-ng-if="column.field=='fecha_fixed' && clase.cancelada" class="label label-danger">Cancelada</span>
 <!--Agendada-->		<span data-ng-if="column.field=='fecha_fixed' && clase.joined" class="label label-success">Agendada</span>
 				</td>
 				</tr>

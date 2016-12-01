@@ -11,7 +11,7 @@ angular.module("TurnosApp")
 		// Clases
 		.when("/clase/index", { title: 'Listado de clases',templateUrl: "<%= asset_path('clase/index.html') %> ", controller: "ClaseIndexCtrl", activetab: 'clase'})
 		.when("/clase/new", { title: 'Nueva clase',templateUrl: "<%= asset_path('clase/edit.html') %> ", controller: "ClaseEditCtrl", activetab: 'clase'})
-		.when("/clase/agendar", { title: 'Agendar alumno',templateUrl: "<%= asset_path('clase/agendar.html') %> ", controller: "ClaseAgendarCtrl", activetab: 'clase'})
+		.when("/clase/modificaciones", { title: 'Modificaciones de Agenda',templateUrl: "<%= asset_path('clase/modificaciones.html') %> ", controller: "ClaseModificacionesCtrl", activetab: 'clase'})
 		.when("/clase/bulk", { title: 'Agregar en cantidad',templateUrl: "<%= asset_path('clase/bulk.html') %> ", controller: "ClaseBulkCtrl", activetab: 'clase'})
 		.when("/clase/edit_bulk", { title: 'Editar en cantidad',templateUrl: "<%= asset_path('clase/edit_bulk.html') %> ", controller: "ClaseEditBulkCtrl", activetab: 'clase'})
 		.when("/clase/instructor", { title: 'Clases por instructor',templateUrl: "<%= asset_path('clase/instructor.html') %> ", controller: "ClaseInstructorCtrl", activetab: 'clase'})

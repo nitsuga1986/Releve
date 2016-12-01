@@ -3,7 +3,7 @@ class Api::ClasesController < ApplicationController
   # Admin
   before_action only: [:test_emails, :create, :bulk, :destroy] do redirect_to :new_user_session_path unless current_user && current_user.admin?   end
   # Admin & Instructor
-  before_action only: [:index, :show, :search, :instructor, :update, :edit_bulk, :join_usr_multiple, :confirm, :unconfirm] do redirect_to :new_user_session_path unless current_user && (current_user.instructor?||current_user.admin?) end
+  before_action only: [:index, :show, :search, :instructor, :update, :edit_bulk, :join_usr_multiple, :unjoin_usr_multiple, :confirm, :unconfirm] do redirect_to :new_user_session_path unless current_user && (current_user.instructor?||current_user.admin?) end
   # Api render
   respond_to :json
   # ETAG -fresh_when()- is a key we use to determine whether a page has changed.
@@ -170,6 +170,33 @@ class Api::ClasesController < ApplicationController
 	send_join_multiple_email(selected_user,@clases)
 	head :ok
   end
+  
+  def unjoin_usr_multiple
+	selected_user = User.find(params[:_json][0]["alumno_id"])
+	@clases= []
+	canceladasarray = []
+	clasescanceladas = ""
+	params[:_json].each_with_index do |clase, index|
+		@clase = Clase.find(clase[:id])
+		if @clase.completa? then
+			send_waitlist_email(@clase)
+			@clase.destroy_wait_lists
+			register_event('waitlistclear', "Se hizo un lugar en la clase del "+@clase.dia+" "+@clase.fecha.strftime('%d/%m')+" y se avisó a las personas en lista de espera")
+		end
+		selected_user.remove_from_clase(@clase)
+		@clases.push(@clase)
+		clasescanceladas = clasescanceladas+" "+@clase.actividad.nombre+" <strong>"+@clase.dia+" "+@clase.fecha.strftime('%d/%m')+" "+@clase.horario+"hs</strong>"
+		clasescanceladas = clasescanceladas+", " if clase!=params[:_json].last 
+		if((index + 1) % 4 == 0)|| clase==params[:_json].last 
+			canceladasarray.push(clasescanceladas)
+			clasescanceladas = ""
+		end
+	end
+	canceladasarray.reverse.each { |x| register_event('continuation', x) }
+	register_event('unjoinmultiple', current_user.nombre_completo+" canceló a <strong>"+selected_user.nombre_completo+"</strong> de las siguientes clases: ")
+	send_unoin_multiple_email(selected_user,@clases)
+	head :ok
+  end
 
   def edit_asistencias
 	params[:_json].each do |asistencia|
@@ -179,7 +206,7 @@ class Api::ClasesController < ApplicationController
   end
   
   # User
-  def index_usr
+  def index_current
 	@clases = Clase.after_date(DateTime.now.beginning_of_month).order(:fecha,:horario)
 	asistencias = current_user.asistencias
 	fresh_when([@clases, asistencias])
@@ -252,6 +279,7 @@ class Api::ClasesController < ApplicationController
   
   # Emails
   def send_join_multiple_email(user,clases)					UserMailer.join_multiple_email(user,clases).deliver end
+  def send_unoin_multiple_email(user,clases)				UserMailer.unjoin_multiple_email(user,clases).deliver end
   def send_join_email(user,clase)							UserMailer.join_email(user,clase).deliver end
   def send_waitlist_email(clase)							UserMailer.waitlist_email(clase).deliver end
   def send_unjoin_email(user,clase)							UserMailer.unjoin_email(current_user,@clase).deliver end

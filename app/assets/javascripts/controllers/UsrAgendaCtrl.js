@@ -31,7 +31,7 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$rootScope', 
 			getData: function(params) {
 				// ajax request to api
 				startLoading();
-				return Api.index_usr().$promise.then(function(data) {
+				return Api.index_current().$promise.then(function(data) {
 					angular.forEach(data, function(value, key) {
 						if($scope.clases!=undefined && $scope.clases[key]['checked'] == true){data[key]['checked'] = true}
 						else{data[key]['checked'] = false};
@@ -97,7 +97,7 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$rootScope', 
 		if($scope.selectedclases.length){
 			startLoading();
 			$rootScope.got_to_url_success = "/app/agenda";
-			$cacheFactory.get('$http').remove("/api/clases/index_usr");
+			$cacheFactory.get('$http').remove("/api/clases/index_current");
 			ResourceClase.join_multiple($scope.selectedclases, $scope.callbackSuccess, $scope.callbackFailure).$promise.then(function(data) {
 				$('#alert-container').hide().html('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-check-square-o" aria-hidden="true"></i> Inscripción exitosa! </strong> Ya te agendamos para las clases seleccionadas, te esperamos!</div>').slideDown();
 				$scope.tableParams.reload();
@@ -108,7 +108,7 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$rootScope', 
 	$scope.JoinUser = function() {
 		startLoading();
 		$rootScope.got_to_url_success = "/app/agenda";
-		$cacheFactory.get('$http').remove("/api/clases/index_usr");
+		$cacheFactory.get('$http').remove("/api/clases/index_current");
 		ResourceClase.join($scope.deleteVariablesClaseToSend($scope.clase,true,true), $scope.callbackSuccess, $scope.callbackFailure).$promise.then(function(data) {
 			$('#alert-container').hide().html('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-check-square-o" aria-hidden="true"></i> Inscripción exitosa! </strong> Ya hemos guardado tu lugar en la clase, te esperamos!</div>').slideDown();
 			$scope.tableParams.reload();
@@ -118,7 +118,7 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$rootScope', 
 	$scope.UnJoinUser = function() {
 		startLoading();
 		$rootScope.got_to_url_success = "/app/agenda";
-		$cacheFactory.get('$http').remove("/api/clases/index_usr");
+		$cacheFactory.get('$http').remove("/api/clases/index_current");
 		ResourceClase.unjoin($scope.deleteVariablesClaseToSend($scope.clase,true,true), $scope.callbackSuccess, $scope.callbackFailure).$promise.then(function(data) {
 			$('#alert-container').hide().html('<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-times" aria-hidden="true"></i> Clase cancelada! </strong> Ya hemos cancelado tu inscripción a la clase ¡Gracias por avisar!</div>').slideDown();
 			$scope.tableParams.reload();
@@ -128,7 +128,7 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$rootScope', 
 	$scope.WaitListUser = function() {
 		startLoading();
 		$rootScope.got_to_url_success = "/app/agenda";
-		$cacheFactory.get('$http').remove("/api/clases/index_usr");
+		$cacheFactory.get('$http').remove("/api/clases/index_current");
 		ResourceClase.waitlist($scope.deleteVariablesClaseToSend($scope.clase,true,true), $scope.callbackSuccess, $scope.callbackFailure).$promise.then(function(data) {
 			$('#alert-container').hide().html('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-check-square-o" aria-hidden="true"></i> Lista actualizada! </strong> Ya te hemos agregado a la lista de espera.</div>').slideDown();
 			$scope.tableParams.reload();
