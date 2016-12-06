@@ -40,7 +40,7 @@ class Api::AlumnosController < ApplicationController
   end
 
   def newsletter
-	send_newsletter_email_email(params[:recipient], params[:mail_subject], params[:mail_title], params[:mail_pretext], params[:mail_body], params[:mail_button_text], params[:mail_button_link], params[:mail_subtitle], params[:mail_subbody], params[:include_reminder])
+	send_newsletter_email(params[:recipient], params[:mail_subject], params[:mail_title], params[:mail_pretext], params[:mail_body], params[:mail_button_text], params[:mail_button_link], params[:mail_subtitle], params[:mail_subbody], params[:include_reminder])
 	head :ok
   end
   
@@ -118,7 +118,7 @@ class Api::AlumnosController < ApplicationController
 	 params.require(:alumno).permit(:email, :dni, :nombre, :apellido, :profesion, :fechanac, :telefono, :domicilio, :localidad, :nombre_contacto, :apellido_contacto, :telefono_contacto, :sexo, :reminders, :newsletter, :fechaini, :confirmed, :primera_clase, :nro_clases, :admin, :instructor, :accept_terms)
   end
   
-  def send_newsletter_email_email(recipient, mail_subject, mail_title, mail_pretext, mail_body, mail_button_text, mail_button_link, mail_subtitle, mail_subbody, include_reminder)	
+  def send_newsletter_email(recipient, mail_subject, mail_title, mail_pretext, mail_body, mail_button_text, mail_button_link, mail_subtitle, mail_subbody, include_reminder)	
 	 UserMailer.newsletter_email(recipient, mail_subject, mail_title, mail_pretext, mail_body, mail_button_text, mail_button_link, mail_subtitle, mail_subbody, include_reminder).deliver
   end			
   
