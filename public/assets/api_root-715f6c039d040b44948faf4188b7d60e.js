@@ -5397,6 +5397,7 @@ angular.module("TurnosApp").factory("ResourceClase",['$resource', function($reso
       'destroy': 			{ method: 'DELETE' },
       'join':    			{ method: 'POST', isArray: false, url: '/api/clases/:id/join' },
       'join_multiple': 		{ method: 'POST', isArray: false, url: '/api/clases/join_multiple' },
+      'unjoin_usr_multiple':{ method: 'POST', isArray: false, url: '/api/clases/unjoin_usr_multiple' },
       'join_usr_multiple':  { method: 'POST', isArray: false, url: '/api/clases/join_usr_multiple' },
       'edit_asistencias':  	{ method: 'POST', isArray: false, url: '/api/clases/edit_asistencias' },
       'waitlist':    		{ method: 'POST', isArray: false, url: '/api/clases/:id/waitlist' },
@@ -5404,7 +5405,7 @@ angular.module("TurnosApp").factory("ResourceClase",['$resource', function($reso
       'bulk':    			{ method: 'POST', isArray: false, url: '/api/clases/bulk' },
       'edit_bulk':    		{ method: 'POST', isArray: false, url: '/api/clases/edit_bulk' },
       'index_instructor':  	{ method: 'POST', isArray: true, url: '/api/clases/index_instructor' },
-      'index_usr': 			{ method: 'GET', isArray: true, url: '/api/clases/index_usr', cache : true },
+      'index_current': 		{ method: 'GET', isArray: true, url: '/api/clases/index_current', cache : true },
       'index_user': 		{ method: 'GET', isArray: true, url: '/api/clases/index_user'},
       'history_usr':  		{ method: 'GET', isArray: true, url: '/api/clases/history_usr', cache : true },
     }
@@ -5423,6 +5424,7 @@ angular.module("TurnosApp").factory("ResourceAlumno",['$resource', function($res
       'destroy': 		{ method: 'DELETE' },
       'current': 		{ method: 'POST', isArray: false, url: '/api/alumnos/current' },
       'instructores': 	{ method: 'POST', isArray: true, url: '/api/alumnos/instructores' },
+      'newsletter': 	{ method: 'POST', isArray: false, url: '/api/alumnos/newsletter' },
     }
   );
 }]);
@@ -5549,7 +5551,7 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$rootScope', 
 			getData: function(params) {
 				// ajax request to api
 				startLoading();
-				return Api.index_usr().$promise.then(function(data) {
+				return Api.index_current().$promise.then(function(data) {
 					angular.forEach(data, function(value, key) {
 						if($scope.clases!=undefined && $scope.clases[key]['checked'] == true){data[key]['checked'] = true}
 						else{data[key]['checked'] = false};
@@ -5615,7 +5617,7 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$rootScope', 
 		if($scope.selectedclases.length){
 			startLoading();
 			$rootScope.got_to_url_success = "/app/agenda";
-			$cacheFactory.get('$http').remove("/api/clases/index_usr");
+			$cacheFactory.get('$http').remove("/api/clases/index_current");
 			ResourceClase.join_multiple($scope.selectedclases, $scope.callbackSuccess, $scope.callbackFailure).$promise.then(function(data) {
 				$('#alert-container').hide().html('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-check-square-o" aria-hidden="true"></i> Inscripción exitosa! </strong> Ya te agendamos para las clases seleccionadas, te esperamos!</div>').slideDown();
 				$scope.tableParams.reload();
@@ -5626,7 +5628,7 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$rootScope', 
 	$scope.JoinUser = function() {
 		startLoading();
 		$rootScope.got_to_url_success = "/app/agenda";
-		$cacheFactory.get('$http').remove("/api/clases/index_usr");
+		$cacheFactory.get('$http').remove("/api/clases/index_current");
 		ResourceClase.join($scope.deleteVariablesClaseToSend($scope.clase,true,true), $scope.callbackSuccess, $scope.callbackFailure).$promise.then(function(data) {
 			$('#alert-container').hide().html('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-check-square-o" aria-hidden="true"></i> Inscripción exitosa! </strong> Ya hemos guardado tu lugar en la clase, te esperamos!</div>').slideDown();
 			$scope.tableParams.reload();
@@ -5636,7 +5638,7 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$rootScope', 
 	$scope.UnJoinUser = function() {
 		startLoading();
 		$rootScope.got_to_url_success = "/app/agenda";
-		$cacheFactory.get('$http').remove("/api/clases/index_usr");
+		$cacheFactory.get('$http').remove("/api/clases/index_current");
 		ResourceClase.unjoin($scope.deleteVariablesClaseToSend($scope.clase,true,true), $scope.callbackSuccess, $scope.callbackFailure).$promise.then(function(data) {
 			$('#alert-container').hide().html('<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-times" aria-hidden="true"></i> Clase cancelada! </strong> Ya hemos cancelado tu inscripción a la clase ¡Gracias por avisar!</div>').slideDown();
 			$scope.tableParams.reload();
@@ -5646,7 +5648,7 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$rootScope', 
 	$scope.WaitListUser = function() {
 		startLoading();
 		$rootScope.got_to_url_success = "/app/agenda";
-		$cacheFactory.get('$http').remove("/api/clases/index_usr");
+		$cacheFactory.get('$http').remove("/api/clases/index_current");
 		ResourceClase.waitlist($scope.deleteVariablesClaseToSend($scope.clase,true,true), $scope.callbackSuccess, $scope.callbackFailure).$promise.then(function(data) {
 			$('#alert-container').hide().html('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-check-square-o" aria-hidden="true"></i> Lista actualizada! </strong> Ya te hemos agregado a la lista de espera.</div>').slideDown();
 			$scope.tableParams.reload();
@@ -5771,7 +5773,7 @@ angular.module("TurnosApp").controller("UsrPlanificarCtrl",['$scope', '$rootScop
 				getData: function(params) {
 					// ajax request to api
 					startLoading();
-					return ResourceClase.index_usr().$promise.then(function(data) {
+					return ResourceClase.index_current().$promise.then(function(data) {
 						dataFilteredByDay = [];
 						data,$scope.alumno = $scope.condicionesClases(data,$scope.alumno);
 						angular.forEach(data, function(value, key) {
@@ -5848,7 +5850,7 @@ angular.module("TurnosApp").controller("UsrPlanificarCtrl",['$scope', '$rootScop
 			startLoading();
 			$scope.clases = {};
 			$rootScope.got_to_url_success = "/app/planificar";
-			$cacheFactory.get('$http').remove("/api/clases/index_usr");
+			$cacheFactory.get('$http').remove("/api/clases/index_current");
 			ResourceClase.join_multiple($scope.selectedclases, $scope.callbackSuccess, $scope.callbackFailure).$promise.then(function(data) {
 				$('#alert-container').hide().html('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-check-square-o" aria-hidden="true"></i> Inscripción exitosa! </strong> Ya te agendamos para las clases seleccionadas, te esperamos!</div>').slideDown();
 				$scope.tableParams.reload();
@@ -6123,11 +6125,13 @@ angular.module("TurnosApp").controller("ClaseEditCtrl",['$scope', '$rootScope', 
 		});
 	});
 stopLoading();}]);
-angular.module("TurnosApp").controller("ClaseAgendarCtrl",['$scope', '$rootScope', '$location', 'ResourceClase', 'ResourceAlumno', '$filter','NgTableParams', '$timeout', '$cacheFactory', function($scope, $rootScope, $location, ResourceClase, ResourceAlumno, $filter, NgTableParams, $timeout, $cacheFactory) {
+angular.module("TurnosApp").controller("ClaseModificacionesCtrl",['$scope', '$rootScope', '$location', 'ResourceClase', 'ResourceAlumno', '$filter','NgTableParams', '$timeout', '$cacheFactory', function($scope, $rootScope, $location, ResourceClase, ResourceAlumno, $filter, NgTableParams, $timeout, $cacheFactory) {
 	function dateFormat(date) {date = date.split('-'); date = date[2]+' de '+monthNames[parseInt(date[1])-1]; return date;}
+	$scope.agendar_selected = true;
 	$scope.columns_agendar = columns_agendar;
 	$scope.cant_visible_cols = $.grep(columns_agendar, function(e){ return e.visible == true; }).length+1;
-	// SUBMIT
+	
+	// SUBMIT: Buscar clases
 	$scope.submit = function() {
 		if ($scope.alumno!=undefined){
 			$rootScope.got_to_url_success = "/clase/dashboard";
@@ -6138,26 +6142,31 @@ angular.module("TurnosApp").controller("ClaseAgendarCtrl",['$scope', '$rootScope
 				getData: function(params) {
 					// ajax request to api
 					startLoading();
-					return ResourceClase.index_usr().$promise.then(function(data) {
+					if($scope.agendar_selected){ Resource = ResourceClase.index_current();
+					}else{ Resource = ResourceClase.index_user({ id: $scope.alumno.id });}
+					return Resource.$promise.then(function(data) {
 						dataFilteredByDay = [];
 						data,$scope.alumno = $scope.condicionesClases(data,$scope.alumno);
 						angular.forEach(data, function(value, key) {
 							data[key]["duracion"] = data[key]["duracion"]+' hs'
 							data[key]["cant_users"] = value.users.length+" / "+value.max_users;
 							data[key]["fecha_fixed"] = value.dia+" "+dateFormat(value.fecha)+" "+value.horario+"hs";
-							if(!value.old&&(
-								($scope.filterDay[0]&&value.dia=='Lunes'&&value.horario=='09:00')||($scope.filterDay[1]&&value.dia=='Lunes'&&value.horario=='10:00')||($scope.filterDay[2]&&value.dia=='Lunes'&&value.horario=='11:00')||($scope.filterDay[3]&&value.dia=='Lunes'&&value.horario=='12:00')||($scope.filterDay[4]&&value.dia=='Lunes'&&value.horario=='13:00')||($scope.filterDay[5]&&value.dia=='Lunes'&&value.horario=='14:00')||($scope.filterDay[6]&&value.dia=='Lunes'&&value.horario=='15:00')||($scope.filterDay[7]&&value.dia=='Lunes'&&value.horario=='16:00')||($scope.filterDay[8]&&value.dia=='Lunes'&&value.horario=='17:00')||($scope.filterDay[9]&&value.dia=='Lunes'&&value.horario=='18:00')||($scope.filterDay[10]&&value.dia=='Lunes'&&value.horario=='19:00')||($scope.filterDay[11]&&value.dia=='Lunes'&&value.horario=='20:00')||
-								($scope.filterDay[12]&&value.dia=='Martes'&&value.horario=='09:00')||($scope.filterDay[13]&&value.dia=='Martes'&&value.horario=='10:00')||($scope.filterDay[14]&&value.dia=='Martes'&&value.horario=='11:00')||($scope.filterDay[15]&&value.dia=='Martes'&&value.horario=='12:00')||($scope.filterDay[16]&&value.dia=='Martes'&&value.horario=='13:00')||($scope.filterDay[17]&&value.dia=='Martes'&&value.horario=='14:00')||($scope.filterDay[18]&&value.dia=='Martes'&&value.horario=='15:00')||($scope.filterDay[19]&&value.dia=='Martes'&&value.horario=='16:00')||($scope.filterDay[20]&&value.dia=='Martes'&&value.horario=='17:00')||($scope.filterDay[21]&&value.dia=='Martes'&&value.horario=='18:00')||($scope.filterDay[22]&&value.dia=='Martes'&&value.horario=='19:00')||($scope.filterDay[23]&&value.dia=='Martes'&&value.horario=='20:00')||
-								($scope.filterDay[24]&&value.dia=='Miércoles'&&value.horario=='09:00')||($scope.filterDay[25]&&value.dia=='Miércoles'&&value.horario=='10:00')||($scope.filterDay[26]&&value.dia=='Miércoles'&&value.horario=='11:00')||($scope.filterDay[27]&&value.dia=='Miércoles'&&value.horario=='12:00')||($scope.filterDay[28]&&value.dia=='Miércoles'&&value.horario=='13:00')||($scope.filterDay[29]&&value.dia=='Miércoles'&&value.horario=='14:00')||($scope.filterDay[30]&&value.dia=='Miércoles'&&value.horario=='15:00')||($scope.filterDay[31]&&value.dia=='Miércoles'&&value.horario=='16:00')||($scope.filterDay[32]&&value.dia=='Miércoles'&&value.horario=='17:00')||($scope.filterDay[33]&&value.dia=='Miércoles'&&value.horario=='18:00')||($scope.filterDay[34]&&value.dia=='Miércoles'&&value.horario=='19:00')||($scope.filterDay[35]&&value.dia=='Miércoles'&&value.horario=='20:00')||
-								($scope.filterDay[36]&&value.dia=='Jueves'&&value.horario=='09:00')||($scope.filterDay[37]&&value.dia=='Jueves'&&value.horario=='10:00')||($scope.filterDay[38]&&value.dia=='Jueves'&&value.horario=='11:00')||($scope.filterDay[39]&&value.dia=='Jueves'&&value.horario=='12:00')||($scope.filterDay[40]&&value.dia=='Jueves'&&value.horario=='13:00')||($scope.filterDay[41]&&value.dia=='Jueves'&&value.horario=='14:00')||($scope.filterDay[42]&&value.dia=='Jueves'&&value.horario=='15:00')||($scope.filterDay[43]&&value.dia=='Jueves'&&value.horario=='16:00')||($scope.filterDay[44]&&value.dia=='Jueves'&&value.horario=='17:00')||($scope.filterDay[45]&&value.dia=='Jueves'&&value.horario=='18:00')||($scope.filterDay[46]&&value.dia=='Jueves'&&value.horario=='19:00')||($scope.filterDay[47]&&value.dia=='Jueves'&&value.horario=='20:00')||
-								($scope.filterDay[48]&&value.dia=='Viernes'&&value.horario=='09:00')||($scope.filterDay[49]&&value.dia=='Viernes'&&value.horario=='10:00')||($scope.filterDay[50]&&value.dia=='Viernes'&&value.horario=='11:00')||($scope.filterDay[51]&&value.dia=='Viernes'&&value.horario=='12:00')||($scope.filterDay[52]&&value.dia=='Viernes'&&value.horario=='13:00')||($scope.filterDay[53]&&value.dia=='Viernes'&&value.horario=='14:00')||($scope.filterDay[54]&&value.dia=='Viernes'&&value.horario=='15:00')||($scope.filterDay[55]&&value.dia=='Viernes'&&value.horario=='16:00')||($scope.filterDay[56]&&value.dia=='Viernes'&&value.horario=='17:00')||($scope.filterDay[57]&&value.dia=='Viernes'&&value.horario=='18:00')||($scope.filterDay[58]&&value.dia=='Viernes'&&value.horario=='19:00')||($scope.filterDay[59]&&value.dia=='Viernes'&&value.horario=='20:00')
-							)){
-								if(value.cancelada || value.completa){data[key]['checked'] = false;}
-								else{data[key]['checked'] = true;}
-								dataFilteredByDay.push(data[key]);
-							}
+							if($scope.agendar_selected){
+								if(!value.old&&(
+									($scope.filterDay[0]&&value.dia=='Lunes'&&value.horario=='09:00')||($scope.filterDay[1]&&value.dia=='Lunes'&&value.horario=='10:00')||($scope.filterDay[2]&&value.dia=='Lunes'&&value.horario=='11:00')||($scope.filterDay[3]&&value.dia=='Lunes'&&value.horario=='12:00')||($scope.filterDay[4]&&value.dia=='Lunes'&&value.horario=='13:00')||($scope.filterDay[5]&&value.dia=='Lunes'&&value.horario=='14:00')||($scope.filterDay[6]&&value.dia=='Lunes'&&value.horario=='15:00')||($scope.filterDay[7]&&value.dia=='Lunes'&&value.horario=='16:00')||($scope.filterDay[8]&&value.dia=='Lunes'&&value.horario=='17:00')||($scope.filterDay[9]&&value.dia=='Lunes'&&value.horario=='18:00')||($scope.filterDay[10]&&value.dia=='Lunes'&&value.horario=='19:00')||($scope.filterDay[11]&&value.dia=='Lunes'&&value.horario=='20:00')||
+									($scope.filterDay[12]&&value.dia=='Martes'&&value.horario=='09:00')||($scope.filterDay[13]&&value.dia=='Martes'&&value.horario=='10:00')||($scope.filterDay[14]&&value.dia=='Martes'&&value.horario=='11:00')||($scope.filterDay[15]&&value.dia=='Martes'&&value.horario=='12:00')||($scope.filterDay[16]&&value.dia=='Martes'&&value.horario=='13:00')||($scope.filterDay[17]&&value.dia=='Martes'&&value.horario=='14:00')||($scope.filterDay[18]&&value.dia=='Martes'&&value.horario=='15:00')||($scope.filterDay[19]&&value.dia=='Martes'&&value.horario=='16:00')||($scope.filterDay[20]&&value.dia=='Martes'&&value.horario=='17:00')||($scope.filterDay[21]&&value.dia=='Martes'&&value.horario=='18:00')||($scope.filterDay[22]&&value.dia=='Martes'&&value.horario=='19:00')||($scope.filterDay[23]&&value.dia=='Martes'&&value.horario=='20:00')||
+									($scope.filterDay[24]&&value.dia=='Miércoles'&&value.horario=='09:00')||($scope.filterDay[25]&&value.dia=='Miércoles'&&value.horario=='10:00')||($scope.filterDay[26]&&value.dia=='Miércoles'&&value.horario=='11:00')||($scope.filterDay[27]&&value.dia=='Miércoles'&&value.horario=='12:00')||($scope.filterDay[28]&&value.dia=='Miércoles'&&value.horario=='13:00')||($scope.filterDay[29]&&value.dia=='Miércoles'&&value.horario=='14:00')||($scope.filterDay[30]&&value.dia=='Miércoles'&&value.horario=='15:00')||($scope.filterDay[31]&&value.dia=='Miércoles'&&value.horario=='16:00')||($scope.filterDay[32]&&value.dia=='Miércoles'&&value.horario=='17:00')||($scope.filterDay[33]&&value.dia=='Miércoles'&&value.horario=='18:00')||($scope.filterDay[34]&&value.dia=='Miércoles'&&value.horario=='19:00')||($scope.filterDay[35]&&value.dia=='Miércoles'&&value.horario=='20:00')||
+									($scope.filterDay[36]&&value.dia=='Jueves'&&value.horario=='09:00')||($scope.filterDay[37]&&value.dia=='Jueves'&&value.horario=='10:00')||($scope.filterDay[38]&&value.dia=='Jueves'&&value.horario=='11:00')||($scope.filterDay[39]&&value.dia=='Jueves'&&value.horario=='12:00')||($scope.filterDay[40]&&value.dia=='Jueves'&&value.horario=='13:00')||($scope.filterDay[41]&&value.dia=='Jueves'&&value.horario=='14:00')||($scope.filterDay[42]&&value.dia=='Jueves'&&value.horario=='15:00')||($scope.filterDay[43]&&value.dia=='Jueves'&&value.horario=='16:00')||($scope.filterDay[44]&&value.dia=='Jueves'&&value.horario=='17:00')||($scope.filterDay[45]&&value.dia=='Jueves'&&value.horario=='18:00')||($scope.filterDay[46]&&value.dia=='Jueves'&&value.horario=='19:00')||($scope.filterDay[47]&&value.dia=='Jueves'&&value.horario=='20:00')||
+									($scope.filterDay[48]&&value.dia=='Viernes'&&value.horario=='09:00')||($scope.filterDay[49]&&value.dia=='Viernes'&&value.horario=='10:00')||($scope.filterDay[50]&&value.dia=='Viernes'&&value.horario=='11:00')||($scope.filterDay[51]&&value.dia=='Viernes'&&value.horario=='12:00')||($scope.filterDay[52]&&value.dia=='Viernes'&&value.horario=='13:00')||($scope.filterDay[53]&&value.dia=='Viernes'&&value.horario=='14:00')||($scope.filterDay[54]&&value.dia=='Viernes'&&value.horario=='15:00')||($scope.filterDay[55]&&value.dia=='Viernes'&&value.horario=='16:00')||($scope.filterDay[56]&&value.dia=='Viernes'&&value.horario=='17:00')||($scope.filterDay[57]&&value.dia=='Viernes'&&value.horario=='18:00')||($scope.filterDay[58]&&value.dia=='Viernes'&&value.horario=='19:00')||($scope.filterDay[59]&&value.dia=='Viernes'&&value.horario=='20:00')
+								)){
+									if(value.cancelada || value.completa){data[key]['checked'] = false;}
+									else{data[key]['checked'] = true;}
+									dataFilteredByDay.push(data[key]);
+								}
+							}else{	dataFilteredByDay = data;}
+							$scope.clases = dataFilteredByDay;
 						});
-						$scope.clases = dataFilteredByDay;
+						
 						// Filter & Sort
 						filteredData = params.filter() ? $filter('filter')(dataFilteredByDay, params.filter()): dataFilteredByDay;	
 						orderedData = params.sorting() ? $filter('orderBy')(filteredData, params.orderBy()) : filteredData;
@@ -6175,6 +6184,12 @@ angular.module("TurnosApp").controller("ClaseAgendarCtrl",['$scope', '$rootScope
 	$scope.filterDaychange = function(day,event) {
 		event.preventDefault();
 		$scope.filterDay[day] = !$scope.filterDay[day];
+	};
+	// changesButton
+	$scope.changesButton = function(agendar_bool) {
+		$scope.agendar_selected = agendar_bool;
+		delete $scope.clases;
+		delete $scope.alumno;
 	};
 	// Autocomplete
 	$(function() {
@@ -6194,11 +6209,27 @@ angular.module("TurnosApp").controller("ClaseAgendarCtrl",['$scope', '$rootScope
 	$scope.JoinMultiple = function() {
 		if($scope.selectedclases.length){
 			startLoading();
-			$rootScope.got_to_url_success = "/clase/agendar";
+			$rootScope.got_to_url_success = "/clase/modificaciones";
 			$scope.selectedclases[0]["alumno_id"] = $scope.alumno.id;
 			ResourceClase.join_usr_multiple($scope.selectedclases, $scope.callbackSuccess, $scope.callbackFailure).$promise.then(function(data) {
 				$('#alert-container').hide().html('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-check-square-o" aria-hidden="true"></i> Inscripción exitosa! </strong> Ya agendamos las clases seleccionadas!</div>').slideDown();
-				$scope.tableParams.reload();
+				delete $scope.clases;
+				delete $scope.alumno;
+				stopLoading();
+			});
+		}
+	};
+	// UnjoinMultiple
+	$scope.UnjoinMultiple = function() {
+		if($scope.selectedclases.length){
+			startLoading();
+			$rootScope.got_to_url_success = "/clase/modificaciones";
+			$scope.selectedclases[0]["alumno_id"] = $scope.alumno.id;
+			ResourceClase.unjoin_usr_multiple($scope.selectedclases, $scope.callbackSuccess, $scope.callbackFailure).$promise.then(function(data) {
+				$('#alert-container').hide().html('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-check-square-o" aria-hidden="true"></i> Cancelación exitosa! </strong> Ya cancelamos las clases seleccionadas</div>').slideDown();
+				delete $scope.clases;
+				delete $scope.alumno;
+				stopLoading();
 			});
 		}
 	};
@@ -6833,6 +6864,60 @@ angular.module("TurnosApp").controller("AlumnoShowCtrl",['$scope', '$rootScope',
 		})
 	};
 stopLoading();}]);
+angular.module("TurnosApp").controller("AlumnoNewsletterCtrl",['$scope', '$rootScope', '$routeParams', '$location', 'ResourceAlumno', function($scope, $rootScope, $routeParams, $location, ResourceAlumno) {
+	$scope.alumno = {}
+	$scope.recipients_list = []
+	$scope.alumno.recipient = "test";
+	// SUBMIT
+	$scope.submit = function() {
+		if ($scope.alumno.mail_subject!=undefined && $scope.alumno.mail_title!=undefined && $scope.alumno.mail_body!=undefined){
+			$rootScope.got_to_url_success = "/alumno/newsletter";
+			if($scope.alumno.recipient=="list"){$scope.alumno.recipient = $scope.recipients_list.join();}
+			ResourceAlumno.newsletter($scope.alumno, $scope.callbackSuccess, $scope.callbackFailure).$promise.then(function(data) {
+				$scope.show_formsuccess=true;$scope.show_formerror=false;
+			});
+
+		}else{$scope.show_formerror=true;$scope.show_formsuccess=false;}
+		window.scrollTo(0, 0);
+	};
+
+
+	// Autocomplete
+	$(function() {
+		$( "#search_user" ).autocomplete({
+			source: '/api/alumnos/autocomplete',
+			minLength: 2,
+			select: function( event, ui ) {
+				if($.inArray(ui.item.email, $scope.recipients_list)==-1){
+					$scope.recipients_list.push(ui.item.email);
+				}
+				$scope.$apply();
+				$(this).val("");
+				return false;
+			}
+		});
+	});
+	// removeFromList
+	$scope.removeFromList = function(index) {
+		$scope.recipients_list.splice(index, 1);
+	};
+	
+	// utilizarPlantilla
+	$scope.utilizarPlantilla = function(index) {
+		if(index==0){
+			$scope.alumno.mail_subject = "Reservá tus clases de MES";
+			$scope.alumno.mail_title = "Reservá tu lugar!";
+			$scope.alumno.mail_body = " Ya están disponibles las clases de MES, ¡agendá tu mes!\n\nHasta el HASTA, agendá sólo tus horarios regulares ya acordados con tu instructora.\n\nA partir del DESDE, podés modificar tus clases según disponibilidad en el sistema. ";
+			$scope.alumno.mail_button_text = "Planificar hoy!";
+			$scope.alumno.mail_button_link = "http://www.relevepilates.com.ar/app/planificar";
+			$scope.alumno.mail_subtitle = "";
+			$scope.alumno.mail_subbody = "";
+			$scope.alumno.include_reminder = true;
+		}
+	};
+
+
+stopLoading();}]);
 angular.module("TurnosApp").controller("ActividadIndexCtrl",['$scope', '$rootScope', '$location', 'ResourceActividad', '$filter','NgTableParams', '$timeout', function($scope, $rootScope, $location, ResourceActividad, $filter, NgTableParams, $timeout) {
 	//	$scope.practicantes = ResourcePracticante.index();
 	$scope.GoToEdit = function(id) {$location.path("/actividad/"+id+"/edit/");};
@@ -7102,18 +7187,45 @@ angular.module("TurnosApp").controller("PagoShowCtrl",['$scope', '$rootScope', '
 stopLoading();}]);
 angular.module("TurnosApp").controller("EventIndexCtrl",['$scope', '$location', 'ResourceEvent', '$filter','NgTableParams', '$timeout', function($scope, $location, ResourceEvent, $filter, NgTableParams, $timeout) {
 	$scope.events = [];
-	$scope.filter_join = true;
-	$scope.filter_joinmultiple = true;
-	$scope.filter_unjoin = true;
-	$scope.filter_waitlist = true;
-	$scope.filter_waitlistclear = true;
-	$scope.filter_finish_signup = true;
-	$scope.filter_pricing = true;
+	$scope.filter_modificaciones = true;
 	$scope.filter_payment = true;
+	$scope.filter_others = true;
+	$scope.filter_all = true;
 	ResourceEvent.index().$promise.then(function(data) {
 		$scope.events = data;
 		stopLoading();
 	});
+
+	// changeFilter
+	$scope.changeFilter = function(filter) {
+		switch (filter) {
+			case 'all':
+				$scope.filter_all = true;
+				$scope.filter_modificaciones = true;
+				$scope.filter_payment = true;
+				$scope.filter_others = true;
+				break;
+			case 'modificaciones':
+				$scope.filter_all = false;
+				$scope.filter_modificaciones = true;
+				$scope.filter_payment = false;
+				$scope.filter_others = false;
+				break;
+			case 'payment':
+				$scope.filter_all = false;
+				$scope.filter_modificaciones = false;
+				$scope.filter_payment = true;
+				$scope.filter_others = false;
+				break;
+			case 'others':
+				$scope.filter_all = false;
+				$scope.filter_modificaciones = false;
+				$scope.filter_payment = false;
+				$scope.filter_others = true;
+				break;
+		} 
+	};
+	
 }]);
 
 
@@ -7143,7 +7255,7 @@ angular.module("TurnosApp")
 		// Clases
 		.when("/clase/index", { title: 'Listado de clases',templateUrl: "/assets/clase/index.html ", controller: "ClaseIndexCtrl", activetab: 'clase'})
 		.when("/clase/new", { title: 'Nueva clase',templateUrl: "/assets/clase/edit.html ", controller: "ClaseEditCtrl", activetab: 'clase'})
-		.when("/clase/agendar", { title: 'Agendar alumno',templateUrl: "/assets/clase/agendar.html ", controller: "ClaseAgendarCtrl", activetab: 'clase'})
+		.when("/clase/modificaciones", { title: 'Modificaciones de Agenda',templateUrl: "/assets/clase/modificaciones.html ", controller: "ClaseModificacionesCtrl", activetab: 'clase'})
 		.when("/clase/bulk", { title: 'Agregar en cantidad',templateUrl: "/assets/clase/bulk.html ", controller: "ClaseBulkCtrl", activetab: 'clase'})
 		.when("/clase/edit_bulk", { title: 'Editar en cantidad',templateUrl: "/assets/clase/edit_bulk.html ", controller: "ClaseEditBulkCtrl", activetab: 'clase'})
 		.when("/clase/instructor", { title: 'Clases por instructor',templateUrl: "/assets/clase/instructor.html ", controller: "ClaseInstructorCtrl", activetab: 'clase'})
@@ -7153,6 +7265,7 @@ angular.module("TurnosApp")
 		// Alumnos 
 		.when("/alumno/index", { title: 'Listado de alumnos',templateUrl: "/assets/alumno/index.html ", controller: "AlumnoIndexCtrl", activetab: 'alumno'})
 		.when("/alumno/new", { title: 'Nuevo alumno',templateUrl: "/assets/alumno/edit.html ", controller: "AlumnoEditCtrl", activetab: 'alumno'})
+		.when("/alumno/newsletter", { title: 'Enviar novedades',templateUrl: "/assets/alumno/newsletter.html ", controller: "AlumnoNewsletterCtrl", activetab: 'alumno'})
 		.when("/alumno/:id", { title: 'Detalles de la alumno',templateUrl: "/assets/alumno/show.html ", controller: "AlumnoShowCtrl", activetab: 'alumno'})
 		.when("/alumno/:id/edit", { title: 'Editar alumno',templateUrl: "/assets/alumno/edit.html ", controller: "AlumnoEditCtrl", activetab: 'alumno'})
 		// Actividad 
@@ -7222,6 +7335,7 @@ angular.module("TurnosApp").config(['$httpProvider',function($httpProvider) {
 	$httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
     $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
 }]);
+
 
 
 
