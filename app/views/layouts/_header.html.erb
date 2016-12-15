@@ -36,7 +36,7 @@
 							  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
 							  <ul class="dropdown-menu">
 								<li><a href="/clase/dashboard" class="text-admin"><i class="fa fa-calendar-o" aria-hidden="true"></i> Clases</a></li>
-								<li><a href="/clase/modificaciones" class="text-admin"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Modificaciones</a></li>
+								<li><a href="/clase/modificaciones" class="text-admin"><i class="fa fa-exchange" aria-hidden="true"></i> Modificaciones</a></li>
 								<li><a href="/pago/index" class="text-admin"><i class="fa fa-dollar" aria-hidden="true"></i> Pagos</a></li>
 								<li><a href="/alumno/index" class="text-admin"><i class="fa fa-users" aria-hidden="true"></i> Alumnos</a></li>
 								<% if current_user.admin? %>
@@ -101,7 +101,7 @@
 				<a class="btn btn-primary btn-lg" href="/app/mi_info"><i class="fa fa-cogs" aria-hidden="true"></i> Mi Cuenta</a>
 				<% if current_user.instructor?||current_user.admin? %>
 					<a class="btn btn-danger btn-lg text-admin" href="/clase/dashboard"><i class="fa fa-calendar-o" aria-hidden="true"></i> Clases</a>
-					<a class="btn btn-danger btn-lg text-admin" href="/clase/modificaciones"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Modificaciones</a>
+					<a class="btn btn-danger btn-lg text-admin" href="/clase/modificaciones"><i class="fa fa-exchange" aria-hidden="true"></i> Modificaciones</a>
 					<a class="btn btn-danger btn-lg text-admin" href="/pago/index"><i class="fa fa-dollar" aria-hidden="true"></i> Pagos</a>
 					<a class="btn btn-danger btn-lg text-admin" href="/alumno/index"><i class="fa fa-users" aria-hidden="true"></i> Alumnos</a>
 					<% if current_user.admin? %>
