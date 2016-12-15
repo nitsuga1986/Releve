@@ -5518,7 +5518,7 @@ angular.module("TurnosApp").controller("UsrMisClasesCtrl",['$scope', '$rootScope
 		});
 	};
 }]);
-angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$rootScope', '$location', 'ResourceClase', 'ResourceAlumno', '$filter','NgTableParams', '$timeout', '$cacheFactory', function($scope, $rootScope, $location, ResourceClase, ResourceAlumno, $filter, NgTableParams, $timeout, $cacheFactory) {
+angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$rootScope', '$location', '$window', 'ResourceClase', 'ResourceAlumno', '$filter','NgTableParams', '$timeout', '$cacheFactory', function($scope, $rootScope, $location, $window, ResourceClase, ResourceAlumno, $filter, NgTableParams, $timeout, $cacheFactory) {
 	ResourceAlumno.current().$promise.then(function(data) {
 		$scope.alumno = data;
 		if ($scope.alumno.primera_clase){
@@ -5586,6 +5586,7 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$rootScope', 
 	};
 	// verifyPlan
 	$scope.verifyPlan = function(state,clase_id) {
+		if(!$scope.changesUnsaved){	$scope.changesUnsaved=true;}
 		$('#absoluteButtonAgendar').prop("disabled", false);
 		function preventClase(index_clase) {
 			$scope.clases[index_clase].checked=false;
@@ -5693,6 +5694,23 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$rootScope', 
 		$('button.filterDayButton').blur();
 		$scope.tableParams.reload();
 	};
+	// Confirmation Before Leave
+	$scope.changesUnsaved=false;
+	$scope.message = "Las clases seleccionadas no se han guardado ¿Seguro que desea salir?";
+	var getMessage = function() {
+		if($scope.changesUnsaved) {	return $scope.message;
+		} else {					return null;
+		}
+	}
+	$window.onbeforeunload = getMessage;
+	var $offFunction = $rootScope.$on('$locationChangeStart', function(e) {
+		var message = getMessage();
+		if(message && !confirm($scope.message)) {	e.preventDefault();
+		} else {									$offFunction();
+		}
+	});
+
+	
 }]);
 angular.module("TurnosApp").controller("UsrMiInfoCtrl",['$scope', '$rootScope', '$q', '$http', '$routeParams', '$location', 'ResourceAlumno', 'ResourceActividad', function($scope, $rootScope, $q, $http, $routeParams, $location, ResourceAlumno, ResourceActividad) {
 	$scope.FormErrors = [];
@@ -5757,13 +5775,14 @@ angular.module("TurnosApp").controller("UsrMiInfoCtrl",['$scope', '$rootScope', 
 		});
 	});
 stopLoading();}]);
-angular.module("TurnosApp").controller("UsrPlanificarCtrl",['$scope', '$rootScope', '$location', 'ResourceClase', 'ResourceAlumno', '$filter','NgTableParams', '$timeout', '$cacheFactory', function($scope, $rootScope, $location, ResourceClase, ResourceAlumno, $filter, NgTableParams, $timeout, $cacheFactory) {
+angular.module("TurnosApp").controller("UsrPlanificarCtrl",['$scope', '$rootScope', '$location', '$window', 'ResourceClase', 'ResourceAlumno', '$filter','NgTableParams', '$timeout', '$cacheFactory', function($scope, $rootScope, $location, $window, ResourceClase, ResourceAlumno, $filter, NgTableParams, $timeout, $cacheFactory) {
 	function dateFormat(date) {date = date.split('-'); date = date[2]+' de '+monthNames[parseInt(date[1])-1]; return date;}
 	$scope.columns_clasePlanificar = columns_clasePlanificar;
 	$scope.cant_visible_cols = $.grep(columns_clasePlanificar, function(e){ return e.visible == true; }).length+1;
 	$scope.alumno = ResourceAlumno.current();
 	// SUBMIT
 	$scope.submit = function() {
+		if(!$scope.changesUnsaved){	$scope.changesUnsaved=true;}
 		if ($scope.alumno!=undefined){
 			$rootScope.got_to_url_success = "/clase/instructor";
 			$scope.FormErrors = [];
@@ -5862,6 +5881,22 @@ angular.module("TurnosApp").controller("UsrPlanificarCtrl",['$scope', '$rootScop
 		$scope.selectedclases = $.grep($scope.clases, function(e){ return e.checked == true; });
 		$('#multiple-events-modal').modal('show');
 	};
+	// Confirmation Before Leave
+	$scope.changesUnsaved=false;
+	$scope.message = "Las clases seleccionadas no se han guardado ¿Seguro que desea salir?";
+	var getMessage = function() {
+		if($scope.changesUnsaved) {	return $scope.message;
+		} else {					return null;
+		}
+	}
+	$window.onbeforeunload = getMessage;
+	var $offFunction = $rootScope.$on('$locationChangeStart', function(e) {
+		var message = getMessage();
+		if(message && !confirm($scope.message)) {	e.preventDefault();
+		} else {									$offFunction();
+		}
+	});
+	
 stopLoading();}]);
 angular.module("TurnosApp").controller("ClaseIndexCtrl",['$scope', '$rootScope', '$location', 'ResourceClase', '$filter','NgTableParams', '$timeout', '$cacheFactory', function($scope, $rootScope, $location, ResourceClase, $filter, NgTableParams, $timeout, $cacheFactory) {
 	$scope.GoToEdit = function(id) {$location.path("/clase/"+id+"/edit/");};
@@ -6866,11 +6901,13 @@ angular.module("TurnosApp").controller("AlumnoShowCtrl",['$scope', '$rootScope',
 stopLoading();}]);
 angular.module("TurnosApp").controller("AlumnoNewsletterCtrl",['$scope', '$rootScope', '$routeParams', '$location', 'ResourceAlumno', function($scope, $rootScope, $routeParams, $location, ResourceAlumno) {
 	$scope.alumno = {}
+	$scope.recipients_list = []
 	$scope.alumno.recipient = "test";
 	// SUBMIT
 	$scope.submit = function() {
 		if ($scope.alumno.mail_subject!=undefined && $scope.alumno.mail_title!=undefined && $scope.alumno.mail_body!=undefined){
 			$rootScope.got_to_url_success = "/alumno/newsletter";
+			if($scope.alumno.recipient=="list"){$scope.alumno.recipient = $scope.recipients_list.join();}
 			ResourceAlumno.newsletter($scope.alumno, $scope.callbackSuccess, $scope.callbackFailure).$promise.then(function(data) {
 				$scope.show_formsuccess=true;$scope.show_formerror=false;
 			});
@@ -6878,6 +6915,42 @@ angular.module("TurnosApp").controller("AlumnoNewsletterCtrl",['$scope', '$rootS
 		}else{$scope.show_formerror=true;$scope.show_formsuccess=false;}
 		window.scrollTo(0, 0);
 	};
+
+
+	// Autocomplete
+	$(function() {
+		$( "#search_user" ).autocomplete({
+			source: '/api/alumnos/autocomplete',
+			minLength: 2,
+			select: function( event, ui ) {
+				if($.inArray(ui.item.email, $scope.recipients_list)==-1){
+					$scope.recipients_list.push(ui.item.email);
+				}
+				$scope.$apply();
+				$(this).val("");
+				return false;
+			}
+		});
+	});
+	// removeFromList
+	$scope.removeFromList = function(index) {
+		$scope.recipients_list.splice(index, 1);
+	};
+	
+	// utilizarPlantilla
+	$scope.utilizarPlantilla = function(index) {
+		if(index==0){
+			$scope.alumno.mail_subject = "Reservá tus clases de MES";
+			$scope.alumno.mail_title = "Reservá tu lugar!";
+			$scope.alumno.mail_body = " Ya están disponibles las clases de MES, ¡agendá tu mes!\n\nHasta el HASTA, agendá sólo tus horarios regulares ya acordados con tu instructora.\n\nA partir del DESDE, podés modificar tus clases según disponibilidad en el sistema. ";
+			$scope.alumno.mail_button_text = "Planificar hoy!";
+			$scope.alumno.mail_button_link = "http://www.relevepilates.com.ar/app/planificar";
+			$scope.alumno.mail_subtitle = "";
+			$scope.alumno.mail_subbody = "";
+			$scope.alumno.include_reminder = true;
+		}
+	};
+
 
 stopLoading();}]);
 angular.module("TurnosApp").controller("ActividadIndexCtrl",['$scope', '$rootScope', '$location', 'ResourceActividad', '$filter','NgTableParams', '$timeout', function($scope, $rootScope, $location, ResourceActividad, $filter, NgTableParams, $timeout) {
@@ -7084,6 +7157,7 @@ angular.module("TurnosApp").controller("PagoEditCtrl",['$scope', '$rootScope', '
 			return yyyy+'-'+mm+'-'+dd
 		};
 		$scope.pago.fecha = SetToday();
+		$scope.pago.cant_clases = 8;
 		$scope.pago.mes = parseInt($scope.pago.fecha.substring(5, 7));
 		$scope.ActividadIndex.$promise.then(function( value ){
 			$scope.pago.actividad_id = value[0].id;
@@ -7093,6 +7167,7 @@ angular.module("TurnosApp").controller("PagoEditCtrl",['$scope', '$rootScope', '
 	// SUBMIT
 	$scope.submitted = false;
 	$scope.submit = function() {
+		$scope.buttonDisabled = true;
 		$rootScope.got_to_url_success = "/pago/index";
 		if ($scope.PagoForm.$valid) {
 			console.log("valid submit");
@@ -7149,18 +7224,45 @@ angular.module("TurnosApp").controller("PagoShowCtrl",['$scope', '$rootScope', '
 stopLoading();}]);
 angular.module("TurnosApp").controller("EventIndexCtrl",['$scope', '$location', 'ResourceEvent', '$filter','NgTableParams', '$timeout', function($scope, $location, ResourceEvent, $filter, NgTableParams, $timeout) {
 	$scope.events = [];
-	$scope.filter_join = true;
-	$scope.filter_joinmultiple = true;
-	$scope.filter_unjoin = true;
-	$scope.filter_waitlist = true;
-	$scope.filter_waitlistclear = true;
-	$scope.filter_finish_signup = true;
-	$scope.filter_pricing = true;
+	$scope.filter_modificaciones = true;
 	$scope.filter_payment = true;
+	$scope.filter_others = true;
+	$scope.filter_all = true;
 	ResourceEvent.index().$promise.then(function(data) {
 		$scope.events = data;
 		stopLoading();
 	});
+
+	// changeFilter
+	$scope.changeFilter = function(filter) {
+		switch (filter) {
+			case 'all':
+				$scope.filter_all = true;
+				$scope.filter_modificaciones = true;
+				$scope.filter_payment = true;
+				$scope.filter_others = true;
+				break;
+			case 'modificaciones':
+				$scope.filter_all = false;
+				$scope.filter_modificaciones = true;
+				$scope.filter_payment = false;
+				$scope.filter_others = false;
+				break;
+			case 'payment':
+				$scope.filter_all = false;
+				$scope.filter_modificaciones = false;
+				$scope.filter_payment = true;
+				$scope.filter_others = false;
+				break;
+			case 'others':
+				$scope.filter_all = false;
+				$scope.filter_modificaciones = false;
+				$scope.filter_payment = false;
+				$scope.filter_others = true;
+				break;
+		} 
+	};
+	
 }]);
 
 
