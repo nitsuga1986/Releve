@@ -80,7 +80,7 @@ class Api::ClasesController < ApplicationController
 
   def show
 	@clase = Clase.find(params[:id])
-	fresh_when(@clase)
+	#fresh_when(@clase)
   end
   
   def search
@@ -178,7 +178,7 @@ class Api::ClasesController < ApplicationController
 	clasescanceladas = ""
 	params[:_json].each_with_index do |clase, index|
 		@clase = Clase.find(clase[:id])
-		if @clase.completa? then
+		if @clase.completa? and !@clase.wait_lists.empty? then
 			send_waitlist_email(@clase)
 			@clase.destroy_wait_lists
 			register_event('waitlistclear', "Se hizo un lugar en la clase del "+@clase.dia+" "+@clase.fecha.strftime('%d/%m')+" y se avisó a las personas en lista de espera")
@@ -248,7 +248,7 @@ class Api::ClasesController < ApplicationController
 
   def unjoin 
 	@clase = Clase.find(params[:id])
-	if @clase.completa? then
+	if @clase.completa?  and !@clase.wait_lists.empty? then
 		send_waitlist_email(@clase)
 		@clase.destroy_wait_lists
 		register_event('waitlistclear', "Se hizo un lugar en la clase del "+@clase.dia+" "+@clase.fecha.strftime('%d/%m')+" y se avisó a las personas en lista de espera")

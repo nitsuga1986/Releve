@@ -4,5 +4,6 @@ json.actividad_id 	@clase.actividad.id
 json.users 			@clase.users, partial: 'api/users/user', as: :user
 json.instructor 	@clase.instructor if @clase.instructor.present?
 json.reemplazo	 	@clase.reemplazo if @clase.reemplazo.present?
+json.wait_lists	 	@clase.wait_lists if @clase.wait_lists.present?
 
 
