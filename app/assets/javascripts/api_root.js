@@ -47,4 +47,8 @@ function stopLoading() {
 	$('#ReleveImgNav').show();
 	$('#AppContainer').fadeIn();
 }
+// showErrorMessage
+function showErrorMessage() {
+	$('#defaultErrorAlert').show();
+}
 startLoading();

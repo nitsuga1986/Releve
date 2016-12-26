@@ -277,14 +277,6 @@ class Api::ClasesController < ApplicationController
 
   private
   
-  def clase_params
-	 params.permit(:fecha, :horario, :max_users, :duracion, :trialable, :cancelada, :comment)
-  end
-
-  def register_event(name,content)
-	Event.create(name: name,content: content)
-  end
-  
   # Emails
   def send_join_multiple_email(user,clases)					UserMailer.join_multiple_email(user,clases).deliver end
   def send_unoin_multiple_email(user,clases)				UserMailer.unjoin_multiple_email(user,clases).deliver end
@@ -293,4 +285,12 @@ class Api::ClasesController < ApplicationController
   def send_unjoin_email(user,clase)							UserMailer.unjoin_email(current_user,@clase).deliver end
   def send_unjoin_comment_email(user, clase, comentario)	UserMailer.unjoin_comment_email(user, clase, comentario).deliver end
 
+  # Other
+  def clase_params
+	 params.permit(:fecha, :horario, :max_users, :duracion, :trialable, :cancelada, :comment)
+  end
+
+  def register_event(name,content)
+	Event.create(name: name,content: content)
+  end
 end
