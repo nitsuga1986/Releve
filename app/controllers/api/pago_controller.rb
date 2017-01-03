@@ -9,12 +9,16 @@ class Api::PagoController < ApplicationController
 
   # Instructor
   def create
-	@pago = Pago.new(pago_params)
-	if @pago.save then
-		register_event('payment', @pago.user.nombre_completo+" abonó $"+@pago.monto.to_s+" por "+@pago.cant_clases.to_s+" clases de "+I18n.t('date.month_names')[@pago.mes-1]+" (cobró "+current_user.nombre_completo+")")
-		render 'api/pago/show', status: :created
+	if params[:user_id].present? and params[:monto].present?
+		@pago = Pago.new(pago_params)
+		if @pago.save then
+			register_event('payment', @pago.user.nombre_completo+" abonó $"+@pago.monto.to_s+" por "+@pago.cant_clases.to_s+" clases de "+I18n.t('date.month_names')[@pago.mes-1]+" (cobró "+current_user.nombre_completo+")")
+			render 'api/pago/show', status: :created
+		else
+			render json: @pago.errors, status: :internal_server_error
+		end
 	else
-		render json: @pago.errors, status: :internal_server_error
+		head :forbidden
 	end
   end
   
@@ -25,10 +29,14 @@ class Api::PagoController < ApplicationController
   
   def update
 	@pago = Pago.find(params[:id])
-	if @pago.update_attributes(pago_params) then
-		head :ok
+	if params[:user_id].present? and params[:monto].present?
+		if @pago.update_attributes(pago_params) then
+			head :ok
+		else
+			render json: @pago.errors, status: :internal_server_error
+		end
 	else
-		render json: @pago.errors, status: :internal_server_error
+		head :forbidden
 	end
   end
   

@@ -5135,6 +5135,7 @@ angular.module("TurnosApp",['ngRoute','ngResource','ngTable','ngCookies']).run([
 	$rootScope.callbackFailure = function(response) {
 		window.scrollTo(0, 0);
 		console.log("failure", response);
+		showErrorMessage();
 		return true
 	}
 	// deleteVariablesClaseToSend
@@ -5147,6 +5148,7 @@ angular.module("TurnosApp",['ngRoute','ngResource','ngTable','ngCookies']).run([
 	$rootScope.condicionesClases = function(clases,alumno) {
 		// Each clase:
 		alumno.actividad_counter = []; // Count clases for each actividad
+		alumno.selected_counter = []; // Count clases selected for each actividad
 		alumno.actividad_counter_month = []; // Count clases for each actividad for month
 		if(alumno.selected_counter==undefined){alumno.selected_counter = [];} // Count clases for each checkbox
 		$.each(clases, function(index_clase, clase) {
@@ -5231,7 +5233,7 @@ $.datepicker.regional['es'] = {
 	dateFormat: "yy-mm-dd",
 	changeMonth: true,
 	changeYear: true,
-	yearRange: "-80:+0",
+	yearRange: "-2:+5",
 	//showButtonPanel: true
 });
 //  Agenda
@@ -5552,6 +5554,8 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$rootScope', 
 				// ajax request to api
 				startLoading();
 				return Api.index_current().$promise.then(function(data) {
+					$scope.alumno.actividad_counter = [];
+					$scope.alumno.selected_counter = [];
 					angular.forEach(data, function(value, key) {
 						if($scope.clases!=undefined && $scope.clases[key]['checked'] == true){data[key]['checked'] = true}
 						else{data[key]['checked'] = false};
@@ -5597,10 +5601,6 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$rootScope', 
 		pack = $.grep($scope.alumno.packs, function(e){ return e.actividad_id == clase.actividad_id; })[0];
 		if (state){
 			if (pack != undefined){
-		console.log('actividad_counter:')
-		console.log($scope.alumno.actividad_counter)
-		console.log('selected_counter:')
-		console.log($scope.alumno.selected_counter)
 				if($scope.alumno.actividad_counter[clase.actividad_id]==undefined){$scope.alumno.actividad_counter[clase.actividad_id]=[];}
 				if($scope.alumno.actividad_counter[clase.actividad_id][clase.mes]==undefined){$scope.alumno.actividad_counter[clase.actividad_id][clase.mes]=0;}
 				if($scope.alumno.selected_counter[clase.actividad_id]==undefined){$scope.alumno.selected_counter[clase.actividad_id]=[];}
@@ -7137,6 +7137,7 @@ angular.module("TurnosApp").controller("PagoIndexCtrl",['$scope', '$rootScope', 
 
 angular.module("TurnosApp").controller("PagoEditCtrl",['$scope', '$rootScope', '$q', '$http', '$routeParams', '$location', 'ResourcePago', 'ResourceActividad', 'ResourceAlumno', function($scope, $rootScope, $q, $http, $routeParams, $location, ResourcePago, ResourceActividad, ResourceAlumno) {
 	$scope.submiterror = false;
+	$scope.showErrorAlert = false;
 	$scope.pago = new ResourcePago();
 	$scope.ActividadIndex = ResourceActividad.index();
 	// Edit or New
@@ -7144,7 +7145,11 @@ angular.module("TurnosApp").controller("PagoEditCtrl",['$scope', '$rootScope', '
 		$scope.FormTitle = "<i class='fa fa-usd'></i> Editar pago";
 		$scope.FormButton = '<i class="fa fa-edit fa-lg"></i> Guardar';
 		$scope.pago = ResourcePago.show({ id: $routeParams.id });
-		$scope.pago.$promise.then(function( value ){},function( error ){$location.path("/pago/new");});	// if id not exists => ToNew
+		$scope.pago.$promise.then(function( value ){
+			ResourceAlumno.show({ id: value.user_id }).$promise.then(function( value ){
+				$scope.alumno_selected = value.nombre_completo+" ("+value.email+")";
+			});
+		},function( error ){$location.path("/pago/new");});	// if id not exists => ToNew
 	} else { 				// New
 		$scope.FormTitle = "<i class='fa fa-usd'></i> Ingresar pago";
 		$scope.FormButton = '<i class="fa fa-plus-square fa-lg"></i> Agregar';
@@ -7169,7 +7174,9 @@ angular.module("TurnosApp").controller("PagoEditCtrl",['$scope', '$rootScope', '
 	$scope.submit = function() {
 		$scope.buttonDisabled = true;
 		$rootScope.got_to_url_success = "/pago/index";
-		if ($scope.PagoForm.$valid) {
+		console.log($scope.pago.user_id)
+		console.log($scope.pago.monto)
+		if ($scope.PagoForm.$valid && $scope.pago.user_id!=undefined && $scope.pago.user_id!='' && $scope.pago.monto!=undefined && $scope.pago.monto!='') {
 			console.log("valid submit");
 			// Update or Create
 			if ($routeParams.id) {
@@ -7178,7 +7185,8 @@ angular.module("TurnosApp").controller("PagoEditCtrl",['$scope', '$rootScope', '
 				ResourcePago.create($scope.pago, $scope.callbackSuccess, $scope.callbackFailure); 	
 			}
 		} else {
-			$scope.PagoForm.submitted = true;
+			$scope.showErrorAlert = true;
+			$scope.buttonDisabled = false;
 			window.scrollTo(0, 0);
 		}
 	};
@@ -7420,5 +7428,9 @@ function stopLoading() {
 	$('#LoadingImg').hide();
 	$('#ReleveImgNav').show();
 	$('#AppContainer').fadeIn();
+}
+// showErrorMessage
+function showErrorMessage() {
+	$('#defaultErrorAlert').show();
 }
 startLoading();

@@ -1,5 +1,11 @@
 <h2 data-ng-bind-html="FormTitle | html_trusted">Pago</h2>
 <hr class="pago"/>
+
+<div class="row" data-ng-if="showErrorAlert" ><div class="col-xs-12"><div class="alert alert-danger alert-dismissible" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	Debes completar todos los campos para ingresar el pago.
+</div></div></div>
+
 <!-- Formulario -->
 <div class="col-sm-12">
 	<form class="form-horizontal" data-ng-submit="submit()" name="PagoForm" novalidate role="form">

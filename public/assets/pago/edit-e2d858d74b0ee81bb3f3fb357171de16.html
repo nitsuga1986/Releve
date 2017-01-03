@@ -1,16 +1,21 @@
 <h2 data-ng-bind-html="FormTitle | html_trusted">Pago</h2>
 <hr class="pago"/>
+
+<div class="row" data-ng-if="showErrorAlert" ><div class="col-xs-12"><div class="alert alert-danger alert-dismissible" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	Debes completar todos los campos para ingresar el pago.
+</div></div></div>
+
 <!-- Formulario -->
 <div class="col-sm-12">
 	<form class="form-horizontal" data-ng-submit="submit()" name="PagoForm" novalidate role="form">
 		<div class="row"><div class="col-xs-12">
 			<!-- user -->
-			<div class="form-group col-sm-6">
-				<label for="user" class="col-sm-4 control-label">Alumno</label>
+			<div class="form-group col-sm-6" id="form_search_user">
+				<label class="col-sm-4 control-label">Alumno</label>
 				<div class="col-sm-7">
-					<div class="input-group btn-block">
-						<select class="form-control" name="user" data-ng-model="pago.user_id" id="user" data-ng-options="user.id as user.nombre_completo for user in AlumnoIndex"></select>
-					</div>
+					<p data-ng-bind="alumno_selected"></p>
+					<input type="text" class="form-control" name="search_user" data-ng-model="search_user" id="search_user" placeholder="ej. vicky@barnfader.com">
 				</div>
 			</div>
 			<!-- monto -->
@@ -57,7 +62,7 @@
 		<!-- Submit-->
 		<div class="row"><div class="col-xs-12">
 			<div class="col-sm-3">
-				<button type="submit" class="btn btn-primary btn-block" data-ng-bind-html="FormButton | html_trusted"></button>
+				<button type="submit" class="btn btn-primary btn-block" data-ng-bind-html="FormButton | html_trusted"  data-ng-disabled="buttonDisabled"></button>
 			</div>
 		</div></div>
 	</form>

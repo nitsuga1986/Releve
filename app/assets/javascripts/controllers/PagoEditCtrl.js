@@ -1,5 +1,6 @@
 angular.module("TurnosApp").controller("PagoEditCtrl",['$scope', '$rootScope', '$q', '$http', '$routeParams', '$location', 'ResourcePago', 'ResourceActividad', 'ResourceAlumno', function($scope, $rootScope, $q, $http, $routeParams, $location, ResourcePago, ResourceActividad, ResourceAlumno) {
 	$scope.submiterror = false;
+	$scope.showErrorAlert = false;
 	$scope.pago = new ResourcePago();
 	$scope.ActividadIndex = ResourceActividad.index();
 	// Edit or New
@@ -7,7 +8,11 @@ angular.module("TurnosApp").controller("PagoEditCtrl",['$scope', '$rootScope', '
 		$scope.FormTitle = "<i class='fa fa-usd'></i> Editar pago";
 		$scope.FormButton = '<i class="fa fa-edit fa-lg"></i> Guardar';
 		$scope.pago = ResourcePago.show({ id: $routeParams.id });
-		$scope.pago.$promise.then(function( value ){},function( error ){$location.path("/pago/new");});	// if id not exists => ToNew
+		$scope.pago.$promise.then(function( value ){
+			ResourceAlumno.show({ id: value.user_id }).$promise.then(function( value ){
+				$scope.alumno_selected = value.nombre_completo+" ("+value.email+")";
+			});
+		},function( error ){$location.path("/pago/new");});	// if id not exists => ToNew
 	} else { 				// New
 		$scope.FormTitle = "<i class='fa fa-usd'></i> Ingresar pago";
 		$scope.FormButton = '<i class="fa fa-plus-square fa-lg"></i> Agregar';
@@ -32,7 +37,9 @@ angular.module("TurnosApp").controller("PagoEditCtrl",['$scope', '$rootScope', '
 	$scope.submit = function() {
 		$scope.buttonDisabled = true;
 		$rootScope.got_to_url_success = "/pago/index";
-		if ($scope.PagoForm.$valid) {
+		console.log($scope.pago.user_id)
+		console.log($scope.pago.monto)
+		if ($scope.PagoForm.$valid && $scope.pago.user_id!=undefined && $scope.pago.user_id!='' && $scope.pago.monto!=undefined && $scope.pago.monto!='') {
 			console.log("valid submit");
 			// Update or Create
 			if ($routeParams.id) {
@@ -41,7 +48,8 @@ angular.module("TurnosApp").controller("PagoEditCtrl",['$scope', '$rootScope', '
 				ResourcePago.create($scope.pago, $scope.callbackSuccess, $scope.callbackFailure); 	
 			}
 		} else {
-			$scope.PagoForm.submitted = true;
+			$scope.showErrorAlert = true;
+			$scope.buttonDisabled = false;
 			window.scrollTo(0, 0);
 		}
 	};
