@@ -9,10 +9,10 @@ class Api::PagoController < ApplicationController
 
   # Instructor
   def create
-	if params[:user_id].present? and params[:monto].present?
+	if params[:user_id].present? and params[:monto].present? then
 		@pago = Pago.new(pago_params)
 		if @pago.save then
-			register_event('payment', @pago.user.nombre_completo+" abonó $"+@pago.monto.to_s+" por "+@pago.cant_clases.to_s+" clases de "+I18n.t('date.month_names')[@pago.mes-1]+" (cobró "+current_user.nombre_completo+")")
+			register_event('payment', @pago.user.nombre_completo+" abonó $"+@pago.monto.to_s+" por "+@pago.cant_clases.to_s+" clases de "+I18n.t('date.month_names')[@pago.mes]+" (cobró "+current_user.nombre_completo+")")
 			render 'api/pago/show', status: :created
 		else
 			render json: @pago.errors, status: :internal_server_error
@@ -29,7 +29,7 @@ class Api::PagoController < ApplicationController
   
   def update
 	@pago = Pago.find(params[:id])
-	if params[:user_id].present? and params[:monto].present?
+	if params[:user_id].present? and params[:monto].present? then
 		if @pago.update_attributes(pago_params) then
 			head :ok
 		else
