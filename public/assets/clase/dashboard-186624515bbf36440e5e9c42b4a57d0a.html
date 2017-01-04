@@ -43,7 +43,7 @@
 		</div>
 		<!-- Submit-->
 		<div class="col-md-2">
-			<button type="submit" class="btn btn-primary btn-block" data-ng-bind-html="FormButton | html_trusted"></button>
+			<button type="submit" class="btn btn-primary btn-block" data-ng-bind-html="FormButton | html_trusted"  data-ng-disabled="buttonDisabled"></button>
 		</div>
 	</form>
 </div></div>
@@ -71,24 +71,27 @@
 		<tbody>
 			<tr class="ng-table-group" data-ng-repeat-start="group in $groups">
 			  <td colspan="{{cant_visible_cols}}">
-				<a href="" data-ng-click="group.$hideRows = !group.$hideRows">
+				<a href="" data-ng-click="group.$hideRows = !group.$hideRows" data-ng-class="{'text-muted': group.data[group.data.length-1].old}">
 				  <span class="glyphicon" data-ng-class="{ 'glyphicon-chevron-right': group.$hideRows, 'glyphicon-chevron-down': !group.$hideRows }"></span>
 				  <strong>{{ group.data[0].dia }}</strong> {{ group.data[0].fecha_fixed }}
 				</a>
 			  </td>
 			</tr>
-			<tr data-ng-hide="group.$hideRows" data-ng-repeat-start="clase in group.data" data-ng-class="{'success': clase.joined,'danger': clase.cancelada}">
-				<td id="AgendaCol" data-ng-class="{'strike': clase.cancelada && column.field!='instructor','hidden-xs': column.hiddenxs}" data-ng-repeat="column in columns_dashboard" data-ng-click="GoToEdit(clase.id)" data-ng-show="column.visible" sortable="column.field" filter="column.filter">
-<!--Field(!mult)-->	<span>{{clase[column.field]}}</span>
-<!-- <6hs -->		<span data-ng-if="column.field=='horario' && !clase.cancelable && !clase.old" class="label label-warning">< 6hs</span>
-<!--Completa-->		<span data-ng-if="column.field=='horario' && clase.completa" class="label label-danger">Completa</span>
-<!--Cancelar-->		<button data-ng-if="column.field=='horario' && !clase.cancelada && clase.joined && clase.cancelable" data-ng-click="eventModal(clase.id)" class="btn btn-default btn-xs" type="button">Cancelar</button>
+			<tr data-ng-hide="group.$hideRows" data-ng-repeat-start="clase_each in group.data" data-ng-class="{'success': clase_each.joined,'danger': clase_each.cancelada}">
+				<td id="AgendaCol" data-ng-class="{'strike': clase_each.cancelada && column.field!='instructor','hidden-xs': column.hiddenxs}" data-ng-repeat="column in columns_dashboard" data-ng-click="GoToEdit(clase_each.id)" data-ng-show="column.visible" sortable="column.field" filter="column.filter" style="max-width: 280px;overflow-x: hidden;text-overflow: ellipsis;">
+<!--Field(!mult)-->	<span>{{clase_each[column.field]}}</span>
+<!-- <6hs -->		<span data-ng-if="column.field=='horario' && !clase_each.cancelable && !clase_each.old" class="label label-warning">< 6hs</span>
+<!--Completa-->		<span data-ng-if="column.field=='horario' && clase_each.completa" class="label label-danger">Completa</span>
+<!--Cancelar-->		<button data-ng-if="column.field=='horario' && !clase_each.cancelada && clase_each.joined && clase_each.cancelable" data-ng-click="eventModal(clase_each.id)" class="btn btn-default btn-xs" type="button">Cancelar</button>
+<!-- Instructor -->	<span data-ng-if="column.field=='horario' && clase.instructor_id == 9999999 && clase_each.reemplazo==null" class="text-muted"> ({{clase_each.instructor}})</span>
+<!-- ... -->		<span data-ng-if="column.field=='horario' && clase.instructor_id == 9999999 && clase_each.reemplazo!=null" class="text-danger"> ({{clase_each.reemplazo}})</span>
+<!-- ... -->		<span data-ng-if="column.field=='horario' && clase.instructor_id != 9999999 && clase_each.reemplazo!=null" class="text-danger"> (Reemplazo)</span>
 				</td>
 			</tr>
-			<tr data-ng-hide="group.$hideRows" class="text-muted" data-ng-repeat="alumno in clase.users" data-ng-repeat-end>
+			<tr data-ng-hide="group.$hideRows" class="text-muted" data-ng-repeat="alumno in clase_each.users" data-ng-repeat-end>
 				<td data-ng-click="GoToAlumnoEdit(alumno.id)"><i class="fa fa-user" aria-hidden="true"></i> {{alumno.nombre_completo}}</td>
-				<td data-ng-if="alumno.confirmed" data-ng-click="editAsistencia(clase,alumno)"><a href="#" class="text-success"><i class="fa fa-check-square-o"></i></a></td>
-				<td data-ng-if="!alumno.confirmed" data-ng-click="editAsistencia(clase,alumno)"><a href="#" class="text-muted"><i class="fa fa-square-o"></i></a></td>
+				<td data-ng-if="alumno.confirmed" data-ng-click="editAsistencia(clase_each,alumno)"><a href="#" class="text-success"><i class="fa fa-check-square-o"></i></a></td>
+				<td data-ng-if="!alumno.confirmed" data-ng-click="editAsistencia(clase_each,alumno)"><a href="#" class="text-muted"><i class="fa fa-square-o"></i></a></td>
 			</tr>
 			<tr data-ng-repeat-end></tr>
 			<tr class="ng-table-filters" data-ng-init="tableParams">
