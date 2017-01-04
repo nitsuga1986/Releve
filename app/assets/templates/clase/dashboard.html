@@ -78,14 +78,14 @@
 			  </td>
 			</tr>
 			<tr data-ng-hide="group.$hideRows" data-ng-repeat-start="clase_each in group.data" data-ng-class="{'success': clase_each.joined,'danger': clase_each.cancelada}">
-				<td id="AgendaCol" data-ng-class="{'strike': clase_each.cancelada && column.field!='instructor','hidden-xs': column.hiddenxs}" data-ng-repeat="column in columns_dashboard" data-ng-click="GoToEdit(clase_each.id)" data-ng-show="column.visible" sortable="column.field" filter="column.filter">
+				<td id="AgendaCol" data-ng-class="{'strike': clase_each.cancelada && column.field!='instructor','hidden-xs': column.hiddenxs}" data-ng-repeat="column in columns_dashboard" data-ng-click="GoToEdit(clase_each.id)" data-ng-show="column.visible" sortable="column.field" filter="column.filter" style="max-width: 280px;overflow-x: hidden;text-overflow: ellipsis;">
 <!--Field(!mult)-->	<span>{{clase_each[column.field]}}</span>
-<!-- Instructor -->	<span data-ng-if="column.field=='horario' && clase.instructor_id == 9999999 && clase_each.reemplazo==null" class="text-muted"> ({{clase_each.instructor}})</span>
-<!-- ... -->		<span data-ng-if="column.field=='horario' && clase.instructor_id == 9999999 && clase_each.reemplazo!=null" class="text-danger"> ({{clase_each.reemplazo}})</span>
-<!-- ... -->		<span data-ng-if="column.field=='horario' && clase.instructor_id != 9999999 && clase_each.reemplazo!=null" class="text-danger"> (Reemplazo: {{clase_each.reemplazo}})</span>
 <!-- <6hs -->		<span data-ng-if="column.field=='horario' && !clase_each.cancelable && !clase_each.old" class="label label-warning">< 6hs</span>
 <!--Completa-->		<span data-ng-if="column.field=='horario' && clase_each.completa" class="label label-danger">Completa</span>
 <!--Cancelar-->		<button data-ng-if="column.field=='horario' && !clase_each.cancelada && clase_each.joined && clase_each.cancelable" data-ng-click="eventModal(clase_each.id)" class="btn btn-default btn-xs" type="button">Cancelar</button>
+<!-- Instructor -->	<span data-ng-if="column.field=='horario' && clase.instructor_id == 9999999 && clase_each.reemplazo==null" class="text-muted"> ({{clase_each.instructor}})</span>
+<!-- ... -->		<span data-ng-if="column.field=='horario' && clase.instructor_id == 9999999 && clase_each.reemplazo!=null" class="text-danger"> ({{clase_each.reemplazo}})</span>
+<!-- ... -->		<span data-ng-if="column.field=='horario' && clase.instructor_id != 9999999 && clase_each.reemplazo!=null" class="text-danger"> (Reemplazo)</span>
 				</td>
 			</tr>
 			<tr data-ng-hide="group.$hideRows" class="text-muted" data-ng-repeat="alumno in clase_each.users" data-ng-repeat-end>
