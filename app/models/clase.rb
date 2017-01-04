@@ -1,7 +1,8 @@
 class Clase < ActiveRecord::Base
 	scope :btw_dates, ->(start_date, end_date) { where('fecha >= ? AND fecha <= ?', start_date, end_date) if (start_date.present? &&  end_date.present?) }
 	scope :after_date, ->(date) { where('fecha >= ?', date) if date.present? }
-
+	scope :by_instructor, ->(user_id) { where('instructor=? OR reemplazo=?', user_id, user_id) if user_id.present? }
+	
 	has_many :asistencias
 	has_many :users, through: :asistencias
 	has_many :wait_lists

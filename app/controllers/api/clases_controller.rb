@@ -98,7 +98,7 @@ class Api::ClasesController < ApplicationController
 		@clases = Clase.btw_dates(params[:fecha_start],params[:fecha_end])
 		fresh_when(@clases)
 	else
-		@clases = User.find(params[:instructor_id]).instructorados.btw_dates(params[:fecha_start],params[:fecha_end])
+		@clases = Clase.by_instructor(params[:instructor_id]).btw_dates(params[:fecha_start],params[:fecha_end])
 		fresh_when(@clases)
 	end
 	if @clases.nil? then
