@@ -212,7 +212,7 @@ class Api::ClasesController < ApplicationController
   # User
   def index_current
 	@clases = Clase.after_date(DateTime.now.beginning_of_month).order(:fecha,:horario)
-	asistencias = current_user.asistencias
+	#asistencias = current_user.asistencias
 	# fresh_when([@clases, asistencias])
   end
   
