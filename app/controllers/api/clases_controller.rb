@@ -180,7 +180,7 @@ class Api::ClasesController < ApplicationController
 	end
 	agendadasarray.reverse.each { |x| register_event('continuation', x) }
 	register_event('joinmultiple', current_user.nombre_completo+" agendó a <strong>"+selected_user.nombre_completo+"</strong> en las siguientes clases: ")
-	send_join_multiple_email(selected_user,@clases)
+	#send_join_multiple_email(selected_user,@clases)
 	head :ok
   end
   
@@ -193,7 +193,7 @@ class Api::ClasesController < ApplicationController
 		params[:_json].each_with_index do |clase, index|
 			@clase = Clase.find(clase[:id])
 			if @clase.completa? and !@clase.wait_lists.empty? then
-				send_waitlist_email(@clase)
+				#send_waitlist_email(@clase)
 				@clase.destroy_wait_lists
 				register_event('waitlistclear', "Se hizo un lugar en la clase del "+@clase.dia+" "+@clase.fecha.strftime('%d/%m')+" y se avisó a las personas en lista de espera")
 			end
@@ -208,7 +208,7 @@ class Api::ClasesController < ApplicationController
 		end
 		canceladasarray.reverse.each { |x| register_event('unjoin_continuation', x) }
 		register_event('unjoinmultiple', current_user.nombre_completo+" canceló a <strong>"+selected_user.nombre_completo+"</strong> de las siguientes clases: ")
-		send_unoin_multiple_email(selected_user,@clases)
+		#send_unoin_multiple_email(selected_user,@clases)
 		head :ok
 	else
 		head :bad_request
@@ -236,10 +236,14 @@ class Api::ClasesController < ApplicationController
 
   def join 
 	@clase = Clase.find(params[:id])
-	@clase.add_asistencia(current_user.id)
-	send_join_email(current_user,@clase)
-	register_event('join',"<strong>"+current_user.nombre_completo+"</strong> se agendó a la clase de "+@clase.actividad.nombre+" del <strong>"+@clase.dia+" "+@clase.fecha.strftime('%d/%m')+" "+@clase.horario+"hs</strong>")
-	head :ok
+	if can_join?(current_user, @clase) then
+		@clase.add_asistencia(current_user.id)
+		#send_join_email(current_user,@clase)
+		register_event('join',"<strong>"+current_user.nombre_completo+"</strong> se agendó a la clase de "+@clase.actividad.nombre+" del <strong>"+@clase.dia+" "+@clase.fecha.strftime('%d/%m')+" "+@clase.horario+"hs</strong>")
+		head :ok
+	else
+		head :bad_request
+	end
   end
   
   def join_multiple
@@ -248,18 +252,20 @@ class Api::ClasesController < ApplicationController
 	clasesagendadas = ""
 	params[:_json].each_with_index do |clase, index|
 		@clase = Clase.find(clase[:id])
-		@clase.add_asistencia(current_user.id)
-		@clases.push(@clase)
-		clasesagendadas = clasesagendadas+" "+@clase.actividad.nombre+" <strong>"+@clase.dia+" "+@clase.fecha.strftime('%d/%m')+" "+@clase.horario+"hs</strong>"
-		clasesagendadas = clasesagendadas+", " if clase!=params[:_json].last 
-		if((index + 1) % 4 == 0)|| clase==params[:_json].last 
-			agendadasarray.push(clasesagendadas)
-			clasesagendadas = ""
+		if can_join?(current_user, @clase) then
+			@clase.add_asistencia(current_user.id)
+			@clases.push(@clase)
+			clasesagendadas = clasesagendadas+" "+@clase.actividad.nombre+" <strong>"+@clase.dia+" "+@clase.fecha.strftime('%d/%m')+" "+@clase.horario+"hs</strong>"
+			clasesagendadas = clasesagendadas+", " if clase!=params[:_json].last 
+			if((index + 1) % 4 == 0)|| clase==params[:_json].last 
+				agendadasarray.push(clasesagendadas)
+				clasesagendadas = ""
+			end
 		end
 	end
 	agendadasarray.reverse.each { |x| register_event('continuation', x) }
 	register_event('joinmultiple', "<strong>"+current_user.nombre_completo+"</strong> se agendó en las siguientes clases: ")
-	send_join_multiple_email(current_user,@clases)
+	#send_join_multiple_email(current_user,@clases)
 	head :ok
   end
 
@@ -267,13 +273,13 @@ class Api::ClasesController < ApplicationController
 	@clase = Clase.find(params[:id])
 	if @clase.cancelable? or current_user.instructor? or current_user.admin? then
 		if @clase.completa? and !@clase.wait_lists.empty? then
-			send_waitlist_email(@clase)
+			#send_waitlist_email(@clase)
 			@clase.destroy_wait_lists
 			register_event('waitlistclear', "Se hizo un lugar en la clase del "+@clase.dia+" "+@clase.fecha.strftime('%d/%m')+" y se avisó a las personas en lista de espera")
 		end
 		current_user.remove_from_clase(@clase)
-		send_unjoin_email(current_user,@clase)
-		send_unjoin_comment_email(current_user,@clase,params[:comentario]) if params.has_key?(:comentario)
+		#send_unjoin_email(current_user,@clase)
+		#send_unjoin_comment_email(current_user,@clase,params[:comentario]) if params.has_key?(:comentario)
 		register_event('unjoin', "<strong>"+current_user.nombre_completo+"</strong> canceló su clase de "+@clase.actividad.nombre+" del <strong>"+@clase.dia+" "+@clase.fecha.strftime('%d/%m')+" "+@clase.horario+"hs</strong>")
 		head :ok
 	else
@@ -306,4 +312,9 @@ class Api::ClasesController < ApplicationController
   def register_event(name,content)
 	Event.create(name: name,content: content)
   end
+  
+  def can_join?(alumno, clase)
+	return (!clase.completa? and !clase.old?)
+  end
+  
 end
