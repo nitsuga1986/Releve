@@ -129,17 +129,30 @@ class Api::ClasesController < ApplicationController
   end
   
   def edit_bulk
-	if params[:fecha_start].present? && params[:fecha_end].present? && params[:horario].present? && params[:actividad_id].present? then
+	if params[:fecha_start].present? && params[:fecha_end].present? && params[:max_users].present? && params[:instructor_id].present? && params[:actividad_id].present? && params[:filterDay].present? then
 		Date.parse(params[:fecha_start]).upto(Date.parse(params[:fecha_end])) do |date|
-			if (params[:bool_monday]==true && date.wday==1)||(params[:bool_tuesday]==true && date.wday==2)||(params[:bool_wednesday]==true && date.wday==3)||(params[:bool_thursday]==true && date.wday==4)||(params[:bool_friday]==true && date.wday==5)||(params[:bool_saturday]==true && date.wday==6)||(params[:bool_sunday]==true && date.wday==0) then
-				if @clase = Clase.find_by(fecha: date.strftime("%Y-%m-%d"), horario: params[:horario], actividad_id: params[:actividad_id]) then
-					@clase.comment = (!params[:comment].nil? ? params[:comment] : '')
-					@clase.cancelada = (!params[:cancelada].nil? ? params[:cancelada] : false)
-					@clase.trialable = (!params[:trialable].nil? ? params[:trialable] : false)
-					@clase.instructor = (!params[:instructor_id].nil? ? User.find(params[:instructor_id]) : nil)
-					@clase.reemplazo = (!params[:reemplazo_id].nil? ? User.find(params[:reemplazo_id]) : nil)
-					@clase.update_attributes(clase_params)
-					@clase.save
+			if (params[:filterDay][0..11].any? && date.wday==1)||(params[:filterDay][12..23].any? && date.wday==2)||(params[:filterDay][24..35].any? && date.wday==3)||(params[:filterDay][36..47].any? && date.wday==4)||(params[:filterDay][48..59].any? && date.wday==5) then
+				case date.wday
+					when 1 then horarioArray = params[:filterDay][0..11]	# Lunes
+					when 2 then horarioArray = params[:filterDay][12..23]	# Martes
+					when 3 then horarioArray = params[:filterDay][24..35]	# Miércoles
+					when 4 then horarioArray = params[:filterDay][36..47]	# Jueves
+					when 5 then horarioArray = params[:filterDay][48..59]	# Viernes
+				end
+				horarioArray.each_with_index do |horarioBool, index|
+					if horarioBool then
+						params[:horario] = ["09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00"][index]
+						params[:fecha] = date.strftime("%Y-%m-%d")
+						if @clase = Clase.find_by(fecha: params[:fecha], horario: params[:horario]) then
+							@clase.comment = (!params[:comment].nil? ? params[:comment] : '')
+							@clase.cancelada = (!params[:cancelada].nil? ? params[:cancelada] : false)
+							@clase.trialable = (!params[:trialable].nil? ? params[:trialable] : false)
+							@clase.instructor = (!params[:instructor_id].nil? ? User.find(params[:instructor_id]) : nil)
+							@clase.reemplazo = (!params[:reemplazo_id].nil? ? User.find(params[:reemplazo_id]) : nil)
+							@clase.update_attributes(clase_params)
+							@clase.save
+						end
+					end				
 				end
 			end
 		end
@@ -148,7 +161,7 @@ class Api::ClasesController < ApplicationController
 		head :bad_request
 	end
   end
-  
+
   def join_usr_multiple
 	selected_user = User.find(params[:_json][0]["alumno_id"])
 	@clases= []
