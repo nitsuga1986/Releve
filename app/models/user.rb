@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable
   
-  scope :search_containing, ->(param) { where("email like ? OR nombre like ? OR apellido like ?", param, param, param) if param.present? }
+  scope :search_containing, ->(param) { where("lower(email) like ? OR lower(nombre) like ? OR lower(apellido) like ?", param.downcase, param.downcase, param.downcase) if param.present? }
   scope :remaindable, -> { where(reminders: true) }
   scope :newsletterable, -> { where(newsletter: true) }
 
@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   has_many :instructorados, class_name: "Clase", foreign_key: "instructor"
   has_many :reemplazoados, class_name: "Clase", foreign_key: "reemplazo"  
   
-  after_create :set_fechaini
+  after_create :corrections_on_create
   before_destroy :destroy_related
   
   # Include default devise modules. Others available are:
@@ -102,15 +102,19 @@ class User < ActiveRecord::Base
     end
   end
   
-  private
-  def set_fechaini
-	self.update_attribute(:fechaini,Date.today)
-  end
+  def nombre=(s) super s.capitalize end
+  def apellido=(s) super s.capitalize end
   
   private
+  def corrections_on_create
+	self.update_attribute(:fechaini,Date.today) 										#Set Fecha inicio
+  end
+  
   def destroy_related
 	asistencias.each{|x| x.destroy}	
 	wait_lists.each{|x| x.destroy}		
 	packs.each{|x| x.destroy}		
   end
+  
+  
 end
