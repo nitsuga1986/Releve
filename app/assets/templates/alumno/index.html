@@ -27,7 +27,7 @@
 			<tbody>
 				<tr data-ng-repeat="alumno in $data">
 					<td data-ng-repeat="column in columns_alumno" data-ng-click="GoToEdit(alumno.id)" data-ng-show="column.visible" sortable="column.field" filter="column.filter">
-<!-- star -->			<span data-ng-if="column.field=='nombre' && alumno.primera_clase" class="text-success"><i class="fa fa-star" aria-hidden="true"></i></span>
+<!-- star -->			<span data-ng-if="column.field=='nombre' && alumno.primera_clase" class="text-primary"><i class="fa fa-star" aria-hidden="true"></i></span>
 						{{alumno[column.field] | true_false}}
 					</td>
 					<td>

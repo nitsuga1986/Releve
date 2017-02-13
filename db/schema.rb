@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161101171019) do
+ActiveRecord::Schema.define(version: 20170203202833) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,18 @@ ActiveRecord::Schema.define(version: 20161101171019) do
     t.date     "fecha_end"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "cantidad01",   default: 1
+    t.integer  "cantidad02",   default: 1
+    t.integer  "cantidad03",   default: 1
+    t.integer  "cantidad04",   default: 1
+    t.integer  "cantidad05",   default: 1
+    t.integer  "cantidad06",   default: 1
+    t.integer  "cantidad07",   default: 1
+    t.integer  "cantidad08",   default: 1
+    t.integer  "cantidad09",   default: 1
+    t.integer  "cantidad10",   default: 1
+    t.integer  "cantidad11",   default: 1
+    t.integer  "cantidad12",   default: 1
   end
 
   add_index "packs", ["actividad_id"], name: "index_packs_on_actividad_id", using: :btree

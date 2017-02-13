@@ -23,7 +23,10 @@ class Api::PagoController < ApplicationController
   end
   
   def destroy
-	Pago.destroy(params[:id])
+	@pago = Pago.find(params[:id])
+	if Pago.destroy(params[:id]) then
+		register_event('payment', "[Pago eliminado] De "+@pago.user.nombre_completo+" $"+@pago.monto.to_s+" por "+@pago.cant_clases.to_s+" clases de "+I18n.t('date.month_names')[@pago.mes]+" (eliminado por "+current_user.nombre_completo+")")
+	end
 	head :ok
   end
   
@@ -31,6 +34,7 @@ class Api::PagoController < ApplicationController
 	@pago = Pago.find(params[:id])
 	if params[:user_id].present? and params[:monto].present? then
 		if @pago.update_attributes(pago_params) then
+			register_event('payment', "[Modificado] "+@pago.user.nombre_completo+" abonó $"+@pago.monto.to_s+" por "+@pago.cant_clases.to_s+" clases de "+I18n.t('date.month_names')[@pago.mes]+" (cobró "+current_user.nombre_completo+")")
 			head :ok
 		else
 			render json: @pago.errors, status: :internal_server_error
