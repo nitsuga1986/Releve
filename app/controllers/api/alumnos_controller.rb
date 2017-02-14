@@ -52,7 +52,7 @@ class Api::AlumnosController < ApplicationController
 
   def show
 	@alumno = User.find(params[:id])
-	fresh_when(@alumno)
+	#fresh_when(@alumno)
   end
 
   def update

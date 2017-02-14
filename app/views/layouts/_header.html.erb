@@ -70,49 +70,46 @@
 	</div>
 	<!-- /.container-fluid -->
 </nav>
-<!-- Holder for mobile navigation -->
-<div class="mobile-nav lead">
-	<div class="btn-group-vertical btn-block" role="group" aria-label="...">
-		<% if !user_signed_in? %>
-			<a class="btn btn-primary btn-lg" href="#" data-toggle="modal" data-target="#modal1" target="_self">Comenzar!</a>
-		<% else %>
-			<a class="btn btn-primary btn-lg" data-method="DELETE" href="<%= destroy_user_session_path %>">Cerrar sesión <i class="fa fa-sign-out" aria-hidden="true" target="_self"></i></a>
-		<% end %>
+
+
+<ul class="mobile-nav">
+	<li class="nav-item"><a href="#" class="close-link"><div class="close-icon"></div></a></li>
+	<% if current_page?('/') %>
+		<li class="nav-item"><a href="#intro"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a></li>
+		<li class="nav-item"><a href="#galeria" target="_self">Galería</a></li>
+		<li class="nav-item"><a href="#actividades" class="hidden-sm" target="_self">Actividades</a></li>
+		<li class="nav-item"><a href="#ubicacion" target="_self">Contacto</a></li>
+		<li class="nav-item"><a href="#precios" target="_self">Precios</a></li>
+	<% else %>
+		<li class="nav-item"><a href="/" target="_self"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a></li>
+	<% end %>
+	<% if user_signed_in? %>
 		<% if current_page?('/') %>
-			<a class="btn btn-default btn-lg" href="#intro">Inicio</a>
+			<li class="nav-item nav-btn"><a class="btn btn-releve" href="/app/agenda"><i class="fa fa-ellipsis-v" aria-hidden="true"></i> Reservá tu clase</a></li>
 		<% else %>
-			<a class="btn btn-default btn-lg" href="/" target="_self">Inicio</a>
-		<% end %>
-		<% if current_page?('/') %>
-			<a class="btn btn-default btn-lg" href="#galeria" target="_self">Galería</a>
-			<a class="btn btn-default btn-lg" href="#actividades" target="_self">Actividades</a>
-			<a class="btn btn-default btn-lg" href="#ubicacion" target="_self">Contacto</a>
-			<a class="btn btn-default btn-lg" href="#precios" target="_self">Precios</a>
-		<% end %>
-		<% if user_signed_in? %>
-			<% if current_page?('/') %>
-				<a class="btn btn-primary btn-lg" href="/app/agenda"><i class="fa fa-ellipsis-v" aria-hidden="true"></i> Reservá tu clase</a>
-			<% else %>
-				<a class="btn btn-primary btn-lg" href="/app/agenda"><i class="fa fa-calendar" aria-hidden="true"></i> Agenda</a>
-				<% if !current_user.primera_clase?  %>
-					<a class="btn btn-primary btn-lg" href="/app/planificar"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Planificar</a>
-				<% end %>
-				<a class="btn btn-primary btn-lg" href="/app/mis_clases"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Mis Clases</a>
-				<a class="btn btn-primary btn-lg" href="/app/mi_info"><i class="fa fa-cogs" aria-hidden="true"></i> Mi Cuenta</a>
-				<% if current_user.instructor?||current_user.admin? %>
-					<a class="btn btn-danger btn-lg text-admin" href="/clase/dashboard"><i class="fa fa-calendar-o" aria-hidden="true"></i> Clases</a>
-					<a class="btn btn-danger btn-lg text-admin" href="/clase/modificaciones"><i class="fa fa-exchange" aria-hidden="true"></i> Modificaciones</a>
-					<a class="btn btn-danger btn-lg text-admin" href="/pago/index"><i class="fa fa-dollar" aria-hidden="true"></i> Pagos</a>
-					<a class="btn btn-danger btn-lg text-admin" href="/alumno/index"><i class="fa fa-users" aria-hidden="true"></i> Alumnos</a>
-					<% if current_user.admin? %>
-						<!--<a class="btn btn-danger btn-lg text-admin" href="/clase/index"><i class="fa fa-calendar" aria-hidden="true"></i> Calendario</a>-->
-						<a class="btn btn-danger btn-lg text-admin" href="/eventos/index"><i class="fa fa-bell" aria-hidden="true"></i> Eventos</a>
-						<a class="btn btn-danger btn-lg text-admin" href="/alumno/newsletter"><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Enviar novedades</a>
-					<% end %>
+			<li class="nav-item"><a href="/app/agenda"><i class="fa fa-calendar" aria-hidden="true"></i> Agenda</a></li>
+			<% if !current_user.primera_clase?  %>
+				<li class="nav-item"><a href="/app/planificar"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Planificar</a></li>
+			<% end %>
+			<li class="nav-item"><a href="/app/mis_clases"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Mis Clases</a></li>
+			<li class="nav-item"><a href="/app/mi_info"><i class="fa fa-cogs" aria-hidden="true"></i> Mi Cuenta</a></li>
+			<% if current_user.instructor?||current_user.admin? %>
+				<li class="nav-item"><a class="text-admin" href="/clase/dashboard"><i class="fa fa-calendar-o" aria-hidden="true"></i> Clases</a></li>
+				<li class="nav-item"><a class="text-admin" href="/clase/modificaciones"><i class="fa fa-exchange" aria-hidden="true"></i> Modificaciones</a></li>
+				<li class="nav-item"><a class="text-admin" href="/pago/index"><i class="fa fa-dollar" aria-hidden="true"></i> Pagos</a></li>
+				<li class="nav-item"><a class="text-admin" href="/alumno/index"><i class="fa fa-users" aria-hidden="true"></i> Alumnos</a></li>
+				<% if current_user.admin? %>
+					<li class="nav-item"><a class="text-admin" href="/eventos/index"><i class="fa fa-bell" aria-hidden="true"></i> Eventos</a></li>
+					<li class="nav-item"><a class="text-admin" href="/alumno/newsletter"><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Enviar novedades</a></li>
 				<% end %>
 			<% end %>
 		<% end %>
-	</div>
-	<a href="#" class="close-link"><i class="arrow_up"></i></a>
-</div>
+	<% end %>
+	<% if !user_signed_in? %>
+		<li class="nav-item nav-btn"><a class="btn btn-releve" href="#" data-toggle="modal" data-target="#modal1" target="_self">Comenzar!</a></li>
+	<% else %>
+		<li class="nav-item nav-btn"><a class="btn btn-white" data-method="DELETE" href="<%= destroy_user_session_path %>">Cerrar sesión <i class="fa fa-sign-out" aria-hidden="true" target="_self"></i></a></li>
+	<% end %>
+</ul>
+
 

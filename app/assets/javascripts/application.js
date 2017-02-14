@@ -1,12 +1,20 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap.min
+//= require touchSwipe/jquery.touchSwipe.min
+
 $(window).load(function(){$('#modal2').modal('show');});
 
 // Mobile Nav
 $('body').on('click', 'nav .navbar-toggle', function() {
 	$('.mobile-nav').addClass('active');
 });
+$(".mobile-nav").swipe({
+	swipeRight:function(event, direction, distance, duration, fingerCount) {
+		$('.close-link').click();
+	},
+});
+
 
 $('body').on('click', '.mobile-nav a, nav.original .navbar-nav a:not([data-toggle])', function(event) {
 	$('.mobile-nav').removeClass('active');
