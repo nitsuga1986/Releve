@@ -20900,7 +20900,13 @@ body.landingpage p, body.landingpage #ubicacion a {
   line-height: 1.5;
   color: #8a8e91;
 }
-/* line 265, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 260, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+body.landingpage p.allfields {
+  font-size: 1.1em;
+  line-height: 1.2;
+  color: #D13B45;
+}
+/* line 271, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage h1,
 body.landingpage h2,
 body.landingpage h3,
@@ -20909,42 +20915,42 @@ body.landingpage h5,
 body.landingpage h6 {
   position: relative;
 }
-/* line 268, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 274, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage h1 {
   font-size: 3.75em;
 }
-/* line 269, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 275, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage h2 {
   font-size: 3em;
 }
-/* line 270, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 276, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage h3 {
   font-size: 1.875em;
 }
-/* line 271, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 277, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage h4 {
   font-size: 1.5em;
 }
-/* line 272, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 278, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage h5 {
   font-size: 1.125em;
 }
-/* line 273, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 279, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage h6 {
   font-size: 1em;
 }
-/* line 274, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 280, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage ul.white-list {
   padding: 0;
   list-style-type: none;
 }
-/* line 278, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 284, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage ul.white-list li {
   font-size: 1.125em;
   margin: 0.625em 0;
   color: #fff;
 }
-/* line 283, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 289, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage ul.white-list li:before {
   content: ' ';
   position: relative;
@@ -20955,7 +20961,7 @@ body.landingpage ul.white-list li:before {
   margin-right: 0.9375em;
   background: white;
 }
-/* line 293, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 299, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage header {
   position: relative;
   width: 100%;
@@ -20964,29 +20970,29 @@ body.landingpage header {
   background: url(/assets/header.jpg);
   background-size: cover;
 }
-/* line 301, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 307, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage header .table {
   display: table;
   height: 100%;
 }
-/* line 305, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 311, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage header .container {
   height: 100%;
 }
-/* line 308, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 314, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage header .header-text {
   display: table-cell;
   text-align: center;
   vertical-align: middle;
   color: white;
 }
-/* line 314, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 320, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage a {
   text-decoration: none;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
-/* line 322, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 328, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .blink {
   position: relative;
   top: 0.25em;
@@ -20996,17 +21002,17 @@ body.landingpage .blink {
   height: 5vh;
   margin: 0 0.625em;
 }
-/* line 332, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 338, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .container {
   position: relative;
   z-index: 1;
 }
-/* line 337, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 343, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage section {
   position: relative;
   background: #fff;
 }
-/* line 341, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 347, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage section {
   #border-top: 0.0625em solid transparent;
   #border-image: -moz-linear-gradient(left, rgba(26, 174, 162, 0) 0%, rgba(26, 174, 162, 0.33) 10%, rgba(25, 169, 162, 0.5) 15%, #12849e 50%, rgba(25, 169, 162, 0.5) 85%, rgba(26, 174, 162, 0.33) 90%, rgba(26, 174, 162, 0) 100%) 1 1 1 1;
@@ -21017,16 +21023,16 @@ body.landingpage section {
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   #border-image-slice: 1;
 }
-/* line 348, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 354, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .section {
   padding: 2.5em 0;
   background: #fff;
 }
-/* line 352, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 358, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .section-padded {
   padding: 8.75em 0 2.5em;
 }
-/* line 355, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 361, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .cut-top {
   content: ' ';
   position: absolute;
@@ -21038,7 +21044,7 @@ body.landingpage .cut-top {
   border-top: 5em solid transparent;
   border-right: 1.875em solid white;
 }
-/* line 366, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 372, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .cut-bottom {
   content: ' ';
   position: absolute;
@@ -21050,65 +21056,65 @@ body.landingpage .cut-bottom {
   border-bottom: 5em solid transparent;
   border-left: 1.875em solid white;
 }
-/* line 377, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 383, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .intro-tables {
   top: -8.125em;
   position: relative;
 }
-/* line 381, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 387, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .intro-table {
   -webkit-background-size: cover;
   background-size: cover;
   background-repeat: repeat;
   background-position: 0% 0%;
 }
-/* line 387, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 393, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .intro-table-first {
   background-image: url(/assets/table-1.jpg);
 }
-/* line 388, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 394, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .intro-table-first h5 {
   font-size: 1.125em;
   color: white;
 }
-/* line 393, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 399, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .intro-table-hover {
   background-image: url(/assets/table-2.jpg);
   padding: 1.875em;
   text-align: left;
 }
-/* line 397, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 403, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .intro-table-hover h4 {
   font-size: 1.6em;
   color: white;
 }
-/* line 401, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 407, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .intro-table-hover button {
   margin-top: 1em;
 }
-/* line 405, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 411, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .intro-table-third {
   color: white;
   padding: 1.5em;
   background-image: url(/assets/table-3.jpg);
 }
-/* line 409, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 415, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .intro-table-third h5 {
   color: white;
 }
-/* line 411, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 417, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .intro-table-third div.item p {
   color: white;
 }
-/* line 412, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 418, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .intro-table-third div.item div {
   text-align: right;
 }
-/* line 414, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 420, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .intro-table-third div.item div a {
   color: white;
 }
-/* line 419, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 425, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .intro-table-hover .expand {
   margin: 1.875em;
   margin-top: 7.5em;
@@ -21119,78 +21125,78 @@ body.landingpage .intro-table-hover .expand {
   -ms-transform: scale(0.6);
   transform: scale(0.6);
 }
-/* line 429, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 435, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .intro-tables .intro-table {
   position: relative;
   width: 100%;
   height: 18.75em;
   margin: 1.25em 0;
 }
-/* line 435, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 441, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .intro-tables .intro-table .heading {
   margin: 0;
   padding: 1.875em;
 }
-/* line 439, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 445, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .intro-tables .intro-table .small-heading {
   margin: 0;
   padding: 0 1.875em;
 }
-/* line 443, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 449, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .intro-tables .intro-table .bottom {
   position: absolute;
   bottom: 0;
 }
-/* line 448, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 454, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .intro-tables .intro-table .owl-schedule .schedule-row {
   padding: 0.625em 1.875em;
   color: white;
   transition: all 0.3s ease;
 }
-/* line 452, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 458, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .intro-tables .intro-table .owl-schedule .schedule-row h5 {
   font-size: 1em;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 }
-/* line 461, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 467, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage #descripcion h2 span {
   vertical-align: middle;
 }
-/* line 462, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 468, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage #descripcion h2 img {
   height: 1.2em;
 }
-/* line 466, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 472, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .trialclass.bottom {
   padding-bottom: 1.875em;
 }
-/* line 468, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 474, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .trialclass.bottom .expand {
   color: white;
 }
-/* line 472, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 478, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .owl-schedule .schedule-row:not(:last-child) {
   border-bottom: 0.0625em solid rgba(255, 255, 255, 0.4);
 }
-/* line 476, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 482, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .owl-testimonials .author {
   margin-top: 3.125em;
 }
-/* line 480, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 486, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .owl-pagination .owl-page span {
   background-color: #B4DDE6;
 }
-/* line 481, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 487, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .owl-pagination .owl-page.active span {
   background-color: #D5EDEB;
 }
-/* line 483, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 489, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .services {
   margin: 2.5em 0;
 }
-/* line 487, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 493, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .service {
   width: 100%;
   height: 20em;
@@ -21200,7 +21206,7 @@ body.landingpage .service {
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
-/* line 495, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 501, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .service .icon-holder {
   position: relative;
   top: 6.25em;
@@ -21211,22 +21217,22 @@ body.landingpage .service .icon-holder {
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
-/* line 505, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 511, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .service .icon-holder > img.icon {
   width: 2.5em;
 }
-/* line 508, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 514, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .service .heading {
   position: relative;
   top: 4em;
   -webkit-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
   transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-/* line 513, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 519, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .service .heading a {
   font-size: 0.8em;
 }
-/* line 515, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 521, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .service .description {
   width: 80%;
   margin: 0 auto;
@@ -21237,48 +21243,48 @@ body.landingpage .service .description {
   -ms-transform: scale(0);
   transform: scale(0);
 }
-/* line 527, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 533, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .service.soon {
   border: 0.0625em dashed #1aaea2;
   opacity: 0.85;
   filter: alpha(opacity=85);
   /* For IE8 and earlier */
 }
-/* line 532, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 538, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .service.showsmall {
   border: 0.0625em solid #1aaea2;
 }
-/* line 535, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 541, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .service.showsmall .heading a {
   font-size: 0.9em;
 }
-/* line 538, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 544, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .servicehover:hover {
   border-color: #12849E;
 }
-/* line 540, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 546, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .servicehover:hover .icon-holder {
   top: -1.875em;
 }
-/* line 543, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 549, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .servicehover:hover .heading {
   top: -1.875em;
 }
-/* line 546, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 552, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .servicehover:hover .description {
   opacity: 1;
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
 }
-/* line 554, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 560, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .team {
   margin: 5em 0;
   padding-bottom: 3.75em;
   background: white;
   box-shadow: 0 0.125em 0.1875em rgba(0, 0, 0, 0.07);
 }
-/* line 561, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 567, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .team .cover .overlay {
   height: 15.625em;
   padding-top: 3.75em;
@@ -21287,22 +21293,22 @@ body.landingpage .team .cover .overlay {
   -webkit-transition: opacity 0.45s ease;
   transition: opacity 0.45s ease;
 }
-/* line 570, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 576, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .team:hover .cover .overlay {
   opacity: 1;
 }
-/* line 574, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 580, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .team .avatar {
   position: relative;
   z-index: 2;
   margin-top: -3.75em;
   border-radius: 50%;
 }
-/* line 581, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 587, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .team .title {
   margin: 3.125em 0;
 }
-/* line 587, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 593, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .landing-form-control {
   font-size: 1.125em;
   position: relative;
@@ -21314,7 +21320,7 @@ body.landingpage .landing-form-control {
   border-radius: 0;
   box-shadow: 0;
 }
-/* line 599, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 605, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .landing-form-control.form-white {
   color: #fff;
   border: 0.125em solid white;
@@ -21322,115 +21328,115 @@ body.landingpage .landing-form-control.form-white {
   -webkit-transition: background-color 0.3s;
   transition: background-color 0.3s;
 }
-/* line 607, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 613, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .landing-form-control.form-white::-webkit-input-placeholder {
   /* WebKit browsers */
   color: #fff;
 }
-/* line 612, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 618, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .landing-form-control.form-white:-moz-placeholder {
   opacity: 1;
   /* Mozilla Firefox 4 to 18 */
   color: #fff;
 }
-/* line 618, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 624, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .landing-form-control.form-white::-moz-placeholder {
   opacity: 1;
   /* Mozilla Firefox 19+ */
   color: #fff;
 }
-/* line 624, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 630, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .landing-form-control.form-white:-ms-input-placeholder {
   /* Internet Explorer 10+ */
   color: #fff;
 }
-/* line 629, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 635, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .landing-form-control.form-white:focus {
   background: rgba(255, 255, 255, 0.2);
 }
-/* line 633, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 639, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .row.title {
   padding: 0 1.25em;
 }
-/* line 637, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 643, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .light {
   font-weight: 300;
 }
-/* line 641, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 647, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .regular {
   font-weight: 400;
 }
-/* line 645, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 651, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .bold {
   font-weight: bold;
 }
-/* line 650, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 656, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .white {
   color: white;
 }
-/* line 654, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 660, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .light-white {
   color: rgba(255, 255, 255, 0.5);
 }
-/* line 658, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 664, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .white-bg {
   background: white;
 }
-/* line 662, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 668, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .gray-bg {
   background: #f7f7f7;
 }
-/* line 666, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 672, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .blue {
   color: #12849E;
 }
-/* line 670, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 676, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .blue-bg {
   background: #12849E;
 }
-/* line 674, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 680, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .muted {
   color: #989da0;
 }
-/* line 678, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 684, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .margin-top {
   margin-top: 9.375em;
 }
 @media (max-width: 992px) {
-  /* line 683, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 689, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   body.landingpage h1 {
     font-size: 2.25em;
   }
-  /* line 686, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 692, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   body.landingpage h2 {
     font-size: 1.75em;
   }
-  /* line 689, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 695, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   body.landingpage h3 {
     font-size: 1.5em;
   }
-  /* line 692, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 698, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   body.landingpage h4 {
     font-size: 1.25em;
   }
-  /* line 695, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 701, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   body.landingpage h5 {
     font-size: 1em;
   }
-  /* line 698, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 704, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   body.landingpage h6 {
     font-size: 0.75em;
   }
-  /* line 701, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 707, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   body.landingpage .section {
     padding: 1.875em 0;
   }
 }
-/* line 708, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 714, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .ribbon_box {
   position: relative;
 }
-/* line 710, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 716, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .ribbon_box .ribbon {
   height: 100%;
   overflow: hidden;
@@ -21441,7 +21447,7 @@ body.landingpage .ribbon_box .ribbon {
   width: 100%;
   z-index: 1;
 }
-/* line 720, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 726, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 body.landingpage .ribbon_box .ribbon span {
   background: rgba(0, 0, 0, 0) linear-gradient(#12849e 0%, #1aaea2 100%) repeat scroll 0 0;
   box-shadow: 0 0.1875em 0.625em -0.3125em black;
@@ -21461,20 +21467,20 @@ body.landingpage .ribbon_box .ribbon span {
 }
 
 /* Footer */
-/* line 745, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 751, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 footer {
   background: url(/assets/footer.jpg);
   -webkit-background-size: cover;
   background-size: cover;
 }
 
-/* line 751, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 757, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 footer .trial-button {
   overflow: hidden !important;
   margin: 2.5em 0;
 }
 
-/* line 756, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 762, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .open-blink {
   content: ' ';
   position: relative;
@@ -21492,7 +21498,7 @@ footer .trial-button {
   animation-iteration-count: infinite;
 }
 
-/* line 773, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 779, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 footer .open-blink:before {
   content: ' ';
   position: absolute;
@@ -21506,132 +21512,225 @@ footer .open-blink:before {
   background-color: #4caf50;
 }
 
-/* line 786, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 792, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 footer .opening-hours {
   margin-top: 3.75em;
 }
 
-/* line 790, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 796, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 footer .bottom-footer {
   margin-top: 6em;
 }
 
-/* line 794, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 800, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 footer .social-footer {
   padding: 0;
   list-style: none;
 }
 
-/* line 799, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 805, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 footer .social-footer li {
   display: inline-block;
   margin: 0 0.625em;
 }
 
-/* line 804, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 810, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 footer .social-footer li a {
   font-size: 1.5em;
   color: #fff;
 }
 
-/* line 809, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 815, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 footer .social-footer li:hover a {
   color: #12849E;
 }
 
 /* Modal */
-/* line 814, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 820, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .modal-content.text-releve {
   color: #12849e;
 }
 
 /* Mobile Nav */
-/* line 818, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
-.mobile-nav {
-  position: fixed;
-  z-index: 9999;
+/* line 824, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+ul.mobile-nav {
+  bottom: 0;
   top: 0;
-  left: 0;
-  display: table;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  opacity: 0;
-  background: rgba(255, 255, 255, 0.98);
-  transition: opacity .25s ease-in-out;
-  -moz-transition: opacity .25s ease;
-  -webkit-transition: opacity .25s ease;
-  -webkit-transform: scale(0);
-  -ms-transform: scale(0);
-  transform: scale(0);
+  right: 0;
+  overflow: auto;
+  overflow-x: hidden;
+  position: fixed;
+  width: 18.75rem;
+  z-index: 9999;
+  background: #282828;
+  display: block;
+  padding: 3.875rem 0 0 0;
+  margin: 0;
+  font-family: "Montserrat";
+  font-size: 0.75rem;
+  font-weight: 700;
+  height: auto !important;
+  text-transform: uppercase;
+  transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  -webkit-transform: translateX(100%);
+  -webkit-transition: all 0.15s ease-in;
 }
-/* line 819, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
-.mobile-nav .btn-default {
-  background-color: #1aaea2;
-  color: white;
-}
-
-/* line 839, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
-.mobile-nav.active {
-  opacity: 1;
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-}
-
-/* line 845, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
-.mobile-nav ul {
-  display: table-cell;
-  padding: 0;
-  list-style: none;
+/* line 848, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+ul.mobile-nav .nav-item {
+  display: block;
+  margin-left: 0 !important;
+  padding-left: 0;
+  float: none;
   vertical-align: middle;
 }
-
-/* line 851, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
-.mobile-nav ul li {
-  margin: 1.5625em 0;
-}
-
 /* line 854, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
-.mobile-nav ul li a:not(.btn) {
-  color: #12849e;
+ul.mobile-nav .nav-item div.close-icon {
+  height: 21px;
+  overflow: hidden;
+  position: relative;
+  width: 21px;
+}
+/* line 860, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+ul.mobile-nav .nav-item div.close-icon::before, ul.mobile-nav .nav-item div.close-icon::after {
+  background-color: #ffffff;
+  content: "";
+  height: 2px;
+  left: 0;
+  margin-top: -1px;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+}
+/* line 870, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+ul.mobile-nav .nav-item div.close-icon::before {
+  transform: rotate(45deg);
+}
+/* line 871, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+ul.mobile-nav .nav-item div.close-icon::after {
+  transform: rotate(-45deg);
+}
+/* line 872, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+ul.mobile-nav .nav-item a.close-link {
+  border: none;
+  right: 0rem;
+  position: fixed;
+  top: 0.5rem;
+  z-index: 1000;
+}
+/* line 879, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+ul.mobile-nav .nav-item a {
+  font-size: 0.812rem;
+  color: #ffffff;
+  border-top: 1px dotted rgba(255, 255, 255, 0.1);
+  line-height: 1.6;
+  margin: 0 !important;
+  padding: 0.875rem 2.4rem 0.875rem 1.5625rem !important;
+  position: relative;
+  white-space: normal;
+  transition: color .2s ease-in-out;
+  display: block;
+  text-decoration: none;
+  background-color: transparent;
+}
+/* line 881, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+ul.mobile-nav .nav-item a i {
+  font-size: 0.9rem;
+}
+/* line 894, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+ul.mobile-nav .nav-item a:hover {
+  color: #1aaea2;
+  background: #202020;
+}
+/* line 898, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+ul.mobile-nav .nav-item a.text-admin {
+  font-size: 0.75rem;
+  color: #1aaea2;
+}
+/* line 903, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+ul.mobile-nav li.nav-item.nav-btn {
+  position: relative;
+  padding: 1.5625rem 1.5625rem 0;
+  padding-top: 0.625rem;
+}
+/* line 907, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+ul.mobile-nav li.nav-item.nav-btn a.btn {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  font-family: "Montserrat",sans-serif;
+}
+/* line 913, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+ul.mobile-nav li.nav-item.nav-btn a.btn.btn-white {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border-color: #fff;
+  color: #fff;
+  border: 1px solid;
+}
+/* line 919, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+ul.mobile-nav li.nav-item.nav-btn a.btn.btn-white:hover {
+  background-color: #fff;
+  border-color: #fff;
+  color: #535353;
+}
+/* line 924, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+ul.mobile-nav li.nav-item.nav-btn a.btn.btn-releve {
+  background: #12849e none repeat scroll 0 0;
+  border-color: #fff;
+  color: #fff;
+  border: 1px solid;
+}
+/* line 930, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+ul.mobile-nav li.nav-item.nav-btn a.btn.btn-releve:hover {
+  background-color: #fff;
+  border-color: #fff;
+  color: #12849E;
+}
+/* line 936, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+ul.mobile-nav .nav-item.nav-btn::before {
+  border-top: 1px dotted rgba(255, 255, 255, 0.1);
+  content: "";
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+/* line 944, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+ul.mobile-nav .nav-item.nav-btn + .nav-item.nav-btn::before {
+  display: none;
 }
 
-/* line 857, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
-.mobile-nav a.close-link {
-  font-size: 1.5em;
-  position: absolute;
-  bottom: 0em;
-  left: calc(50% - 0.625em);
-  left: 0;
-  width: 100%;
-  padding: 0.9375em 0;
-  color: #fff;
-  background: #12849E;
+/* line 949, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+ul.mobile-nav.active {
+  transform: translateX(0);
+  -ms-transform: translateX(0);
+  -webkit-transform: translateX(0);
+  transition: all 0.25s ease-out;
+  -webkit-transition: all 0.15s ease-out;
 }
 
 /* Panels */
-/* line 870, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 959, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 div.panel-heading.bg-light-releve, div.modal-header.bg-light-releve {
   background-color: #1aaea2;
 }
-/* line 872, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 961, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 div.panel-heading.bg-light-releve h4, div.modal-header.bg-light-releve h4 {
   color: white;
 }
 
 /* Navigation Bar ( Navbar ) */
-/* line 875, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 964, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .navbar {
   top: 3.125em;
 }
 
-/* line 878, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 967, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .navbar.notlandingpage {
   top: 1.5625em;
 }
 
-/* line 881, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 970, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 nav.navbar {
   position: absolute;
   z-index: 9500;
@@ -21641,12 +21740,12 @@ nav.navbar {
   transition: all 0.3s ease;
 }
 
-/* line 889, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 978, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 nav.navbar .navbar-nav li.active a:not(.btn) {
   color: #12849E !important;
 }
 
-/* line 892, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 981, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 nav.navbar-fixed-top {
   z-index: 9499;
   top: 0;
@@ -21656,44 +21755,44 @@ nav.navbar-fixed-top {
   box-shadow: 0em 0.25em 0.1875em rgba(0, 0, 0, 0.05);
 }
 
-/* line 900, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 989, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 nav.navbar-fixed-top .navbar-nav > li > a:not(.btn) {
   color: #bbb;
 }
 
-/* line 904, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 993, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .navbar.original .navbar-nav > li > a:hover:not(.btn-primary .btn-danger) {
   color: #1aaea2;
 }
-/* line 907, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 996, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .navbar.original .icon-bar {
   background: white;
 }
 
-/* line 912, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1001, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .navbar.navbar-fixed-top .navbar-nav > li > a:hover:not(.btn-primary .btn-danger) {
   color: #12849e;
 }
 
-/* line 917, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1006, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .navbar.notlandingpage .navbar-nav > li > a:not(.btn-danger):not(.btn-primary) {
   color: #928E8E;
 }
-/* line 920, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1009, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .navbar.notlandingpage .navbar-nav > li > a:not(.btn-danger):not(.btn-primary):hover {
   color: #12849e;
 }
-/* line 923, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1012, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .navbar.notlandingpage .icon-bar {
   background: #1aaea2;
 }
 
-/* line 927, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1016, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .icon-bar {
   background: #1aaea2;
 }
 
-/* line 930, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1019, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-social {
   position: relative;
   padding-left: 44px;
@@ -21703,7 +21802,7 @@ nav.navbar-fixed-top .navbar-nav > li > a:not(.btn) {
   text-overflow: ellipsis;
 }
 
-/* line 930, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1019, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-social > :first-child {
   position: absolute;
   left: 0;
@@ -21716,43 +21815,43 @@ nav.navbar-fixed-top .navbar-nav > li > a:not(.btn) {
   border-right: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-/* line 931, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1020, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-social.btn-lg {
   padding-left: 61px;
 }
 
-/* line 931, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1020, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-social.btn-lg > :first-child {
   line-height: 45px;
   width: 45px;
   font-size: 1.8em;
 }
 
-/* line 932, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1021, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-social.btn-sm {
   padding-left: 38px;
 }
 
-/* line 932, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1021, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-social.btn-sm > :first-child {
   line-height: 28px;
   width: 28px;
   font-size: 1.4em;
 }
 
-/* line 933, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1022, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-social.btn-xs {
   padding-left: 30px;
 }
 
-/* line 933, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1022, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-social.btn-xs > :first-child {
   line-height: 20px;
   width: 20px;
   font-size: 1.2em;
 }
 
-/* line 934, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1023, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-social-icon {
   position: relative;
   padding-left: 44px;
@@ -21765,7 +21864,7 @@ nav.navbar-fixed-top .navbar-nav > li > a:not(.btn) {
   padding: 0;
 }
 
-/* line 934, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1023, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-social-icon > :first-child {
   position: absolute;
   left: 0;
@@ -21778,50 +21877,50 @@ nav.navbar-fixed-top .navbar-nav > li > a:not(.btn) {
   border-right: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-/* line 935, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1024, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-social-icon.btn-lg {
   padding-left: 61px;
 }
 
-/* line 935, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1024, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-social-icon.btn-lg > :first-child {
   line-height: 45px;
   width: 45px;
   font-size: 1.8em;
 }
 
-/* line 936, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1025, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-social-icon.btn-sm {
   padding-left: 38px;
 }
 
-/* line 936, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1025, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-social-icon.btn-sm > :first-child {
   line-height: 28px;
   width: 28px;
   font-size: 1.4em;
 }
 
-/* line 937, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1026, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-social-icon.btn-xs {
   padding-left: 30px;
 }
 
-/* line 937, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1026, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-social-icon.btn-xs > :first-child {
   line-height: 20px;
   width: 20px;
   font-size: 1.2em;
 }
 
-/* line 938, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1027, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-social-icon > :first-child {
   border: none;
   text-align: center;
   width: 100% !important;
 }
 
-/* line 939, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1028, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-social-icon.btn-lg {
   height: 45px;
   width: 45px;
@@ -21829,7 +21928,7 @@ nav.navbar-fixed-top .navbar-nav > li > a:not(.btn) {
   padding-right: 0;
 }
 
-/* line 940, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1029, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-social-icon.btn-sm {
   height: 30px;
   width: 30px;
@@ -21837,7 +21936,7 @@ nav.navbar-fixed-top .navbar-nav > li > a:not(.btn) {
   padding-right: 0;
 }
 
-/* line 941, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1030, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-social-icon.btn-xs {
   height: 22px;
   width: 22px;
@@ -21845,1093 +21944,1093 @@ nav.navbar-fixed-top .navbar-nav > li > a:not(.btn) {
   padding-right: 0;
 }
 
-/* line 942, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1031, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-adn {
   color: #fff;
   background-color: #d87a68;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 942, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1031, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-adn:focus, .btn-adn.focus {
   color: #fff;
   background-color: #ce563f;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 943, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1032, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-adn:hover {
   color: #fff;
   background-color: #ce563f;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 944, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1033, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-adn:active, .btn-adn.active, .open > .dropdown-toggle.btn-adn {
   color: #fff;
   background-color: #ce563f;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 944, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1033, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-adn:active:hover, .btn-adn.active:hover, .open > .dropdown-toggle.btn-adn:hover, .btn-adn:active:focus, .btn-adn.active:focus, .open > .dropdown-toggle.btn-adn:focus, .btn-adn:active.focus, .btn-adn.active.focus, .open > .dropdown-toggle.btn-adn.focus {
   color: #fff;
   background-color: #b94630;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 945, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1034, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-adn:active, .btn-adn.active, .open > .dropdown-toggle.btn-adn {
   background-image: none;
 }
 
-/* line 946, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1035, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-adn.disabled, .btn-adn[disabled], fieldset[disabled] .btn-adn, .btn-adn.disabled:hover, .btn-adn[disabled]:hover, fieldset[disabled] .btn-adn:hover, .btn-adn.disabled:focus, .btn-adn[disabled]:focus, fieldset[disabled] .btn-adn:focus, .btn-adn.disabled.focus, .btn-adn[disabled].focus, fieldset[disabled] .btn-adn.focus, .btn-adn.disabled:active, .btn-adn[disabled]:active, fieldset[disabled] .btn-adn:active, .btn-adn.disabled.active, .btn-adn[disabled].active, fieldset[disabled] .btn-adn.active {
   background-color: #d87a68;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 947, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1036, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-adn .badge {
   color: #d87a68;
   background-color: #fff;
 }
 
-/* line 948, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1037, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-bitbucket {
   color: #fff;
   background-color: #205081;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 948, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1037, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-bitbucket:focus, .btn-bitbucket.focus {
   color: #fff;
   background-color: #163758;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 949, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1038, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-bitbucket:hover {
   color: #fff;
   background-color: #163758;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 950, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1039, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-bitbucket:active, .btn-bitbucket.active, .open > .dropdown-toggle.btn-bitbucket {
   color: #fff;
   background-color: #163758;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 950, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1039, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-bitbucket:active:hover, .btn-bitbucket.active:hover, .open > .dropdown-toggle.btn-bitbucket:hover, .btn-bitbucket:active:focus, .btn-bitbucket.active:focus, .open > .dropdown-toggle.btn-bitbucket:focus, .btn-bitbucket:active.focus, .btn-bitbucket.active.focus, .open > .dropdown-toggle.btn-bitbucket.focus {
   color: #fff;
   background-color: #0f253c;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 951, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1040, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-bitbucket:active, .btn-bitbucket.active, .open > .dropdown-toggle.btn-bitbucket {
   background-image: none;
 }
 
-/* line 952, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1041, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-bitbucket.disabled, .btn-bitbucket[disabled], fieldset[disabled] .btn-bitbucket, .btn-bitbucket.disabled:hover, .btn-bitbucket[disabled]:hover, fieldset[disabled] .btn-bitbucket:hover, .btn-bitbucket.disabled:focus, .btn-bitbucket[disabled]:focus, fieldset[disabled] .btn-bitbucket:focus, .btn-bitbucket.disabled.focus, .btn-bitbucket[disabled].focus, fieldset[disabled] .btn-bitbucket.focus, .btn-bitbucket.disabled:active, .btn-bitbucket[disabled]:active, fieldset[disabled] .btn-bitbucket:active, .btn-bitbucket.disabled.active, .btn-bitbucket[disabled].active, fieldset[disabled] .btn-bitbucket.active {
   background-color: #205081;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 953, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1042, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-bitbucket .badge {
   color: #205081;
   background-color: #fff;
 }
 
-/* line 954, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1043, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-dropbox {
   color: #fff;
   background-color: #1087dd;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 954, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1043, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-dropbox:focus, .btn-dropbox.focus {
   color: #fff;
   background-color: #0d6aad;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 955, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1044, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-dropbox:hover {
   color: #fff;
   background-color: #0d6aad;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 956, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1045, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-dropbox:active, .btn-dropbox.active, .open > .dropdown-toggle.btn-dropbox {
   color: #fff;
   background-color: #0d6aad;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 956, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1045, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-dropbox:active:hover, .btn-dropbox.active:hover, .open > .dropdown-toggle.btn-dropbox:hover, .btn-dropbox:active:focus, .btn-dropbox.active:focus, .open > .dropdown-toggle.btn-dropbox:focus, .btn-dropbox:active.focus, .btn-dropbox.active.focus, .open > .dropdown-toggle.btn-dropbox.focus {
   color: #fff;
   background-color: #0a568c;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 957, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1046, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-dropbox:active, .btn-dropbox.active, .open > .dropdown-toggle.btn-dropbox {
   background-image: none;
 }
 
-/* line 958, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1047, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-dropbox.disabled, .btn-dropbox[disabled], fieldset[disabled] .btn-dropbox, .btn-dropbox.disabled:hover, .btn-dropbox[disabled]:hover, fieldset[disabled] .btn-dropbox:hover, .btn-dropbox.disabled:focus, .btn-dropbox[disabled]:focus, fieldset[disabled] .btn-dropbox:focus, .btn-dropbox.disabled.focus, .btn-dropbox[disabled].focus, fieldset[disabled] .btn-dropbox.focus, .btn-dropbox.disabled:active, .btn-dropbox[disabled]:active, fieldset[disabled] .btn-dropbox:active, .btn-dropbox.disabled.active, .btn-dropbox[disabled].active, fieldset[disabled] .btn-dropbox.active {
   background-color: #1087dd;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 959, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1048, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-dropbox .badge {
   color: #1087dd;
   background-color: #fff;
 }
 
-/* line 960, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1049, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-facebook {
   color: #fff;
   background-color: #3b5998;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 960, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1049, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-facebook:focus, .btn-facebook.focus {
   color: #fff;
   background-color: #2d4373;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 961, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1050, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-facebook:hover {
   color: #fff;
   background-color: #2d4373;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 962, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1051, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-facebook:active, .btn-facebook.active, .open > .dropdown-toggle.btn-facebook {
   color: #fff;
   background-color: #2d4373;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 962, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1051, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-facebook:active:hover, .btn-facebook.active:hover, .open > .dropdown-toggle.btn-facebook:hover, .btn-facebook:active:focus, .btn-facebook.active:focus, .open > .dropdown-toggle.btn-facebook:focus, .btn-facebook:active.focus, .btn-facebook.active.focus, .open > .dropdown-toggle.btn-facebook.focus {
   color: #fff;
   background-color: #23345a;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 963, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1052, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-facebook:active, .btn-facebook.active, .open > .dropdown-toggle.btn-facebook {
   background-image: none;
 }
 
-/* line 964, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1053, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-facebook.disabled, .btn-facebook[disabled], fieldset[disabled] .btn-facebook, .btn-facebook.disabled:hover, .btn-facebook[disabled]:hover, fieldset[disabled] .btn-facebook:hover, .btn-facebook.disabled:focus, .btn-facebook[disabled]:focus, fieldset[disabled] .btn-facebook:focus, .btn-facebook.disabled.focus, .btn-facebook[disabled].focus, fieldset[disabled] .btn-facebook.focus, .btn-facebook.disabled:active, .btn-facebook[disabled]:active, fieldset[disabled] .btn-facebook:active, .btn-facebook.disabled.active, .btn-facebook[disabled].active, fieldset[disabled] .btn-facebook.active {
   background-color: #3b5998;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 965, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1054, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-facebook .badge {
   color: #3b5998;
   background-color: #fff;
 }
 
-/* line 966, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1055, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-flickr {
   color: #fff;
   background-color: #ff0084;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 966, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1055, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-flickr:focus, .btn-flickr.focus {
   color: #fff;
   background-color: #cc006a;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 967, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1056, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-flickr:hover {
   color: #fff;
   background-color: #cc006a;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 968, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1057, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-flickr:active, .btn-flickr.active, .open > .dropdown-toggle.btn-flickr {
   color: #fff;
   background-color: #cc006a;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 968, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1057, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-flickr:active:hover, .btn-flickr.active:hover, .open > .dropdown-toggle.btn-flickr:hover, .btn-flickr:active:focus, .btn-flickr.active:focus, .open > .dropdown-toggle.btn-flickr:focus, .btn-flickr:active.focus, .btn-flickr.active.focus, .open > .dropdown-toggle.btn-flickr.focus {
   color: #fff;
   background-color: #a80057;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 969, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1058, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-flickr:active, .btn-flickr.active, .open > .dropdown-toggle.btn-flickr {
   background-image: none;
 }
 
-/* line 970, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1059, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-flickr.disabled, .btn-flickr[disabled], fieldset[disabled] .btn-flickr, .btn-flickr.disabled:hover, .btn-flickr[disabled]:hover, fieldset[disabled] .btn-flickr:hover, .btn-flickr.disabled:focus, .btn-flickr[disabled]:focus, fieldset[disabled] .btn-flickr:focus, .btn-flickr.disabled.focus, .btn-flickr[disabled].focus, fieldset[disabled] .btn-flickr.focus, .btn-flickr.disabled:active, .btn-flickr[disabled]:active, fieldset[disabled] .btn-flickr:active, .btn-flickr.disabled.active, .btn-flickr[disabled].active, fieldset[disabled] .btn-flickr.active {
   background-color: #ff0084;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 971, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1060, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-flickr .badge {
   color: #ff0084;
   background-color: #fff;
 }
 
-/* line 972, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1061, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-foursquare {
   color: #fff;
   background-color: #f94877;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 972, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1061, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-foursquare:focus, .btn-foursquare.focus {
   color: #fff;
   background-color: #f71752;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 973, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1062, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-foursquare:hover {
   color: #fff;
   background-color: #f71752;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 974, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1063, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-foursquare:active, .btn-foursquare.active, .open > .dropdown-toggle.btn-foursquare {
   color: #fff;
   background-color: #f71752;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 974, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1063, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-foursquare:active:hover, .btn-foursquare.active:hover, .open > .dropdown-toggle.btn-foursquare:hover, .btn-foursquare:active:focus, .btn-foursquare.active:focus, .open > .dropdown-toggle.btn-foursquare:focus, .btn-foursquare:active.focus, .btn-foursquare.active.focus, .open > .dropdown-toggle.btn-foursquare.focus {
   color: #fff;
   background-color: #e30742;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 975, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1064, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-foursquare:active, .btn-foursquare.active, .open > .dropdown-toggle.btn-foursquare {
   background-image: none;
 }
 
-/* line 976, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1065, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-foursquare.disabled, .btn-foursquare[disabled], fieldset[disabled] .btn-foursquare, .btn-foursquare.disabled:hover, .btn-foursquare[disabled]:hover, fieldset[disabled] .btn-foursquare:hover, .btn-foursquare.disabled:focus, .btn-foursquare[disabled]:focus, fieldset[disabled] .btn-foursquare:focus, .btn-foursquare.disabled.focus, .btn-foursquare[disabled].focus, fieldset[disabled] .btn-foursquare.focus, .btn-foursquare.disabled:active, .btn-foursquare[disabled]:active, fieldset[disabled] .btn-foursquare:active, .btn-foursquare.disabled.active, .btn-foursquare[disabled].active, fieldset[disabled] .btn-foursquare.active {
   background-color: #f94877;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 977, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1066, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-foursquare .badge {
   color: #f94877;
   background-color: #fff;
 }
 
-/* line 978, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1067, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-github {
   color: #fff;
   background-color: #444;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 978, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1067, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-github:focus, .btn-github.focus {
   color: #fff;
   background-color: #2b2b2b;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 979, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1068, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-github:hover {
   color: #fff;
   background-color: #2b2b2b;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 980, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1069, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-github:active, .btn-github.active, .open > .dropdown-toggle.btn-github {
   color: #fff;
   background-color: #2b2b2b;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 980, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1069, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-github:active:hover, .btn-github.active:hover, .open > .dropdown-toggle.btn-github:hover, .btn-github:active:focus, .btn-github.active:focus, .open > .dropdown-toggle.btn-github:focus, .btn-github:active.focus, .btn-github.active.focus, .open > .dropdown-toggle.btn-github.focus {
   color: #fff;
   background-color: #191919;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 981, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1070, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-github:active, .btn-github.active, .open > .dropdown-toggle.btn-github {
   background-image: none;
 }
 
-/* line 982, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1071, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-github.disabled, .btn-github[disabled], fieldset[disabled] .btn-github, .btn-github.disabled:hover, .btn-github[disabled]:hover, fieldset[disabled] .btn-github:hover, .btn-github.disabled:focus, .btn-github[disabled]:focus, fieldset[disabled] .btn-github:focus, .btn-github.disabled.focus, .btn-github[disabled].focus, fieldset[disabled] .btn-github.focus, .btn-github.disabled:active, .btn-github[disabled]:active, fieldset[disabled] .btn-github:active, .btn-github.disabled.active, .btn-github[disabled].active, fieldset[disabled] .btn-github.active {
   background-color: #444;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 983, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1072, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-github .badge {
   color: #444;
   background-color: #fff;
 }
 
-/* line 984, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1073, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-google {
   color: #fff;
   background-color: #dd4b39;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 984, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1073, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-google:focus, .btn-google.focus {
   color: #fff;
   background-color: #c23321;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 985, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1074, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-google:hover {
   color: #fff;
   background-color: #c23321;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 986, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1075, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-google:active, .btn-google.active, .open > .dropdown-toggle.btn-google {
   color: #fff;
   background-color: #c23321;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 986, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1075, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-google:active:hover, .btn-google.active:hover, .open > .dropdown-toggle.btn-google:hover, .btn-google:active:focus, .btn-google.active:focus, .open > .dropdown-toggle.btn-google:focus, .btn-google:active.focus, .btn-google.active.focus, .open > .dropdown-toggle.btn-google.focus {
   color: #fff;
   background-color: #a32b1c;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 987, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1076, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-google:active, .btn-google.active, .open > .dropdown-toggle.btn-google {
   background-image: none;
 }
 
-/* line 988, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1077, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-google.disabled, .btn-google[disabled], fieldset[disabled] .btn-google, .btn-google.disabled:hover, .btn-google[disabled]:hover, fieldset[disabled] .btn-google:hover, .btn-google.disabled:focus, .btn-google[disabled]:focus, fieldset[disabled] .btn-google:focus, .btn-google.disabled.focus, .btn-google[disabled].focus, fieldset[disabled] .btn-google.focus, .btn-google.disabled:active, .btn-google[disabled]:active, fieldset[disabled] .btn-google:active, .btn-google.disabled.active, .btn-google[disabled].active, fieldset[disabled] .btn-google.active {
   background-color: #dd4b39;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 989, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1078, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-google .badge {
   color: #dd4b39;
   background-color: #fff;
 }
 
-/* line 990, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1079, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-instagram {
   color: #fff;
   background-color: #3f729b;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 990, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1079, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-instagram:focus, .btn-instagram.focus {
   color: #fff;
   background-color: #305777;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 991, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1080, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-instagram:hover {
   color: #fff;
   background-color: #305777;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 992, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1081, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-instagram:active, .btn-instagram.active, .open > .dropdown-toggle.btn-instagram {
   color: #fff;
   background-color: #305777;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 992, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1081, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-instagram:active:hover, .btn-instagram.active:hover, .open > .dropdown-toggle.btn-instagram:hover, .btn-instagram:active:focus, .btn-instagram.active:focus, .open > .dropdown-toggle.btn-instagram:focus, .btn-instagram:active.focus, .btn-instagram.active.focus, .open > .dropdown-toggle.btn-instagram.focus {
   color: #fff;
   background-color: #26455d;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 993, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1082, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-instagram:active, .btn-instagram.active, .open > .dropdown-toggle.btn-instagram {
   background-image: none;
 }
 
-/* line 994, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1083, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-instagram.disabled, .btn-instagram[disabled], fieldset[disabled] .btn-instagram, .btn-instagram.disabled:hover, .btn-instagram[disabled]:hover, fieldset[disabled] .btn-instagram:hover, .btn-instagram.disabled:focus, .btn-instagram[disabled]:focus, fieldset[disabled] .btn-instagram:focus, .btn-instagram.disabled.focus, .btn-instagram[disabled].focus, fieldset[disabled] .btn-instagram.focus, .btn-instagram.disabled:active, .btn-instagram[disabled]:active, fieldset[disabled] .btn-instagram:active, .btn-instagram.disabled.active, .btn-instagram[disabled].active, fieldset[disabled] .btn-instagram.active {
   background-color: #3f729b;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 995, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1084, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-instagram .badge {
   color: #3f729b;
   background-color: #fff;
 }
 
-/* line 996, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1085, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-linkedin {
   color: #fff;
   background-color: #007bb6;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 996, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1085, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-linkedin:focus, .btn-linkedin.focus {
   color: #fff;
   background-color: #005983;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 997, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1086, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-linkedin:hover {
   color: #fff;
   background-color: #005983;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 998, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1087, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-linkedin:active, .btn-linkedin.active, .open > .dropdown-toggle.btn-linkedin {
   color: #fff;
   background-color: #005983;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 998, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1087, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-linkedin:active:hover, .btn-linkedin.active:hover, .open > .dropdown-toggle.btn-linkedin:hover, .btn-linkedin:active:focus, .btn-linkedin.active:focus, .open > .dropdown-toggle.btn-linkedin:focus, .btn-linkedin:active.focus, .btn-linkedin.active.focus, .open > .dropdown-toggle.btn-linkedin.focus {
   color: #fff;
   background-color: #00405f;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 999, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1088, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-linkedin:active, .btn-linkedin.active, .open > .dropdown-toggle.btn-linkedin {
   background-image: none;
 }
 
-/* line 1000, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1089, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-linkedin.disabled, .btn-linkedin[disabled], fieldset[disabled] .btn-linkedin, .btn-linkedin.disabled:hover, .btn-linkedin[disabled]:hover, fieldset[disabled] .btn-linkedin:hover, .btn-linkedin.disabled:focus, .btn-linkedin[disabled]:focus, fieldset[disabled] .btn-linkedin:focus, .btn-linkedin.disabled.focus, .btn-linkedin[disabled].focus, fieldset[disabled] .btn-linkedin.focus, .btn-linkedin.disabled:active, .btn-linkedin[disabled]:active, fieldset[disabled] .btn-linkedin:active, .btn-linkedin.disabled.active, .btn-linkedin[disabled].active, fieldset[disabled] .btn-linkedin.active {
   background-color: #007bb6;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1001, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1090, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-linkedin .badge {
   color: #007bb6;
   background-color: #fff;
 }
 
-/* line 1002, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1091, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-microsoft {
   color: #fff;
   background-color: #2672ec;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1002, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1091, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-microsoft:focus, .btn-microsoft.focus {
   color: #fff;
   background-color: #125acd;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1003, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1092, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-microsoft:hover {
   color: #fff;
   background-color: #125acd;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1004, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1093, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-microsoft:active, .btn-microsoft.active, .open > .dropdown-toggle.btn-microsoft {
   color: #fff;
   background-color: #125acd;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1004, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1093, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-microsoft:active:hover, .btn-microsoft.active:hover, .open > .dropdown-toggle.btn-microsoft:hover, .btn-microsoft:active:focus, .btn-microsoft.active:focus, .open > .dropdown-toggle.btn-microsoft:focus, .btn-microsoft:active.focus, .btn-microsoft.active.focus, .open > .dropdown-toggle.btn-microsoft.focus {
   color: #fff;
   background-color: #0f4bac;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1005, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1094, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-microsoft:active, .btn-microsoft.active, .open > .dropdown-toggle.btn-microsoft {
   background-image: none;
 }
 
-/* line 1006, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1095, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-microsoft.disabled, .btn-microsoft[disabled], fieldset[disabled] .btn-microsoft, .btn-microsoft.disabled:hover, .btn-microsoft[disabled]:hover, fieldset[disabled] .btn-microsoft:hover, .btn-microsoft.disabled:focus, .btn-microsoft[disabled]:focus, fieldset[disabled] .btn-microsoft:focus, .btn-microsoft.disabled.focus, .btn-microsoft[disabled].focus, fieldset[disabled] .btn-microsoft.focus, .btn-microsoft.disabled:active, .btn-microsoft[disabled]:active, fieldset[disabled] .btn-microsoft:active, .btn-microsoft.disabled.active, .btn-microsoft[disabled].active, fieldset[disabled] .btn-microsoft.active {
   background-color: #2672ec;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1007, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1096, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-microsoft .badge {
   color: #2672ec;
   background-color: #fff;
 }
 
-/* line 1008, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1097, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-odnoklassniki {
   color: #fff;
   background-color: #f4731c;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1008, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1097, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-odnoklassniki:focus, .btn-odnoklassniki.focus {
   color: #fff;
   background-color: #d35b0a;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1009, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1098, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-odnoklassniki:hover {
   color: #fff;
   background-color: #d35b0a;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1010, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1099, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-odnoklassniki:active, .btn-odnoklassniki.active, .open > .dropdown-toggle.btn-odnoklassniki {
   color: #fff;
   background-color: #d35b0a;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1010, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1099, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-odnoklassniki:active:hover, .btn-odnoklassniki.active:hover, .open > .dropdown-toggle.btn-odnoklassniki:hover, .btn-odnoklassniki:active:focus, .btn-odnoklassniki.active:focus, .open > .dropdown-toggle.btn-odnoklassniki:focus, .btn-odnoklassniki:active.focus, .btn-odnoklassniki.active.focus, .open > .dropdown-toggle.btn-odnoklassniki.focus {
   color: #fff;
   background-color: #b14c09;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1011, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1100, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-odnoklassniki:active, .btn-odnoklassniki.active, .open > .dropdown-toggle.btn-odnoklassniki {
   background-image: none;
 }
 
-/* line 1012, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1101, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-odnoklassniki.disabled, .btn-odnoklassniki[disabled], fieldset[disabled] .btn-odnoklassniki, .btn-odnoklassniki.disabled:hover, .btn-odnoklassniki[disabled]:hover, fieldset[disabled] .btn-odnoklassniki:hover, .btn-odnoklassniki.disabled:focus, .btn-odnoklassniki[disabled]:focus, fieldset[disabled] .btn-odnoklassniki:focus, .btn-odnoklassniki.disabled.focus, .btn-odnoklassniki[disabled].focus, fieldset[disabled] .btn-odnoklassniki.focus, .btn-odnoklassniki.disabled:active, .btn-odnoklassniki[disabled]:active, fieldset[disabled] .btn-odnoklassniki:active, .btn-odnoklassniki.disabled.active, .btn-odnoklassniki[disabled].active, fieldset[disabled] .btn-odnoklassniki.active {
   background-color: #f4731c;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1013, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1102, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-odnoklassniki .badge {
   color: #f4731c;
   background-color: #fff;
 }
 
-/* line 1014, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1103, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-openid {
   color: #fff;
   background-color: #f7931e;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1014, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1103, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-openid:focus, .btn-openid.focus {
   color: #fff;
   background-color: #da7908;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1015, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1104, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-openid:hover {
   color: #fff;
   background-color: #da7908;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1016, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1105, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-openid:active, .btn-openid.active, .open > .dropdown-toggle.btn-openid {
   color: #fff;
   background-color: #da7908;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1016, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1105, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-openid:active:hover, .btn-openid.active:hover, .open > .dropdown-toggle.btn-openid:hover, .btn-openid:active:focus, .btn-openid.active:focus, .open > .dropdown-toggle.btn-openid:focus, .btn-openid:active.focus, .btn-openid.active.focus, .open > .dropdown-toggle.btn-openid.focus {
   color: #fff;
   background-color: #b86607;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1017, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1106, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-openid:active, .btn-openid.active, .open > .dropdown-toggle.btn-openid {
   background-image: none;
 }
 
-/* line 1018, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1107, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-openid.disabled, .btn-openid[disabled], fieldset[disabled] .btn-openid, .btn-openid.disabled:hover, .btn-openid[disabled]:hover, fieldset[disabled] .btn-openid:hover, .btn-openid.disabled:focus, .btn-openid[disabled]:focus, fieldset[disabled] .btn-openid:focus, .btn-openid.disabled.focus, .btn-openid[disabled].focus, fieldset[disabled] .btn-openid.focus, .btn-openid.disabled:active, .btn-openid[disabled]:active, fieldset[disabled] .btn-openid:active, .btn-openid.disabled.active, .btn-openid[disabled].active, fieldset[disabled] .btn-openid.active {
   background-color: #f7931e;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1019, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1108, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-openid .badge {
   color: #f7931e;
   background-color: #fff;
 }
 
-/* line 1020, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1109, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-pinterest {
   color: #fff;
   background-color: #cb2027;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1020, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1109, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-pinterest:focus, .btn-pinterest.focus {
   color: #fff;
   background-color: #9f191f;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1021, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1110, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-pinterest:hover {
   color: #fff;
   background-color: #9f191f;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1022, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1111, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-pinterest:active, .btn-pinterest.active, .open > .dropdown-toggle.btn-pinterest {
   color: #fff;
   background-color: #9f191f;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1022, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1111, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-pinterest:active:hover, .btn-pinterest.active:hover, .open > .dropdown-toggle.btn-pinterest:hover, .btn-pinterest:active:focus, .btn-pinterest.active:focus, .open > .dropdown-toggle.btn-pinterest:focus, .btn-pinterest:active.focus, .btn-pinterest.active.focus, .open > .dropdown-toggle.btn-pinterest.focus {
   color: #fff;
   background-color: #801419;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1023, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1112, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-pinterest:active, .btn-pinterest.active, .open > .dropdown-toggle.btn-pinterest {
   background-image: none;
 }
 
-/* line 1024, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1113, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-pinterest.disabled, .btn-pinterest[disabled], fieldset[disabled] .btn-pinterest, .btn-pinterest.disabled:hover, .btn-pinterest[disabled]:hover, fieldset[disabled] .btn-pinterest:hover, .btn-pinterest.disabled:focus, .btn-pinterest[disabled]:focus, fieldset[disabled] .btn-pinterest:focus, .btn-pinterest.disabled.focus, .btn-pinterest[disabled].focus, fieldset[disabled] .btn-pinterest.focus, .btn-pinterest.disabled:active, .btn-pinterest[disabled]:active, fieldset[disabled] .btn-pinterest:active, .btn-pinterest.disabled.active, .btn-pinterest[disabled].active, fieldset[disabled] .btn-pinterest.active {
   background-color: #cb2027;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1025, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1114, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-pinterest .badge {
   color: #cb2027;
   background-color: #fff;
 }
 
-/* line 1026, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1115, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-reddit {
   color: #000;
   background-color: #eff7ff;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1026, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1115, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-reddit:focus, .btn-reddit.focus {
   color: #000;
   background-color: #bcddff;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1027, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1116, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-reddit:hover {
   color: #000;
   background-color: #bcddff;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1028, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1117, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-reddit:active, .btn-reddit.active, .open > .dropdown-toggle.btn-reddit {
   color: #000;
   background-color: #bcddff;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1028, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1117, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-reddit:active:hover, .btn-reddit.active:hover, .open > .dropdown-toggle.btn-reddit:hover, .btn-reddit:active:focus, .btn-reddit.active:focus, .open > .dropdown-toggle.btn-reddit:focus, .btn-reddit:active.focus, .btn-reddit.active.focus, .open > .dropdown-toggle.btn-reddit.focus {
   color: #000;
   background-color: #98ccff;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1029, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1118, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-reddit:active, .btn-reddit.active, .open > .dropdown-toggle.btn-reddit {
   background-image: none;
 }
 
-/* line 1030, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1119, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-reddit.disabled, .btn-reddit[disabled], fieldset[disabled] .btn-reddit, .btn-reddit.disabled:hover, .btn-reddit[disabled]:hover, fieldset[disabled] .btn-reddit:hover, .btn-reddit.disabled:focus, .btn-reddit[disabled]:focus, fieldset[disabled] .btn-reddit:focus, .btn-reddit.disabled.focus, .btn-reddit[disabled].focus, fieldset[disabled] .btn-reddit.focus, .btn-reddit.disabled:active, .btn-reddit[disabled]:active, fieldset[disabled] .btn-reddit:active, .btn-reddit.disabled.active, .btn-reddit[disabled].active, fieldset[disabled] .btn-reddit.active {
   background-color: #eff7ff;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1031, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1120, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-reddit .badge {
   color: #eff7ff;
   background-color: #000;
 }
 
-/* line 1032, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1121, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-soundcloud {
   color: #fff;
   background-color: #f50;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1032, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1121, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-soundcloud:focus, .btn-soundcloud.focus {
   color: #fff;
   background-color: #c40;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1033, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1122, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-soundcloud:hover {
   color: #fff;
   background-color: #c40;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1034, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1123, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-soundcloud:active, .btn-soundcloud.active, .open > .dropdown-toggle.btn-soundcloud {
   color: #fff;
   background-color: #c40;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1034, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1123, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-soundcloud:active:hover, .btn-soundcloud.active:hover, .open > .dropdown-toggle.btn-soundcloud:hover, .btn-soundcloud:active:focus, .btn-soundcloud.active:focus, .open > .dropdown-toggle.btn-soundcloud:focus, .btn-soundcloud:active.focus, .btn-soundcloud.active.focus, .open > .dropdown-toggle.btn-soundcloud.focus {
   color: #fff;
   background-color: #a83800;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1035, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1124, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-soundcloud:active, .btn-soundcloud.active, .open > .dropdown-toggle.btn-soundcloud {
   background-image: none;
 }
 
-/* line 1036, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1125, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-soundcloud.disabled, .btn-soundcloud[disabled], fieldset[disabled] .btn-soundcloud, .btn-soundcloud.disabled:hover, .btn-soundcloud[disabled]:hover, fieldset[disabled] .btn-soundcloud:hover, .btn-soundcloud.disabled:focus, .btn-soundcloud[disabled]:focus, fieldset[disabled] .btn-soundcloud:focus, .btn-soundcloud.disabled.focus, .btn-soundcloud[disabled].focus, fieldset[disabled] .btn-soundcloud.focus, .btn-soundcloud.disabled:active, .btn-soundcloud[disabled]:active, fieldset[disabled] .btn-soundcloud:active, .btn-soundcloud.disabled.active, .btn-soundcloud[disabled].active, fieldset[disabled] .btn-soundcloud.active {
   background-color: #f50;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1037, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1126, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-soundcloud .badge {
   color: #f50;
   background-color: #fff;
 }
 
-/* line 1038, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1127, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-tumblr {
   color: #fff;
   background-color: #2c4762;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1038, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1127, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-tumblr:focus, .btn-tumblr.focus {
   color: #fff;
   background-color: #1c2d3f;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1039, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1128, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-tumblr:hover {
   color: #fff;
   background-color: #1c2d3f;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1040, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1129, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-tumblr:active, .btn-tumblr.active, .open > .dropdown-toggle.btn-tumblr {
   color: #fff;
   background-color: #1c2d3f;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1040, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1129, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-tumblr:active:hover, .btn-tumblr.active:hover, .open > .dropdown-toggle.btn-tumblr:hover, .btn-tumblr:active:focus, .btn-tumblr.active:focus, .open > .dropdown-toggle.btn-tumblr:focus, .btn-tumblr:active.focus, .btn-tumblr.active.focus, .open > .dropdown-toggle.btn-tumblr.focus {
   color: #fff;
   background-color: #111c26;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1041, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1130, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-tumblr:active, .btn-tumblr.active, .open > .dropdown-toggle.btn-tumblr {
   background-image: none;
 }
 
-/* line 1042, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1131, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-tumblr.disabled, .btn-tumblr[disabled], fieldset[disabled] .btn-tumblr, .btn-tumblr.disabled:hover, .btn-tumblr[disabled]:hover, fieldset[disabled] .btn-tumblr:hover, .btn-tumblr.disabled:focus, .btn-tumblr[disabled]:focus, fieldset[disabled] .btn-tumblr:focus, .btn-tumblr.disabled.focus, .btn-tumblr[disabled].focus, fieldset[disabled] .btn-tumblr.focus, .btn-tumblr.disabled:active, .btn-tumblr[disabled]:active, fieldset[disabled] .btn-tumblr:active, .btn-tumblr.disabled.active, .btn-tumblr[disabled].active, fieldset[disabled] .btn-tumblr.active {
   background-color: #2c4762;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1043, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1132, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-tumblr .badge {
   color: #2c4762;
   background-color: #fff;
 }
 
-/* line 1044, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1133, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-twitter {
   color: #fff;
   background-color: #55acee;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1044, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1133, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-twitter:focus, .btn-twitter.focus {
   color: #fff;
   background-color: #2795e9;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1045, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1134, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-twitter:hover {
   color: #fff;
   background-color: #2795e9;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1046, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1135, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-twitter:active, .btn-twitter.active, .open > .dropdown-toggle.btn-twitter {
   color: #fff;
   background-color: #2795e9;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1046, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1135, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-twitter:active:hover, .btn-twitter.active:hover, .open > .dropdown-toggle.btn-twitter:hover, .btn-twitter:active:focus, .btn-twitter.active:focus, .open > .dropdown-toggle.btn-twitter:focus, .btn-twitter:active.focus, .btn-twitter.active.focus, .open > .dropdown-toggle.btn-twitter.focus {
   color: #fff;
   background-color: #1583d7;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1047, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1136, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-twitter:active, .btn-twitter.active, .open > .dropdown-toggle.btn-twitter {
   background-image: none;
 }
 
-/* line 1048, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1137, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-twitter.disabled, .btn-twitter[disabled], fieldset[disabled] .btn-twitter, .btn-twitter.disabled:hover, .btn-twitter[disabled]:hover, fieldset[disabled] .btn-twitter:hover, .btn-twitter.disabled:focus, .btn-twitter[disabled]:focus, fieldset[disabled] .btn-twitter:focus, .btn-twitter.disabled.focus, .btn-twitter[disabled].focus, fieldset[disabled] .btn-twitter.focus, .btn-twitter.disabled:active, .btn-twitter[disabled]:active, fieldset[disabled] .btn-twitter:active, .btn-twitter.disabled.active, .btn-twitter[disabled].active, fieldset[disabled] .btn-twitter.active {
   background-color: #55acee;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1049, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1138, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-twitter .badge {
   color: #55acee;
   background-color: #fff;
 }
 
-/* line 1050, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1139, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-vimeo {
   color: #fff;
   background-color: #1ab7ea;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1050, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1139, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-vimeo:focus, .btn-vimeo.focus {
   color: #fff;
   background-color: #1295bf;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1051, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1140, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-vimeo:hover {
   color: #fff;
   background-color: #1295bf;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1052, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1141, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-vimeo:active, .btn-vimeo.active, .open > .dropdown-toggle.btn-vimeo {
   color: #fff;
   background-color: #1295bf;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1052, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1141, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-vimeo:active:hover, .btn-vimeo.active:hover, .open > .dropdown-toggle.btn-vimeo:hover, .btn-vimeo:active:focus, .btn-vimeo.active:focus, .open > .dropdown-toggle.btn-vimeo:focus, .btn-vimeo:active.focus, .btn-vimeo.active.focus, .open > .dropdown-toggle.btn-vimeo.focus {
   color: #fff;
   background-color: #0f7b9f;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1053, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1142, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-vimeo:active, .btn-vimeo.active, .open > .dropdown-toggle.btn-vimeo {
   background-image: none;
 }
 
-/* line 1054, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1143, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-vimeo.disabled, .btn-vimeo[disabled], fieldset[disabled] .btn-vimeo, .btn-vimeo.disabled:hover, .btn-vimeo[disabled]:hover, fieldset[disabled] .btn-vimeo:hover, .btn-vimeo.disabled:focus, .btn-vimeo[disabled]:focus, fieldset[disabled] .btn-vimeo:focus, .btn-vimeo.disabled.focus, .btn-vimeo[disabled].focus, fieldset[disabled] .btn-vimeo.focus, .btn-vimeo.disabled:active, .btn-vimeo[disabled]:active, fieldset[disabled] .btn-vimeo:active, .btn-vimeo.disabled.active, .btn-vimeo[disabled].active, fieldset[disabled] .btn-vimeo.active {
   background-color: #1ab7ea;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1055, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1144, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-vimeo .badge {
   color: #1ab7ea;
   background-color: #fff;
 }
 
-/* line 1056, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1145, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-vk {
   color: #fff;
   background-color: #587ea3;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1056, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1145, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-vk:focus, .btn-vk.focus {
   color: #fff;
   background-color: #466482;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1057, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1146, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-vk:hover {
   color: #fff;
   background-color: #466482;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1058, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1147, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-vk:active, .btn-vk.active, .open > .dropdown-toggle.btn-vk {
   color: #fff;
   background-color: #466482;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1058, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1147, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-vk:active:hover, .btn-vk.active:hover, .open > .dropdown-toggle.btn-vk:hover, .btn-vk:active:focus, .btn-vk.active:focus, .open > .dropdown-toggle.btn-vk:focus, .btn-vk:active.focus, .btn-vk.active.focus, .open > .dropdown-toggle.btn-vk.focus {
   color: #fff;
   background-color: #3a526b;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1059, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1148, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-vk:active, .btn-vk.active, .open > .dropdown-toggle.btn-vk {
   background-image: none;
 }
 
-/* line 1060, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1149, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-vk.disabled, .btn-vk[disabled], fieldset[disabled] .btn-vk, .btn-vk.disabled:hover, .btn-vk[disabled]:hover, fieldset[disabled] .btn-vk:hover, .btn-vk.disabled:focus, .btn-vk[disabled]:focus, fieldset[disabled] .btn-vk:focus, .btn-vk.disabled.focus, .btn-vk[disabled].focus, fieldset[disabled] .btn-vk.focus, .btn-vk.disabled:active, .btn-vk[disabled]:active, fieldset[disabled] .btn-vk:active, .btn-vk.disabled.active, .btn-vk[disabled].active, fieldset[disabled] .btn-vk.active {
   background-color: #587ea3;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1061, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1150, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-vk .badge {
   color: #587ea3;
   background-color: #fff;
 }
 
-/* line 1062, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1151, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-yahoo {
   color: #fff;
   background-color: #720e9e;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1062, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1151, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-yahoo:focus, .btn-yahoo.focus {
   color: #fff;
   background-color: #500a6f;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1063, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1152, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-yahoo:hover {
   color: #fff;
   background-color: #500a6f;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1064, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1153, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-yahoo:active, .btn-yahoo.active, .open > .dropdown-toggle.btn-yahoo {
   color: #fff;
   background-color: #500a6f;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1064, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1153, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-yahoo:active:hover, .btn-yahoo.active:hover, .open > .dropdown-toggle.btn-yahoo:hover, .btn-yahoo:active:focus, .btn-yahoo.active:focus, .open > .dropdown-toggle.btn-yahoo:focus, .btn-yahoo:active.focus, .btn-yahoo.active.focus, .open > .dropdown-toggle.btn-yahoo.focus {
   color: #fff;
   background-color: #39074e;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1065, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1154, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-yahoo:active, .btn-yahoo.active, .open > .dropdown-toggle.btn-yahoo {
   background-image: none;
 }
 
-/* line 1066, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1155, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-yahoo.disabled, .btn-yahoo[disabled], fieldset[disabled] .btn-yahoo, .btn-yahoo.disabled:hover, .btn-yahoo[disabled]:hover, fieldset[disabled] .btn-yahoo:hover, .btn-yahoo.disabled:focus, .btn-yahoo[disabled]:focus, fieldset[disabled] .btn-yahoo:focus, .btn-yahoo.disabled.focus, .btn-yahoo[disabled].focus, fieldset[disabled] .btn-yahoo.focus, .btn-yahoo.disabled:active, .btn-yahoo[disabled]:active, fieldset[disabled] .btn-yahoo:active, .btn-yahoo.disabled.active, .btn-yahoo[disabled].active, fieldset[disabled] .btn-yahoo.active {
   background-color: #720e9e;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 1067, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1156, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .btn-yahoo .badge {
   color: #720e9e;
   background-color: #fff;
@@ -22939,26 +23038,26 @@ nav.navbar-fixed-top .navbar-nav > li > a:not(.btn) {
 
 /************NITSUGA******************************************************************/
 @media (max-width: 768px) {
-  /* line 1073, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 1162, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   #daySelector {
     width: 100%;
   }
-  /* line 1075, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 1164, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   #daySelector .btn {
     width: 12.5%;
   }
-  /* line 1076, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 1165, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   #daySelector .btn:first-child {
     margin-left: 0.5%;
   }
 }
-/* line 1082, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1171, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 #AgendaCol label:not(.btn) {
   display: block-inline;
   padding-left: 15px;
   text-indent: -15px;
 }
-/* line 1087, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1176, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 #AgendaCol input {
   width: 13px;
   height: 13px;
@@ -22970,79 +23069,84 @@ nav.navbar-fixed-top .navbar-nav > li > a:not(.btn) {
   *overflow: hidden;
 }
 
-/* line 1098, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1187, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+#AppContainer {
+  margin-bottom: 25px;
+}
+
+/* line 1188, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .bg-releve {
   background-color: #12849e;
 }
 
-/* line 1099, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1189, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .text-releve {
   color: #12849e;
 }
 
-/* line 1100, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1190, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .bg-light-releve {
   background-color: #1aaea2;
 }
 
-/* line 1101, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1191, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .text-light-releve {
   color: #1aaea2;
 }
 
-/* line 1102, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1192, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .strike {
   text-decoration: line-through;
 }
 
-/* line 1103, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1193, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .first {
   padding-top: 9.375em;
 }
 
-/* line 1104, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1194, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .first.notlandingpage {
   padding-top: 6.25em;
 }
 
-/* line 1105, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1195, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .form-horizontal label.control-label {
   text-align: left;
 }
 
-/* line 1108, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1198, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .toolsBar {
   padding-bottom: 0.625em;
 }
 
-/* line 1109, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1199, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 #LoadingImg {
   display: none;
   with: 2.8125em;
   height: 3.125em;
 }
 
-/* line 1114, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1204, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 input[type='number'].nodecoration {
   -moz-appearance: textfield;
 }
 
-/* line 1117, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1207, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 tr.tr_clickable {
   cursor: pointer;
 }
 
-/* line 1120, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1210, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 div.footerdata > p {
   color: #D5D3D3;
   margin: 0em;
 }
-/* line 1123, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1213, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 div.footerdata > p a {
   color: #D5D3D3;
 }
 
-/* line 1125, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1215, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 hr.greyhr {
   display: block;
   height: 0.0625em;
@@ -23052,75 +23156,77 @@ hr.greyhr {
   padding: 0;
 }
 
-/* line 1133, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1223, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 #footer-data {
   padding-bottom: 2em;
 }
-/* line 1135, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1225, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 #footer-data p, #footer-data a {
   color: #8a8e91;
   font-size: 1em;
   line-height: 1.5;
 }
-/* line 1139, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1229, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 #footer-data p #developer-data, #footer-data a #developer-data {
   font-size: 0.875em;
 }
 
-/* line 1142, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1232, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 #gallery-carrousel {
   cursor: e-resize;
 }
 
-/* line 1145, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1235, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 #gallery-carrousel .item {
   margin: 0.1875em;
 }
 
-/* line 1148, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1238, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 #gallery-carrousel .item img {
   display: block;
   width: 100%;
   height: auto;
 }
 
-/* line 1153, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1243, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .collapsing {
   -webkit-transition: none;
   transition: none;
 }
 
-/* line 1157, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1247, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 cursorpointer {
   cursor: pointer;
 }
 
-/* line 1158, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1248, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 label.selectmultiple {
   font-weight: normal;
 }
 
-/* line 1159, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1249, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 button.btn-absolute {
   position: fixed;
-  bottom: 1%;
-  right: 1%;
-  z-index: 9999;
+  bottom: 0;
+  right: 0;
+  z-index: 9549;
+  left: 0;
+  border-radius: unset;
 }
 
-/* line 1165, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1257, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .formalert {
   display: none;
 }
 
-/* line 1166, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1258, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .registerline {
   background-color: #c7c7c7;
   height: 1px;
   top: 0.45em;
 }
 
-/* line 1171, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1263, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .registertext {
   font-size: 13px;
   line-height: 15px;
@@ -23129,141 +23235,141 @@ button.btn-absolute {
   font-weight: 600;
 }
 
-/* line 1178, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1270, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 .ui-datepicker {
   z-index: 9600 !important;
 }
 
-/* line 1182, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1274, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 #map {
   width: 100%;
   height: 25em;
 }
 
-/* line 1183, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1275, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 #preload-03 {
   background: url(/assets/backpattern.png) no-repeat -624.9375em -624.9375em;
 }
 
-/* line 1184, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1276, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 #preload-04 {
   background: url(/assets/header.jpg) no-repeat -624.9375em -624.9375em;
 }
 
-/* line 1185, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1277, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 #preload-05 {
   background: url(/assets/table-1.jpg) no-repeat -624.9375em -624.9375em;
 }
 
-/* line 1186, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1278, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 #preload-06 {
   background: url(/assets/table-2.jpg) no-repeat -624.9375em -624.9375em;
 }
 
-/* line 1187, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1279, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 #preload-07 {
   background: url(/images/table-2-hover.jpg) no-repeat -624.9375em -624.9375em;
 }
 
-/* line 1188, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1280, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 #preload-08 {
   background: url(/assets/table-3.jpg) no-repeat -624.9375em -624.9375em;
 }
 
-/* line 1189, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1281, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 #preload-09 {
   background: url(/assets/footer.jpg) no-repeat -624.9375em -624.9375em;
 }
 
-/* line 1190, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1282, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 #preload-10 {
   background: url(/images/popup.jpg) no-repeat -624.9375em -624.9375em;
 }
 
-/* line 1191, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1283, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 #preload-11 {
   background: url(/assets/carrousel/gallery_1.jpg) no-repeat -624.9375em -624.9375em;
 }
 
-/* line 1192, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1284, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 #preload-12 {
   background: url(/assets/carrousel/gallery_2.jpg) no-repeat -624.9375em -624.9375em;
 }
 
-/* line 1193, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1285, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 #preload-13 {
   background: url(/assets/carrousel/gallery_3.jpg) no-repeat -624.9375em -624.9375em;
 }
 
-/* line 1194, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1286, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 #preload-14 {
   background: url(/assets/carrousel/gallery_4.jpg) no-repeat -624.9375em -624.9375em;
 }
 
-/* line 1195, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1287, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 #preload-15 {
   background: url(/assets/carrousel/gallery_5.jpg) no-repeat -624.9375em -624.9375em;
 }
 
-/* line 1196, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1288, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 #preload-16 {
   background: url(/assets/carrousel/gallery_6.jpg) no-repeat -624.9375em -624.9375em;
 }
 
-/* line 1197, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1289, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 #preload-17 {
   background: url(/assets/carrousel/gallery_7.jpg) no-repeat -624.9375em -624.9375em;
 }
 
-/* line 1198, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+/* line 1290, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
 #preload-16 {
   background: url(/assets/carrousel/gallery_8.jpg) no-repeat -624.9375em -624.9375em;
 }
 
 /**/
 @-webkit-keyframes open {
-  /* line 1202, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 1294, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   0% {
     -webkit-transform: scale(1, 0);
   }
 
-  /* line 1203, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 1295, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   100% {
     -webkit-transform: scale(1, 1);
   }
 }
 
 @-webkit-keyframes squeeze {
-  /* line 1206, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 1298, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   0% {
     height: 25em;
   }
 
-  /* line 1207, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 1299, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   100% {
     height: 7.5em;
   }
 }
 
 @-webkit-keyframes slideLeft {
-  /* line 1210, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 1302, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   0% {
     -webkit-transform: translateX(120%);
   }
 
-  /* line 1211, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 1303, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   100% {
     -webkit-transform: translateX(0%);
   }
 }
 
 @-webkit-keyframes slideRight {
-  /* line 1214, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 1306, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   0% {
     -webkit-transform: translateX(-120%);
   }
 
-  /* line 1215, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 1307, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   100% {
     -webkit-transform: translateX(0%);
   }
@@ -23271,48 +23377,48 @@ button.btn-absolute {
 
 /**/
 @-moz-keyframes open {
-  /* line 1219, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 1311, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   0% {
     -moz-transform: scale(1, 0);
   }
 
-  /* line 1220, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 1312, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   100% {
     -moz-transform: scale(1, 1);
   }
 }
 
 @-moz-keyframes squeeze {
-  /* line 1223, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 1315, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   0% {
     height: 25em;
   }
 
-  /* line 1224, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 1316, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   100% {
     height: 7.5em;
   }
 }
 
 @-moz-keyframes slideLeft {
-  /* line 1227, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 1319, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   0% {
     -moz-transform: translateX(120%);
   }
 
-  /* line 1228, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 1320, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   100% {
     -moz-transform: translateX(0%);
   }
 }
 
 @-moz-keyframes slideRight {
-  /* line 1231, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 1323, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   0% {
     -moz-transform: translateX(-120%);
   }
 
-  /* line 1232, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 1324, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   100% {
     -moz-transform: translateX(0%);
   }
@@ -23320,48 +23426,48 @@ button.btn-absolute {
 
 /**/
 @keyframes open {
-  /* line 1236, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 1328, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   0% {
     transform: scale(1, 0);
   }
 
-  /* line 1237, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 1329, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   100% {
     transform: scale(1, 1);
   }
 }
 
 @keyframes squeeze {
-  /* line 1240, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 1332, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   0% {
     height: 25em;
   }
 
-  /* line 1241, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 1333, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   100% {
     height: 7.5em;
   }
 }
 
 @keyframes slideLeft {
-  /* line 1244, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 1336, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   0% {
     transform: translateX(120%);
   }
 
-  /* line 1245, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 1337, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   100% {
     transform: translateX(0%);
   }
 }
 
 @keyframes slideRight {
-  /* line 1248, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 1340, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   0% {
     transform: translateX(-120%);
   }
 
-  /* line 1249, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 1341, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   100% {
     transform: translateX(0%);
   }
@@ -23369,24 +23475,24 @@ button.btn-absolute {
 
 /* Media Queries */
 @media (max-width: 991px) {
-  /* line 1254, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 1346, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   .text-center-mobile {
     text-align: center !important;
   }
 }
 @media (max-width: 768px) {
-  /* line 1260, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 1352, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   .popup-form {
     width: 100%;
     margin: 60px auto;
   }
 
-  /* line 1264, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 1356, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   .modal {
     padding: 0 10px !important;
   }
 
-  /* line 1267, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 1359, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   .popup-form .landing-form-control:not(.dropdown):focus {
     position: relative;
     padding-right: 30px;
@@ -23394,8 +23500,105 @@ button.btn-absolute {
   }
 }
 @media (max-width: 400px) {
-  /* line 1275, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+  /* line 1367, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
   header .typed-cursor {
     display: none;
   }
+}
+/***************Rounded switch*************/
+/* The switch - the box around the slider */
+/* line 1374, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  /* Hide default HTML checkbox */
+  /* The slider */
+  /* Rounded sliders */
+}
+/* line 1381, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+.switch input {
+  display: none;
+}
+/* line 1383, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+.switch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+/* line 1394, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+.switch .slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+/* line 1405, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+.switch input:checked + .slider {
+  background-color: #1aaea2;
+}
+/* line 1408, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+.switch input:checked + .slider.slider-red {
+  background-color: #a94442;
+}
+/* line 1411, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+.switch input:focus + .slider {
+  box-shadow: 0 0 1px #1aaea2;
+}
+/* line 1414, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+.switch input:focus + .slider.slider-red {
+  box-shadow: #a94442;
+}
+/* line 1417, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+.switch input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+/* line 1423, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+.switch .slider.round {
+  border-radius: 34px;
+}
+/* line 1426, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+.switch .slider.round:before {
+  border-radius: 50%;
+}
+
+/* line 1430, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+.switch.switch-sm {
+  width: 42px;
+  height: 23.8px;
+}
+/* line 1433, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+.switch.switch-sm .slider:before {
+  height: 18.2px;
+  width: 18.2px;
+  left: 2.8px;
+  bottom: 2.8px;
+}
+/* line 1439, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+.switch.switch-sm input:focus + .slider {
+  box-shadow: 0 0 1px #1aaea2;
+}
+/* line 1442, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+.switch.switch-sm .slider.round {
+  border-radius: 23.8px;
+}
+/* line 1445, /home/nitsuga/Gits/releve/app/assets/stylesheets/custom.css.scss */
+.switch.switch-sm input:checked + .slider:before {
+  -webkit-transform: translateX(18.2px);
+  -ms-transform: translateX(18.2px);
+  transform: translateX(18.2px);
 }

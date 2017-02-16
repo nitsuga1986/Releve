@@ -1184,6 +1184,7 @@ body.landingpage {
 	  *overflow: hidden;
 	}
 }
+#AppContainer{margin-bottom:25px;}
 .bg-releve{background-color:#12849e;}
 .text-releve{color:#12849e;}
 .bg-light-releve{background-color:#1aaea2;}
@@ -1246,10 +1247,12 @@ hr.greyhr {
 cursorpointer{cursor:pointer;}
 label.selectmultiple{font-weight:normal;}
 button.btn-absolute{
-    position: fixed;
-    bottom: 1%;
-    right: 1%;
+	position: fixed;
+	bottom: 0;
+	right: 0;
 	z-index: 9549;
+	left: 0;
+	border-radius: unset;
 }
 .formalert{display:none;}
 .registerline{
