@@ -36,6 +36,7 @@ angular.module("TurnosApp")
 		.when("/pago/:id/edit", { title: 'Editar pago',templateUrl: "<%= asset_path('pago/edit.html') %> ", controller: "PagoEditCtrl", activetab: 'pago'})
 		// Event 
 		.when("/eventos/index", { title: 'Listado de eventos',templateUrl: "<%= asset_path('event/index.html') %> ", controller: "EventIndexCtrl", activetab: 'event'})
+		.when("/eventos/stats", { title: 'Estatdísticas Releve',templateUrl: "<%= asset_path('event/stats.html') %> ", controller: "EventStatsCtrl", activetab: 'event'})
 		// Otros
 		.otherwise({ redirectTo: "/" });
 		// Fixes # in the routes. Not in IE...

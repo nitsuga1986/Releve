@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
 
 	namespace "api" do
-		resources :actividad, :event
+		resources :actividad
+		resources :event do
+			collection do
+				post 'stats'
+			end
+		end
 		resources :pago do
 			collection do
 				get 'index_user'
