@@ -3,9 +3,7 @@ angular.module("TurnosApp").controller("EventStatsCtrl",['$scope', '$location', 
 
 
 
-	ResourceEvent.stats({ stat: 'asistencias' }).$promise.then(function(data) {
-		$scope.asistencias = JSON.stringify(data)
-	});
+	//ResourceEvent.stats({ stat: 'asistencias' }).$promise.then(function(data) {$scope.asistencias = JSON.stringify(data)});
 	ResourceEvent.stats({ stat: 'ingresos' }).$promise.then(function(data) {
 		$scope.ingresos = JSON.stringify(data)
 	});
