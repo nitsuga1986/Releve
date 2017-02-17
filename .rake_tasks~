@@ -28,6 +28,7 @@ rails:template
 rails:update
 routes
 secret
+send_reminders
 stats
 time:zones:all
 tmp:clear

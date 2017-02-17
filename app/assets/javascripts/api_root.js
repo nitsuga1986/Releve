@@ -34,6 +34,7 @@
 //= require controllers/PagoEditCtrl
 //= require controllers/PagoShowCtrl
 //= require controllers/EventIndexCtrl
+//= require controllers/EventStatsCtrl
 //= require routes
 // startLoading
 function startLoading() {

@@ -12,6 +12,33 @@ class Api::EventController < ApplicationController
 	@events = Event.order(id: :desc)
 	fresh_when(@events)
   end
+
+  def stats
+	@stats = {}
+	case params[:stat]
+	when 'asistencias'
+		@chartData = [['Horarios','Inscriptos', 'Presentes', { role: 'annotation' } ]]
+		Clase.all.map(&:horario).uniq.sort!.each do |horario|
+			total_anotados = Clase.total_by_horario(horario)
+			total_presentes = Clase.total_by_horario(horario)
+			@chartData.push([horario, total_anotados, total_presentes,''])
+		end
+		@stats['stats'] = @chartData
+		render json: @stats
+		
+	when 'ingresos'
+		
+		Pago.all.map(&:mes).uniq.sort! do |mes|
+			@stats[mes] = Pago.total_by_mes(mes)
+		end
+		render json: @stats
+		
+	else
+	  head :ok
+	end
+	
+  end
+
   
 end
 

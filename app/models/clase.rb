@@ -2,6 +2,9 @@ class Clase < ActiveRecord::Base
 	scope :btw_dates, ->(start_date, end_date) { where('fecha >= ? AND fecha <= ?', start_date, end_date) if (start_date.present? &&  end_date.present?) }
 	scope :after_date, ->(date) { where('fecha >= ?', date) if date.present? }
 	scope :by_instructor, ->(user_id) { where('instructor=? OR reemplazo=?', user_id, user_id) if user_id.present? }
+
+	scope :total_by_horario, ->(horario) { where('horario=?', horario).collect{|x| x.asistencias.count}.inject(0, :+)  if horario.present?}
+	scope :total_by_horario_and_confirmed, ->(horario,confirmed) { where('horario=?', horario).collect{|x| x.asistencias.where('confirmed=?',confirmed).count}.inject(0, :+)  if horario.present?}
 	
 	has_many :asistencias
 	has_many :users, through: :asistencias
