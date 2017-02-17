@@ -5146,11 +5146,11 @@ angular.module("TurnosApp",['ngRoute','ngResource','ngTable','ngCookies']).run([
 	}
 	//condicionesClases
 	$rootScope.condicionesClases = function(clases,alumno) {
-		// Each clase:
-		alumno.actividad_counter = []; // Count clases for each actividad
-		alumno.selected_counter = []; // Count clases selected for each actividad
-		alumno.actividad_counter_month = []; // Count clases for each actividad for month
+		alumno.actividad_counter = []; 			// Count clases for each actividad
+		alumno.actividad_counter_month = []; 	// Count clases for each actividad for month
 		if(alumno.selected_counter==undefined){alumno.selected_counter = [];} // Count clases for each checkbox
+		
+		// Each clase:
 		$.each(clases, function(index_clase, clase) {
 			month = parseInt(clases[index_clase].fecha.match(/\-(.*?)\-/)[1]);
 			clases[index_clase].mes = month;
@@ -5537,6 +5537,8 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$rootScope', 
 		};	
 		td = new Date();
 		var Api = ResourceClase;
+		$scope.alumno.actividad_counter = [];
+		$scope.alumno.selected_counter = [];
 		$scope.columns_claseAgenda = columns_claseAgenda;
 		$scope.cant_visible_cols = $.grep(columns_claseAgenda, function(e){ return e.visible == true; }).length+1;
 		$scope.tableParams = new NgTableParams({
@@ -5554,8 +5556,6 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$rootScope', 
 				// ajax request to api
 				startLoading();
 				return Api.index_current().$promise.then(function(data) {
-					$scope.alumno.actividad_counter = [];
-					$scope.alumno.selected_counter = [];
 					angular.forEach(data, function(value, key) {
 						if($scope.clases!=undefined && $scope.clases[key]['checked'] == true){data[key]['checked'] = true}
 						else{data[key]['checked'] = false};
@@ -5590,7 +5590,8 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$rootScope', 
 	};
 	// verifyPlan
 	$scope.verifyPlan = function(state,clase_id) {
-		if(!$scope.changesUnsaved){	$scope.changesUnsaved=true;}
+		console.log('verify plan')
+		$scope.changesUnsaved=true;
 		$('#absoluteButtonAgendar').prop("disabled", false);
 		function preventClase(index_clase) {
 			$scope.clases[index_clase].checked=false;
@@ -5599,13 +5600,17 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$rootScope', 
 		var clase = {}; var index_clase=0;
 		$.each($scope.clases, function(index, each_clase) {if(each_clase.id == clase_id){clase = each_clase;index_clase = index;return false;}});
 		pack = $.grep($scope.alumno.packs, function(e){ return e.actividad_id == clase.actividad_id; })[0];
+		console.log(pack)
 		if (state){
 			if (pack != undefined){
+				if(pack.cantidad_array != undefined && pack.cantidad_array[clase.mes-1] != undefined){maxClases = pack.cantidad_array[clase.mes-1];}else{ maxClases = 1;}
+				console.log('mes: '+clase.mes)
 				if($scope.alumno.actividad_counter[clase.actividad_id]==undefined){$scope.alumno.actividad_counter[clase.actividad_id]=[];}
 				if($scope.alumno.actividad_counter[clase.actividad_id][clase.mes]==undefined){$scope.alumno.actividad_counter[clase.actividad_id][clase.mes]=0;}
 				if($scope.alumno.selected_counter[clase.actividad_id]==undefined){$scope.alumno.selected_counter[clase.actividad_id]=[];}
 				if($scope.alumno.selected_counter[clase.actividad_id][clase.mes]==undefined){$scope.alumno.selected_counter[clase.actividad_id][clase.mes]=0;}
-				if(pack.cantidad > ($scope.alumno.actividad_counter[clase.actividad_id][clase.mes]+$scope.alumno.selected_counter[clase.actividad_id][clase.mes])){
+				console.log('selected_counter: '+$scope.alumno.selected_counter[clase.actividad_id][clase.mes])
+				if(maxClases > ($scope.alumno.actividad_counter[clase.actividad_id][clase.mes]+$scope.alumno.selected_counter[clase.actividad_id][clase.mes])){
 					$scope.alumno.selected_counter[clase.actividad_id][clase.mes] += 1;
 				}else{preventClase(index_clase);}
 			}else{preventClase(index_clase);}
@@ -5645,7 +5650,7 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$rootScope', 
 			$scope.tableParams.reload();
 		});
 	};
-	// WaitListUser
+	// WaitList
 	$scope.WaitListUser = function() {
 		startLoading();
 		$rootScope.got_to_url_success = "/app/agenda";
@@ -5658,7 +5663,6 @@ angular.module("TurnosApp").controller("UsrAgendaCtrl",['$scope', '$rootScope', 
 	// filterDay
 	var allTrueArray=[true,true,true,true,true,true,true];
 	var allFalseArray=[false,false,false,false,false,false,false];
-	
 	$scope.dayCriteria = dayNames;
 	$scope.filterDay=allTrueArray.slice(0);
 	$scope.filterAll=true;
@@ -5842,23 +5846,24 @@ angular.module("TurnosApp").controller("UsrPlanificarCtrl",['$scope', '$rootScop
 		})
 	});
 	// verifyPlan
-	$scope.verifyPlan = function(state,clase_id,modalEnabled=true) {
+	$scope.verifyPlan = function(state,clase_id) {
+		$scope.changesUnsaved=true;
+		$('#absoluteButtonAgendar').prop("disabled", false);
 		function preventClase(index_clase) {
 			$scope.clases[index_clase].checked=false;
-			if(modalEnabled){
-				$('#alert-modal').modal('show');
-			}
+			$('#alert-modal').modal('show');
 		}
 		var clase = {}; var index_clase=0;
 		$.each($scope.clases, function(index, each_clase) {if(each_clase.id == clase_id){clase = each_clase;index_clase = index;return false;}});
 		pack = $.grep($scope.alumno.packs, function(e){ return e.actividad_id == clase.actividad_id; })[0];
 		if (state){
 			if (pack != undefined){
+				if(pack.cantidad_array != undefined && pack.cantidad_array[clase.mes-1] != undefined){maxClases = pack.cantidad_array[clase.mes-1];}else{ maxClases = 1;}
 				if($scope.alumno.actividad_counter[clase.actividad_id]==undefined){$scope.alumno.actividad_counter[clase.actividad_id]=[];}
 				if($scope.alumno.actividad_counter[clase.actividad_id][clase.mes]==undefined){$scope.alumno.actividad_counter[clase.actividad_id][clase.mes]=0;}
 				if($scope.alumno.selected_counter[clase.actividad_id]==undefined){$scope.alumno.selected_counter[clase.actividad_id]=[];}
 				if($scope.alumno.selected_counter[clase.actividad_id][clase.mes]==undefined){$scope.alumno.selected_counter[clase.actividad_id][clase.mes]=0;}
-				if(pack.cantidad > ($scope.alumno.actividad_counter[clase.actividad_id][clase.mes]+$scope.alumno.selected_counter[clase.actividad_id][clase.mes])){
+				if(maxClases > ($scope.alumno.actividad_counter[clase.actividad_id][clase.mes]+$scope.alumno.selected_counter[clase.actividad_id][clase.mes])){
 					$scope.alumno.selected_counter[clase.actividad_id][clase.mes] += 1;
 				}else{preventClase(index_clase);}
 			}else{preventClase(index_clase);}
@@ -6456,12 +6461,16 @@ angular.module("TurnosApp").controller("ClaseDashboardCtrl",['$scope', '$cookieS
 	$scope.moreClases = function() {
 		oldate = $("#fecha_end").datepicker( "getDate" );
 		oldate =  [oldate.getFullYear(),oldate.getMonth()+1,oldate.getDate()].join('-');
+		$scope.scrollToSelector = $('.date_group').last();
 		// $scope.clase.fecha_start = oldate
 		var nwdate =  new Date(oldate);
 		nwdate.setDate(nwdate.getDate()+10);
 		nwdate =  [nwdate.getFullYear(),nwdate.getMonth()+1,nwdate.getDate()].join('-');
 		$scope.clase.fecha_end = nwdate;
-		$scope.submit();
+		$scope.submit();	
+		$('html, body').animate({
+			scrollTop: $scope.scrollToSelector.offset().top
+		}, 2000);
 	};
 	// Datepicker
 	 var datelist = []; // initialize empty array
@@ -6542,7 +6551,6 @@ angular.module("TurnosApp").controller("ClaseDashboardCtrl",['$scope', '$cookieS
 		if (cookie_search){ $scope.clase = cookie_search;}else
 		{
 			if (typeof $scope.is_instructor !== 'undefined' && $scope.is_instructor){
-				console.log($scope.instructor_id)
 				if( $scope.instructor_id==4){//Vicky=>Todxs;
 					$scope.clase.instructor_id = 9999999;
 				}else{
@@ -6631,25 +6639,24 @@ angular.module("TurnosApp").controller("ClaseEditBulkCtrl",['$scope', '$rootScop
 	$scope.FormErrors = [];
 	$scope.horariosArray = horariosArray;
 	$scope.submiterror = false;
-	$scope.GoToIndex = function(id) {$location.path("/clase/dashboard");};
 	$scope.GoToNewActividad = function() {$location.path("/actividad/new");};
 	$scope.ActividadIndex = [];
 	$scope.ActividadIndex = ResourceActividad.index();
 	$scope.InstructorIndex = ResourceAlumno.instructores();
-	// SetToday
-	$scope.SetToday = function(scope_date) {
-		today = new Date();
-		dd = today.getDate();if(dd<10){dd='0'+dd } 
-		mm = today.getMonth()+1;if(mm<10){mm='0'+mm }  //January is 0!
-		yyyy = today.getFullYear();
+	// SetDay
+	SetDay = function(plusDays) {
+		var currentDate = new Date(new Date().getTime() + plusDays * 24 * 60 * 60 * 1000);
+		dd = currentDate.getDate();if(dd<10){dd='0'+dd } 
+		mm = currentDate.getMonth()+1;if(mm<10){mm='0'+mm }  //January is 0!
+		yyyy = currentDate.getFullYear();
 		return yyyy+'-'+mm+'-'+dd
 	};
 	// Bulk
 	$scope.FormTitle = "<i class='fa fa-calendar'></i> Editar clases";
 	$scope.FormButton = '<i class="fa fa-calendar fa-lg"></i> Editar';
 	$scope.clase = new ResourceClase();
-	$scope.clase.fecha_start = $scope.SetToday();
-	$scope.clase.fecha_end = $scope.SetToday();
+	$scope.clase.fecha_start = SetDay(0);
+	$scope.clase.fecha_end = SetDay(30);
 	$scope.clase.max_users = 4;
 	$scope.clase.duracion = 1; 
 	$scope.clase.trialable = true;
@@ -6681,6 +6688,12 @@ angular.module("TurnosApp").controller("ClaseEditBulkCtrl",['$scope', '$rootScop
 				$scope.clase.users.splice(index, 1);
 			}    
 		});
+	};
+	// filterDayChange
+	$scope.clase.filterDay = new Array(59).fill(false);
+	$scope.filterDayChange = function(day,event) {
+		event.preventDefault();
+		$scope.clase.filterDay[day] = !$scope.clase.filterDay[day];
 	};
 	// Datepicker
 	 var datelist = []; // initialize empty array
@@ -6819,6 +6832,14 @@ angular.module("TurnosApp").controller("AlumnoEditCtrl",['$scope', '$rootScope',
 		});
 		
 		$scope.alumno.$promise.then(function( value ){
+			$.each($scope.alumno.packs, function(index_pack, pack) {
+				//AQUI
+				if($.grep(pack.cantidad_array, function( a ) {return a !== 1;}).length !== 0){
+					$scope.alumno.packs[index_pack]['active'] = true;
+				}else{
+					$scope.alumno.packs[index_pack]['active'] = false;
+				};
+			});
 			ResourceActividad.index().$promise.then(function(ActividadIndex){
 				$scope.ActividadIndex = ActividadIndex;
 				$.each($scope.ActividadIndex, function(index_actividades) {
@@ -6827,7 +6848,7 @@ angular.module("TurnosApp").controller("AlumnoEditCtrl",['$scope', '$rootScope',
 						if($scope.ActividadIndex[index_actividades].id==$scope.alumno.packs[index_pack].actividad_id){notincluded=false;}
 					});
 					if(notincluded){
-						missing_pack = {"actividad_id":$scope.ActividadIndex[index_actividades].id,"cantidad":null,"noperiod":true,"fecha_start":null,"fecha_end":null,"actividad":$scope.ActividadIndex[index_actividades]}
+						missing_pack = {"actividad_id":$scope.ActividadIndex[index_actividades].id,"cantidad":null,"cantidad_array":[1,1,1,1,1,1,1,1,1,1,1,1],"noperiod":true,"fecha_start":null,"fecha_end":null,"actividad":$scope.ActividadIndex[index_actividades].nombre}
 						$scope.alumno.packs.push(missing_pack);
 					}
 				});
@@ -7384,6 +7405,7 @@ angular.module("TurnosApp")
 		.when("/pago/:id/edit", { title: 'Editar pago',templateUrl: "/assets/pago/edit.html ", controller: "PagoEditCtrl", activetab: 'pago'})
 		// Event 
 		.when("/eventos/index", { title: 'Listado de eventos',templateUrl: "/assets/event/index.html ", controller: "EventIndexCtrl", activetab: 'event'})
+		.when("/eventos/stats", { title: 'Estatdísticas Releve',templateUrl: "/assets/event/stats.html ", controller: "EventStatsCtrl", activetab: 'event'})
 		// Otros
 		.otherwise({ redirectTo: "/" });
 		// Fixes # in the routes. Not in IE...

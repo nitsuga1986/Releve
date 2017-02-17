@@ -72,8 +72,7 @@ angular.module("TurnosApp").factory("ResourcePago",['$resource', function($resou
 angular.module("TurnosApp").factory("ResourceEvent",['$resource', function($resource) {
   return $resource("/api/event/:id", { id: "@id" },
     {
-      'index':  { method: 'GET', isArray: true },
-      'stats': 	{ method: 'POST', isArray: true, url: '/api/event/stats'},
+      'index':   { method: 'GET', isArray: true },
     }
   );
 }]);
