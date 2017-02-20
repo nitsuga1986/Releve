@@ -141,9 +141,9 @@ class Api::AlumnosController < ApplicationController
 	logger.info "Newsletter mail sent with BCC: --------------------------------------------"
 	logger.info recipients
 	logger.info "--------------------------------------------"
-	if recipients.kind_of?(Array) && recipients.count > 50
+	if recipients.kind_of?(Array) && recipients.count > 99
 		logger.info "** chunked Recipients"
-		chunkedArray = recipients.each_slice(50).to_a
+		chunkedArray = recipients.each_slice(99).to_a
 		chunkedArray.each do |chunkedRecipients|
 			logger.info "**"
 			UserMailer.newsletter_email(recipients, mail_subject, mail_title, mail_pretext, mail_body, mail_button_text, mail_button_link, mail_subtitle, mail_subbody, include_reminder).deliver
