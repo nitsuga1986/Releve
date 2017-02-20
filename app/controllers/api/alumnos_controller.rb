@@ -131,7 +131,40 @@ class Api::AlumnosController < ApplicationController
   end
   
   def send_newsletter_email(recipient, mail_subject, mail_title, mail_pretext, mail_body, mail_button_text, mail_button_link, mail_subtitle, mail_subbody, include_reminder)	
-	 UserMailer.newsletter_email(recipient, mail_subject, mail_title, mail_pretext, mail_body, mail_button_text, mail_button_link, mail_subtitle, mail_subbody, include_reminder).deliver
+	case recipient
+		when "all" then recipients = User.all.pluck(:email)
+		when "reminders" then recipients = User.remaindable.pluck(:email)
+		when "newsletter" then recipients = User.newsletterable.pluck(:email)
+		when "test" then recipients = ""
+		else recipients = recipient
+	end
+	logger.info "Newsletter mail sent with BCC: --------------------------------------------"
+	logger.info recipients
+	logger.info "--------------------------------------------"
+	if recipients.kind_of?(Array) && recipients.count > 99
+		logger.info "** chunked Recipients"
+		chunkedArray = recipients.each_slice(99).to_a
+		chunkedArray.each do |chunkedRecipients|
+			UserMailer.newsletter_email(recipients, mail_subject, mail_title, mail_pretext, mail_body, mail_button_text, mail_button_link, mail_subtitle, mail_subbody, include_reminder).deliver
+		end
+	else
+		UserMailer.newsletter_email(recipients, mail_subject, mail_title, mail_pretext, mail_body, mail_button_text, mail_button_link, mail_subtitle, mail_subbody, include_reminder).deliver
+	end
   end			
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
 end

@@ -55,14 +55,7 @@ class UserMailer < ActionMailer::Base
 		mail(to: @user.email, subject: 'Tu semana Releve!')
 	end
 
-	def newsletter_email(recipient, mail_subject, mail_title, mail_pretext, mail_body, mail_button_text, mail_button_link, mail_subtitle, mail_subbody, include_reminder)
-		case recipient
-			when "all" then recipients = User.all.pluck(:email)
-			when "reminders" then recipients = User.remaindable.pluck(:email)
-			when "newsletter" then recipients = User.newsletterable.pluck(:email)
-			when "test" then recipients = ""
-			else recipients = recipient
-		end
+	def newsletter_email(recipients, mail_subject, mail_title, mail_pretext, mail_body, mail_button_text, mail_button_link, mail_subtitle, mail_subbody, include_reminder)
 		@mail_title = mail_title
 		@mail_body = mail_body
 		@mail_pretext = mail_pretext
@@ -71,17 +64,7 @@ class UserMailer < ActionMailer::Base
 		@mail_subtitle = mail_subtitle
 		@mail_subbody = mail_subbody
 		@include_reminder = include_reminder
-		logger.info "Newsletter mail sent with BCC: --------------------------------------------"
-		logger.info recipients
-		logger.info "--------------------------------------------"
-		if recipient.kind_of?(Array) && recipients.count > 99
-			logger.info "** chunked Recipients"
-			recipients.each_slice(99).to_a.each do |chunkedRecipients|
-				mail(:to => "relevepilates@gmail.com" ,  :subject => mail_subject, :bcc => chunkedRecipients)
-			end
-		else
-			mail(:to => "relevepilates@gmail.com" ,  :subject => mail_subject, :bcc => recipients)
-		end
+		mail(:to => "relevepilates@gmail.com" ,  :subject => mail_subject, :bcc => recipients)
 	end
 
 	
