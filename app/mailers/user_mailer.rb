@@ -74,7 +74,14 @@ class UserMailer < ActionMailer::Base
 		logger.info "Newsletter mail sent with BCC: --------------------------------------------"
 		logger.info recipients
 		logger.info "--------------------------------------------"
-		mail(:to => "relevepilates@gmail.com" ,  :subject => mail_subject, :bcc => recipients)
+		if recipients.count > 99
+			logger.info "** chunked Recipients"
+			recipients.each_slice(99).to_a.each do |chunkedRecipients|
+				mail(:to => "relevepilates@gmail.com" ,  :subject => mail_subject, :bcc => chunkedRecipients)
+			end
+		else
+			mail(:to => "relevepilates@gmail.com" ,  :subject => mail_subject, :bcc => recipients)
+		end
 	end
 
 	
