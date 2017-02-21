@@ -69,27 +69,36 @@
 		</div>
 		
 		<!-- CLASES -->
+		<div class="col-sm-12" data-ng-if="!clases.length"><h4>No se encontraron clases recientes</h4></div>
+		<button type="button" class="btn btn-sm btn-default btn-block" data-ng-if="!clases.length && moreClasesButton" data-ng-click="allClases()">+ Ver más</button>
+
 		<div class="col-sm-12" data-ng-if="clases.length"><h3>Clases <span class="text-muted">({{ clases.length }} clases)</span></h3></div>
 		<div class="col-sm-12" data-ng-if="clases.length"> <!-- Table -->
-		<div class="table-responsive">
-			<table class="table table-striped table-condensed table-hover">
-				<thead>
-					<tr>
-						<th>Fecha</th>
-						<th>Horario</th>
-						<th>Instructor</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr data-ng-repeat="clase in clases" data-ng-click="GoToEdit(clase.id)" data-ng-class="{'text-muted':clase.old}">
-						<td>{{clase.dia}} {{clase.fecha_fixed}} <span data-ng-if="clase.cancelada" class="label label-danger" title="{{clase['comment']}}">Cancelada</span><span data-ng-if="!clase.old && !clase.cancelable" class="label label-warning">< 6hs</span></td>
-						<td>{{clase.horario}}</td>
-						<td>{{clase.instructor}}</td>
-					</tr>
-				</tbody>
-			</table>
-		</div></div>
-		
+			<div class="table-responsive">
+				<table class="table table-striped table-condensed table-hover">
+					<thead>
+						<tr>
+							<th>Fecha</th>
+							<th>Horario</th>
+							<th>Instructor</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr data-ng-repeat="clase in clases" data-ng-click="GoToEdit(clase.id)" data-ng-class="{'text-muted':clase.old}">
+							<td>
+								<a href="#" data-ng-if="clase.confirmed" data-ng-click="unconfirmAsistencia(clase.asistencia_id)" class="text-success"><i class="fa fa-check-square-o"></i></a>
+								<a href="#" data-ng-if="!clase.confirmed" data-ng-click="confirmAsistencia(clase.asistencia_id)" class="text-muted"><i class="fa fa-square-o"></i></a>
+								{{clase.dia}} {{clase.fecha_fixed}} <span data-ng-if="clase.cancelada" class="label label-danger" title="{{clase['comment']}}">Cancelada</span><span data-ng-if="!clase.old && !clase.cancelable" class="label label-warning">< 6hs</span>
+							</td>
+							<td>{{clase.horario}}</td>
+							<td>{{clase.instructor}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<button type="button" class="btn btn-sm btn-default btn-block" data-ng-if="clases.length && moreClasesButton" data-ng-click="allClases()">+ Ver más</button>
+		</div>
+
 		<!-- PAGOS -->
 		<div data-ng-if="!alumno.primera_clase" class="col-sm-12"><h3>Pagos <span class="text-muted">({{ pagos.length }} pagos)</span></h3></div>
 		<div data-ng-if="!alumno.primera_clase" class="col-sm-12"> <!-- Table -->
@@ -284,7 +293,8 @@
 		</div>
 		<!-- Submit-->
 		<div class="col-sm-3">
-			<button type="submit" class="btn btn-primary btn-block" data-ng-bind-html="FormButton | html_trusted"  data-ng-disabled="buttonDisabled"></button>
+			<button type="submit" class="btn btn-primary btn-block hidden-xs" data-ng-bind-html="FormButton | html_trusted"  data-ng-disabled="buttonDisabled"></button>
+			<button type="submit" class="btn btn-primary btn-block btn-absolute visible-xs-block" data-ng-bind-html="FormButton | html_trusted"  data-ng-disabled="buttonDisabled"></button>
 		</div>
 	</form>
 </div>
