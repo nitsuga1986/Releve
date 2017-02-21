@@ -3,7 +3,7 @@ class Api::ClasesController < ApplicationController
   # Admin
   before_action only: [:test_emails, :create, :bulk, :destroy] do redirect_to :new_user_session_path unless current_user && current_user.admin?   end
   # Admin & Instructor
-  before_action only: [:index, :show, :search, :instructor, :update, :edit_bulk, :join_usr_multiple, :unjoin_usr_multiple, :confirm, :unconfirm] do redirect_to :new_user_session_path unless current_user && (current_user.instructor?||current_user.admin?) end
+  before_action only: [:index, :show, :search, :instructor, :update, :edit_bulk, :join_usr_multiple, :unjoin_usr_multiple, :edit_asistencias, :confirm, :unconfirm] do redirect_to :new_user_session_path unless current_user && (current_user.instructor?||current_user.admin?) end
   # Api render
   respond_to :json
   # ETAG -fresh_when()- is a key we use to determine whether a page has changed.
@@ -75,7 +75,7 @@ class Api::ClasesController < ApplicationController
 
   def index_user
 	@clases = User.find(params[:id]).clases.order(:fecha,:horario)
-	fresh_when(@clases)
+	#fresh_when(@clases) asistencias?
   end
 
   def show
@@ -219,6 +219,15 @@ class Api::ClasesController < ApplicationController
 	params[:_json].each do |asistencia|
 		Asistencia.find(asistencia['asistencia_id']).update_attribute(:confirmed,asistencia['confirmed'])
 	end
+	head :ok
+  end
+  
+  def confirm
+	Asistencia.find(params[:id]).update_attribute(:confirmed, true)
+	head :ok
+  end
+  def unconfirm
+	Asistencia.find(params[:id]).update_attribute(:confirmed, false)
 	head :ok
   end
   

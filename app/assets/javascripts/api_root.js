@@ -5,6 +5,7 @@
 //= require angular/angular-route.min
 //= require angular/angular-cookies.min
 //= require angular/ng-table.min
+//= require chartjs/Chart.min
 //= require config
 //= require filters/html_trusted
 //= require directives/onFinishRender

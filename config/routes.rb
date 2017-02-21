@@ -33,6 +33,8 @@ Rails.application.routes.draw do
 				post 'join_usr_multiple'
 				post 'unjoin_usr_multiple'
 				post 'edit_asistencias'
+				post 'confirm'
+				post 'unconfirm'
 				get 'index_current'
 				get 'index_user'
 			end
