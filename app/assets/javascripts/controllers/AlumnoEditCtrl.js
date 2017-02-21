@@ -3,6 +3,7 @@ angular.module("TurnosApp").controller("AlumnoEditCtrl",['$scope', '$rootScope',
 	$scope.horariosArray = horariosArray;
 	$scope.sexosArray = sexosArray;
 	$scope.submiterror = false;
+	$scope.moreClasesButton = true;
 	$scope.GoToEdit = function(id) {$location.path("/clase/"+id+"/edit/");};
 	$scope.GoToPagoEdit = function(id) {$location.path("/pago/"+id+"/edit/");};
 	$scope.history_GoToAlumnoEdit = []; // Prevents loop search
@@ -21,7 +22,7 @@ angular.module("TurnosApp").controller("AlumnoEditCtrl",['$scope', '$rootScope',
 	if ($routeParams.id) { 	// Edit
 		$scope.FormButton = '<i class="fa fa-edit fa-lg"></i> Guardar cambios';
 		$scope.alumno = ResourceAlumno.show({ id: $routeParams.id });
-		$scope.clases = ResourceClase.index_user({ id: $routeParams.id }).$promise.then(function( data ){
+		$scope.clases = ResourceClase.index_user({ id: $routeParams.id, recent: true }).$promise.then(function( data ){
 			angular.forEach(data, function(value, key) {
 				data[key]["fecha_fixed"] = dateFormat(value.fecha);
 				data[key]["confirmed"] = $.grep(value.users, function(e){ return e.id == $routeParams.id; })[0].confirmed;
@@ -92,6 +93,18 @@ angular.module("TurnosApp").controller("AlumnoEditCtrl",['$scope', '$rootScope',
 	$rootScope.got_to_url_success = "/alumno/"+$routeParams.id+"/edit/";
 	$scope.confirmAsistencia = function(asistencia_id) {ResourceClase.confirm({'id':asistencia_id}, $scope.callbackSuccess, $scope.callbackFailure)};
 	$scope.unconfirmAsistencia = function(asistencia_id) {ResourceClase.unconfirm({'id':asistencia_id}, $scope.callbackSuccess, $scope.callbackFailure)};
+	// allClases
+	$scope.allClases = function() {
+		$scope.moreClasesButton = false;
+		$scope.clases = ResourceClase.index_user({ id: $routeParams.id, recent: false }).$promise.then(function( data ){
+			angular.forEach(data, function(value, key) {
+				data[key]["fecha_fixed"] = dateFormat(value.fecha);
+				data[key]["confirmed"] = $.grep(value.users, function(e){ return e.id == $routeParams.id; })[0].confirmed;
+				data[key]["asistencia_id"] = $.grep(value.users, function(e){ return e.id == $routeParams.id; })[0].asistencia_id;
+			});
+			$scope.clases = data;
+		});
+	};
 	// Delete Alumno
 	$scope.DeleteAlumno = function(id) {
 		$.each($scope.alumno.alumnos, function(index) {

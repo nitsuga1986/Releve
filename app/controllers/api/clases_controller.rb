@@ -74,7 +74,15 @@ class Api::ClasesController < ApplicationController
   end
 
   def index_user
-	@clases = User.find(params[:id]).clases.order(:fecha,:horario)
+	if params.has_key?(:recent) && params[:recent]=='true' then
+		logger.info('true*********************************************************')
+		logger.info(params[:recent])
+		@clases = User.find(params[:id]).clases.recent.order(:fecha,:horario)
+	else
+		logger.info('false*********************************************************')
+		logger.info(params[:recent])
+		@clases = User.find(params[:id]).clases.order(:fecha,:horario)
+	end
 	#fresh_when(@clases) asistencias?
   end
 
