@@ -29,7 +29,7 @@ class Api::EventController < ApplicationController
 	when 'ingresos'
 		stats = []
 		(1..12).each do |mes| 
-			stats.push(Pago.total_by_mes(mes)) 
+			stats.push(Pago.last_year.total_by_mes(mes)) 
 		end
 		@stats['stats'] = stats
 		@stats['labels'] = I18n.t('date.month_names').drop(1)

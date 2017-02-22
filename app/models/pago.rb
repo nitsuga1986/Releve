@@ -5,6 +5,7 @@ class Pago < ActiveRecord::Base
 	belongs_to :cobrador, class_name: "User", foreign_key: "cobrador"
 	
 	scope :recent, ->() { where('created_at >= ?', 1.month.ago) }
+	scope :last_year, ->() { where('created_at >= ?', 1.year.ago) }
 	scope :cobrador, ->(user) { where('cobrador = ?', user) if user.present? }
 	scope :total_by_mes, ->(mes) { where('mes=?',mes).collect{|x| x.monto}.inject(0, :+)  if mes.present?}
 
