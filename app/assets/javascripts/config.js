@@ -1,5 +1,5 @@
 // start APP
-angular.module("TurnosApp",['ngRoute','ngResource','ngTable','ngCookies']).run(['$rootScope','$location',function($rootScope,$location) {
+angular.module("TurnosApp",['ngRoute','ngResource','ngTable','ngCookies','chart.js']).run(['$rootScope','$location',function($rootScope,$location) {
 	// callbackSuccess
 	$rootScope.callbackSuccess = function(response) {
 		console.log("success", response); if(!$rootScope.got_to_url_success){$rootScope.got_to_url_success="/";}
