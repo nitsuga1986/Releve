@@ -16,15 +16,6 @@ class Api::EventController < ApplicationController
   def stats
 	@stats = {}
 	case params[:stat]
-	when 'asistencias'
-		@chartData = [['Horarios','Inscriptos', 'Presentes', { role: 'annotation' } ]]
-		Clase.all.map(&:horario).uniq.sort!.each do |horario|
-			total_anotados = Clase.total_by_horario(horario)
-			total_presentes = Clase.total_by_horario(horario)
-			@chartData.push([horario, total_anotados, total_presentes,''])
-		end
-		@stats['stats'] = @chartData
-		render json: @stats
 		
 	when 'ingresos'
 		stats = []
@@ -34,6 +25,22 @@ class Api::EventController < ApplicationController
 		@stats['stats'] = stats
 		@stats['labels'] = I18n.t('date.month_names').drop(1)
 		render json: @stats
+	
+	when 'clases_instructores'
+		stats = []
+		instructores = User.where(instructor:true).order(:id)
+		instructores.each do |instructor|
+			instructor_stat = []
+			(1..12).each do |mes| 
+				instructor_stat.push(Clase.by_instructor(instructor).by_month(mes).count)
+			end
+			stats.push(instructor_stat) 
+		end
+		@stats['stats'] = stats
+		@stats['labels'] = I18n.t('date.month_names').drop(1)
+		@stats['series'] =  instructores.collect {|user| user.nombre_completo }
+		render json: @stats
+		
 	else
 	  head :ok
 	end

@@ -59,7 +59,19 @@ class Clase < ActiveRecord::Base
 	def old?() DateTime.strptime(self.fecha.strftime('%Y-%m-%d')+" "+self.horario+' -0300', '%Y-%m-%d %H:%M %Z') < DateTime.now end
 	def cancelable?() DateTime.strptime(self.fecha.strftime('%Y-%m-%d')+" "+self.horario+' -0300', '%Y-%m-%d %H:%M %Z') - (6.0/24) > DateTime.now end
 	def dia() I18n.t('date.day_names')[self.fecha.wday] end
-	
+
+	def self.by_month(int)
+		int = int - 1 # convert month from 1 to 0 based
+		now = DateTime.now
+		if int < (now.month + 1) # now.month is 1 based
+			min = now.beginning_of_year + int.months
+		else
+			min = now.last_year.beginning_of_year + int.months
+		end
+
+		where(fecha: [min..(min.end_of_month-1)])
+	end
+
 	private
 	def destroy_related
 		asistencias.each{|x| x.destroy}
