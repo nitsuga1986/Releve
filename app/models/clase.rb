@@ -63,7 +63,7 @@ class Clase < ActiveRecord::Base
 	def self.by_month(int)
 		int = int - 1 # convert month from 1 to 0 based
 		now = DateTime.now
-		if int < (now.month + 1) # now.month is 1 based
+		if int <= (now.month + 1) # now.month is 1 based
 			min = now.beginning_of_year + int.months
 		else
 			min = now.last_year.beginning_of_year + int.months
