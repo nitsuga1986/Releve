@@ -69,7 +69,7 @@ class Clase < ActiveRecord::Base
 			min = now.last_year.beginning_of_year + int.months
 		end
 
-		where(fecha: [min..(min.end_of_month-1)])
+		where(fecha: [min..(min.end_of_month)])
 	end
 
 	private
