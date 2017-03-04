@@ -50,8 +50,8 @@ class Api::EventController < ApplicationController
 			cant_clases = Clase.recent_months(3).by_horario(horario).count.to_f
 			total_anotados = Clase.recent_months(3).total_by_horario(horario).to_f
 			total_presentes = Clase.recent_months(3).total_by_horario_and_confirmed(horario,true).to_f
-			stat_presentes.push(total_presentes/cant_clases)
-			stat_anotados.push(total_anotados/cant_clases - total_presentes/cant_clases)
+			stat_presentes.push((total_presentes/cant_clases).round(2))
+			stat_anotados.push((total_anotados/cant_clases - total_presentes/cant_clases).round(2))
 		end
 		stats.push(stat_presentes)
 		stats.push(stat_anotados)
