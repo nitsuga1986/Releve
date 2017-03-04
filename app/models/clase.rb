@@ -12,7 +12,9 @@ class Clase < ActiveRecord::Base
 	scope :after_date, ->(date) { where('fecha >= ?', date) if date.present? }
 	scope :by_instructor, ->(user_id) { where('(instructor=? AND reemplazo IS ? ) OR reemplazo=?', user_id, nil, user_id) if user_id.present? }
 	scope :recent, ->() { where('fecha >= ?', 1.month.ago) }
+	scope :recent_months, ->(months) { where('fecha >= ?', months.month.ago) }
 	
+	scope :by_horario, ->(horario) { where('horario=?', horario) if horario.present?}
 	scope :total_by_horario, ->(horario) { where('horario=?', horario).collect{|x| x.asistencias.count}.inject(0, :+)  if horario.present?}
 	scope :total_by_horario_and_confirmed, ->(horario,confirmed) { where('horario=?', horario).collect{|x| x.asistencias.where('confirmed=?',confirmed).count}.inject(0, :+)  if horario.present?}
 	
