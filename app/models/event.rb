@@ -3,8 +3,9 @@ class Event < ActiveRecord::Base
   scope :not_permanent, -> { where.not(name: ['pricing','finish_signup','payment']) }
   
   def count_within_limit
-    if Event.all.count >= 400
-		Event.not_permanent.first.destroy
+    if Event.all.count >= 800
+		#Event.not_permanent.first.destroy
+		Event.first.destroy
     end
   end
   
