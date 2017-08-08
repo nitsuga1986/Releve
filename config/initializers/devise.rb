@@ -1,5 +1,13 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
+use OmniAuth::Builder do
+  provider :facebook, ENV['APP_ID'], ENV['APP_SECRET'],
+    :scope => 'email,read_stream',
+    :client_options => {
+      :site => 'https://graph.facebook.com/v2.7',
+      :authorize_url => "https://www.facebook.com/v2.7/dialog/oauth"
+    }
+end
 Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
