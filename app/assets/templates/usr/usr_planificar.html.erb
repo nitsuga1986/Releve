@@ -191,7 +191,7 @@
 				<ul class="fa-ul" data-ng-if="selectedclases.length" >
 					<li data-ng-repeat="clase in selectedclases" data-ng-if="clase.checked"><i class="fa-li fa fa-close cursorpointer" data-ng-click="clase.checked=false"></i><strong> {{clase.fecha_fixed}} {{clase.horario}}hs</strong> {{clase.actividad}} con {{clase.instructor}} </li>
 				</ul>
-				<p class="alert alert-warning" role="alert">¡<strong>Recordá</strong> que las clases se podrán recuperar únicamente cancelando con 6hs de anticipación.</p>
+				<p class="alert alert-warning" role="alert">¡<strong>Recordá</strong> que las clases se podrán recuperar únicamente cancelando con 6hs de anticipación.<br> Las clases correspondientes a los combos se utilizan y recuperan dentro del mismo mes</p>
             </div>
             <div class="modal-footer">
                 <a href="#" data-dismiss="modal" class="btn btn-default ">Close</a>
