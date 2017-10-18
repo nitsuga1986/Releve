@@ -59,7 +59,7 @@ class Clase < ActiveRecord::Base
 	def destroy_wait_lists() wait_lists.each{|x| x.destroy}	end
 	def completa?() self.users.count >= self.max_users end
 	def old?() DateTime.strptime(self.fecha.strftime('%Y-%m-%d')+" "+self.horario+' -0300', '%Y-%m-%d %H:%M %Z') < DateTime.now end
-	def cancelable?() DateTime.strptime(self.fecha.strftime('%Y-%m-%d')+" "+self.horario+' -0300', '%Y-%m-%d %H:%M %Z') - (6.0/24) > DateTime.now end
+	def cancelable?() DateTime.strptime(self.fecha.strftime('%Y-%m-%d')+" "+self.horario+' -0300', '%Y-%m-%d %H:%M %Z') - (4.0/24) > DateTime.now end
 	def dia() I18n.t('date.day_names')[self.fecha.wday] end
 
 	def self.by_month(int)
