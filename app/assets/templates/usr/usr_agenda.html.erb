@@ -58,7 +58,7 @@
 <!--Field(mult)-->		<span data-ng-if="!(column.field=='instructor' && clase.cancelada) && !(column.field=='instructor' && clase.reemplazo)">{{clase[column.field]}}</span>
 					</label>
 <!--Field(!mult)-->	<span data-ng-if="!selectmultiple && !(column.field=='instructor' && clase.cancelada) && !(column.field=='instructor' && clase.reemplazo)">{{clase[column.field]}}</span>
-<!-- <6hs -->		<span data-ng-if="column.field=='horario' && !clase.cancelable" class="label label-warning">< 6hs</span>
+<!-- <4hs -->		<span data-ng-if="column.field=='horario' && !clase.cancelable" class="label label-warning">< 4hs</span>
 <!--Completa-->		<span data-ng-if="column.field=='horario' && clase.completa" class="label label-danger">Completa</span>
 <!--Checkbox-->		<label data-ng-if="column.field=='horario'&& !alumno.primera_clase && selectmultiple && !clase.cancelada && !clase.joined && !alumno.actividad_overquota[clase.actividad_id][clase.mes] && !clase.completa" ><input id="selectable{{clase.id}}" type="checkbox" data-ng-model="clase.checked" data-ng-change="verifyPlan(clase.checked,clase.id)"></label>
 <!--Agendarme-->	<button data-ng-if="column.field=='horario' && !clase.cancelada && !clase.joined && (alumno.actividad_overquota[clase.actividad_id][clase.mes]==false||(alumno.actividad_overquota[clase.actividad_id][clase.mes]==undefined&&alumno.actividad_counter[clase.actividad_id][clase.mes]!=1&&clase.trialable)) && !clase.completa && !selectmultiple" data-ng-click="eventModal(clase.id)" class="btn btn-default btn-xs" type="button">Agendarme</button>
@@ -91,14 +91,14 @@
                 <h4>Programar mis clases</h4>
             </div>
             <div class="modal-body">
-				<p class="lead" data-ng-if="clase.joined && !clase.cancelable">Lo sentimos pero la clase es en menos de 6hs y <span class="text-danger">ya no es posible cancelarla</span>. Esperamos que puedas asisitir! <span class="text-muted">La clase de <strong>{{clase.actividad}}</strong> está programada para el día <strong>{{clase.fecha | date:'dd/MM/yyyy'}} a las {{clase.horario}}</strong> con {{clase.instructor}}.</span></p>
+				<p class="lead" data-ng-if="clase.joined && !clase.cancelable">Lo sentimos pero la clase es en menos de 4hs y <span class="text-danger">ya no es posible cancelarla</span>. Esperamos que puedas asisitir! <span class="text-muted">La clase de <strong>{{clase.actividad}}</strong> está programada para el día <strong>{{clase.fecha | date:'dd/MM/yyyy'}} a las {{clase.horario}}</strong> con {{clase.instructor}}.</span></p>
 				<p class="lead" data-ng-if="clase.joined && clase.cancelable">¿No vas a poder asistir a la clase de <strong>{{clase.actividad}}</strong> el día <strong>{{clase.fecha | date:'dd/MM/yyyy'}} a las {{clase.horario}}</strong> con {{clase.instructor}}?</p>
 				<p class="lead" data-ng-if="!clase.joined && alumno.actividad_overquota[clase.actividad_id][clase.mes] && alumno.primera_clase">Ya has programado tu clase de prueba! Puedes cancelarla y elegir este horario si lo prefieres.</p>
 				<p class="lead" data-ng-if="!clase.joined && alumno.actividad_overquota[clase.actividad_id][clase.mes] && !alumno.primera_clase">Ya has programado todas las clases disponibles en tu plan. Puedes cancelar alguna y elegir este horario si lo prefieres.</p>
 				<p class="lead" data-ng-if="!clase.cancelada && !clase.joined && !alumno.actividad_overquota[clase.actividad_id][clase.mes] && !clase.completa" >¿Te agendamos para la clase de <strong>{{clase.actividad}}</strong> el día <strong>{{clase.fecha | date:'dd/MM/yyyy'}} a las {{clase.horario}}</strong> con {{clase.instructor}}?</p>
 				<p class="lead" data-ng-if="!clase.cancelada && !clase.joined && !alumno.actividad_overquota[clase.actividad_id][clase.mes] && clase.completa" >¿Te agregamos a la lista de espera para la clase de <strong>{{clase.actividad}}</strong> el día <strong>{{clase.fecha | date:'dd/MM/yyyy'}} a las {{clase.horario}}</strong> con {{clase.instructor}}? <span class="text-muted">En cuanto se desocupe un lugar enviaremos un mail a todos los que se encuentren en esta lista.</span></p>
-				<p class="alert alert-danger" role="alert" data-ng-if="!clase.joined && !alumno.actividad_overquota[clase.actividad_id][clase.mes] && !clase.completa && !clase.cancelable" >¡<strong>Atención</strong>! esta clase es en menos de 6hs y no es posible cancelarla una vez agnedada. Tené en cuenta que las clases se podrán recuperar únicamente cancelando con 6hs de anticipación.</p>
-				<p class="alert alert-warning" role="alert" data-ng-if="!clase.joined && !alumno.actividad_overquota[clase.actividad_id][clase.mes] && !clase.completa && clase.cancelable" >¡<strong>Recordá</strong> que las clases se podrán recuperar únicamente cancelando con 6hs de anticipación.</p>
+				<p class="alert alert-danger" role="alert" data-ng-if="!clase.joined && !alumno.actividad_overquota[clase.actividad_id][clase.mes] && !clase.completa && !clase.cancelable" >¡<strong>Atención</strong>! esta clase es en menos de 4hs y no es posible cancelarla una vez agnedada. Tené en cuenta que las clases se podrán recuperar únicamente cancelando con 4hs de anticipación. Las clases correspondientes a los combos se utilizan y recuperan dentro del mismo mes.</p>
+				<p class="alert alert-warning" role="alert" data-ng-if="!clase.joined && !alumno.actividad_overquota[clase.actividad_id][clase.mes] && !clase.completa && clase.cancelable" >¡<strong>Recordá</strong> que las clases se podrán recuperar únicamente cancelando con 4hs de anticipación.</p>
 				<a href="#" data-ng-click="hideText=false"><i class="fa fa-comment-o" aria-hidden="true"></i> Dejanos tu comentario</a>
 				<textarea class="form-control" rows="3" placeholder="Dejanos tu comentario" data-ng-hide="hideText" data-ng-init="hideText=true" data-ng-model="clase.comentario"></textarea>
             </div>
@@ -126,7 +126,7 @@
 				<ul class="fa-ul" data-ng-if="selectedclases.length" >
 					<li data-ng-repeat="clase in selectedclases" data-ng-if="clase.checked"><i class="fa-li fa fa-close cursorpointer" data-ng-click="clase.checked=false"></i><strong> {{clase.fecha_fixed}} {{clase.horario}}hs</strong> {{clase.actividad}} con {{clase.instructor}} </li>
 				</ul>
-				<p class="alert alert-warning" role="alert">¡<strong>Recordá</strong>! que las clases se podrán recuperar únicamente cancelando con 6hs de anticipación.</p>
+				<p class="alert alert-warning" role="alert">¡<strong>Recordá</strong>! que las clases se podrán recuperar únicamente cancelando con 4hs de anticipación.  Las clases correspondientes a los combos se utilizan y recuperan dentro del mismo mes.</p>
             </div>
             <div class="modal-footer">
                 <a href="#" data-dismiss="modal" class="btn btn-default ">Close</a>
