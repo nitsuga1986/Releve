@@ -11,7 +11,7 @@ class Api::ClasesController < ApplicationController
 
   # Admin
   def create
-	if !@clase = Clase.find_by(fecha: params[:fecha], horario: params[:horario]) then
+	if !@clase = Clase.find_by(fecha: params[:fecha], horario: params[:horario], actividad: params[:actividad_id]) then
 		@clase = Clase.new(clase_params)
 		@clase.actividad = Actividad.find(params[:actividad_id])
 		@clase.instructor = User.find(params[:instructor_id])
