@@ -1,6 +1,5 @@
 <%= subtitle " - Disfrutá entrenarte" %>
 <div class="preloader">
-	<a href="/app/agenda" class="btn btn-block btn-primary"><i class="fa fa-ellipsis-v" aria-hidden="true"></i><strong> Agendá tu clase</strong></a>
 	<img src="<%= asset_path 'loader.gif' %>" alt="Preloader image">
 	<div id="quotes_container">
 		<blockquote>
@@ -46,7 +45,7 @@
 			<div class="col-md-4">
 				<div class="intro-table intro-table-hover">
 					<h4>Te invitamos</br>a probar una </br><strong>clase de pilates sin cargo</strong></h4>
-					<button href="#" data-toggle="modal" data-target="#modal1" class="btn btn-lg btn-primary">Comenzá hoy!</button>
+					<a href="#clase_prueba" target="_self" class="btn btn-lg btn-primary">Clase de Prueba</a>
 				</div>
 			</div>
 			<div class="col-md-4">
@@ -187,7 +186,6 @@
 		<div class="row">
 			<div class="col col-md-12 col-sm-12 col-xs-12">
 				<div>
-
 					El método Pilates, tal como su creador Joseph Pilates lo pensó a principios del siglo XX, compone una forma de "contrología" que educa y utiliza la <strong>conciencia corporal</strong> para lograr una <strong>musculación equilibrada</strong> y una <strong>unidad mente-cuerpo</strong>.<br/>
 					Se trata de un programa de ejercicios que no son "en lugar de" sino "además de", por ello es que desde siempre y aún hoy es utilizado por bailarines y deportistas como así también todo tipo de personas, con diferentes edades y condiciones físicas.<br><br>
 					<strong>CLASE GRUPAL</strong><br>
@@ -198,9 +196,6 @@
 					Las clases privadas están pensadas para personas que deseen un seguimiento aún más personalizado, como por ejemplo: un entrenamiento específico, alguna lesión que requiera rehabilitarse, o condición física en particular. Estas clases se coordinan con el instructor y duran 1 hora.<br><br>
 					<strong>Embarazadas</strong><br>
 					Pilates es una excelente actividad para realizar durante el embarazo ya que prepara al cuerpo para los cambios propios de este período: el fortalecimiento de la espalda, sobre todo la zona lumbar, que será importante para que la madre pueda llevar la panza sin problemas, el trabajo del suelo pélvico la ayudarán a conservar el tono de esta musculatura interna y a facilitar el camino el día del parto, así como su posterior recuperación. La importancia de fortalecer los brazos la ayudarán para sostener al niño una vez en sus brazos.<br><br>
-					<!--<strong>Capacitaciones</strong><br>
-					Si querés capacitarte con nosotros, envianos un correo a <a href="mailto:relevepilates@gmail.com?Subject=Releve%20Pilates">relevepilates@gmail.com</a> y te enviamos toda la info.
-					-->
 				</div>
 			</div>
 		</div>
@@ -226,6 +221,16 @@
 		</div>
 		</div>
 </section>
+<section id="clase_prueba" class="section section-padded">
+	<div class="container">
+		<div class="row text-center title">
+			<h2>Clase de prueba</h2>
+			<h4 class="light muted">Angendate para tu primera clase de prueba y vení a conocer Releve!</h4>
+		</div>
+		<div class="row">
+			<iframe src="https://www.siguefit.com/visit-test.aspx?k=6pJjCNco4e%2fVBif48JCCWw%3d%3d" style="width:100%; height:400px;" scrolling="no" frameborder="0"></iframe>
+		</div>
+</section>
 <section id="precios" class="section section-padded">
 	<div class="container">
 		<div class="row text-center title">
@@ -235,26 +240,7 @@
 		<div class="row">
 			<div class="col-sm-12 formalert" id="formsuccess"><div class="alert alert-success" role="alert">Revisa tu casilla de correo, te hemos enviado un correo con toda la información. Muchas gracias!</div></div>
 			<div class="col-sm-12 formalert" id="formerror"><div class="alert alert-danger" role="alert">Por favor completa todos los campos y valida correctamente el ReCaptcha.</div></div>
-			<form id="pricing" action="/pricing" method="post">
-				<div class="col-sm-6">
-					<div class="form-group">
-						<label for="firstname">Nombre</label>
-						<input type="text" name="firstname" class="form-control" id="firstname" placeholder="Nombre">
-					</div>
-					<div class="form-group">
-						<label for="lastname">Apellido</label>
-						<input type="text" name="lastname" class="form-control" id="lastname" placeholder="Apellido">
-					</div>
-				</div>
-				<div class="col-sm-6">
-					<div class="form-group">
-						<label for="email">Dirección de correo</label>
-						<input type="email" name="email" class="form-control" id="email" placeholder="Dirección de correo">
-					</div>
-					<div class="form-group"><%= recaptcha_tags hl: 'es', display: { theme: 'white' } %></div>
-				</div>
-				<div class="col-sm-6"><button type="submit" class="btn btn-primary">Enviar</button></div>
-			</form>
+			<iframe src="https://www.siguefit.com/Visit.aspx?k=FKBI6R12M5g%3d" style="width:100%; height:400px;" scrolling="no" frameborder="0"></iframe>
 		</div>
 		</div>
 </section>

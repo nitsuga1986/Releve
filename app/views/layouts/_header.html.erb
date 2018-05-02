@@ -25,44 +25,8 @@
 				<li><a href="#galeria" target="_self">Galería</a></li>
 				<li><a href="#actividades" class="hidden-sm" target="_self">Actividades</a></li>
 				<li><a href="#ubicacion" target="_self">Contacto</a></li>
+				<li><a href="#clase_prueba" target="_self">Clase de Prueba</a></li>
 				<li><a href="#precios" target="_self">Precios</a></li>
-				<% end %>
-				<% if user_signed_in? %>
-					<% if current_page?('/') %>
-						<li><a href="/app/agenda"><i class="fa fa-ellipsis-v" aria-hidden="true"></i> Reservá tu clase</a></li>
-					<% else %>
-						<% if current_user.instructor?||current_user.admin? %>
-							<li class="dropdown">
-							  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
-							  <ul class="dropdown-menu">
-								<li><a href="/clase/dashboard" class="text-admin"><i class="fa fa-calendar-o" aria-hidden="true"></i> Clases</a></li>
-								<li><a href="/clase/modificaciones" class="text-admin"><i class="fa fa-exchange" aria-hidden="true"></i> Modificaciones</a></li>
-								<li><a href="/pago/index" class="text-admin"><i class="fa fa-dollar" aria-hidden="true"></i> Pagos</a></li>
-								<li><a href="/alumno/index" class="text-admin"><i class="fa fa-users" aria-hidden="true"></i> Alumnos</a></li>
-								<% if current_user.admin? %>
-										<!--<li><a href="/clase/index" class="text-admin"><i class="fa fa-calendar" aria-hidden="true"></i> Calendario</a></li>-->
-										<li><a href="/eventos/index" class="text-admin"><i class="fa fa-bell" aria-hidden="true"></i> Eventos</a></li>
-										<li><a href="/alumno/newsletter" class="text-admin"><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Enviar novedades</a></li>
-								<% end %>
-							  </ul>
-							</li>
-						<% end %>
-						<li class="dropdown">
-						  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mi cuenta <span class="caret"></span></a>
-						  <ul class="dropdown-menu">
-							<li><a href="/app/agenda"><i class="fa fa-calendar" aria-hidden="true"></i> Agenda</a></li>
-							<% if !current_user.primera_clase?  %>
-								<li><a href="/app/planificar"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Planificar</a></li>
-							<% end %>							
-							<li><a href="/app/mis_clases"><i class="fa fa-calendar-check-o " aria-hidden="true"></i> Mis clases</a></li>
-							<li><a href="/app/mi_info"><i class="fa fa-cogs" aria-hidden="true"></i> Mi Cuenta</a></li>
-							<li role="separator" class="divider"></li>
-							<li class="user_header" title="Cerrar sesión"><a data-method="DELETE" href="<%= destroy_user_session_path %>" target="_self"><i class="fa fa-sign-out" aria-hidden="true"></i> Cerrar sesión</a></li>
-						  </ul>
-						</li>
-					<% end %>
-				<% else %>
-					<li><a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-primary">Comenzar!</a></li>
 				<% end %>
 			</ul>
 		</div>
@@ -111,5 +75,3 @@
 		<li class="nav-item nav-btn"><a class="btn btn-white" data-method="DELETE" href="<%= destroy_user_session_path %>">Cerrar sesión <i class="fa fa-sign-out" aria-hidden="true" target="_self"></i></a></li>
 	<% end %>
 </ul>
-
-
