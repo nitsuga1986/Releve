@@ -45,14 +45,14 @@ Rails.application.routes.draw do
 			end
 		end
 	end
-	
+
 	get '/app/(*all)' => 'api_root#index', as: :usr_app
 	get '/clase/*all' => 'api_root#index', as: :clase_index
 	get '/alumno/*all' => 'api_root#index', as: :alumno_index
 	get '/actividad/*all' => 'api_root#index', as: :actividad_index
 	get '/pago/*all' => 'api_root#index', as: :pago_index
 	get '/eventos/*all' => 'api_root#index', as: :events_index
-	get '/terminos_y_condiciones' => 'landing#terms', as: :terms
+	#get '/terminos_y_condiciones' => 'landing#terms', as: :terms
 	match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], as: :finish_signup
 	post '/pricing' => 'landing#pricing', as: :pricing, :defaults => { :format => 'json' }
 
